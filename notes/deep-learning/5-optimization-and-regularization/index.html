@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5-Optimization and Regularization | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#optimization">Optimization</a>
+      <ul>
+        <li><a href="#优化算法">优化算法</a></li>
+        <li><a href="#参数初始化">参数初始化</a></li>
+        <li><a href="#数据预处理">数据预处理</a></li>
+        <li><a href="#优化地形">优化地形</a></li>
+        <li><a href="#超参数优化">超参数优化</a></li>
+      </ul>
+    </li>
+    <li><a href="#网络正则化">网络正则化</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="optimization">Optimization</h2>
+<ul>
+<li>高维变量非凸优化
+<ul>
+<li>鞍点</li>
+<li>平坦最小值与尖锐最小值</li>
+<li>局部最小解等价性</li>
+</ul>
+</li>
+</ul>
+<h3 id="优化算法">优化算法</h3>
+<ul>
+<li>小批量梯度下降（批量，学习率，梯度估计）
+<ul>
+<li>$g_t=\frac{1}{K}\sum_{(x,y)\in S_t}\frac{\partial L(y,f(x;\theta))}{\partial\theta}$</li>
+<li>$\theta\leftarrow\theta-\alpha g_t$</li>
+</ul>
+</li>
+<li>批量大小选择
+<ul>
+<li>线性放缩规则：批量大小增加 $m$ 倍时，学习率也增加 $m$ 倍（批量大小较小时适用）</li>
+<li>批量越大，越有可能收敛到尖锐最小值;批量越小，越有可能收敛到 平坦最小值</li>
+</ul>
+</li>
+<li>学习率衰减（退火）
+<ul>
+<li>分段常数分解：每经过 $T_1,\cdots,T_m$ 次迭代，衰减为原来的 $\beta_1,\cdots,\beta_m$ 倍</li>
+<li>逆时衰减：$\alpha_t=\alpha_0\frac{1}{1+\beta\times t}$</li>
+<li>指数衰减：$\alpha=\alpha_0\beta^t$</li>
+<li>自然指数衰减：$\alpha_0\exp(-\beta\times t)$</li>
+<li>余弦衰减：$\alpha_t=\frac{1}{2}\alpha_0(1+\cos(\frac{t\pi}{T}))$</li>
+</ul>
+</li>
+<li>学习率预热：最初几轮使用较小的学习率
+<ul>
+<li>逐渐预热(2017)：$\alpha_t'=\frac{t}{T'}\alpha_0$</li>
+</ul>
+</li>
+<li>周期性学习率调整
+<ul>
+<li>循环学习率</li>
+<li>带热重启的随机梯度下降</li>
+</ul>
+</li>
+<li>AdaGrad(2011)：自适应调整参数学习率
+<ul>
+<li>$\Delta\delta_t=-\frac{\alpha}{\sqrt{G_t+\epsilon}}\odot g_t$</li>
+<li>梯度平方的累计值: $G_t=\sum_{\tau=1}^tg_\tau\odot g_\tau$</li>
+<li>偏导数累积比较大，其学习率相对较小; 相反，如果其偏导数累积较小，其学习率相对较大。但整体是随着迭代次数的增加，学习率逐渐缩小</li>
+</ul>
+</li>
+<li>RMSProp(2012)：避免学习率过早衰减
+<ul>
+<li>$\Delta\theta_t=-\frac{\alpha}{\sqrt{G_t+\epsilon}}\odot g_t$</li>
+<li>梯度平方的指数衰减：$G_t=\beta G_{t-1}+(1-\beta)g_t\odot g_t$</li>
+</ul>
+</li>
+<li>AdaDelta 算法：引入参数更新差值 $\Delta\theta$ 的平方调整学习率
+<ul>
+<li>$\Delta\theta_t=-\frac{\sqrt{\Delta X_{t-1}^2+\epsilon}}{\sqrt{G_t+\epsilon}}\odot g_t$</li>
+<li>$\Delta X_{t-1}^2=\beta_1\Delta X_{t-2}^2+(1-\beta_1)\Delta\theta_{t-1}\odot\Delta\theta_{t-1}$</li>
+</ul>
+</li>
+<li>梯度估计修正
+<ul>
+<li>动量法：$\Delta\theta_t=\rho\Delta_{t-1}-\alpha g_t$</li>
+<li>Nesterov 动量法：$\Delta\theta_t=\rho\Delta_{t-1}-\alpha g_t(\theta_{t-1}+\rho\Delta\theta_{t-1})$</li>
+<li>Adam 算法(2015)
+<ul>
+<li>$M_t=\beta_1 M_{t-1}+(1-\beta_1)g_t,\hat M_t=\frac{M_t}{1-\beta_1^t}$</li>
+<li>$G_t=\beta_2G_{t-1}+(1-\beta_2)g_t\odot g_t,\hat G_t=\frac{G_t}{1-\beta_2^t}$</li>
+<li>$\Delta\theta_t=-\frac{\alpha}{\hat G_t+\epsilon}\hat M_t$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>梯度截断
+<ul>
+<li>按值截断：$g_t=\max(\min(g_t,b),a)$</li>
+<li>按模截断：$g_t=\frac{b}{|g_t|}g_t$</li>
+</ul>
+</li>
+</ul>
+<h3 id="参数初始化">参数初始化</h3>
+<ul>
+<li>固定方差参数初始化
+<ul>
+<li>高斯分布初始化</li>
+<li>均匀分布初始化</li>
+</ul>
+</li>
+<li>方差放缩参数初始化
+<ul>
+<li>Xavier 初始化：方差为 $\frac{2}{M_{l-1}+M_l}$
+<ul>
+<li>恒等函数</li>
+<li>Logistic: 16</li>
+<li>Tanh</li>
+</ul>
+</li>
+<li>He 初始化(Kaiming)：反差为 $\frac{2}{M_{l-1}}$
+<ul>
+<li>ReLU</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>正交初始化：范数保持性 $|\delta^{(l-1)}|^2=|\delta^{(l)}|^2$
+<ul>
+<li>高斯分布初始化后，SVD 分解并取一个正交矩阵作为权重</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据预处理">数据预处理</h3>
+<ul>
+<li>尺度不变性：算法在缩放部分特征后不影响学习和预测</li>
+<li>归一化</li>
+<li>白化：降低冗余性</li>
+<li>数据增强：Rotation, Flip, Zoom In/Out, Shift, Noise</li>
+</ul>
+<h3 id="优化地形">优化地形</h3>
+<ul>
+<li>ReLU 激活函数</li>
+<li>残差连接</li>
+<li>逐层归一化
+<ul>
+<li>批量归一化（BN）：$\text{BN}_{\gamma,\beta}(z^{(l)})=\frac{z^{(l)}-\mu_B}{\sqrt{\sigma_B^2+\epsilon}}\odot\gamma+\beta$
+<ul>
+<li>$\mu_B=\frac{1}{K}\sum_{k=1}^Kz^{(k,l)}$</li>
+</ul>
+</li>
+<li>层归一化（LN）：$\text{LN}_{\gamma,\beta}(z_t^{(l)})=\frac{z^{(l)}-\mu}{\sqrt{\sigma^2+\epsilon}}\odot\gamma+\beta$
+<ul>
+<li>$\mu=\frac{1}{\mathbb{M_l}}\sum_{i=1}^{M_I}z_i^{(l)}$</li>
+</ul>
+</li>
+<li>权重归一化：通过再参数化将权重分为长度与方向
+<ul>
+<li>$W_{i,:}=\frac{g_i}{|v_i|}v_i$</li>
+</ul>
+</li>
+<li>局部响应归一化（LRN）</li>
+</ul>
+</li>
+</ul>
+<h3 id="超参数优化">超参数优化</h3>
+<ul>
+<li>超参数：网络结构、优化参数、正则化参数</li>
+<li>困难
+<ul>
+<li>组合优化问题</li>
+<li>评估一组参数配置的时间代价高</li>
+</ul>
+</li>
+<li>网格搜索</li>
+<li>随机搜索</li>
+<li>贝叶斯优化</li>
+<li>动态资源分配</li>
+<li>神经架构搜索</li>
+</ul>
+<h2 id="网络正则化">网络正则化</h2>
+<ul>
+<li>$l_1$ 正则化</li>
+<li>$l_2$ 正则化</li>
+<li>弹性网络衰减</li>
+<li>权重衰减：$\theta_1\leftarrow (1-\beta)\theta_{t-1}-\alpha g_t$
+<ul>
+<li>标准随机梯度下降中与 $l_2$ 正则化等价</li>
+</ul>
+</li>
+<li>提前停止：使用验证集错误代替期望错误</li>
+<li>丢弃法
+<ul>
+<li>训练时：$\text{mask}(x)=m\odot x, m$ 以概率为 $p$ 的伯努利分布随机生成</li>
+<li>测试时：$\text{mask}(x)=px$</li>
+<li>集成学习角度：丢弃相当于采样一个子网络</li>
+<li>贝叶斯学习角度</li>
+</ul>
+</li>
+<li>标签平滑：软目标标签，给其余 $K-1$ 个类概率 $\frac{\epsilon}{K-1}$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Introduction | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#编译器">编译器</a></li>
+    <li><a href="#程序设计语言发展历程">程序设计语言发展历程</a></li>
+    <li><a href="#文法">文法</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="编译器">编译器</h2>
+<ul>
+<li>分析部分（前端）+ 综合部分（后端）
+<ul>
+<li>趟（Pass）：每趟读入一个输入文件，产生一个输出文件</li>
+</ul>
+</li>
+<li>字符流 -&gt; (词法分析器) -&gt; 符号流
+<ul>
+<li>词法分析/扫描 (Lexical analysis/scanning)：读入字符流，输出词素（Lexeme）<code>&lt;token-name, attribute-value&gt;</code></li>
+</ul>
+</li>
+<li>符号流 -&gt; (语法分析) -&gt; 语法树
+<ul>
+<li>语法分析/解析 (Syntax analysis/parsing)：根据此番单元的第一个分量建立树型中间表示（Syntax tree）</li>
+</ul>
+</li>
+<li>语法树 -&gt; (语义分析) -&gt; 语法树
+<ul>
+<li>语义分析：检查源程序是否满足语言定义的语义约束；同时收集类型信息</li>
+<li>符号表管理：记录源程序中使用的变量的名字，手机各种属性</li>
+</ul>
+</li>
+<li>语法树 -&gt; (中间代码生成器) -&gt; 中间表示形式
+<ul>
+<li>中间代码生成：生成类机器语言的中间表示；三地址代码（每个指令最多包括三个变量）</li>
+</ul>
+</li>
+<li>中间表示形式 -&gt; (机器无关代码优化器) -&gt; 中间表示形式
+<ul>
+<li>中间代码优化：通过中间代码分析，优化</li>
+</ul>
+</li>
+<li>中间表示形式 -&gt; (代码生成器) -&gt; 目标机器语言
+<ul>
+<li>代码生成：将中间表示形式映射到目标语言</li>
+</ul>
+</li>
+<li>目标机器语言 -&gt; (机器相关代码优化器) -&gt; 目标机器语言</li>
+</ul>
+<h2 id="程序设计语言发展历程">程序设计语言发展历程</h2>
+<ul>
+<li>历程
+<ul>
+<li>第一代：机器语言</li>
+<li>第二代：汇编语言（宏命令）</li>
+<li>第三代：Fortran, Cobol, Lisp, C, C++</li>
+<li>第四代：特定应用语言：NOMAD, SQL, Postscript</li>
+<li>第五代：基于逻辑和约束的语义 Prolog OPS5</li>
+</ul>
+</li>
+<li>强制式语言：指明如何完成</li>
+<li>声明式语言：指明要完成哪些计算</li>
+<li>静态：支持编译器静态决定问题</li>
+<li>动态：只允许程序运行时做出决定</li>
+<li>环境：从名字到存储位置的映射</li>
+<li>状态：从存储位置到它们值的映射</li>
+</ul>
+<h2 id="文法">文法</h2>
+<ul>
+<li>短语结构文法（grammer）$G=(N,T,P,\sigma)$（非终结符，终结符，产生式，开始符号）</li>
+<li>0 型文法：$\alpha\rightarrow\beta,\alpha\in(N\cup T)^<em>$ 且至少有一个终结符，$\beta\in(N\cup T)^</em>$
+<ul>
+<li>短语文法</li>
+<li>递归可枚举集</li>
+<li>图灵机</li>
+</ul>
+</li>
+<li>1 型文法：$\alpha\rightarrow\beta,|\beta|\geq|\alpha|$
+<ul>
+<li>上下文有关文法</li>
+<li>线性有界自动机</li>
+</ul>
+</li>
+<li>2 型文法：$\alpha\rightarrow\beta,\alpha\notin(T)^*$
+<ul>
+<li>上下文无关文法</li>
+<li>BNF 范式</li>
+</ul>
+</li>
+<li>3 型文法：$A\rightarrow \alpha |\alpha B$（右线性或左线性）
+<ul>
+<li>正规文法</li>
+<li>有限状态自动机</li>
+<li>正则表达式</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

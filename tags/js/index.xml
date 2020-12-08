@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>js on Zangwei</title>
+    <link>https://zhengzangw.com/tags/js/</link>
+    <description>Recent content in js on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Fri, 22 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Javascript</title>
+      <link>https://zhengzangw.com/notes/web-develop/javascript/</link>
+      <pubDate>Fri, 22 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/web-develop/javascript/</guid>
+      <description>&lt;h1 id=&#34;basic-knowledge&#34;&gt;Basic Knowledge&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;数据类型
+&lt;ul&gt;
+&lt;li&gt;number
+&lt;ul&gt;
+&lt;li&gt;isInteger&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;string
+&lt;ul&gt;
+&lt;li&gt;.length&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;boolean&lt;/li&gt;
+&lt;li&gt;object
+&lt;ul&gt;
+&lt;li&gt;Object.freeze()&lt;/li&gt;
+&lt;li&gt;get&lt;/li&gt;
+&lt;li&gt;set&lt;/li&gt;
+&lt;li&gt;construct&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;array
+&lt;ul&gt;
+&lt;li&gt;filter(item, index, array)&lt;/li&gt;
+&lt;li&gt;map&lt;/li&gt;
+&lt;li&gt;spread operator: &amp;hellip; return comma seperated array&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;symbol&lt;/li&gt;
+&lt;li&gt;undefined&lt;/li&gt;
+&lt;li&gt;null&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;未声明的变量使用时自动在全局定义&lt;/li&gt;
+&lt;li&gt;===, !==&lt;/li&gt;
+&lt;li&gt;let : 不能多次声明
+&lt;ul&gt;
+&lt;li&gt;When you declare a variable with the let keyword inside a block, statement, or expression, its scope is limited to that block, statement, or expression&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;use strict&amp;rdquo;; : 必须声明&lt;/li&gt;
+&lt;li&gt;const : read-only
+&lt;ul&gt;
+&lt;li&gt;objects (including arrays and functions) assigned to a variable using const are still mutable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Anonymous Functions: arrow function syntax
+&lt;ul&gt;
+&lt;li&gt;function() {}&lt;/li&gt;
+&lt;li&gt;() =&amp;gt; {}&lt;/li&gt;
+&lt;li&gt;() =&amp;gt; &amp;ldquo;value&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;require&lt;/li&gt;
+&lt;li&gt;import&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

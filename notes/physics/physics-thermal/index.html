@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thermal Physics | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#basic-concept">Basic Concept</a></li>
+    <li><a href="#empirical-temperature-scales">Empirical temperature scales</a></li>
+    <li><a href="#equation-of-state">equation of state</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heat-capacity">Heat Capacity</a></li>
+    <li><a href="#free-expansion">Free expansion</a></li>
+    <li><a href="#adiabatic-equation">Adiabatic equation</a></li>
+    <li><a href="#carnot-cycle">Carnot cycle</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#microscopic-model-for-ideal-gas">Microscopic Model for Ideal Gas</a></li>
+    <li><a href="#phase-transition">Phase Transition</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><blockquote>
+<p>《大学物理》卢德鑫
+NJU: University Physics I - 卢德鑫</p>
+</blockquote>
+<h1 id="temperature">Temperature</h1>
+<h2 id="basic-concept">Basic Concept</h2>
+<ul>
+<li>phase: homogeneous part of system</li>
+<li>equilibrium state: a state of a system in which macroscopic variables have definite values that remain constant as long as the external conditions are unchanged</li>
+<li>relaxation time: $\tau$, the time system needs to adjust itself to follow the change of the surrounding.</li>
+</ul>
+<ul>
+<li>state avariables
+<ul>
+<li>mechanical: $p$</li>
+<li>electromagenetic: $\vec E, \vec P, \vec B, \vec M$</li>
+<li>geometric: $V, L$</li>
+<li>chemical: $n, x_i$</li>
+</ul>
+</li>
+<li>extensive: F(n)=nF(1)</li>
+<li>intensive: F(n)=F(1)</li>
+<li>quasistatic process: time the process takes is much longer than relaxation time</li>
+<li>isobaric, isochoric, isothermal, isentropic(or adiabatic)</li>
+<li>The zeroth law of thermodynamics:
+<ul>
+<li>Two systems, each in thermal equilibrium wirh a third (thermometer) are in thermal equilibrium with each other</li>
+</ul>
+</li>
+<li>the triple point: 273.16K</li>
+</ul>
+<h2 id="empirical-temperature-scales">Empirical temperature scales</h2>
+<ul>
+<li>Empirical temperature scales: $T(X) = 273.16K*\frac{R}{R_{tr}}$ (assuemd $T(X)=aX$) X温标</li>
+<li>the ideal gas scale: $T=273.16K*lim_{p_{tr}\rightarrow 0}(\frac{p}{p_{tr}})$</li>
+<li>Celsius scale: $T_C=T_{ideal\ gas}-273.15$</li>
+<li>Fahrenheit scale: $T_F=32^\circ+\frac{9}{5}T_C$</li>
+<li>thermodynamic scale (or Kelvin scale): In the range of temperature in which a gas thermometer may be used it is identical to ideal gas scale</li>
+<li>International Practical Scale IPTS-68, NMP(normal melting point)of tungsten is 3695K</li>
+<li>$5<em>10^{-8}K\sim 5</em>10^8K$</li>
+</ul>
+<h2 id="equation-of-state">equation of state</h2>
+<ul>
+<li>
+<p>equation of state of solid an d liquid</p>
+<ul>
+<li>Coefficient of expansion
+<ul>
+<li>linear: $\alpha_l=\frac{1}{L}(\frac{\partial L}{\partial T})_p$</li>
+<li>thermal(for isotropic material): $\alpha_V=\frac{1}{V}(\frac{\partial V}{\partial T})_p = 3\alpha_l$</li>
+<li>$\frac{\Delta V}{V}\approx\alpha_V\Delta T\approx 10^{-5}\sim10^{-3}$</li>
+</ul>
+</li>
+<li>Isothermal compressibility: $\kappa_T=-\frac{1}{V}(\frac{\partial V}{\partial p})_T$
+<ul>
+<li>$|\frac{\Delta V}{V}|\approx\kappa_T\Delta p\approx 10^{-5}$</li>
+</ul>
+</li>
+<li>state of equation: $V=V_0(1+\alpha_V\Delta T-\kappa_T\Delta p)$</li>
+</ul>
+</li>
+<li>
+<p>equation of state for ideal gas: $PV=nRT$</p>
+<ul>
+<li>gas constant: $R=8.31 J*K^{-1}*mol^{-1}$</li>
+<li>Boyle-Mariotte Law: $pV=C(T)$</li>
+<li>gas constant scale: $\frac{V}{T}=D(p)$</li>
+<li>Avogadro&rsquo;s Law: under same temperature and pressure, gases of equal volume contain same number of molecules</li>
+</ul>
+</li>
+<li>
+<p>equation of state for real gas:</p>
+<ul>
+<li>Virial expansion: $pV=nRT(1+B(T)p+C(T)p^2+\cdots)$, where $B(T),C(T)$ are called second, third Virial coefficient.</li>
+<li>Van der Waal&rsquo;s equation: $<a href="V-nb">p+a(\frac{n}{V})^2</a>=nRT$</li>
+</ul>
+</li>
+</ul>
+<h1 id="the-first-law-of-thermodynamics">The First Law of Thermodynamics</h1>
+<ul>
+<li>work done by external force: $dW=-pdV$</li>
+<li>Generalization: $dW=YdX$
+<ul>
+<li>generalized force Y: $-p, J, \sigma, \vec E,\vec H,\varepsilon, \mu$</li>
+<li>generalized displacement X: $V, L, A, \vec P,\vec M,Q,n$</li>
+</ul>
+</li>
+<li>Work is path-dependent: $W=-\int_{V_i}^{V_f}pdV$</li>
+<li>difference of the internal energy function U between two states A,B interms of adiabatic work done: $\Delta U=U_B-U_A=W_{BA}$</li>
+<li>The First Law of THermodynamics
+<ul>
+<li>$\Delta U = W+Q$</li>
+<li>$dU=dQ+dW$</li>
+<li>The perpetual motion machines of the first kind are impossible</li>
+</ul>
+</li>
+</ul>
+<h2 id="heat-capacity">Heat Capacity</h2>
+<ul>
+<li>heat capacity: $C=lim_{\Delta T\rightarrow0}\frac{\Delta Q}{\Delta T}$</li>
+<li>specific heat capacity: $C=\frac{C}{m}$</li>
+<li>$C&lt;0$: gravitational system</li>
+<li>$C=\infty$: heat reservoir</li>
+<li>$C=0$: adiabatic</li>
+<li>$C_V=lim_{\Delta T\rightarrow0}(\frac{\Delta Q}{\Delta T})_V = (\frac{\partial U}{\partial T})_V$</li>
+<li>$C_p=lim_{\Delta T\rightarrow0}(\frac{\Delta Q}{\Delta T})_p = (\frac{\Delta U+p\Delta V}{\Delta T})_p = (\frac{\partial H}{\partial T})_p$</li>
+<li>ratio of specific heat: $\gamma=\frac{C_p}{C_V}$</li>
+<li>Heat capacity of ideal gases:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$C_V$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>monatomic ideal gas</td>
+<td>$\frac{3}{2}nR$</td>
+</tr>
+<tr>
+<td>diatomic ideal gas</td>
+<td>$\frac{5}{2}nR$</td>
+</tr>
+<tr>
+<td>polyatomic ideal gas</td>
+<td>$\frac{6}{2}nR$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>solid capacity (at low temperature) $C_V=\alpha T^3+\gamma T$</li>
+<li>Change in specific heat c is an indication of phase transition</li>
+</ul>
+<h2 id="free-expansion">Free expansion</h2>
+<ul>
+<li>Joule&rsquo;s law(only for idea gas): $U=U(T)=C_VT+U_0$</li>
+<li>for idea gas and constant pressure: $C_p=C_V+nR$</li>
+</ul>
+<h2 id="adiabatic-equation">Adiabatic equation</h2>
+<ul>
+<li>$pV^{\gamma}=TV^{\gamma-1}=C$</li>
+<li>adiabatic work: $W_S=C_V(T_2-T_1)$</li>
+</ul>
+<h2 id="carnot-cycle">Carnot cycle</h2>
+<ul>
+<li>consist of two isotherms and two adiabatics</li>
+<li>efficiency: $\eta = 1-\frac{T_2}{T_1}$</li>
+</ul>
+<h1 id="the-second-law-of-thermodynamics">The Second Law of Thermodynamics</h1>
+<ul>
+<li>the second law of thermodynamics
+<ul>
+<li>Kelvin-Planck statement: No process is possible whose sole result is the absorption of heat from a reservoir and the conversion of this heat into work</li>
+<li>Clausius statement: No process is possible whose sole result is the transfer of heat from a cooler to a hotter body</li>
+<li>Perpetual motion machines of the second kind are impossible</li>
+</ul>
+</li>
+<li>Carnot Theorem: $\eta_A(T_1,T_2)=1+\frac{Q_2}{Q_1}\leq\eta_R(T_1,T_2)=1-\frac{T_2}{T_1}$, R reversible</li>
+<li>Clausius inequality: $\oint\frac{dQ}{T}\leq0$</li>
+<li>Entropy: $\frac{dQ}{T}$, $S_A-S_B=\int_A^B(\frac{dQ}{T})_R$</li>
+<li>entropy principle: $dS\geq\frac{dQ}{T}$
+<ul>
+<li>Known the expression for entropy: $\Delta S=S_f-S_i$</li>
+<li>Entropy change for a reservoir: $\Delta S=\frac{\Delta Q}{T}$</li>
+<li>Entropy change for two state connected by a quasi-static process: $\Delta S=\int^f_idS$</li>
+<li>Entropy change for states connected by an irreversible process: $\Delta S=\int dS$ in a resersible process</li>
+</ul>
+</li>
+<li>Boltzmann Relation: $S=k_BlnW$</li>
+<li>Thermodynamic potentials:
+<ul>
+<li>$dU=TdS-pdV+\mu dn$</li>
+<li>Enthalpy: $H=pV+U$, $dH=TdS+Vdp+\mu dn$</li>
+<li>Helmholtz free energy: $F=U-TS$, $dF=-SdT-pdV+\mu dn$</li>
+<li>Gibbs free energy: $G=\mu n$, $dG=-SdT+Vdp+\mu dn$</li>
+<li>Gibbs-Duheim equation: $d\mu = -S_mdT+V_mdp$</li>
+<li>Maxwell equation
+<ul>
+<li>$-(\frac{\partial S}{\partial p})<em>{T,n} = (\frac{\partial V}{\partial T})</em>{p,n}$</li>
+<li>and more\</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="microscopic-model-for-ideal-gas">Microscopic Model for Ideal Gas</h2>
+<ul>
+<li>macroscopic description
+<ul>
+<li>$pV=nRT$</li>
+<li>$C_V=\frac{3}{2}nR$ for monatomic gas</li>
+</ul>
+</li>
+<li>pressure: $p=\frac{1}{3}\rho\overline{v^2}$</li>
+<li>mean square speed: $v_{rms} = \sqrt{\overline{v^2}}=\sqrt\frac{3p}{\rho}$</li>
+<li>$\frac{1}{2}m\overline{v^2}=\frac{3}{2}\frac{nR}{N}T$</li>
+<li>Boltzman constant: $k_B=\frac{nR}{N}=1.3805*10^{-23}J/K$</li>
+<li>Maxwell velocity distribution: $dn(v_x,v_y,v_z)=n_0(\frac{m}{2\pi}k_BT)^{\frac{3}{2}}exp(-\frac{1}{2}m(v_x^2+v_y^2+v_z^2)/k_BT)dv_xdv_ydv_z$</li>
+<li>the most probable speed: $v_m=\sqrt\frac{2k_BT}{m}$</li>
+<li>Boltzmann distribution: $\frac{e^{-\beta E(p,q)dpdq}}{\int\int e^{-\beta E(p,q)dpdq}}$ where p and q are generalized momentum and displacement</li>
+<li>Transport Phenomena</li>
+<li>$Q=JA$
+<ul>
+<li>Heat conduction
+<ul>
+<li>Fourier&rsquo;s Law: $J_Q=-\kappa\frac{dT}{dx}$</li>
+<li>thermal conductivity: $\kappa$</li>
+</ul>
+</li>
+<li>convection
+<ul>
+<li>$Q=hA\Delta T$</li>
+</ul>
+</li>
+<li>thermal radiation
+<ul>
+<li>Stefan-Boltzman Law: $J_B=\sigma T^4$</li>
+<li>Stefan Boltzman constant: $\sigma=5.6703*10^{-8} W/(m^2K^4)$</li>
+<li>Kirchhoff&rsquo;s Law: $J_\alpha=\alpha J_B$</li>
+</ul>
+</li>
+<li>diffusion
+<ul>
+<li>Fick&rsquo;s Law: $J_m=-D\frac{\partial\rho}{\partial x}$</li>
+<li>Diffusion coefficient: D</li>
+</ul>
+</li>
+<li>viscosity
+<ul>
+<li>Newton&rsquo;s Law: $J_p = -\eta\frac{\partial v_y}{\partial x}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>continuity equation</li>
+</ul>
+<h2 id="phase-transition">Phase Transition</h2>
+<ul>
+<li>Van der Waals equation
+<ul>
+<li>b: finite size</li>
+<li>a: force</li>
+</ul>
+</li>
+<li>phase: solid, liquid, vapor, fluid</li>
+<li>Clapeyron&rsquo;s equation: $(\frac{dp}{dT})_{co}=\frac{\Delta H_m}{T\Delta V_m}=\frac{l}{T\Delta V_m}$
+<ul>
+<li>latent heat: l</li>
+<li>Trouton&rsquo;s rule: $\frac{l_v}{RT_b}=9</li>
+</ul>
+</li>
+<li>a phase transition is nth order if nth order derivative of chemnical potential is the first discontinuous one</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

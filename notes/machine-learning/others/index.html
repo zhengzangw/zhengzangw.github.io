@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>History | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#技术浪潮">技术浪潮</a></li>
+    <li><a href="#生成式与判别式">生成式与判别式</a></li>
+    <li><a href="#神经网络发展史">神经网络发展史</a></li>
+    <li><a href="#完整机器学习项目流程httpswwwjianshucompecb89148ed64"><a href="https://www.jianshu.com/p/ecb89148ed64">完整机器学习项目流程</a></a></li>
+    <li><a href="#机器学习任务">机器学习任务</a>
+      <ul>
+        <li><a href="#methodology">Methodology</a></li>
+        <li><a href="#domain">Domain</a></li>
+        <li><a href="#others">Others</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="技术浪潮">技术浪潮</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>神经网络</th>
+<th>支持向量机</th>
+<th>神经网络</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年份</td>
+<td>89-94</td>
+<td>95-05</td>
+<td>06-</td>
+</tr>
+<tr>
+<td>代表性技术</td>
+<td>BP 算法</td>
+<td>核方法，统计学习理论</td>
+<td>深度学习</td>
+</tr>
+</tbody>
+</table>
+<h2 id="生成式与判别式">生成式与判别式</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>判别式(discriminative)</th>
+<th>生成式(generative)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>对 $P(c\vert x)$ 建模</td>
+<td>对 $P(c \vert x)=\frac{P(x,c)}{P(x)}$ 建模</td>
+</tr>
+<tr>
+<td>实例</td>
+<td>决策树，BP 神经网络，SVM</td>
+<td>贝叶斯分类器</td>
+</tr>
+<tr>
+<td>实际环境中问题</td>
+<td>i.i.d. 改变，concept driven，后验概率不变</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>没有做“多余”工作</td>
+<td>做了“多余”工作</td>
+</tr>
+</tbody>
+</table>
+<h2 id="神经网络发展史">神经网络发展史</h2>
+<ul>
+<li>第一阶段
+<ul>
+<li>1943 年, McCulloch 和 Pitts 提出第一个神经元数学模型, 即 M-P 模型, 并从原理上证明了<strong>人工神经网络能够计算任何算数和逻辑函数</strong></li>
+<li>1949 年, Hebb 发表《The Organization of Behavior》一书, 提出生物神经元学习的机理, 即 <strong>Hebb 学习规则</strong></li>
+<li>1958 年, Rosenblatt 提出<strong>感知机网络</strong>(Perceptron)模型和其学习规则</li>
+<li>1960 年, Widrow 和 Hoff 提出<strong>自适应线性神经元</strong>(Adaline)模型和最小均方学习算法</li>
+<li>1969 年, Minsky 和 Papert 发表《Perceptrons》一书, 指出单层神经网路不能解决非线性问题, 多层网络的训练算法尚无希望. 这个论断导致神经网络进入<strong>低谷</strong></li>
+</ul>
+</li>
+<li>第二阶段
+<ul>
+<li>1982 年, 物理学家 Hopfield 提出了一种具有联想记忆、优化计算能力的递归网络模型, 即 <strong>Hopfield 网络</strong></li>
+<li>1986 年, Rumelhart 等编辑的著作《Parallel Distributed Proceesing: Explorations in the Microstructures of Cognition》报告了<strong>反向传播算法</strong></li>
+<li>1987 年, IEEE 在美国加州圣地亚哥召开第一届神经网络国际会议(ICNN)</li>
+<li>90 年代初, 伴随统计学习理论和 SVM 的兴起, 神经网络由于理论不够清楚, 试错性强, 难以训练, 再次进入<strong>低谷</strong></li>
+</ul>
+</li>
+<li>第三阶段
+<ul>
+<li>2006 年, Hinton 提出了<strong>深度信念网络</strong>(DBN), 通过“预训练+微调”使得深度模型的最优化变得相对容易</li>
+<li>2012 年, Hinton 组参加 ImageNet 竞赛, 使用 <strong>CNN 模型</strong>以超过第二名 10 个百分点的成绩夺得当年竞赛的冠军</li>
+<li>伴随云计算、大数据时代的到来，计算能力的大幅提升，使得深度学习模型在计算机视觉、自然语言处理、语音识别等众多领域都取得了较大的成功 |</li>
+</ul>
+</li>
+</ul>
+<h2 id="完整机器学习项目流程httpswwwjianshucompecb89148ed64"><a href="https://www.jianshu.com/p/ecb89148ed64">完整机器学习项目流程</a></h2>
+<ol>
+<li>理解问题
+<ul>
+<li>理解实际业务场景</li>
+<li>可以获得什么数据</li>
+<li>目标为分类、回归还是聚类</li>
+<li>转换为能处理的数学/机器学习模型</li>
+</ul>
+</li>
+<li>获取数据
+<ul>
+<li>获取原始数据</li>
+<li>通过特征工程提取数据</li>
+<li>数据偏斜不能过于严重，不同类别的数据数量不要有数个数量级的差距。</li>
+<li>评估数据（样本数量、特征数量）的量级，估算出其对内存的消耗程度</li>
+<li>数据决定机器学习结果的上限，而算法只是尽可能的逼近这个上限</li>
+</ul>
+</li>
+<li>特征工程
+<ul>
+<li>特征构建</li>
+<li>特征提取</li>
+<li>特征选择</li>
+<li>数据预处理、数据清洗
+<ul>
+<li>归一化、离散化、因子化、缺失值处理、去除共线性</li>
+</ul>
+</li>
+<li>筛选出显著特征、摒弃非显著特征
+<ul>
+<li>相关系数、卡方检验、平均互信息、条件熵、后验概率、逻辑回归权重</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>选择模型与调参
+<ul>
+<li>选择模型</li>
+<li>调整参数</li>
+<li>过拟合、欠拟合的模型状态判断
+<ul>
+<li>过拟合的基本调优思路是增加训练的数据量，降低模型复杂度。欠拟合的基本调优思路是提高特征数量和质量，增加模型复杂度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>模型检验与误差分析</li>
+<li>模型融合
+<ul>
+<li>模型的前端（特征工程、清洗、预处理、采样）和后端的模型融合</li>
+<li>统一融合，线性融合和堆融合</li>
+</ul>
+</li>
+<li>上线运行
+<ul>
+<li>工程上是结果导向，模型在线上运行的效果直接决定模型的成败</li>
+</ul>
+</li>
+</ol>
+<h2 id="机器学习任务">机器学习任务</h2>
+<h3 id="methodology">Methodology</h3>
+<ul>
+<li>Representation Learning
+<ul>
+<li>Word Embeddings</li>
+<li>Entity Embedding</li>
+</ul>
+</li>
+<li>Transfer Learning
+<ul>
+<li>Self-taught Learning (target labeled, source unlabeled)</li>
+<li>Multi-task Learning (target labeled, source labeled)</li>
+<li>Domain Adaptation (target unlabeled, source labeled)</li>
+<li>Unsupervised Transfer Learning (target unlabeled, source unlabeled)</li>
+</ul>
+</li>
+<li>Meta-Learning</li>
+<li>AutoML
+<ul>
+<li>Neural Architecture Search</li>
+</ul>
+</li>
+<li>Few-Shot Learning
+<ul>
+<li>Zero-Shot Learning</li>
+<li>One-Shot Learning</li>
+</ul>
+</li>
+<li>Anomaly Detection
+<ul>
+<li>Outlier Detection</li>
+</ul>
+</li>
+<li>Data Augmentation</li>
+<li>Bayesian Inference</li>
+<li>Quantization</li>
+<li>Dimensinality Reduction</li>
+<li>Density Estimation</li>
+<li>Metric Learning</li>
+<li>Active Learning</li>
+<li>Optimization
+<ul>
+<li>Stochastic Optimization</li>
+<li>Combinatorial Optimization</li>
+<li>Bayesian Optimization</li>
+</ul>
+</li>
+<li>Feature Engineering
+<ul>
+<li>Feature Selection</li>
+<li>Feature Importance</li>
+</ul>
+</li>
+<li>Model Selection</li>
+<li>Model Compression
+<ul>
+<li>Network Pruning</li>
+</ul>
+</li>
+<li>Structured Prediction</li>
+<li>Latent Variable Models</li>
+<li>Continual Learning</li>
+<li>interdisciplinary
+<ul>
+<li>EEG(Electorencephalography)</li>
+<li>Computed Tomography</li>
+<li>Electorcardiography</li>
+</ul>
+</li>
+<li>Multi-Label Classification</li>
+<li>Matrix Completion</li>
+<li>Dictionary Leanring</li>
+<li>Interpretable Machine Learning</li>
+<li>Multiple Instance Learning</li>
+<li>Quantum Machine Learning</li>
+<li>Multi-Label Learning</li>
+<li>Reinforce Learning
+<ul>
+<li>Gaussian Process</li>
+<li>Point Process</li>
+<li>Decision Makeing Under Uncertainty</li>
+<li>Q-Learning</li>
+<li>Imitation Learning</li>
+<li>Multi-agent Reinforcement Learning</li>
+<li>Policy Gradient Methods</li>
+<li>Efficient Exploration</li>
+<li>Hierarchical Reinforcement Learning</li>
+</ul>
+</li>
+</ul>
+<h3 id="domain">Domain</h3>
+<ul>
+<li>CV
+<ul>
+<li>Classification</li>
+<li>Detection</li>
+<li>Segmentation</li>
+<li>Generation</li>
+<li>Anomaly Detection</li>
+<li>Retrieval</li>
+<li>Pose Estimation</li>
+<li>Super-Resolution</li>
+<li>Denoising</li>
+<li>Autonomous Vehicles</li>
+<li>Video</li>
+<li>Facial Recognition and Modelling</li>
+<li>Depth Estimation</li>
+<li>Action Localization</li>
+<li>Quantization</li>
+<li>Optical Flow Estimation</li>
+<li>3D</li>
+<li>Scene Parsing</li>
+<li>Style Transfer</li>
+<li>Image Captioning</li>
+<li>Person Re-Identification</li>
+</ul>
+</li>
+<li>NLP
+<ul>
+<li>Machine Translation</li>
+<li>Language Modelling</li>
+<li>Question Answering</li>
+<li>Sentiment Analysis</li>
+<li>Text Classification</li>
+</ul>
+</li>
+<li>Speech
+<ul>
+<li>Speech Recognition</li>
+<li>Speech Synthesis</li>
+<li>Speech Enhancement</li>
+<li>Speaker Verification</li>
+<li>Speech Separation</li>
+</ul>
+</li>
+<li>Music</li>
+<li>Audio</li>
+<li>Computer Code
+<ul>
+<li>Dimensionality Reduction</li>
+<li>Activity Recognition</li>
+<li>Feature Selection</li>
+<li>Program Synthesis</li>
+<li>Code Generation</li>
+<li>Text-To-Sql</li>
+<li>Code Summarization</li>
+</ul>
+</li>
+<li>Playing Games
+<ul>
+<li>Atari Games</li>
+<li>Continuous Control</li>
+<li>Starcraft</li>
+<li>Real-Time Strtegy Games</li>
+</ul>
+</li>
+<li>Medical
+<ul>
+<li>Medical Image Segmentation
+<ul>
+<li>Lesion</li>
+<li>Tumor</li>
+<li>Brain</li>
+</ul>
+</li>
+<li>Drug Discovery</li>
+</ul>
+</li>
+</ul>
+<h3 id="others">Others</h3>
+<ul>
+<li>Graphs
+<ul>
+<li>Link Prediction</li>
+<li>Node Classification</li>
+<li>Graph Embedding</li>
+<li>Graph Classification</li>
+<li>Community Detection</li>
+</ul>
+</li>
+<li>Time Series
+<ul>
+<li>Classifcation</li>
+<li>Forecasting</li>
+<li>Imputation</li>
+<li>Gesture Recognition</li>
+</ul>
+</li>
+<li>Miscellaneous
+<ul>
+<li>Recommendation Systems</li>
+<li>Topic Models</li>
+<li>Continual Learning</li>
+<li>Causal Inference</li>
+<li>Multi-Armed Bandits</li>
+</ul>
+</li>
+<li>Adversarial</li>
+<li>Reasoning</li>
+<li>Knowledge Base</li>
+<li>Robots</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

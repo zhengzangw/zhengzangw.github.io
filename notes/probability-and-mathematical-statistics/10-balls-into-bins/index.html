@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Balls into Bins | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#balls-into-bins">Balls into Bins</a>
+      <ul>
+        <li><a href="#birthday-problem">Birthday Problem</a></li>
+        <li><a href="#coupon-collector-problem">Coupon Collector Problem</a></li>
+        <li><a href="#occupancy-problem">Occupancy Problem</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="balls-into-bins">Balls into Bins</h2>
+<p>$m$ balls into $n$ bins uniformly and independently</p>
+<h3 id="birthday-problem">Birthday Problem</h3>
+<p>the mapping is 1-1</p>
+<ul>
+<li>pigeonhole principle: $P=1,m&gt;365$</li>
+<li>$P(\text{one-to-one})=\prod_{k=1}^{m-1}(1-\frac{k}{n})\approx e^{-\frac{m^2}{2n}}$</li>
+<li>$P(\text{collision})=1-P=1-\epsilon,m=\sqrt{2n\ln\frac{1}{\epsilon}}$
+<ul>
+<li>$P&gt;0.99,m&gt;57$</li>
+</ul>
+</li>
+</ul>
+<h3 id="coupon-collector-problem">Coupon Collector Problem</h3>
+<p>the mapping is on-to</p>
+<ul>
+<li>$X$ is the number of balls thrown uniformly and independtly to $n$ bins until no bin is empty</li>
+<li>$\mathbb{E}(X)=nH(n)=n\sum_{i=1}^n\frac{1}{i}$</li>
+<li>$P(X\geq n\ln n+cn)&lt;e^{-c},\forall c&gt;0$</li>
+<li>$\lim_{n\rightarrow\infty}P(X\geq n\ln n+cn)=1-e^{-e^{-c}}$</li>
+</ul>
+<h3 id="occupancy-problem">Occupancy Problem</h3>
+<p>the maximum load of bins</p>
+<ul>
+<li>$X_i$: load of $i$th bin</li>
+<li>Average: $\mathbb{E}(X_i)=\frac{m}{n}$</li>
+</ul>
+<p>$$\max_i X_i=\begin{cases}O(\frac{\log n}{\log\log n})&amp;m=\Theta(n)&amp;w.h.p\newline O(\frac{m}{n})&amp;m=\Omega(n\log n)&amp;w.h.p\newline \end{cases}$$</p>
+<ul>
+<li>2-choice: $\max_i X_i=\Theta(\log\log n),m=\Theta(n)$ w.h.p</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

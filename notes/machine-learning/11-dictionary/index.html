@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dictionary Learning | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#稀疏表达">稀疏表达</a></li>
+    <li><a href="#压缩感知">压缩感知</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="稀疏表达">稀疏表达</h2>
+<p>稀疏表达（稀疏编码，字典学习）</p>
+<ul>
+<li>$x=Az$
+<ul>
+<li>字典 $A$：过完备，一般不独立且不正交</li>
+</ul>
+</li>
+<li>优化目标：$\min_{B,\alpha_i}\sum_i^m||x_i-B\alpha_i||_2^2+\lambda\sum_{i=1}^m||\alpha_i||_1$</li>
+<li>变量交替优化
+<ul>
+<li>固定 $B$，LASSO 求解 $\alpha_i$</li>
+<li>固定 $\alpha$，求解 $B$
+<ul>
+<li>KSVD</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>稠密向量：分布式表达</li>
+<li>稀疏编码
+<ul>
+<li>减少计算量</li>
+<li>可解释性</li>
+<li>特征自动选择</li>
+</ul>
+</li>
+</ul>
+<h2 id="压缩感知">压缩感知</h2>
+<ul>
+<li>$y=\Phi x$
+<ul>
+<li>$x$: 长度为 $m$</li>
+<li>$y$: 长度为 $n&laquo;m$</li>
+<li>低于奈奎斯特采样频率采样，难以还原 $x$</li>
+</ul>
+</li>
+<li>$y=\Phi\Psi s=As, s=\Psi x$
+<ul>
+<li>$\Psi=\mathbb{R}^{m\times m}$</li>
+<li>$A$: 字典</li>
+<li>若 $s$ 具有稀疏性，则可以还原</li>
+</ul>
+</li>
+<li>感知测量：对原始信号处理得到稀疏样本表示
+<ul>
+<li>傅里叶变换</li>
+<li>小波变换</li>
+<li>字典学习</li>
+</ul>
+</li>
+<li>重构恢复（压缩感知）：基于稀疏性从少量观测中恢复原信号
+<ul>
+<li>限定等距性 RIP
+<ul>
+<li>k-RIP: $A$ 满足 $\exists\delta_k\in(0,1),\forall s,$ 子矩阵$A_k\in\mathbb{R}^{n\times k}$ 有 $(1-\delta_k)||s||_2^2\leq||A_ks||_2^2\leq(1+\delta_k)||s||^2_2$</li>
+<li>可通过 $\min ||s||_0, y=As$ 恢复出稀疏信号 $s$ ($\text{NP}$-hard)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>矩阵补全
+<ul>
+<li>$\min_X \text{rank}(X),s.t. (X)<em>{ij}=(A)</em>{ij},(i,j)\in\Omega$</li>
+<li>$\text{NP}$-hard</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

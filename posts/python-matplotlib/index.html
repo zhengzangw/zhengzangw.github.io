@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to use Matplotlib in Python | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#figure">figure</a></li>
+    <li><a href="#subplot">subplot</a></li>
+    <li><a href="#axes">Axes</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#pca">PCA</a></li>
+    <li><a href="#ica">ICA</a></li>
+    <li><a href="#tsne">TSNE</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="preface">Preface</h1>
+<p>This document serves as a reminder of basic usage of matplotlib. More information on <a href="https://matplotlib.org/tutorials/index.html">matplotlib tutorial</a></p>
+<h1 id="多图绘制">多图绘制</h1>
+<h2 id="figure">figure</h2>
+<pre><code># print(plt.style.available)
+plt.style.use('ggplot')
+plt.figure(1)
+plt.figure(2)
+</code></pre>
+<h2 id="subplot">subplot</h2>
+<pre><code>plt.subplots_adjust(wspace = 0, hspace =0.5)
+plt.subplot(211)
+plt.subplot(212)
+</code></pre>
+<h2 id="axes">Axes</h2>
+<pre><code>ax = plt.axes([0.025,0.025,0.95,0.95])
+</code></pre>
+<h1 id="plot">plot</h1>
+<p>两组数据关系。</p>
+<pre><code>plt.plot(x,y,'r^--',linewidth=2.0,label='uniq') # plot绘图
+plt.xlim(x.min()*0.9, x.max()*1.1) # x轴范围
+plt.ylim(y.min()*1.1, y.max()*1.1) # y轴范围
+plt.yscale('linear') # y轴度量 linear/log/sin
+plt.legend(loc='best') # 图例
+plt.title('The first fig') # 标题
+plt.xlabel('t/s') # x轴坐标
+plt.ylabel('f') # y轴坐标
+plt.xticks( [x*np.pi/2 for x in range(7)],[r'$0$', r'$+\pi/2$', r'$+\pi$']) # x轴刻度
+plt.yticks([-1, 0, +1]) # y轴刻度
+plt.annotate('local max', xy=(np.pi/2, 1), xytext=(3, 1.5), arrowprops=dict(facecolor='black', shrink=0.05,  connectionstyle=&quot;arc3,rad=.2&quot;),) # 指示
+plt.fill_between(x, 0, y, y &gt;= 0, color='blue', alpha=.25) # 填充
+plt.fill_between(x, 0, y, y &lt; 0, color='red',  alpha=.25) # 填充
+</code></pre>
+<h1 id="3dplot">3Dplot</h1>
+<p>三组/四组数据可视化</p>
+<pre><code>from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure()
+ax = Axes3D(fig)
+X = np.arange(-4, 4, 0.25)
+Y = np.arange(-4, 4, 0.25)
+X, Y = np.meshgrid(X, Y)
+R = np.sqrt(X**2 + Y**2)
+Z = np.sin(R)
+
+ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=plt.cm.hot)
+ax.contourf(X, Y, Z, zdir='z', offset=-2, cmap=plt.cm.hot)
+ax.set_zlim(-2,2)
+</code></pre>
+<h1 id="scatter">scatter</h1>
+<p>两组数据关系；三组数据关系（颜色表示一种）</p>
+<pre><code>n = 1024
+X = np.random.normal(0,1,n)
+Y = np.random.normal(0,1,n)
+T = np.arctan2(Y,X)
+plt.scatter(X, Y, s=75, c=T, alpha=.5)
+</code></pre>
+<h1 id="pie">pie</h1>
+<p>一组数据可视化</p>
+<pre><code>n = 20
+Z = np.ones(n)
+Z[-1] *= 2
+plt.pie(Z, explode=Z*.05, colors=['%f' % (i/float(n)) for i in range(n)],
+        wedgeprops={&quot;linewidth&quot;: 1, &quot;edgecolor&quot;: &quot;black&quot;})
+plt.xticks([]), plt.yticks([])
+plt.show()
+</code></pre>
+<h1 id="hist">hist</h1>
+<p>一组数据可视化</p>
+<pre><code>plt.hist(xx, 50, density=1, facecolor='g', alpha=0.75)
+plt.xlabel('Smarts', fontsize=14, color='red')
+plt.ylabel('Probability')
+plt.title('Histogram of IQ')
+plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
+plt.axis([40, 160, 0, 0.03])
+plt.grid(True)
+</code></pre>
+<h1 id="boxplot">boxplot</h1>
+<p>一组数据可视化</p>
+<pre><code>sns.boxplot(Z)
+</code></pre>
+<h1 id="kdeplot">kdeplot</h1>
+<p>一组/二组数据可视化</p>
+<pre><code>sns.kdeplot(Z, shade=True)
+</code></pre>
+<h1 id="violinplot">violinplot</h1>
+<p>一组数据可视化</p>
+<pre><code>sns.violinplot(Z)
+</code></pre>
+<h1 id="bar">bar</h1>
+<p>两组数据关系（可显示1对2）</p>
+<pre><code>n = 12
+X = np.arange(n)
+Y1 = (1-X/float(n)) * np.random.uniform(0.5,1.0,n)
+Y2 = (1-X/float(n)) * np.random.uniform(0.5,1.0,n)
+plt.bar(X, +Y1, facecolor='#9999ff', edgecolor='white')
+plt.bar(X, -Y2, facecolor='#ff9999', edgecolor='white')
+plt.ylim(-1.25,+1.25)
+</code></pre>
+<h1 id="contour">contour</h1>
+<p>三组数据关系</p>
+<pre><code>def f(x,y): return (1-x/2+x**5+y**3)*np.exp(-x**2-y**2)
+
+n = 256
+x = np.linspace(-3,3,n)
+y = np.linspace(-3,3,n)
+X,Y = np.meshgrid(x,y)
+
+plt.contourf(X, Y, f(X,Y), 8, alpha=.75, cmap='jet')
+C = plt.contour(X, Y, f(X,Y), 8, colors='black', linewidth=.5)
+plt.clabel(C, inline=1, fontsize=10)
+plt.show()
+</code></pre>
+<h1 id="imshow">imshow</h1>
+<p>三组数据关系</p>
+<pre><code>def f(x,y): return (1-x/2+x**5+y**3)*np.exp(-x**2-y**2)
+n = 10
+x = np.linspace(-3,3,4*n)
+y = np.linspace(-3,3,3*n)
+X,Y = np.meshgrid(x,y)
+
+plt.imshow(f(X,Y),interpolation='bicubic', cmap='bone', origin='lower')
+plt.colorbar(shrink=.92)
+plt.xticks([]), plt.yticks([])
+plt.show()
+</code></pre>
+<h1 id="quiver">quiver</h1>
+<p>矢量可视化</p>
+<pre><code>n = 8
+X,Y = np.mgrid[0:n,0:n]
+plt.quiver(X,Y)
+plt.show()
+</code></pre>
+<h1 id="grid">grid</h1>
+<pre><code>ax = plt.axes([0.025,0.025,0.95,0.95])
+ax.set_xlim(0,4)
+ax.set_ylim(0,3)
+ax.xaxis.set_major_locator(plt.MultipleLocator(1.0))
+ax.xaxis.set_minor_locator(plt.MultipleLocator(0.1))
+ax.yaxis.set_major_locator(plt.MultipleLocator(1.0))
+ax.yaxis.set_minor_locator(plt.MultipleLocator(0.1))
+ax.grid(which='major', axis='x', linewidth=0.75, linestyle='-', color='0.75')
+ax.grid(which='minor', axis='x', linewidth=0.25, linestyle='-', color='0.75')
+ax.grid(which='major', axis='y', linewidth=0.75, linestyle='-', color='0.75')
+ax.grid(which='minor', axis='y', linewidth=0.25, linestyle='-', color='0.75')
+ax.set_xticklabels([])
+ax.set_yticklabels([])
+plt.show()
+</code></pre>
+<h1 id="pairplot">pairplot</h1>
+<p>两两关系</p>
+<pre><code>sns.pairplot(df)
+</code></pre>
+<h1 id="多维数据">多维数据</h1>
+<h2 id="pca">PCA</h2>
+<pre><code>from sklearn import decomposition
+
+pca = decomposition.PCA(n_components=2)
+
+X = pca.fit_transform(values)
+
+plt.scatter(X[:,0], X[:,1], c=np.log(train['time']))
+plt.colorbar()
+plt.show()
+</code></pre>
+<h2 id="ica">ICA</h2>
+<pre><code>from sklearn import decomposition
+
+fica = decomposition.FastICA(n_components=2)
+
+X = fica.fit_transform(values)
+
+plt.scatter(X[:,0], X[:,1], c=np.log(train['time']))
+plt.colorbar()
+plt.show()
+</code></pre>
+<h2 id="tsne">TSNE</h2>
+<pre><code>from sklearn.manifold import TSNE
+
+X = TSNE(n_components=2).fit_transform(train.iloc[:,1:-1].values, train['time'].values)
+
+plt.scatter(X[:,0], X[:,1], c=np.log(train['time']))
+plt.colorbar()
+plt.show()</code></pre></main>
+        </div>
+
+    </div>
+</body></html>

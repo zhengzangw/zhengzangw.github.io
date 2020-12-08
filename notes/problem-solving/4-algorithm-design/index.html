@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4-算法设计 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#brute-force">brute-force</a></li>
+    <li><a href="#divide-and-conquer">Divide and Conquer</a>
+      <ul>
+        <li><a href="#分治法">分治法</a></li>
+        <li><a href="#二分法">二分法</a></li>
+      </ul>
+    </li>
+    <li><a href="#动态规划">动态规划</a>
+      <ul>
+        <li><a href="#优化">优化</a></li>
+      </ul>
+    </li>
+    <li><a href="#贪心">贪心</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="brute-force">brute-force</h2>
+<ul>
+<li>枚举：遍历解空间</li>
+<li>倍增：保存 $2^i$ 处的解用于构造所有情况</li>
+<li>递归：原问题划归到一个子问题</li>
+<li>搜索：建立树/图模型，以一定次序穷举</li>
+<li>模拟</li>
+<li>剪枝：利用数学性质缩小解空间</li>
+<li>前缀和、差分</li>
+<li>打表：将不同问题的解储存</li>
+</ul>
+<h2 id="divide-and-conquer">Divide and Conquer</h2>
+<h3 id="分治法">分治法</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Divide_and_Conquer</span>(A):
+  <span style="color:#66d9ef">if</span> (smallenough) <span style="color:#66d9ef">return</span> Conquer()
+  Divide_and_Conquer(A_left)
+  Divide_and_Conquer(A_right)
+  Merge(A_left, A_right)
+</code></pre></div><p>Examples:</p>
+<ul>
+<li>归并排序： $T(n)=2T(n/2)+\Theta(n)$</li>
+<li>快速排序：</li>
+<li>和最大子数组： $T(n)=2T(n/2)+\Theta(n)$</li>
+<li>矩阵乘法：$T(n)=8T(n/2)+\Theta(n^2)$</li>
+<li>strassen&rsquo;s algorithm: $T(n)=7T(n/2)+\Theta(n^2)$</li>
+</ul>
+<h3 id="二分法">二分法</h3>
+<ul>
+<li>无 merge 的分治法</li>
+<li>问题已有序关系</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// 左闭右闭
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> i_left <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, i_right <span style="color:#f92672">=</span> len;
+<span style="color:#66d9ef">while</span> (i_left <span style="color:#f92672">&lt;=</span> i_right){
+  <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> (i_left <span style="color:#f92672">+</span> i_right)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
+  <span style="color:#66d9ef">if</span> (isleft(i_left, i)) <span style="color:#75715e">// do something
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (isright(i, i_right)) <span style="color:#75715e">// do somethin
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">else</span> <span style="color:#75715e">// do something
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h2 id="动态规划">动态规划</h2>
+<ul>
+<li>子问题图：顶点为子问题，边为可能选择</li>
+<li>实现方法
+<ul>
+<li>top-down with memorization（记忆化搜索）</li>
+<li>bottom-up method</li>
+</ul>
+</li>
+<li>动态规划过程
+<ul>
+<li>Define structure of subproblem</li>
+<li>Set the goal</li>
+<li>Identify the recurrence -&gt; make choice(binary/multi-way)
+<ul>
+<li>from small to large</li>
+<li>init condition</li>
+</ul>
+</li>
+<li>Write pseudo-code</li>
+<li>Analyze the time complexity</li>
+<li>Extract the optimal solution</li>
+</ul>
+</li>
+<li>optimal substructure: 问题的最优解由子问题的最优解组合而成，而这些子问题可以独立求解
+<ul>
+<li>make a decision</li>
+<li>子问题无关</li>
+<li>cut-and-paste: 任意其它子问题的方案可被最优方案替代</li>
+</ul>
+</li>
+<li>overlapping subproblem: 问题的递归算法会反复地求解相同的子问题</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>1D subproblem (array,sequence,string-&gt;prefix/suffix,O(n))
+<ul>
+<li>Rod cutting：$f(n)=\max_{1\leq i\leq n}(p_i+f(n-i))$</li>
+<li>Longest increasing subsequence：$L(n)=1+\max_{j&lt;i\wedge A[j]\leq A[i]}L(j)$
+<ul>
+<li>$E(l)=\min(ending), O(nlogn)$</li>
+</ul>
+</li>
+<li>Printing Neatly</li>
+</ul>
+</li>
+<li>2D subproblem
+<ul>
+<li>Edit distance</li>
+<li>Longest common subsequence</li>
+<li>Matrix chain multiplication: $f(i,j)=\min_{i\leq k&lt;j}(f(i,k)+f(k,j)+p_{i-1}p_kp_j)$</li>
+<li>Optimal BST: $\min_{i\leq r\leq j}{e[i,r-1]+e[r+1,j]+w(i,j)}$</li>
+<li>Knapsack Problem</li>
+</ul>
+</li>
+<li>3D subproblem
+<ul>
+<li>Floyed-Warshall algorithm</li>
+</ul>
+</li>
+<li>Graph
+<ul>
+<li>rooted subtrees</li>
+<li>nodes after/before in the topo order</li>
+</ul>
+</li>
+</ul>
+<h3 id="优化">优化</h3>
+<ul>
+<li>空间优化：高维动归，通过改变求解问题次序，减少空间</li>
+</ul>
+<h2 id="贪心">贪心</h2>
+<ul>
+<li>optimal substructure
+<ul>
+<li>by greedy, only one subproblem remains</li>
+</ul>
+</li>
+<li>Greedy-Choice Property: 最优解可通过局部最优解构建（存在一种最优的划分子问题方案）
+<ul>
+<li>Exchange Argument</li>
+</ul>
+</li>
+<li>Matroid: $M=(S,I)$
+<ul>
+<li>Definition
+<ul>
+<li>finite $S$, $I\subseteq \rho(S)$</li>
+<li>hereditary $I$: $B\in I,A\subset B,A\in I$</li>
+<li>exchange property: $A,B\in I,|A|&lt; |B|,\exists x\in B-A,A\cup{x}\in I$</li>
+</ul>
+</li>
+<li>extension of $A$: $A\cup{x}\in I$</li>
+<li>maximal: no extensions</li>
+<li>weighted: $w(A)=\sum_{x\in A}\omega(x)$</li>
+</ul>
+</li>
+<li>Finding maximum-weight independent subset in a weighted matroid
+<ul>
+<li>define independent</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">greedy</span>(M, w)
+  A <span style="color:#f92672">=</span> set()
+  sort(M<span style="color:#f92672">.</span>S, key<span style="color:#f92672">=</span>w) <span style="color:#75715e"># O(nlgn)</span>
+  <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> M<span style="color:#f92672">.</span>S:
+    <span style="color:#66d9ef">if</span> A <span style="color:#f92672">+</span> {x} <span style="color:#f92672">in</span> M<span style="color:#f92672">.</span>I: <span style="color:#75715e"># O(f(n))</span>
+      A <span style="color:#f92672">+=</span> {x}
+  <span style="color:#66d9ef">return</span> A
+</code></pre></div><p>Examples:</p>
+<ul>
+<li>activity-selection problem</li>
+<li>fractional knapsack problem</li>
+<li>huffman codes</li>
+<li>scheduling unit-time tasks with deadline and penalties for a single processor</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

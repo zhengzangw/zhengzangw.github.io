@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>String Algorithm | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#朴素方法">朴素方法</a></li>
+    <li><a href="#rabin-karp-算法">Rabin-Karp 算法</a></li>
+    <li><a href="#有限自动机">有限自动机</a></li>
+    <li><a href="#knuth-morris-pratt-algorithm">Knuth-Morris-Pratt Algorithm</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="字符串匹配">字符串匹配</h1>
+<ul>
+<li>$w\sqsubset x$：w 为 x 前缀</li>
+<li>$w\sqsupset x$: w 为 x 后缀</li>
+<li>后缀重叠引理：$x\sqsupset z,y\sqsupset z,|x|\leq|y|\Rightarrow x\sqsupset y$</li>
+<li>$P_k=P[1..k]$</li>
+</ul>
+<h2 id="朴素方法">朴素方法</h2>
+<p>$O((n-m+1)m)$</p>
+<h2 id="rabin-karp-算法">Rabin-Karp 算法</h2>
+<ul>
+<li>预处理 $O(m)$
+<ul>
+<li>编码，利用对素数取模，减少计算量</li>
+<li>相等则逐字编码</li>
+</ul>
+</li>
+<li>最坏情况 $O((n-m+1)m)$</li>
+</ul>
+<h2 id="有限自动机">有限自动机</h2>
+<ul>
+<li>有限自动机 $M={Q,q_0,A,\Sigma,\delta}$
+<ul>
+<li>终态函数：$\phi:\Sigma^*\rightarrow Q$</li>
+</ul>
+</li>
+<li>后缀函数：$\sigma(x)=\max{k:P_k\sqsupset x}$</li>
+<li>字符串匹配自动机
+<ul>
+<li>$Q=\mathbb{Z}_m$, $q_0=0$, $A={m}$</li>
+<li>$\sigma(q,a)=\sigma(P_q a)$</li>
+<li>不变量：$\phi(T_i)=\sigma(T_i)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="knuth-morris-pratt-algorithm">Knuth-Morris-Pratt Algorithm</h2>
+<ul>
+<li>$\Theta(n+m)$</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">kmp</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> pattern, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> text){
+    
+    <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>;i<span style="color:#f92672">&lt;=</span>n;<span style="color:#f92672">++</span>i){
+        <span style="color:#66d9ef">while</span> (j<span style="color:#f92672">&amp;&amp;</span>pattern[j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">!=</span>pattern[i]) j <span style="color:#f92672">=</span> nxt[j];
+        <span style="color:#66d9ef">if</span> (pattern[j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">==</span>pattern[i]) j<span style="color:#f92672">++</span>;
+        nxt[i] <span style="color:#f92672">=</span> j;
+    }
+    
+    
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> m; <span style="color:#f92672">++</span>i){
+        <span style="color:#66d9ef">while</span> (j<span style="color:#f92672">&amp;&amp;</span>pattern[j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">!=</span>text[i]) j <span style="color:#f92672">=</span> nxt[j];
+        <span style="color:#66d9ef">if</span> (pattern[j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">==</span>text[i]) j<span style="color:#f92672">++</span>;
+        <span style="color:#66d9ef">if</span> (j<span style="color:#f92672">==</span>n) {
+            printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, i<span style="color:#f92672">-</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>);
+            j <span style="color:#f92672">=</span> nxt[j];
+        }
+    }
+}
+</code></pre></div></main>
+        </div>
+
+    </div>
+</body></html>

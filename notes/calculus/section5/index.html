@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5-多元积分 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#第一型">第一型</a></li>
+    <li><a href="#第二型">第二型</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="第一型">第一型</h2>
+<ul>
+<li>$E\subset \mathbb{R}^n,\forall \epsilon&gt;0,\exists\delta&gt;0,\forall P$ 为 $E$ 分割，$\lVert P\rVert&lt;\delta,\forall\xi$ 为 $P$ 特殊点选取，有 $|S(f,P,\xi)-I|&lt;\epsilon$ 则 $f$ 在 $E$ 上 Riemann 可积，$I=\int_E f(x_1,x_2,\cdots,x_n)dx_1dx_2\cdots dx_n=\int_E f$
+<ul>
+<li>Riemann 可积 $\iff$ $f$ 间断点集测度为 $0$</li>
+<li>线性，单调性，非负性，三角不等式，积分域可加</li>
+</ul>
+</li>
+<li>累次积分：$\int_{[a,b]\times[c,d]}f(x,y)dxdy=\int_a^b(\int_c^df(x,y)dy)dx$</li>
+<li>积分换元定理：$E$ 为 $\mathbb{R}^n$ 中的非空有界闭集，$\Phi:E\rightarrow\mathbb{R}^n$ 且为单射，$f$ 在 $\Phi(E)$ 上 Riemann 可积，则 $\int_E(f\circ \Phi)|\det(D\Phi)|=\int_{\Phi(E)}f$
+<ul>
+<li>极坐标变换：$\Phi(r,\theta)=(r\cos\theta,r\sin\theta),\det(D\Phi)=r$</li>
+<li>柱坐标变换：$\Phi(r\cos\theta,r\sin\theta,z)=(x,y,z),\det(D\Phi)=r$</li>
+<li>球坐标变换：$\Phi(r,\varphi,\theta)=(r\sin\varphi\cos\theta,r\sin\varphi\cos\theta,r\cos\varphi)=(x,y,z),\det(D\Phi)=r^2\sin\varphi$</li>
+</ul>
+</li>
+<li>第一型曲线积分：$\gamma:[a,b]\rightarrow\mathbb{R}^n$ 连续可微，$f$ 在 $\gamma([a,b])$ 上有定义，若 $f(\gamma(t))\lVert\gamma'(t)\rVert$ 在 $[a,b]$ 上可积，则 $f$ 在 $\gamma$ 上第一型可积，$\int_\gamma fds=\int_a^bf(\gamma(t))\lVert\gamma'(t)\rVert dt$</li>
+<li>第一型曲面积分：$E\subseteq\mathbb{R}^2,\Phi:E\rightarrow\mathbb{R}^3$ 为连续可微曲面，$\int_\Phi fd\sigma=\int_E f\circ\Phi\lVert\frac{\partial\Phi}{\partial u}\times\frac{\partial\Phi}{\partial v}\rVert dudv$</li>
+</ul>
+<h2 id="第二型">第二型</h2>
+<ul>
+<li>定向：$\mathbb{R}^n$ 有两个定向，由有序向量组 ${X_1,\cdots,X_n}$ 代表定向, 正向 $\det([X_1,\cdots,X_n])&gt;0$
+<ul>
+<li>有序标准基 ${e_1,\cdots,e_n}$ 正向</li>
+<li>对换改变定向</li>
+<li>$\mathbb{R}^3$ 手系：以拇指为第一轴, 食指为第二轴, 中指为第三轴作标架
+<ul>
+<li>右手系为正向</li>
+</ul>
+</li>
+<li>映射
+<ul>
+<li>保向：$\det(D\Phi)$ 恒正</li>
+<li>反向：$\det(D\Phi)$ 恒负</li>
+</ul>
+</li>
+<li>曲面定向
+<ul>
+<li>可定向：若能在 $S$ 上每一点 $P$ 处指定以一非零向量 $n(P)$ 使 $P$ 在 $S$ 上连续运动时，$n(P)$ 的方向也连续变化</li>
+</ul>
+</li>
+<li>边界定向：$\partial D$
+<ul>
+<li>头向读者，$D$在人左</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>外积：$dx_i\wedge dx_j$
+<ul>
+<li>反交换律</li>
+<li>$dx_1\wedge\cdots\wedge dx_n(a_1,\cdots,a_n)=\det([a_1,\cdots,a_n])$</li>
+</ul>
+</li>
+<li>微分形式
+<ul>
+<li>零阶微分形式：$f$
+<ul>
+<li>自变量为定向点</li>
+</ul>
+</li>
+<li>一阶微分形式：$\omega=f_1(x_1,\cdots,x_n)dx_1+\cdots+f_n(x_1,\cdots,x_n)dx_n$
+<ul>
+<li>自变量为 $\square(P;v)$</li>
+<li>$\omega(\square(P;v))=\sum_{i=1}^nf_i(P)dx_i(v)$</li>
+</ul>
+</li>
+<li>二阶微分形式：$\omega=\sum_{i,j}f_{ij}(x_1,\cdots,x_n)dx_i\wedge dx_j$
+<ul>
+<li>$\omega(\square(P;a,b))=f(P)dx\wedge dy(a,b)=f(P)\cdot\det([a,b])$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第二型积分：$f$ 在 $D$ 上 Riemann 可积
+<ul>
+<li>$\int_D\omega = \int_Df(x_1,\cdots,x_n)dx_1dx_2\cdots dx_n$</li>
+<li>$\int_{-D}\omega = \int_Df(x_1,\cdots,x_n)dx_1dx_2\cdots dx_n$</li>
+</ul>
+</li>
+<li>拉回：$\Phi:U_1\rightarrow U_2$ 可微映射，$\Phi^*(f(x_1,x_2)dx_1\wedge dx_2)=(f\circ\Phi)(y_1,y_2)d\Phi_1\wedge d\Phi_2,\Phi(y_1,y_2)=(\phi_1,\phi_2)$
+<ul>
+<li>$\Phi^*(fdx_1\wedge\cdots\wedge dx_n)=(f\circ\Phi)\det(D\Phi)dy_1\wedge\cdots\wedge dy_n$</li>
+<li>链法则：$\Phi_1:U_1\rightarrow U_2,\Phi_2\rightarrow U_3,(\Phi_2\circ\Phi_1)^<em>\omega=\Phi_1^</em>(\Phi_2^*\omega)$</li>
+</ul>
+</li>
+<li>积分换元定理：$\Phi:D\rightarrow E$ 是连续可微之一一对应，且 $\det(D\Phi)$ 恒正或负，$\omega$ 可积，则 $\int_D\Phi^*\omega=\int_\Phi(D)\omega$
+<ul>
+<li>$\Phi(D)$ 定向由 $\Phi$ 诱导</li>
+</ul>
+</li>
+<li>第二型曲线积分：$\int_\gamma\omega=\int_{[a,b]}\gamma^*\omega$</li>
+<li>第二型曲面积分：$\int_\Phi\omega=\int_D\Phi^*\omega$</li>
+<li>外微分：$d\omega$
+<ul>
+<li>二次连续可微：$dd\omega=0$</li>
+<li>二次连续可微：$d\Phi^*\omega=\Phi^*d\omega$</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>对象</th>
+<th>公式</th>
+<th>$\omega$</th>
+<th>向量场形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>曲线 Newton-Leibniz 公式</td>
+<td>$\mathbb{R}$</td>
+<td>$\int_Cdf=\int_{\partial C}f$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Green 公式</td>
+<td>$\mathbb{R}^2$区域</td>
+<td>$\int_Dd\omega=\int_{\partial D}\omega$</td>
+<td>$P(x,y)dx+Q(x,y)dy$</td>
+<td></td>
+</tr>
+<tr>
+<td>Stokes 公式</td>
+<td>$\mathbb{R}^3$定向曲面</td>
+<td>$\int_Sd\omega=\int_{\partial S}\omega$</td>
+<td>$P(x,y,z)dx+Q(x,y,z)dy+R(x,y,z)dz$</td>
+<td>$\int_S\langle\text{curl}\mathbf{X},\mathbf{n}\rangle d\sigma=\int_{\partial S}\langle X,T\rangle ds$</td>
+</tr>
+<tr>
+<td>Gauss 公式</td>
+<td>$\mathbb{R}^3$区域</td>
+<td>$\int_Dd\omega=\int_{\partial D}\omega$</td>
+<td>$P(x,y,z)dy\wedge dz+Q(x,y,z)dz\wedge dx+R(x,y,z)dx\wedge dy$</td>
+<td>$\int_D\text{div}\mathbf{X}dxdydz=\int_{\partial D}\langle\mathbf{X},\mathbf{n}\rangle d\sigma$</td>
+</tr>
+</tbody>
+</table>
+</main>
+        </div>
+
+    </div>
+</body></html>

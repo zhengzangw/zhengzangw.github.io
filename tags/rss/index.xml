@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rss on Zangwei</title>
+    <link>https://zhengzangw.com/tags/rss/</link>
+    <description>Recent content in rss on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Sun, 25 Feb 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/rss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sharing of some good RSS seed</title>
+      <link>https://zhengzangw.com/posts/awesome-rss/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/awesome-rss/</guid>
+      <description>&lt;h1 id=&#34;rss-resource&#34;&gt;RSS Resource&lt;/h1&gt;
+&lt;h2 id=&#34;订阅&#34;&gt;订阅&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/dll635281462/article/details/51201490&#34;&gt;rss订阅源推荐个人收集&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zhihu.com/question/19580096&#34;&gt;知乎&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;制作&#34;&gt;制作&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://feed43.com&#34;&gt;Feed43&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;github:直接搜索 &lt;code&gt;https://github.com/username&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

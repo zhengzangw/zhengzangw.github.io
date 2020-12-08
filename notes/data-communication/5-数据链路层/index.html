@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数据链路层 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本概念">基本概念</a></li>
+    <li><a href="#流量控制">流量控制</a>
+      <ul>
+        <li><a href="#停止等待流量控制-stop-and-wait">停止等待流量控制 Stop and Wait</a></li>
+        <li><a href="#滑动窗口流量控制">滑动窗口流量控制</a></li>
+      </ul>
+    </li>
+    <li><a href="#差错控制">差错控制</a>
+      <ul>
+        <li><a href="#stop-and-wait-arq">Stop-and-Wait ARQ</a></li>
+        <li><a href="#go-back-n-arq">Go-Back-N ARQ</a></li>
+        <li><a href="#selective-reject-arq">Selective Reject ARQ</a></li>
+      </ul>
+    </li>
+    <li><a href="#hdlchigh-level-data-link-control">HDLC(High Level Data Link Control)</a>
+      <ul>
+        <li><a href="#hdlc-帧结构">HDLC 帧结构</a></li>
+        <li><a href="#运行方式">运行方式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="基本概念">基本概念</h2>
+<ul>
+<li>$d$: 链路长度</li>
+<li>$v$: 传播速度</li>
+<li>$L$: 帧长度（比特）</li>
+<li>$B=RD$: 链路比特长度</li>
+<li>$B'$: 链路帧长度</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>性能指标</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传输时间(transmission time)</td>
+<td>与帧长度有关, $T=\frac{L}{R}$</td>
+</tr>
+<tr>
+<td>传播时间(propagation time)</td>
+<td>与链路有关，$D=\frac{d}{v}$</td>
+</tr>
+<tr>
+<td>处理时延</td>
+<td></td>
+</tr>
+<tr>
+<td>排队时延</td>
+<td>等待被传输的时间</td>
+</tr>
+</tbody>
+</table>
+<h2 id="流量控制">流量控制</h2>
+<ul>
+<li>确保发送的数据不会超出接收实体接收数据能力的技术</li>
+<li>Fragmentation：把大块的数据切分成小数据块传输
+<ul>
+<li>接收方缓存有限</li>
+<li>重传大小小</li>
+<li>避免一个站点长时间占用媒体传输</li>
+</ul>
+</li>
+</ul>
+<h3 id="停止等待流量控制-stop-and-wait">停止等待流量控制 Stop and Wait</h3>
+<ul>
+<li>(S)Send Data $\rightarrow$ (R)Receive Data &amp; Send ACK $\rightarrow$ (S)Receive ACK &amp; Send Data'</li>
+<li>$T_F=D+T+D+t_{ack}+t_{proc}=2D+T$</li>
+<li>$a=\frac{D}{T}=\frac{B}{L}$</li>
+<li>$U=\frac{T}{T_F}=\frac{1}{1+2a}$</li>
+</ul>
+<h3 id="滑动窗口流量控制">滑动窗口流量控制</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>滑窗字段大小</td>
+<td>$k$</td>
+</tr>
+<tr>
+<td>帧编号</td>
+<td>$0\sim2^{k}-1$</td>
+</tr>
+<tr>
+<td>窗口大小</td>
+<td>$W\leq 2^{k}-1$</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>帧类型</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F$_n$</td>
+<td>数据帧，当窗口用完后停止发送</td>
+</tr>
+<tr>
+<td>RR$_n$</td>
+<td>已接受到$n-1$的帧，准备接受$n$(双方更新窗口)</td>
+</tr>
+<tr>
+<td>RNR$_n$</td>
+<td>已接受到$n-1$的帧，停止接受</td>
+</tr>
+<tr>
+<td>捎带</td>
+<td>双工时 F$_n$捎带确认信息</td>
+</tr>
+</tbody>
+</table>
+<p>$$
+U=\begin{cases}
+\frac{W}{2B'+1} &amp; W&lt;2B'+1\newline
+1 &amp; W\geq2B'+1
+\end{cases}
+$$</p>
+<h2 id="差错控制">差错控制</h2>
+<ul>
+<li>ARQ 自动重传请求：将不可靠数据链路变为可靠数据链路
+<ul>
+<li>差错检测</li>
+<li>肯定确认</li>
+<li>超时重传</li>
+<li>否认重传</li>
+</ul>
+</li>
+<li>$N_r$: the expected number of transmission of a frame</li>
+</ul>
+<h3 id="stop-and-wait-arq">Stop-and-Wait ARQ</h3>
+<ul>
+<li>帧损伤：(R) Detect and Drop $\rightarrow$ (S) 超时重传</li>
+<li>确认损伤：(S) 超时重传 $\rightarrow$ (R) ACK0/ACK1 确认</li>
+<li>$U=\frac{T}{N_rT_F}=\frac{1-P}{1+2B'}$</li>
+<li>$N_r=\frac{1}{1-P}$</li>
+</ul>
+<h3 id="go-back-n-arq">Go-Back-N ARQ</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>滑窗字段大小</td>
+<td>$k$</td>
+</tr>
+<tr>
+<td>帧编号</td>
+<td>$0\sim2^{k}-1$</td>
+</tr>
+<tr>
+<td>窗口大小</td>
+<td>$W\leq 2^{k}-1$</td>
+</tr>
+<tr>
+<td>发送方缓存大小</td>
+<td>$W$</td>
+</tr>
+<tr>
+<td>接受方窗口大小</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>帧损伤：(R) Detect, Drop all Data after i and Send REJi $\rightarrow$ (S) Resend all Data after i</li>
+<li>RR 损伤：超时重传</li>
+<li>$N_r=\sum_{i=1}^{\infty}f(i)P^{i-1}(1-P)$
+<ul>
+<li>Each error generates a requirement to retransmit K frames rather than just one frame</li>
+<li>$f(i)=1+(i-1)K$</li>
+<li>$N_r=\frac{1-P+KP}{1-P}$
+<ul>
+<li>$K=2a+1,W\geq(2B'+1)$</li>
+<li>$K=W,W&lt;(2B'+1)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$
+U=\begin{cases}
+\frac{W(1-P)}{(2B'+1)(1-P+WP)} &amp; W&lt;2B'+1\newline
+\frac{1-P}{1+2B&rsquo;P} &amp; W\geq2B'+1
+\end{cases}
+$$</p>
+<h3 id="selective-reject-arq">Selective Reject ARQ</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>滑窗字段大小</td>
+<td>$k$</td>
+</tr>
+<tr>
+<td>帧编号</td>
+<td>$0\sim2^{k}-1$</td>
+</tr>
+<tr>
+<td>窗口大小</td>
+<td>$W\leq 2^{k-1}$</td>
+</tr>
+<tr>
+<td>发送方缓存大小</td>
+<td>$W$</td>
+</tr>
+<tr>
+<td>接受方窗口大小</td>
+<td>$W$</td>
+</tr>
+</tbody>
+</table>
+<p>$$
+U=\begin{cases}
+\frac{W(1-P)}{2B'+1} &amp; W&lt;2B'+1\newline
+1-P &amp; W\geq2B'+1
+\end{cases}
+$$</p>
+<h2 id="hdlchigh-level-data-link-control">HDLC(High Level Data Link Control)</h2>
+<p>ISO 3009, ISO 4335</p>
+<ul>
+<li>站点类型
+<ul>
+<li>主站 – 负责链路控制操(命令)</li>
+<li>从站 – 在主站的控制下操作(响应)</li>
+<li>混合站 – 结合了主站和从站的特点</li>
+</ul>
+</li>
+<li>链路设置
+<ul>
+<li>非平衡设置：1 主多从</li>
+<li>平衡设置：2 个混合站</li>
+</ul>
+</li>
+<li>HDLC 数据传送方式
+<ul>
+<li>NRM 正常响应方式
+<ul>
+<li>非平衡设置：Command$\leftrightarrow$Response</li>
+</ul>
+</li>
+<li>ABM 异步平衡方式
+<ul>
+<li>平衡设置：Command/Response$\leftrightarrow$Command/Response</li>
+<li>使用最广泛</li>
+</ul>
+</li>
+<li>ARM 异步响应方式</li>
+</ul>
+</li>
+<li>特点
+<ul>
+<li>同步传输</li>
+<li>传输以帧的形式进行</li>
+<li>一个帧格式满足所有数据和控制信息</li>
+</ul>
+</li>
+</ul>
+<h3 id="hdlc-帧结构">HDLC 帧结构</h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Address</th>
+<th>Control</th>
+<th>Information</th>
+<th>FCS</th>
+<th>Flag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>8</td>
+<td>8/16</td>
+<td>variable</td>
+<td>16/32</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Flag
+<ul>
+<li>01111110 在帧的两端起定界作用</li>
+<li>比特填充：帧中每出现五个 1 后插入附加 0
+<ul>
+<li>避免帧中间出现 01111110 导致误判</li>
+</ul>
+</li>
+<li>判断
+<ul>
+<li>接收端收到连续五个 1</li>
+<li>if 6th bit is 0, deleted</li>
+<li>if 6th bit is 1 and 7th bit is 0, accepted as flag</li>
+<li>if 6th 7th bits are 1, error</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Address
+<ul>
+<li>标识别传输或准备接收这个帧的从站</li>
+<li>长度可以扩展</li>
+<li>11111111 用于广播</li>
+</ul>
+</li>
+<li>Control
+<ul>
+<li>开头的 1-2 比特指明帧类型
+<ul>
+<li>I-frame</li>
+<li>S-frame</li>
+<li>U-frame</li>
+</ul>
+</li>
+<li>use of Poll/Final (P/F) bit depends on context</li>
+</ul>
+</li>
+<li>FCS (Frame Check Sequence Field)
+<ul>
+<li>一般采用 16 bit CRC 或 32 bit CRC</li>
+</ul>
+</li>
+</ul>
+<h3 id="运行方式">运行方式</h3>
+<ul>
+<li>初始化：通过 6 个置位方式命令之一请求初始化</li>
+<li>数据传送</li>
+<li>拆链：发送一个拆链帧(DISC)宣布连接终止</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

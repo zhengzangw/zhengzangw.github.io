@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feature Selection | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#特征选择方法">特征选择方法</a></li>
+    <li><a href="#过滤式选择">过滤式选择</a>
+      <ul>
+        <li><a href="#relief">Relief</a></li>
+        <li><a href="#relief-f">Relief-F</a></li>
+      </ul>
+    </li>
+    <li><a href="#包裹式选择">包裹式选择</a></li>
+    <li><a href="#嵌入式选择">嵌入式选择</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="特征选择方法">特征选择方法</h2>
+<ul>
+<li>冗余特征
+<ul>
+<li>去除：减轻负担</li>
+<li>保留：对应中间概念</li>
+</ul>
+</li>
+<li>特征选择方法
+<ul>
+<li>子集搜索
+<ul>
+<li>前向</li>
+<li>后向</li>
+</ul>
+</li>
+<li>子集评价</li>
+</ul>
+</li>
+</ul>
+<h2 id="过滤式选择">过滤式选择</h2>
+<p>先过滤，再训练</p>
+<h3 id="relief">Relief</h3>
+<ul>
+<li>near-hit: 同类样本中最近</li>
+<li>near-miss: 异类样本中最近</li>
+<li>相关统计量（属性$j$）: $\delta^j=\sum_i-\text{diff}(x_i^j,x_{i,nh}^j)^2+\text{diff}(x_i^j,x_{i,nm}^j)^2$
+<ul>
+<li>若 $x_i$ 与其猜中邻近在属性上的距离小于猜错邻近，增大相关统计量</li>
+</ul>
+</li>
+</ul>
+<h3 id="relief-f">Relief-F</h3>
+<ul>
+<li>$\delta^j=\sum_i-\text{diff}(x_i^j,x_{i,nh}^j)^2+\sum_{l\not=k}(p_l*\text{diff}(x_i^j,x_{i,l,nm}^j)^2)$
+<ul>
+<li>$p_l$ 为所占比例</li>
+</ul>
+</li>
+</ul>
+<h2 id="包裹式选择">包裹式选择</h2>
+<p>先训练，再选择</p>
+<ul>
+<li>LVW(Las Vegas Wrapper)
+<ul>
+<li>随机抽取特征 $A$ 后评估</li>
+</ul>
+</li>
+</ul>
+<h2 id="嵌入式选择">嵌入式选择</h2>
+<ul>
+<li>L1 正则化（LASSO，Least Absolute Shrinkage and Selection Operator）
+<ul>
+<li>PGD 近端梯度下降
+<ul>
+<li>满足 L-Lipschitz 条件</li>
+<li>二阶泰勒在 $x_k$ 展开：$\hat f(x)\simeq \frac{L}{2}||x-(x_k-\frac{1}{L}\nabla f(x_k)||^2_2+C$</li>
+<li>最小值取在 $x_{k+1}=x_k-\frac{1}{L}\nabla f(x_k)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>L2 正则化（岭回归）</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

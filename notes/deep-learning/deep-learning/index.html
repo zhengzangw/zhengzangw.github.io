@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Deep Learning | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#第六章">第六章</a>
+      <ul>
+        <li><a href="#输出单元">输出单元</a></li>
+        <li><a href="#隐藏单元">隐藏单元</a></li>
+      </ul>
+    </li>
+    <li><a href="#第七章正则化">第七章：正则化</a></li>
+    <li><a href="#第八章优化">第八章：优化</a></li>
+    <li><a href="#第九章cnn">第九章：CNN</a></li>
+    <li><a href="#第十章rnn">第十章：RNN</a>
+      <ul>
+        <li><a href="#语言模型">语言模型</a></li>
+      </ul>
+    </li>
+    <li><a href="#第十一章实践方法">第十一章：实践方法</a>
+      <ul>
+        <li><a href="#设计流程">设计流程</a></li>
+        <li><a href="#超参数选择">超参数选择</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#变换">变换</a></li>
+    <li><a href="#模型">模型</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#highway-network">Highway Network</a></li>
+    <li><a href="#residual-network">Residual Network</a></li>
+    <li><a href="#grid-lstm">Grid LSTM</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#recursive-neural-tensor-network">Recursive Neural Tensor Network</a></li>
+    <li><a href="#matrix-vector-recursive-network">Matrix-Vector Recursive Network</a></li>
+    <li><a href="#tree-lstm">Tree LSTM</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#seq2seq">Seq2Seq</a></li>
+    <li><a href="#generation">Generation</a></li>
+    <li><a href="#conditional-generation-1">Conditional Generation</a></li>
+    <li><a href="#常见神经网络">常见神经网络</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><blockquote>
+<p><em>Deep Learning</em>
+<a href="https://www.bilibili.com/video/av9770302/?p=5">李宏毅课程</a>
+<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS17.html">李宏毅的主页</a></p>
+</blockquote>
+<h2 id="第六章">第六章</h2>
+<p>Input -&gt; FL -&gt; FL -&gt; FL -&gt; Softmax -&gt;</p>
+<h3 id="输出单元">输出单元</h3>
+<ul>
+<li>高斯输出分布线性单元</li>
+<li>Bernoulli输出分布sigmoid单元</li>
+<li>Multinoulli输出分布softmax单元</li>
+</ul>
+<h3 id="隐藏单元">隐藏单元</h3>
+<ul>
+<li>线性整流单元</li>
+<li>logistic &amp; tanh</li>
+<li>maxout</li>
+<li>RBF</li>
+</ul>
+<h2 id="第七章正则化">第七章：正则化</h2>
+<ul>
+<li>岭回归</li>
+<li>L1正则化</li>
+<li>约束的范数惩罚</li>
+<li>提前终止</li>
+<li>参数共享</li>
+<li>Dropout</li>
+<li>滑动平均</li>
+</ul>
+<h2 id="第八章优化">第八章：优化</h2>
+<ul>
+<li>批量与小批量算法</li>
+<li>一阶
+<ul>
+<li>动量</li>
+<li>Nesterov 动量</li>
+<li>AdaGrad</li>
+<li>RMSProp</li>
+<li>Adam</li>
+</ul>
+</li>
+<li>二阶
+<ul>
+<li>牛顿法</li>
+<li>共轭梯度</li>
+<li>BFGS</li>
+</ul>
+</li>
+<li>批标准化</li>
+</ul>
+<h2 id="第九章cnn">第九章：CNN</h2>
+<ul>
+<li>CNN的三个关键优势：稀疏交互、参数共享、平移等变</li>
+<li>池化</li>
+<li>无限强的先验</li>
+<li>有效卷积、同卷积、全卷积</li>
+<li>非共享卷积</li>
+<li>Inception 系列</li>
+<li>LeNet-5</li>
+</ul>
+<p>input -&gt; Conv -&gt; pool -&gt; Conv -&gt; pool -&gt; FC -&gt; FC -&gt; Softmax -&gt;</p>
+<h2 id="第十章rnn">第十章：RNN</h2>
+<ul>
+<li>Deep RNN</li>
+</ul>
+<p>技术：Target Delay</p>
+<ul>
+<li>
+<p>Bidirectional RNN</p>
+</li>
+<li>
+<p>Pyramid RNN</p>
+</li>
+<li>
+<p>Stack RNN</p>
+</li>
+<li>
+<p>门控RNN</p>
+<ul>
+<li>LSTM
+$$c^t = z^t * c^{t-1} + z^{i} * z$$
+$$h^t = z^0 * tanh(c^t)$$</li>
+<li>GRU
+$$h^t = z * h^t + (1-z)*h'$$</li>
+</ul>
+</li>
+<li>
+<p>一片论文用遗传算法得到的好结构</p>
+</li>
+</ul>
+<h3 id="语言模型">语言模型</h3>
+<ul>
+<li>n gram
+Matrix Factorization: $R = V^T*W$</li>
+<li>LIST的语言预测
+word2vec -&gt; LSTM(300*2) -&gt; FC -&gt; Softmax
+word2vec和FC可以参数共享</li>
+</ul>
+<h2 id="第十一章实践方法">第十一章：实践方法</h2>
+<h3 id="设计流程">设计流程</h3>
+<ul>
+<li>确定目标</li>
+<li>尽快建立一个端到端的工作流程，包括估计合适的性能度量</li>
+<li>确定性能瓶颈</li>
+<li>增量式改动</li>
+</ul>
+<h3 id="超参数选择">超参数选择</h3>
+<ul>
+<li>手动选择</li>
+<li>自动选择</li>
+</ul>
+<p>隐层单元数量、学习率、卷积核宽度、隐式零填充、权重衰减系数、Dropout比率</p>
+<h1 id="spatial-transformer-layer">Spatial Transformer Layer</h1>
+<h2 id="变换">变换</h2>
+<p>缩放 [2, 0; 0, 2]<br>
+旋转 [cos, -sin; sin, cos]<br>
+Spatial Transformer Layer:<br>
+$[x'\ y'] = [a\ b; c\ d][x\ y] + [e\ f]$</p>
+<h2 id="模型">模型</h2>
+<p>INPUT - ST - CNN - ST - CNN - ST - CNN - OUTPUT
+在TensorFlow图像处理节中，我们通过人工预处理。此处使用了NN代替了人工的处理</p>
+<h1 id="highway-network--grid-rnn">HighWay Network &amp; Grid RNN</h1>
+<p>将RNN竖起来当NN用，增加层数</p>
+<h2 id="highway-network">Highway Network</h2>
+<p>可看成由GRU改来。自动学习是否要使用某一层。</p>
+<ul>
+<li>$h' = \sigma(Wa^{t-1})$ forget gate</li>
+<li>$z = \sigma(W&rsquo;a^{t-1})$ z:操控a update比率</li>
+<li>$a^t = z*a^{t-1} + (1-z)*h'$</li>
+</ul>
+<h2 id="residual-network">Residual Network</h2>
+<p>可train 150层</p>
+<ul>
+<li>$a^{t-1}$ -&gt; layer -&gt; layer -&gt; h'</li>
+<li>$a^{t} = h' + a^{t-1}$</li>
+</ul>
+<h2 id="grid-lstm">Grid LSTM</h2>
+<p>两个维度，同时扩展深度和时间<br>
+3D Grid LSTM</p>
+<h1 id="recursive-network">Recursive Network</h1>
+<p>Recurrent Network 是其特例<br>
+利用先验知识，比如语句结构分析，然后构建</p>
+<h2 id="recursive-neural-tensor-network">Recursive Neural Tensor Network</h2>
+<h2 id="matrix-vector-recursive-network">Matrix-Vector Recursive Network</h2>
+<h2 id="tree-lstm">Tree LSTM</h2>
+<h1 id="conditional-generation">Conditional Generation</h1>
+<h2 id="seq2seq">Seq2Seq</h2>
+<pre><code>----------------X   Y   Z   EOS
+                |   |   |   |
+f - f - f - f - f - f - f - f
+|   |   |   |   |   |   |   |
+A   B   C   D   SOS X   Y   Z
+</code></pre>
+<h2 id="generation">Generation</h2>
+<p>Naive RNN: for sequence, image, etc.<br>
+3D-LSTM: Better for image</p>
+<h2 id="conditional-generation-1">Conditional Generation</h2>
+<p>Condition as the first input<br>
+Condition as all the input<br>
+(Communication) Two layer RNN for input</p>
+<h2 id="常见神经网络">常见神经网络</h2>
+<ul>
+<li>
+<p>RBF 网络（Radial Basis Function）</p>
+<ul>
+<li>径向基函数
+<ul>
+<li>高斯径向基函数：$e^{-\frac{(x-c)^2}{r^2}}$</li>
+</ul>
+</li>
+<li>三层神经网络
+<ul>
+<li>隐层激活函数为径向基函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>竞争性网络</p>
+<ul>
+<li>稳定性/可塑性二难问题</li>
+</ul>
+</li>
+<li>
+<p>ART 网络（Adaptive Resonance Theory）</p>
+<ul>
+<li>内星：可以被训练来识别矢量</li>
+<li>外星：可以被训练来产生矢量</li>
+<li>ART I 型网络</li>
+</ul>
+</li>
+<li>
+<p>SOM 网络（Self-Organizing Map）</p>
+</li>
+<li>
+<p>级联相关网络</p>
+</li>
+<li>
+<p>Elman 网络</p>
+</li>
+<li>
+<p>Boltzmann 机</p>
+</li>
+<li>
+<p>深度学习</p>
+</li>
+<li>
+<p>网络模型</p>
+<ul>
+<li>M-P 神经元模型： $y=f(\sum_{i=1}^m\omega_i-\theta)$</li>
+<li>Perceptron： 两层神经网络</li>
+<li>多层前馈网络：全连接且无跨层连接</li>
+</ul>
+</li>
+<li>
+<p><strong>误差逆传播算法</strong>(Back Propagation)</p>
+<ul>
+<li>前向计算
+<ul>
+<li>Layer1: $b_h=f(\beta_h-\gamma_h),\beta_h=\sum_{i=1}^dv_{ih}x_i$</li>
+<li>Layer2: $\hat y_j=f(\alpha_j-\theta_j),\alpha_h=\sum_{i=1}^qw_{ih}b_i$</li>
+<li>Loss: $E_k=\frac{1}{2}\sum_{j=1}^l(\hat y_j^k-y_j^k)^2$</li>
+</ul>
+</li>
+<li>参数数⽬
+<ul>
+<li>权重 $v_{ih},w_{hj}$</li>
+<li>阈值 $\theta_j,\gamma_h(i=1\cdots d,h=1\cdots q,j=1\cdots l)$</li>
+<li>共需要 $(d+l+1)q+1$ 个参数</li>
+</ul>
+</li>
+<li>标准 BP 算法
+<ul>
+<li>每次针对单个训练样例更新权值与阈值</li>
+<li>参数更新频繁，不同样例可能抵消，需要多次迭代</li>
+</ul>
+</li>
+<li>累计 BP 算法
+<ul>
+<li>其优化的⽬标是最⼩化 $E=\frac{1}{m}\sum_{k=1}^mE_k$</li>
+<li>读取整个训练集一遍才对参数进行更新</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>缓解过拟合</p>
+<ul>
+<li>早停</li>
+<li>正则化</li>
+</ul>
+</li>
+<li>
+<p>跳出局部最小的策略</p>
+<ul>
+<li>多组不同的初始参数优化神经网络, 选取误差最小的解作为最终参数</li>
+<li>模拟退火技术</li>
+<li>随机梯度下降</li>
+<li>遗传算法</li>
+</ul>
+</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

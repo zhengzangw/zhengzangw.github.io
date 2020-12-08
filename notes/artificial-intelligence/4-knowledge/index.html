@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4-知识表示 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#知识表示">知识表示</a>
+      <ul>
+        <li><a href="#一阶谓词表示first-order-predicate">一阶谓词表示(First Order Predicate)</a></li>
+        <li><a href="#产生式表示production">产生式表示(Production)</a></li>
+        <li><a href="#语义网络表示semantic-network">语义网络表示(Semantic Network)</a></li>
+        <li><a href="#框架表示framework-与知识图谱knowledge-graph">框架表示(Framework) 与知识图谱(Knowledge Graph)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="知识表示">知识表示</h2>
+<ul>
+<li>数据：信息的载体和表示</li>
+<li>信息：数据的语义</li>
+<li>知识：信息关联后形成的信息<strong>结构</strong>（事实和规则）
+<ul>
+<li>相对正确性</li>
+<li>可表示/利用性</li>
+<li>不确定性</li>
+</ul>
+</li>
+</ul>
+<h3 id="一阶谓词表示first-order-predicate">一阶谓词表示(First Order Predicate)</h3>
+<ul>
+<li>一阶逻辑的知识工程
+<ul>
+<li>确定任务</li>
+<li>搜集相关知识</li>
+<li>确定词汇表，包括谓词，函词和常量</li>
+<li>对邻域通用知识编码</li>
+<li>对特定问题编码</li>
+<li>提交查询给推理过程并获取答案</li>
+<li>知识库调试</li>
+</ul>
+</li>
+<li>谓词公式表示知识的步骤
+<ul>
+<li>定义谓词及变元</li>
+<li>变元赋值</li>
+<li>连接词连接谓词，形成谓词公式</li>
+</ul>
+</li>
+<li>状态谓词
+<ul>
+<li>初始状态</li>
+<li>终止状态</li>
+</ul>
+</li>
+<li>操作谓词
+<ul>
+<li>条件</li>
+<li>状态改变</li>
+</ul>
+</li>
+<li>缺点：组合爆炸</li>
+</ul>
+<h3 id="产生式表示production">产生式表示(Production)</h3>
+<ul>
+<li>$P\rightarrow Q$ (IF P THEN Q)
+<ul>
+<li>产生式的知识有可信度</li>
+</ul>
+</li>
+<li>常用结构
+<ul>
+<li>原因$\rightarrow$结果</li>
+<li>条件$\rightarrow$结论</li>
+<li>前提$\rightarrow$操作</li>
+<li>事实$\rightarrow$进展</li>
+<li>情况$\rightarrow$行为</li>
+</ul>
+</li>
+<li>产生式系统：一组产生式互相配合协调
+<ul>
+<li>规则库</li>
+<li>数据库</li>
+<li>控制系统</li>
+</ul>
+</li>
+<li>推理
+<ul>
+<li>正向推理</li>
+<li>反向推理</li>
+<li>混合驱动和控制策略</li>
+</ul>
+</li>
+</ul>
+<h3 id="语义网络表示semantic-network">语义网络表示(Semantic Network)</h3>
+<ul>
+<li>通过有向图，其顶点表示概念，边表示概念间的语义关系，来表达复杂的概念及其相互关系</li>
+<li>语义网路的推理：带求解问题构造为网络判断，某些节点/边为空（询问点），进行匹配</li>
+</ul>
+<h3 id="框架表示framework-与知识图谱knowledge-graph">框架表示(Framework) 与知识图谱(Knowledge Graph)</h3>
+<ul>
+<li>框架：描述对象属性的一种数据结构</li>
+<li>框架的一般表示
+<ul>
+<li>框架名</li>
+<li>槽名（某一方面属性）</li>
+<li>侧面（属性的某一方面）</li>
+<li>值</li>
+</ul>
+</li>
+<li>万维网(World Wide Web) Web1.0
+<ul>
+<li>URL: 统一资源定位符</li>
+<li>HTML：超文本标记语言</li>
+<li>HTTP：超文本传输协议</li>
+<li>Web 搜索引擎</li>
+</ul>
+</li>
+<li>Web 2.0
+<ul>
+<li>大众参与</li>
+<li>社会网络</li>
+</ul>
+</li>
+<li>语义万维网 Semantic Web
+<ul>
+<li>Tim Berners-Lee 1998</li>
+<li>给 Web 上的信息赋予良定的含义</li>
+</ul>
+</li>
+<li>RDF 数据
+<ul>
+<li>Class</li>
+<li>Property</li>
+<li>Individual</li>
+</ul>
+</li>
+<li>Term：固定一组用于标注的术语，并同意其含义
+<ul>
+<li>Ontology：同意一个语言用于定义新术语
+<ul>
+<li>RDFS, OWL</li>
+<li>灵活性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>知识图谱：数据库，可看做一张巨大的图，节点表示实体或概念，边由属性或关系构成
+<ul>
+<li>DBpedia</li>
+<li>YAGO</li>
+<li>Freebase</li>
+<li>Google</li>
+</ul>
+</li>
+</ul>
+<h4 id="rdfresource-description-framework">RDF(Resource Description Framework)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;xml</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">&#34;1.0&#34;</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;Class</span> <span style="color:#a6e22e">rdf:ID=</span><span style="color:#e6db74">&#34;Resource&#34;</span>
+  <span style="color:#a6e22e">xmlns:rdf=</span><span style="color:#e6db74">&#34;url&#34;</span>
+  <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;url&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;property&gt;</span> value <span style="color:#f92672">&lt;/property&gt;</span>
+<span style="color:#f92672">&lt;/Class&gt;</span>
+<span style="color:#f92672">&lt;/xml&gt;</span>
+</code></pre></div><ul>
+<li>subject：resource</li>
+<li>predicate: property
+<ul>
+<li>字面量(literal)：矩形</li>
+<li>资源：椭圆</li>
+</ul>
+</li>
+<li>object: value</li>
+<li>三元组：&lt;subject, predicate, object&gt;</li>
+<li>聚合工具：收集关于某一资源的所有数据并整合</li>
+<li>匿名资源</li>
+</ul>
+<h4 id="rdfsresource-description-framework-schema">RDFS(Resource Description Framework Schema)</h4>
+<ul>
+<li>资源：通过 RDF 描述的食物</li>
+<li>核心属性
+<ul>
+<li>rdfs:resource</li>
+<li>rdfs:property</li>
+<li>rdfs:Class</li>
+<li>rdfs:type</li>
+<li>rdfs:subClassOf</li>
+</ul>
+</li>
+<li>描述能力弱
+<ul>
+<li>局部的</li>
+<li>没有存在/数量规约</li>
+<li>传递，相反或对称属性</li>
+</ul>
+</li>
+<li>没有推理支持</li>
+</ul>
+<h4 id="owlweb-ontology-language">OWL(Web Ontology Language)</h4>
+<ul>
+<li>共同理解，形式化</li>
+<li>邻域中重要概念的名称+邻域中的背景知识/约束</li>
+<li>本体：一个本体是一个（共享）概念化的一中（形式化的显示）规约
+<ul>
+<li>Formal, explicit specification of a shared conceptualization</li>
+</ul>
+</li>
+<li>OWL：W3C 负责
+<ul>
+<li>OWL Lite: DL 容易实现的自己</li>
+<li>OWL DL: 限制在描述逻辑</li>
+<li>OWL Full: OWL + RDF</li>
+</ul>
+</li>
+<li>语义分层
+<ul>
+<li>TBox 模式层</li>
+<li>ABox 实例层</li>
+</ul>
+</li>
+<li>OWL 2
+<ul>
+<li>OWL 2 EL: 含有大量属性和类的本体应用</li>
+<li>OWL 2 QL：大量实例数据（类数据库）</li>
+<li>OWL 2 RL：基于规则的推理引擎</li>
+</ul>
+</li>
+</ul>
+<h4 id="知识图谱构建">知识图谱构建</h4>
+<ul>
+<li>本体工程(ontology engineering)
+<ul>
+<li>狭义：methods and methodologies for building ontologies
+<ul>
+<li>定义术语和术语间联系</li>
+</ul>
+</li>
+<li>广义：以工程化的视角考察本体的构建和管理</li>
+<li>斯坦福起步法：明确范围，考虑重用，列举术语，定义类，定义属性，定义约束，创建实例
+<ul>
+<li>现实中是一个迭代的过程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>知识图谱构建
+<ul>
+<li>Data acquisition</li>
+<li>Semantics enrichment</li>
+<li>Linking to knowledge bases</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

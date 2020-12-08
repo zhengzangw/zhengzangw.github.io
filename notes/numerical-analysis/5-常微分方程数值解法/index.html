@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>常微分方程数值解法 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#常微分方程">常微分方程</a></li>
+    <li><a href="#euler-方法差分方法">Euler 方法（差分方法）</a></li>
+    <li><a href="#taylor-展开法">Taylor 展开法</a></li>
+    <li><a href="#数值积分法">数值积分法</a></li>
+    <li><a href="#runge-kutta-方法">Runge-Kutta 方法</a></li>
+    <li><a href="#线性多步法">线性多步法</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="常微分方程">常微分方程</h2>
+<ul>
+<li>
+<p>一阶常微分方程初值问题</p>
+<p>$$
+\begin{cases}
+y'=f(x,y) &amp; a\leq x \leq b\newline
+y(x_0)=y_0
+\end{cases}
+$$</p>
+</li>
+<li>
+<p>存在性定理：如果 $f(x,y)$ 在带形区域 $R={(x,y)|a\leq x\leq b,-\infty&lt;y&lt;+\infty}$ 中连续且 $y$ 满足 Lipschitz 条件，则初值问题存在唯一的连续可微解</p>
+</li>
+<li>
+<p>基本解法：差商代替导数</p>
+</li>
+<li>
+<p>局部阶段误差：第 n 步为准确解的情况下，用数值方法计算 $y_{n+1}$ 时的误差 $y(x_{n+1})-y_{n+1}$</p>
+</li>
+<li>
+<p>整体阶段误差：无舍入误差情况下，$y(x_n)-y_n$，通常比局部截断误差低一阶</p>
+</li>
+<li>
+<p>数值方法的解 $p$：整体阶段误差 $O(h^p)$</p>
+</li>
+</ul>
+<h2 id="euler-方法差分方法">Euler 方法（差分方法）</h2>
+<ul>
+<li>Euler 方法
+<ul>
+<li>步长 $h$</li>
+<li>$x_n=x_0+nh$</li>
+<li>$y_{n+1}=y_n+hf(x_n,y_n)$</li>
+<li>局部阶段误差：$O(h^2)$</li>
+</ul>
+</li>
+<li>后退 Euler 方法</li>
+<li>2 步 Euler 方法
+<ul>
+<li>$y(x_{n+1})=y(x_{n-1})+2hf(x_n,y_n(x_n))$</li>
+<li>局部截断误差：$\frac{h^3}{3}y'''(\xi)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="taylor-展开法">Taylor 展开法</h2>
+<ul>
+<li>$y_{n+1}=y_n+h\Phi(x_n,y_n,h)$</li>
+<li>增量函数：$\Phi(x_n,y_n,h)$
+<ul>
+<li>$y(x+h)=y(x)+h(f(x,y(x)))+\frac{1}{2!h^2}f'(x,y(x))+\cdots+\frac{1}{p!}h^pf^{(p-1)}(x,y(x))+R_n=y(x)+h\Phi(x,y,h)+R_n$</li>
+</ul>
+</li>
+<li>局部截断误差：$R_n$</li>
+<li>$p=1:\Phi =f(x_n,y_n),R_n=O(h^2)$</li>
+<li>$p=2:\Phi =f(x_n,y_n)+\frac{h}{2}f'(x_n,y_n)=f(x_n,y_n)+f'_x(x_n,y_n)+f'_y(x_n,y_n)f(x_n,y_n),R_n=O(h^3)$</li>
+</ul>
+<h2 id="数值积分法">数值积分法</h2>
+<ul>
+<li>两边求定积分：$y(x_{n+1})=y(x_n)+\int_{x_n}^{x_{n+1}}f(x,y(x))dx$</li>
+<li>矩形公式：$y_{n+1}=y_n+hf(x_n,y_n)$ (Euler 方法)</li>
+<li>梯形公式：$y_{n+1}=y_n+\frac{h}{2}[f(x_n,y_n)+f(x_{n+1},y_{n+1})]$
+<ul>
+<li>局部阶段误差：$R_n=O(h^3)$</li>
+<li>隐式方法：迭代解法 $y_{n+1}^{(k+1)}=y_n+\frac{h}{2}[f(x_n,y_n)+f(x_{n+1},y_{n+1}^k)],|y_{n+1}^{(k+1)}-y_{n+1}^{(k)}|&lt;\epsilon$ 则停止</li>
+</ul>
+</li>
+<li>改进 Euler 方法
+<ul>
+<li>$y_{n+1}^{(0)}=y_n+hf(x_n,y_n)$</li>
+<li>$y_{n+1}=y_n+\frac{h}{2}[f(x_n,y_n)+f(x_{n+1},y_{n+1})]$</li>
+<li>$y_0=\eta$</li>
+</ul>
+</li>
+<li>改进 Euler 方法
+<ul>
+<li>$y_{n+1}=y_n+\frac{h}{2}(f(x_n,y_n)+f(x_n+h,y_n+hf(x_n,y_n)))$</li>
+</ul>
+</li>
+</ul>
+<h2 id="runge-kutta-方法">Runge-Kutta 方法</h2>
+<ul>
+<li>$\exists \theta\in(0,1),\frac{y(x_{n+1}-y(x_n))}{h}=y'(x_n+\theta h)$</li>
+<li>$y(x_{n+1})=y(x_n)+hf(x_n+\theta h,y(x_n+\theta h))$</li>
+<li>$[x_n,x_{n+1}]$ 平均斜率：$K^*=f(x_n+\theta h,y(x_n+\theta h))$</li>
+<li>2 阶 Runge-Kutta:
+<ul>
+<li>$y_{n+1}=y_n+h(\lambda_1 K_1,\lambda_2 K_2)$</li>
+<li>$K_1=f(x_n,y_n)$</li>
+<li>$K_2=f(x_{n+p},y_n+phK_1)$</li>
+<li>$\lambda_1,\lambda_2,p$ 待定
+<ul>
+<li>$\lambda_1=1-\frac{1}{2p}$</li>
+<li>$\lambda_2=\frac{1}{2p}$</li>
+</ul>
+</li>
+<li>$p=1$: 改进的 Euler 算法</li>
+<li>$p=\frac{1}{2}$: 变形的 Euler 算法</li>
+<li>$p=\frac{2}{3}$: Heun 方法</li>
+</ul>
+</li>
+<li>3 阶 Runge-Kutta 方法
+<ul>
+<li>Kutta 方法</li>
+<li>三阶 Heun 方法</li>
+</ul>
+</li>
+<li>4 阶 Runge-Kutta 方法
+<ul>
+<li>经典的 Runge-Kutta 方法，局部截断误差 $O(h^5)$</li>
+</ul>
+</li>
+<li>变步长的 Runge-Kutta 方法：通过步长加倍选择步长</li>
+</ul>
+<h2 id="线性多步法">线性多步法</h2>
+<ul>
+<li>Adams 方法：用 $y_{n},y_{n-1},\dots$ 构造 $P_k(x)$ 外推计算 $y_{n+1}$
+<ul>
+<li>$P_k(x)$：Newton 后差插值多项式</li>
+<li>$f_m=f(x_m,y_m)$</li>
+</ul>
+</li>
+<li>Adams 显示公式：$y_{n+1}=y_n+h\sum_{m=0}^k\alpha_m\nabla^mf_n$
+<ul>
+<li>$k=1$: $y_{n+1}=y_n+\frac{h}{2}(3f_n-f_{n-1})$</li>
+<li>$k=3$: $y_{n+1}=y_n+\frac{h}{24}(55f_n-59f_{n-1}+37f_{n-2}-9f_{n-3})$</li>
+<li>需要用其它方法求出前几个值</li>
+<li>$k$ 步具有 $k$ 阶精度</li>
+</ul>
+</li>
+<li>Adams 隐式公式
+<ul>
+<li>$k=1$: $y_{n+1}=y_n+\frac{h}{2}(f_{n+1}+f_n)$</li>
+<li>$k=2$: $y_{n+1}=y_n+\frac{h}{12}(5f_{n+1}+8f_n-f_{n-1})$</li>
+<li>$k$ 步具有 $k+1$ 阶精度</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

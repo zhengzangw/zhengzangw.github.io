@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Galois 理论 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>分裂域：最小的代数扩张 $L/K$ 使得 $f(x)$ 的所有根在 $L$ 中</li>
+<li>$L/K$ 为代数扩张，$\alpha\in L$ 为 $K$ 上可分元指 $\alpha$ 在 $K$ 上极小多项式在其分裂域中无重根
+<ul>
+<li>若每个 $\alpha\in L$ 为 $K$ 上可分元，则称 $L/K$ 为可分扩</li>
+</ul>
+</li>
+<li>单扩张定理：$L/K$ 为有限可分扩张，则有 $\gamma\in L$ 使得 $L=K(\gamma)$</li>
+<li>正规扩张：$L/K$ 为代数扩张，若对于任何不可约 $f(x)\in K<input checked="" disabled="" type="checkbox"> $, $f(x)=0$ 在 $L$ 有根 $\Rightarrow$ $f(x)$ 所有根在 $L$ 中</li>
+<li>Galois 扩张：$L/K$ 是<strong>有限可分正规扩张</strong></li>
+<li>域扩张 $L/K$ 的 Galois 群 $Gal(L/K)={\sigma\in Aut(L):\forall a\in K(\sigma(a)=a)}$ 按复合构成 $Aut(L)$ 的子群</li>
+<li>$H\leq Gal(L/K)$, 则不变域 $Inv(H)={\alpha\in L:\forall \sigma\in H(\sigma(\alpha)=\alpha)}$ 构成 $L$ 的子域， $K\leq M\leq L$</li>
+<li>Galois 理论基本定理：设 $L/K$ 为域的 Galois 扩张，则
+<ul>
+<li>设 $K\leq M\leq L$，则 $L/M$ 为 Galois 扩张且 $Gal(L/M)\leq Gal(L/K), |Gal(L/M)|=[L:M], H=Inv(Gal(L/M))=M$</li>
+<li>任给 $H\leq Gal(L/K),M=Inv(H)$, 有 $K\leq M\leq L$，且 $Gal(L/M)=H$</li>
+<li>设 $K\leq M\leq L$ 则 $M/K$ 为正规扩张 $\iff Gal(L/M)\unlhd Gal(L/K)$。 $M/K$是正规扩张时，$Gal(M/K)\cong Gal(L/K)/Gal(L/M)$</li>
+</ul>
+</li>
+<li>$K$ 为域，$K(\sqrt[n]{a})/K$ 称为根式扩充。$Gal(K(\sqrt[n]{a}/K))\cong U(Z/nZ)$ 为有限 Abel 群</li>
+<li>$f(x)\in K<input checked="" disabled="" type="checkbox"> $, $f(x)$ 根式可解指存在域扩张 $K_0=K\leq K_1\leq \cdots\leq K_n=L$ 使得 $K_{i+1}/K_i$ 每步都是根式可导的且 $f(x)=0$ 在 $L$ 中可完全分解成一次式乘积</li>
+<li>域$K$，$f(x)\in K<input checked="" disabled="" type="checkbox"> $ 次数大于 0，且分裂元为 $L$，则 $f(x)$ 根式可解 $\iff Gal(L/K)$ 为可解群</li>
+<li>尺规不可三等分角
+<ul>
+<li>尺（一次）规（二次）只能做根号，无法进行3次扩张</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>android on Zangwei</title>
+    <link>https://zhengzangw.com/tags/android/</link>
+    <description>Recent content in android on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Thu, 11 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Set up your Android Development Environment on Macos</title>
+      <link>https://zhengzangw.com/posts/android-develop/</link>
+      <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/android-develop/</guid>
+      <description>&lt;h2 id=&#34;mac-开发环境配置&#34;&gt;Mac 开发环境配置&lt;/h2&gt;
+&lt;h3 id=&#34;install-java8&#34;&gt;Install Java8&lt;/h3&gt;
+&lt;p&gt;java 8 is suitable for android-sdk&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;brew tap caskroom/versions&lt;/code&gt;
+&lt;code&gt;brew cask install java8&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;开发环境&#34;&gt;开发环境&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;brew install ant&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;brew install maven&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;brew install gradle&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;brew cask install android-sdk&lt;/code&gt;
+&lt;code&gt;brew cask install android-ndk&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;brew cask install intel-haxm&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;brew cask install android-studio&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

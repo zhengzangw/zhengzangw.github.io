@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quantum Error Correction | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#distance-measures-over-distribution">Distance Measures over distribution</a></li>
+    <li><a href="#distance-measures-over-quantum-states">Distance Measures over quantum states</a></li>
+    <li><a href="#qec">QEC</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="distance-measures-over-distribution">Distance Measures over distribution</h2>
+<p>Given two distribution ${p_x},{q_x}$</p>
+<ul>
+<li>Trace distance (Total variance): $D(p_x,q_x) = \frac{1}{2}\sum_{x\in X}|p_x-q_x|$</li>
+<li>Fidelity: $F(p_x,q_x)=\sum_{x\in X}\sqrt{p_xq_x}$</li>
+<li>Properties (distribution)
+<ul>
+<li>$[0,1]$</li>
+<li>$D(p_x,q_x)=0\iff F(p_x,q_x)=1\iff \forall x p_x=q_x$</li>
+<li>$D(p_x,q_x)=1\iff F(p_x,q_x)=0\iff \forall x ,\text{supp}(p_x)\cap\text{supp}(q_x)=\emptyset,\text{supp}(p_x)={x|p_x&gt;0}$</li>
+<li>$D(p_x,q_x)=\max_{S\subseteq X}|p_x-q_x|$</li>
+</ul>
+</li>
+</ul>
+<h2 id="distance-measures-over-quantum-states">Distance Measures over quantum states</h2>
+<p>Given two quantum states</p>
+<ul>
+<li>Trace distance: $D(\rho,\sigma)=\frac{1}{2}|\rho-\sigma|_2$
+<ul>
+<li>$D(\rho,\sigma)=D(U\rho U^\dagger,U\sigma U^\dagger),\forall$ unitary $U$</li>
+<li>$D(\rho,\sigma)=\max_P Tr(P(\rho-\sigma))$</li>
+<li>Total error $=\frac{1}{2}-\frac{1}{2}|\rho-\sigma|$</li>
+</ul>
+</li>
+<li>Theorem: $D(\mathcal{E}(\rho),\mathcal{E}(\sigma))\leq D(\rho,\sigma)$</li>
+<li>Fidelity: $F(\rho,\sigma)=Tr\sqrt{\rho^{\frac{1}{2}}\sigma\rho^{\frac{1}{2}}}$</li>
+<li>purification: Given a density operator $\rho$ in system $A$, a bipartite pure state $|\psi\rangle^{AB}$ is a purification of $\rho$ if $Tr_A|\psi\rangle\langle\psi|=\rho$
+<ul>
+<li>existence
+<ul>
+<li>$\rho=\sum_i\lambda_i|u_i\rangle\langle u_i|^A$</li>
+<li>$|\psi\rangle=\sum_i\sqrt{\lambda_i}|u_i u_i\rangle^{AB}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Uhlman&rsquo;s theorem: Suppose $\rho$ and $\sigma$ are states of a quantum system $Q$. Introduce a second quantum system $R$ which is a copy of $Q$, then $F(\rho,\sigma)=\max_{|\psi\rangle,|\phi\rangle}|\langle\psi|\phi\rangle|$</li>
+<li>Theorem: $1-F(\rho,\sigma)\leq D(\rho,\sigma)\leq\sqrt{1-F(\rho,\sigma)^2}$</li>
+<li>gate fidelity: $F(U,\mathcal{E})=\min_{|\psi\rangle}F(U|\psi\rangle\langle\psi|U^\dagger,\mathcal{E}|\psi\rangle\langle\psi\langle\mathcal{E}^\dagger)$</li>
+<li>minimum fidelity (for quantum channel $\mathcal{E}$): $F(\mathcal{E})=\min_{|\psi\rangle}F(|\psi\rangle,\mathcal{E}(|\psi\rangle\psi|))$</li>
+</ul>
+<h2 id="qec">QEC</h2>
+<ul>
+<li>Bit flip code: 3 physical bits to encode 1 logical bit $|0\rangle\rightarrow |000\rangle$
+<ul>
+<li>Recovery: majority vote</li>
+<li>Cannot correct phase error</li>
+</ul>
+</li>
+<li>Phase flip code: 3 physical bits to encode 1 logical bit $|0\rangle\rightarrow |+++\rangle$</li>
+<li>Shor code: Syndrome diagnosis
+<ul>
+<li>$|0\rangle\rightarrow|0_L\rangle=\frac{(|000\rangle+|111\rangle)(|000\rangle+|111\rangle)(|000\rangle+|111\rangle)}{2\sqrt{2}}$</li>
+<li>$|1\rangle\rightarrow|1_L\rangle=\frac{(|000\rangle-|111\rangle)(|000\rangle-|111\rangle)(|000\rangle-|111\rangle)}{2\sqrt{2}}$</li>
+<li>Correct arbitrary one-qubit quantum error</li>
+</ul>
+</li>
+<li>Other quantum error correcting code
+<ul>
+<li>Steane codes</li>
+<li>Calderbank-Shor-Steane codes</li>
+<li>Stabilizer codes</li>
+<li>Toric codes</li>
+<li>Surface codes</li>
+</ul>
+</li>
+<li>NISQ(John Preskill): noisy intemidiate-scale quantum computing</li>
+<li>Quantum Supremacy(John Preskill)</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>8-特征值计算 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#特征值与特征向量">特征值与特征向量</a></li>
+    <li><a href="#幂法">幂法</a></li>
+    <li><a href="#householder-方法">Householder 方法</a></li>
+    <li><a href="#qr-算法">QR 算法</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="特征值与特征向量">特征值与特征向量</h2>
+<ul>
+<li>特征值：求代数方程 $\varphi(\lambda)=|\lambda I-A|= 0$ 的根</li>
+<li>特征向量：求代数方程 $(\lambda I-A)x=0$ 的非零解</li>
+<li>若 $\lambda_i$ 是矩阵 $A$ 的特征值，则
+<ul>
+<li>$\sum_{i=1}^n\lambda_i=\text{tr} A$</li>
+<li>$|A|=\prod \lambda_i$</li>
+</ul>
+</li>
+<li>$A$ 与 $B$ 互为相似矩阵 $\exists T,|T|\neq 0,B=T^{-1}AT$ 则
+<ul>
+<li>$A$ 与 $B$ 有相同的特征值</li>
+<li>$x$ 是 $B$ 的一个特征向量，则 $Tx$ 是 $A$ 的特征向量</li>
+</ul>
+</li>
+<li>Gerschgorin&rsquo;s 定理：$A$ 的每个特征值必属于以下某个圆盘之内 $|\lambda -a_{ii}|\leq \sum_{j=1,j\neq i}^n|a_{ij}|,i=1,\cdots,n$
+<ul>
+<li>特征向量第 $i$ 个分量最大，则属于第 $i$ 个圆盘</li>
+</ul>
+</li>
+<li>$A$ 为对称矩阵，$R(x)=\frac{(Ax,x)}{(x,x)}$ 为对应向量 $x$ 的 Rayleigh 商 (特征值次序 $\lambda_1\geq \cdots \lambda_n$)
+<ul>
+<li>$\lambda_n\leq\frac{(Ax,x)}{(x,x)}\leq\lambda_1$</li>
+<li>$\exists x\in\mathbb{R}^n,x\neq 0$ 使等号成立</li>
+</ul>
+</li>
+</ul>
+<h2 id="幂法">幂法</h2>
+<ul>
+<li>主特征值：最大特征值和相应特征向量</li>
+<li>$v_{k+1}=Av_k$
+<ul>
+<li>$v_0=\sum_{i}a_ix_i$</li>
+<li>$v_k=Av_{k-1}=\lambda_1^k(a_1x_1+\epsilon_k)$</li>
+<li>$\epsilon_k=\sum_{i=2}^na_1(\frac{\lambda_i}{\lambda_1})^kx_i$</li>
+<li>$\lim_{k\rightarrow\infty}\frac{(v_{k+1})_i}{(v_k)_i}=\lambda_1$</li>
+</ul>
+</li>
+<li>规范化：$u=\frac{v}{\max(v)},\max(v)$ 为绝对值最大的分量
+<ul>
+<li>$v_k=Au_{k-1}=\frac{A^kv_0}{\max(A^{k-1}v_0)}$</li>
+<li>$u_k=\frac{v_k}{\max(v_k)}=\frac{A^kv_0}{\max(A^kv_0)}$</li>
+<li>$\max(v_k)\rightarrow\lambda_1$</li>
+<li>收敛比率：$r=\frac{\lambda_2}{\lambda_1}$</li>
+</ul>
+</li>
+<li>加速方法
+<ul>
+<li>原点平移法：$B=A-pI,B$ 特征值为 $\lambda_i-p$ 且特征相同，$|\frac{\lambda_2-p}{\lambda_1-p}|&lt; |\frac{\lambda_2}{\lambda_1}|$</li>
+<li>特征值为实数时：$p=\frac{\lambda_1+\lambda_{n-1}}{2}$</li>
+<li>Rayleigh 商加速法：$\frac{(Au_k,u_k)}{(u_k,u_k)}=\lambda_1+O((\frac{\lambda_2}{\lambda_1})^{2k})$</li>
+</ul>
+</li>
+<li>反幂法：$A^{-1}$ 应用幂法，得主特征 $\frac{1}{\lambda_n}$</li>
+</ul>
+<h2 id="householder-方法">Householder 方法</h2>
+<ul>
+<li>
+<p>$A\in\mathbb{R}^{n\times n},\exists$ 正交阵 $R$，对角块为一阶或二阶矩阵，每个一阶对角块为 $A$ 的实特征值，二阶对角块的两个特征值是 $A$ 的一对共轭复特征值</p>
+<p>$$R^TAR=\begin{bmatrix} T_{11} &amp; T_{12} &amp; \cdots &amp; T_{1n} \newline  &amp; T_{22} &amp; \cdots &amp; T_{2n} \newline  &amp; &amp; \ddots &amp; \vdots \newline  &amp; &amp; &amp; T_{nn} \end{bmatrix}$$</p>
+</li>
+<li>
+<p>上 Hessenberg 阵：$i&gt;j+1$ 时，$b_{ij}=0$</p>
+</li>
+<li>
+<p>单位向量 $w$，初等反射矩阵 $H=H(w)=I-2ww^T$</p>
+<ul>
+<li>对称阵 $H^T=H$</li>
+<li>正交阵 $H^TH=I$</li>
+<li>对合阵 $H^2=I$</li>
+<li>几何意义：做关于以 $w$ 为法向量的平面的反射</li>
+</ul>
+</li>
+<li>
+<p>$x,y$ 为不相等 $n$ 维向量，$|x|_2=|y|_2$，则存在初等反射阵 $H$，$Hx=y$</p>
+<ul>
+<li>$\omega=\frac{x-y}{|x-y|_2}$</li>
+<li>$\sigma=\pm|x|_2,x\neq-\sigma e_1$，则存在反射阵 $H=I-2\frac{uu^T}{|u|_2^2}=I-\rho^{-1}uu^T$，使 $Hx=-\sigma e_1$，其中 $u=x+\sigma e_1,\rho=\frac{|u|_2^2}{2}$</li>
+</ul>
+</li>
+<li>
+<p>算法: 计算 $\sigma,\rho,u$ 使 $(I-\rho^{-1}uu^T)x=-\sigma e_1$</p>
+<ul>
+<li>$\eta=\max_i|\alpha_i|$</li>
+<li>$\alpha_i\leftarrow u_i=\frac{\alpha_i}{\eta}$</li>
+<li>$\sigma=\text{sgn}(\alpha_1)(\sum_{i=1}^n\alpha_i^2)^{\frac{1}{2}}$</li>
+<li>$\alpha_1\rightarrow u_1=\alpha_1+\sigma$</li>
+<li>$\rho=\sigma u_1$</li>
+<li>$\sigma\leftarrow\eta\sigma$</li>
+</ul>
+</li>
+<li>
+<p>$HA$: $2n^2$ 次乘法</p>
+</li>
+<li>
+<p>$A\in\mathbb{R}^{n\times n}$，则存在初等发射矩阵 $U_1,U_2,\cdots,u_{n-2}$ 使 $U_{n-1}\cdots U_2U_1AU_1U_2\cdots U_{n-2}=C$ 为 上 Hessenberg 阵</p>
+<ul>
+<li>约 $\frac{5}{3}n^3$ 次乘法运算</li>
+<li>$A$ 为对称矩阵时，获得三对角矩阵；约 $\frac{2}{3}n^3$ 次乘法运算</li>
+</ul>
+</li>
+<li>
+<p>算法：化为上 Hessenberg 阵</p>
+<ul>
+<li>
+<p>对 $A$ 进行了 $k-1$ 步正交相似约化后，$A_{11}^{(k)}\in\mathbb{R}^{k\times(k-1)}$
+$$\begin{bmatrix} A_{11}^{(k)} &amp; a_{12}^{(k)} &amp; A_{13}^{(k)} \newline  O &amp; a_{22}^{(k)} &amp; A_{23}^{(k)}\end{bmatrix}$$</p>
+</li>
+<li>
+<p>当 $a_{22}^{(k)}\neq 0$ 时，选择初等发射阵 $R_k$ 使 $R_k a_{22}^{(k)}=-\sigma_ke_1$</p>
+<p>$$U_k=\begin{bmatrix}I &amp; O \newline  O&amp;R_k \end{bmatrix}$$</p>
+<p>$$A_{k+1}=U_kA_kU_k=\begin{bmatrix} A_{11}^{(k)} &amp; a_{12}^{(k)} &amp; A_{13}^{(k)}R_k \newline  O &amp; R_ka_{22}^{(k)} &amp; R_kA_{23}^{(k)}R_k \end{bmatrix}$$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="qr-算法">QR 算法</h2>
+<ul>
+<li>平面旋转矩阵：$P_{ij}=I,P_{ij}(i,i)=c,P_{ij}(i,j)=s,P_{ij}(j,j)=1$</li>
+<li>$x=(\alpha_1,\cdots,\alpha_n)^T,\alpha_i,\alpha_j$ 不全为 0,则存在旋转矩阵 $P_{ij}$ 使 $P_{ij}x=y\equiv(\alpha_1,\cdots,\alpha_i^{(1)},\cdots,\alpha_j^{(1)},\cdots,\alpha_n)^T$
+<ul>
+<li>$\alpha_i^{(1)}=\sqrt{\alpha^2_i+\alpha_j^2}$</li>
+<li>$\alpha_j^{(1)}=0$</li>
+<li>$c=\frac{\alpha_i}{\sqrt{\alpha^2_i+\alpha_j^2}}$</li>
+<li>$s=\frac{\alpha_j}{\sqrt{\alpha^2_i+\alpha_j^2}}$</li>
+</ul>
+</li>
+<li>非奇异矩阵 $A$ 可通过一系列平面旋转矩阵，$P_{n-1}\cdots P_2P_1A=R$ 为上三角矩阵且对角元素为正</li>
+<li>QR 分解：$A\in\mathbb{R}^{n\times n}$ 为非奇异矩阵，则 $A$ 可分解为一正交矩阵 $Q$ 与上三角矩阵 $R$ 的乘积；当 $R$ 对角元素都为正时唯一</li>
+<li>基本 $QR$ 方法
+<ul>
+<li>$A_k=Q_kR_k$</li>
+<li>$A_{k+1}=R_kQ_k$</li>
+<li>$A_{k+1}$ 相似于 $A_k$</li>
+<li>$A_{k+1}=(Q_1Q_2\cdots Q_k)^TA_1(Q_1Q_2\cdots Q_k)=\overline Q_k^T A_1\overline Q_k$</li>
+<li>$A^k$ 的 QR 分解式为 $A^k=\overline Q_k\overline R_k$</li>
+</ul>
+</li>
+<li>QR 方法的收敛性：若 $A$ 特征值 $|\lambda_1|&gt;|\lambda_2|\cdots|\lambda_n|&gt;0$ 且有标准形 $A=XDX^{-1}$，且 $X^{-1}$ 有三角分解 $X^{-1}=LU$，则 QR 算法收敛于上三角矩阵，且对角元素为 $\lambda_i$
+<ul>
+<li>对称阵收敛于对角阵</li>
+<li>若等模特征值只有实重特征值或多重复的共轭特征值，则收敛于分块上三角矩阵</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

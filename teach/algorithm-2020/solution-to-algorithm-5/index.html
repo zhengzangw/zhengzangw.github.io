@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solution to HW 5 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#10-19">10-19</a>
+      <ul>
+        <li><a href="#61">6.1</a></li>
+        <li><a href="#62">6.2</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-22">10-22</a>
+      <ul>
+        <li><a href="#621">6.21</a></li>
+        <li><a href="#622">6.22</a></li>
+        <li><a href="#623">6.23</a></li>
+        <li><a href="#624">6.24</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="10-19">10-19</h2>
+<h3 id="61">6.1</h3>
+<p>空间上消耗可能增多，时间上摊还复杂度低（$1+\frac{4}{3}t$）。两种方法视实际情况需要使用。</p>
+<h3 id="62">6.2</h3>
+<p>应该使用<a href="https://zhuanlan.zhihu.com/p/87355970">均摊分析</a>（有些同学写了平均分析，实际给的是一种特殊情况下的时间开销）</p>
+<p>根据书中的 accounting scheme，在无 shrink 的情况下，push 的 amortized cost 为 $1+2t$，pop 的 amortized cost 为 $1$。这道题的处理关键在于要考虑 pop 操作的 credit</p>
+<ul>
+<li>
+<p>(a) 取临界情况（栈大小 $n$，$n-1$ 次 push 后反复 push + pop）可知均摊时间复杂度非常数（均摊分析也是在最坏情况下的分析）</p>
+</li>
+<li>
+<p>(b) push: $1+2t$, pop: $1+t$</p>
+<p>考虑已扩展到 $4N$ 的情况</p>
+<ul>
+<li>$2N\sim 4N$: push 的 accounting 足够</li>
+<li>$N\sim2N$: push 的 accounting 保证下一次 push 时 credit 为正，pop 累积有 $Nt$ 的 accounting 用于 shrink</li>
+</ul>
+</li>
+<li>
+<p>(c) push: $1+2t$, pop: $1$</p>
+<p>与 (b) 不同在于此时可以借用 $N\sim 2N$ 间 push 的 accounting 用于 shrink</p>
+</li>
+<li>
+<p>(d) 仿照 6.1 以空间换时间，用更小的比例即可</p>
+</li>
+</ul>
+<h2 id="10-22">10-22</h2>
+<h3 id="621">6.21</h3>
+<p>可以考虑最坏情况，$n-1$ (Union) + $(m-n+1)n$ (Find) $\leq mn+n$</p>
+<h3 id="622">6.22</h3>
+<ul>
+<li>(a) 略</li>
+<li>(b) 不同，举反例即可</li>
+<li>(c) $O(n+m\log n)$</li>
+</ul>
+<h3 id="623">6.23</h3>
+<p>略</p>
+<h3 id="624">6.24</h3>
+<p>略</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

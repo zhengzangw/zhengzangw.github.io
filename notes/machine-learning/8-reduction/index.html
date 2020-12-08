@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dimension Reduction | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#线性降维">线性降维</a>
+      <ul>
+        <li><a href="#mds">MDS</a></li>
+        <li><a href="#pca-principal-component-analysis">PCA (Principal Component Analysis)</a></li>
+      </ul>
+    </li>
+    <li><a href="#非线性降维">非线性降维</a>
+      <ul>
+        <li><a href="#核化线性降维">核化线性降维</a></li>
+        <li><a href="#流形学习">流形学习</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="线性降维">线性降维</h2>
+<ul>
+<li>维数灾难 curse of dimensionality
+<ul>
+<li>高维空间样本稀疏</li>
+<li>计算内积难</li>
+</ul>
+</li>
+</ul>
+<h3 id="mds">MDS</h3>
+<p>Multiple Dimensional Scaling, 多维放缩</p>
+<ul>
+<li>样本间距离在低维空间保持</li>
+<li>算法
+<ol>
+<li>由距离矩阵 $D$ 求内积矩阵：$b_{ij}=-\frac{1}{2}(D_{ij}^2-D_{i*}^2-D_{*j}^2+D_{**}^2)$</li>
+<li>特征值分解：$B=V\Lambda V^T$，非零特征值构成 $\Lambda_*=diag{\lambda_1,\lambda_2,\cdots,\lambda_{d^*}}$</li>
+<li>坐标 $Z=\Lambda_*^{\frac{1}{2}}V_*^T$，可取前 $d'$ 个最大特征值</li>
+</ol>
+</li>
+</ul>
+<h3 id="pca-principal-component-analysis">PCA (Principal Component Analysis)</h3>
+<ul>
+<li>最近重构性：样本点到这个超平面距离足够近</li>
+<li>最大可分性：样本点在这个超平面上的投影尽可能的分开</li>
+</ul>
+<p>$$
+\begin{aligned}
+\max &amp;\ \text{tr}(W^TXX^TW)\newline
+s.t &amp;\ W^TW=1
+\end{aligned}
+$$</p>
+<ul>
+<li>算法
+<ol>
+<li>中心化</li>
+<li>计算协方差矩阵 $XX^T$ 并特征值分解</li>
+<li>取最大 $d'$ 个特征向量为投影矩阵</li>
+</ol>
+</li>
+<li>PCA: 最佳描述特征</li>
+<li>LDA: 最佳分类特征</li>
+</ul>
+<h2 id="非线性降维">非线性降维</h2>
+<h3 id="核化线性降维">核化线性降维</h3>
+<ul>
+<li>KPCA</li>
+<li>KLDA</li>
+</ul>
+<h3 id="流形学习">流形学习</h3>
+<h4 id="isomap">Isomap</h4>
+<ul>
+<li>只考虑局部距离</li>
+<li>算法
+<ol>
+<li>最短路径算法求出任意两点距离</li>
+<li>代入 MDS</li>
+</ol>
+</li>
+</ul>
+<h4 id="llelocally-linear-embedding-局部线性嵌入">LLE(Locally Linear Embedding 局部线性嵌入)</h4>
+<ul>
+<li>
+<p>只考虑邻域内样本间的线性关系，在低维空间重构权值</p>
+</li>
+<li>
+<p>算法</p>
+<ol>
+<li>确定每个点的 $k$ 近邻 $Q_i$</li>
+<li>根据下式求出 $w_{ij},j\in Q_i$，且 $w_{ij}=0$ if $j\not\in Q_i$</li>
+</ol>
+<p>$$
+\begin{aligned}
+\min_{\omega_1,\omega_2,\cdots,\omega_m} &amp; \sum_{i=1}^m\Vert x_i-\sum_{j\in Q_i}\omega_{ij}x_j\Vert^2_2 \newline
+s.t. &amp; \sum_{j\in Q_i}\omega_{ij}=1
+\end{aligned}
+$$</p>
+<ol start="3">
+<li>对 $M=(I-W)^T(I-W)$ 特征值分解，最小的 $d'$ 个特征值为投影 $Z$</li>
+</ol>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

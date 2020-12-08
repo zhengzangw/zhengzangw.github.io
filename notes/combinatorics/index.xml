@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>[M] 组合数学 Combinatorics on Zangwei</title>
+    <link>https://zhengzangw.com/notes/combinatorics/</link>
+    <description>Recent content in [M] 组合数学 Combinatorics on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/combinatorics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Basic Enumeration</title>
+      <link>https://zhengzangw.com/notes/combinatorics/1-basic-enumeration/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/1-basic-enumeration/</guid>
+      <description>Product Rule: finite set $|S\times T|=|S||T|$ Sum Rule: finite disjoint set $|S\cup T|=|S|+|T|$ Bijection Rule: finite set $\exists\phi:S\rightarrow T$ onto and 1-1 then $|S|=|T|$  1-1: $\leq$ onto: $\geq$   $[m] = {0,1,2,\cdots,m-1}$ $2^{[m]}={S|S\subseteq [n]}$: Power set ${n\choose k}=|{[n]\choose k}|$  ${S\choose k}={T\subseteq S||T|=k}$   ${n\choose m_1,\cdots,m_k}=\frac{n!}{m_1!\cdots m_k!}$  number of assignments such that $i$-th bin has $m_i$ balls in it number of permutations of a multiset $M$ with $|M|=n$ such that $M$ has $k$ distinct elements whose multiplicities are given by $m_1,m_2,\cdots,m_k$   $(m)_n= {m\choose m-n}$: $m$ lower factorial $n$ Binominal theorem: $(1+x)^n=\sum_{k=0}^n{n\choose k}x^k$ Multinominal theorem: $(x_1+\cdots+x_k)^n=\sum_{m_1+\cdots+m_k=n}{n\choose m_1,\cdots,m_k}x_1^{m_1}\cdots x_k^{m_k}$ $k$-composition of $n$: ${n-1\choose k-1}$  ordered sum of positive integers   week $k$-composition of $n$: ${n+k-1\choose k-1}$  number of nonnegative solutions to $x_1+x_2+\cdots+x_k\leq n$: ${n+k \choose k}$   $k$-multisets on $S$: $({n\choose k})={n+k-1\choose n-1}={n+k-1\choose k}$ ${n\brace k}$: $k$-partitions of an $n$-set, Stirling number of the second kind  ${n\brace k}=k{n-1\brace k}+{n-1 \brace k-1}$ $\left{{n \atop m}\right}={\frac {1}{m!</description>
+    </item>
+    
+    <item>
+      <title>2. Generating Functions</title>
+      <link>https://zhengzangw.com/notes/combinatorics/2-generating-function/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/2-generating-function/</guid>
+      <description>ordinary generating function(OGF) define by $a_n$: $G(x)=\sum_{n\geq0}a_nx^n$ coefficient: $[x^k]G(x)$ $\mathbb{C}[]$: ring of formal power series with complex coefficient Combination: 3 red, 4 blue, and 5 green  $(1+x+x^2+x^3)(1+x+x^2+x^3+x^4)(1+x+x^2+x^3+x^4+x^5)$ coefficient $x^k$ gives the number of way to select $k$ balls   Fibonacci number  $F_n=\frac{1}{\sqrt{5}}(\phi^n-\hat\phi^n),\phi=\frac{1+\sqrt{5}}{2},\hat\phi=\frac{1-\sqrt{5}}{2}$ $G(x)=\frac{x}{1-x-x^2}=\frac{x}{(1-\phi x)(1-\hat\phi x)}=\frac{\alpha}{1-\phi x}+\frac{\beta}{1-\hat\phi x}$   General Methodology  Give a recursion that computes $a_n$ Give the generating function and manipulate the right hand side of equation so that it becomes some other expression involving $G(x)$  shift: $x^kG(x)=\sum_{n\geq k}g_{n-k}x^n$ addition: $F(x)+G(x)=\sum_{n\geq 0}(f_n+g_n)x^n$ convolution: $F(x)G(X)=\sum_{n\geq 0}\sum_{k=0}^nf_kg_{n-k}x^n$ differentiation: $G&#39;(x)=\sum_{n\geq0}(n+1)g_{n+1}x^n$   Solve the resulting equation to derive an explicit formula for $G(x)$ Expand $G(x)$ into a power series and read off the coefficient of $x^n$  Taylor expansion: $G(x)=\sum_{n\geq 0}\frac{G^{(n)}(0)}{n!</description>
+    </item>
+    
+    <item>
+      <title>3. Sieve methods</title>
+      <link>https://zhengzangw.com/notes/combinatorics/3-sieve-methods/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/3-sieve-methods/</guid>
+      <description>PIE  PIE(Priciple of Inclusion-Exclusion)  $A_I=\bigcap_{i\in I}A_i$ $|\bigcup_{i=1}^nA_i|=\sum_{I\subseteq{1,\cdots,n},|I|\geq 1}(-1)^{|I|-1}|A_I|$ $|\bigcap_{i=1}^n\overline{A_i}|=\sum_{I\subseteq{1,\cdots,n}}(-1)^{|I|}|A_I|$   Sieve methods: 计算恰好具备某种性质的 $\Rightarrow$ 计算不具有一系列坏性质的  Define $|U|$ Define &amp;lsquo;bad&amp;rsquo; properties $A_i$ Use PIE count the number    Surjections  Count Surjections $f:N\rightarrow M$ $U={f:[n]\rightarrow[m]}, |U|=m^n$ $A_i={f:[n]\rightarrow[m]\backslash{i}},|A_i|=(m-1)^n$ $A_I={f:[n]\rightarrow[m]\backslash I},|A_I|=(m-|I|)^n$ $|\bigcap_{i=1}^n\overline{A_i}|=\sum_{I\subseteq{1,\cdots,n}}(-1)^{|I|}|A_I|=\sum_{j=0}^m(-1)^j{m\choose j}(m-j)^n=m!{n\brace m}$  Derangements  fixed point $i$: $i\in{1,2,\cdots,n},\pi(i)=i$ derangement of ${1,2,\cdots,n}$ is $\pi$ that has no fixed points $U=S_n,|U|=n!$ $A_i={\pi|\pi(i)=i}$, $|A_i|=(n-1)!$ $|A_I|=(n-|I|)!$ $\sum_{I\subseteq[n]}(-1)^{|I|}|A_I|=n!\sum_{k=0}^n\frac{(-1)^k}{k!}\approx\frac{n!}{e}$  Permutations with restricted positions  $B\subseteq [n]\times[n]$ $G_\pi(V,E)={(i,\pi(i))|i\in [n]}$ $N_0=|{\pi|B\cap G_\pi=\emptyset}$ (Non-attacking rooks) $r_k:|{S\in{B\choose k}|\forall(i_1,j_1),(i_2,j_2)\in S,i_1\not= i_2,j_1\not=j_2}$ $N_0=\sum_{k=0}^n(-1)^kr_k(n-k)!</description>
+    </item>
+    
+    <item>
+      <title>4. Pólya&#39;s Theory of Counting</title>
+      <link>https://zhengzangw.com/notes/combinatorics/4-polya-counting/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/4-polya-counting/</guid>
+      <description> Graph Isomorphism (GI)  Input: two undirected graphs $G$ and $H$ Output: $[G\cong H]$   String Isomorphism (SI)  Input: two strings $x,y$: $[n]\rightarrow[m]$ and a permutation group $G\subseteq S_n$ Output: $[x\cong_G y]$    群作用的基本概念  群 $G$ 在非空集合 $X$上的左作用 $\circ:G\times X\rightarrow X$ 满足  $\forall x\in X(e\circ x=x)$ $g_1\circ(g_2\circ x) = (g_1g_2) \circ x$   轨道：$O_x=Gx={g\circ x:g\in G}$  Let $X/G={O_x|x\in G}$ $X=\bigsqcup O_x$   $g$-不动点(invariant set)：$X_g=\text{fix}(g)={x\in X:g\circ x=x}$ 稳定化子(stabilizers)：$G_x=\text{stab}(x)={g\in G: g\circ x=x}\leqslant G$  $[G:G_x]=|O_x|$   Burnside引理: $|X/G|=\frac{1}{|G|}\sum_{g\in G}|X_g|$  Pólya Theory of Counting  $M_\pi(x_1,x_2,\cdots,x_n)=\prod_{i=1}^k x_{l_i},i$th cycle has length $i$ cycle index of $G$: $P_G(x_1,x_2,\cdots,x_n) = \frac{1}{|G|}\sum_{\pi\in G}M_\pi(x_1,x_2,\cdots,x_n)$ nonequivalent $m$-colorings of $n$ objects under the action of $G$ pattern inventory  $F_G(y_1,y_2,\cdots,y_m)=\sum_{v}a_vy_1^{n_1}y_2^{n_2}\cdots y_m^{n_m}$ $v=(n_1,n_2,\cdots,n_m),\sum_{i=1}^mn_i = n$   Pólya&amp;rsquo;s enumeration formula: $F_G(y_1,y_2,\cdots,y_m)=P_G(\sum_{i=1}^my_i,\sum_{i=1}^my_i^2,\cdots,\sum_{i=1}^my_i^n)$  </description>
+    </item>
+    
+    <item>
+      <title>5. Cayley&#39;s Formula</title>
+      <link>https://zhengzangw.com/notes/combinatorics/5-cayley-formula/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/5-cayley-formula/</guid>
+      <description>Cayley&amp;rsquo;s formula: There are $n^{n-2}$ different trees on $n$ distinct vertices  Double Counting  Count: # of sequences of adding directed edges to an empty graph to form a rooted tree  From a Tree: $T_nn(n-1)!=n!T_n$ From an empty graph: $\prod_{k=0}^{n-2}n(n-k-1)=n^{n-2}n!$    Prüfer code  encoder:  $T_1=T$ for i=1 to n-1  $u_i$: smallest leaf in $T_i$ $(u_i,v_i)$: edge in $T_i$ $T_{i+1}=T_i\backslash u_i$   return $(v_1,v_2,\cdots,v_{n-2})$   decoder:  $T=\emptyset,v_{n-1}=n$ for i=1 to n-1  $u_i$: smallest not in ${u_1,\cdots,u_{i-1}}\cup{v_i,\cdots,v_{n-1}}$ $T\cup={u_i,v_i}$   return $T$    Kirchhoff&amp;rsquo;s Matrix-Tree Theorem  Adjacent matrix $A$: $A_{ij}=[{i,j}\in E]$ Degree matrix $D$: $D_{ij}=\text{deg}(i)[i=j]$ incidence matrix: $B_{n\times m}$  $$ B(i,e)=\begin{cases} 1 &amp;amp; e={i,j}\wedge i&amp;lt;j\newline -1 &amp;amp; e={i,j}\wedge i&amp;gt;j\newline 0 &amp;amp; o.</description>
+    </item>
+    
+    <item>
+      <title>6. Existence by Counting</title>
+      <link>https://zhengzangw.com/notes/combinatorics/6-existence-by-counting/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/6-existence-by-counting/</guid>
+      <description>Existence by Counting  Shannon 1949: There is a boolean function $f:{0,1}^n\rightarrow{0,1}$ which cannot be computed by any circuit with $\frac{2^n}{3n}$ gates  $f$ computable by $t$ gates: $2^{2^n}$ circuits with $t$ gates: $&amp;lt;2^t(2n+t+1)^{2t}$    Double Counting  Handshaking Lemma: $\sum_{v\in V}d(v)=2|E|$ Sperner&amp;rsquo;s Lemma(1928): For any properly colored trangulation, there existst a cell receiving all three colors  trangulation: a decompostion of $abc$ to small triangles(cells) such that any two different cells are either disjoint or share and edge of vertex proper coloring: color with 3 color that  $a,b,c$ has different color The vertices in each of the three lines $ab,bc,ac$ receive two colors     Brouwer&amp;rsquo;s fixed point theorem (1911)  $\forall$ continous function $f:B\rightarrow B$ of an $n$-dimensional ball, $\exists$ a fixed point $x=f(x)$    Pigeonhole Principle  General Pigeonhole Principle: If a set consisting of more than $mn$ objects is partitioned into $n$ classes, then some class receives more than $n$ objects.</description>
+    </item>
+    
+    <item>
+      <title>7. Probabilistic Method</title>
+      <link>https://zhengzangw.com/notes/combinatorics/7-probabilistic-method/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/7-probabilistic-method/</guid>
+      <description>Existence by Probability $$\exists x,A(x)\Leftarrow P(A(x))&amp;gt;0$$
+$$\exists x,A(x)\Leftarrow P(\neg A(x))&amp;lt;1$$
+$$P(A)=P(\wedge_{i=1}^n\overline{A}_i)&amp;gt;0\Leftarrow P(\vee_{i=1}^nA_i)&amp;lt;1\Leftarrow \sum_{i=1}^nP(A_i)$$
+Lower Bound for Ramsey&amp;rsquo;s Number  $R(k,k),\forall$ two coloring of $K_n,n&amp;gt;R(k,k),\exists$ a monochromactic $K_k$ Erdős Theorem(1947): ${n\choose k}2^{1-C_k^2}&amp;lt;1$ then it is possible to color the edges of $K_n$ with two colors so that there is no monochromatic $K_k$ subgraph  Paradoxical Tournament  orientation of the edges of the complete graph on set of vertices $V$ $k$-paradoxical: $\forall V, |V|=k,\exists v$ beats them all Theorem (Erdős 1963): if ${n\choose k}(1-2^{-k})^{n-k}&amp;lt;1$, there is a tournament on $n$ vertices that is $k$-paradoxical  The Averaging principle $$\exists x,A(x)\geq t\Leftarrow E(x)\geq t$$</description>
+    </item>
+    
+    <item>
+      <title>8. Extremal Graph Theory</title>
+      <link>https://zhengzangw.com/notes/combinatorics/8-extremal-graph-theory/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/8-extremal-graph-theory/</guid>
+      <description>How many edges that a graph $G$ can have if $G$ has some property
+Triangle-free graph contains no triangle as subgraph
+ Mantel&amp;rsquo;s Theorem (1907): if $G(V,E)$ has $|V|=n$ and is triangle-free, then $|E|\leq\frac{n^2}{4}$  for $n$ is even, extremal graph: $K_{\frac{n}{2},\frac{n}{2}}$ First Proof: Induction Second Proof: $d_u+d_v\leq n$ Third Proof    Cliques-free graph  Turán&amp;rsquo;s Theorem (1941): If $G(V,E)$ has $|V|=n$ and is $K_r$-free, then $|E|\leq\frac{r-2}{2(r-1)}n^2$  First Proof: Induction Second Proof: weight shifting Third Proof: the probalilistic method Fourth Proof: Turán graph $T(n,r)=K_{n_1,\cdots,n_r},\sum_{i=1}^rn_i=n,n_i\in{\lfloor\frac{n}{r}\rfloor,\lceil\frac{n}{r}\rceil}$, $T(n,r-1)$ has no $K_r$   Turán&amp;rsquo;s Theorem (independent set): $G(V,E)$ has $|V|=n$ and $|E|=m$ then $G$ has an independent set of size $\geq\frac{n^2}{2m+n}$ Parallel Max: compute max of $n$ distinct numbers  1-round: ${n\choose 2}$ 2-round: $O(n^{\frac{4}{3}}),k=n^{\frac{2}{3}}$    Cycles-free graph  $g(G)\geq 5,|E|\leq\frac{1}{2}n\sqrt{n-1}$  Specific-substructure-free graph  $\text{ex}(n,H)=\max_{G\not\supset H,|V(G)|=n}|E(G)|$  Turan&amp;rsquo;s Theorem: $\text{ex}(n,K_r)=|T(n,r-1)|\leq\frac{r-2}{2(r-1)}n^2$ $K_s^r=K_{s,s,\cdots,s}=T(rs,r)$: complete $r$-partite graph with $s$ vertices in each part   Fundamental theorem of extremal graph theory (Erdős–Stone 1946): $\text{ex}(n,K_s^r)=(\frac{r-2}{2(r-1)}+o(1))n^2$ Corollary: For any nonempty graph $H$, $\lim_{n\rightarrow\infty}\frac{\text{ex}(n,H)}{n\choose 2}=\frac{\chi(H)-2}{\chi(H)-1}$  extremal density of subgraph $H$: $\frac{\text{ex}(n,H)}{n\choose 2}$    </description>
+    </item>
+    
+    <item>
+      <title>9. Extremal set theory</title>
+      <link>https://zhengzangw.com/notes/combinatorics/9-extremal-set-theory/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/9-extremal-set-theory/</guid>
+      <description>How large or how small a collection of finite objects can be, if it has to satisfy certain restrictions
+Sunflower  set system $\mathcal{F}\subset 2^{[n]}$ with ground set $[n]$ a sunflower of size $r$ with center $C$  $|\mathcal{F}|=r$ $\forall S,T\in\mathcal{F},S\cap T=C$   Sunflower Lemma (Erdős-Rado 1960)  $\mathcal{F}\subset{[n]\choose k},|\mathcal{F}|&amp;gt;k!(r-1)^k\Rightarrow\exists$ a sunflower $\mathcal{G}\subset\mathcal{F}$ such that $|\mathcal{G}|=r$   Sunflower Conjecture: $|\mathcal{F}|&amp;gt;c(r)^k$  Mutually Intersecting  Erdős-Ko-Rado Theorem: $\mathcal{F}\subset{[n]\choose k},n\geq 2k,\forall S,T\in\mathcal{F},S\cap T\neq\emptyset\Rightarrow|\mathcal{F}|\leq{n-1\choose k-1}$  Katona&amp;rsquo;s proof: double counting Erdős&#39; proof: shifting   Shifting(Compression)  Define a shift operator  perserve desired property original problem is easy on shifted elements   e.</description>
+    </item>
+    
+    <item>
+      <title>10. Ramsey&#39;s Theory</title>
+      <link>https://zhengzangw.com/notes/combinatorics/10-ramsey-theory/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/10-ramsey-theory/</guid>
+      <description>2-color Ramsey  $R(k,l)$ is the smallest integer satisfying: if $n\geq R(k,l),\forall$ 2-coloring $K_n$, there exists a red $K_k$ or a blue $K_l$ Remsey Theorem (In graph theory): $R(k,l)$ is finite  $R(k,2)=k,R(2,l)=l$   Upper Bound: $R(k,l)\leq R(k,l-1)+R(k-1,l)$  $R(k,l)\leq {k+l-2\choose k-1}$   Lower Bound: $R(k,k)\geq n=\Omega(k2^{\frac{k}{2}})$  mix-color Ramsey  $R(r;k_1,k_2,\cdots,k_r)$: if $n\geq R(r;k_1,k_2,\cdots,k_r)$ for any $r$-coloring of $K_n$, there exists a monochromatic $k_i$-clique with color $i$ for some $i\in{1,2,\cdots,r}$ $R(r;k_1,k_2,\cdots,k_r)\leq R(r-1;k_1,k_2,\cdots,k_{r-2},R(2;k_{r-1},k_r))$  hypergraph Ramsey  if $n\geq R_t(r;k_1,k_2,\cdots,k_r)$ for any $r$-coloring of ${[n]\choose t}$, there exists a monochromatic $S\subseteq [n],|S|=k_i$, ${S\choose t}$ are colored $i$  Erdos-Rado partition arrow: $n\rightarrow(k_1,k_2,\cdots,k_r)^t$   $R_{t}(r;k_{1},k_{2},\ldots ,k_{r})\leq R_{t}(r-1;k_{1},k_{2},\ldots ,k_{r-2},R_{t}(2;k_{r-1},k_{r}))$  Application  Erdos-Szekeres(1935, The Happy Ending Problem) Theorem: $\forall m\geq 3,\exists N(m)$ such that any set of $n\geq N(m)$ points in the plane, no three on a line, contains $m$ points that are the vertices of a convec $m$-gon  $N(m)=R_3(2;m,m)$   Problem: Is $x\in S,S\in{[N]\choose n},x\in[N]$  Theorem (Yao 1981): If $N\geq 2n$, on sorted table, any search Alg requires $\Omega(\log n)$ accesses in the worst-case Theorem (Yao 1981): For sufficiently large $N$, on any implicit data structure, any search Alg requires $\Omega(\log n)$ accesses in the worst-case    </description>
+    </item>
+    
+    <item>
+      <title>11. Matching Theory</title>
+      <link>https://zhengzangw.com/notes/combinatorics/11-matching-theory/</link>
+      <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/combinatorics/11-matching-theory/</guid>
+      <description>Hall Theorem  SDR: system of Distinct Representives  distinct $x_1,x_2,\cdots,x_m,x_i\in S_i,i=1,2,\cdots,m$   Hall&amp;rsquo;s Theorem (marriage theorem): $S_1,S_2,\cdots,S_m$ have a SDR $\iff \forall I\subseteq{1,2,\cdots,m},|\bigcup_{i\in I}S_i|\geq|I|$ Hall&amp;rsquo;s Theorem (graph theory form): A bipartite graph $G(U,V,E)$ has a matching of $U$ $\iff\forall S\subseteq U,|N(S)|\geq|S|$  $N(S)={v|\exists u\in S,uv\in E}$ proof: induction, divide into two cases according to critical family ($|\bigcup_{i=1}^kS_i|=k$)    Min-Max Theorems  König-Egerváry theorem: in bipartite graph, $\min$ vertex cover = $\max$ matching  matchign: $M\subseteq E,\neg\exists e_1,e_2\in M$ share a vertex vertex cover: $C\subseteq V,\forall e\in E$ adjacent to some $v\in C$   König-Egerváry theorem (matrix form): For any 0-1 matrix, the maximum number of independent 1&amp;rsquo;s $s$ equals the minimum number of rows and columns required to cover all the 1&amp;rsquo;s $t$  $r\leq s$ $r\geq s$: Hall Thoerem   Dilworth&amp;rsquo;s theorem: $\max$ size of antichain $r$ in poset $P$ $=$ $\min$ size $s$ of smallest partition of $P$ into chains  chain: totally ordered set, all pairs of elements are comparable antichain: all pairs of elements are incomparable $r\leq s$ $r\geq s$:   Erdős-Szekeres Theorem: A sequence of more than $mn$ different real numbers must contain either an increasing subsequence of length {\displaystyle m+1}{\displaystyle m+1}, or a decreasing subsequence of length $(m+1)(n+1)$.</description>
+    </item>
+    
+  </channel>
+</rss>

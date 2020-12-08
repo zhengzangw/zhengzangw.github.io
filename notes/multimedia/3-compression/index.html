@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数据压缩 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#无损数据压缩">无损数据压缩</a></li>
+    <li><a href="#音频数据压缩标准">音频数据压缩标准</a></li>
+    <li><a href="#图像数据压缩标准">图像数据压缩标准</a></li>
+    <li><a href="#视频数据压缩标准">视频数据压缩标准</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="无损数据压缩">无损数据压缩</h2>
+<ul>
+<li>压缩率 = 未压缩/压缩后</li>
+<li>Huffman 编码</li>
+<li>算术编码
+<ul>
+<li>任意消息用 0 到 1 之间的实数进行编码</li>
+<li>根据出现概率确定区间</li>
+</ul>
+</li>
+<li>词典编码</li>
+<li>RLE（行程）编码</li>
+</ul>
+<h2 id="音频数据压缩标准">音频数据压缩标准</h2>
+<ul>
+<li>话音信号特点
+<ul>
+<li>幅度的非均匀分布</li>
+<li>样本相关</li>
+<li>周期相关</li>
+<li>基音相关</li>
+<li>静止稀疏</li>
+<li>长时间自相关</li>
+</ul>
+</li>
+<li>话音编码器
+<ul>
+<li>波形编译码器
+<ul>
+<li>PCM (G.711 64kb/s)</li>
+<li>增量调制 $\Delta M$: CFDM, CVSD</li>
+<li>APCM</li>
+<li>DPCM</li>
+<li>ADPCM (G.721 32kb/s)</li>
+<li>SB-ADPCM (G.722 48kb/s + 16kb/s)</li>
+</ul>
+</li>
+<li>音源编译码器
+<ul>
+<li>LPC 线性预测编码</li>
+</ul>
+</li>
+<li>混合编译码
+<ul>
+<li>MPE, RPE, CELP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>人类听觉特点
+<ul>
+<li>听觉掩蔽效应：一种频率的声音阻碍听觉系统感受另一种频率的声音
+<ul>
+<li>频域掩蔽：同时，高纯掩低纯</li>
+<li>时域</li>
+</ul>
+</li>
+<li>临界频带</li>
+</ul>
+</li>
+<li>MPEG1 Audio
+<ul>
+<li>Layer1: 频带相等子带（6bit 量化），频域掩蔽特性</li>
+<li>Layer2：+时间掩蔽特性，低频度 4 比特，中频带 3 比特，高度 2 比特</li>
+<li>Layer3：非等宽 + Huffman + MDCT</li>
+</ul>
+</li>
+<li>MPEG2 Audio
+<ul>
+<li>MPEG-2 BC：支持 Linear PCM 和 Dolby AC-3 编码</li>
+<li>MPEG-2 AAC：利用掩蔽特性减少数据量，并把量化噪声分散到各个子带中，用全局信号把噪声掩蔽掉</li>
+</ul>
+</li>
+<li>MPEG4</li>
+</ul>
+<p><img src="/images/content/multimeida-audio.png" alt="Audio"></p>
+<h2 id="图像数据压缩标准">图像数据压缩标准</h2>
+<ul>
+<li>gif, png：词典编码</li>
+<li>bmp: RLE</li>
+<li>JPEG(.jpg)：以 DCT 为基础的有损压缩算法
+<ul>
+<li>正向离散余弦变换 FDCT</li>
+<li>量化 quantization</li>
+<li>Z字形编码</li>
+<li>使用 DPCM 对直流系数编码</li>
+<li>使用 RLE 对交流系数编码</li>
+<li>熵编码</li>
+</ul>
+</li>
+<li>JPEG2000(.jp2)</li>
+</ul>
+<h2 id="视频数据压缩标准">视频数据压缩标准</h2>
+<ul>
+<li>视频压缩标准
+<ul>
+<li>ITU-T: H.261(1990) - H.262(1994) - H.263 - H.264</li>
+<li>ISO: MPEG1(1992) - MPEG2 - MPEG4 - MPEG7 - HEVC(H.265, 2013)</li>
+<li>Google: VP9, VP8</li>
+<li>Microsoft Inc.: VC-1</li>
+<li>我国研发：AVS</li>
+</ul>
+</li>
+<li>MPEG
+<ul>
+<li>空间方向用 JPEG 去掉冗余</li>
+<li>时间方向用移动补偿算法
+<ul>
+<li>帧内图像 $I$</li>
+<li>预测图像 $P$</li>
+<li>插补图像 $B$</li>
+</ul>
+</li>
+<li>块匹配法</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>18. File Hierarchy Standard | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#file-type">File Type</a></li>
+    <li><a href="#attribute">Attribute</a></li>
+    <li><a href="#availbale-device">Availbale Device</a></li>
+    <li><a href="#arrangement-on-in-use-device">Arrangement on in-use device</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="file-hierarchy">File Hierarchy</h1>
+<p><a href="https://www.freedesktop.org/software/systemd/man/file-hierarchy.html">Link to File Hierarchy</a></p>
+<h1 id="notawesome-user-file-hierarchy-standard">NotAwesome User File Hierarchy Standard</h1>
+<h2 id="introduction">Introduction</h2>
+<p>NotAwesome User File Hierarchy Standard aims to help user better manage their resources and files in user space. The standard takes account of all storage at hand or online. It follows tree principles:</p>
+<ul>
+<li>Accessibility: Anytime you want to locate a resource, you know where it resides and can be accessed</li>
+<li>Convinience: Frequent used resource should be accessed fast</li>
+<li>Safe: data not lost</li>
+</ul>
+<h2 id="file-type">File Type</h2>
+<ul>
+<li>Work
+<ul>
+<li>Homework</li>
+</ul>
+</li>
+<li>Resource
+<ul>
+<li>Music</li>
+<li>Book</li>
+<li>Essay</li>
+<li>Dataset</li>
+<li>Video</li>
+<li>Pictures</li>
+</ul>
+</li>
+<li>Project
+<ul>
+<li>normal project</li>
+<li>collective project</li>
+</ul>
+</li>
+<li>Temporary File
+<ul>
+<li>test file</li>
+<li>Downloads</li>
+</ul>
+</li>
+</ul>
+<h2 id="attribute">Attribute</h2>
+<p>When designing the file hierarchy, following attribute should be considered</p>
+<ul>
+<li>Time: it should a divide attribute at low level</li>
+<li>Topic</li>
+<li>Tools</li>
+<li>Frequency</li>
+</ul>
+<h2 id="availbale-device">Availbale Device</h2>
+<p>We divide the devices into two kinds: in use and back up. File arrangement in two place should be different. Mobile end is not considered.</p>
+<ul>
+<li>in use
+<ul>
+<li>Macbook SSD (500GB)</li>
+</ul>
+</li>
+<li>back up
+<ul>
+<li>HHD1 (2TB)</li>
+<li>HHD2 (1TB)</li>
+<li>HHD3 (500GB)</li>
+<li>flash disk1</li>
+<li>flash disk2</li>
+<li>Baidu Netdisk (5TB)</li>
+<li>Google Drive</li>
+<li>icloud</li>
+</ul>
+</li>
+</ul>
+<h2 id="arrangement-on-in-use-device">Arrangement on in-use device</h2>
+<p>User&rsquo;s top file directory, different from the system&rsquo;s, are capitalized.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~/</td>
+<td>user config file</td>
+</tr>
+<tr>
+<td>~/Applications</td>
+<td>./ISO ./Packages, ./Library</td>
+</tr>
+<tr>
+<td>~/Datasets</td>
+<td></td>
+</tr>
+<tr>
+<td>~/Documents</td>
+<td>./CalibreLibrary ./Essays</td>
+</tr>
+<tr>
+<td>~/Learnings</td>
+<td>./Past ./Lecture</td>
+</tr>
+<tr>
+<td>~/Movies</td>
+<td>./Lectures, ./Films, ./Short</td>
+</tr>
+<tr>
+<td>~/Music</td>
+<td></td>
+</tr>
+<tr>
+<td>~/Pictures</td>
+<td></td>
+</tr>
+<tr>
+<td>~/Resources/</td>
+<td>./Fonts ./Voices ./Pictures ./Movies</td>
+</tr>
+<tr>
+<td>~/Projects</td>
+<td>Project</td>
+</tr>
+<tr>
+<td>~/Projects/Github</td>
+<td>projects from github</td>
+</tr>
+<tr>
+<td>~/Projects/xxxProjcets</td>
+<td>IDE projects (idea~, AndroidStudio~)</td>
+</tr>
+<tr>
+<td>~/Projects/xxxScripts</td>
+<td></td>
+</tr>
+</tbody>
+</table></main>
+        </div>
+
+    </div>
+</body></html>

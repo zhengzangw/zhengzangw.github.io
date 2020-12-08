@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Decision Tree | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#决策树算法"><strong>决策树算法</strong></a></li>
+    <li><a href="#划分选择">划分选择</a></li>
+    <li><a href="#剪枝处理">剪枝处理</a></li>
+    <li><a href="#连续与缺失值">连续与缺失值</a></li>
+    <li><a href="#多变量决策树">多变量决策树</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="决策树算法"><strong>决策树算法</strong></h2>
+<ul>
+<li>当前节点包含样本全部同类：标记为该类</li>
+<li>当前样本属性值为空/取值相同：标记为最多一类</li>
+<li>属性划分选择</li>
+<li>为属性每个值分配一个结点继续执行算法
+<ul>
+<li>若某属性值上为空则标记为当前最多一类</li>
+</ul>
+</li>
+</ul>
+<h2 id="划分选择">划分选择</h2>
+<table>
+<thead>
+<tr>
+<th>指标名称</th>
+<th>指标</th>
+<th>辅助函数</th>
+<th>例子</th>
+<th>Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Information Gain</td>
+<td>$\text{Gain}(D,a)=\text{Ent}(D)-\sum_{v=1}^{V}\frac{\vert D^v\vert }{\vert D\vert }\text{Ent}(D^v)$</td>
+<td>$\text{Ent}(D)=-\sum_{k=1}^{ \vert Y \vert }p_k\log_2p_k$</td>
+<td>ID3</td>
+<td>对可取值数目较多的属性有偏好</td>
+</tr>
+<tr>
+<td>Gain ratio</td>
+<td>$\text{Gain-ratio}(D,a)=\frac{\text{Gain}(D,a)}{\text{IV}(a)}$</td>
+<td>$\text{IV}(a)=-\sum_{v=1}^{V}\frac{\vert D^v\vert}{\vert D\vert}log_2\frac{\vert D^v\vert}{\vert D\vert}$</td>
+<td>C4.5</td>
+<td>从候选划分中找出信息增益高于平均水平的属性，再从中选择增益率最高的</td>
+</tr>
+<tr>
+<td>Gini ratio</td>
+<td>$\text{Gini-index}(D,a)=\sum_{v=1}^V\frac{\vert D^v\vert}{\vert D\vert}\text{Gini}(D^v)$</td>
+<td>$\text{Gini}(D)=1-\sum_{k=1}^{\vert Y\vert}p_k^2$</td>
+<td>CART</td>
+<td>Gini 指数为随机抽取两个样本类别标记不一致的概率,越小纯度越高</td>
+</tr>
+</tbody>
+</table>
+<h2 id="剪枝处理">剪枝处理</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>指标</th>
+<th>过拟合</th>
+<th>欠拟合</th>
+<th>训练时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>预剪枝</td>
+<td>Precision</td>
+<td>降低过拟合风险</td>
+<td>有欠拟合风险</td>
+<td>较小</td>
+</tr>
+<tr>
+<td>后剪枝</td>
+<td>Precision</td>
+<td>降低过拟合风险</td>
+<td>欠拟合风险小</td>
+<td>较长</td>
+</tr>
+</tbody>
+</table>
+<h2 id="连续与缺失值">连续与缺失值</h2>
+<ul>
+<li>连续属性离散化（二分法）
+<ul>
+<li>$T_a={\frac{a^i+a^{i+1}}{2}|1\leq i\leq n-1}$</li>
+<li>$\text{Gain}(D,a,t)$</li>
+</ul>
+</li>
+<li>缺失值
+<ul>
+<li>$\tilde{D}$: $D$在属性 $a$ 上没有缺失值的样本子集</li>
+<li>$\tilde{D}^v$: $\tilde{D}$ 中属性 $a$ 上取值为 $a^v$ 的样本子集</li>
+<li>$\tilde{D}_k$: $\tilde{D}$ 中类别为 $k$ 的样本子集</li>
+<li>$\omega_x$: 每个样本的权重</li>
+<li>$\rho=\frac{\sum_{x\in\tilde{D}}\omega_x}{\sum_{x\in D}\omega_x}$ 属性 $a$ 无缺失样本所占比例</li>
+<li>$\tilde{p}<em>k=\frac{\sum</em>{x\in\tilde{D}<em>k}\omega_x}{\sum</em>{x\in D}\omega_x}$ 无缺失样本中第 $k$ 类占比</li>
+<li>$\tilde{r}<em>v=\frac{\sum</em>{x\in\tilde{D}^v}\omega_x}{\sum_{x\in D}\omega_x}$ 无缺失样本中属性 a 取值 $a^v$ 占比</li>
+<li>$\text{Ent}(\tilde{D})=-\sum_{k=1}^{|Y|}\tilde{p}_k\log_2\tilde{p}_k$</li>
+<li>$\text{Gain}(D,a)=\rho*\text{Gain}(\tilde{D},a)=\rho*(\text{Ent}(\tilde{D})-\sum_{v=1}^V\tilde{r}_v\text{Ent}(\tilde{D}^v))$</li>
+</ul>
+</li>
+</ul>
+<h2 id="多变量决策树">多变量决策树</h2>
+<ul>
+<li>每个叶节点用 $\sum_{i=1}^dw_ia_i=t$ 的线性分类器</li>
+<li>特征预处理</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

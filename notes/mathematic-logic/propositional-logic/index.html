@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Propositional Logic (PL) | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#语言">语言</a>
+      <ul>
+        <li><a href="#定理">定理</a></li>
+      </ul>
+    </li>
+    <li><a href="#语义">语义</a>
+      <ul>
+        <li><a href="#定理-1">定理</a></li>
+      </ul>
+    </li>
+    <li><a href="#语法">语法</a>
+      <ul>
+        <li><a href="#自然推理系统-g">自然推理系统 $G'$</a></li>
+        <li><a href="#永真推理系统-h">永真推理系统 $H$</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="语言">语言</h2>
+<ul>
+<li>字母表：命题符+联结词+辅助符
+<ul>
+<li>命题符(propositional symbol)：$\text{PS}={P_n|n\in\mathbb{N}}$</li>
+</ul>
+</li>
+<li>命题集 $\text{PROP}$ (proposition)：为函数 $C_\neg,C_*$ 下 $\text{PS}$ 的归纳闭包
+<ul>
+<li>$C_\neg(A)=(\neg A),C_*(A,B)=(A*B),*\in{\vee,\wedge,\rightarrow}$</li>
+</ul>
+</li>
+<li>free variable：$\text{FV}(A)={P\in \text{PS}|P 出现在 A 中}$</li>
+</ul>
+<h3 id="定理">定理</h3>
+<ul>
+<li>括号引理：$A$ 为命题，则 $A$ 中左右括号个数相等</li>
+<li>构造序列：$A\in \text{PROP}\iff \exists A_0,\cdots,A_n,n\in\mathbb{N},A=A_n$ 且对于任意的 $A_i,i\leq n$ 至少满足下列三条之一
+<ul>
+<li>$A_i\in PS$</li>
+<li>$\exists k&lt;i,A_i=A_k$</li>
+<li>$\exists k,l&lt;i, A_i=(A_k*A_l)$</li>
+</ul>
+</li>
+<li>结构归纳：对 $A$ 的构造长度作归纳，是自然数上的归纳
+<ul>
+<li>数学归纳法：
+<ul>
+<li>Basis</li>
+<li>I.H.</li>
+<li>Ind. Step</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="语义">语义</h2>
+<ul>
+<li>真值集 $B={T,F}$
+<ul>
+<li>$\neg:H_\neg:B\rightarrow B$</li>
+<li>$*:H_*:B^2\rightarrow B$</li>
+</ul>
+</li>
+<li>赋值：函数 $v:\text{PS}\rightarrow B$</li>
+<li>命题的解释：函数 $\hat v:\text{PROP}\rightarrow B$
+<ul>
+<li>$\hat v(P_n)=v(P_n),n\in \mathbb{N}$</li>
+<li>$\hat v(\neg A)=H_\neg(\hat v(A))$</li>
+<li>$\hat v(A*B)=H_\neg(\hat v(A),\hat v(B))$</li>
+</ul>
+</li>
+<li>满足：$\vDash$
+<ul>
+<li>$v \vDash A\iff\hat v(A)=T$</li>
+<li>$v\vDash P\iff v(P)=T$</li>
+<li>$v\not\vDash \phi \iff v\vDash \neg \phi$</li>
+<li>$v\vDash \phi_1 \wedge/\vee \phi_2\iff v\vDash \phi_1 \text{ and/or }\phi_2$</li>
+<li>$v\vDash \phi_1 \rightarrow \phi_2\iff v\not\vDash\phi_1\text{ or }v\vDash\phi_2$</li>
+<li>tautology: $\vDash A\iff\forall v:v\vDash A$</li>
+<li>$A$ 可满足：$\exists v,v\vDash A$</li>
+<li>语义结论：$\Gamma\subset \text{PROP},\Gamma\vDash A\iff\forall v$ 有 $\forall B\in\Gamma,\hat v(B)=T$ 则 $\hat v(A)=T$</li>
+</ul>
+</li>
+</ul>
+<h3 id="定理-1">定理</h3>
+<ul>
+<li>$v\upharpoonright \text{FV}(A)$：$v$ 的限制
+<ul>
+<li>$v_1\upharpoonright \text{FV}(A)=v_2\upharpoonright \text{FV}(A)$ 则$\hat v_1(A)=\hat v_2(A)$</li>
+</ul>
+</li>
+<li>$n$ 元真值函数：$A\in \text{PROP}, \text{FV}(A)={Q_1,\cdots,Q_n},H_A:B^n\rightarrow B,\forall (a_1,\cdots,a_n)\in B^n, H_A(a_1,\cdots,a_n)=\hat v(A),v$满足$v(Q_i)=a_i(1\leq i\leq n)$. $H_A$ 为由 $A$ 定义的真值函数</li>
+<li>析合范式(DNF)：$A$呈形 $\bigvee_{i=1}^m(\bigwedge_{k=1}^nP_{i,k}),P_{i,k}$ 为命题符或命题符之否定
+<ul>
+<li>$f:B^n\rightarrow B$, 存在析合范式 $A$, $f=H_A$</li>
+</ul>
+</li>
+<li>合析范式(CNF)：$A$呈形 $\bigwedge_{j=1}^l(\bigvee_{k=1}^nQ_{j,k})$
+<ul>
+<li>$f:B^n\rightarrow B$, 存在合析范式 $A$, $f=H_A$</li>
+</ul>
+</li>
+<li><em>求析合范式，合析范式</em></li>
+<li>逻辑等价：$A\simeq B$ 指 $\forall v,v\vDash A$ iff $v\vDash B$</li>
+<li>任何命题均有逻辑等价的析合范式/合析范式</li>
+<li>函数完全组
+<ul>
+<li>${\neg,\wedge,\vee},{\neg,\wedge},{\neg,\vee},{\neg,\rightarrow},{↑}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="语法">语法</h2>
+<h3 id="自然推理系统-g">自然推理系统 $G'$</h3>
+<ul>
+<li>sequent: 二元组 $(\Gamma,\Delta)$, 记为 $\Gamma\vdash\Delta$, $\Gamma,\Delta$ 为命题的有穷集合，$\Gamma$ 为前件，$\Delta$ 为后件</li>
+<li>公理：$\Gamma,A,\Delta\vdash\Lambda,A,\Theta$</li>
+<li>规则(P10)
+<ul>
+<li>$\neg L:\frac{\Gamma,\Delta\vdash\Lambda,A}{\Gamma,\neg A,\Delta\vdash\Lambda}$</li>
+<li>$\neg R$</li>
+<li>$\vee L$</li>
+<li>$\vee R$</li>
+<li>$\wedge L$</li>
+<li>$\wedge R$</li>
+<li>$\rightarrow L: \frac{\Gamma,\Delta,\Gamma\ \Gamma,B,\Delta\vdash\Lambda}{\Gamma,A\rightarrow B,\Delta\Lambda}$</li>
+<li>$\rightarrow R$</li>
+<li>$\text{Cut}:\frac{\Gamma\vdash\Lambda,A\ \Delta,A\vdash\Theta}{\Gamma,\Delta\vdash\Lambda,\Theta}$</li>
+</ul>
+</li>
+<li>provable: 存在 $\Gamma\vdash\Lambda$ 的证明树</li>
+<li>Falsifiable: 存在赋值 $v$, $v\vDash(A_1\wedge\cdots\wedge A_m)\wedge(\neg B_1\wedge\cdots B_n)$, 即 $v$ 反驳 $\Gamma\vdash \Delta$</li>
+<li>valid: $\forall v,v\vdash(A_1\wedge\cdots\wedge A_n)\rightarrow(B_1\vee\cdots\vee B_n)$, $v$ 满足 $v\vdash\Delta$ 或 $v\vDash\Delta$</li>
+<li><strong>Soundness</strong>: $\Gamma\vdash\Delta\Rightarrow\Gamma\vDash\Delta$</li>
+<li><strong>Completeness</strong>: $\Gamma\vDash\Delta\Rightarrow\Gamma\vdash\Delta$</li>
+<li><strong>Compactness</strong>: $\Gamma$ 的任意有穷子集可满足 $\Rightarrow\Gamma$ 可满足</li>
+</ul>
+<h3 id="永真推理系统-h">永真推理系统 $H$</h3>
+<ul>
+<li>公理模式
+<ul>
+<li>A1 : $A\rightarrow B$</li>
+<li>A2 : $(A\rightarrow(B\rightarrow C))\rightarrow(B\rightarrow(A\rightarrow C))$</li>
+<li>A3 : $(A\rightarrow B)\rightarrow((B\rightarrow C)\rightarrow(A\rightarrow C))$</li>
+<li>A4 : $(A\rightarrow(A\rightarrow B))\rightarrow(A\rightarrow B)$</li>
+<li>A5 : $(A\rightarrow\neg B)\rightarrow(B\rightarrow\neg A)$</li>
+<li>A6 : $(\neg\neg A)\rightarrow A$</li>
+<li>A7 : $(A\wedge B)\rightarrow A$</li>
+<li>A8 : $(A\wedge B)\rightarrow B$</li>
+<li>A9 : $A\rightarrow(B\rightarrow(A\wedge B))$</li>
+<li>A10: $A\rightarrow(A\vee B)$</li>
+<li>A11: $B\rightarrow(A\vee B)$</li>
+<li>A12: $(A\rightarrow C)\rightarrow((B\rightarrow C)\rightarrow ((A\vee B)\rightarrow C))$</li>
+</ul>
+</li>
+<li>规则 MP: $\frac{A\rightarrow B\ \ A}{B}$</li>
+<li>定理
+<ul>
+<li>T13: $(A\rightarrow B)\rightarrow((C\rightarrow A)\rightarrow(C\rightarrow B))$</li>
+<li>T14: $(A\rightarrow B)\rightarrow((D\rightarrow(C\rightarrow A))\rightarrow(D\rightarrow(C\rightarrow B)))$</li>
+<li>T15: $A\rightarrow (B\rightarrow A)$</li>
+<li>T16: $(C\rightarrow (B\rightarrow A))\rightarrow ((C\rightarrow B)\rightarrow (C\rightarrow A))$</li>
+<li>T17: $(\neg A\rightarrow\neg B)\rightarrow(B\rightarrow A)$</li>
+<li>T18: $A\rightarrow\neg\neg A$</li>
+<li>T19: $(A\rightarrow B)\rightarrow(\neg B\rightarrow\neg A)$</li>
+<li>T20: $A\vee\neg A$</li>
+<li>T21: $A,\neg A\vdash\neg B$</li>
+<li>T22: $A,\neg A\vdash B$</li>
+<li>T23: $(B\rightarrow\neg B)\rightarrow\neg B$</li>
+<li>T24: $(A\rightarrow (C\wedge\neg C))\rightarrow\neg A$</li>
+<li>T25: $(B\vee A)\rightarrow(\neg A\rightarrow B)$</li>
+<li>T26: $(A\rightarrow B)\rightarrow(B\vee\neg A)$</li>
+<li>T27: $(A\vee B)\rightarrow(B\vee A)$</li>
+<li>T28: $(A\rightarrow(B\rightarrow C))\rightarrow((A\wedge B)\rightarrow C)$</li>
+<li>T29: $(C\vee A)\rightarrow((C\vee B)\rightarrow(C\vee(A\wedge B)))$</li>
+<li>T30: $(C\vee A)\rightarrow((B\rightarrow C)\rightarrow((A\rightarrow B)\rightarrow C))$</li>
+<li>T31: $(A\rightarrow(C\vee B))\rightarrow(C\vee(A\rightarrow B))$</li>
+</ul>
+</li>
+<li>$\Gamma\vdash_H(/\vdash/\rightarrow) A$
+<ul>
+<li>$\exists P_1,\cdots,P_n=A,i\leq n$, $P_i$ 为
+<ul>
+<li>$H$ 公理</li>
+<li>或$P_i\in\Gamma$</li>
+<li>或$\exists j,k&lt;i,P_j=(P_k\rightarrow P_i)$ 即 $P_i$ 由前 $P_j$ 和 $P_k$ 实施 MP 而得</li>
+</ul>
+</li>
+<li>序列 $P_1,\cdots,P_n$ 为证明过程，$n$ 为证明长度</li>
+<li>$\text{Th}(\Gamma)={A|\Gamma\vdash A}, A\in\text{Th}$ 为$\Gamma$-定理，
+<ul>
+<li>$\vdash A$: $A$ 为定理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>推理定理：$\Gamma,C\vdash A$ 则 $\Gamma\vdash C\rightarrow A$
+<ul>
+<li>$\Gamma,C=\Gamma\cup{C}$</li>
+</ul>
+</li>
+<li>$G'$ 与 $H$
+<ul>
+<li>$\vdash_H A\Rightarrow\vdash A$</li>
+<li>$\Gamma\vdash\Delta\Rightarrow\Gamma\vdash_H\overline{\Delta}$
+<ul>
+<li>$\overline{\Delta}=\bigvee_{i=1}^nB_i,\Delta={B_1,\cdots,B_n}$ if $\Delta\not=\emptyset$ else $=\perp=(C\wedge\neg C)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

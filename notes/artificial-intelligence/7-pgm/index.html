@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7-概率图 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#图模型">图模型</a></li>
+    <li><a href="#有向图模型">有向图模型</a>
+      <ul>
+        <li><a href="#独立性判断">独立性判断</a></li>
+        <li><a href="#常见有向图模型">常见有向图模型</a></li>
+        <li><a href="#结构学习">结构学习</a></li>
+      </ul>
+    </li>
+    <li><a href="#无向图模型">无向图模型</a>
+      <ul>
+        <li><a href="#常见无向图模型">常见无向图模型</a></li>
+      </ul>
+    </li>
+    <li><a href="#参数学习">参数学习</a>
+      <ul>
+        <li><a href="#无隐变量">无隐变量</a></li>
+        <li><a href="#有隐变量">有隐变量</a></li>
+      </ul>
+    </li>
+    <li><a href="#推断">推断</a>
+      <ul>
+        <li><a href="#精确推断">精确推断</a></li>
+        <li><a href="#近似推断">近似推断</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="图模型">图模型</h2>
+<ul>
+<li>$p(x)=\prod_{k=1}^{K}p(x_k|x_1,\cdots,x_{k-1})$</li>
+<li>联合概率表：需要 $2^K-1$ 个参数</li>
+<li>图模型基本问题
+<ul>
+<li>表示问题：如何用图结构描述变量间的依赖关系</li>
+<li>学习问题：结构学习，参数学习</li>
+<li>推断问题：已知部分变量，求其它变量条件分布概率</li>
+</ul>
+</li>
+<li>有向图模型：贝叶斯网(信念网, Judea Pearl)</li>
+<li>无向图模型：马尔可夫网</li>
+</ul>
+<h2 id="有向图模型">有向图模型</h2>
+<ul>
+<li>$B=\langle G,\Theta\rangle$
+<ul>
+<li>$G$: 有向无环图 (DAG)</li>
+<li>$\Theta$: 条件概率表 (CPT)
+<ul>
+<li>$\theta_{x_i|\pi_i}=P_B(x_i|\pi_i)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>联合分布：$P(x_1,\cdots,x_n)=\prod_{i=1}^nP(x_i|\text{Parent}(x_i))$</li>
+</ul>
+<h3 id="独立性判断">独立性判断</h3>
+<ul>
+<li>三变量间的典型依赖关系
+<ul>
+<li>同父结构: $x_3\perp x_4|x_1$</li>
+<li>顺序结构：$y\perp z|x$</li>
+<li>冲撞结构(V-structure): $x$⫫$y|z$
+<ul>
+<li>marginal independece: $z$ 完全未知则独立，给定 $z$ 则不独立</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>有向分离 (D-seperation，或道德化)
+<ul>
+<li>转化为无向图 (moral graph)
+<ul>
+<li>有向边改无向边</li>
+<li>V 型结构两个父节点之间加边</li>
+</ul>
+</li>
+<li>$x$ 与 $y$ 有向分离：$\exists Z$, $x,y$ 在 $G\backslash Z$ 中分属两个连通分支则 $x\perp y|Z$</li>
+</ul>
+</li>
+<li>马尔科夫覆盖</li>
+</ul>
+<h3 id="常见有向图模型">常见有向图模型</h3>
+<ul>
+<li>Sigmoid 信念网络
+<ul>
+<li>变量取值为 ${0,1}$</li>
+<li>$p(x_k=1|x_{\pi_k};\theta)=\sigma(\theta_0+\sum_{x_i\in x_{\pi_k}}\theta_ix_i)$</li>
+<li>$M$ 个父节点
+<ul>
+<li>表格记录：$2^M$ 参数</li>
+<li>参数化模型：$M+1$ 参数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>朴素贝叶斯分类器: 条件独立性假设</li>
+<li>隐马尔科夫网</li>
+</ul>
+<h3 id="结构学习">结构学习</h3>
+<ul>
+<li>搜索最优贝叶斯网络结构: $\text{NP}$-hard</li>
+<li>评分搜索：$G^*=\arg\max_G g(G:D)$
+<ul>
+<li>MDL(最小描述长度)：综合编码长度最短的网络
+<ul>
+<li>$s(B|D)=f(\theta)|B|-\text{LL}(B|D)$</li>
+<li>$\text{LL}(B|D)=\sum_{i=1}^m\log P_B(x_i)$</li>
+<li>AIC 准则: $f(\theta)=1$</li>
+<li>BIC 准则: $f(\theta)=\frac{\log m}{2}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常用策略
+<ul>
+<li>贪心法</li>
+<li>网络结构约束</li>
+</ul>
+</li>
+</ul>
+<h2 id="无向图模型">无向图模型</h2>
+<ul>
+<li>马尔科夫网：
+<ul>
+<li>$V$: 随机变量</li>
+<li>$E$: 变量间的依赖关系</li>
+<li>$x_{{k}}$: 第$k$个团随机变量</li>
+</ul>
+</li>
+<li>无向图为马尔科夫网络 $\iff$ 满足以下三条性质之一
+<ul>
+<li>Pairwise Markov Property: $X_u\perp X_v|X_{V\backslash{u,v}},{u,v}\not\in E$</li>
+<li>Local Markov Property: $X_v\perp X_{V\backslash\text{ne}(v)}|X_{\text{ne}(v)}$
+<ul>
+<li>$\text{ne}(v)$: 邻居，马尔科夫毯</li>
+</ul>
+</li>
+<li>Global Markov Property: $X_A \perp X_B|X_S$，$A,B$ 两个子集间任何一条路径都经过子集$S$，则给定 $S$ 后，$A,B$ 两个子集相互条件独立</li>
+</ul>
+</li>
+<li>构造
+<ul>
+<li>如果满足 $P\not\vDash(X\perp Y|V-{X,Y})$，则 $X,Y$ 加边</li>
+<li>给定 $X$ 的马尔可夫毯，$X$ 独立于余下的变量</li>
+</ul>
+</li>
+<li>Hammersley-Clifford 定理：$p(x)&gt;0$ 满足局部马尔科夫性质当且仅当可表为马尔科夫网上的吉布斯分布
+<ul>
+<li>吉布斯分布：$p(x)=\frac{1}{Z}\prod_{c\in\mathcal{C}}\phi_c(x_c)$</li>
+<li>势函数：$\phi_k(x_{{k}})$</li>
+<li>配分函数：$Z=\sum_{x\in \mathcal{X}}\prod_{c\in\mathcal{C}}\phi_c(x_c)$</li>
+<li>势函数：$f_k(x_{{k}})=e^{\omega_k^T\phi_k(x_{{k}})}$</li>
+</ul>
+</li>
+<li>一般定义为玻尔兹曼分布
+<ul>
+<li>$\phi_c(x_c)=\exp(-E_c(x_c))$</li>
+</ul>
+</li>
+</ul>
+<h3 id="常见无向图模型">常见无向图模型</h3>
+<ul>
+<li>对数线性模型（最大熵模型）
+<ul>
+<li>$\phi_c(x_c|\phi_c)=\exp(\theta_c^Tf_c(x_c))$</li>
+<li>$\log p(x;\theta)=\sum_{c\in\mathcal{C}}\theta_c^Tf_c(x_c)-\log Z(\theta)$</li>
+<li>条件最大熵模型（Softmax 回归模型）：$p(y|x;\theta)=\frac{\exp(\theta^Tf(x,y))}{\sum_{y}\exp(\theta^Tf_y(x,y))}$</li>
+</ul>
+</li>
+<li>条件随机场（CRF）：$p(y|x;\theta)=\frac{1}{Z(x;\theta)}\exp(\sum_{c\in\mathcal{C}}\theta_c^Tf_c(x,y_c))$
+<ul>
+<li>线性链条件随机场</li>
+</ul>
+</li>
+<li>马尔科夫逻辑网 (MLN) = Markov Net + 一阶逻辑
+<ul>
+<li>判断一个知识库中是否包含公式 $F$，$F$ 在所有满足知识库的世界中恒真
+<ul>
+<li>公式附加权值的一阶逻辑知识库</li>
+<li>基本思想：将一阶逻辑的限制放松，即一个可能世界违反公式越多，其发生的概率越小</li>
+</ul>
+</li>
+<li>$L$：${(F_i,w_i)}$
+<ul>
+<li>$F_i$: 一阶逻辑闭规则（无变元）</li>
+<li>$w_i$: 实数表示权重</li>
+<li>$C$: 有限常数集</li>
+</ul>
+</li>
+<li>马尔科夫逻辑网 $M_{L,C}$
+<ul>
+<li>$L$ 中的任意闭原子对应一个二值结点，真为 $1$，假为 $0$</li>
+<li>$L$ 任意闭规则对应一个特征值，若规则为真，特征值为 $1$ 否则为 $0$。权重为 $\omega_i$</li>
+<li>$P(X=x)=\frac{1}{Z}\text{exp}(\sum_{i=1}^F\omega_in_i(x))$
+<ul>
+<li>$n_i$: $F_i$ 在 $X$ 中所有取真值的公式的数量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参数学习">参数学习</h2>
+<h3 id="无隐变量">无隐变量</h3>
+<ul>
+<li>有向图：$L(D,\theta)=\frac{1}{N}\sum_{n=1}^N\sum_{k=1}^K\log p(x_k^{(n)}|x_{\pi_k}^{(n)};\theta_k)$</li>
+<li>无向图：$L(D,\theta)=\frac{1}{N}\sum_{n=1}^N\log p(\sum_{c\in\mathbb{C}}\theta_c^Tf_c(x_c^{(n)}))-\log Z(\theta)=E_{x\sim\tilde p(x)}f_c(x_c)-E_{x\sim p(x;\theta)}f_c(x_c)=\frac{1}{N}\sum_{n=1}^Nf_c(x_c^{(n)})-\sum_xp(x;\theta)f_c(x_c)$
+<ul>
+<li>采样近似第二个期望</li>
+<li>坐标上升法：固定其它参数，优化一个参数</li>
+</ul>
+</li>
+</ul>
+<h3 id="有隐变量">有隐变量</h3>
+<ul>
+<li>EM 算法</li>
+</ul>
+<h2 id="推断">推断</h2>
+<ul>
+<li>条件概率查询：$p(q|e)=\frac{\sum_z p(q,e,z)}{\sum_{q,z}p(q,e,z)}$</li>
+<li>因果推理
+<ul>
+<li>已知网络中的祖先节点而计算后代节点的条件概率</li>
+</ul>
+</li>
+<li>诊断推理
+<ul>
+<li>已知后代节点计算祖先节点，贝叶斯定理</li>
+</ul>
+</li>
+<li>支持推理
+<ul>
+<li>原因间的相互影响</li>
+</ul>
+</li>
+</ul>
+<h3 id="精确推断">精确推断</h3>
+<ul>
+<li>精确推断：NP-hard</li>
+<li>变量消除法</li>
+<li>信念传播算法（BP, 合积算法，消息传递算法）
+<ul>
+<li>链上的 BP 算法
+<ul>
+<li>$p(x_t)=\frac{1}{Z}\prod_{t=1}^{T-1}\phi(x_t,x_{t+1})$</li>
+<li>$p(x_t)=\frac{1}{Z}\sum_{x_1}\cdots\sum_{x_{t-1}}\sum_{x_{t+1}}\cdots\sum_{x_T}\prod_{t=1}^{T-1}\phi(x_t,x_{t+1})$</li>
+<li>$p(x_t)=\frac{1}{Z}\mu_{t-1,t}(x_t)\mu_{t+1,t}(x_t)$</li>
+<li>$\mu_{t-1,t}(x_t)=\sum_{x_{t-1}}\phi(x_{t-1},x_t)\mu_{t-2,t-1}(x_{t-1})$</li>
+<li>$\mu_{t+1,t}(x_t)=\sum_{x_{t+1}}\phi(x_t,x_{t+1})\mu_{t+2,t+1}(x_{t+1})$</li>
+</ul>
+</li>
+<li>树结构上的 BP 算法</li>
+<li>图结构上的 BP 算法：联合树算法</li>
+</ul>
+</li>
+</ul>
+<h3 id="近似推断">近似推断</h3>
+<ul>
+<li>环路信念传播：使用信念传播算法在含环图上获得近似解</li>
+</ul>
+<h4 id="变分推断">变分推断</h4>
+<ul>
+<li>变分推断（变分贝叶斯）：寻找简单分布 $q^*(z)$ 近似条件概率密度 $p(z|x)$</li>
+<li>泛函优化问题：$q^*(z)=\argmin_{q(z)\in Q}\text{KL}(q(z)|p(z|x))=\arg\max_{q(z)\in Q}\text{ELBO}(q,x)$</li>
+<li>候选分布族 $Q$
+<ul>
+<li>平均场分布族：$q(z)=\prod_{m=1}^Mq_m(z_m),z_m\subseteq Z$</li>
+<li>神经网络拟合 $p(z|x)$</li>
+</ul>
+</li>
+<li>$\text{ELBO}(q,x)=\int \prod_{m=1}^Mq_m(z_m)(\log p(x,z)-\sum_{m=1}^M\log q_m(z_m))dz=\int q_j(\int\prod_{m\neq j}q_m\log p(x,z)dz_m)dz_j-\int q_j\log q_j dz_j+C$
+<ul>
+<li>$\text{ELBO}(q,x)=\int q_j\log \tilde p(x,z_j)dz_j-\int q_j\log q_j dz_j+C$</li>
+<li>$\log \tilde p(x,z_j)=E_{q(z_{\backslash j})}\log p(x,z) + C$ 关于 $z_j$ 未归一化分布</li>
+<li>最优化 $q_j^*(z_j)=\tilde p(x,z_j)$</li>
+</ul>
+</li>
+<li>坐标上升法：迭代优化 $q_j^*(z_j),j=1,\cdots,M$，使其收敛到局部最优解</li>
+</ul>
+<h4 id="采样法">采样法</h4>
+<ul>
+<li>随机采样：cdf 递增，则在 cdf 逆函数上进行均匀采样</li>
+<li>拒绝采样
+<ul>
+<li>未归一化分布 $\hat p(x)$</li>
+<li>采样样本 $\hat x$</li>
+<li>提议分布（参考分布） $q(x),\exists k,\forall x,kq(x)\geq \hat p(x)$</li>
+<li>接受概率：$\alpha(\hat x)=\frac{\hat p(\hat x)}{kq(\hat x)}$</li>
+</ul>
+</li>
+<li>重要性采样：从参考分布中采样
+<ul>
+<li>$E_p[f(x)]=\int_x f(x)p(x)dx=E_q(f(x)\omega(x)]$</li>
+<li>重要性权重：$\omega(x)=\frac{p(x)}{q(x)}$</li>
+<li>未归一：$E_p(f(x))=\frac{\int_x\hat p(x)f(x)dx}{\int_x\hat p(x)dx}\approx\frac{\sum_{n=1}^Nf(x^{(n)}\hat\omega(x^{(n)}))}{\sum_{n=1}^N\hat\omega(x^{(n)})}$</li>
+</ul>
+</li>
+<li>拒绝采样和重要性采样的效率随空间维数的增加而指数降低</li>
+<li>MCMC 方法采样
+<ul>
+<li>预烧期（Burn-in Period）</li>
+<li>相邻样本高度相关：每间隔 $M$ 次随机游走取一个样本</li>
+</ul>
+</li>
+<li>Metropolis-Hastings 算法
+<ul>
+<li>根据 $q(x|x_t)$ 采样 $\hat x$</li>
+<li>以如下概率接受：$A(\hat x,x_t)=\min(1,\frac{p(\hat x)q(x_t|\hat x)}{p(x_t)q(\hat x|x_t)})$</li>
+</ul>
+</li>
+<li>Metropolis 算法：MH 算法中提议分布对称
+<ul>
+<li>$A(\hat x,x_t)=\min(1,\frac{p(\hat x)}{p(x_t)})$</li>
+</ul>
+</li>
+<li>Gibbs Sampling：使用全条件概率作为提议分布，$A=1$
+<ul>
+<li>$p(x_m|x_{\backslash m})=p(x_n|x_1,\cdots,x_{m-1},x_{m+1},\cdots,x_M)$</li>
+<li>按下标顺次采样</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

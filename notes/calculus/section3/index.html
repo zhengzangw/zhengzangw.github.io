@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3-级数 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>级数：形式和：$\sum_{n=1}^{+\infty}a_n=a_1+a_2+\cdots$</li>
+<li>部分和：$S_n=\sum_{k=1}^na_k$</li>
+<li>收敛 $\sum_{n=1}^{+\infty}a_n=A$：$\lim_{n\rightarrow+\infty}S_n=A$</li>
+<li>发散：不收敛</li>
+<li>Cauchy 准则：收敛 $\iff\forall\epsilon&gt;0,\exists N\in\mathbb{R},\forall m&gt;N,\forall n&gt;N,m&gt;n$ 有 $|\sum_{k=n+1}^ma_k|&lt;\epsilon$</li>
+<li>线性：收敛时满足</li>
+<li>非负项级数：$a_n\geq 0$
+<ul>
+<li>$\sum_{n=1}^{+\infty}$ 有值非负，收敛 $\iff&lt;+\infty$</li>
+<li>比较判别法 I： $a_n\geq b_n\geq 0$
+<ul>
+<li>$\sum_{n=1}^{+\infty}a_n$ 收敛，$\sum_{n=1}^{+\infty}b_n$ 收敛</li>
+<li>$\sum_{n=1}^{+\infty}b_n$ 发散，$\sum_{n=1}^{+\infty}a_n$ 发散</li>
+</ul>
+</li>
+<li>比较判别法 II
+<ul>
+<li>$\lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=c&lt;+\infty$，且 $\sum_{n=1}^{+\infty}b_n$ 收敛，$\sum_{n=1}^{+\infty}a_n$ 收敛</li>
+<li>$\lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=c&gt;0$，且 $\sum_{n=1}^{+\infty}b_n$ 发散，$\sum_{n=1}^{+\infty}a_n$ 发散</li>
+</ul>
+</li>
+<li>比值法（D&rsquo;Alembert）
+<ul>
+<li>$\lim_{n\rightarrow+\infty}\frac{a_{n+1}}{a_n}=q&lt;1$，则 $\sum_{n=1}^{+\infty}a_n$ 收敛</li>
+<li>$\lim_{n\rightarrow+\infty}\frac{a_{n+1}}{a_n}=q&gt;1$，则 $\sum_{n=1}^{+\infty}a_n$ 发散</li>
+</ul>
+</li>
+<li>根式法（Cauchy）
+<ul>
+<li>$\lim_{n\rightarrow+\infty}\sqrt[n]{a_n}=q&lt;1$, 收敛</li>
+<li>$\lim_{n\rightarrow+\infty}\sqrt[n]{a_n}=q&gt;1$, 发散</li>
+</ul>
+</li>
+<li>积分法：$f$ 在 $[k,+\infty]$ 上可积，$f|_{(n,n+1)}\geq a_n$
+<ul>
+<li>$\sum_{n=k}^{+\infty}a_n\leq\int_k^\infty f(x)dx$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>交错级数 Leibniz 判别法：${|a_n|}$ 单调且极限为 $0$，则 $\sum_{n=1}^{+\infty}$ 收敛</li>
+<li>绝对收敛：$\sum_{n=1}^{+\infty}|a_n|$ 收敛
+<ul>
+<li>绝对收敛则收敛</li>
+<li>条件收敛：收敛但非绝对收敛</li>
+</ul>
+</li>
+<li>重排: $\sum_{n=1}^{+\infty}a_{\varphi(n)}$
+<ul>
+<li>Riemann 定理：$\forall A,\sum_{n=1}^{+\infty}a_n$ 为实级数且条件收敛，则存在重排 $\sum_{n=1}^{+\infty}b_n=A$</li>
+<li>$\sum_{n=1}^{+\infty}a_n$ 收敛则可对相继项加括号</li>
+<li>$\sum_{n=1}^{+\infty}a_n$ 绝对收敛则可重排</li>
+<li>Cauchy 定理：$\sum_{n=1}^{+\infty}a_n,\sum_{n=1}^{+\infty}b_n$ 绝对收敛, 则 $a_mb_n$ 可任意方式排成级数皆绝对收敛于值 $(\sum_{n=1}^{+\infty}a_n)(\sum_{n=1}^{+\infty}b_n)$</li>
+</ul>
+</li>
+<li>幂级数：$\sum_{n=0}^{+\infty}a_n(z-z_0)^n$ 中心为 $z_0$
+<ul>
+<li>Abel 定理：$\exists0\leq\rho\leq+\infty,|z|&lt;\rho,\sum_{n=0}^{+\infty}a_nz^n$ 绝对收敛，$|z|&gt;\rho,\sum_{n=0}^{+\infty}a_nz^n$ 发散
+<ul>
+<li>收敛半径：$\rho$</li>
+<li>收敛域：使 $\sum_{n=0}^{+\infty}a_n(x-x_0)^n$ 收敛的所有 $x\in\mathbb{R}$ 构成的集合</li>
+<li>Cauchy-Hadmard 公式：若 $\lim_{n\rightarrow+\infty}|\frac{a_{n+1}{a_n}}|=L$ 或 $\lim_{n\rightarrow+\infty}\sqrt[n]{|a_n|}=L$，则$\rho=\frac{1}{L}$</li>
+</ul>
+</li>
+<li>幂级数函数：$f(x)=\sum_{n=0}^{+\infty}a_n(x-x_0)^n$，定义域为收敛域
+<ul>
+<li>Abel: 幂级数函数在收敛域上连续</li>
+<li>逐项求导：$f(x)$ 在收敛域光滑，$f^{(m)}(x)=\sum_{n=0}^{+\infty}a_n\frac{d^m}{dx^m}(x-x_0)^n$
+<ul>
+<li>$a_n=\frac{f^{(n)}}{n!}$</li>
+<li>$f^{(n)}(x)=\sum_{i=0}^\infty \frac{(n+i)!}{i!}a_{n+i}x^i$</li>
+<li>$f^{(n)}(x)=\sum_{i=0}^\infty \frac{(n+i)!}{i!}x^i=\frac{n!}{(1-x)^n}$</li>
+</ul>
+</li>
+<li>逐项积分：$\int_c^df(x)dx=\sum_{n=0}^{+\infty}a_n\int_c^d(x-x_0)^ndx$</li>
+</ul>
+</li>
+<li>Taylor 级数：$f$ 光滑，则可将泰勒多项式写为 Taylor 幂级数 $\sum_{n=0}^{+\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n$
+<ul>
+<li>$f$ 为初等函数，则在级数的收敛域中有 $f(x)=\sum_{n=0}^{+\infty}\frac{f^{(n)}(x_0)}{n!}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Fourier 级数：$\sum_{n=-\infty}^{+\infty}c_ne^{i2n\pi x}$
+<ul>
+<li>绝对收敛 $\iff\sum_{-\infty}^{+\infty}|c_n|&lt;+\infty$</li>
+<li>$f$ 的 Fourier 展开：$f(x)\sim\sum_{-\infty}^{+\infty}\langle f,e^{i2n\pi x}\rangle e^{i2n\pi x}$
+<ul>
+<li>线性</li>
+<li>逐项求导：$f'(x)=\sum_{n=-\infty}^{+\infty}c_n(e^{i2n\pi x})'$</li>
+</ul>
+</li>
+<li>均方收敛定理：$f$ 有周期 $1$ 且在 $[-\frac{1}{2},\frac{1}{2}]$ 上 Riemann 可积，则 $\lim_{n\rightarrow+\infty}\lVert f-\sum_{k=-n}^n\langle f,e^{ik\pi x}\rangle\rVert=0$</li>
+<li>Parseval 等式：$\lVert f\rVert^2=\sum_{n=-\infty}^{+\infty}|\langle f,e^{i2n\pi x}\rangle|$</li>
+<li>$f(x)\sim a_0+\sum_{n=1}^{+\infty}(a_n\cos(2n\pi x)+b_n\sin(2n\pi x))$
+<ul>
+<li>$a_0=c_0=\langle f,1\rangle$</li>
+<li>$a_n=c_n+c_{-n}=2\langle f,\cos(2n\pi x)\rangle$</li>
+<li>$b_n=i(c_n-c_{-n})=2\langle f,\sin(2n\pi x)\rangle$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

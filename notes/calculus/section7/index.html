@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7-常微分方程 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#变量可分方程">变量可分方程</a></li>
+    <li><a href="#一阶线性方程">一阶线性方程</a></li>
+    <li><a href="#常系数齐次方程">常系数齐次方程</a></li>
+    <li><a href="#常系数非齐次方程">常系数非齐次方程</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="变量可分方程">变量可分方程</h2>
+<p>$$
+p(y)dy=q(x)dx
+$$</p>
+<ul>
+<li>通解 $\int p(y)dy=\int q(x)dx$</li>
+<li>初值问题：有初始条件，解为特解</li>
+<li>解的存在于唯一性定理</li>
+<li>解的延伸定理</li>
+</ul>
+<h2 id="一阶线性方程">一阶线性方程</h2>
+<p>$$\frac{dy}{dt}+p(t)y=q(t)$$</p>
+<ul>
+<li>通解：$y=e^{-\int p(t)}\int e^{\int p(t)}q(t)dt$</li>
+</ul>
+<h2 id="常系数齐次方程">常系数齐次方程</h2>
+<p>$$\sum_{j=0}^na_j\frac{d^jy}dt^j=0$$</p>
+<ul>
+<li>解的线性组合仍为解</li>
+<li>特征多项式：$P(\lambda)=\sum_{j=0}^na_j\lambda^j=\prod_{j=1}^k(\lambda-r_j)^{m_j}$</li>
+<li>特征根：$P(\lambda)$ 的根
+<ul>
+<li>$e^{rt}$ 为解 $\iff P(r)=0$</li>
+</ul>
+</li>
+<li>$y(t)=\sum_{i=1}^{k}\sum_{j=0}^{m_k-1}t^je^{r_it}$</li>
+</ul>
+<h2 id="常系数非齐次方程">常系数非齐次方程</h2>
+<p>$$\sum_{j=0}^na_j\frac{d^jy}dt^j=q(t)$$</p>
+<ul>
+<li>Lagrange 常数变易法</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

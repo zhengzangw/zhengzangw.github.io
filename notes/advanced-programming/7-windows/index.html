@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Windows | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#windows-简介">Windows 简介</a></li>
+    <li><a href="#消息驱动程序结构">消息驱动程序结构</a></li>
+    <li><a href="#windows-api">Windows API</a></li>
+    <li><a href="#mfc">MFC</a>
+      <ul>
+        <li><a href="#窗口类">窗口类</a></li>
+        <li><a href="#文档类">文档类</a></li>
+        <li><a href="#应用程序类">应用程序类</a></li>
+        <li><a href="#其它类">其它类</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="windows-简介">Windows 简介</h2>
+<ul>
+<li>Windows: 基于图形界面的多任务操作系统
+<ul>
+<li>多任务：同时运行多个应用程序</li>
+<li>窗口：应用程序通过窗口与用户交互</li>
+<li>输入：鼠标单击/双击/拖放，菜单选择，键盘输入</li>
+</ul>
+</li>
+<li>Windows 功能
+<ul>
+<li>工具：资源管理器，记事本，画图 &hellip;</li>
+<li>函数库：作为 Windows 应用程序接口（API）提供 <code>windows.h</code></li>
+</ul>
+</li>
+<li>应用程序类型
+<ul>
+<li>单文档应用
+<ul>
+<li>只能对一个文档数据操纵</li>
+<li>必须首先结束当前文档的所有操作之后，才能进行下一个文档的操作</li>
+</ul>
+</li>
+<li>多文档应用
+<ul>
+<li>同时可以对多个文档的数据进行操作</li>
+<li>不必等到一个文档的所有操作结束，就可以对其它文档进行操作，对不同文档的操作是在不同的子窗口中进行的</li>
+</ul>
+</li>
+<li>对话框应用
+<ul>
+<li>以对话框的形式操作一个文档数据</li>
+<li>对文档数据的操作以各种“控件”（control）来实现</li>
+<li>程序以按&lt;确定&gt;或&lt;取消&gt;等按钮来结束</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="消息驱动程序结构">消息驱动程序结构</h2>
+<ul>
+<li>Windows 应用程序的结果属于消息（事件）驱动的结构：程序的任何一个动作都是在接收到一条消息后发生的</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Windows 消息</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WM_KEYDOWN/WM_KEYUP</td>
+<td>键盘按键</td>
+</tr>
+<tr>
+<td>WM_CHAR</td>
+<td>字符</td>
+</tr>
+<tr>
+<td>WM_LBUTTONDOWN/WM_LBUTTONUP/WM_LBUTTONDBLCLK/WM_MOUSEMOVE</td>
+<td>鼠标按键</td>
+</tr>
+<tr>
+<td>WM_COMMAND</td>
+<td>菜单</td>
+</tr>
+<tr>
+<td>WM_PAINT</td>
+<td>窗口内容刷新</td>
+</tr>
+<tr>
+<td>WM_TIMER</td>
+<td>定时器消息</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>消息队列：Windows 系统会把属于各个应用程序的消息放入各自的消息队列
+<ul>
+<li>大部分消息关联到某个窗口</li>
+<li>每个窗口有一个消息处理函数</li>
+</ul>
+</li>
+<li>消息循环：取消息-处理消息
+<ul>
+<li>取到 WM_QUIT，循环结束</li>
+</ul>
+</li>
+<li>可再入：函数的调用者要自带工作区（数据空间）
+<ul>
+<li>由于消息处理函数在处理一条消息时可能会主动产生一些新消息，这些消息并不放入消息队列，而是直接调用消息处理函数来处理这些消息，这样就有可能导致消息处理函数的一次执行还未结束，另一次执行就开始的现象，这可能会引起数据的不一致错误。</li>
+<li>函数需要的数据要通过参数来传递</li>
+<li>函数不能有 static 存储类的局部变量</li>
+<li>在函数中访问全局变量也可能导致函数不可再入</li>
+</ul>
+</li>
+</ul>
+<h2 id="windows-api">Windows API</h2>
+<ul>
+<li>基于 Windows API 的过程式 Windows 应用程序设计
+<ul>
+<li>是一种基于过程抽象的程序设计范式</li>
+<li>通过调用 API 函数编写程序的粒度太细、太繁琐，开发效率不高</li>
+</ul>
+</li>
+<li>主函数 WinMain：每个 Windows 应用程序都必须提供
+<ul>
+<li>注册窗口类（窗口基本信息）
+<ul>
+<li>窗口类的名字、窗口的基本风格、消息处理函数名、图标、光标、背景颜色以及菜单</li>
+<li>每类窗口（不是每个窗口）都需要注册</li>
+</ul>
+</li>
+<li>创建应用程序主窗口</li>
+<li>进入消息循环</li>
+<li>为每类窗口提供一个消息处理函数，用于处理发送到它的消息</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;windows.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> APIENTRY <span style="color:#a6e22e">WinMain</span>(HINSTANCE hInstance, <span style="color:#75715e">//本实例标识，Handle
+</span><span style="color:#75715e"></span>                     HINSTANCE hPrevInstance, <span style="color:#75715e">//上一实例标识
+</span><span style="color:#75715e"></span>                     LPSTR lpCmdLine, <span style="color:#75715e">//命令行参数
+</span><span style="color:#75715e"></span>                     <span style="color:#66d9ef">int</span> nCmdShow) <span style="color:#75715e">//主窗口显示方式
+</span><span style="color:#75715e"></span>{
+    <span style="color:#75715e">//注册窗口类
+</span><span style="color:#75715e"></span>    RegisterClass(..., WindowProc, <span style="color:#e6db74">&#34;my_window_class&#34;</span>);
+    <span style="color:#75715e">//创建并显示主窗口
+</span><span style="color:#75715e"></span>    HWND hWnd;
+    hWnd <span style="color:#f92672">=</span> CreateWindow(<span style="color:#e6db74">&#34;my_window_class&#34;</span>, ..., x, y, width, height, ...);
+    ShowWindow(hWnd, nCmdShow);
+    <span style="color:#75715e">//消息循环
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span> (GetMessage(<span style="color:#f92672">&amp;</span>msg, NULL, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)){<span style="color:#75715e">//从消息队列中取消息
+</span><span style="color:#75715e"></span>        DispatchMessage(<span style="color:#f92672">&amp;</span>msg);
+    }
+    <span style="color:#66d9ef">return</span> msg.wParam;
+}
+<span style="color:#75715e">//窗口消息处理函数
+</span><span style="color:#75715e"></span>LRESULT CALLBACK <span style="color:#a6e22e">WindowProc</span>(HWND hWnd, <span style="color:#75715e">//窗口标识
+</span><span style="color:#75715e"></span>                            UINT message, <span style="color:#75715e">//消息标识
+</span><span style="color:#75715e"></span>                            WPARAM wParam, <span style="color:#75715e">//消息的参数1
+</span><span style="color:#75715e"></span>                            LPARAM lParam) <span style="color:#75715e">//消息的参数2
+</span><span style="color:#75715e"></span>{
+    <span style="color:#66d9ef">switch</span> (message){
+        <span style="color:#66d9ef">case</span> WM_KEYDOWN:
+            <span style="color:#75715e">//wParam 为扫描码
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">case</span> WM_CHAR: <span style="color:#75715e">//字符键消息
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//wParam 为按键字符编码
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">case</span> WM_COMMAND: <span style="color:#75715e">//菜单消息
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">switch</span> (wParam) {<span style="color:#75715e">//wParam 菜单项标识
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">case</span> ID_FILE_OPEN:
+                <span style="color:#66d9ef">case</span> ID_START_TIMER:
+                    SetItimer(hWnd, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1000</span>, NULL);
+            }
+        <span style="color:#66d9ef">case</span> WM_LBUTTONDOWN:
+            <span style="color:#75715e">//lParam 鼠标在窗口中位置
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">case</span> WM_CLOSE:
+            DestroyWindow(hWnd);<span style="color:#75715e">//关闭窗口
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">break</span>;
+        <span style="color:#66d9ef">case</span> WM_DESTORY: <span style="color:#75715e">//窗口被关闭
+</span><span style="color:#75715e"></span>            PostQuitMessage(<span style="color:#ae81ff">0</span>); <span style="color:#75715e">//往本应用消息队列中放入 WM_QUIT
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">break</span>;
+        <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#75715e">//由系统做默认的消息处理
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> DefWindownProc(hWnd, message, wParam, lParam);
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><ul>
+<li>消息处理函数中生成新消息
+<ul>
+<li>PostMessage: 放入消息队列 <code>PostMessage(HWND hwnd, UINT Msg, WPARAM wParam, LPARAM lParam)</code></li>
+<li>SendMessage: 直接调用消息处理函数</li>
+</ul>
+</li>
+<li>Resource
+<ul>
+<li>菜单：菜单 ID、菜单项 ID/显示文字</li>
+<li>对话框：对话框 ID 和尺寸；对话框中各个控件的 ID、类型、尺寸与位置</li>
+</ul>
+</li>
+<li>资源文件(.rc)：编译后作为应用程序一部分链接到目标文件中
+<ul>
+<li>资源描述有规定的格式</li>
+<li>可以用 VC++的资源编辑器来进行可视化编辑</li>
+</ul>
+</li>
+</ul>
+<h2 id="mfc">MFC</h2>
+<ul>
+<li>基于 MFC 和“文档&ndash;视”结构的面向对象 Windows 应用程序设计
+<ul>
+<li>MFC(Microsoft Foundation Class library, 微软基础类库)</li>
+<li>MFC 提供了一些类来描述应用中对象的基本功能，应用程序可以通过继承这些类来实现各自的特殊功能</li>
+<li>文档&ndash;视结构
+<ul>
+<li>文档：储存和管理程序中的数据</li>
+<li>视：显示文档数据以及实现对文档数据进行操作时与用户的交互功能</li>
+<li>一个文档对象对应一个或多个视对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>MFC 提供的文档视框架主要由以下类构成
+<ul>
+<li>CView</li>
+<li>CDocument</li>
+<li>CFrameWnd</li>
+<li>CDocTemplate</li>
+<li>CWinApp</li>
+</ul>
+</li>
+<li>类向导 Class Wizard
+<ul>
+<li>为应用程序中从 MFC 派生的类增加/删除成员</li>
+<li>为应用程序增加/删除基于 MFC 的类</li>
+</ul>
+</li>
+<li>图形用户接口(GUI)设计
+<ul>
+<li>菜单：菜单由菜单项构成，每个菜单项包含标识，显示文字和提示文字，处理函数</li>
+<li>对话框</li>
+<li>绘图</li>
+<li>坐标转换</li>
+</ul>
+</li>
+</ul>
+<h3 id="窗口类">窗口类</h3>
+<ul>
+<li>
+<p>基本窗口类 CWnd</p>
+<ul>
+<li>实现窗口的基本功能：一般的消息处理、窗口大小和位置管理、菜单管理、坐标系管理、滚动条管理、剪贴板管理、窗口状态管理、窗口间位置关系管理，等等</li>
+<li>其它窗口类的基类</li>
+</ul>
+</li>
+<li>
+<p>框架窗口类</p>
+<ul>
+<li>提供对标题栏、菜单栏、工具栏、状态栏以及属于它的子窗口的管理功能</li>
+<li>CFrameWnd: 单文档应用主窗口</li>
+<li>CMDIFramWnd: 多文档应用主窗口</li>
+<li>CMDIChildWnd: 多文档应用子窗口</li>
+</ul>
+</li>
+<li>
+<p>视类 CView</p>
+<ul>
+<li>视窗口（简称视）位于单文档应用主窗口（CFrameWnd）和多文档应用子窗口（CMDIChildWnd）的客户区（可显示区）</li>
+<li>实现程序数据的显示功能以及操作数据时与用户的交互功能</li>
+<li>CScrollView 带滚动功能</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> CScrollView<span style="color:#f92672">::</span>SetScrollSizes(
+  <span style="color:#66d9ef">int</span> nMapMode, <span style="color:#75715e">//映射方式（坐标的逻辑单位，坐标轴方向）
+</span><span style="color:#75715e"></span>  SIZE sizeTotal, <span style="color:#75715e">//文档内容大小
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> SIZE<span style="color:#f92672">&amp;</span> sizePage <span style="color:#f92672">=</span> sizeDefault, <span style="color:#75715e">//文档滚动页大小
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> SIZE<span style="color:#f92672">&amp;</span> sizeLine <span style="color:#f92672">=</span> sizeDefault <span style="color:#75715e">//文档滚动行大小
+</span><span style="color:#75715e"></span>);
+<span style="color:#75715e">//坐标转换函数
+</span><span style="color:#75715e"></span>OnPrepareDC(<span style="color:#f92672">&amp;</span>dc, NULL); <span style="color:#75715e">//为ScrollView初始化dc
+</span><span style="color:#75715e"></span>dc.DPtoLP(<span style="color:#f92672">&amp;</span>point); <span style="color:#75715e">//从物理坐标转换逻辑坐标
+</span><span style="color:#75715e"></span>dc.LPtoDP(<span style="color:#f92672">&amp;</span>point);
+</code></pre></div><ul>
+<li>CEditView 具有编辑功能</li>
+<li>CFormView 具有表格功能</li>
+<li>CHtmlView 具有Web浏览功能</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//CView 成员
+</span><span style="color:#75715e"></span>CDocument <span style="color:#f92672">*</span>m_pDocument; <span style="color:#75715e">//储存相应文档对象指针
+</span><span style="color:#75715e"></span>CDocument <span style="color:#f92672">*</span><span style="color:#a6e22e">GetDocument</span>() <span style="color:#66d9ef">const</span>;
+<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">OnDraw</span>(CDC<span style="color:#f92672">*</span> pDC)<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#75715e">//处理窗口（视）刷新信息
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">OnInitialUpdate</span>(); <span style="color:#75715e">//视对象创建时被调用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">OnUpdate</span>(CView<span style="color:#f92672">*</span> pSender, LPARAM lHint, CObject<span style="color:#f92672">*</span> pHint); <span style="color:#75715e">//文档对象的数据发生改变时调用该函数刷新相应的视对象。默认处理：发送WM_PAINT消息
+</span></code></pre></div><ul>
+<li>对话框类 CDialog
+<ul>
+<li>对话框是一种特殊的窗口，用于获取用户的输入信息</li>
+<li>CFileDialog: 文件打开/保存对话框</li>
+<li>CFontDialog: 字体选择对话框</li>
+<li>CColorDialog: 颜色选择对话框</li>
+<li>CPrintDialog: 打印对话框</li>
+<li>CFindReplaceDialog: 查找/替换对话框</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">CMyDlg dlg;
+dlg.m_ <span style="color:#f92672">=</span> ...;
+<span style="color:#66d9ef">if</span> (dlg.DoModal()<span style="color:#f92672">==</span>IDOK){
+  ... <span style="color:#f92672">=</span> dlg.m_;
+}
+</code></pre></div><h3 id="文档类">文档类</h3>
+<ul>
+<li>
+<p>CDocument</p>
+<ul>
+<li>对程序要处理的数据进行管理，包括磁盘文件 I/O。</li>
+<li>一个 CDocument 类的对象至少要对应一个 CView 类的对象。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//CDocument 成员
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">AddView</span>(CView<span style="color:#f92672">*</span> pView); <span style="color:#75715e">//给文档对象增加一个关联的CView类的对象
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">RemoveView</span>(CView<span style="color:#f92672">*</span> pView); <span style="color:#75715e">//使一个CView对象脱离与文档对象的关联
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> POSITION <span style="color:#a6e22e">GetFirstViewPosition</span>() <span style="color:#66d9ef">const</span>; <span style="color:#75715e">//获取关联的第一个CView对象的位置
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> CView<span style="color:#f92672">*</span> <span style="color:#a6e22e">GetNextView</span>(POSITION<span style="color:#f92672">&amp;</span> rPosition) <span style="color:#66d9ef">const</span>; <span style="color:#75715e">//获取指定位置的CView对象，rPosition自动往后移动一个位置
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">UpdateAllViews</span>(CView<span style="color:#f92672">*</span> pSender, LPARAM lHint<span style="color:#f92672">=</span><span style="color:#ae81ff">0L</span>, CObject<span style="color:#f92672">*</span> pHint<span style="color:#f92672">=</span>NULL); <span style="color:#75715e">//向关联的CView对象发送刷新消息。当pSender为NULL时，向关联的所有CView对象发送刷新消息
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetModifiedFlag</span>(BOOL bModified<span style="color:#f92672">=</span>TRUE); <span style="color:#75715e">//设置文档修改标记
+</span><span style="color:#75715e"></span>BOOL <span style="color:#a6e22e">IsModified</span>(); <span style="color:#75715e">//判断文档是否被修改
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> BOOL <span style="color:#a6e22e">OnSaveDocument</span>(LPCTSTR lpszPathName); <span style="color:#75715e">//把文档数据保存到文件名为 lpszPathName 的文件中去
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> BOOL <span style="color:#a6e22e">OnOpenDocument</span>(LPCTSTR lpszPathName);
+<span style="color:#66d9ef">virtual</span> BOOL <span style="color:#a6e22e">OnNewDocument</span>();
+<span style="color:#66d9ef">virtual</span> BOOL <span style="color:#a6e22e">OnCloseDocument</span>();
+<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Serialize</span>(CArchive<span style="color:#f92672">&amp;</span> ar); <span style="color:#75715e">//用于文档数据的序列化（写入磁盘文件或从磁盘文件读出），一般由OnSaveDocument和OnOpenDocument来调用
+</span></code></pre></div></li>
+</ul>
+<h3 id="应用程序类">应用程序类</h3>
+<ul>
+<li>
+<p>文档模板类</p>
+<ul>
+<li>实现对文档、视窗口和框架窗口所构成的对象组的管理功能。（用于支持基于“文档－视”结构的应用框架）</li>
+<li>CDocTemplate: 文档模板的基类</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">CDocTemplate(UINT nIDResource, CRuntimeClass<span style="color:#f92672">*</span> pDocClass, CRuntimeClass<span style="color:#f92672">*</span> pFrameClass, CRuntimeClass<span style="color:#f92672">*</span> pViewClass); <span style="color:#75715e">//参数为文档、视以及框架窗口的类信息
+</span></code></pre></div><ul>
+<li>CSingleDocTemplate: 单文档模板类</li>
+<li>CMultiDocTemplate: 多文档模板类</li>
+</ul>
+</li>
+<li>
+<p>应用类 CWinApp</p>
+<ul>
+<li>提供了对 Windows 应用程序的各部分进行组合和管理的功能，其中包括对主窗口和文档模板的管理以及实现消息循环等</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">virtual</span> BOOL <span style="color:#a6e22e">InitInstance</span>(); <span style="color:#75715e">//应用程序初始化，包括注册窗口类、创建/显示主窗口等。它由WinMain调用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Run</span>(); <span style="color:#75715e">//实现消息循环，由WinMain调用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">ExitInstance</span>(); <span style="color:#75715e">//由Run调用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> CWnd <span style="color:#f92672">*</span><span style="color:#a6e22e">GetMainWnd</span>();
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">AddDocTemplate</span>(CDocTemplate<span style="color:#f92672">*</span> Template); <span style="color:#75715e">//把一个文档模板加入到CWinApp类的对象中
+</span><span style="color:#75715e"></span>afx_msg <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">OnFileNew</span>(); <span style="color:#75715e">//对 File|New 菜单消息的处理功能
+</span><span style="color:#75715e"></span>afx_msg <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">OnFileOpen</span>(); <span style="color:#75715e">//对 File|Open 处理
+</span></code></pre></div></li>
+</ul>
+<h3 id="其它类">其它类</h3>
+<ul>
+<li>
+<p>绘图类</p>
+<ul>
+<li>CDC 绘图环境类：实现 Windows 应用程序中的绘图功能：文本以及几何图形（线、矩形、椭圆等）的输出
+<ul>
+<li>CClientDC: CDC 派生类，用于在一个窗口的客户区绘图</li>
+<li>应用框架调用 CView 的 OnDraw 成员函数时，会自动创建一个 CDC 类的对象，作为参数传给 OnDraw</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//文本输出函数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> BOOL <span style="color:#a6e22e">TextOut</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y, LPCTSTR lpszString, <span style="color:#66d9ef">int</span> nCount);
+BOOL <span style="color:#a6e22e">TextOut</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y, <span style="color:#66d9ef">const</span> CString<span style="color:#f92672">&amp;</span> str);
+<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">DrawText</span>(LPCTSTR lpszString, <span style="color:#66d9ef">int</span> nCount, LPRECT lpRect, UINT nFormat);
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">DrawText</span>(<span style="color:#66d9ef">const</span> CString<span style="color:#f92672">&amp;</span> str, LPRECT lpRect, UINT nFormat);
+<span style="color:#66d9ef">virtual</span> COLORREF <span style="color:#a6e22e">SetTextColor</span>(COLORREF crColor ); <span style="color:#75715e">//设置字符和背景颜色
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> COLORREF <span style="color:#a6e22e">SetBkColor</span>(COLORREF crColor);
+<span style="color:#75715e">//几何图形输出函数
+</span><span style="color:#75715e">//线段
+</span><span style="color:#75715e"></span>CPoint <span style="color:#a6e22e">MoveTo</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y);<span style="color:#75715e">//定起点
+</span><span style="color:#75715e"></span>CPoint <span style="color:#a6e22e">MoveTo</span>(POINT point);
+BOOL <span style="color:#a6e22e">LineTo</span>(POINT point);
+BOOL <span style="color:#a6e22e">LineTo</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y);
+<span style="color:#75715e">//画矩形
+</span><span style="color:#75715e"></span>BOOL <span style="color:#a6e22e">Rectangle</span>(<span style="color:#66d9ef">int</span> x1, <span style="color:#66d9ef">int</span> y1, <span style="color:#66d9ef">int</span> x2, <span style="color:#66d9ef">int</span> y2);
+BOOL <span style="color:#a6e22e">Rectangle</span>(LPCRECT lpRect);
+<span style="color:#75715e">//画椭圆，参数为外接矩形
+</span><span style="color:#75715e"></span>BOOL <span style="color:#a6e22e">Ellipse</span>(<span style="color:#66d9ef">int</span> x1, <span style="color:#66d9ef">int</span> y1, <span style="color:#66d9ef">int</span> x2, <span style="color:#66d9ef">int</span> y2);
+BOOL <span style="color:#a6e22e">Ellipse</span>(LPCRECT lpRect);
+<span style="color:#75715e">//绘图工具选择函数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">virtual</span> CGdiObject<span style="color:#f92672">*</span> <span style="color:#a6e22e">SelectStockObject</span>(<span style="color:#66d9ef">int</span> nIndex); <span style="color:#75715e">//选择系统提供的绘图工具
+</span><span style="color:#75715e"></span>CPen<span style="color:#f92672">*</span> <span style="color:#a6e22e">SelectObject</span>(CPen<span style="color:#f92672">*</span> pPen); <span style="color:#75715e">//选择自定义的笔
+</span><span style="color:#75715e"></span>CBrush<span style="color:#f92672">*</span> <span style="color:#a6e22e">SelectObject</span>(CBrush<span style="color:#f92672">*</span> pBrush);
+<span style="color:#66d9ef">virtual</span> CFont<span style="color:#f92672">*</span> <span style="color:#a6e22e">SelectObject</span>(CFont<span style="color:#f92672">*</span> pFont);
+</code></pre></div><ul>
+<li>
+<p>绘图工具类</p>
+<ul>
+<li>CPen: 画笔，用于画线</li>
+<li>CFont: 字体</li>
+<li>CBrush：刷子，用于填充封闭图形</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Cpen(<span style="color:#66d9ef">int</span> nPenStyle, <span style="color:#66d9ef">int</span> nWidth, COLORREF crColor);
+CBrush(COLORREF crColor);
+CFont();
+BOOL CFont<span style="color:#f92672">::</span>CreatePointFont(<span style="color:#66d9ef">int</span> nPointSize, LPCTSTR lpszFaceName, CDC<span style="color:#f92672">*</span> pDC <span style="color:#f92672">=</span> NULL);
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//绘图实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> CMyView<span style="color:#f92672">::</span>OnDraw(CDC<span style="color:#f92672">*</span> pDC){
+  COLORREF old_text_color<span style="color:#f92672">=</span>pDC<span style="color:#f92672">-&gt;</span>SetTextColor(RGB(<span style="color:#ae81ff">255</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>)); <span style="color:#75715e">//把字符颜色设置成“红”色。
+</span><span style="color:#75715e"></span>  COLORREF old_bk_color<span style="color:#f92672">=</span>pDC<span style="color:#f92672">-&gt;</span>SetBkColor(RGB(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>,<span style="color:#ae81ff">0</span>)); <span style="color:#75715e">//把字符背景颜色设置成“绿”色。
+</span><span style="color:#75715e"></span>  pDC<span style="color:#f92672">-&gt;</span>TextOut(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#960050;background-color:#1e0010">”</span>hello<span style="color:#960050;background-color:#1e0010">”</span>); <span style="color:#75715e">//在位置(0,0)处显示字符串&#34;hello&#34;
+</span><span style="color:#75715e"></span>  pDC<span style="color:#f92672">-&gt;</span>SetTextColor(old_text_color); <span style="color:#75715e">//把原来的字符颜色选回CDC类的对象
+</span><span style="color:#75715e"></span>  pDC<span style="color:#f92672">-&gt;</span>SetBkColor(old_bk_color); <span style="color:#75715e">//把原来的字符背景颜色选回CDC类的对象
+</span><span style="color:#75715e"></span>  CBrush <span style="color:#a6e22e">brush</span>(RGB(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>)),<span style="color:#f92672">*</span>old_brush; <span style="color:#75715e">//创建一个蓝色的刷子
+</span><span style="color:#75715e"></span>  old_brush <span style="color:#f92672">=</span> pDC<span style="color:#f92672">-&gt;</span>SelectObject(<span style="color:#f92672">&amp;</span>brush); <span style="color:#75715e">//把新刷子选进CDC类的对象，原来的刷子由old_brush指向
+</span><span style="color:#75715e"></span>  pDC<span style="color:#f92672">-&gt;</span>Rectangle(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">50</span>,<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">150</span>); <span style="color:#75715e">//画一个内部为蓝色的矩形，左上角：(0,50)；右下角：(100,150)
+</span><span style="color:#75715e"></span>  pDC<span style="color:#f92672">-&gt;</span>SelectObject(old_brush); <span style="color:#75715e">//把原来的刷子选回到CDC类的对象中，必须要做！
+</span><span style="color:#75715e"></span>}
+</code></pre></div><ul>
+<li>
+<p>文件输入输出类</p>
+<ul>
+<li>CFile: 基于字节流的文件 I/O</li>
+<li>CArchive: 通过重载操作符 &laquo; &raquo; 实现了对基本数据类型和 MFC 类对象的文件 I/O</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">BOOL <span style="color:#a6e22e">IsLoading</span>() <span style="color:#66d9ef">const</span>;
+BOOL <span style="color:#a6e22e">IsStoring</span>() <span style="color:#66d9ef">const</span>;
+</code></pre></div></li>
+<li>
+<p>常用数据类型类</p>
+<ul>
+<li>CPoint（点坐标）</li>
+<li>CRect（矩形信息）</li>
+<li>CSize（矩形的宽度/高度、点之间的偏移量等）</li>
+<li>CString</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

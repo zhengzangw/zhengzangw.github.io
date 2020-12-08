@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Basics of Linux | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基础命令">基础命令</a></li>
+    <li><a href="#关机命令">关机命令</a></li>
+    <li><a href="#访问控制">访问控制</a></li>
+    <li><a href="#文件管理">文件管理</a>
+      <ul>
+        <li><a href="#内容查看">内容查看</a></li>
+        <li><a href="#查找">查找</a></li>
+      </ul>
+    </li>
+    <li><a href="#磁盘工具">磁盘工具</a></li>
+    <li><a href="#光盘工具">光盘工具</a></li>
+    <li><a href="#压缩">压缩</a></li>
+    <li><a href="#bash">Bash</a></li>
+    <li><a href="#man">man</a>
+      <ul>
+        <li><a href="#wildcard">wildcard</a></li>
+        <li><a href="#重定向">重定向</a></li>
+        <li><a href="#选取命令">选取命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#其它">其它</a></li>
+    <li><a href="#hard-disk-file-type">Hard Disk File Type</a></li>
+    <li><a href="#text">Text</a></li>
+    <li><a href="#fs">FS</a></li>
+    <li><a href="#设备">设备</a></li>
+    <li><a href="#imagemagick">imagemagick</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><p>Linux 私房菜</p>
+<h1 id="命令">命令</h1>
+<h2 id="基础命令">基础命令</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Parameters</th>
+<th>Description</th>
+<th>Order</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td></td>
+<td>语系</td>
+<td>en_US.utf8,zh_CN.utf-8</td>
+</tr>
+<tr>
+<td>date</td>
+<td></td>
+<td></td>
+<td>scale=3</td>
+</tr>
+<tr>
+<td>cal</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bc</td>
+<td></td>
+<td>计算器</td>
+<td></td>
+</tr>
+<tr>
+<td>man</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>info</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>whatis</td>
+<td></td>
+<td>man -f</td>
+<td>mandb 建立数据库</td>
+</tr>
+<tr>
+<td>apropos</td>
+<td></td>
+<td>man-k</td>
+<td></td>
+</tr>
+<tr>
+<td>sync</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>su</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="关机命令">关机命令</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shutdown</td>
+<td>-[krhc] [time]</td>
+<td>警告/重启/关闭/取消 runs the shutdown scripts</td>
+</tr>
+<tr>
+<td>halt</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>poweroff</td>
+<td></td>
+<td>also turns off the unit itself</td>
+</tr>
+<tr>
+<td>reboot</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="访问控制">访问控制</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chgrp</td>
+<td>[-R]</td>
+<td></td>
+</tr>
+<tr>
+<td>chown</td>
+<td>[-R]</td>
+<td>4755(4:special)</td>
+</tr>
+<tr>
+<td>chmod</td>
+<td></td>
+<td>Num/ugo+-=</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>SUID: Set UID
+<ul>
+<li>-rwsr-xr-x</li>
+<li>文件
+<ul>
+<li>SUID 权限仅对二进制文件有效</li>
+<li>执行者对于该程序需要 x 的可执行权限</li>
+<li>执行者在程序执行过程中有 owner 权限</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SGID: Set GID
+<ul>
+<li>-rwx&ndash;s&ndash;x</li>
+<li>文件
+<ul>
+<li>SGID 对二进制程序有效</li>
+<li>执行者对于该程序需要 x 的可执行权限</li>
+<li>执行者获得程序用户组支持</li>
+</ul>
+</li>
+<li>目录
+<ul>
+<li>在此目录下用户的有效用户组成为目录的用户组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Sticky Bit
+<ul>
+<li>drwxrwxrwt</li>
+<li>目录
+<ul>
+<li>用户在该目录下建立文件或目录，仅自己与root才有权力删除</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件管理">文件管理</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ls</td>
+<td>[-adil] [-hSr]</td>
+<td></td>
+</tr>
+<tr>
+<td>cp</td>
+<td>[-ap] [-ir]</td>
+<td></td>
+</tr>
+<tr>
+<td>mv</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>touch</td>
+<td>[-cd]</td>
+<td></td>
+</tr>
+<tr>
+<td>umask</td>
+<td>[num]</td>
+<td>查看/修改默认权限</td>
+</tr>
+<tr>
+<td>lsattr</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>chattr</td>
+<td></td>
+<td>隐藏属性</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>建立文件：(-rw-rw-rw-)-umask</li>
+<li>建立目录：(drwxrwxrwx)-umask</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>隐藏属性</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>atime 不修改（加速）</td>
+</tr>
+<tr>
+<td>S</td>
+<td>同步</td>
+</tr>
+<tr>
+<td>a</td>
+<td>只能增加</td>
+</tr>
+<tr>
+<td>c</td>
+<td>自动压缩</td>
+</tr>
+<tr>
+<td>d</td>
+<td>不会被dump</td>
+</tr>
+<tr>
+<td>i</td>
+<td>不能被删除、改名、设置链接、写入</td>
+</tr>
+</tbody>
+</table>
+<h3 id="内容查看">内容查看</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rm</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>cat</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tac</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>nl</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>more/less</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>od</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="查找">查找</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>which</td>
+<td>[-a]</td>
+<td>在PATH中寻找</td>
+</tr>
+<tr>
+<td>type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>whereis</td>
+<td>[-l]</td>
+<td></td>
+</tr>
+<tr>
+<td>locate</td>
+<td></td>
+<td>在 /var/lib/mlocate 数据库寻找（updatedb）</td>
+</tr>
+<tr>
+<td>find</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>find
+<ul>
+<li>时间：-atime,-ctime,-mtime</li>
+<li>用户：-uid n,-gid n</li>
+<li>-name</li>
+<li>-size</li>
+</ul>
+</li>
+</ul>
+<h2 id="磁盘工具">磁盘工具</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lsblk</td>
+<td></td>
+<td>列出块储存设备</td>
+</tr>
+<tr>
+<td>blkid</td>
+<td></td>
+<td>列出块储存设备UUID(Universally unique identifier)</td>
+</tr>
+<tr>
+<td>gdisk</td>
+<td></td>
+<td>GPT 分区</td>
+</tr>
+<tr>
+<td>fdisk</td>
+<td></td>
+<td>MBR 分区</td>
+</tr>
+<tr>
+<td>parted</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fsck</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xfs_repair</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mount</td>
+<td>-loop</td>
+<td></td>
+</tr>
+<tr>
+<td>umount</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xfs_dump</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xfs_restore</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="光盘工具">光盘工具</h2>
+<ul>
+<li>mkisofs
+<ul>
+<li>格式：iso9660
+<ul>
+<li>-r 增加更多信息</li>
+</ul>
+</li>
+<li>-graft-point 分层</li>
+</ul>
+</li>
+<li>isoinfo</li>
+<li>rsync</li>
+<li>wodim(cdrecord)</li>
+<li>dd if=&ldquo;input&rdquo; of=&ldquo;output&rdquo; bs=&ldquo;block_size&rdquo; count=&ldquo;number&rdquo;</li>
+<li>cpio</li>
+</ul>
+<h2 id="压缩">压缩</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>压缩工具</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.Z</td>
+<td>compress</td>
+<td>废弃</td>
+</tr>
+<tr>
+<td>.zip</td>
+<td>zip</td>
+<td>算法不定，主要DEFLATE,中等,兼容性好</td>
+</tr>
+<tr>
+<td>.gz</td>
+<td>gzip</td>
+<td>算法基于DEFLATE, gnu/Linux。 原始而效率低</td>
+</tr>
+<tr>
+<td>.bz2</td>
+<td>bzip2</td>
+<td>优于gzip，时间更长</td>
+</tr>
+<tr>
+<td>.xz</td>
+<td>xz</td>
+<td>LZMA SDK</td>
+</tr>
+<tr>
+<td>.7zip</td>
+<td></td>
+<td>主要用bzip2和lzma，略优于rar</td>
+</tr>
+<tr>
+<td>.rar</td>
+<td></td>
+<td>算法专有，优</td>
+</tr>
+<tr>
+<td>.tar</td>
+<td>tar</td>
+<td>归档</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>tar 可以和压缩或加密格式串用，tar.gz tar.bzip2 tar.xz tar.lzma 都是常见的压缩格式组合</li>
+<li>gzip [-cdtv#]
+<ul>
+<li>zcat/zmore/zless/zgrep</li>
+</ul>
+</li>
+<li>bzip2
+<ul>
+<li>bzcat/bzmore/bzless/bzgrep</li>
+</ul>
+</li>
+<li>xz
+<ul>
+<li>xzcat/xzmore/xzless/xzgrep</li>
+</ul>
+</li>
+<li>tar
+<ul>
+<li>-c 产生新包</li>
+<li>-t 列出文件</li>
+<li>-x 解出文件</li>
+<li>-zjJ</li>
+<li>-f</li>
+</ul>
+</li>
+</ul>
+<h2 id="bash">Bash</h2>
+<ul>
+<li>变量设置
+<ul>
+<li>myname=value</li>
+<li>myname=${value}</li>
+</ul>
+</li>
+<li>双引号：$ 保持原有样本</li>
+<li>单引号：一般文本</li>
+<li>借助命令
+<ul>
+<li>$()</li>
+<li>``</li>
+</ul>
+</li>
+<li>增量：PATH=${PATH}:/home/bin</li>
+<li>export: 是变量成为环境变量</li>
+<li>取消变量：unset</li>
+<li>内核版本：uname -r</li>
+<li>查看环境变量 env</li>
+<li>declare/typeset 声明变量类型
+<ul>
+<li>-a</li>
+<li>-i</li>
+<li>-x</li>
+<li>-r</li>
+</ul>
+</li>
+<li>set 观察所有变量</li>
+<li>提示字符 PS1</li>
+<li>$ : shell PID</li>
+<li>? : 上个命令返回值</li>
+<li>read [-pt] varible</li>
+<li>ulimit 限制</li>
+<li>删除
+<ul>
+<li>从左到右 {variable#/*local/bin:}
+<ul>
+<li>最短 #</li>
+<li>最长 ##</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>替换
+<ul>
+<li>${variable/old/new} 单个</li>
+<li>${variable//old/new} 全部</li>
+</ul>
+</li>
+<li>new=${old-content}
+<ul>
+<li>old 不存在则 content</li>
+</ul>
+</li>
+<li>new=${old:-content}
+<ul>
+<li>old 不存在或为空则 content</li>
+</ul>
+</li>
+<li>P333</li>
+<li>alias</li>
+<li>unalias</li>
+<li>history
+<ul>
+<li>!num 执行第num命令</li>
+<li>!! 上一条</li>
+<li>!al 最近以al开头的命令</li>
+</ul>
+</li>
+<li>/etc/issue 登录画面</li>
+<li>login shell
+<ul>
+<li>/etc/profile
+<ul>
+<li>/etc/profile.d/*.sh</li>
+<li>/etc/locale.conf</li>
+</ul>
+</li>
+<li>~/.bash_profile 或 ~/.bash_login 或 ~/.profile</li>
+</ul>
+</li>
+<li>non-login shell
+<ul>
+<li>~/.bashrc</li>
+</ul>
+</li>
+<li>source 或 .</li>
+<li>stty</li>
+</ul>
+<h2 id="man">man</h2>
+<ul>
+<li>Section 1 user commands (introduction)</li>
+<li>Section 2 system calls (introduction)</li>
+<li>Section 3 library functions (introduction)</li>
+<li>Section 4 special files (introduction)</li>
+<li>Section 5 file formats (introduction)</li>
+<li>Section 6 games (introduction)</li>
+<li>Section 7 conventions and miscellany (introduction)</li>
+<li>Section 8 administration and privileged commands (introduction)</li>
+<li>Section L math library functions Section Ntcl functions</li>
+</ul>
+<h3 id="wildcard">wildcard</h3>
+<p>*?[][-][^]</p>
+<h3 id="重定向">重定向</h3>
+<p>&lt; &laquo;</p>
+<blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>2&gt; 2&raquo;
+tee</p>
+<p>tr</p>
+<ul>
+<li>-d 删除</li>
+<li>-s 替换重复字符</li>
+</ul>
+<p>col</p>
+<ul>
+<li>-x 将 tab 转为对等空格</li>
+</ul>
+<p>join
+expand
+unexpand
+split
+xargs -p -n 1</p>
+<ul>
+<li>前一个命令的stdout</li>
+</ul>
+<h3 id="选取命令">选取命令</h3>
+<p>grep
+cut -d&rsquo;分隔字符' -f fields
+cut -c 字符区间
+sort
+wc
+uniq</p>
+<h2 id="其它">其它</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+</table>
+<ul>
+<li><code>cat /proc/iomem</code></li>
+<li><code>lspci</code></li>
+<li><code>lsblk</code></li>
+<li>vipw/vigr</li>
+<li>ctrl+alt+F1/2t</li>
+</ul>
+<h2 id="hard-disk-file-type">Hard Disk File Type</h2>
+<p>都支持：动态调整大小，快照，划分小于2G</p>
+<table>
+<thead>
+<tr>
+<th>Hard disk</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VDI(VirtualBox Disk Image)</td>
+<td>VB 独有形式</td>
+</tr>
+<tr>
+<td>VHD(Virtual Hard Disk)</td>
+<td>Microsoft Virtual PC 基本格式</td>
+</tr>
+<tr>
+<td>VMDK</td>
+<td>VMWare</td>
+</tr>
+</tbody>
+</table>
+<h2 id="text">Text</h2>
+<ul>
+<li>od
+<ul>
+<li>-t 指定数据的显示格式，主要的参数有：
+<ul>
+<li>c ASCII字符或反斜杠序列</li>
+<li>d 有符号十进制数</li>
+<li>f 浮点数</li>
+<li>o 八进制（系统默认值为02）</li>
+<li>u 无符号十进制数</li>
+<li>x 十六进制数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>hexdump
+<ul>
+<li>-C</li>
+<li>-v 显示所有输入</li>
+</ul>
+</li>
+<li>xxd
+<ul>
+<li>-r</li>
+</ul>
+</li>
+</ul>
+<h2 id="fs">FS</h2>
+<ul>
+<li>dd</li>
+<li>mkfs</li>
+<li>stat</li>
+<li>ls -i</li>
+</ul>
+<h2 id="设备">设备</h2>
+<ul>
+<li>blockdev &ndash;getbsz /dev/sda2</li>
+</ul>
+<h2 id="imagemagick">imagemagick</h2>
+<ul>
+<li><a href="https://imagemagick.org/script/command-line-options.php#type">convert</a>
+<ul>
+<li>-resize
+<ul>
+<li>100x100, 50%x50%</li>
+<li>-mattecolor &ldquo;#000000&rdquo; -frame 60x60</li>
+<li>-border 60x60 -bordercolor &ldquo;#000000&rdquo;</li>
+<li>-blur 80</li>
+<li>-flip 上下翻转</li>
+<li>-flop 左右翻转</li>
+<li>-negate</li>
+<li>-monochrome</li>
+<li>-noise 3</li>
+<li>-paint 4 油画</li>
+<li>-rotate 30</li>
+<li>-charcoal 2 炭笔</li>
+<li>-swirl 67 散射</li>
+<li>-raise 5x5</li>
+<li>-type Bilevel, Grayscale, GrayscaleAlpha, Palette, PaletteAlpha, TrueColor, TrueColorAlpha, ColorSeparation, or ColorSeparationAlpha</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>mogrify
+<ul>
+<li>-sample 80x60</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted --></main>
+        </div>
+
+    </div>
+</body></html>

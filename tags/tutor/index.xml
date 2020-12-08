@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tutor on Zangwei</title>
+    <link>https://zhengzangw.com/tags/tutor/</link>
+    <description>Recent content in tutor on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Sun, 12 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/tutor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to Jupyter Notebook</title>
+      <link>https://zhengzangw.com/posts/jupyter-notebook-introduction/</link>
+      <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/jupyter-notebook-introduction/</guid>
+      <description>&lt;h1 id=&#34;jupyter-notebook-introduction&#34;&gt;Jupyter-Notebook-Introduction&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://jupyter.readthedocs.io/en/latest/_static/_images/jupyter.svg&#34; alt=&#34;Jupyter&#34;&gt;&lt;/p&gt;
+&lt;p&gt;本文为大家介绍 Jupyter Notebook 这一实用工具（原名 IPython Notebook），总共分为两个部分：安装与简介，使用与展示&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/ipython/ipython/blob/3.x/examples/Notebook/Index.ipynb&#34;&gt;官方教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Jupyter Notebook 是一个交互式的编程环境，可以方便的供脚本语言（python, matlab）以及 REPL 化的其它语言进行编程、调试以及展示。&lt;br&gt;
+更多内容见&lt;a href=&#34;https://nbviewer.jupyter.org/github/ipython/ipython/blob/3.x/examples/Notebook/What%20is%20the%20IPython%20Notebook.ipynb&#34;&gt;What is the IPython Notebook&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;本文也是使用 Jupyter Notebook 编写。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Set up your Android Development Environment on Macos</title>
+      <link>https://zhengzangw.com/posts/android-develop/</link>
+      <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/android-develop/</guid>
+      <description>&lt;h2 id=&#34;mac-开发环境配置&#34;&gt;Mac 开发环境配置&lt;/h2&gt;
+&lt;h3 id=&#34;install-java8&#34;&gt;Install Java8&lt;/h3&gt;
+&lt;p&gt;java 8 is suitable for android-sdk&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;brew tap caskroom/versions&lt;/code&gt;
+&lt;code&gt;brew cask install java8&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;开发环境&#34;&gt;开发环境&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;brew install ant&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;brew install maven&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;brew install gradle&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;brew cask install android-sdk&lt;/code&gt;
+&lt;code&gt;brew cask install android-ndk&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;brew cask install intel-haxm&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;brew cask install android-studio&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sharing of some good RSS seed</title>
+      <link>https://zhengzangw.com/posts/awesome-rss/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/awesome-rss/</guid>
+      <description>&lt;h1 id=&#34;rss-resource&#34;&gt;RSS Resource&lt;/h1&gt;
+&lt;h2 id=&#34;订阅&#34;&gt;订阅&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/dll635281462/article/details/51201490&#34;&gt;rss订阅源推荐个人收集&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zhihu.com/question/19580096&#34;&gt;知乎&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;制作&#34;&gt;制作&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://feed43.com&#34;&gt;Feed43&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;github:直接搜索 &lt;code&gt;https://github.com/username&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

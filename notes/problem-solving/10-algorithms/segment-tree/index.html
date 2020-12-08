@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Segment Tree | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#离散化">离散化</a></li>
+    <li><a href="#c技巧">C++技巧</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="prepare">Prepare</h1>
+<h2 id="离散化">离散化</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">m <span style="color:#f92672">=</span> a.y
+sort(m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,m<span style="color:#f92672">+</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+len <span style="color:#f92672">=</span> unique(m,m<span style="color:#f92672">+</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">-</span> m
+<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;=</span>n;<span style="color:#f92672">++</span>i) a[i].y <span style="color:#f92672">=</span> lower_bound(m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,m<span style="color:#f92672">+</span>len<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,a[i].y) <span style="color:#f92672">-</span> m;
+</code></pre></div><h2 id="c技巧">C++技巧</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">std<span style="color:#f92672">::</span>copy(begin,end,des)
+std<span style="color:#f92672">::</span>reverse(begin,end)
+</code></pre></div></main>
+        </div>
+
+    </div>
+</body></html>

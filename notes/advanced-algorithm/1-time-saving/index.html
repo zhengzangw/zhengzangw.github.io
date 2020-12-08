@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1. Time-saving | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#problems">Problems</a></li>
+    <li><a href="#min-cut">Min-Cut</a>
+      <ul>
+        <li><a href="#deterministic-algorithm">Deterministic Algorithm</a></li>
+        <li><a href="#kargers-contraction-algorithm">Karger&rsquo;s Contraction Algorithm</a></li>
+        <li><a href="#fast-min-cut-algorithm">Fast Min-Cut Algorithm</a></li>
+      </ul>
+    </li>
+    <li><a href="#max-cut">Max-Cut</a>
+      <ul>
+        <li><a href="#greedy-heuristics">Greedy Heuristics</a></li>
+        <li><a href="#derandomization-from-average-case">Derandomization from Average Case</a></li>
+        <li><a href="#derandomization-by-pairwise-independence">Derandomization by pairwise independence</a></li>
+      </ul>
+    </li>
+    <li><a href="#coupling">Coupling</a></li>
+    <li><a href="#polynomial-identity-testing">Polynomial Identity Testing</a></li>
+    <li><a href="#set-cover">Set cover</a>
+      <ul>
+        <li><a href="#greedy-algorithm">Greedy Algorithm</a></li>
+        <li><a href="#primal-dual-algorithm">Primal-Dual Algorithm</a></li>
+      </ul>
+    </li>
+    <li><a href="#scheduling">Scheduling</a>
+      <ul>
+        <li><a href="#grahams-list-algorithm">Graham&rsquo;s List algorithm</a></li>
+        <li><a href="#local-search">Local Search</a></li>
+        <li><a href="#longest-processing-time-lpt">Longest Processing Time (LPT)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="problems">Problems</h2>
+<ul>
+<li>Min-Cut $\in\text{P}$</li>
+<li>Max-Cut $\in\text{NPH}$</li>
+<li>Polynomial Identity Testing (univariate) $\in$co-$\text{NPH}$
+<ul>
+<li>Input: a polynomial $f\in\mathbb{F}<input checked="" disabled="" type="checkbox"> $ of degree $d$</li>
+<li>Determine whether $f\equiv0$</li>
+</ul>
+</li>
+<li>PIT:
+<ul>
+<li>Input: two $n$-variate polynomials $f,g\in\mathbb{F}[x_1,x_2,\cdots,x_n]$ of degree $d$</li>
+<li>Determine: $f\equiv g$</li>
+</ul>
+</li>
+<li>Set Cover $\in\text{NPH}$:
+<ul>
+<li>Input: $m$ subsets $S_1,\cdots,S_m\subseteq U$ of a universe of size $n$</li>
+<li>Output: $C\subseteq{1,2,\cdots, m}$ such that $U=\bigcup_{i\in C}S_i$</li>
+<li>$\text{freq}(x)=|{i|x\in S_i}|$</li>
+</ul>
+</li>
+<li>Hitting Set Problem $\in\text{NPH}$
+<ul>
+<li>Input: $n$ subsets $S_1,\cdots,S_m\subseteq U$ of a universe of size $m$</li>
+<li>Output $C\subseteq U$ that $C$ intersects with every set $S_i$</li>
+<li>$\text{freq}(x)=|S_i|$</li>
+<li>equivalent to Set Cover</li>
+</ul>
+</li>
+<li>Vertex Cover Problem $\in\text{NPH}$
+<ul>
+<li>Input: an undirect graph $G(V,E)$</li>
+<li>Output: the smallest $C\subseteq V$ such that $\forall e\in E$ is incident to at least one vertex in $C$</li>
+<li>set cover with frequency $2$</li>
+</ul>
+</li>
+<li>Minimum Makespan on Identical Parallel Machine $\in\text{NPH}$
+<ul>
+<li>Input: $n$ positive integers $p_1,p_2,\cdots,p_n$ nad a positive integer $m$</li>
+<li>Output: an assignment $\sigma:[n]\rightarrow[m]$ which minimizes $C_{\max}=\max_{i\in [m]}\sum_{j:i=\sigma(j)}p_j$</li>
+</ul>
+</li>
+<li>Partition Problem $\in\text{NPH}$
+<ul>
+<li>Input: $S={x_1,\cdots,x_n}$</li>
+<li>Output: Whether there is a partition of $S$ into $A$ and $B$ such that $\sum_{x\in A}x=\sum_{x\in B}x$</li>
+</ul>
+</li>
+<li>算法设计
+<ul>
+<li>$\text{P}$: Randomize to accelerate</li>
+<li>$\text{NPH}$
+<ul>
+<li>sampling: random approximation</li>
+<li>greedy/local search: approximation</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="min-cut">Min-Cut</h2>
+<h3 id="deterministic-algorithm">Deterministic Algorithm</h3>
+<ul>
+<li>Max-flow min-cut Theory: $(|V|-1)\times$ max-flow time</li>
+<li>Stoer–Wagner Algorithm(multi-graphs): $O(EV+V^2\log V)$</li>
+<li>Ken-ichi Kawarabayashi and Mikkel Thorup(simple graph, STOC 2015): near-linear time complexity</li>
+</ul>
+<h3 id="kargers-contraction-algorithm">Karger&rsquo;s Contraction Algorithm</h3>
+<ul>
+<li>Contraction: merge two vertices into a new vertex</li>
+<li>Karger&rsquo;s Algorithm(1993): $\text{ZPP}$
+<ul>
+<li>Running time: $O(V^2)$</li>
+<li>$P_c=\frac{2}{V(V-1)}$</li>
+<li>w.h.p: $O(V^2\log V)$ times</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">RandomContract(G){
+  <span style="color:#66d9ef">while</span> V<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">2</span>
+    e <span style="color:#f92672">=</span> choose(E)
+    contract(G,e)
+  <span style="color:#66d9ef">return</span> remaining edges
+}
+</code></pre></div><ul>
+<li>Analysis Details
+<ul>
+<li>Lemma: $E\geq\frac{VC}{2}$, min-cut $C$</li>
+<li>$p_i=1-\frac{C}{E_i}\geq 1-\frac{2}{V_i}$</li>
+<li>$p_{\text{correct}}\geq P_C=\prod_{i=1}^{n-2}P(e_i\not\in C|\forall j&lt;i,e_j\not\in C)\geq \prod_{i=1}^{n-2}(1-\frac{2}{n-i+1})=\prod_{i=3}^{n}\frac{i-2}{i}=\frac{2}{n(n-1)}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="fast-min-cut-algorithm">Fast Min-Cut Algorithm</h3>
+<ul>
+<li>Karger&rsquo;s Algorithm improved by recursion(1996)
+<ul>
+<li>Running time: $O(V^2\log V)$</li>
+<li>$P_c=\Omega(\frac{1}{\log V})$</li>
+<li>w.h.p: run $O(\log^2V)$ times</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">FastCut(G){
+  <span style="color:#66d9ef">if</span> (V<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">6</span>) <span style="color:#66d9ef">return</span> brute_force(V)
+  <span style="color:#66d9ef">else</span> {
+    t <span style="color:#f92672">=</span> ceil(<span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>V<span style="color:#f92672">/</span>sqrt(<span style="color:#ae81ff">2</span>))
+    G1 <span style="color:#f92672">=</span> RandomContract(G,t)
+    G2 <span style="color:#f92672">=</span> RandomContract(G,t)
+    <span style="color:#66d9ef">return</span> min(FastCut(G1), FastCut(G2))
+  }
+}
+</code></pre></div><ul>
+<li>Analysis Details
+<ul>
+<li>RandomContract(G,t): $P_{\text{survive}}=\frac{t(t-1)}{n(n-1)}$
+<ul>
+<li>$t=\lceil 1+\frac{n}{\sqrt{2}}\rceil,P\geq \frac{1}{2}$</li>
+</ul>
+</li>
+<li>$P_{\text{correct}}\geq 1-(1-\frac{1}{2}p(\lceil 1+\frac{n}{\sqrt{2}}\rceil))^2$</li>
+<li>$T(n)=2T(\lceil 1+\frac{n}{\sqrt{2}}\rceil)+O(n^2)$
+<ul>
+<li>$T(n)=O(n^2\log_2n)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="max-cut">Max-Cut</h2>
+<h3 id="greedy-heuristics">Greedy Heuristics</h3>
+<p>0.5-approximation algorithm</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">GreedyMaxCut(V,E){
+  S<span style="color:#f92672">=</span>T<span style="color:#f92672">=</span>emptyset
+  <span style="color:#66d9ef">for</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,...,n (random order)
+    vi joins one of S,T to maximize the current E(S,T)
+}
+</code></pre></div><ul>
+<li>Analysis Details
+<ul>
+<li>$|E|=\sum_{i=1}^n(|E(S_i,{v_i})|+|E(T_i,{v_i})|)$</li>
+<li>SOL$<em>G=\sum</em>{i=1}^n\max(|E(S_i,{v_i})|,|E(T_i,{v_i})|)\geq\frac{1}{2}E\geq\frac{1}{2}$OPT$_G$</li>
+</ul>
+</li>
+<li>best known approximation ratio $\alpha^*\approx 0.878$ (best if assuming unique game conjecture)</li>
+</ul>
+<h3 id="derandomization-from-average-case">Derandomization from Average Case</h3>
+<ul>
+<li>Randomized Algorithm: uniform and independent random bit $X_v\in{0,1}$
+<ul>
+<li>$\mathbb{E}(|E(S,T)|)=\sum_{uv\in E}\mathbb{E}(I(X_u\not=X_v))=\sum_{uv\in E}P(X_u\not= X_v)=\frac{|E|}{2}\geq\frac{\text{OPT}_G}{2}$</li>
+<li>Probablistic method: $\exists \geq\frac{\text{OPT}_G}{2}$</li>
+<li>solution space: $O(2^n)$</li>
+</ul>
+</li>
+<li>Derandomization by Monotone Path: $\frac{\text{OPT}<em>G}{2}\leq\mathbb{E}(E(S,T))\leq\cdots\leq\mathbb{E}(E(S,T)|X</em>{v_1}=x_1,\cdots,X_{v_{i-1}})\leq\cdots$
+<ul>
+<li>This choice is equivalent to Greedy Heuristic one</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">MonotonePath(V,E){
+  S<span style="color:#f92672">=</span>T<span style="color:#f92672">=</span>emptyset
+  <span style="color:#66d9ef">for</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,...,n (random order)
+    vi joins one of S,T to maximize the average size of cut conditioning on the choices made so far by the vertice
+}
+</code></pre></div><h3 id="derandomization-by-pairwise-independence">Derandomization by pairwise independence</h3>
+<ul>
+<li>generate $n$ pairwise independent variables from $\log n$ mutually independent variables
+<ul>
+<li>Let $X_i$ be mutually indpendent uniform random bits</li>
+<li>$S_i\subseteq 2^{[k]}$ be nonempty sets</li>
+<li>$Y_i=\oplus_{j\in S_i}X_j$, $2^k-1$ pairwise independent varibles $Y_i$</li>
+</ul>
+</li>
+<li>Randomized Algorithm: $X_v$ only need to be pairwise independent
+<ul>
+<li>solution space: $O(n^2)$</li>
+<li>exhaustive search</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">k <span style="color:#f92672">=</span> log(n)
+<span style="color:#66d9ef">for</span> Y<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">2</span><span style="color:#f92672">**</span>k:
+  X<span style="color:#f92672">=</span>generatePairwise(Y)
+  t<span style="color:#f92672">=</span>assignVertexAccordingTo(X)
+  ans <span style="color:#f92672">=</span> max(ans, t)
+</code></pre></div><h2 id="coupling">Coupling</h2>
+<ul>
+<li>Process $G_1$ and $G_2$ share same randomness</li>
+<li>stochastic dominance: partial orders of random variable
+<ul>
+<li>Statewise dominance: $A\geq B,\exists A&gt;B$</li>
+<li>first-order stochastic dominance (FSD): $P(A\geq x)\geq P(B\geq x),\exists xP(A\geq x)&gt;P(B\geq x)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="polynomial-identity-testing">Polynomial Identity Testing</h2>
+<ul>
+<li>Naive Randomized Algorithm for Univariate: co-$\text{RP}$
+<ul>
+<li>pick $r\in S$ and check $f(r)=0$</li>
+<li>false posivitve: $f\not\equiv 0,P(f(r)=0))\leq\frac{d}{|S|}$</li>
+</ul>
+</li>
+<li>multivariate polymonials
+<ul>
+<li>$f(x_1,\cdots,x_n)=\sum_{\sum_{j}i_j\leq d}a_{i_1,\cdots,i_n}x_1^{i_1}\cdots x_n^{i_n}$</li>
+<li>total degree: $i_1+\cdots+i_n$</li>
+<li>sum of monomials: # of coefficients ${n+d\choose d}\leq (n+d)^d$</li>
+<li>product form: expend is expensive but evaluate is efficient</li>
+</ul>
+</li>
+<li>Randomized Algorithm
+<ul>
+<li>$S\subseteq\mathbb{F}$</li>
+<li>pick $r_1,\cdots,r_n\in S$ uniformly and independently at random</li>
+<li>check $f(\overline{r})=0$</li>
+</ul>
+</li>
+<li>Schwatz-Zippel Theorem: finte $\forall S\subset\mathbb{F},r_1,r_2,\cdots,r_n\in S$ choosed uniformly and independently at random, $P(f(r_1,r_2,\cdots,r_n)=0)\leq\frac{d}{|S|}$</li>
+</ul>
+<h2 id="set-cover">Set cover</h2>
+<ul>
+<li>There is no poly-time algorithm with approximation ratio better than $(1-o(1))\ln n$ assuming that $\text{NP}\neq \text{P}$ (2014)</li>
+</ul>
+<h3 id="greedy-algorithm">Greedy Algorithm</h3>
+<ul>
+<li>Algorithm
+<ul>
+<li>Initially $C=\emptyset$</li>
+<li>while $U\not=\emptyset$ do
+<ul>
+<li>$C=C\cup\arg\max_i|S_i\cap U|$</li>
+<li>$U = U\backslash S_i$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>approximation ratio $H_n\approx\ln n$</li>
+<li>Vertex cover problem
+<ul>
+<li>$2$-approximation</li>
+<li>(2008) no poly-time algorithm with approximation ratio $2-\epsilon$ assuming UGC</li>
+</ul>
+</li>
+</ul>
+<h3 id="primal-dual-algorithm">Primal-Dual Algorithm</h3>
+<ul>
+<li>(Dual Problem) Matching: $M\subseteq U$ that $\forall i,|S_i\cap M|\leq 1$</li>
+<li>Find a maimal $M$, return $C={i:S_i\cap M\not=\emptyset}$</li>
+<li>$\max\text{freq}(x)$-approximation algorithm</li>
+</ul>
+<h2 id="scheduling">Scheduling</h2>
+<h3 id="grahams-list-algorithm">Graham&rsquo;s List algorithm</h3>
+<ul>
+<li>List Algorithm
+<ul>
+<li>for $j = 1,2,\cdots,n$: assign job $j$ to the machine that currently has the smallest load</li>
+</ul>
+</li>
+<li>Approximation ratio: $2-\frac{1}{m}$</li>
+</ul>
+<h3 id="local-search">Local Search</h3>
+<ul>
+<li>start with a feasible solution, improve at each step by modifying locally</li>
+<li>start with an arbitrary schedule of $n$ jobs to $m$ machines
+<ul>
+<li>while (true)
+<ul>
+<li>let $\ell$ denote the job finished at last in the current schedule;</li>
+<li>if there is machine $i$ such that job $\ell$ can finish earlier if transferred to machine $i$
+<ul>
+<li>job $\ell$ transfers to machine $i$</li>
+</ul>
+</li>
+<li>else break;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Approximation ratio: $2-\frac{1}{m}$</li>
+</ul>
+<h3 id="longest-processing-time-lpt">Longest Processing Time (LPT)</h3>
+<ul>
+<li>Algorithm
+<ul>
+<li>sort $p_i$ in non-increasing order</li>
+<li>assign job $j$ to the machine currently has the smallest load</li>
+</ul>
+</li>
+<li>Approximation: $\frac{4}{3}$</li>
+<li>competitive ratio: $\forall$ input sequence $I$, $\text{SOL}_I\leq\alpha\text{OPT}_I,\text{OPT}_I$ is the solution returned by optimal oofline algorithm</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

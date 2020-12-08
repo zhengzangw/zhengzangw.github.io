@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Restoration | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#图像复原">图像复原</a></li>
+    <li><a href="#噪声模型">噪声模型</a>
+      <ul>
+        <li><a href="#位置无关">位置无关</a></li>
+        <li><a href="#位置相关">位置相关</a></li>
+      </ul>
+    </li>
+    <li><a href="#噪声消除滤波器">噪声消除滤波器</a>
+      <ul>
+        <li><a href="#均值滤波器">均值滤波器</a></li>
+        <li><a href="#统计排序滤波器">统计排序滤波器</a></li>
+        <li><a href="#自适应滤波器">自适应滤波器</a></li>
+        <li><a href="#频率域消除周期噪声">频率域消除周期噪声</a></li>
+      </ul>
+    </li>
+    <li><a href="#估计退化函数">估计退化函数</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="图像复原">图像复原</h2>
+<ul>
+<li>图像退化模型与图像复原过程
+<ul>
+<li>$f(x,y)$</li>
+<li>退化函数 $H$：线性，位置不变</li>
+<li>加性噪声 $\eta(x,y)$：$g(x,y)=h(x,y)\star f(x,y)+\eta(x,y)$</li>
+<li>(逆过程)复原滤波器 $T(g(x,y))$</li>
+<li>$\hat f(x,y)\approx f(x,y)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="噪声模型">噪声模型</h2>
+<ul>
+<li>噪声来源
+<ul>
+<li>图像获取：环境条件，传感器质量</li>
+<li>图像传输：无线信号干扰</li>
+</ul>
+</li>
+</ul>
+<h3 id="位置无关">位置无关</h3>
+<p>均值方差估计</p>
+<ul>
+<li>高斯噪声
+<ul>
+<li>$p(z)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(z-\overline{z})^2}{2\sigma^2}}$</li>
+<li>电路噪声，传感器噪声</li>
+</ul>
+</li>
+<li>瑞利噪声
+<ul>
+<li>$p(z)=\frac{2}{b}(z-a)e^{-(z-a)^2/b},z\geq a$</li>
+<li>$\overline{z}=a+\sqrt{\frac{\pi b}{4}}$</li>
+<li>$\sigma^2=\frac{b(4-\pi)}{4}$</li>
+<li>范围成像</li>
+</ul>
+</li>
+<li>爱尔兰（伽马）噪声
+<ul>
+<li>$p(z)=\frac{a^bz^{b-1}}{(b-1)!}e{-az},z\geq 0$</li>
+<li>$\overline{z}=\frac{b}{a}$</li>
+<li>$\sigma^2=\frac{b}{a^2}$</li>
+<li>激光成像</li>
+</ul>
+</li>
+<li>指数噪声
+<ul>
+<li>$p(z)=ae^{-az},z\geq 0$</li>
+<li>$b=1$ 时的爱尔兰噪声</li>
+<li>激光成像</li>
+</ul>
+</li>
+<li>均匀分布
+<ul>
+<li>$p(z)=\frac{1}{b-a},a\leq z\leq b$</li>
+</ul>
+</li>
+<li>脉冲噪声（椒盐噪声）
+<ul>
+<li>盐：白色</li>
+<li>胡椒：黑色</li>
+<li>快速过滤</li>
+</ul>
+</li>
+</ul>
+<p>$$p(z)=\begin{cases} P_a &amp; z=a \newline  P_b &amp; z=b \end{cases}$$</p>
+<h3 id="位置相关">位置相关</h3>
+<p>频率域滤波</p>
+<ul>
+<li>周期噪声
+<ul>
+<li>电力或机电干扰</li>
+</ul>
+</li>
+</ul>
+<h2 id="噪声消除滤波器">噪声消除滤波器</h2>
+<h3 id="均值滤波器">均值滤波器</h3>
+<ul>
+<li>算数均值滤波器：$\hat f(x,y)=\frac{1}{mn}\sum_{(s,t)\in S_{xy}}g(s,t)$
+<ul>
+<li>不 robust: 如椒盐噪声</li>
+</ul>
+</li>
+<li>几何均值滤波器</li>
+<li>谐波均值滤波器：适用于盐粒噪声，不使用胡椒噪声</li>
+<li>逆谐波均值滤波器：$\hat f(x,y)=\frac{\sum g(s,t)^{Q+1}}{\sum g(s,t)^Q}$
+<ul>
+<li>$Q&gt;0$ 消除胡椒</li>
+<li>$Q=0$ 算数均值滤波器</li>
+<li>$Q&lt;0$ 消除盐粒</li>
+<li>$Q=-1$ 谐波均值滤波器</li>
+</ul>
+</li>
+</ul>
+<h3 id="统计排序滤波器">统计排序滤波器</h3>
+<ul>
+<li>中值滤波器</li>
+<li>最大/最小值滤波器</li>
+<li>中点滤波器：最大值和最小值的中点</li>
+<li>$\alpha$ 截断的均值滤波
+<ul>
+<li>分别去掉 $S_{xy}$ 中灰度最高/最低的 $\frac{d}{2}$ 个像素</li>
+</ul>
+</li>
+</ul>
+<h3 id="自适应滤波器">自适应滤波器</h3>
+<ul>
+<li>自适应局部降噪滤波器
+<ul>
+<li>利用四个度量
+<ul>
+<li>$g(x,y)$</li>
+<li>局部平均：$m_L$</li>
+<li>全局方差：$\sigma_\eta^2$</li>
+<li>局部方差：$\sigma_L^2$</li>
+</ul>
+</li>
+<li>$\hat f(x,y)=g(x,y)-\min(\frac{\sigma_\eta^2}{\sigma_L^2},1)(g(x,y)-m_L)$</li>
+</ul>
+</li>
+<li>自适应中值滤波器</li>
+</ul>
+<h3 id="频率域消除周期噪声">频率域消除周期噪声</h3>
+<ul>
+<li>理想带阻/带通/陷波滤波器</li>
+<li>巴特沃斯带阻/带通/陷波滤波器</li>
+<li>高斯带阻/带通/陷波滤波器</li>
+<li>最佳陷波滤波器：交互式</li>
+</ul>
+<h2 id="估计退化函数">估计退化函数</h2>
+<ul>
+<li>图像观察估计</li>
+<li>实验估计
+<ul>
+<li>冲激成像：$H=G/A$</li>
+</ul>
+</li>
+<li>建模估计
+<ul>
+<li>大气湍流</li>
+<li>运动捕捉</li>
+</ul>
+</li>
+<li>退化函数已知 $\hat F=G/H$
+<ul>
+<li>截断频率：只用非 $0$ 的 $H$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

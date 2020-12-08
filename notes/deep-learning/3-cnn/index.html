@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3-CNN | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#卷积">卷积</a></li>
+    <li><a href="#cnn">CNN</a></li>
+    <li><a href="#backbones">Backbones</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="卷积">卷积</h2>
+<ul>
+<li>卷积：$Y=W*X,y_{ij}=\sum_{u=1}^U\sum_{v=1}^V\omega_{uv}x_{i-u+1,j-v+1}$</li>
+<li>互相关：$Y=W\otimes X=\text{rot180}(W)*X$
+<ul>
+<li>$Y\in\mathbb{R}^{M-U+1,N-V+1}$</li>
+<li>深度学习中常用互相关代替卷积</li>
+</ul>
+</li>
+<li>卷积层输出长度（神经元数量）：$\frac{M-K+2P}{S}+1$
+<ul>
+<li>输入神经元 $M$</li>
+<li>步长 $S$</li>
+<li>卷积大小 $K$</li>
+<li>零填充：输入向量两端补 $P$ 个零</li>
+</ul>
+</li>
+<li>卷积分类
+<ul>
+<li>窄卷积：$S=1,P=0$</li>
+<li>宽卷积：$S=1,P=K-1,W\tilde\otimes X=W\otimes\tilde{X}$</li>
+<li>等宽卷积：$S=1,P=\frac{(K-1)}{2}$</li>
+</ul>
+</li>
+<li>卷积数学性质 $Y=W\otimes X$
+<ul>
+<li>$\text{rot180}(W)\tilde{\otimes}X=\text{rot180}(X)\tilde{\otimes}W$</li>
+<li>$\frac{\partial f(Y)}{\partial W}=\frac{\partial f(Y)}{\partial Y}\otimes X$</li>
+<li>$\frac{f(Y)}{\partial X}=\text{rot180}(W)\tilde{\otimes}\frac{\partial f(Y)}{\partial Y}$</li>
+</ul>
+</li>
+<li>其它卷积方式
+<ul>
+<li>转置卷积（反卷积）：从低维到高维的映射</li>
+<li>微步卷积：$S&lt;1$ 或在每两个向量元素间插入 $D$ 个 0，可得 $(D+1)\times(M-1)+K$ 维的向量</li>
+<li>空洞卷积（卷积膨胀）：卷积核间增加空洞，增大感受野</li>
+</ul>
+</li>
+</ul>
+<h2 id="cnn">CNN</h2>
+<ul>
+<li>FNN 处理图像信息
+<ul>
+<li>参数过多
+<ul>
+<li>$100\times100\times3$ 则第一隐藏层每个神经元有 $30000$ 参数</li>
+<li>权重矩阵有 $M_l\times M_{l-1}$ 个参数</li>
+</ul>
+</li>
+<li>局部不变性特征</li>
+</ul>
+</li>
+<li>卷积层：$z^{(l)}=\omega^{(l)}\otimes a^{(l-1)}+b^{(l)}$
+<ul>
+<li>局部连接：卷积层中每个神经元只和前一层中某个局部窗口内的神经元相连构成局部连接网络</li>
+<li>权重共享：$\omega^{(l)}$ 对所有神经元相同，一个卷积核只捕捉输入数据中的一种特定的局部特征</li>
+<li>共 $K+1$ 个参数</li>
+</ul>
+</li>
+<li>卷积层
+<ul>
+<li>输入特征映射组：$\mathcal{X}\in\mathbb{R}^{M\times N\times D}$ 三维张量，切片 $X^d\in\mathbb{R}^{M\times N}$ 为一个输入特征映射</li>
+<li>输出状态映射组：$\mathcal{Y}\in\mathbb{R}^{M'\times N'\times P}$ 三维张量，切片 $Y^p\in\mathbb{R}^{M'\times N'}$</li>
+<li>卷积核：$\mathcal{W}\in\mathbb{R}^{U\times V\times P\times D}$，切片 $W^{p,d}\in\mathbb{R}^{U\times V}$ 为一个二维卷积核</li>
+<li>$Z^p=W^p\otimes X+b^p=\sum_{d=1}^DW^{p,d}\otimes X^d+b^p$</li>
+<li>$Y^p=f(Z^p)$</li>
+</ul>
+</li>
+<li>汇聚层
+<ul>
+<li>最大汇聚：$y_{m,n}^d=\max_{i\in R_{m,n}^d}x_i$</li>
+<li>平均汇聚：$y_{m,n}^d=\frac{1}{|R_{m,n}^d|}\sum_{i\in R_{m,n}^d}x_i$</li>
+</ul>
+</li>
+<li>反向传播算法
+<ul>
+<li>$\delta^{(l,p)}=\frac{\partial L}{\partial Z^{(l,p)}}$</li>
+<li>汇聚层：$\delta^{(l,p)}=\frac{\partial L}{\partial Z^{(l,p)}}=f'_l(Z^{(l,p)}\odot\text{up}(\delta^{(l+1,p)})$</li>
+<li>聚集层：$\delta^{(l,d)}=f'<em>l(Z^{(l,d)})\cdot\sum</em>{P=1}^P(\text{rot180}(W^{(l+1,p,d)}\tilde\otimes\delta^{(l+1,p)}))$</li>
+</ul>
+</li>
+</ul>
+<h2 id="backbones">Backbones</h2>
+<ul>
+<li>LeNet-5(1998)
+<ul>
+<li>连接表</li>
+<li>输出层为 RBF 函数</li>
+</ul>
+</li>
+<li>AlexNet(2012)
+<ul>
+<li>GPU 训练</li>
+<li>局部响应归一</li>
+</ul>
+</li>
+<li>Inception
+<ul>
+<li>Inception 模块：不同卷积核得到结果再深度上堆叠作为输出</li>
+<li>Inception v1 (GoogLeNet, 2015)</li>
+<li>Inception v3 (2016)</li>
+</ul>
+</li>
+<li>ResNet
+<ul>
+<li>残差连接：$h(x)=x+(h(x)-x)$</li>
+<li>ResNet-50</li>
+</ul>
+</li>
+<li>VGG</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

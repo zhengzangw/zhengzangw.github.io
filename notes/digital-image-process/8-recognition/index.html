@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pattern Recognition | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本概念">基本概念</a></li>
+    <li><a href="#匹配">匹配</a></li>
+    <li><a href="#最佳统计分类器">最佳统计分类器</a></li>
+    <li><a href="#神经网络">神经网络</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="基本概念">基本概念</h2>
+<ul>
+<li>模式识别
+<ul>
+<li>feature: 描述符</li>
+<li>pattern: 描述符的排列</li>
+<li>pattern class：具有共同属性的模式 $\omega_1,\omega_2,\cdots,\omega_W$</li>
+</ul>
+</li>
+<li>常见的模式排列
+<ul>
+<li>vector</li>
+<li>string: 结构描述</li>
+<li>tree: 结构描述</li>
+</ul>
+</li>
+<li>决策论方法
+<ul>
+<li>$x\in\omega_i$: $d_i(x)&gt;d_j(x),\forall j\neq i$</li>
+<li>决策边界：$d_ij(x)=d_i-d_j(x)=0$</li>
+</ul>
+</li>
+</ul>
+<h2 id="匹配">匹配</h2>
+<p>每个类表示为原型模式向量，一个模式被分配给最近的类</p>
+<ul>
+<li>最小距离分类器
+<ul>
+<li>$m_j=\frac{1}{N_j}\sum_{x_j\in\omega_j}x_j$</li>
+<li>$D_j(x)=|x-m_j|$</li>
+<li>等价计算：$d_j(x)=x^Tm-\frac{1}{2}m_j^Tm_j$</li>
+</ul>
+</li>
+<li>基于相关的匹配
+<ul>
+<li>相关定理：$f(x,y)\star w(x,y)\iff F^*(u,v)W(u,v)$</li>
+<li>归一化相关系数：$\gamma(x,y)=\frac{\sum_s\sum_t[w(s,t)-\overline{w}][f(x+s,y+t)-\overline{f}<em>{xy}]}{{\sum_s\sum_t[w(s,t)-\overline{w}]^2\sum_s\sum_t[f(x+s,y+t)-\overline{f}</em>{xy}]^2}^{\frac{1}{2}}}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="最佳统计分类器">最佳统计分类器</h2>
+<ul>
+<li>条件平均风险：$r_j(x)=\sum_{k=1}^WL_{kj}p(w_k|x)$</li>
+<li>0-1损失：$L_{ij}=1-\delta_{ij}$</li>
+<li>0-1损失下决策函数：$d_j(x)=p(x|w_j)P(w_j)$</li>
+<li>0-1损失贝叶斯分类器：$\arg\max_i p(x|\omega_i)P(\omega_i)$</li>
+<li>假设 $p(x|\omega_i)$ 为高斯函数
+<ul>
+<li>$p(x|\omega_j)=\frac{1}{(2\pi)^{n/2}|C_j|^{1/2}}e^{-1/2(x-m_j)^TC_j^{-1}(x-m_j)}$</li>
+<li>估计参数
+<ul>
+<li>$m_j=\frac{1}{N_j}\sum_{x\in\omega_j}x$</li>
+<li>$C_j=\frac{1}{N_j}\sum_{x\in\omega_j}xx^T-m_jm_j^T$</li>
+</ul>
+</li>
+<li>决策函数：$d_j(x)=\ln O(\omega_j)-\frac{1}{2}\ln|C_j|-\frac{1}{2}[(x-m_j)^TC_j^{-1}(x-m_j)]$</li>
+</ul>
+</li>
+</ul>
+<h2 id="神经网络">神经网络</h2>
+</main>
+        </div>
+
+    </div>
+</body></html>

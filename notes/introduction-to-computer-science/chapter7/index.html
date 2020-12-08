@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 7 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本概念">基本概念</a></li>
+    <li><a href="#context-switching">context switching</a>
+      <ul>
+        <li><a href="#memory-mapping">memory mapping</a></li>
+        <li><a href="#loader">loader</a></li>
+      </ul>
+    </li>
+    <li><a href="#exception-and-interrupt">Exception and Interrupt</a>
+      <ul>
+        <li><a href="#异常">异常</a></li>
+        <li><a href="#中断">中断</a></li>
+        <li><a href="#处理过程">处理过程</a></li>
+        <li><a href="#ia-32linux">IA-32+Linux</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="基本概念">基本概念</h2>
+<ul>
+<li>CPU控制流：CPU所执行的地址序列</li>
+<li>正常控制流：按指令存放顺序或转移类指令指示地址得到的控制流</li>
+<li>ECF: Excptional Control of Flow</li>
+<li>process descriptor: 结构类型task_structure</li>
+<li>task_list: 双向循环列表，每个元素为进程描述符</li>
+<li>TSS: Task State Segment</li>
+<li>逻辑控制流：进程确定的指令执行地址序列</li>
+<li>物理控制流：多个逻辑控制流组成</li>
+<li>concurrency: 并发，不同进程的逻辑控制流在时间上交错</li>
+<li>parallelism: 并行，并发的特例，同时进行的两个进程</li>
+<li>time slice: 连续执行同一个进程的时间段</li>
+<li>时间片轮转处理器调度</li>
+</ul>
+<h2 id="context-switching">context switching</h2>
+<p>实现班班通进程中指令交替执行的机制</p>
+<ul>
+<li>进程的上下文：物理实体和支持进程运行的环境</li>
+<li>用户堆栈：运行时堆和用户栈</li>
+<li>用户级上下文：程序块、数据块、用户堆栈等组成的用户空间信息</li>
+<li>系统级上下文：进程标识信息、进程现场信息、进程控制信息（各种内核数据结构）和系统内核栈组成的内核空间信息</li>
+<li>硬件/寄存器上下文</li>
+<li>上下文切换
+<ul>
+<li>将寄存器上下文保存到当前进程的系统级上下文中</li>
+<li>将新进程系统级上下文中的现场信息恢复到寄存器中</li>
+<li>将控制转移到新进程</li>
+</ul>
+</li>
+</ul>
+<h3 id="memory-mapping">memory mapping</h3>
+<p>将进程虚拟地址空间中的一个区域与硬盘上一个对象关联，初始化一个vm_area_struct结构<br>
+mmap函数</p>
+<ul>
+<li><code>void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offset</code></li>
+<li>返回值 MAP_FAILED(-1), 成功则为指向映射区域的指针</li>
+<li>prot 访问权限 PROT_EXE/READ/WRITE/NONE</li>
+<li>flags 对象类型
+<ul>
+<li>普通文件
+<ul>
+<li>MAP_PRIVATE: 只读代码和已初始化数据，私有对象，写时拷贝
+<ul>
+<li>私有的写时拷贝页</li>
+</ul>
+</li>
+<li>MAP_SHARED: 共享对象</li>
+</ul>
+</li>
+<li>匿名文件：MAP_ANON 内核创建，全部由0组成。对应区域页面称为demand-zero page</li>
+</ul>
+</li>
+</ul>
+<h3 id="loader">loader</h3>
+<ul>
+<li>execve() 启动加载器</li>
+<li><code>int execve(char *filename, char *argv[], *envp[])</code></li>
+<li>失败 -1</li>
+<li>成功 _start(定义于crtl.o)-&gt;__libc_init_first, _init -&gt; atexit() 登记终止处理函数 -&gt; exit(main()) -&gt; _exit()</li>
+<li>加载执行 fork() -&gt; execve()</li>
+</ul>
+<h2 id="exception-and-interrupt">Exception and Interrupt</h2>
+<h3 id="异常">异常</h3>
+<h4 id="fault">fault</h4>
+<ul>
+<li>page fault</li>
+<li>div by 0</li>
+<li>segmentation fault</li>
+</ul>
+<h4 id="trap">trap</h4>
+<ul>
+<li>陷阱指令, programmed exception</li>
+<li>系统调用</li>
+<li>断点设置：int 3, CCH</li>
+<li>into(溢出检查), INT n（软中断）, bound(地址越界检查)</li>
+</ul>
+<h4 id="abort">abort</h4>
+<h3 id="中断">中断</h3>
+<ul>
+<li>中断请求信号线</li>
+<li>maskable interrupt &amp; nonmaskable interrupt, NMI</li>
+</ul>
+<h3 id="处理过程">处理过程</h3>
+<p>保护断点和程序状态 -&gt; 关中断（中断允许位置0） -&gt; 识别事件(irq_handle) -&gt; 转到相应处理程序执行(操作系统)</p>
+<ul>
+<li>PSWR:程序状态字寄存器，保存PSW (IA-32中为EFLAGS)。 也需保存</li>
+<li>软件识别（程序）/硬件识别（向量中断方式）</li>
+<li>中断向量表：保存中断向量，每个中断和异常有一个中断类型号</li>
+</ul>
+<h3 id="ia-32linux">IA-32+Linux</h3>
+<ul>
+<li>中断向量（256种），前32个保留给处理器</li>
+<li>向量号（中断类型号）</li>
+<li>INT n： CPU跳转到中断服务程序</li>
+<li>实地址模式(Real Mode)，8086兼容模式，20位储存器寻址空间(1MB), 中断向量表为00000 - 003FF, 256*4=1KB</li>
+<li>19个确定类型。Linux 128为系统调用， Windows 46为系统调用</li>
+<li>保护模式，使用中断描述附表（IDT, Interrupt Descriptor Table）, 256*8=2KB</li>
+<li>中断门（中断），陷阱门（异常）
+<ul>
+<li>31-16： 偏移地址</li>
+<li>P(段存在), DPL(最低特权等级), 0, 段选择符（中断门1110，陷阱门1111，任务门0101）,00000000</li>
+<li>段选择符：GDT和LDT中的位置</li>
+<li>15-0：偏移地址，异常或中断服务程序第一条指令所在偏移量</li>
+</ul>
+</li>
+<li>任务门：只包含TSS选择段，指向GDT中的一个TSS段描述符
+<ul>
+<li>双重故障#DF 通过任务门实现的唯一异常</li>
+</ul>
+</li>
+</ul>
+<h4 id="ia-32-处理异常和中断">IA-32 处理异常和中断</h4>
+<ul>
+<li>确定类型号i，从IDTR指向的IDT中取出第i个表项IDTi</li>
+<li>根据IDTi中的段选择符，从GDTR指向的GDT中取得相应的段描述符，得到服务程序所在段DPL、基地址（Linux中为0）</li>
+<li>比较CPL与DPL</li>
+<li>检查特权级变化。从用户栈转换到内核栈：
+<ul>
+<li>读TR寄存器，访问TSS段</li>
+<li>将TSS段中的内核栈段选择符和栈指针写入SS和ESP，在内核中保存原来的用户栈SS和ESP</li>
+</ul>
+</li>
+<li>若发生的是故障，将逻辑地址写入CS和EIP</li>
+<li>栈中保存EFLAGS,CS,EIP。若是中断门，IF清0</li>
+<li>若产生硬件出错码，保存在内核栈中</li>
+<li>将IDTi中的段选择符载入CS，偏移地址装入EIP</li>
+<li><em>处理异常和中断，结束后由IRET返回</em>
+<ul>
+<li>从内核栈中弹出EIP,CS,EFLAGS</li>
+<li>检测特权级别</li>
+<li>从内核栈中弹出SS,ESP</li>
+<li>检查DS,ES,FS,GS</li>
+</ul>
+</li>
+</ul>
+<h4 id="linux-处理异常和中断">Linux 处理异常和中断</h4>
+<ul>
+<li>IDT初始化：完成GDT,GDTR,IDT,IDTR设置
+<ul>
+<li>interrupt gate: DPL=0, TYPE=1110</li>
+<li>system interrupt gate: DPL=3, TYPE=1110, int3</li>
+<li>system gate: DPL=3, TYPE=1111, into,bound,int $0x80</li>
+<li>trap gate: DPL=0, TYPE=1111, INT n(n!=3,128)</li>
+<li>task gate: DPL=0, TYPE=0101</li>
+</ul>
+</li>
+<li>异常处理
+<ul>
+<li>准备阶段:内核栈中保存现场信息</li>
+<li>处理阶段：若发送信号给当前进程，若有对于的信号处理程序，则执行，否则调用abort例程终止进程</li>
+<li>恢复阶段</li>
+</ul>
+</li>
+<li>信号处理
+<ul>
+<li>定义信号处理函数替换默认信号处理函数，并通过signal函数将自定义信号处理函数注册到系统中</li>
+<li><code>typedef void (*sighandler_t)(int);</code></li>
+<li><code>sighandler_t signal (int signum, sighandler_t handler);</code></li>
+<li>nonlocal jump：
+<ul>
+<li>sigsetjmp: 第一次调用返回0，而后返回非0</li>
+<li>siglongjmp: sigsetjmp一次后，返回到sigsetjmp函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>中断处理
+<ul>
+<li>I/O中断
+<ul>
+<li>IRQ线连接到PIC(programmable interrupt controller)</li>
+<li>IRQ引脚：PIC上，都有编号</li>
+</ul>
+</li>
+<li>时钟中断</li>
+<li>处理器中断</li>
+<li>中断服务程序
+<ul>
+<li>准备阶段</li>
+<li>处理阶段：ISR(Interrupt Server Routine)</li>
+<li>恢复阶段</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>系统调用
+<ul>
+<li>系统级函数：系统调用及其对应的封装函数</li>
+<li>系统调用处理程序：system_call</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

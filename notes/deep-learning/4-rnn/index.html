@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4-RNN | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#记忆能力">记忆能力</a></li>
+    <li><a href="#rnn">RNN</a></li>
+    <li><a href="#长程依赖问题">长程依赖问题</a></li>
+    <li><a href="#图结构">图结构</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="记忆能力">记忆能力</h2>
+<ul>
+<li>
+<p>延时神经网络：非输出层前增加延时器</p>
+<ul>
+<li>$h_t^{(l)}=f(h_t^{(l)},h_{t-1}^{(l-1)},\cdots,h^{(l-1)}_{t-K})$</li>
+<li>在时间维度上共享权值</li>
+</ul>
+</li>
+<li>
+<p>有外部输入的非线性网络：每个时刻 $t$ 有一个外部输入，产生一个输出 $y_t$</p>
+<ul>
+<li>自回归模型：$y_t=\omega_0+\sum_{k=1}^K\omega_ky_{t-k}+\epsilon_t$</li>
+<li>有外部输入的非线性自回归模型：$y_t=f(x_t,x_{t-1},\cdots,x_{t-{K_x}},y_{t-1},y_{t-2},\cdots,y_{t-K_y})$</li>
+</ul>
+</li>
+<li>
+<p>循环神经网络：$h_t=f(h_{t-1},x_t)$</p>
+<ul>
+<li>
+<p>循环神经网络的通用近似定理（2009）：以任何准确率近似任何一个非线性动力系统</p>
+<p>$$s_t=g(s_{t-1},x_t)\newline  y_t=o(s_t)$$</p>
+</li>
+<li>
+<p>图灵完备（1991）：所有图灵机可以被一个由使用 Sigmoid 型激活函数的神经元构成的全连接循环网络进行模拟</p>
+</li>
+</ul>
+</li>
+<li>
+<p>外部记忆单元</p>
+</li>
+</ul>
+<h2 id="rnn">RNN</h2>
+<ul>
+<li>简单神经网络
+<ul>
+<li>$z_t=Uh_{t-1}+Wx_{t}+b$</li>
+<li>$h_t=f(z_t)$</li>
+<li>$y_t=Vh_t$</li>
+</ul>
+</li>
+<li>应用模式
+<ul>
+<li>序列到类别
+<ul>
+<li>$x_{1:T}=(x_1,\cdots,x_T)$ 按不同时刻输入到网络中</li>
+<li>$y\in{1,\cdots,C}$</li>
+<li>序列特征：$h_T$ or $\frac{1}{T}\sum_{t=1}^Th_t$</li>
+</ul>
+</li>
+<li>同步序列到序列（序列标注）
+<ul>
+<li>$x_{1:T}=(x_1,\cdots,x_T)$ 按不同时刻输入到网络中</li>
+<li>$y_{1:T}=(y_1,\cdots,y_T)$</li>
+<li>$\hat y_t=g(h_t),\forall t\in[1,T]$</li>
+</ul>
+</li>
+<li>异步序列到序列（编码器-解码器）
+<ul>
+<li>$x_{1:T}=(x_1,\cdots,x_T)$ 按不同时刻输入到网络（编码器）中</li>
+<li>$y_{1:M}=(y_1,\cdots,y_M)$ 按不同时刻输入到网络（解码器）中，初始隐状态为 $h_T$</li>
+<li>$\hat y_t=g(h_{T+t})$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>随时间反向传播（BPTT）：每层对应每个时刻
+<ul>
+<li>$\delta_{t,k}=\frac{\partial L_t}{\partial z_k}=\text{diag}(f'(z_k))U^T\delta_{t,k+1}$</li>
+<li>$\frac{\partial L_t}{\partial U}=\sum_{k=1}^t\delta_{t,k}h^T_{k-1}$</li>
+<li>$\frac{\partial L}{\partial U}=\sum_{t=1}^T\sum_{k=1}^t\delta_{t,k}h^T_{k-1}$</li>
+<li>在一次完整前向传播和反向计算后才能更新参数</li>
+</ul>
+</li>
+<li>实时循环学习（RTRL）</li>
+<li>堆叠循环神经网络（SRNN）
+<ul>
+<li>循环多层感知机（1991）：$h_t^{(l)}=f(U^{(l)}h_{t-1}^{(l)}+W^{(l)}h_t^{(l-1)}+b^{(l)})$</li>
+</ul>
+</li>
+<li>双向循环神经网络（Bi-RNN）</li>
+</ul>
+<h2 id="长程依赖问题">长程依赖问题</h2>
+<ul>
+<li>长程依赖问题
+<ul>
+<li>梯度消失：$\frac{\partial L_t}{\partial h_k}$ 梯度消失，参数 $U$ 更新主要靠相邻状态</li>
+<li>$h_t=h_{t-1}+g(x_t,h_{t-1};\theta)$: 梯度爆炸，记忆容量不足</li>
+<li>梯度爆炸：不稳定</li>
+</ul>
+</li>
+<li>长短期记忆网络（LSTM, 2000）
+<ul>
+<li>内部状态 $c_t=f_t\odot c_{t-1}+i_t\odot \tilde{c}_t$</li>
+<li>外部状态 $h_t=o_t\odot \tanh(c_t)$</li>
+<li>门 ${0,1}$</li>
+<li>遗忘门 $f_t=\sigma(W_fx_t+U_fh_{t-1}+b_f)$ 控制内部状态遗忘多少信息</li>
+<li>输入门 $i_t=\sigma(W_ix_t+U_ih_{t-1}+b_i)$ 控制候选状态保存多少信息</li>
+<li>输出门 $o_t=\sigma(W_0x_t+U_0h_{t-1}+b_0)$ 控制内部状态输出多少给外部状态</li>
+<li>候选状态 $\tilde{c}<em>t=\tanh(Wx_t+Uh</em>{t-1}+b)$</li>
+</ul>
+</li>
+<li>LSTM 变体
+<ul>
+<li>无遗忘门(1997)</li>
+<li>peephole 连接：三个门同时依赖于上一时刻记忆单元 $c_{t-1}$</li>
+<li>耦合输入门与遗忘门：$c_t=(1-i_t)\odot c_{t-1}+i_t\odot\tilde{c}_t$</li>
+</ul>
+</li>
+<li>门控循环网络（GRU, 2014）
+<ul>
+<li>$h_t=z_t\odot h_{t-1}+(1-z_t)\odot \tilde{h}_t$</li>
+<li>更新门 $z_t=\sigma(W_zx_t+U_zh_{t-1}+b_z)$</li>
+<li>重置门 $r_t=\sigma(W_rx_t+U_rh_{t-1}+b_r)$</li>
+<li>候选状态 $\tilde{h}<em>t=\tanh(W_cx_t+U_h(r_t\odot h</em>{t-1})+b)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="图结构">图结构</h2>
+<ul>
+<li>递归神经网络（RecNN）：$h_i=f(h_{\pi_i})$
+<ul>
+<li>建模自然语言句子的语义</li>
+</ul>
+</li>
+<li>图神经网络（GNN）
+<ul>
+<li>$m_t^{(v)}=\sum_{u\in N(v)}f(h^{(v)}_{t-1},h_{t-1}^{(u)},e^{(u,v)})$</li>
+<li>$h_t^{(v)}=g(h_{t-1}^{(v)},m_t^{(v)})$</li>
+<li>读出函数：$o_t=g({h_T^{(v)}|v\in V})$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

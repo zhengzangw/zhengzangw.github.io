@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>14. 多媒体转换 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#视频">视频</a>
+      <ul>
+        <li><a href="#ffmpeg">ffmpeg</a></li>
+      </ul>
+    </li>
+    <li><a href="#音频">音频</a></li>
+    <li><a href="#文字">文字</a>
+      <ul>
+        <li><a href="#iconv">iconv</a></li>
+        <li><a href="#pandoc">pandoc</a></li>
+      </ul>
+    </li>
+    <li><a href="#图片">图片</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="视频">视频</h2>
+<h3 id="ffmpeg">ffmpeg</h3>
+<ul>
+<li>ffmpeg -formats 查看支持容器</li>
+<li>ffmpeg -codec 查看支持编码</li>
+<li>ffmpeg -encoders 查看编码器</li>
+<li>ffmpeg -hide_banner</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i</td>
+<td>输入文件</td>
+</tr>
+<tr>
+<td>-c copy</td>
+<td>直接复制</td>
+</tr>
+<tr>
+<td>-c:v libx264</td>
+<td>视频编码器</td>
+</tr>
+<tr>
+<td>-c:a acc</td>
+<td>音频编码器</td>
+</tr>
+<tr>
+<td>-an</td>
+<td>去除音频流</td>
+</tr>
+<tr>
+<td>-vn</td>
+<td>去除视频流</td>
+</tr>
+<tr>
+<td>-preset</td>
+<td>ultrafast, superfast, medium, slow, veryslow</td>
+</tr>
+<tr>
+<td>-y</td>
+<td>覆盖同名</td>
+</tr>
+<tr>
+<td>-vf scale=480:-1</td>
+<td>分辨率</td>
+</tr>
+<tr>
+<td>-ss 00:01:24 -t 00:00:01</td>
+<td>裁剪一秒视频</td>
+</tr>
+<tr>
+<td>-ss 01:02:03 -vframes 1 -q:v 2</td>
+<td>截取一帧，质量为 2</td>
+</tr>
+<tr>
+<td>-loop 1 -shortest</td>
+<td>音频文件化为带封面的视频</td>
+</tr>
+<tr>
+<td>-r 24</td>
+<td>强制帧数</td>
+</tr>
+<tr>
+<td>-b:v 64k</td>
+<td>输出文件比特率（缺省 200kb/s）</td>
+</tr>
+<tr>
+<td>-minrate 964K -maxrate 3856K -bufsize 2000K</td>
+<td>码率调整</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>普屏4:3：320<em>240 640</em>480</li>
+<li>宽屏16:9：480<em>272 640</em>360 672<em>378 720</em>480 1024<em>600 1280</em>720 1920*1080</li>
+<li>获取封面：ffmpeg -ss 00:00:10 -i test1.flv -f image2 -y test1.jpg</li>
+</ul>
+<h2 id="音频">音频</h2>
+<ul>
+<li>XLD：转换无损音乐到 itunes 支持的音乐
+<ul>
+<li><code>xld -f mp3 -o output.mp3 file.flac</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="文字">文字</h2>
+<h3 id="iconv">iconv</h3>
+<p>编码方式转换</p>
+<ul>
+<li><code>iconv -f GBK -t utf-8 -o out.txt in.txt</code></li>
+<li><code>iconv -l</code></li>
+</ul>
+<h3 id="pandoc">pandoc</h3>
+<ul>
+<li>查看默认目录 .pandoc</li>
+<li><code>pandoc in.md --self-contained -c style.css -o out.html</code></li>
+<li><code>pandoc in.md -o out.pdf --pdf-engine=xelatex -V mainfont=SimSun</code></li>
+<li><code>pandoc in.md -o out.pdf --template=pm-template.latex --pdf-engine=xelatex</code></li>
+<li><code>pandoc in.md -o out.docx/tex/pptx</code></li>
+<li><code>pandoc --list-input-formats</code></li>
+<li><code>pandoc --list-highlight-languages</code></li>
+<li><code>-s</code> 生成单个文件（而非片段）</li>
+<li><code>--toc</code> 生成目录</li>
+</ul>
+<h2 id="图片">图片</h2>
+<ul>
+<li>sips</li>
+<li>iconutil</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

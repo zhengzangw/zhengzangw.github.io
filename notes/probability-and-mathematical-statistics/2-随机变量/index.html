@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2-随机变量及其概率分布 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>随机变量：定义在样本空间上的函数 $X=X(e),e\in\Omega$</li>
+<li>分布函数：$F(x)=P(X\leq x) (-\infty&lt;x&lt;\infty)$
+<ul>
+<li>单调不减</li>
+<li>$F(x)=F(x+0)$</li>
+<li>$0\leq F(x)\leq 1$</li>
+<li>$F(-\infty)=0$</li>
+<li>$F(\infty)=1$</li>
+<li>$P(a&lt;X\leq b)=F(b)-F(a)$</li>
+</ul>
+</li>
+<li>离散随机变量
+<ul>
+<li>0-1 分布</li>
+<li>二项分布：$X\sim B(n,p)$
+<ul>
+<li>$P(X=k)=C_n^kp^kq^{n-k}$</li>
+<li>最大值
+<ul>
+<li>$(n+1)p\in \mathbb{Z}$ 则 $k=(n+1)p-1/(n+1)p$</li>
+<li>$(n+1)p\not\in\mathbb{Z}$ 则 $k=[(n+1)p]$</li>
+</ul>
+</li>
+<li>$E(X)=np$</li>
+<li>$D(X)=np(1-p)$</li>
+</ul>
+</li>
+<li>泊松分布 $X\sim P(\lambda)$
+<ul>
+<li>$P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda}$</li>
+<li>$E(X)=\lambda$</li>
+<li>$D(X)=\lambda$</li>
+<li>泊松分布可加性 $X\sim P(a),Y\sim P(b),X+Y\sim P(a+b)$</li>
+</ul>
+</li>
+<li>几何分布 $X\sim g(p)$
+<ul>
+<li>$p_k=P(X=k)=(1-p)^{k-1}p$</li>
+<li>$E(X)=\frac{1}{p}$</li>
+<li>$D(X)=\frac{1-p}{p^2}$</li>
+</ul>
+</li>
+<li>超几何分布 $X\sim H(n,M,N)$
+<ul>
+<li>合格率：$p=\frac{M}{N}$</li>
+<li>$P(X=k)=\frac{C_M^kC_{N-M}^{n-k}}{C_N^n}$</li>
+<li>$\lim_{N\rightarrow\infty}\frac{M}{N}=p$, $\lim_{N\rightarrow\infty}\frac{C^k_MC^{n-k}_{N-M}}{C^n_N}=C_n^kp^k(1-p)^{n-k}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>连续性随机变量
+<ul>
+<li>$F(x)=\int_{-\infty}^xp(x)dt$
+<ul>
+<li>$p(x)\geq0$</li>
+<li>$\int_{-\infty}^\infty=1$</li>
+</ul>
+</li>
+<li>均匀分布： $p(x)=\frac{1}{b-a} (a&lt;x&lt;b)$, $X\sim U[a,b]$
+<ul>
+<li>$D(X)=\frac{(b-a)^2}{12}$</li>
+</ul>
+</li>
+<li>指数分布： $p(x)=\lambda e^{-\lambda x} (x\geq0)$, $X\sim E(\lambda)$
+<ul>
+<li>$E(X)=\frac{1}{\lambda}$</li>
+<li>$D(X)=\lambda^{-2}$</li>
+</ul>
+</li>
+<li>$\Gamma$ 分布 $X\sim G(\lambda,r)$
+<ul>
+<li>$p(x)=\frac{\lambda^{r}}{\Gamma(r)}x^{r-1}e^{-\lambda x}$</li>
+<li>$E(X)=\frac{r}{\lambda}$</li>
+<li>$D(X)=r\lambda^{-2}$</li>
+</ul>
+</li>
+<li>正态分布： $p(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$, $X\sim N(\mu,\sigma^2)$
+<ul>
+<li>$x=\mu,p(x)=\frac{1}{\sqrt{2\pi}\sigma}$</li>
+<li>拐点 $x=\mu\pm\sigma$</li>
+<li>标准正态分布密度函数 $\phi(x)$, 分布函数 $\Phi(x)$
+<ul>
+<li>$\Phi(-x)=1-\Phi(x)$</li>
+<li>$\alpha$ 分位点 $u_{\alpha}$: $P(X&gt;u_\alpha)=\alpha$ 即 $\Phi(u_\alpha)=1-\alpha$</li>
+</ul>
+</li>
+<li>$Z=\frac{X-\mu}{\sigma}\sim N(0,1)$
+<ul>
+<li>$P(a\leq X\leq b)=\Phi(\frac{b-\mu}{\sigma})-\Phi(\frac{a-\mu}{\sigma})$</li>
+</ul>
+</li>
+<li>$3\sigma$ 原理：超出这个范围的可能性小于 $0.3%$</li>
+<li>$E(X)=\mu$</li>
+<li>$D(X)=\sigma^2$</li>
+<li>$X\sim N(\mu,\sigma^2),Y=aX+b\sim N(a\mu+b,(\sigma a)^2)$</li>
+<li>$X\sim N(\mu_1, \sigma_1^2), Y\sim N(\mu_2,\sigma_2^2),X+Y\sim(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$</li>
+</ul>
+</li>
+<li>卡方分布：$p(x)=\frac{1}{\sqrt{2\pi}}y^{-\frac{1}{2}}e^{-\frac{y}{2}},y&gt;0$, $X\sim\chi^2(1)$
+<ul>
+<li>$X\sim N(0,1),Y=X^2,Y\sim\chi^2(1)$</li>
+<li>$E(\chi^2)=n,D(\chi^2)=2n$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>连续型随机变量的函数
+<ul>
+<li>分布函数法：$F_Y(y)=P(Y\leq y)=P(g(X)\leq y)$
+<ul>
+<li>若$X$的分布函数$F(x)$严格单调递增，则随机变量$Y=F(x)$服从 $[0,1]$ 上的均匀分布</li>
+</ul>
+</li>
+<li>$p_y(y)=F'_y(y)$
+<ul>
+<li>$F(x)=\int^{\phi(x)}_{\psi(x)}f(t)dt$ 则 $F'(x)=f(\phi(x))\phi'(x)-f(\psi(x))\psi'(x)$</li>
+</ul>
+</li>
+<li>$X\in(a,b),y=g(x)$ 处处可导且<strong>严格</strong>单调，则 $Y=g(X)$ 有 $p_Y(y)=p_X(g^{-1}(y))|g^{-1}(y)'|$ $\alpha&lt;y&lt;\beta$</li>
+<li>$Y=g(x)$ 离散，则 $Y$ 概率分布离散</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

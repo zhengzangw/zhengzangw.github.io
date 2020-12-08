@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1. 计算机图形学概述 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#发展简况">发展简况</a></li>
+    <li><a href="#主要内容">主要内容</a></li>
+    <li><a href="#软件体系">软件体系</a></li>
+    <li><a href="#相关学科">相关学科</a></li>
+    <li><a href="#典型应用">典型应用</a></li>
+    <li><a href="#主要发展">主要发展</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="发展简况">发展简况</h2>
+<ul>
+<li>计算机图形技术范式演化</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>显示方式</th>
+<th>对象和命令指定方式</th>
+<th>显示控制方式</th>
+<th>应用控制方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>字符显示</td>
+<td>文字+数字的伪图形</td>
+<td>命令行</td>
+<td>文本格式编码</td>
+<td>单任务</td>
+</tr>
+<tr>
+<td>矢量显示</td>
+<td>笔画文字和线画图形</td>
+<td>命令行，功能键和菜单</td>
+<td>伪直接操纵方式</td>
+<td>单/多任务</td>
+</tr>
+<tr>
+<td>二维光栅扫描显示</td>
+<td>窗口，图标，文字和丰富色彩</td>
+<td>GUI, WIMP</td>
+<td>桌面隐喻，WYSIWYG</td>
+<td>多任务，网络号 C/S 计算，多窗口管理</td>
+</tr>
+<tr>
+<td>图形工作站及多视角投影(3DTV)</td>
+<td>实时三维景象，实物虚化</td>
+<td>虚拟显示，增强显示</td>
+<td>WYSIAYG, WYPIWYG</td>
+<td>集群化，网格化</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>计算机使用模式：无图形系统&ndash;非直接操纵&ndash;桌面隐喻&ndash;自然多通道</li>
+<li>人机界面
+<ul>
+<li>第一代：形式语言/类自然语言</li>
+<li>第二代：桌面隐喻，直接操纵，WYSIWYG</li>
+<li>当代：多媒体+多通道
+<ul>
+<li>虚拟现实</li>
+</ul>
+</li>
+<li>未来：自然人机交互</li>
+</ul>
+</li>
+<li>硬件技术
+<ul>
+<li>1960 字符显示器</li>
+<li>1963 矢量显示器</li>
+<li>1972 CRT显示器</li>
+<li>1986 三维图形工作站</li>
+<li>3D 输入技术，专用图形处理芯片，分式系统和并行系统</li>
+<li>2000 数字墨水显示器</li>
+</ul>
+</li>
+<li>交互式图形系统 1963 年 SketchPad 诞生</li>
+<li>交互式图形显示技术 1950~ 防空系统 SAGE</li>
+<li>计算机图形系统标准
+<ul>
+<li>GKS(Graphical Kernal System)</li>
+<li>PHIGS(Programmer&rsquo;s Hierarchical Interactive Graphics System)</li>
+<li>工业系统
+<ul>
+<li>OpenGL</li>
+<li>DirectX</li>
+<li>X-Window</li>
+<li>Postscript</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="主要内容">主要内容</h2>
+<ul>
+<li>建模
+<ul>
+<li>传统内容：几何对象及其图像的生成，存储和操纵</li>
+<li>技术拓展：结合音视频的图形合成，声音和视频驱动的图形生成</li>
+<li>基础问题：如何在计算机内建立客观世界的对象模型</li>
+<li>难点：尽可能保持客观世界对象本身的性质并反映用户对它的理解
+<ul>
+<li>交互生成</li>
+<li>感知获取</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>绘制
+<ul>
+<li>传统内容：在屏幕和硬拷贝设备上输出图像</li>
+<li>技术拓展：图像处理，改善图形显示和输出质量</li>
+<li>基础问题：如何在输出设备上再现客观世界的对象</li>
+<li>难点：巨量信息处理的实时性及对客观世界模拟的逼真度
+<ul>
+<li>图形硬件的能力和性能</li>
+<li>图形绘制处理和操纵算法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>交互
+<ul>
+<li>传统内容：用户对对象和图像的内容结构及外在表现的控制</li>
+<li>技术拓展：触觉输入和输入，显示化图形输入和操纵方式</li>
+</ul>
+</li>
+</ul>
+<h2 id="软件体系">软件体系</h2>
+<ul>
+<li>计算机图形系统处理流程
+<ul>
+<li>图形建模（建模坐标系）</li>
+<li>模型变换（世界坐标系）</li>
+<li>观察变换/视角选择（观察坐标系）</li>
+<li>投影变换（投影坐标系）</li>
+<li>工作站变换/设备选择（设备坐标系）</li>
+<li>图形显示</li>
+</ul>
+</li>
+<li>计算机图形系统软件组成
+<ul>
+<li>
+<p>数据平台：对象描述模型，表示生成图形对象的全部描述信息（可以有数据完全刻画，也可以有数据和过程共同刻画）</p>
+<p>几何模型：描述图元形状（几何信息）和其相互关系（拓扑信息）</p>
+<ul>
+<li>点云模型</li>
+<li>线框模型</li>
+<li>曲面模型</li>
+<li>实体模型</li>
+</ul>
+<p>属性数据：描述图元外形（线型，线宽，颜色，表面纹理）等非几何数据</p>
+</li>
+<li>
+<p>支撑平台：图形支撑软件</p>
+<ul>
+<li>设备驱动程序</li>
+<li>标准图像支撑软件
+<ul>
+<li>标准化图元生成，设备管理等功能 GKS PHIGS</li>
+</ul>
+</li>
+<li>工业图像支撑软件
+<ul>
+<li>建立图像数据结构</li>
+<li>标准图像编程包：提供高级程序编程的图像功能扩展及，OpenGL, DirectX, X-Window, Postscript</li>
+<li>专用图形软件编程包</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>应用平台：应用软件</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="相关学科">相关学科</h2>
+<ul>
+<li>计算机图形学中
+<ul>
+<li>图形：矢量表示</li>
+<li>图像：点阵表示</li>
+</ul>
+</li>
+<li>图形生成
+<ul>
+<li>光栅扫描</li>
+<li>随机扫描</li>
+</ul>
+</li>
+<li>图形类别
+<ol>
+<li>全灰度/彩色图形</li>
+<li>二值或少色图像</li>
+<li>连续的曲线和直线</li>
+<li>离散的点或多边形</li>
+</ol>
+</li>
+<li>图像识别：有较低的类转换到较高的类
+<ul>
+<li>1-&gt;2：图像分割</li>
+<li>1-&gt;3：轮廓跟踪，轮廓细化</li>
+<li>3-&gt;4：曲线分割</li>
+</ul>
+</li>
+<li>图形绘制：从较高的类变换到较低的类
+<ul>
+<li>4-&gt;3：插值处理，逼近处理</li>
+<li>3-&gt;2/1：轮廓填充，骨架扩展</li>
+<li>2-&gt;1：着色</li>
+</ul>
+</li>
+<li>图像处理：类间和类内变换
+<ul>
+<li>1/2：滤波变换</li>
+<li>3/4：坐标系统变换</li>
+<li>数据压缩</li>
+<li>三维矢量：投影，反投影</li>
+</ul>
+</li>
+<li>相关学科
+<ul>
+<li>计算机图形学：利用计算机表示，生成，处理和显示图像的一门学科（几何模型-&gt;图像，图像综合）</li>
+<li>计算机视觉：利用识别，分析，理解从图像中提取数据模型和丰富语义信息（图像-&gt;语义信息，图像分析）</li>
+<li>图像处理：（图像-&gt;图像）</li>
+<li>计算几何</li>
+</ul>
+</li>
+</ul>
+<h2 id="典型应用">典型应用</h2>
+<ul>
+<li>CAD(Computer Aided Design)
+<ul>
+<li>产品外形、工程图纸设计，产品效果展示</li>
+<li>产品实时功能模拟</li>
+</ul>
+</li>
+<li>CAM(Computer Aided Manufacture)
+<ul>
+<li>加工工艺设计和优化，加工过程模拟</li>
+</ul>
+</li>
+<li>CAE(Computer Aided Engineering)
+<ul>
+<li>机构运动、热力学、有限元分析与模拟</li>
+</ul>
+</li>
+<li>可视化
+<ul>
+<li>特点：交互性，多维性，可视性</li>
+<li>处理过程：后处理&ndash;跟踪&ndash;驾驭</li>
+<li>应用：科学计算可视化，商业可视化（图示图形学），信息可视化</li>
+</ul>
+</li>
+<li>大数据可视化：如何呈现数据集内在关系便于用户进行探索</li>
+<li>GIS(地理信息系统)：地理地形相关信息的搜集、存储和分析</li>
+<li>数字化艺术</li>
+<li>数字娱乐（实时 &gt;30fps）</li>
+<li>多媒体</li>
+<li>GUI</li>
+<li>虚拟显示：Immersion, Interaction, Imagination</li>
+</ul>
+<h2 id="主要发展">主要发展</h2>
+<ul>
+<li>规则形体造型：规则形体的几何模型是数据模型，用欧式几何描述
+<ul>
+<li>非均匀有理 B 样条 NURBS 曲面建模</li>
+<li>实体特征造型</li>
+<li>非流形造型</li>
+</ul>
+</li>
+<li>数字几何建模（大规模场景建模）
+<ul>
+<li>从三维扫描数据中重建三维模型：点云增强</li>
+<li>利用少样本生成大规模三维场景：结构单元+构成关系拓展</li>
+</ul>
+</li>
+<li>不规则形体造型
+<ul>
+<li>自然场景建模
+<ul>
+<li>一般有几何数据+过程共同描述</li>
+<li>过程：仿射变换/文法/递归过程/动力系统方程</li>
+</ul>
+</li>
+<li>分形几何造型：本征几何体+递归过程</li>
+<li>粒子系统：描述自然界中的不规则运动着的模糊物体</li>
+<li>形状文法</li>
+</ul>
+</li>
+<li>动态场景建模（随机动画）</li>
+<li>群体行为建模（人工生命）</li>
+<li>柔性造型：布料和丝织物+人体
+<ul>
+<li>复合物理特性和规律的状态</li>
+<li>本征几何+物理特性+物理规律</li>
+</ul>
+</li>
+<li>光照效果生成
+<ul>
+<li>光照模型</li>
+<li>消隐处理</li>
+<li>立体效果</li>
+</ul>
+</li>
+<li>纹理生成
+<ul>
+<li>颜色纹理，映射贴图</li>
+<li>几何纹理，几何扰动</li>
+</ul>
+</li>
+<li>基于图像的绘制：从图像中直接获取对象或场景的几何、纹理及其运动</li>
+<li>虚拟/混合/增强现实</li>
+<li>人机交互自然化
+<ul>
+<li>笔交互</li>
+<li>视觉交互</li>
+<li>手势交互</li>
+<li>头部与视点</li>
+<li>行为交互</li>
+<li>情感交互</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

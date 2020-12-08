@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3-数据结构 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#dynamic-sets">Dynamic sets</a></li>
+    <li><a href="#优先队列">优先队列</a></li>
+    <li><a href="#线性数据结构">线性数据结构</a></li>
+    <li><a href="#堆">堆</a></li>
+    <li><a href="#哈希表">哈希表</a></li>
+    <li><a href="#二叉搜索树">二叉搜索树</a></li>
+    <li><a href="#红黑树">红黑树</a></li>
+    <li><a href="#b-树">B 树</a></li>
+    <li><a href="#fibonacci-堆">Fibonacci 堆</a></li>
+    <li><a href="#van-emde-boas-tree-veb-tree">van Emde Boas Tree (vEB tree)</a></li>
+    <li><a href="#并查集">并查集</a></li>
+    <li><a href="#tbd">TBD</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="dynamic-sets">Dynamic sets</h2>
+<ul>
+<li>operations
+<ul>
+<li>Search(S, k)</li>
+<li>Insert(S, x)</li>
+<li>Delete(S, x)</li>
+<li>Min/Max(S)</li>
+<li>Successor(S, x)</li>
+<li>Precessor(S, x)</li>
+</ul>
+</li>
+<li>data structure augmentation
+<ul>
+<li>choose an underlying data structure</li>
+<li>determine addtional information to maintain</li>
+<li>verify it can be maintained</li>
+<li>develop new operations</li>
+</ul>
+</li>
+</ul>
+<h2 id="优先队列">优先队列</h2>
+<ul>
+<li>operation
+<ul>
+<li>Insert(S, x)</li>
+<li>Max(S)</li>
+<li>extract_max(S)</li>
+<li>increase_key(S, x, k)</li>
+<li>not good for Search</li>
+</ul>
+</li>
+</ul>
+<h2 id="线性数据结构">线性数据结构</h2>
+<ul>
+<li>Stack</li>
+<li>Queue</li>
+<li>Linked list</li>
+</ul>
+<h2 id="堆">堆</h2>
+<ul>
+<li>property
+<ul>
+<li>max-heap property: A[Parent(i)]$\geq$A[i]</li>
+</ul>
+</li>
+<li>procedure
+<ul>
+<li>max-heapify $O(\lg n)$</li>
+<li>build-max-heap $O(n)$</li>
+<li>max-heap-insert/extract/increase $O(\lg n)$</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">max_heapify</span>(A, i):
+    <span style="color:#75715e"># l, r are already max-heaps</span>
+    l <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> i
+    r <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">if</span> l <span style="color:#f92672">&lt;=</span> A<span style="color:#f92672">.</span>size <span style="color:#f92672">and</span> A[l] <span style="color:#f92672">&gt;</span> A[i]:
+        largest <span style="color:#f92672">=</span> l
+    <span style="color:#66d9ef">else</span>:
+        largest <span style="color:#f92672">=</span> i
+    <span style="color:#66d9ef">if</span> r <span style="color:#f92672">&lt;=</span> A<span style="color:#f92672">.</span>size <span style="color:#f92672">and</span> A[r] <span style="color:#f92672">&gt;</span> A[largest]:
+        largest <span style="color:#f92672">=</span> r
+    <span style="color:#66d9ef">if</span> largest <span style="color:#f92672">!=</span> i:
+        swap(A[i], A[largest])
+        mex_heapify(A, largest)
+</code></pre></div><h2 id="哈希表">哈希表</h2>
+<ul>
+<li>m slots store n elements</li>
+<li>hash function: simple uniform hashing
+<ul>
+<li>$h(k)=\lfloor km\rfloor$</li>
+<li>$h(k)=k\bmod m$</li>
+<li>$h(k)=\lfloor m(kA\bmod 1)\rceil$</li>
+<li>universal hashing: $P(h(k)=h(l))\leq\frac{|\mathcal{H}|}{m}$
+<ul>
+<li>$h_{ab}(k)=((ak+b)\bmod p)\bmod m,\mathcal{H}={h_{ab}:a\in\mathbb{Z}^*_p,b\in\mathbb{Z}_p}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>collision resolution
+<ul>
+<li>chaining $O(1+\frac{n}{m})$ (worst case $\Theta(n)$)</li>
+<li>open addressing
+<ul>
+<li>linear probing</li>
+<li>quadratic probing: $h(k,i)=(h'(k)+c_1i+c_2i^2)\bmod m$</li>
+<li>double hashing: $h(k,i)=(h_1(k)+ih_2(k))\bmod m$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>perfect hashing: two level hashing, $O(1)$</li>
+</ul>
+<h2 id="二叉搜索树">二叉搜索树</h2>
+<ul>
+<li>property: left &lt; root &lt; right</li>
+<li>search, min/max, succ/pre: $O(h)$</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bst_insert</span>(T, z){
+  y <span style="color:#f92672">=</span> NULL
+  x <span style="color:#f92672">=</span> T.root
+  <span style="color:#66d9ef">while</span> (x){
+    y <span style="color:#f92672">=</span> x;
+    <span style="color:#66d9ef">if</span> z.key <span style="color:#f92672">&lt;</span> x.key
+      x <span style="color:#f92672">=</span> x.left
+    <span style="color:#66d9ef">else</span> x <span style="color:#f92672">=</span> x.right
+  }
+  z.p <span style="color:#f92672">=</span> y;
+  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>y) T.root <span style="color:#f92672">=</span> z;
+  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (z.key <span style="color:#f92672">&lt;</span> y.key) T.left <span style="color:#f92672">=</span> z;
+  <span style="color:#66d9ef">else</span> y.right <span style="color:#f92672">=</span> z;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bst_delete</span>(T, z){
+  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>z.left) transplant(T, z, z.right);
+  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>z.right) transplant(T, z, z.left);
+  <span style="color:#66d9ef">else</span> {
+    y <span style="color:#f92672">=</span> bst_min(z.right);
+    <span style="color:#66d9ef">if</span> (y.parent <span style="color:#f92672">!=</span> z){
+      transplant(T, y, y.right);
+      y.right <span style="color:#f92672">=</span> z.right;
+      y.right.parent <span style="color:#f92672">=</span> y;
+    }
+    transplant(T, z, y);
+    y.left <span style="color:#f92672">=</span> z.left;
+    y.left.parent <span style="color:#f92672">=</span> y;
+  }
+}
+</code></pre></div><ul>
+<li>randomly built BST has expected $h=O(\lg n)$</li>
+</ul>
+<h2 id="红黑树">红黑树</h2>
+<ul>
+<li>$h\leq 2\log_2 (n+1)$</li>
+<li>red-black properties
+<ul>
+<li>node is red(R) or black(B)</li>
+<li>root is black</li>
+<li>leaf(NIL) is black</li>
+<li>red node has black children</li>
+<li>all simple paths from the node to descendant leaves contain the same number of black nodes</li>
+</ul>
+</li>
+<li>rotation</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">left_rotate</span>(T, x){
+  y <span style="color:#f92672">=</span> x.right;
+  x.right <span style="color:#f92672">=</span> y.left;
+  <span style="color:#66d9ef">if</span> y.left <span style="color:#f92672">!=</span> T.nil
+    y.left.p <span style="color:#f92672">=</span> x
+  y.p <span style="color:#f92672">=</span> x.p
+  <span style="color:#66d9ef">if</span> x.p <span style="color:#f92672">==</span> T.nil
+    T.root <span style="color:#f92672">=</span> y
+  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> x <span style="color:#f92672">==</span> x.p.left
+    x.p.left <span style="color:#f92672">=</span> y
+  <span style="color:#66d9ef">else</span> x.p.right <span style="color:#f92672">=</span> y
+  y.left <span style="color:#f92672">=</span> x
+  x.p <span style="color:#f92672">=</span> y
+}
+</code></pre></div><ul>
+<li>Insertion: insert red + fixup(以下父亲为祖父左结点)
+<ul>
+<li>case1: uncle is red</li>
+<li>case2: uncle is black and self is left</li>
+<li>case3: uncle is black and self is right</li>
+</ul>
+</li>
+<li>Delete: delete + (black) fixup
+<ul>
+<li>case1: sibling is red</li>
+<li>case2: sibling black and has black children</li>
+<li>case3: sibling black and has left red, right black</li>
+<li>case4: sibling black and has right red</li>
+</ul>
+</li>
+<li>order-static tree: maintain size
+<ul>
+<li>retrieve with a given rank $O(\lg n)$</li>
+<li>determine rank $O(\lg n)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="b-树">B 树</h2>
+<ul>
+<li>$h\leq \log_t\frac{n+1}{2}$ with minimum degree $t\geq 2$ and $n$ keys
+<ul>
+<li>same examining times for keys</li>
+<li>$\lg t$ less examining times for nodes</li>
+</ul>
+</li>
+<li>properties
+<ul>
+<li>$k_1\leq x.k_1\leq k_2\leq \cdots\leq x.k_{x.n}\leq k_{x.n}$</li>
+<li>All leaves have the same depth</li>
+<li>Every node other than root has at least $t-1$ keys($t$ children). Every node may have at most $2t$ children. Root has at least 1 key.</li>
+</ul>
+</li>
+<li>split: $O(t)$</li>
+<li>search/insert/delete: $O(th)$</li>
+<li>B+ tree: 索引仅出现在 leaf，容纳更多索引项</li>
+</ul>
+<h2 id="fibonacci-堆">Fibonacci 堆</h2>
+<ul>
+<li>Mergeable heaps (amortized)
+<ul>
+<li>Insert $\Theta(1)$</li>
+<li>Decrease $\Theta(1)$</li>
+<li>Union $\Theta(1)$</li>
+<li>Other same to heap</li>
+</ul>
+</li>
+<li>Fibonacci heap: min-heap ordered (k-ary)</li>
+<li>$\Phi(H)=t(H)+2m(H)$
+<ul>
+<li>$t(H)$: number of trees</li>
+<li>$m(H)$: number of marked nodes (lost a child since the last time it was made the child of another node)</li>
+</ul>
+</li>
+<li>consolidate: $O(D(n))$
+<ul>
+<li>find two roots of same degree, link the more one to another, until every root has a distinct degree value</li>
+<li>auxiliary array $A[0..D(H.n)]$</li>
+</ul>
+</li>
+<li>$D(H)=\lfloor\log_\phi n\rfloor=O(\lg n)$
+<ul>
+<li>node with root degree $k$ has size $\geq F_{k+2}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="van-emde-boas-tree-veb-tree">van Emde Boas Tree (vEB tree)</h2>
+<ul>
+<li>dynamic set with values from universe $\mathbb{Z}_u$</li>
+<li>direct addressing
+<ul>
+<li>insert, delete, member: $O(1)$</li>
+<li>min/max, pre/succ: $\Theta(u)$</li>
+</ul>
+</li>
+<li>superimposing a tree of constrant height: $O(\sqrt{u})$</li>
+<li>shrink with $\sqrt{u}$ gets $O(\lg\lg n)$ (shrink with $2$ gets $O(\lg n)$)
+<ul>
+<li>$T(n)=T(\sqrt{n})+O(1)$ yields $T(n)=O(\lg\lg n)$</li>
+<li>$T(n)=2T(\sqrt{n})+O(1)$ yields $T(n)=O(\lg n\lg\lg n)$</li>
+</ul>
+</li>
+<li>vEB node
+<ul>
+<li>u: number of elements</li>
+<li>min, max</li>
+<li>summary: point to a vEB($\sqrt{u}$) node keeping bit vector</li>
+<li>cluster: point to $\sqrt{u}$ vEB($\sqrt{u}$)</li>
+</ul>
+</li>
+<li>vEB tree
+<ul>
+<li>create empty tree: $O(u)$</li>
+<li>operations: $O(\lg \lg n)$</li>
+<li>space: $O(u)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="并查集">并查集</h2>
+<ul>
+<li>linked-list: $\Theta(n^2)$ for union</li>
+<li>Disjoint-set forests: $O(m\alpha(n)),\alpha(7)=2,\alpha(2047)=3,\alpha(16^{512})=4$
+<ul>
+<li>union by rank</li>
+<li>path compression</li>
+</ul>
+</li>
+</ul>
+<h2 id="tbd">TBD</h2>
+<ul>
+<li>可持久</li>
+<li>AVL</li>
+<li>Treaps</li>
+<li>线段树</li>
+<li>Dynamic trees</li>
+<li>Splay trees</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

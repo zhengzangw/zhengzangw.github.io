@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3-随机向量及其分布 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>离散型随机变量
+<ul>
+<li>概率分布表（列联表）</li>
+<li>联合分布函数：$F(x,y)=P(X\leq x,Y\leq y)$
+<ul>
+<li>$p_{ij}=F(x_i,y_j)-F(x_i,y_{j-1})-F(x_{i-1},y_j)+F(x_{i-1},y_{j-1})$</li>
+</ul>
+</li>
+<li>边缘分布函数：$F_X(x)=F(x,+\infty)$
+<ul>
+<li>（离散型向量）边缘分布率</li>
+</ul>
+</li>
+<li>条件概率: $P(Y=y_j|X=x_i)=\frac{p_{ij}}{p_i}$</li>
+</ul>
+</li>
+<li>离散型随机变量分布
+<ul>
+<li>多项分布 $(X_1,X_2)\sim M(n;p_1,p_2,p_3)$: $P(X_1=k_1, X_2=k_2)=\frac{n!}{k_1!k_2!(n-k_1-k_2)!}p_1^{k_1}p_2^{k_2}(1-p_1-p_2)^{n-k_1-k_2}$
+<ul>
+<li>$X|_{Y=k_2}\sim B(n-k_2,\frac{p_1}{1-p_2})$</li>
+</ul>
+</li>
+<li>多元超几何分布：$P(X_1=n_1,X_2=n_2)=\frac{C_{N_1}^{n_1}C_{N_2}^{n_2}C_{N_3}^{n_3}}{C_N^n}$</li>
+</ul>
+</li>
+<li>连续性随机变量
+<ul>
+<li>联合分布函数：$F(x,y)=\int^x_{-\infty}\int^y_{-\infty}p(u,v)dudv$ 为</li>
+<li>联合概率密度函数：$p(x,y)$</li>
+<li>$p(x,y)$ 为概率密度函数的充要条件
+<ul>
+<li>$p(x,y)\geq0$</li>
+<li>$\int_{-\infty}^{\infty}p(x,y)d xdy=1$</li>
+</ul>
+</li>
+<li>$F(x,y)$ 为分布函数的充要条件
+<ul>
+<li>$0\leq F(x,y)\leq 1$</li>
+<li>$F(-\infty,y)=\lim_{x\rightarrow\infty}F(x,y)=F(x,-\infty)=\lim_{y\rightarrow\infty}=F(-\infty,-\infty)=0,F(\infty,\infty)=1$</li>
+<li>右连续：$F(x,y)=\lim_{z\rightarrow x^+}F(z,y)=\lim_{z\rightarrow y+}F(x,y)$</li>
+<li>$x_1\leq x_2,y_1\leq y_2,F(x_2,y_2)-F(x_1,y_2)-F(x_2,y_1)+F(x_1,y_1)\geq0$</li>
+</ul>
+</li>
+<li>$P(x_1&lt;X\leq x_2,y_1&lt;Y\leq y_2)=\int_{x_1}^{x_2}\int_{y_1}^{y_2}p(u,v)dudv$</li>
+<li>$P((X,Y)\in G)=\iint_Gp(x,y)dxdy$</li>
+<li>$\frac{\partial^2F(x,y)}{\partial x\partial y}|_{(x_0,y_0)}=p(x_0,y_0)$</li>
+<li>$X$ 的边缘分布 $F_X(x)=\int_{-\infty}^x\int_{-\infty}^{\infty}p(u,v)dudv$
+<ul>
+<li>边缘密度函数 $p_X(x)=\int_{-\infty}^{\infty}p(x,v)dv$</li>
+</ul>
+</li>
+<li>条件分布函数 $F_{Y|X=x}(y)=P(Y\leq y|X=x)=\int^y_{-\infty}\frac{p(x,v)}{p_X(x)}dv$
+<ul>
+<li>$p_{X|Y=y}(x)=\frac{p(x,y)}{p_Y(y)}$</li>
+<li>$p(x,y)=p_{Y|X=x}(y)p_X(x)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>连续性随机变量分布
+<ul>
+<li>（平面）均匀分布 $p(x,y)=\frac{1}{S},(x,y)\in G$</li>
+<li>二维正态分布 $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$: $p(x,y)=\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}((\frac{x-\mu_1}{\sigma_1})^2-2\rho(\frac{x-\mu_1}{\sigma_1})(\frac{x-\mu_2}{\sigma_2})+(\frac{y-\mu_2}{\sigma_2})^2)}$
+<ul>
+<li>$\text{cov}(X,Y)=\sigma_1\sigma_2\rho$</li>
+</ul>
+</li>
+<li>$N$ 维正态分布：$p(x)=\frac{1}{(2\pi)^\frac{n}{2}|\Sigma|^\frac{1}{2}}e^{-\frac{1}{2}|(x-\mu)\Sigma^{-1}(x-\mu)^T|}$
+<ul>
+<li>$Y|_{X=x}\sim N(\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1), \sigma_2^2(1-\rho^2))$</li>
+<li>独立性与不相关等价</li>
+</ul>
+</li>
+<li>瑞利分布：$X,Y\sim N(0,1), Z=\sqrt{X^2+Y^2}$, $p(z)=ze^{-\frac{z^2}{2}},z\geq0$</li>
+</ul>
+</li>
+<li>随机变量相互独立：
+<ul>
+<li>$P(X=x_i,Y=y_j)=P(X=x_i)P(Y=y_j)$</li>
+<li>$X_1,\cdots,X_n$ 相互独立，则 $Y_1=g_1(X_1,\cdots,X_m)$ 和 $Y_2=g_2(X_{m+1},\cdots,X_n)$ 相互独立</li>
+<li>$p(x_1,\cdots,x_n)=p_1(x_1)p_2(x_2)\cdots p_n(x_n)$</li>
+<li>$F(x,y)=F_X(x)F_Y(y)$</li>
+<li>独立性：存在 $g_1(x),g_2(y)$ 使得 $p(x,y)=g_1(x)g_2(y)$</li>
+</ul>
+</li>
+<li>二维随机向量函数分布
+<ul>
+<li>离散型
+<ul>
+<li>$P(Z=z_k)=P(g(X,Y)=z_k)=\sum_{g(x_i,y_j)=z_k}p_{ij}$</li>
+<li>随机变量和 $Z=X+Y$ $P(Z=z_k)=\sum_{x_i}P(X=x_i,Y=z_k-x_i)$</li>
+<li>随机变量商 $Z=X/Y$ $P(Z=z_k)=\sum_{y_j}P(X=z_k*y_j,Y=y_j)$</li>
+</ul>
+</li>
+<li>连续型
+<ul>
+<li>$F_Z(z)=P(Z\leq z)=P(g(X,Y)\leq z)=\iint_{g(x,y)\leq z}p(x,y)dxdy$</li>
+<li>卷积公式：$p_Z(z)=\int^{+\infty}_{-\infty}p(x,z-x)dx$</li>
+<li>商的分布：$p_Z(z)=\int^{+\infty}_{-\infty}|y|p(zy,y)dy$</li>
+<li>最大值：$p_M(z)=p_X(z)F_Y(z)+F_X(z)p_Y(z)$
+<ul>
+<li>独立：$F_M(z)=F_X(z)F_Y(z)$</li>
+</ul>
+</li>
+<li>最小值：$p_N(z)=p_X(z)(1-F_Y(z))+p_Y(z)(1-F_X(z))$
+<ul>
+<li>独立：$F_N(z)=1-(1-F_X(z))(1-F_Y(z))$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$(U,V)$ 满足存在唯一逆变换且 $J(u,v)\not=0$，则 $p'(u,v)=p(x(u,v),y(u,v))|J(u,v)|$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

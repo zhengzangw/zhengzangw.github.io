@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4-多元微分 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>偏导数：$\frac{\partial f}{\partial x_i}(P_0)=g'(a_i)$</li>
+<li>可微：$\exists\delta &gt;0,U(P_0;\delta)\subseteq D_f,\exists A_i\in\mathbb{R},\forall P s.t. \lVert\Delta P\rVert&lt;\delta$ 有 $f(P_0+\Delta P)-f(P_0)=\sum_{i=1}^nA_i\Delta x_i+R(P_0+\Delta P)$ 且 $\lim_{\Delta P\rightarrow 0}\frac{R(P_0+\delta P)}{\lVert\Delta\rVert}$
+<ul>
+<li>$\Delta f(P_0;\Delta P)=df(P_0;\Delta P)+o(\lVert\Delta P\rVert),\Delta P\rightarrow 0$</li>
+<li>$\forall i,\frac{\partial f}{\partial x_i}(P_0)=A_i$</li>
+</ul>
+</li>
+<li>微分：$df(P_0)=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(P_0)dx_i$</li>
+<li>连续可微：各个偏导函数皆连续
+<ul>
+<li>连续可微则可微</li>
+</ul>
+</li>
+<li>链法则：$\frac{\partial f(g_1,\cdots,g_m)}{\partial x_k}|<em>{P=P_0}=\sum</em>{i=1}^m\frac{\partial f}{\partial u_i}(Q_0)\frac{\partial g_i}{\partial x_k}(P_0)$</li>
+<li>隐函数求导法
+<ul>
+<li>$F(x_1,\cdots,x_{n+1})=C$</li>
+<li>由上式决定的隐函数：$x_{n+1}=f(x_1,\cdots,x_n)$</li>
+<li>$\frac{\partial x_{n+1}}{\partial x_i}(a_1,\cdots,a_{n+1})=-\frac{\frac{\partial F}{\partial x_{n+1}}(a_1,\cdots,a_{n+1})}{\frac{\partial F}{\partial x_i}(a_1,\cdots,a_{n+1})}$</li>
+</ul>
+</li>
+<li>求导换序：$\frac{\partial^2 f}{\partial x_i\partial x_j},\frac{\partial^2 f}{\partial x_j\partial x_i}$ 在 $U$ 上存在且在 $P$ 处连续，则$\frac{\partial^2 f}{\partial x_i\partial x_j}(P)=\frac{\partial^2 f}{\partial x_j\partial x_i}(P)$
+<ul>
+<li>二阶连续可微可换序</li>
+</ul>
+</li>
+<li>Fermat 定理：$P$ 为 $f$ 极值点且为 $D_f$ 内点，$f$ 在 $p$ 处可微，则 $df(P)=0$, $P$ 为临界点</li>
+<li>Hesse 阵
+<ul>
+<li>二阶连续可微函数
+<ul>
+<li>$\forall k,H(f)(P)$ 的 $k$ 阶顺序主子式为正，则 $P$ 为极小值点</li>
+<li>$\forall k,H(f)(P)$ 的 $k$ 阶顺序主子式皆与 $(-1)^k$ 同号，则 $P$ 为 $f$ 极大值点</li>
+<li>鞍点：$df(P)=0,|H(f)(P)|\not=0$ 且不满足上两条，则 $P$ 非极值点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$
+H(f)(P)=(\frac{\partial^2 f}{\partial x_i\partial x_j}(P))_{n\times n}=\begin{bmatrix}
+\frac{\partial^2 f}{\partial x_1^2} &amp; \frac{\partial^2 f}{\partial x_1\partial x_2} &amp; \cdots \newline
+\frac{\partial^2 f}{\partial x_2\partial x_1} &amp; \ddots &amp; \vdots \newline
+\vdots &amp; \cdots &amp; \frac{\partial^2 f}{\partial x_n^2}
+\end{bmatrix}
+$$</p>
+<ul>
+<li>$f$ 在 $P_0$ 处可微：$f:E\rightarrow\mathbb{R}^m,E\subseteq\mathbb{R}^n,\exists\delta&gt;0,U(P_0;\delta)\subseteq E,\exists A_{m\times n},\forall\Delta P\in\mathbb{R}^n,\lVert\Delta P\rVert&lt;\delta$ 有 $f(P_0+\Delta P)-f(P_0)=A\cdot\Delta P+R(P_0+\Delta P)$ 且 $\Delta P\rightarrow 0,R(P_0+\Delta P)=o(\lVert\Delta P\rVert)$</li>
+<li>映射可微 $\iff\forall i,f_i$ 可微</li>
+<li>Jacobi 矩阵：导数推广</li>
+</ul>
+<p>$$
+Df(P_0) = \begin{bmatrix}
+\frac{\partial f_1}{\partial x_1}(P_0) &amp; \frac{\partial f_1}{\partial x_2}(P_0) &amp; \cdots &amp; \frac{\partial f_1}{\partial x_n}(P_0) \newline
+\frac{\partial f_2}{\partial x_1}(P_0) &amp; \cdots &amp; \cdots &amp; \vdots\newline
+\cdots &amp; \cdots &amp; \cdots &amp; \vdots\newline
+\frac{\partial f_m}{\partial x_1}(P_0) &amp; \cdots &amp; \cdots &amp; \frac{\partial f_m}{\partial x_n}(P_0) \newline
+\end{bmatrix}
+$$</p>
+<ul>
+<li>微分：$\mathbf{A}:\mathbb{R}^n\rightarrow\mathbb{R}^m,\mathbf{A}(X)=Df(P_0)\cdot X$
+<ul>
+<li>$\Delta f(P_0;\Delta)=Df(P_0)\cdot\Delta P+o(\lVert\Delta P\rVert)$</li>
+<li>链法则：$D(f\circ g)(P_0)=Df(Q_0)\cdot Dg(P_0)$</li>
+</ul>
+</li>
+<li>方向导数：$n$ 元函数 $f$ 在 $P$ 处沿 $v$ 的方向导数 $d_vf(P)=Df(P)\cdot v=\langle \nabla f(P),v\rangle$
+<ul>
+<li>梯度：$\nabla f(P)=Df(P)^T$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

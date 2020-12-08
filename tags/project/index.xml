@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>project on Zangwei</title>
+    <link>https://zhengzangw.com/tags/project/</link>
+    <description>Recent content in project on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Sun, 20 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Summary of Google 1st ML Camp (Shanghai)</title>
+      <link>https://zhengzangw.com/posts/google-mlcamp-2019/</link>
+      <pubDate>Sun, 20 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/google-mlcamp-2019/</guid>
+      <description>&lt;h1 id=&#34;项目&#34;&gt;项目&lt;/h1&gt;
+&lt;p&gt;三天内和两个队友合作完成了一个项目，基本是零基础，最后还能有展示的Demo，感觉很棒。总结这次项目(NLP)的开发流程如下&lt;/p&gt;
+&lt;h2 id=&#34;开发流程&#34;&gt;开发流程&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;选题+创意构想（头脑风暴）&lt;/li&gt;
+&lt;li&gt;数据集分析+数据可视化&lt;/li&gt;
+&lt;li&gt;数据清理&lt;/li&gt;
+&lt;li&gt;模型构建（先有个baseline，后面可以大家一起构想；baseline应该先满足end2end）&lt;/li&gt;
+&lt;li&gt;Tuning （这个可以一直进行，但是要保证其它部分有充足时间）&lt;/li&gt;
+&lt;li&gt;Demo （手机App&amp;gt;=网页&amp;gt;电脑App）&lt;/li&gt;
+&lt;li&gt;Poster + PPT&lt;/li&gt;
+&lt;li&gt;Presentation&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>ICS PA</title>
+      <link>https://zhengzangw.com/notes/introduction-to-computer-science/ics-pa/</link>
+      <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/introduction-to-computer-science/ics-pa/</guid>
+      <description>PA0 Article  Why Docker How To Ask Questions The Smart Way vimtutor ssh 正则表达式  鸟哥的 Linux 私房菜 检查素数   git GDB  Debugging with GDB A GDB Tutorial with Examples   tmux linux GPG GPG  顺时针法则   顺时针法则
+  [10]: an array 10 of &amp;hellip;
+  (): Once you meet one of brace, then a pair of them are omitted
+  *: pointer to &amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

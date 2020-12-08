@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>8-Methodology | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#半监督学习">半监督学习</a></li>
+    <li><a href="#多任务学习">多任务学习</a></li>
+    <li><a href="#迁移学习">迁移学习</a>
+      <ul>
+        <li><a href="#inductive-trasfer-learning">Inductive Trasfer Learning</a></li>
+        <li><a href="#transductive-transfer-learning">Transductive Transfer Learning</a></li>
+        <li><a href="#unsupervised-transfer-learning">Unsupervised Transfer Learning</a></li>
+      </ul>
+    </li>
+    <li><a href="#domain-adaptation">Domain Adaptation</a></li>
+    <li><a href="#终身学习持续学习">终身学习（持续学习)</a></li>
+    <li><a href="#元学习">元学习</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="半监督学习">半监督学习</h2>
+<ul>
+<li>自训练（Self-Training, Self-Teaching, Bootstrapping）：先用标注数据训练一个模型，将预测置信度较高的样本的位标签加入训练集重新训练</li>
+<li>协同训练（Co-Training）：基于不同视角的分类器促进训练
+<ul>
+<li>在训练集上根据不同视角分别训练两个模型 $f_1$ 和 $f_2$</li>
+<li>在无标注训练集上预测，各选取预测置信度比较高的样本加入训练集，重新训练两个不同视角的模型</li>
+</ul>
+</li>
+</ul>
+<h2 id="多任务学习">多任务学习</h2>
+<ul>
+<li>多任务学习：归纳迁移学习的一种，利用相关任务中的信息作为归纳偏置提高泛化能力</li>
+<li>共享模式
+<ul>
+<li>硬共享模式：让不同任务的神经网络共同使用一些共享模块提取通用特征</li>
+<li>软共享模式：每个任务从其它任务获得一些信息（如隐状态、注意力机制）</li>
+<li>层次共享模式：一般神经网络中不同层抽取的特征类型不同，低层一般抽取一些低级的局部特征，高层抽取一些高级的抽象语义特征</li>
+<li>共享-私有模式：将共享模块和任务特定(私有)模块的责任分开</li>
+</ul>
+</li>
+</ul>
+<h2 id="迁移学习">迁移学习</h2>
+<ul>
+<li>领域：一个样本空间极其分布 $\mathcal{D}=(\mathcal{X},\mathcal{Y},p(x,y))$</li>
+<li>机器学习任务：建模 $\mathcal{D}$ 上的条件概率 $p(y|x)$</li>
+</ul>
+<h3 id="inductive-trasfer-learning">Inductive Trasfer Learning</h3>
+<p>Different Tasks: $p_S(y|x)\neq p_T(y|x), p_S(x)=p_T(x)$</p>
+<ul>
+<li>Multi-task Learning: Source Domain Labels are available
+<ul>
+<li>learn source and target</li>
+</ul>
+</li>
+<li>Self-taught Learning: Source Domain Labels are unavailable
+<ul>
+<li>feature based: learn good feature on source</li>
+<li>fine-tuning: pretrain model</li>
+</ul>
+</li>
+</ul>
+<h3 id="transductive-transfer-learning">Transductive Transfer Learning</h3>
+<p>$p_S(x,y)\neq p_T(x,y)$，假设源领域有大量标记数据，目标领域有无标记数据</p>
+<ul>
+<li>Domain Adaptation: 协变量偏移 $p_S(x)\neq p_T(x),p_S(y|x)=p_T(y|x)$
+<ul>
+<li>学习 domain-invariant feature 使得学习到的特征不受限于 Source Domain 而导致 over-fitting，缩小 co-variant shift</li>
+<li>协变量 Covariate：可能影响预测结果的统计变量，机器学习中可以看作输入</li>
+</ul>
+</li>
+<li>概念偏移：different tasks $p_S(y|x)=p_T(y|x)$ with $p_S(x)=p_T(x)$</li>
+<li>先验偏移：$p_S(y)\neq p_T(y),p_S(x|y)=p_T(x|y)$</li>
+</ul>
+<h3 id="unsupervised-transfer-learning">Unsupervised Transfer Learning</h3>
+<p>No labeled data in both source and target domain</p>
+<h2 id="domain-adaptation">Domain Adaptation</h2>
+<ul>
+<li>学习模型 $f:\mathcal{X}\rightarrow\mathcal{Y}$
+<ul>
+<li>$\mathcal{R}<em>T(\theta_f)=E</em>{(x,y)\sim p_S(x,y)}\frac{p_T(x)}{p_S(x)}(L(f(x;\theta_f),y))$</li>
+</ul>
+</li>
+<li>领域无关表示 Domain-Invariant：$g:\mathcal{X}\rightarrow\mathbb{R}^d$
+<ul>
+<li>$p_S(g(x;\theta_g))=p_T(g(x;\theta_g)),\forall x\in\mathcal{X}$</li>
+<li>$R_T(\theta_f,\theta_g)=E_{(x,y)\sim p_S(x,y)}([L(f(g(x;\theta_g);\theta_g),y)])+\gamma d_g(S,T)$</li>
+</ul>
+</li>
+<li>分布差异
+<ul>
+<li>MMD(Maximum Mean Discrepancy)</li>
+<li>CMD(Central Moment Discrepancy)</li>
+</ul>
+</li>
+<li>对抗学习（Adverserial）
+<ul>
+<li>判别器 $c(h,\theta_c)$：$L_c(\theta_g,\theta_c)=\frac{1}{N}\sum_{n=1}^N\log c(h_S^{(n)},\theta_c)+\frac{1}{M}\sum_{m=1}^M\log(1-c(x_D^{(m)},\theta_c))$</li>
+<li>特征提取：$d_g(S,T)=\mathcal{L_c}(\theta_f,\theta_c)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="终身学习持续学习">终身学习（持续学习)</h2>
+<ul>
+<li>
+<p>通过历史任务 $\mathcal{T}_1,\mathcal{T}_2,\cdots,\mathcal{T}<em>m$ 学习 $\mathcal{T}</em>{m+1}$</p>
+</li>
+<li>
+<p>避免灾难性遗忘：按照一定顺序学习多个任务时，在学习新任务的同时不忘记先前学 会的历史任务</p>
+</li>
+<li>
+<p>弹性权重巩固（2017）</p>
+<ul>
+<li>$\log p(\theta|D)=\log p(D_B|\theta)+\log p(\theta|D_A)-\log p(D_B)$</li>
+<li>假设 $p(\theta|D_A)$ 为高斯分布，期望为任务 $\mathcal{T}_A$ 上学习到的参数 $\theta_A$，精度矩阵（协方差矩阵的逆）为 $\theta$ 在 $\mathcal{D}_A$ 上的 Fisher 信息矩阵近似，$p(\theta|D_A)=\mathcal{N}(\theta_A,F^{-1})$</li>
+<li>Fisher 信息矩阵：测量似然函数 $p(x,\theta)$ 携带的关于参数 $\theta$ 信息量的方法，对角线反应了最大似然估计时的不确定性，值越大，参数估计值方差越小，越有可靠性</li>
+</ul>
+<p>打分函数：$s(\theta)=\nabla_\theta\log p(x;\theta)$</p>
+<ul>
+<li>$E(s(\theta))=0$</li>
+<li>Fisher 信息矩阵：$s(\theta)$ 的协方差矩阵，$F(\theta)=E(s(\theta)s(\theta)^\top)$</li>
+<li>$L(\theta)=L_B(\theta)+\sum_{i=1}^N\frac{\lambda}{2}F_i^A(\theta_i-\theta_{A,i}^*)^2$</li>
+</ul>
+</li>
+</ul>
+<h2 id="元学习">元学习</h2>
+<ul>
+<li>元学习
+<ul>
+<li>基于优化器
+<ul>
+<li>优化器：$g_t(\cdot)$</li>
+<li>更新规则：$\theta_{t+1}=\theta_t+g_t(\nabla\mathcal{L}(\theta_t);\phi)$</li>
+<li>$\mathcal{L}(\phi)=E_f(\sum_{t=1}^T\omega_tL(\theta_t))$</li>
+<li>$\theta_t=\theta_{t-1}+g_t$</li>
+<li>$[g_t;h_t]=\text{LSTM}(\nabla L(\theta_{t-1},h_{t-1};\phi))$</li>
+</ul>
+</li>
+<li>模型无关（MAML）：假设所有任务来源任务空间 $p(\mathcal{T})$
+<ul>
+<li>$\theta_m'=\theta-\alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_m}(f_\theta)$</li>
+<li>学习一个参数 $\theta$ 使得其经过一个梯度迭代就可以在新任务上达到最好的性能：$\min_\theta\sum_{\mathcal{T}_m\sim p(\mathcal{T})}L_{\mathcal{T}_m}(f_{\theta'_m})$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>小样本学习
+<ul>
+<li>$k$-shot: 每个类只有 $K$ 个标注样本</li>
+<li>$t$-way: $t$ classes</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

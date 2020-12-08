@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>群的基本概念(问求内容) | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#群的定义">群的定义</a></li>
+    <li><a href="#循环群">循环群</a></li>
+    <li><a href="#子群">子群</a></li>
+    <li><a href="#陪集">陪集</a></li>
+    <li><a href="#正规子群">正规子群</a></li>
+    <li><a href="#同态与同构">同态与同构</a></li>
+    <li><a href="#直积">直积</a></li>
+    <li><a href="#群的例子">群的例子</a>
+      <ul>
+        <li><a href="#数域">数域</a></li>
+        <li><a href="#映射">映射</a></li>
+        <li><a href="#矩阵">矩阵</a></li>
+        <li><a href="#n-阶群">$n$ 阶群</a></li>
+        <li><a href="#其它">其它</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="群的定义">群的定义</h2>
+<ul>
+<li>代数运算: 任一个由 $A\times A$ 到 $A$ 的映射（闭合）
+<ul>
+<li>代数系统 $(A,\cdot)$：非空集合上定义代数运算</li>
+</ul>
+</li>
+<li>半群（semigroup）：满足结合律
+<ul>
+<li>$a_1a_2\dots a_n$的结果与括号的添加方式无关</li>
+<li>半群 $G$ 构成群 $\iff G$ 满足可除性条件：$\forall a,b\in G, ax=b,ya=b$ 在 $G$ 中都有解</li>
+<li>消去律成立的有限半群为群</li>
+</ul>
+</li>
+<li>幺半群（monoid）：满足结合律，有单位元</li>
+<li>群：非空集合 $G$ 上定义一个代数运算满足
+<ul>
+<li>结合律：$a(bc)=(ab)c$</li>
+<li>单位元（幺元）：$\exists e, \forall a\in G, ea=a$</li>
+<li>$\forall a\in G, \exists b\in G, a\cdot b=b\cdot a=1$</li>
+</ul>
+</li>
+<li>Basic Properties of Groups
+<ul>
+<li>uniqueness of identities</li>
+<li>uniqueness of inverse
+<ul>
+<li>$(ab)^{-1}=b^{-1}a^{-1}$</li>
+<li>$(a^{-1})^{-1}=a$</li>
+</ul>
+</li>
+<li>uniqueness of solution to $ax=b(xa=b)$</li>
+<li>cancellation laws: $ab=ac\Rightarrow b=c,ba=ca\Rightarrow b=c$</li>
+</ul>
+</li>
+<li>Visualization
+<ul>
+<li>Describe a group in Cayley table</li>
+<li>Cayley graph: $\Gamma=\Gamma(G,S),S$ generates $G$
+<ul>
+<li>$s\in S$ assigned a color $c_s$</li>
+<li>$\forall g\in G,s\in S,$ edge $(g,gs)$ is assigned $c_s$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>交换群（Abel 群）
+<ul>
+<li>满足交换律的半群，$a_1a_2\dots a_n$ 可任意颠倒顺序</li>
+<li>若 $G$ 中任一元素阶为 1 或 2，则 $G$ 为 Abel 群</li>
+<li>$(ab)^n=a^nb^n$</li>
+</ul>
+</li>
+<li>有限群：$|G|=n&lt;\infty$，称为 $n$ 阶群</li>
+</ul>
+<h2 id="循环群">循环群</h2>
+<ul>
+<li>The smallest subgroup contains $a$: $\langle a\rangle$
+<ul>
+<li>abelian</li>
+</ul>
+</li>
+<li>$o(g)$：元素 $g$ 的阶, 满足 $g^k=1$ 的最小正整数 $k$
+<ul>
+<li>若不存在，则 $g$ 为无限阶元素</li>
+<li>$g^k=1\Rightarrow o(g)|k$</li>
+<li>$o(g)=|\langle g\rangle |$</li>
+</ul>
+</li>
+<li><strong>定理</strong>
+<ul>
+<li>循环群的子群仍是循环群
+<ul>
+<li>$o(g^m)=|\langle g^m\rangle|=|\langle g^{(m,o(g))}\rangle|=\frac{o(g)}{(m,o(g))}$</li>
+</ul>
+</li>
+<li>素数阶群为循环群</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>循环群阶</th>
+<th>$\cong$</th>
+<th>子群</th>
+<th>子群数量</th>
+<th>生成元</th>
+<th>生成元数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\infty$</td>
+<td>$\mathbb{Z}$</td>
+<td>$\langle a^n\rangle$</td>
+<td>$\infty$</td>
+<td>$g^{\pm1}$</td>
+<td>2</td>
+</tr>
+<tr>
+<td>$n$</td>
+<td>$\mathbb{Z}_n$</td>
+<td>$\langle g^{\frac{n}{s}}\rangle,s\vert n$</td>
+<td>$d(n)$</td>
+<td>${g^{k}\vert (k,n)=1,0\leq k&lt;n}$</td>
+<td>$\varphi(n)$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="子群">子群</h2>
+<ul>
+<li>子群：$H\subseteq G$且 $H$ 按 $G$ 的乘法构成群，则 $H\leqslant G$。 若$H\not= G$ 则 $H&lt;G$</li>
+<li><strong>子群的验证定理</strong>： 以下命题等价
+<ol>
+<li>$H\leqslant G$</li>
+<li>$e\in H$ 且 $\forall a\in H,a^{-1}\in H$ 且 $\forall a,b\in H, ab\in H$</li>
+<li>$\forall a,b\in H, ab^{-1}\in H$</li>
+</ol>
+</li>
+<li>集合的运算
+<ul>
+<li>$X^{-1}={x^{-1}:x\in Z}$</li>
+<li>$XY={xy:x\in X,y\in Y}$</li>
+<li>对于子群 $H$，$H^{-1}=H, HH=H$</li>
+</ul>
+</li>
+<li><strong>定理</strong>：群$G$若干子群交仍是$G$的子群</li>
+<li>生成子群：$\langle S\rangle = \cap_{S\subseteq H\subseteq G}H = {x_1^{m_1}\cdots x_k^{m_k}:x_i,m_i\in Z}$
+<ul>
+<li>$\langle g\rangle={g^k|k\in Z}$：包含 $g$ 的最小子群</li>
+<li>有限生成群：$|\langle S\rangle | &lt; \infty$</li>
+<li>循环群：$\langle g\rangle$ ，$g$ 为生成元</li>
+</ul>
+</li>
+</ul>
+<h2 id="陪集">陪集</h2>
+<ul>
+<li>陪集：右陪集 $aH={ah|a\in G, h\in H}$, 左陪集 $Ha={ha|a\in G,h\in H}$
+<ul>
+<li>若$aH\not=bH$, 则 $aH\cap bH=\emptyset$
+<ul>
+<li>$x\in aH\iff aH=xH\iff x^{-1}a\in H$</li>
+</ul>
+</li>
+<li>$aH\approx H\approx Ha$</li>
+<li>指标（指数）：$[G:H]=|{aH:a\in G}|=|{Hb:b\in G}|$</li>
+<li><strong>陪集分拆</strong>：$G=\bigsqcup aH$</li>
+</ul>
+</li>
+<li><strong>拉格朗日定理</strong>：$|G|=|H|*[G:H]$
+<ul>
+<li>$\lvert H\rvert\vert\lvert G\rvert$</li>
+<li><strong>欧拉定理</strong>：$n$ 阶群 $G$ 中，$a^{|G|}=e$</li>
+<li>非 Abel 群最小阶数为 6</li>
+</ul>
+</li>
+<li>$H\leqslant G,K\leqslant G$
+<ul>
+<li>$K\leqslant H\leqslant G$， $[G:K] = [G:H][H:K]$</li>
+<li>$HK\leqslant G\iff HK=KH$</li>
+<li>$HK$ 是 $[K:H\cap K]$ 个两两不相交的 $H$ 右陪集的并</li>
+<li>$|H||K| = |HK||H\cap K|$</li>
+<li>（Poincare）$[G:H\cap K]\leq [G:H][G:K]$ 等号成立当且仅当$HK=G$</li>
+</ul>
+</li>
+</ul>
+<h2 id="正规子群">正规子群</h2>
+<ul>
+<li>共轭关系（等价关系）：$x\sim h\iff\forall g\in G, gxg^{-1}=h$
+<ul>
+<li>正规子群是 $G$ 中共轭类之并</li>
+</ul>
+</li>
+<li>中心：$Z(G)$：$\forall h\in Z(G), g\in G, ghg^{-1}=h$
+<ul>
+<li>只有一个元素的共轭类之并</li>
+<li>$G$ 中所有元素都交换的元素</li>
+</ul>
+</li>
+<li>正规子群：$\forall g\in G, gH=Hg$, 则$H\trianglelefteq G$
+<ul>
+<li>等价定义
+<ul>
+<li>$\forall g\in G$, $gHg^{-1}=H$</li>
+<li>$\forall h\in H, \forall g\in G, ghg^{-1}\in H$</li>
+<li>$H$ 任意两个左陪集的乘积仍是左陪集</li>
+</ul>
+</li>
+<li>${e}\trianglelefteq G,G\trianglelefteq G$</li>
+<li>Abel 群的任何子群都是正规子群</li>
+<li>$H\trianglelefteq G, K\leqslant G$, 则$HK=KH\trianglelefteq G$</li>
+<li>$H\leqslant K\leqslant G,H\trianglelefteq G$, 则$H\trianglelefteq K$</li>
+<li>$\cap$ 封闭</li>
+</ul>
+</li>
+<li>Factor(quotient) Groups $G/N$: ${aN,a\in G}$ under $(aN)(bN)=abN,N\trianglelefteq G$
+<ul>
+<li>$|G/N|=[G:N]$</li>
+</ul>
+</li>
+<li>$H$ 在 $G$ 中的正规化子：$N_G(H)={g\in G:gH=Hg}$</li>
+<li>$H$ 在 $G$ 中的正规核：$H_G=\cap_{g\in G}gHg^{-1}$</li>
+<li>单群：没有非平凡正规子群的群
+<ul>
+<li>阿贝尔单群即为素数阶循环群</li>
+</ul>
+</li>
+</ul>
+<h2 id="同态与同构">同态与同构</h2>
+<ul>
+<li>同态（homomorphism）：映射 $f:G_1\rightarrow G_2$ 满足 $f(gh)=f(g)f(h)$
+<ul>
+<li>$\sigma(e)=\overline{e}$</li>
+<li>$\sigma(a^{-1})=\sigma(a)^{-1}$</li>
+<li>$H_1\leq G_1\Leftrightarrow\sigma(H_1)\leq G_2$
+<ul>
+<li>$G$ 包含 $\text{Ker}(\sigma)$ 的子群与 $\text{Im}(\sigma)$ 的子群一一对应</li>
+</ul>
+</li>
+<li>$\text{Ker}(\sigma)\leqslant H\leqslant G$，则 $H\trianglelefteq G\iff \sigma(H)\trianglelefteq\sigma(G)$</li>
+<li>$\text{Ker}(\sigma)\leqslant H\trianglelefteq G$，则 $G/H \cong \sigma(G)/\sigma(H)$</li>
+<li>$o(\phi(x))|o(x)$</li>
+</ul>
+</li>
+<li>同态像：$\text{Im} \phi={h\in G_2:\exists g\in G_1,f(g)=h}$</li>
+<li>同态核：$\text{ker} \phi={g\in G_1:f(g)=\overline{e}}$</li>
+<li>自然同态：$\phi:G\rightarrow G/K$ is $\forall a\in G,\sigma(a)=aK$</li>
+<li><strong>同态基本定理</strong>(First Isomorphism Theorem): $\psi:G\rightarrow H$
+<ul>
+<li>$\text{Im}(\psi)\leqslant H$</li>
+<li>$\text{Ker}(\psi)\trianglelefteq G$</li>
+<li>$G/\text{Ker}(\psi)\cong \text{Im}(\psi):\eta$
+<ul>
+<li>$\psi=\eta\phi$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>单同态（嵌入映射）：f 为单射</li>
+<li>满同态：f 为满射</li>
+<li>自同构：$G$ 到自身的同构</li>
+<li>同构(Isomorphism): 双射 $f:G_1\rightarrow G_2$ 满足 $f(gh)=f(g)f(h)$
+<ul>
+<li>$G_1\cong G_2$</li>
+<li>$f^{-1}$ is isomorphism</li>
+<li>同构为所有群集合上的等价关系</li>
+</ul>
+</li>
+<li><strong>Cayley 定理</strong>：任何群 $G$ 同构于一个置换群
+<ul>
+<li>left regular representation: $g\rightarrow \lambda_g$, $\lambda_g:G\rightarrow G,\lambda_g(a)=ga$</li>
+</ul>
+</li>
+<li><strong>第一同构定理</strong>(Correspondence Thoerem)：$N\trianglelefteq G$
+<ul>
+<li>${K:K\leq G/N}\leftrightarrow{H:N\leqslant H\leqslant G}$</li>
+<li>$N\leqslant H\leqslant G$, 则$H/N\trianglelefteq G/N \iff H\trianglelefteq G$</li>
+<li>(Third Isomorphism Theorem)$N\leqslant H\trianglelefteq G$，则$(G/N)/(H/N)\cong G/H$</li>
+</ul>
+</li>
+<li><strong>第二同构定理</strong>：(Second Isomorphism Theorem)
+<ul>
+<li>已知 $N\trianglelefteq G, H\leqslant G$</li>
+<li>$(H\cap N)\trianglelefteq H$</li>
+<li>$H/(H\cap N)\cong HN/N$</li>
+</ul>
+</li>
+<li>Dedekind 律：$K\leqslant H\leqslant G$ 且 $L\leqslant G$， 则 $H\cap KL=K(H\cap L)$</li>
+<li>引理：$K\trianglelefteq H \leqslant G$, $L\leqslant G$
+<ul>
+<li>$(K\cap L)\trianglelefteq (H\cap L), (H\cap L)/(K\cap L) \cong (K(H\cap L)/K)$</li>
+<li>$L\trianglelefteq G$，则 $KL\trianglelefteq HL,K(H\cap L)\trianglelefteq H,HL/KL\cong H/(K(H\cap L))$</li>
+</ul>
+</li>
+<li><strong>第三同构定理</strong>（Zassenhaus）：$L_1\trianglelefteq H_1\leqslant G,L_2\trianglelefteq H_2\leqslant G$
+<ul>
+<li>$(H_1\cap L_2)L_1\trianglelefteq (H_1\cap H_2)L_1$</li>
+<li>$(H_2\cap L_1)L_2\trianglelefteq (H_1\cap H_2)L_2$</li>
+<li>$(H_1\cap H_2)L_1/(H_1\cap L_2)L_1\cong (H_1\cap H_2)L_2/(H_2\cap L_1)L_2$</li>
+</ul>
+</li>
+</ul>
+<h2 id="直积">直积</h2>
+<ul>
+<li>External Direct Products: $G=G_1\times G_2\times \dots\times G_n$
+<ul>
+<li>$(g_1,\cdots,g_n)\in\prod G_i,o(g_i)=r_i,o((g_1,\cdots,g_n))=lcm(g_1,\cdots,g_n)$</li>
+<li>$\prod_{i=1}^k\mathbb{Z}_{n_i}\cong\mathbb{Z}_{n_1\cdots n_k}\iff\gcd(n_i,n_j)=1$</li>
+<li>$G_i^\star ={\langle e_1,\dots,x,\dots,e_n\rangle:x\in G_i}\cong G_i\unlhd G$
+<ul>
+<li>$G_1^\star G_2^\star \dots G_n^\star =G$</li>
+<li>$G_1^\star \dots G_{i-1}^\star G_{i+1}^\star \dots G_n^\star \cap G_i^\star ={e}$</li>
+</ul>
+</li>
+<li><strong>定理</strong>：以下三条等价
+<ul>
+<li>$G_1^\star \dots G_{i-1}^\star G_{i+1}^\star \dots G_n^\star \cap G_i^\star ={e}$</li>
+<li>$x\in G$ 至多可以用一种方式表成 $x_1\dots x_n$</li>
+<li>$e=x_1\dots x_n$，必有 $x_1=\dots=x_n=e$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cancellation: $G\times K\cong H\times K, |K|&lt;\infty\Rightarrow G\cong K$</li>
+<li>Internal Direct Product: $G=G_1G_2\dots G_n:G_1,\dots,G_n\unlhd G;G_1^\star \dots G_{i-1}^\star G_{i+1}^\star \dots G_n^\star \cap G_i^\star ={e}$
+<ul>
+<li>$H,K\unlhd G$，$|H||K|=|G|,H\cap K={e}$，则 $G\cong H\times K$</li>
+<li>$G/K=H,G/H=K$</li>
+</ul>
+</li>
+<li>统称直积
+<ul>
+<li>If $G = H \times K$, then $\exists H' \simeq H,K' \simeq K$ such that $G$ is the internal direct product of $H'$ and $K'$.</li>
+<li>If $G$ is internal product of $H$ and $K$ then $G\cong H\times K$</li>
+</ul>
+</li>
+</ul>
+<h2 id="群的例子">群的例子</h2>
+<h3 id="数域">数域</h3>
+<ul>
+<li>$\mathbb{Q}^\star/\mathbb{R}^\star/\mathbb{C}^\star$ 在通常乘法意义下构成 <em>Abel 群</em>，$\mathbb{Z}$ 在通常加法意义下构成 <em>Abel 群</em>
+<ul>
+<li>$\mathbb{N}$ 在通常乘法加法意义下分别构成<em>幺半群</em>
+<ul>
+<li>消去律成立，但不是群</li>
+</ul>
+</li>
+<li>$\mathbb{Z}=\langle 1\rangle$ 在加法意义下构成 <em>Abel 群</em>， 称为<em>整数加群</em>
+<ul>
+<li><em>正规子群</em> $\langle m \rangle = m\mathbb{Z}$ 在整数加法意义下构成 <em>Abel 群</em></li>
+<li><em>商群</em> $\mathbb{Z}_m=\mathbb{Z}/m\mathbb{Z}={\overline{a}:a\in \mathbb{Z}}$按剩余类的加法构成 <em>$m$阶 Abel 群</em>
+<ul>
+<li>$a$ 模 $m$ 的剩余类：$\overline{a} = a+mZ$</li>
+</ul>
+</li>
+<li>$U_m={\overline{a}:(a,m)=1}$按剩余类的乘法构成 <em>$\varphi(m)$阶 Abel 群</em></li>
+</ul>
+</li>
+<li>$f(x)=|x|$ 为<em>同态</em>，（乘法群）同态核为${\pm 1}$, 商群 $\cong Q^{+}$</li>
+<li>$f(x)=lg(x)/e^x$为乘法群与加法群之间的<em>同构</em></li>
+</ul>
+</li>
+<li>$\mathbb{Z}[i] = {a+bi:a,b\in \mathbb{Z}}, \mathbb{Z}[\omega] = {a+b\omega:a,b\in Z}$在复数乘法的意义下分别构成<em>幺半群</em></li>
+<li>$\forall m\in \mathbb{Z}, S_m={\frac{a}{b}:a,b\in \mathbb{Z},b\not=0,(b,m)=1}$在乘法的意义下构成<em>幺半群</em>
+<ul>
+<li>$S_0=\mathbb{Z}$</li>
+</ul>
+</li>
+<li>$M_d={x^2+dy^2:x,y\in \mathbb{Z}}$在乘法的意义下构成<em>幺半群</em></li>
+<li>$U_n={z\in\mathbb{C}:|z|=1}=\langle e^{2\pi i/n}\rangle$ 在复数乘法的意义下构成 <em>n 阶循环群</em></li>
+</ul>
+<h3 id="映射">映射</h3>
+<ul>
+<li>集合 $X$ 到自身映射（变换）的集合在映射复合的意义下为<em>幺半群</em></li>
+</ul>
+<h4 id="对称群">对称群</h4>
+<ul>
+<li>置换：双射
+<ul>
+<li>$\sigma\tau(i)=\sigma(\tau(i))$</li>
+<li>轮换：$l$ 轮换 $\sigma=(a_1a_2\dots a_l):\sigma(x)=a_{(i+1)\bmod l},x=a_i;\sigma(x)=x,o.w.$
+<ul>
+<li>恒等映射：$l=1$</li>
+<li>对换：$l=2$</li>
+<li>$l$ 轮换可表为 $l-1$ 个对换</li>
+<li>两个不相交的轮换$\sigma,\tau,\sigma\tau=\tau\sigma$</li>
+</ul>
+</li>
+<li>任意置换总是可以表示为不相关的轮换的复合
+<ul>
+<li>$\sigma$ 写为不相交轮换乘积时，$k$ 轮换个数为 $\lambda_k$，则称 $\sigma$ 的型为 $1^{\lambda_1}2^{\lambda_2}\cdots n^{\lambda_n}$
+<ul>
+<li>$\sum_{i=1}^{n}i\lambda_i = n$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>置换奇偶性：
+<ul>
+<li>偶数（奇数）个对换的乘积为偶（奇）置换</li>
+<li>$N_\sigma$为偶数则为偶置换，否则为奇置换
+<ul>
+<li>$\sigma\in S_n,1\leq i&lt;j\leq n$ 而 $\sigma(i)&gt;\sigma(j)$，则称其为 $\sigma$ 的一个逆序，总逆序数为 $N_\sigma=\vert{\langle i,j\rangle,1\leq i&lt;j&lt;n,\sigma(i)&gt;\sigma(j)}\vert$</li>
+</ul>
+</li>
+<li>$sgn(\sigma)=(-1)^{N_\sigma}$
+<ul>
+<li>$\prod_{1\leq i&lt;j\leq n}(\sigma(j)-\sigma(i))=sgn(\sigma)\prod_{1\leq i&lt;j\leq n}(i-j)$</li>
+<li>$sgn(\sigma\tau)=sgn(\sigma)sgn(\tau)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><em>置换群</em>（对称群）$S(X)=Sym(X)$:
+<ul>
+<li>$|S_n|=n!$</li>
+<li>$S_3$ 有两个元素生成，非 Abel 群</li>
+<li>$S_3$ 有 6 个子群，$S_4$ 有 30 个子群</li>
+<li>Sym(正方体)=$S_4$</li>
+</ul>
+</li>
+</ul>
+<h4 id="对称群子群">对称群子群</h4>
+<h5 id="交错群">交错群</h5>
+<ul>
+<li>交错群：$A_n={\sigma\in S_n: sgn(\sigma)=1}\unlhd G$
+<ul>
+<li>$S_n/A_n={\pm 1}=C_2$</li>
+<li>$|A_n|=\frac{n!}{2}$</li>
+<li>$A_n(n\geq 5)$ 是单群</li>
+<li>$A_4$ has no subgroup of order 6</li>
+<li>Sym(四面体)=$A_4$, 共 10 个子群
+<ul>
+<li>9 elements of order 3</li>
+<li>3 elements of order 2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="刚体运动群">刚体运动群</h5>
+<ul>
+<li>保持刚体不变的运动在复合意义下构成<em>群</em></li>
+<li>Dihedral Group（<em>二面体群</em> ）: $D_n(D_{2n})$
+<ul>
+<li>Group of symmetries of regular n-gon</li>
+<li>$|D_n|=2n$</li>
+<li>consists of all product of $r$ and $s$
+<ul>
+<li>$r^n=1$</li>
+<li>$s^2=1$</li>
+<li>$srs=r^{-1}$</li>
+</ul>
+</li>
+<li>$D_3\cong S_3$</li>
+<li>$D_n\cong D_{n/2}\times\mathbb{Z}_2,n\geq 6,n=4k+2$</li>
+<li>Every subgroup of $D_n$ is cyclic or dihedral</li>
+</ul>
+</li>
+</ul>
+<p>$$
+Z(D_n)=\begin{cases}
+{e} &amp; 2\not|n \newline
+{e,r^{n/2}} &amp; 2|n
+\end{cases}
+$$</p>
+<h5 id="自同构群">自同构群</h5>
+<ul>
+<li><em>自同构群</em> $Aut(G)$：群 $G$ 所有自同构在复合映射意义下构成<em>群</em>
+<ul>
+<li>有限自同构群 $Aut(G)\cong \mathbb{Z}/n\mathbb{Z}$</li>
+<li>无限自同构群 $Aut(G)\cong \mathbb{Z}/2\mathbb{Z}$</li>
+<li>$\varphi:G\rightarrow H$ 为 $G$ 到 $H$ 同构，则 $G$ 到 $H$ 所有同构为 ${\varphi\circ f|f\in Aut(G)}$</li>
+</ul>
+</li>
+<li>内同构群 $\text{Inn}(G)$: $\phi_a(g)=aga^{-1}$
+<ul>
+<li>$\text{Inn}(G)\unlhd Aut(G)$</li>
+<li>$G/Z(G)\cong\text{Inn}(G)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="矩阵">矩阵</h3>
+<ul>
+<li>$M_n(R)$ $n$ 阶实方阵在矩阵乘的意义下构成<em>幺半群</em></li>
+<li><em>一般线性群</em>$GL_n(P)$，其子群称为<em>典型群</em>
+<ul>
+<li>正规子群，<em>特殊线性群</em>$SL_n(P)$
+<ul>
+<li>$f(A) = \det(A)$ 为<em>满同态</em>，同态核为$SL_n(P)$，商群$GL_n/SL_n\cong R^\star $</li>
+<li>子群，$T_n(F)$为对角线全一的 n 阶上三角阵</li>
+</ul>
+</li>
+<li><em>正交群</em> $O_n(R)={A\in GL_n(R):A^TA=AA^T=I}$
+<ul>
+<li><em>特殊正交群</em> ${SO}_n(R)=O_n(R)\cap SL_n(R)$</li>
+</ul>
+</li>
+<li><em>酉群</em>：$U(n)={A|\overline{A}^TA=A\overline{A}^T=I}$
+<ul>
+<li><em>特殊酉群</em> $SU(n)=U(n)\cap SL_n(C)$</li>
+</ul>
+</li>
+<li>$Z(GL_n(F))={xI_n:x\in F}$</li>
+<li>射影一般线性群 $PGL_n(F)=GL_n/Z(GL_n)$</li>
+<li>$SL_2(Z)/{\pm I_2}=PSL_2(Z)$ 为模群</li>
+</ul>
+</li>
+</ul>
+<h3 id="n-阶群">$n$ 阶群</h3>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>个数</th>
+<th>群</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>$\mathbb{Z}_1$</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>$\mathbb{Z}_2$</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>$\mathbb{Z}_3$</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>$\mathbb{Z}_4$, $\mathbb{Z}_2\times\mathbb{Z}_2$</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>$\mathbb{Z}_5$</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>$\mathbb{Z}_6,D_3(S_3)$</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>$\mathbb{Z}_7$</td>
+</tr>
+<tr>
+<td>8</td>
+<td>5</td>
+<td>$\mathbb{Z}_8$, $\mathbb{Z}_2\times\mathbb{Z}_2\times\mathbb{Z}_2$, $\mathbb{Z}_4\times\mathbb{Z}_2$, $D_4$, $Q_8$</td>
+</tr>
+<tr>
+<td>12</td>
+<td>5</td>
+<td>$\mathbb{Z}_12$, $\mathbb{Z}_6\times\mathbb{Z}<em>2$, $D_6$, $A_4$, $Dic</em>{12}$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>素数阶群为循环群</li>
+<li>$\mathbb{Z}_2\times\mathbb{Z}_2$: Klein 四元群
+<ul>
+<li>${e,a,b,c}$ 在乘法（$a^2=b^2=c^2=e$）意义下构成 <em>Abel 群</em></li>
+<li>$\sigma(\pm 1/i/j/k)=e/a/b/c$ 为<em>同态</em></li>
+</ul>
+</li>
+<li>${\pm1,\pm i,\pm j,\pm k}$ 在 Hamilton 四元数乘法意义下构成<em>群</em>
+<ul>
+<li>Hamilton 四元数: $a+bi+cj+dk,(a,b,c,d\in R)$, $i^2=j^2=k^2=ijk=-1$</li>
+</ul>
+</li>
+</ul>
+<h3 id="其它">其它</h3>
+<ul>
+<li>$P(\mathbb{Z})$幂集在$\cup(\cap)$的意义下构成<em>幺半群</em></li>
+<li>字母表$S$中字母构成的字符串在字符串的拼接意义下构成<em>幺半群</em></li>
+<li>等长实数列在卷积的意义下构成<em>幺半群</em>
+<ul>
+<li>单位元为${1,0,\dots,0}$</li>
+</ul>
+</li>
+<li>区间$I$上全体连续函数在函数加法意义下构成<em>Abel 群</em></li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

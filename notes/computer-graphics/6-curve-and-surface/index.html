@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>6.曲线曲面理论基础 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#曲面参数化">曲面参数化</a></li>
+    <li><a href="#三次插值曲线曲面">三次插值曲线曲面</a></li>
+    <li><a href="#bezier-曲线曲面">Bezier 曲线曲面</a></li>
+    <li><a href="#b-样条曲线曲面">B 样条曲线曲面</a></li>
+    <li><a href="#nurbs-曲线曲面">NURBS 曲线曲面</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="曲面参数化">曲面参数化</h2>
+<ul>
+<li>正常情况下参数域内的点与曲面上的点一一对应</li>
+<li>曲面上任一点处总有一个 $u$ 向切矢 $p_u$，和一个 $v$ 向切矢</li>
+<li>正则点：两切矢不平行的点</li>
+<li>奇点
+<ul>
+<li>曲面上一一对应关系不成立的点</li>
+<li>两切矢垂直的点</li>
+<li>切矢为 0 向量的点</li>
+</ul>
+</li>
+<li>曲线曲面生成
+<ul>
+<li>数学函数：规则曲线曲面</li>
+<li>树节点：自由曲线曲面</li>
+</ul>
+</li>
+<li>样条：柔软细长的弹性木条或金属条</li>
+<li>样条曲线
+<ul>
+<li>数学：多段低次曲线段构成，连接处有连续一次和二次导数</li>
+<li>计算机图形学：多项式曲线段连接，边界处满足特点连续条件</li>
+</ul>
+</li>
+<li>参数化样条曲线曲面：用参数表示的样条曲线曲面</li>
+<li>$p()=\sum_{i=0}^na_i\phi_i()$
+<ul>
+<li>系数矢量：$a_i$</li>
+<li>$p()$: 单/双参数的矢函数</li>
+<li>$\phi_i()$: 单/双参数的基函数</li>
+</ul>
+</li>
+<li>基表示类型
+<ul>
+<li>规范基表示：曲线或曲面上的整体满足柯西条件：$\sum_{i=0}^n\phi_i=1$</li>
+<li>部分规范基表示：曲线或曲面上部分段满足：$\sum_{i=0}^{k&lt;n}\phi_i=1$</li>
+<li>非规范基表示</li>
+</ul>
+</li>
+<li>几何不变性：在旋转和平移变换下不变
+<ul>
+<li>规范基和部分规范基表示具有几何不变性</li>
+<li>非规范基不具有几何不变性</li>
+</ul>
+</li>
+<li>生成方法
+<ul>
+<li>插值：曲线通过每个控制点</li>
+<li>逼近：不一定通过每个控制点</li>
+<li>设计：已知点太少，增加一些点</li>
+</ul>
+</li>
+<li>凸包：包围一组控制点的凸多边形边界</li>
+<li>控制多边形：连接有一定次序控制点的直线序列</li>
+<li>参数连续性：公共部分匹配参数导数
+<ul>
+<li>零阶参数连续性 $C^0$：相连</li>
+<li>一阶参数连续性 $C^1$：两段切向量变化率可能会不同（突变，设计应用）</li>
+<li>二阶参数连续性 $C^2$：切线平滑变换（电影动画）</li>
+<li>高阶参数连续性</li>
+</ul>
+</li>
+<li>几何连续性：两曲线段在相交处参数导数成比例
+<ul>
+<li>零阶几何连续性 $G^0$：相连</li>
+<li>一阶几何连续性 $G^1$</li>
+<li>二阶几何连续性：曲率连续</li>
+</ul>
+</li>
+<li>函数曲线中参数连续性与几何连续性一致</li>
+<li>参数曲线中，仅当曲线为正则是一致性成立</li>
+<li>光顺性：过同一数据点且具有相同边界几何约束的两条平面插值曲线相对光顺的四项判据或准则
+<ul>
+<li>二阶几何连续</li>
+<li>不存在奇点与多余的拐点</li>
+<li>曲率变化较小</li>
+<li>应变能较小</li>
+</ul>
+</li>
+</ul>
+<h2 id="三次插值曲线曲面">三次插值曲线曲面</h2>
+<ul>
+<li>
+<p>三次插值样条性质</p>
+<ul>
+<li>存在唯一性</li>
+<li>不存在额外的用于群贤形状控制的自由度</li>
+<li>收敛性</li>
+<li>计算稳定性</li>
+<li>整体性</li>
+<li>不易控制</li>
+</ul>
+</li>
+<li>
+<p>自然插值</p>
+<ul>
+<li>三次插值样条曲线：$n+1$ 点 $n$ 个曲线端，需确定 $4n$ 个多项式系数</li>
+<li>自然三次插值样条：$C^2$
+<ul>
+<li>内控制点有四个边界条件</li>
+<li>起点终点两个+二阶导为 0/增加两个隐含控制点</li>
+</ul>
+</li>
+<li>控制点中任一改动影响整个曲线</li>
+</ul>
+</li>
+<li>
+<p>Hermite 插值：分段三次多项式，控制点有给定切线</p>
+<ul>
+<li>
+<p>在控制点 $P_k$ 和 $P_{k+1}$ 间的曲线段 $p(u)$</p>
+<ul>
+<li>边界条件：$p(0)=P_k,p'(0)=DP_k,p(1)=P_{k+1},p'(1)=DP_{k+1}$</li>
+</ul>
+<p>$$p(u)=\begin{bmatrix}u^3\newline u^2\newline u\newline 1\end{bmatrix}^T\begin{bmatrix}2&amp;-2&amp;1&amp;1\newline -3&amp;3&amp;-2&amp;-1\newline 0&amp;0&amp;1&amp;0\newline 1&amp;0&amp;0&amp;0\end{bmatrix}\begin{bmatrix}P_k\newline P_{k+1}\newline DP_k\newline DP_{k+1}\end{bmatrix}$$</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Cardinal 样条</p>
+<ul>
+<li>边界条件：$p(0)=P_k,p(1)=P_{k+1},p'(0)=(1-t)\frac{P_{k+1}-P_{k-1}}{2},p'(1)=(1-t)\frac{P_{k+2}-P_k}{2}$</li>
+<li>张量参数 $t$：$t&lt;0$ 较松，$t&gt;0$ 较紧</li>
+</ul>
+<p>$$p(u)=\begin{bmatrix}u^3\newline u^2\newline u\newline 1\end{bmatrix}^T\begin{bmatrix}-t&amp;2-t&amp;t-2&amp;t\newline 2t&amp;t-3&amp;3-2t&amp;-t\newline -t&amp;0&amp;t&amp;0\newline 0&amp;1&amp;0&amp;0\end{bmatrix}\begin{bmatrix}P_{k-1}\newline P_{k}\newline P_{k+1}\newline P_{k+2}\end{bmatrix}$$</p>
+</li>
+<li>
+<p>Kochanek-Bartels 样条</p>
+<ul>
+<li>边界条件：$p(0)=P_k,p(1)=P_{k+1}$</li>
+<li>$p'(0)=\frac{1}{2}(1-t)[(1+b)(1-c)(p_k-p_{k-1})+(1-b)(1+c)(p_{k+1}-p_k)]$</li>
+<li>$p'(1)=\frac{1}{2}(1-t)[(1+b)(1+c)(p_{k+1}-p_{k})+(1-b)(1-c)(p_{k+2}-p_{k+1})]$</li>
+<li>偏离参数 $b$：调整在端点处弯曲的数值，可以偏向某一个端点</li>
+<li>连续参数 $c$：控制切向量在曲线段边界处的连续性；$c$非零则曲线在曲线段处斜率不连续</li>
+</ul>
+</li>
+</ul>
+<h2 id="bezier-曲线曲面">Bezier 曲线曲面</h2>
+<ul>
+<li>混合函数形式：$P(u)=\sum_{k=0}^nP_kB_{k,n}(u)$
+<ul>
+<li>$n$ 次 Bezier 多项式由 $n-1$ 个点控制</li>
+<li>Bezier 曲线可拟合任何数目的控制点</li>
+</ul>
+</li>
+<li>Bernstein 多项式：$B_{i,n}(u)={n\choose i}u^i(1-u)^{n-i}$
+<ul>
+<li>非负性，和为 1，对称性，最大值在 $\frac{i}{n}$</li>
+<li>降阶公式：$B_{i,n}(u)=(1-u)B_{i,n-1}(u)+uB_{i-1,n-1}(u)$</li>
+<li>升阶公式：$B_{i,n}(u)=\frac{i+1}{n+1}B_{i+1,n+1}(u)+\frac{n+1-i}{n+1}B_{i-1,n-1}(u)$</li>
+<li>$[0,1]$ 区间积分为 $\frac{1}{n+1}$</li>
+<li>线性无关性：任意一个 $n$ 次多项式可表示成其线性组合</li>
+</ul>
+</li>
+<li>Bezier 曲线性质
+<ul>
+<li>端点位置：$p(0)=P_0,p(1)=P_1$</li>
+<li>端点切矢量：$p'(0)=n(P_1-P_0),p'(1)=n(P_n-P_{n-1})$</li>
+<li>对称性：次序颠倒曲线形状不变</li>
+<li>仿射不变性：$A(p(u))=\sum_{k=0}^nA(P_k)B_{n-k,n}(u)$</li>
+<li>凸包性：Bezier 曲线位于控制顶点的凸包内</li>
+<li>直线再生性：若控制顶点位于一条直线则 Bezier 曲线为直线</li>
+<li>平面曲线的保型性：控制顶点位于平面，则 Bezier 曲线是平面曲线且有保凸性和变差缩减性（平面内任一直线与 Bezier 曲线交点数不多于与控制多边形交点数）</li>
+<li>拟局部性：移动一个控制顶点，越远变动越小</li>
+<li>封闭 Bezier 曲线有重合第一个和最后一个控制点位置生成</li>
+<li>多个控制点位于同一位置：该位置权更大，曲线更接近</li>
+</ul>
+</li>
+<li>Bezier 曲线离散点生成：de Casteljau 算法
+<ul>
+<li>$P_{i,r}=P_i^r=(1-u)P_i^{r-1}+uP_{i+1}^{r-1}$</li>
+<li>曲线上的点为 $P_0^n$</li>
+</ul>
+</li>
+<li>Bezier 曲线操作
+<ul>
+<li>分割定理：任意 $u'\in(0,1),P(u')$ 将 Bezier 曲线分为两段，仍可以表示为 Bezier 曲线，器控制顶点由 de Casteljau 算法产生</li>
+<li>曲线拼接
+<ul>
+<li>$C^0$: 端点拼接</li>
+<li>$C^1$: 新增控制点使三控制点共线</li>
+</ul>
+</li>
+<li>曲线升阶：增加控制点项，$P_i'=(1-\lambda)P_i+P_{i-1}$</li>
+</ul>
+</li>
+<li>Bezier 曲面：给定空间 $(m+1)\times(n+1)$ 个点的位置 $P_{j,k}$，$m\times n$次 Bezier 曲面为：$P(u,v)=\sum_{j=0}^m\sum_{k=0}^nP_{j,k}B_{j,m}(u)B_{k,n}(v),u,v\in[0,1]$
+<ul>
+<li>角点位置为控制网格的四个角点，边界线是 Bezier 曲线</li>
+<li>凸包性，平面再生性，仿射不变性，拟局部性</li>
+<li>角点切平面切矢量为 $m(P_{1,0}-P(0,0)),n(P_{0,1}-P_{0,0})$</li>
+<li>de Casteljau 算法</li>
+</ul>
+</li>
+<li>Bezier 曲线曲面不足
+<ul>
+<li>缺少局部性</li>
+<li>控制多边形与曲线逼近程度较差</li>
+<li>表示复杂形状复杂</li>
+</ul>
+</li>
+</ul>
+<h2 id="b-样条曲线曲面">B 样条曲线曲面</h2>
+<ul>
+<li>B 样条基函数
+<ul>
+<li>$U_{n,k+1}={u_i|i=0,1,\cdots,n+k+1}$</li>
+<li>$U_{n,k+1}$ 上的 $k$ 次 B 样条基函数：$B_{i,k+1}(u)=\frac{u-u_i}{u_{i+k}-u_i}B_{i,k}(u)+\frac{u_{i+k+1}-u}{u_{i+k+1}-u_{i+1}}B_{i+1,k}(u)$
+<ul>
+<li>deBoox-Cox 递推公式</li>
+<li>递推式中若有 0/0 则取值为 0</li>
+<li>$,B_{i,1}(u)=[[u\in[u_i,u_{i+1})]]$</li>
+</ul>
+</li>
+<li>局部性：$B_{i,k+1}$ 只在 $(u_i,u_{i+k+1})$ 取正值，其它地方为零；对于区间 $(u_i,u_{i+k})$ 至多只有 $k$ 个基函数在其上非零</li>
+<li>$\sum_{i,k+1}(u)=1$</li>
+<li>连续性：$B_{i,k+1}(u)$ 在 $r$ 重节点处至少为 $k-r$ 次连续</li>
+<li>线段无关性</li>
+<li>分段多项式：$B_{i,k+1}(u)$ 在每个长度非零的区间 $[u_j,u_{j+1})$ 上都是次数不高于 $k$ 的多项式</li>
+</ul>
+</li>
+<li>B 样条曲线定义
+<ul>
+<li>给定 $n+1$ 个控制顶点 $P_i$</li>
+<li>给定 $n+k+2$ 个参数节点向量 $U_{n,k}={u_i|i=0,\cdots,n+k+1,u_i\leq u_{i+1}}$</li>
+<li>$k+1$ 阶（$k$ 次） B 样条曲线：$p(u)=\sum_{i=0}^nP_iB_{i,k+1}(u),u\in[u_k,u_{n+1}]$</li>
+<li>$B_{i,k+1}(u)$ 的支撑区间 $[u_i,u_{i+k+1}]$
+<ul>
+<li>第 $i$ 个 $k$ 次样条需 $k+2$ 个参数节点</li>
+<li>移动顶点 $P_i$ 至多影响 B 样条基函数支撑区间内定义的曲线段</li>
+</ul>
+</li>
+<li>$n+1$ 个顶点定义的 $k$ 次 B 样条有 $n-k+1$ 段
+<ul>
+<li>一段由 $k+1$ 个控制节点定义</li>
+</ul>
+</li>
+<li>节点向量确定方式
+<ul>
+<li>首先确定 $n-k+2$ 个节点，收尾各延伸 $k$ 个节点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B 样条曲线性质
+<ul>
+<li>局部性</li>
+<li>凸包性</li>
+<li>直线再生性</li>
+<li>分段参数多项式曲线</li>
+<li>磨光性质：同组控制顶点定义的 B 样条，随次数增加而更加光滑</li>
+<li>仿射不变性</li>
+<li>平面曲线的保型性</li>
+<li>连续性：$P(u)$ 在 $r$ 重节点 $u_i$ 处至少 $C^{k-1-r}$</li>
+</ul>
+</li>
+<li>deBoor-Cox 算法：从给定参数区间 $[u_k,u_{n+1}]$ 中划分出一个参数 $u\in[u_j,u_{j+1}]$ 计算 B 样条曲线型值点 $p(u)$ 的过程</li>
+<li>0 次 B 样条：控制顶点序列</li>
+<li>1 次 B 样条：控制多边形</li>
+<li>B 样条曲线类型
+<ul>
+<li>均匀 B 样条：节点向量定义均匀 B 样条，$\Delta_i=u_{i+1}-u_i= C$</li>
+<li>准均匀 B 样条：两端节点具有重复度 $k+1$，所有内节点均匀分布，重复度 1</li>
+<li>分段 Bezier 曲线：两顿节点重复度为 $k+1$，所有内节点重复度为 $k$</li>
+<li>非均匀 B 样条</li>
+</ul>
+</li>
+<li>B 样条曲线的重节点
+<ul>
+<li>重节点重复度加一，曲线段减一，该处可微性降一</li>
+<li>内点最大重复度等于曲线次数，取 $k$ 时曲线插值于相应的控制顶点</li>
+<li>端点最大重复度 $k+1$</li>
+<li>端节点重复度为 $k$：曲线相重且相切与控制多边形</li>
+<li>端节点重复度为 $k+1$：与 Bezier 曲线相同的端点集合性质</li>
+<li>定义域内相邻两点都具有重复度 $k$：生成 定义在该节点区间上那段 B 样条曲线的 Bezier 曲线</li>
+<li>端节点重复度为 $k+1$，定义域内仅有一个非零节点区间：$k$次 B 样条就是$k$次 Bezier 曲线</li>
+</ul>
+</li>
+<li>B 样条曲面定义：$P(u,v)=\sum_{i=0}^m\sum_{j=0}^nP_{i,j}B_{i,k}(u)B_{j,l}(v); u\in[u_k,u_{m+1}],v\in[v_l,v_{n+1}]$</li>
+</ul>
+<h2 id="nurbs-曲线曲面">NURBS 曲线曲面</h2>
+<ul>
+<li>Non-Uniform Rational B-Splines (非均匀有理 B 样条曲线)</li>
+<li>非有理样条只能逼近二次曲线</li>
+<li>分式表示：$p(u)=\frac{\sum_{i=0}^n\omega_iP_iB_{i,k}(u)}{\sum_{i=0}^n\omega_iB_{i,k}(u)}$</li>
+<li>有理基函数表示：$p(u)=\sum_{i=0}^nP_iR_{i,k}(u),R_{i,k}(u)=\frac{\omega_iB_{i,k}(u)}{\sum_{i=0}^n\omega_iB_{i,k}(u)}$</li>
+<li>齐次坐标表示形式：高一维空间里所定义的非有理 B 样条曲线在 $\omega=1$ 超平面上的投影</li>
+<li>交比：$\text{Cr}(a,b,c,d)=\frac{\overline{ab}}{\overline{bd}}/\frac{\overline{ac}}{\overline{cd}}$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

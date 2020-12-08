@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Association | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#quantitative-discriminant-rule">Quantitative Discriminant Rule</a></li>
+    <li><a href="#association">Association</a>
+      <ul>
+        <li><a href="#apriori">Apriori</a></li>
+        <li><a href="#apriori-variant">Apriori variant</a></li>
+        <li><a href="#fp-growth">FP-growth</a></li>
+      </ul>
+    </li>
+    <li><a href="#others">Others</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="quantitative-discriminant-rule">Quantitative Discriminant Rule</h2>
+<ul>
+<li>general form: $\forall X,$target_class$(X)\Leftrightarrow$ contition$_1(X)[t:w_1,d:\omega_1]\vee\cdots\vee$ condition$_n(X)[t: w_n, d:\omega_n]$</li>
+<li>Discriminant rule: sufficient condition of the target class
+<ul>
+<li>d-weight = $\frac{\text{count}(q_a\in C_{\text{target}})}{\sum_{i=1}^N\text{count}(q_a\in C_i)}$</li>
+<li>d-weight: discriminability of each disjunct in the rule</li>
+<li>important</li>
+</ul>
+</li>
+<li>Characteristic rule: necessary condition
+<ul>
+<li>$\sum t_i=100%$</li>
+</ul>
+</li>
+</ul>
+<h2 id="association">Association</h2>
+<ul>
+<li>
+<p>Association rules: $A\Rightarrow B$[support, condifence]</p>
+<ul>
+<li>
+<p>Support</p>
+<p>$$\text{support}(A\Rightarrow B)=P(A,B)=\frac{\text{# of tuples includes }A,B}{\text{# of total tuples}}$$</p>
+</li>
+<li>
+<p>Confidence (t-weight)</p>
+<p>$$\text{confidence}(A\Rightarrow B)=P(B|A)=\frac{\text{# of tuples includes }A,B}{\text{# of tuples includes }A}$$</p>
+</li>
+</ul>
+</li>
+<li>
+<p>strong: support &gt; min_sup, confidence &gt; min_conf</p>
+</li>
+<li>
+<p>k-itemset: contains k items</p>
+</li>
+<li>
+<p>frequency: support count</p>
+</li>
+<li>
+<p>frequent itemset: support &gt; min_sup</p>
+</li>
+</ul>
+<h3 id="apriori">Apriori</h3>
+<ul>
+<li>Two-step process
+<ul>
+<li>find all frequent itemsets</li>
+<li>generate strong association rules (easy)</li>
+</ul>
+</li>
+<li>INSIGHT: All non-empty subsets of a frequent itemset must also be frequent</li>
+<li>frequent $k$-itemset: $L_k$</li>
+<li>Join: $C_{k+1} = L_k\Join L_k={A\Join B|A,B\in L_k,|A\cap B|=k-1}$</li>
+<li>Prune: determine candidates in $C_{k+1}$ to get $L_{k+1}$</li>
+<li>ordering $L_k$</li>
+</ul>
+<h3 id="apriori-variant">Apriori variant</h3>
+<ul>
+<li>
+<p>AIS: for each tuple, expand $L_k$ by adding other items contained in the tuple to generate $C_{k+1}$</p>
+</li>
+<li>
+<p>AprioriTid: calculate support in $\overline{C_k}$</p>
+</li>
+<li>
+<p>DHP (Direct Hashing and Pruning)</p>
+<ul>
+<li>INSIGHT: the processes in the initial iterations of Apriori dominates the total execution cost</li>
+<li>Knowledge 1: Any member of a candidate frequent itemset must be hashed into a bucket whose count $\geq$ min_sup</li>
+<li>Knowledge 2: Any tuple useful in determining $L_{k+1}$ must contain at least $k+1$ sets in $C_k$</li>
+<li>Knowledge 3: For any items contained in a tuple, if it is useful in determining $L_{k+1}$, it must appear in at least $k$ sets in $C_k$</li>
+<li>Knowledge 4: For any items contained in a tuple, if it is useful in determining $L_{k+1}$ it must appear in at least one (k+1)-itemset whose k-itemsets are all candidate frequent k-itemsets</li>
+</ul>
+</li>
+<li>
+<p>Improvement</p>
+<ul>
+<li>partitioning</li>
+<li>sampling</li>
+<li>transaction reduction</li>
+</ul>
+</li>
+</ul>
+<h3 id="fp-growth">FP-growth</h3>
+<ul>
+<li>Mining from FP-tree</li>
+<li>FP-tree construction
+<ul>
+<li>scan DB once, find frequent 1-itemset</li>
+<li>sort frequent items in frequency descending order to get F-list</li>
+<li>scan DB again construct FP-tree</li>
+<li>for each frequent item in reverse frequency, construct its conditional pattern-base and conditional FP-tree</li>
+<li>repeat on newly created conditional FP-tree until empty</li>
+</ul>
+</li>
+</ul>
+<h2 id="others">Others</h2>
+<ul>
+<li>closed frequent itemset
+<ul>
+<li>closed: no proper super-itemset $Y$ such that $Y$ has the same support count as $X$ in $S$</li>
+</ul>
+</li>
+<li>Maximal frequent itemset: if $X$ is frequent, and there exists no proper super-itemset $Y$ such that $Y$ is frequent in $S$</li>
+<li>Multilevel association rules: Rules generated from association rule mining with concept hierarchies
+<ul>
+<li>same min_sup for all levels</li>
+<li>level-by-level independent</li>
+<li>level-cross filtering by $k$-itemsets</li>
+<li>Level-crossfilteringbysingleitem</li>
+<li>Controlled level-cross filtering by single item</li>
+</ul>
+</li>
+<li>Cross-level association rules</li>
+<li>Quantitative Association rules
+<ul>
+<li>Step 1. Binning</li>
+<li>Step 2. Finding frequent predicatesets</li>
+<li>Step 3. Clustering association rules</li>
+</ul>
+</li>
+<li>Distance-based association rules</li>
+<li>Criticism: Strong association rules may not be interesting</li>
+<li>Correlation analysis
+<ul>
+<li>Lift: $\frac{P(AB)}{P(A)P(B)}$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

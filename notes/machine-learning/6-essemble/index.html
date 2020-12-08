@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Essemble Learning | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#集成学习">集成学习</a></li>
+    <li><a href="#序列化方法">序列化方法</a>
+      <ul>
+        <li><a href="#adaboost"><strong>AdaBoost</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#并行化方法">并行化方法</a>
+      <ul>
+        <li><a href="#bagging">Bagging</a></li>
+        <li><a href="#随机森林">随机森林</a></li>
+      </ul>
+    </li>
+    <li><a href="#结合策略">结合策略</a>
+      <ul>
+        <li><a href="#平均法">平均法</a></li>
+        <li><a href="#投票法">投票法</a></li>
+        <li><a href="#学习法">学习法</a></li>
+      </ul>
+    </li>
+    <li><a href="#多样性">多样性</a>
+      <ul>
+        <li><a href="#误差-分歧分解">误差-分歧分解</a></li>
+        <li><a href="#多样性度量">多样性度量</a></li>
+        <li><a href="#多样性增强">多样性增强</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="集成学习">集成学习</h2>
+<ul>
+<li>个体学习器
+<ul>
+<li>同质：基学习器，基学习算法</li>
+<li>异质：组件学习器</li>
+<li>准确性，多样性</li>
+</ul>
+</li>
+<li>学习器结合可能带来的好处
+<ul>
+<li>统计：学习任务假设空间大，多个假设在训练集上达到同等性能，使用单学习器可能因误选而导致泛化性能不佳</li>
+<li>计算：降低陷入糟糕局部极小点的风险</li>
+<li>表示：某些学习任务的真实假设可能不在当前算法所考虑的假设空间中，使用多学习器可能学得较好的近似</li>
+</ul>
+</li>
+</ul>
+<h2 id="序列化方法">序列化方法</h2>
+<ul>
+<li>Boosting
+<ul>
+<li>Train a weak learner $h_t$ from distribution $D_t$</li>
+<li>Evaluate the error $\epsilon_t$ of $h_t$</li>
+<li>$D_{t+1}=\text{Adjust_Distribution}(D_t,\epsilon_t)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="adaboost"><strong>AdaBoost</strong></h3>
+<ul>
+<li>加性模型(additive model): $H(x)=\sum_{t=1}^T\alpha_th_t(x)$</li>
+<li>exponential loss funciton: $l_{exp}(H|D)=E_{x\sim D}(e^{-f(x)H(x)})$
+<ul>
+<li>指数损失函数最小化，分类错误率也将最小化（与 0/1 损失函数一致）</li>
+</ul>
+</li>
+<li>分类器权重更新公式: $\alpha_t=\frac{1}{2}\ln\frac{1-\epsilon_t}{\epsilon_t}$</li>
+<li>调整样本分布: $D_{t+1}(x)=\frac{D_t(x)e^{-\alpha_tf(x)h_t(x)}}{Z_t}$</li>
+</ul>
+<h2 id="并行化方法">并行化方法</h2>
+<h3 id="bagging">Bagging</h3>
+<ul>
+<li>采样 $T$ 次，训练 $T$ 个学习器，分类简单投票，回归简单平均</li>
+<li>out-of-bag estimate: $H^{oob}(x)$ 为未使用 $x$ 训练的基学习器在 $x$ 上的预测
+<ul>
+<li>$H^{oob}(x)=\arg_{y\in Y}\max\sum_{t=1}^T[h_t(x)=y][x\not\in D_t]$</li>
+<li>$\epsilon^{oob}=\frac{1}{|D|}\sum_{(x,y)\in D}[H^{oob}(x)\not=y]$</li>
+</ul>
+</li>
+</ul>
+<h3 id="随机森林">随机森林</h3>
+<ul>
+<li>Bagging + 在随机选择的 $k$ 个属性中选择最优属性
+<ul>
+<li>推荐值 $k=\log_2d$</li>
+</ul>
+</li>
+</ul>
+<h2 id="结合策略">结合策略</h2>
+<h3 id="平均法">平均法</h3>
+<ul>
+<li>简单平均法: $H(x)=\frac{1}{T}\sum_{i=1}^Th_i(x)$</li>
+<li>加权平均法: $H(x)=\frac{1}{T}\sum_{i=1}^Tw_ih_i(x)$</li>
+</ul>
+<h3 id="投票法">投票法</h3>
+<ul>
+<li>绝对多数投票法
+<ul>
+<li>可能拒绝预测</li>
+</ul>
+</li>
+<li>相对多数投票法</li>
+<li>加权投票法</li>
+<li>$h(x)$ 输出不同
+<ul>
+<li>hard voting: 类标记投票</li>
+<li>soft voting: 类概率投票</li>
+<li>基学习器类型不同，其概率值不能直接进行比较</li>
+</ul>
+</li>
+</ul>
+<h3 id="学习法">学习法</h3>
+<ul>
+<li>Stacking
+<ul>
+<li>初级学习器（个体学习器）</li>
+<li>次级学习器（元学习器）</li>
+</ul>
+</li>
+<li>BMA(贝叶斯模型平均)</li>
+</ul>
+<h2 id="多样性">多样性</h2>
+<h3 id="误差-分歧分解">误差-分歧分解</h3>
+<ul>
+<li>$E=\overline{E}-\overline{A}$
+<ul>
+<li>$h_i$ 的分歧：$A(h_i|x)=(h_i(x)-H(x))^2$</li>
+<li>集成的分歧：$\overline{A}(h|x)=\sum_{i=1}^T\omega_iA(h_i|x))$</li>
+<li>$E(h_i|x)=(f(x)-h_i(x))^2$</li>
+<li>$\overline{E}(h|x)=\sum_{i=1}^T\omega_iE(h_i|x)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="多样性度量">多样性度量</h3>
+<ul>
+<li>预测结果列联表(contingency table), $m=a+b+c+d$</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$h_i=+1$</th>
+<th>$h_i=-1$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$h_j=+1$</td>
+<td>a</td>
+<td>c</td>
+</tr>
+<tr>
+<td>$h_j=-1$</td>
+<td>b</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不合度量(disagreement measure)</td>
+<td>$\text{dis}_{ij}=\frac{b+c}{m}$</td>
+</tr>
+<tr>
+<td>相关系数</td>
+<td>$\rho_{ij}=\frac{ad-bc}{\sqrt{(a+b)(a+c)(c+d)(b+d)}}$</td>
+</tr>
+<tr>
+<td>$Q$-statistic</td>
+<td>$Q_{ij}=\frac{ad-bc}{ad+bc}$</td>
+</tr>
+<tr>
+<td>$\kappa$-statistic</td>
+<td>$\kappa=\frac{p_1-p_2}{1-p_2}$</td>
+</tr>
+<tr>
+<td>$\kappa$ 图</td>
+<td>$\kappa$-平均误差图</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>取得一致的概率：$p_1=\frac{a+d}{m}$</li>
+<li>偶然取得一致的概率：$p_2=\frac{(a+b)(a+c)+(c+d)(b+d)}{m^2}$</li>
+</ul>
+<h3 id="多样性增强">多样性增强</h3>
+<ul>
+<li>数据样本扰动
+<ul>
+<li>Bootstrap</li>
+<li>对不稳定基学习器（决策树，神经网络）有效</li>
+</ul>
+</li>
+<li>输入属性扰动
+<ul>
+<li>random subspace 算法</li>
+</ul>
+</li>
+<li>输出表示扰动
+<ul>
+<li>Flipping Output</li>
+<li>Output Smearing</li>
+<li>ECOC</li>
+</ul>
+</li>
+<li>算法参数扰动
+<ul>
+<li>负相关法</li>
+<li>不同增强机制同时使用</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

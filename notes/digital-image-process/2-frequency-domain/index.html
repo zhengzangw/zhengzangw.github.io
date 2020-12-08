@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frequency Domain | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#傅里叶变换">傅里叶变换</a>
+      <ul>
+        <li><a href="#冲激">冲激</a></li>
+        <li><a href="#continuous-fourier-tranform">(Continuous) Fourier Tranform</a></li>
+        <li><a href="#fourier-series">Fourier Series</a></li>
+        <li><a href="#discrete-time-fourier-transform">Discrete Time Fourier Transform</a></li>
+        <li><a href="#discrete-fourier-transform">Discrete Fourier Transform</a></li>
+      </ul>
+    </li>
+    <li><a href="#二维傅里叶变换">二维傅里叶变换</a>
+      <ul>
+        <li><a href="#冲激-1">冲激</a></li>
+        <li><a href="#离散傅里叶变换">离散傅里叶变换</a></li>
+        <li><a href="#傅里叶谱">傅里叶谱</a></li>
+        <li><a href="#二维离散卷积">二维离散卷积</a></li>
+      </ul>
+    </li>
+    <li><a href="#其它变换">其它变换</a>
+      <ul>
+        <li><a href="#拉普拉斯变换">拉普拉斯变换</a></li>
+        <li><a href="#z-变换">$Z$ 变换</a></li>
+        <li><a href="#短时傅里叶变换">短时傅里叶变换</a></li>
+        <li><a href="#连续小波变换cwt">连续小波变换（CWT）</a></li>
+        <li><a href="#离散小波变换dwt">离散小波变换（DWT）</a></li>
+      </ul>
+    </li>
+    <li><a href="#频域滤波">频域滤波</a>
+      <ul>
+        <li><a href="#平滑图像低通滤波">平滑图像（低通滤波）</a></li>
+        <li><a href="#锐化图像">锐化图像</a></li>
+        <li><a href="#选择性滤波">选择性滤波</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="傅里叶变换">傅里叶变换</h2>
+<p><img src="https://pic1.zhimg.com/3b0b4443adeae9e985073c5a094d040a_r.jpg" alt="傅里叶变换关系"></p>
+<h3 id="冲激">冲激</h3>
+<ul>
+<li>冲激
+<ul>
+<li>单位冲激($0$ 处)：$\delta(t)=[t=0]\infty,\int_{-\infty}^{\infty}\delta(t)dt=1$</li>
+<li>单位冲激($t_0$ 处)：$\delta(t-t_0)\infty$</li>
+<li>采样性质：$\int_{-\infty}^{\infty}f(t)\delta(t)dt=f(0)$</li>
+</ul>
+</li>
+<li>离散冲激
+<ul>
+<li>离散单位冲激：$\delta(x-x_0)=[t=0]$</li>
+<li>采样性质：$\sum_{x=-\infty}^\infty f(x)\delta(x-x_0)=f(x_0)$</li>
+</ul>
+</li>
+<li>冲激串: $s_{\Delta T}(t)=\sum_{n=-\infty}^{\infty}\delta(t-n\Delta T)$
+<ul>
+<li>$S_{\Delta T}(\mu)=\frac{1}{\Delta T}s_{\frac{1}{\Delta T}}$</li>
+</ul>
+</li>
+<li>采样: $f(t)s_{\Delta T}(t)=\sum_{n=-\infty}^{\infty}f(t)\delta(t-n\Delta T)$</li>
+<li>周期化：$f(t)\star s_{\Delta T}(t)$</li>
+</ul>
+<h3 id="continuous-fourier-tranform">(Continuous) Fourier Tranform</h3>
+<p>连续函数 $f(t)$ $\overset{\mathcal{F}}{\leftrightarrow}$ 连续函数 $F(\mu)$</p>
+<ul>
+<li>FT</li>
+</ul>
+<p>$$F(\mu)=\mathcal{F}(f)=\int_{-\infty}^{\infty}f(t)e^{-i2\pi\mu t}dt=\int_{-\infty}^\infty f(t)[\cos(2\pi\mu t)-i\sin(2\pi\mu t)]dt$$</p>
+<ul>
+<li>IFT</li>
+</ul>
+<p>$$f(t)=\mathcal{F}^{-1}(F)=\int_{-\infty}^{\infty}F(\mu)e^{i2\pi\mu t}d\mu$$</p>
+<ul>
+<li>性质
+<ul>
+<li>对称性：$\mathcal{F}(F(t))=f(-\mu)$</li>
+<li>线性: $\mathcal{F}(\alpha f+\beta g)=\alpha\mathcal{F}(f)+\beta\mathcal{F}(g)$</li>
+<li>平移性：
+<ul>
+<li>$\mathcal{F}(f(t-\tau))=F(\mu)e^{-i2\pi\mu\tau}$</li>
+</ul>
+</li>
+<li>微分关系：$\mathcal{F}(f'(x))i\mu=\mathcal{F}(f(x))$</li>
+<li>卷积定理
+<ul>
+<li>$(f(t)\star h(t))(x)=\int_{-\infty}^\infty f(x-t)h(t)dt$</li>
+<li>$\mathcal{F}(f(t)\star h(t))=H(\mu)F(\mu)$</li>
+<li>$\mathcal{F}(f(t)h(t))=H(\mu)\star F(\mu)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>盒状函数：$f(t)=A[|x|&lt;=\frac{W}{2}]$
+<ul>
+<li>$F(\mu)=AW\frac{\sin(\pi\mu W)}{\pi\mu W}=AW\text{sinc}(\mu W)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="fourier-series">Fourier Series</h3>
+<p>连续周期函数 $\overline{f}(t)$ $\overset{\mathcal{FS}}{\leftrightarrow}$ 离散函数 $F[k]$</p>
+<ul>
+<li>$\overline{f}(t)=f(t)\star s_{T_0}(t)$</li>
+<li>FS</li>
+</ul>
+<p>$$ F[k] = \mathcal{FS}(\overline{f}) = \mathcal{F}(f\star s*{T_0}) = \frac{1}{T}\int*{-T/2}^{T/2}f(t)e^{-i\frac{2\pi k}{T}t}dt$$</p>
+<ul>
+<li>IFS</li>
+</ul>
+<p>$$\overline{f}(t) = \mathcal{FS}^{-1}(F) =\sum_{n=-\infty}^{\infty}F[n]e^{i\frac{2\pi n}{T}t}$$</p>
+<h3 id="discrete-time-fourier-transform">Discrete Time Fourier Transform</h3>
+<p>离散函数 $x[n]$ $\overset{\mathcal{DTFT}}{\leftrightarrow}$ 连续周期函数 $\widetilde F(\mu)$</p>
+<ul>
+<li>$x[n]=\widetilde f(t)=f(t)s_{\Delta T}$</li>
+<li>DTFT</li>
+</ul>
+<p>$$\widetilde F(\mu) = \mathcal{DTFT}(x[n]) = \mathcal{F}(f(t)s_{\Delta T})$$</p>
+<ul>
+<li>采样定理：可完全恢复的采样率 $\frac{1}{\Delta T}&gt;2\mu_{\max}$
+<ul>
+<li>带限函数：傅里叶变换后非零频率属于 $[-\mu_{\max},\mu_{\max}]$</li>
+<li>奈奎斯特采样率：$2\mu$（无限采样）</li>
+</ul>
+</li>
+<li>混淆：带限函数必须在 $(-\infty,\infty)$ 有值，有限长度的采样，混淆不可避免
+<ul>
+<li>带限函数<strong>有限</strong>长度采样 $f(t)[0\leq t\leq T]$</li>
+<li>抗混淆：事先防止或减轻混淆
+<ul>
+<li>平滑输入函数：图像散焦，减少高频分量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>由样本恢复原函数
+<ul>
+<li>内插: $f(t)=\sum_{n=-\infty}^{\infty}f(n\Delta T)\text{sinc}(\frac{t-n\Delta T}{\Delta T})$</li>
+</ul>
+</li>
+</ul>
+<h3 id="discrete-fourier-transform">Discrete Fourier Transform</h3>
+<p>离散周期函数 $f_n$ $\overset{\mathcal{DFT}}{\leftrightarrow}$ 离散周期函数 $F_m$</p>
+<ul>
+<li>DFT:</li>
+</ul>
+<p>$$F(u)=\mathcal{DFT}(f_n)=\sum_{x=0}^{M-1}f(x)e^{-i2\pi ux/M} ,u=0,1,2,\cdots,M-1$$</p>
+<ul>
+<li>IDFT:</li>
+</ul>
+<p>$$f(x)=\mathcal{IDFT}(F)=\frac{1}{M}\sum_{0}^{M-1}F(u)e^{i2\pi ux/M},x=0,1,\cdots,M-1$$</p>
+<ul>
+<li>适用于任何均匀采样的有限离散样本集
+<ul>
+<li>采样数：$M$</li>
+<li>时间间隔：$\Delta T$</li>
+<li>时间长度：$T=M\Delta T$</li>
+<li>频域间隔：$\Delta u=\frac{1}{T}$</li>
+<li>频域范围: $\Omega=\frac{1}{\Delta T}$</li>
+</ul>
+</li>
+<li>循环卷积: $f(x)\star h(x)=\sum_{m=0}^{M-1}f(m)h(x-m)$</li>
+</ul>
+<h2 id="二维傅里叶变换">二维傅里叶变换</h2>
+<h3 id="冲激-1">冲激</h3>
+<ul>
+<li>冲激：$\delta(t,z)$</li>
+<li>二维冲激串：$s_{\Delta T\Delta Z}(t,z)=\sum_{m=-\infty}^{\infty}\sum_{n=-\infty}^\infty\delta(t-m\Delta T,z-n\Delta Z)$</li>
+<li>二维盒状函数：$F(\mu,v)=ATZ\text{sinc}(\pi\mu T)\text{sinc}(\pi v Z)$</li>
+<li>二维采样定理：$\frac{1}{\Delta T}&gt;2\mu_{\max},\frac{1}{\Delta Z}&gt;2v_{\max}$</li>
+<li>混淆
+<ul>
+<li>空间混淆(欠采样)：锯齿，伪高光，虚假模式
+<ul>
+<li>图像放大：过采样</li>
+<li>图像缩小：欠采样</li>
+</ul>
+</li>
+<li>时间混淆：图像系列中的时间间隔：车轮倒转</li>
+<li>摩尔模式：两个等间隔的光栅产生的差拍模式</li>
+</ul>
+</li>
+</ul>
+<h3 id="离散傅里叶变换">离散傅里叶变换</h3>
+<ul>
+<li>DFT</li>
+</ul>
+<p>$$F(u,v)=\sum_{x=0}^{M-1}\sum_{y=0}^{N-1}f(x,y)e^{-i2\pi(ux/M+vy/N)}$$</p>
+<ul>
+<li>IDFT</li>
+</ul>
+<p>$$f(x,y)=\frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1}F(u,v)e^{i2\pi(ux/M+vy/N)}$$</p>
+<ul>
+<li>平移性
+<ul>
+<li>$f(x-x_0,y-y_0)\iff F(u,v)e^{-i2\pi(x_0u/M+y_0v/N)}$</li>
+<li>$f(x,y)e^{i2\pi(u_0x/M+v_0y/N)}\iff F(u-u_0,v-v_0)$</li>
+<li>中心化：$f(x,y)(-1)^{x+y}\iff F(u-M/2,v-N/2)$</li>
+<li>幅值不变</li>
+</ul>
+</li>
+<li>旋转性
+<ul>
+<li>极坐标：$f(r,\theta+\theta_0)\iff F(\omega,\varphi+\theta_0)$</li>
+</ul>
+</li>
+<li>对称性
+<ul>
+<li>偶函数：$w_e(x,y)=w_e(M-x,N-y)$</li>
+<li>奇函数：$w_o(x,y)=-w_o(M-x,N-y)$</li>
+<li>$w_e(x,y)=\frac{w(x,y)+w(M-x,N-y)}{2}$</li>
+<li>$w_o(x,y)=\frac{w(x,y)-w(M-x,N-y)}{2}$</li>
+<li>实函数的傅里叶变换是共轭对称的：$F^*(u,v)=F(-u,-v)$</li>
+<li>虚函数的傅里叶变换是共轭反对称：$F^*(u,v)=-F(-u,-v)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="傅里叶谱">傅里叶谱</h3>
+<ul>
+<li>极坐标：$F(u,v)=|F(u,v)|e^{i\phi(u,v)}$</li>
+<li>幅度（傅里叶谱）：$|F(u,v)|$
+<ul>
+<li>偶对称</li>
+<li>正弦波的幅度，携带了灰度信息</li>
+</ul>
+</li>
+<li>相角：$\phi(u,v)\in[-\pi,\pi]$
+<ul>
+<li>奇对称</li>
+<li>正弦波的位移，携带了定位信息</li>
+</ul>
+</li>
+<li>功率：$P(u,v)=|F(u,v)|^2$</li>
+<li>$F(0,0)$: 直流分量
+<ul>
+<li>$|F(0,0)|=MN|\overline{f}(x,y)|$</li>
+</ul>
+</li>
+</ul>
+<h3 id="二维离散卷积">二维离散卷积</h3>
+<ul>
+<li>$f(x,y)\star h(x,y)=\sum_{m=0}^{M-1}\sum_{n=0}^{N-1}f(m,n)h(x-m,y-n)$</li>
+<li>$f(x,y)\star h(x,y)\iff F(u,v)H(u,v)$</li>
+<li>$f(x,y)h(x,y)\iff F(u,v)\star H(u,v)$</li>
+<li>缠绕错误
+<ul>
+<li>样本数：$A,B$</li>
+<li>$0$ 填充：$P\geq A+B-1$</li>
+</ul>
+</li>
+</ul>
+<h2 id="其它变换">其它变换</h2>
+<h3 id="拉普拉斯变换">拉普拉斯变换</h3>
+<p>$F(\omega)=\int_0^{+\infty}f(t)e^{-\sigma t}e^{-i\omega t}dt=\int_0^{+\infty}f(t)e^{-(\sigma+i\omega)t}dt=\int_0^{+\infty}f(t)e^{-st}dt$</p>
+<h3 id="z-变换">$Z$ 变换</h3>
+<p>$X(\omega)=\sum_{-\infty}^{+\infty}x[n]e^{-(\sigma+i\omega)nT_s}$</p>
+<p>$X(z)=\sum_{n=-\infty}^{+\infty}x[n]z^{-n}$</p>
+<h3 id="短时傅里叶变换">短时傅里叶变换</h3>
+<p>STFT: 方窗函数（紧支撑性）</p>
+<p>$X(\omega,t_s)=\int_{-\infty}^{+\infty}h(t-t_s)x(t)e^{i\omega(t-t_s)}dt$</p>
+<h3 id="连续小波变换cwt">连续小波变换（CWT）</h3>
+<p>海森堡测不准原理：$\Delta t\Delta f&gt;C$</p>
+<ul>
+<li>低频信号：宽窗，低时域分辨度，高频率分辨率</li>
+<li>高频信号：窄窗，高时域分辨度，低频域分辨度</li>
+<li>动态分辨率：小波母函数
+<ul>
+<li>紧支撑性：$\exists a&gt;0,\forall|t|&gt;a,\psi(t)=0$</li>
+<li>波动性：$\int_{-\infty}^{+\infty}\psi(t)dt=0$</li>
+<li>容许条件（变换可逆）：$c_\psi=2\pi\int_{-\infty}^{+\infty}\frac{|\overline{\psi}(f)|^2}{|f|}df&lt;+\infty$</li>
+<li>正交性（变换可逆）</li>
+</ul>
+</li>
+<li>小波函数：$\psi^*(\tau,s)=\frac{1}{\sqrt{s}}\psi(\frac{t}{s}-\tau)$
+<ul>
+<li>s 小，挤压，频率提高</li>
+</ul>
+</li>
+<li>CWT: $\mathrm{CWT}<em>x^\psi(\tau, s)=\frac{1}{\sqrt{s}}\int</em>{-\infty}^{+\infty}x(t)\psi(\frac{t}{s}-\tau)dt$</li>
+<li>Haar 小波
+<ul>
+<li>尺度函数（父函数） $\phi=[0\leq x&lt;1]$</li>
+<li>Haar 小波函数（母函数）$\psi=\phi(2x)-\phi(2x-1)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="离散小波变换dwt">离散小波变换（DWT）</h3>
+<p>Mallet 算法</p>
+<ul>
+<li>Haar 父函数与母函数
+<ul>
+<li>$V_j={\sum_{k\in \mathbb{Z}}a_k\phi(2^jx-k)}$</li>
+<li>$W_j={\sum_{k\in \mathbb{Z}}a_k\psi(2^jx-k)}$</li>
+<li>$V_j=W_{j-1}\oplus W_j\oplus\cdots\oplus W_0\oplus V_0$</li>
+<li>$f_j=\omega_{j-1}+\omega_{j-2}+\cdots+\omega_0+f_0$</li>
+</ul>
+</li>
+<li>采样：$a_k=f(\frac{k}{2^j})$
+<ul>
+<li>$f_j(x)=\sum_{k\in\mathbb{Z}}a_k^j\phi(2^jx-k)=\omega_{j-1}+f_{j-1}$</li>
+</ul>
+</li>
+<li>半子带滤波：获得高频 $(\frac{F_s}{2},F_s)$ 和低频 $(0,\frac{F_s}{2})$ 信号</li>
+<li>一层小波分解：一次半子带滤波 + 一次 2 倍下采样</li>
+</ul>
+<h2 id="频域滤波">频域滤波</h2>
+<ul>
+<li>直观
+<ul>
+<li>变化最慢的分量，与平均灰度成正比</li>
+<li>低频对应于图像中缓慢变化的灰度（墙）</li>
+<li>高频对应于图像剧烈变化的灰度（边缘）</li>
+</ul>
+</li>
+<li>频域滤波器：$H(u,v)$
+<ul>
+<li>$g(x,y)=\mathcal{F}^{-1}(H(u,v)F(u,v))$</li>
+<li>$F(u,v)$ 中心化: $F(u,v)=\mathcal{F}(f(x,y)(-1)^{x+y})$</li>
+</ul>
+</li>
+<li><strong>频域滤波流程</strong>
+<ul>
+<li>补零：$M\times N$ 补零成 $P=2M,Q=2N$ 的图像 $f_p(x,y)$</li>
+<li>频域中心化：$f_p(x,y)(-1)^{x+y}$</li>
+<li>DFT: $F(u,v)$</li>
+<li>滤波函数 $H(u,v)$生成： $P\times Q$, 中心在 $(\frac{P}{2},\frac{Q}{2})$</li>
+<li>$G(u,v)=H(u,v)F(u,v)$</li>
+<li>得到处理后函数：$g_p(x,y)=\text{Re}(\mathfrak{F}^{-1}(G(u,v)))(-1)^{x+y}$</li>
+<li>提取 $g_p(x,y)$ 中左上角的 $M\times N$ 的图像</li>
+</ul>
+</li>
+<li>对应的空间滤波器：$g(x,y)=\mathfrak{F}^{-1}(H(u,v))$
+<ul>
+<li>构造空间滤波器来近似频率滤波器</li>
+</ul>
+</li>
+<li>零相角滤波器：$\mathcal{F}^{-1}(H(u,v)F(u,v))=\mathcal{F}^{-1}(H(u,v)R(u,v)+iH(u,v)C(u,v))$</li>
+</ul>
+<h3 id="平滑图像低通滤波">平滑图像（低通滤波）</h3>
+<p>衰减高频通过低频，模糊图像</p>
+<ul>
+<li>理想低通滤波器(ILPF)：$H(u,v)=[D(u,v)\leq D_0]$
+<ul>
+<li>$D(u,v)=[(u-\frac{P}{2})^2+(v-\frac{Q}{2})^2]^{\frac{1}{2}}$</li>
+<li>截止频率：$D_0$</li>
+<li>振铃(ringring) 现象</li>
+</ul>
+</li>
+<li>Butterworth 低通滤波器(BLPF)：$H(u,v)=\frac{1}{1+(D(u,v)/D_0)^{2n}}$
+<ul>
+<li>$n=2$：平滑效果较好，且无振铃</li>
+</ul>
+</li>
+<li>高斯低通滤波器(GLPF)：$H(u,v)=e^{-D^2(u,v)/2D_0^2}$</li>
+</ul>
+<h3 id="锐化图像">锐化图像</h3>
+<ul>
+<li>高通滤波器：衰减低频通过高频，强化细节，对比度降低
+<ul>
+<li>略微平移保留对比度</li>
+<li>理想高通滤波器</li>
+<li>布特沃斯高通滤波器</li>
+<li>高斯高通滤波器</li>
+</ul>
+</li>
+<li>频率域的拉普拉斯算子
+<ul>
+<li>$H(u,v)=-4\pi^2(u^2+v^2)$</li>
+<li>$\nabla^2f(x,y)=\mathcal{F}^{-1}(H(u,v)F(u,v))$</li>
+<li>图像锐化
+<ul>
+<li>$g(x,y)=f(x,y)+c\nabla^2f(x,y)$</li>
+<li>$g(x,y)=\mathcal{F}^{-1}((1+4\pi^2D^2(u,v))F(u,v))$
+<ul>
+<li>量纲问题</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>非锐化掩蔽
+<ul>
+<li>$g(x,y)=f(x,y)+kg_{\text{mask}(x,y)}$</li>
+<li>$g(x,y)=\mathcal{F}^{-1}((1+k(1-H_{\text{LP}(u,v)}))F(u,v))$</li>
+<li>高频增强滤波：$\mathcal{F}^{-1}((k_1+k_2H_{\text{HP}(u,v)})F(u,v))$
+<ul>
+<li>$1-H_{\text{LP}}=H_{\text{HP}}$</li>
+<li>防止图像变暗</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>同态滤波
+<ul>
+<li>照射反射模型：$f(x,y)=i(x,y)r(x,y)$
+<ul>
+<li>照射：$0&lt;i(x,y)&lt;\infty$</li>
+<li>反射：$0&lt;r(x,y)&lt;1$</li>
+</ul>
+</li>
+<li>$z(x,y)=\ln f(x,y)=\ln i(x,y)+\ln r(x,y)$</li>
+<li>$Z(u,v)=F_i(u,v)+F_r(u,v)$
+<ul>
+<li>低频：照射分量</li>
+<li>高频：反射分量</li>
+</ul>
+</li>
+<li>增强对比度，压缩灰度：$H(u,v)=(\gamma_H-\gamma_L)(1-e^{-c(D^2(u,v)/D_0^2)})+\gamma_L$</li>
+</ul>
+</li>
+</ul>
+<h3 id="选择性滤波">选择性滤波</h3>
+<ul>
+<li>带阻/带通滤波器
+<ul>
+<li>理想带阻滤波器：$H_{\text{BR}}(u,v)=1-[D_0-\frac{W}{2}\leq D\leq D_0+\frac{W}{2}]$</li>
+<li>理想带通滤波器：$H_{\text{BP}}=1-H_{\text{BR}}$</li>
+</ul>
+</li>
+<li>陷波滤波器（notch filters）
+<ul>
+<li>$H_{\text{NR}}=\prod_{k=1}^QH_k(u,v)H_{-k}(u,v)$</li>
+<li>$H_k(u,v)$ 是中心在 $(u_k,v_k)$ 的高通滤波器</li>
+<li>交互式改变，不进行补 0 填充</li>
+<li>处理摩尔模式</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

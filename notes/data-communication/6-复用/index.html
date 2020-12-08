@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>复用 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#频分复用-frequency-division-multiplexing">频分复用 (Frequency Division Multiplexing)</a>
+      <ul>
+        <li><a href="#fdm-机制">FDM 机制</a></li>
+        <li><a href="#波分复用-wdm">波分复用 WDM</a></li>
+        <li><a href="#正交频分复用-ofdm多载波调制">正交频分复用 (OFDM，多载波调制)</a></li>
+      </ul>
+    </li>
+    <li><a href="#同步时分复用-synchronous-time-division-mutliplexing">同步时分复用 (Synchronous Time Division Mutliplexing)</a>
+      <ul>
+        <li><a href="#tdm-多路电话通信系统">TDM 多路电话通信系统</a></li>
+      </ul>
+    </li>
+    <li><a href="#统计时分复用-statistical-time-division-multiplexing">统计时分复用 (Statistical Time Division Multiplexing)</a></li>
+    <li><a href="#电缆调制解调器cable-modem">电缆调制解调器(cable modem)</a></li>
+    <li><a href="#非对称数字用户线路-adslasymmetraical-digital-subscriber-line">非对称数字用户线路 ADSL(Asymmetraical Digital Subscriber Line)</a></li>
+    <li><a href="#多信道接入">多信道接入</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><p>多个点对点通信共享数据链路容量</p>
+<h2 id="频分复用-frequency-division-multiplexing">频分复用 (Frequency Division Multiplexing)</h2>
+<p>各路信号$m_i(t)$ $\rightarrow$ (<strong>副载波调制器$f_i$</strong> $\rightarrow$ $s_i(t)$ $\rightarrow$ <strong>叠加$\Sigma$</strong>)复用器 $\rightarrow$ 复合基带调制信号 $m_b(t)$ $\rightarrow$ <strong>发送器$f_c$</strong> $\rightarrow$ FDM 信号 $s(t)$ $\rightarrow$ (<strong>主接收器</strong> $\rightarrow$ 复合基带信号 $\rightarrow$ <strong>带通滤波器$f_i$</strong>)分用器 $\rightarrow$ $s_i(t)$ $\rightarrow$ <strong>解调器$f_i$</strong> $\rightarrow$ $m_i(t)$</p>
+<ul>
+<li>有效带宽大于被传输的信号的带宽：$B&gt;\sum_{i=1}^nB_i$</li>
+<li>串扰
+<ul>
+<li>防护频带：未被使用的部分</li>
+</ul>
+</li>
+<li>互调噪声</li>
+</ul>
+<h3 id="fdm-机制">FDM 机制</h3>
+<ul>
+<li>基群
+<ul>
+<li>带宽：48kHz</li>
+<li>话音数量：12</li>
+<li>频谱：60-108kHz</li>
+</ul>
+</li>
+<li>超群，主群</li>
+</ul>
+<h4 id="att">AT&amp;T</h4>
+<h4 id="itu-t">ITU-T</h4>
+<h3 id="波分复用-wdm">波分复用 WDM</h3>
+<ul>
+<li>不同频率光路在同一光纤上传输</li>
+</ul>
+<h3 id="正交频分复用-ofdm多载波调制">正交频分复用 (OFDM，多载波调制)</h3>
+<ul>
+<li>副载波正交
+<ul>
+<li>实际可用 IFFT -&gt; FFT</li>
+<li>循环前缀</li>
+</ul>
+</li>
+<li>一个数据源</li>
+<li>$R$ bps, 每个比特持续时间为 $\frac{1}{R}$， 通过 OFDM，每个比特的持续时间为 $\frac{N}{R}$</li>
+<li>优点
+<ul>
+<li>衰减仅影响部分副载波</li>
+<li>克服码间干扰</li>
+</ul>
+</li>
+</ul>
+<h2 id="同步时分复用-synchronous-time-division-mutliplexing">同步时分复用 (Synchronous Time Division Mutliplexing)</h2>
+<p>各路信号$m_i(t)$ $\rightarrow$ <strong>缓存</strong> $\rightarrow$ $m_i(t)$ $\rightarrow$ <strong>扫描操作</strong> $\rightarrow$ TDM 流 $m_c(t)$ $\rightarrow$ <strong>调制解调器</strong> $\rightarrow$ $s(t)$ $\rightarrow$ <strong>调制解调器</strong> $\rightarrow$ TDM 流 $\rightarrow$ <strong>扫描操作</strong> $\rightarrow$ $m_i(t)$ $\rightarrow$ <strong>缓存</strong> $\rightarrow$ $m_i(t)$</p>
+<ul>
+<li>传输媒体能够达到的数据率超出被传输的数字信号的数据率</li>
+<li>同步：数据被组织成帧，时隙固定</li>
+<li>流量控制：复用线路上数据率固定，无信息则发送空时隙</li>
+<li>差错控制：基于单信道的差错控制</li>
+<li>组帧
+<ul>
+<li>不需要为 TDM 帧定界</li>
+<li>需要提供源和接受端的同步机制
+<ul>
+<li>增加数字组帧技术：为每个 TDM 帧添加控制比特（如101010）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>脉冲填充：同步不同的数据源</li>
+</ul>
+<h3 id="tdm-多路电话通信系统">TDM 多路电话通信系统</h3>
+<h4 id="pdh-准同步数字体系">PDH 准同步数字体系</h4>
+<ul>
+<li>AT&amp;T: T体系 PCM24路数字载波系统
+<ul>
+<li>基群速率：T1速率 1.544Mbps</li>
+<li>DS-n</li>
+<li>北美，日本</li>
+</ul>
+</li>
+<li>ITU-T: E体系 PCM30/32路数字载波系统
+<ul>
+<li>基群速率：E1速率 2.048Mbps</li>
+<li>欧洲，中国，国际传输</li>
+</ul>
+</li>
+</ul>
+<h4 id="sdh-同步数字体系">SDH 同步数字体系</h4>
+<ul>
+<li>SONET（同步光纤网卡）
+<ul>
+<li>OC-1/STS-1 51.84Mbps</li>
+<li>OC-3/STS-3 155.52Mbps</li>
+</ul>
+</li>
+<li>ITU-T
+<ul>
+<li>STM-1: 155.52Mbps</li>
+</ul>
+</li>
+</ul>
+<h2 id="统计时分复用-statistical-time-division-multiplexing">统计时分复用 (Statistical Time Division Multiplexing)</h2>
+<ul>
+<li>根据需求分配时隙：复用器扫描输入缓存，搜集数据直到帧被填满</li>
+<li>忙期需要输入缓存，解决时隙浪费现象</li>
+</ul>
+<h2 id="电缆调制解调器cable-modem">电缆调制解调器(cable modem)</h2>
+<p>通过有线电视网访问因特网和其它在线服务的设备</p>
+<ul>
+<li>6MHz 专用信道</li>
+<li>使用统计时分复用</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>北美划分</th>
+<th>频谱</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户到网络的上行</td>
+<td>5-40MHz</td>
+</tr>
+<tr>
+<td>电视节目传播下行</td>
+<td>50-550MHz</td>
+</tr>
+<tr>
+<td>网络到用户的下行</td>
+<td>550-750MHz</td>
+</tr>
+</tbody>
+</table>
+<h2 id="非对称数字用户线路-adslasymmetraical-digital-subscriber-line">非对称数字用户线路 ADSL(Asymmetraical Digital Subscriber Line)</h2>
+<p>使用已经安装好的双绞线（电话线）</p>
+<table>
+<thead>
+<tr>
+<th>频分复用</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传统电话业务 POTS</td>
+<td>0-20kHz</td>
+</tr>
+<tr>
+<td>上行流</td>
+<td>25-200kHz</td>
+</tr>
+<tr>
+<td>下行流</td>
+<td>250-1000kHz</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>上下行流内部使用 FDM</li>
+<li>回声抵消：上行流与下行流重叠
+<ul>
+<li>频率越高，衰减越大，更多下行流的频率小</li>
+<li>改变上行流容量时具有灵活性</li>
+<li>需要两端拥有回声抵消逻辑</li>
+</ul>
+</li>
+<li>可达 5.5km</li>
+<li>离散多音调 DMT(Discrete Multitone)
+<ul>
+<li>不同频率使用多个载波信号</li>
+<li>根据 $\text{SNR}$ 分配比特数</li>
+</ul>
+</li>
+<li>宽带接入配置
+<ul>
+<li>分离器$\rightarrow$(部分$\rightarrow$电话)调制解调器G.DMT$\rightarrow$(部分$\rightarrow$机顶盒)$\rightarrow$无线调制解调器/路由器</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>xDSL</th>
+<th>属性</th>
+<th>最低速率(bps)</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADSL</td>
+<td>非对称，模拟</td>
+<td>1.5M(down)0.16(up)</td>
+<td></td>
+</tr>
+<tr>
+<td>HDSL</td>
+<td>对称，数字</td>
+<td>1.544M</td>
+<td>高数据率数字用户线路,两根双绞线</td>
+</tr>
+<tr>
+<td>SDSL</td>
+<td>对称，数字</td>
+<td>1.544M</td>
+<td>单线数字用户线路</td>
+</tr>
+<tr>
+<td>VDSL</td>
+<td>非对称，模拟</td>
+<td>13M(down)1.5(up)</td>
+<td>甚高数据率数字用户线路</td>
+</tr>
+</tbody>
+</table>
+<h2 id="多信道接入">多信道接入</h2>
+<p>共享多个发送/接收战斗之间的信道容量，为各站点分配频带或时隙序列，不通过复用器</p>
+<ul>
+<li>频分双工(FDD, Frequency-Division Duplex)</li>
+<li>时分双工(TDD)/时间压缩复用(TCM)</li>
+<li>频分多址(FDMA, Frequency-Division Multiple Address)</li>
+<li>时分多址(TDMA)</li>
+<li>正交频分多址 (OFDMA)</li>
+<li>单载波频分多址 (SC-FDMA)</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

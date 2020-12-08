@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>6-难问题求解 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#definition">Definition</a>
+      <ul>
+        <li><a href="#alphabet">Alphabet</a></li>
+        <li><a href="#algorithmic-problems">Algorithmic Problems</a></li>
+        <li><a href="#turing-machine">Turing Machine</a></li>
+        <li><a href="#examples">Examples</a></li>
+      </ul>
+    </li>
+    <li><a href="#complexity-theory">Complexity Theory</a>
+      <ul>
+        <li><a href="#complexity-class">Complexity Class</a></li>
+        <li><a href="#reduction">Reduction</a></li>
+      </ul>
+    </li>
+    <li><a href="#approximation">Approximation</a>
+      <ul>
+        <li><a href="#error">Error</a></li>
+        <li><a href="#distance">Distance</a></li>
+      </ul>
+    </li>
+    <li><a href="#randomization">Randomization</a>
+      <ul>
+        <li><a href="#decision-problem">Decision Problem</a></li>
+        <li><a href="#optimization-problem">Optimization Problem</a></li>
+        <li><a href="#paradigms-of-design-of-randomized-algorithm">Paradigms of Design of Randomized Algorithm</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="definition">Definition</h2>
+<h3 id="alphabet">Alphabet</h3>
+<ul>
+<li>$\Sigma$: alphabet
+<ul>
+<li>$\Sigma^*=\mathcal{P}(\Sigma)$</li>
+<li>$\Sigma^+=\Sigma^*-{\lambda}$</li>
+</ul>
+</li>
+<li>$s\in\Sigma$: symbol
+<ul>
+<li>$s\in w$</li>
+</ul>
+</li>
+<li>$w\subseteq\Sigma, \omega\in\Sigma^*$: word over $\Sigma$
+<ul>
+<li>$w\in L$</li>
+<li>$\lambda$: empty word</li>
+<li>$|w|$: length of word
+<ul>
+<li>$\Sigma^n={w\in\Sigma^*|\vert w\vert=n}$</li>
+</ul>
+</li>
+<li>#$_a(w)$: number of occurence of $a$ in $w$</li>
+<li>$vw$: concatenation of $v$ and $w$
+<ul>
+<li>$w^{n+1}=ww^n,w^0=\lambda$</li>
+</ul>
+</li>
+<li>prefix, suffix, subword</li>
+</ul>
+</li>
+<li>$L\subseteq\Sigma^*$: language over $\Sigma$
+<ul>
+<li>$L^C =\Sigma^*-L$</li>
+<li>$L_1L_2={uv\in(\Sigma_1\cup\Sigma_2)^*|u\in L_1,v\in L_2}$: concatenation</li>
+</ul>
+</li>
+<li>canonical ordering: let $s_1&lt;&hellip;&lt;s_m$ be a linear ordering, $u&lt;v$
+<ul>
+<li>if $\vert u\vert&lt;\vert v\vert$</li>
+<li>or $\vert u\vert=\vert v\vert,u=xs_iu',v=xs_jv',i&lt;j$</li>
+</ul>
+</li>
+</ul>
+<h3 id="algorithmic-problems">Algorithmic Problems</h3>
+<ul>
+<li>polynomially related: codings $e_1\in L_1,e_2\in L_2,\exists f:L_1\rightarrow L_2,f(e_1)$ is polynomial</li>
+<li>decision Problem: $(L,U,\Sigma),L\subseteq U\subseteq \Sigma^*$
+<ul>
+<li>$A$ solves/decides $U$
+<ul>
+<li>$A(x)=1,x\in L$</li>
+<li>$A(x)=0,x\in U-L$</li>
+</ul>
+</li>
+<li>$A$ accepts $U$: $A(x)=1,x\in L$
+<ul>
+<li>Halting Problem: Undecidable but acceptable</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>optimization Problem: $U=(\Sigma_I,\Sigma_O,L,L_I,M,cost,goal)$
+<ul>
+<li>briefly: $U=(L,$ constraints, costs, goal$)$</li>
+<li>$\Sigma_I$: input alphabet</li>
+<li>$\Sigma_O$: output alphabet</li>
+<li>$L\subset\Sigma_I^*$: language of feasible Problem instances</li>
+<li>$L_I\subset L$: language of the actual Problem instance</li>
+<li>$M:L\rightarrow \mathcal{P}(\Sigma_O^*)$, $\mathcal{M}(x)$ is the set of feasible solutions for $x$</li>
+<li>cost$:\mathcal{M}(x)\times L\rightarrow \mathbb{R}$</li>
+<li>goal $\in{\min,\max}$</li>
+<li>optimal solution $Opt_U(x)=cost(y,x)=goal_{x\in L_I}{cost(z,x)|z\in \mathcal{M}(x)}$</li>
+<li>$Output_U(x)\subseteq \mathcal{M}(x)$: all optimal solutions for instance $x\in U$</li>
+</ul>
+</li>
+<li>Algorithm $A$ is consistent for $U$: $\forall x\in L_I,A(x)\in \mathcal{M}(x)$</li>
+<li>Algorithm $B$ solves $U$
+<ul>
+<li>consistent</li>
+<li>$\forall x\in L_I,B(x)=Opt_U(x)$</li>
+</ul>
+</li>
+<li>$U_1$ is a subProblem of $U_2$ if $L_{I,1}\subseteq L_{I,2}$ (Others are same)</li>
+</ul>
+<h3 id="turing-machine">Turing Machine</h3>
+<ul>
+<li>Turing Machine: $M=(Q,\Sigma,\Gamma,\delta,q_0,q_{ac},q_{rej})$
+<ul>
+<li>$Q$: state set</li>
+<li>$\Sigma$: Input alphabet</li>
+<li>$\Gamma\subseteq\Sigma$: alphabet on tape</li>
+<li>$\delta:Q\times\Gamma\rightarrow Q\times\Gamma\times{L,R,-}$</li>
+<li>$q_0\in Q$: initial satate</li>
+</ul>
+</li>
+<li>nondeterministic TM: $\delta:Q\times\Gamma\rightarrow \mathcal{P}(Q\times\Gamma\times{L,R})$</li>
+<li>nondeterministic TM $M$ accept $L=L(M)$
+<ul>
+<li>$\forall x\in L,\exists$ computation of $M$ accepts $x$</li>
+<li>$\forall y\not\in L$, all computations of $M$ rejects $y$</li>
+</ul>
+</li>
+<li>time complexity of nondeterministic TM $M$
+<ul>
+<li>$T_M(\omega)$: shortest accepting computation of $M$ on $\omega$</li>
+<li>$T_M(n)=\max{T_M(x)|x\in L(M)\cap\Sigma^n}$</li>
+</ul>
+</li>
+<li>Church-Turing thesis: Problem $U$ can be solved by an algorithm iff $\exists$ Turing machine solving $U$</li>
+<li>Theorem: for every increasing function $f:\mathbb{N}\rightarrow\mathbb{R}^+$
+<ul>
+<li>$\exists$ decision Problem such that every TM solving it has the time complexity in $\Omega(f(n))$</li>
+<li>but $\exists$ TM solving it in $O(f(n)\log f(n))$</li>
+</ul>
+</li>
+<li>$L(M)$: language decided by $M$</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="decision">Decision</h4>
+<ul>
+<li>PRIM: test if a number is a prime</li>
+<li>EQ-POL: $p_1\equiv p_2$ in $\mathbb{Z}_p$</li>
+<li>EQ-1BP: equivalence of one-time-only branching programs</li>
+<li>C-SAT: whether a formula with AND, NOT, OR gate is satisfiable</li>
+<li>SAT (kSAT): whether a CNF can be satisfied</li>
+<li>Clique: whether a graph contain $K_k$</li>
+<li>VCP: whether graph contains a vertex cover of size $k$</li>
+<li>HC: whether graph contains a Hamiltonian cycle</li>
+<li>SOL-IP: existence of a solution of linear integer programming
+<ul>
+<li>SOL-0/1-IP</li>
+<li>SOL-IP$_p$</li>
+</ul>
+</li>
+<li>PM: whether a bipartite graph has a perfect matching</li>
+<li>SUBSET-SUM: exists a subset $S'\subseteq S$ sum up to $t$</li>
+</ul>
+<h4 id="optimization">Optimization</h4>
+<ul>
+<li>TSP: find a Hamiltonian cycle of the minial cost in a complete weighted graph
+<ul>
+<li>$\Delta$-TSP: metric traveling salespaerson Problem (satisfying triangle inequality)</li>
+<li>Euclidean TSP: geometrical, can be embedded in the two-dimensional Euclidean space</li>
+</ul>
+</li>
+<li>MSP: Makespan Scheduling Problem</li>
+<li>MIN-VCP: find minimum vertex cover
+<ul>
+<li>WEIGHT-VCP</li>
+</ul>
+</li>
+<li>SCP: Set Cover Problem</li>
+<li>MAX-CL: Maximum Clique Problem</li>
+<li>MAX/MIN-CUT</li>
+<li>KP: Knapsack Problem
+<ul>
+<li>SKP: Simple Knapsack Problem</li>
+<li>BIN-P: Bin-Packing Problem</li>
+</ul>
+</li>
+<li>MAX-SAT: maximize the number of stisfied clauses
+<ul>
+<li>MAX-kSAT</li>
+<li>MAX-EkSAT: exactly</li>
+</ul>
+</li>
+<li>LP: Linear Programming
+<ul>
+<li>IP: Integer Linear Programming</li>
+<li>0/1-Linear Programming</li>
+</ul>
+</li>
+<li>MAX-LinModk: Maximum Linear Equation Problem Mod k
+<ul>
+<li>MAX-EmLinModk: k is prime, m is positive integer</li>
+</ul>
+</li>
+<li>MAX-CSP: $\max_{S,T}|E(S,T)|$</li>
+</ul>
+<h2 id="complexity-theory">Complexity Theory</h2>
+<ul>
+<li>main objective of the complexity theory is:
+<ul>
+<li>find a formal specification of the class of practically solvable Problems</li>
+<li>to develop methodes enabling the classification of algorithmic Problemcs accoording to their membershiop in this class</li>
+</ul>
+</li>
+<li>uniform cost
+<ul>
+<li>all numbers bounded</li>
+<li>basic operation: $O(1)$</li>
+</ul>
+</li>
+<li>logarithmic cost
+<ul>
+<li>numbers $k$ takes $O(\lg k)$ bits</li>
+<li>addition, subtraction, assignment: $O(n)$</li>
+<li>multiplication, division: $O(n\log n)$</li>
+</ul>
+</li>
+<li>pseudopolynomial time complexity:
+<ul>
+<li>$T(n)$ is polynomial in the numeric value of the input</li>
+<li>$T(n)$ is not polynomial in the number of bits required to repensent it of the input</li>
+</ul>
+</li>
+<li>bound
+<ul>
+<li>$T/S_A(x)$: time/space complexity on $x\in\Sigma_I$</li>
+<li>$T/S_A(n)=\max{T/S_A(x)|x\in\Sigma_I^n}$: worst case analysis</li>
+<li>upper bound on the time complexity of $U$: $\exists A$ solving $U$ with $T_A(n)\in O(g(n))$</li>
+<li>lower bound on the time complexity of $U$: $\forall B$ solving $U$ has $T_B(n)\in\Omega(f(n))$</li>
+</ul>
+</li>
+<li>There is a decision Problem such that $\forall A$ deciding $L$, $\exists B$ deciding $L$: $T_A(n)=\log_2T_B(n)$</li>
+<li>optimal algorithm: $\text{Time}_C(n)\in O(g(n))$ and $\Omega(g(n))$ is a lower bound</li>
+</ul>
+<h3 id="complexity-class">Complexity Class</h3>
+<ul>
+<li><a href="https://www.math.ucdavis.edu/~greg/zoology/diagram.xml">Complexity Zoo</a></li>
+<li>$\text{P}={L(M)|M$ is a TM, $\exists c&gt;0,T_M(n)\in O(n^c)}$
+<ul>
+<li>tractable (solvable): $L\in P$, $L$ is accepted/decided by a polynomial-time algorithm</li>
+<li>intractable: $L\not\in P$</li>
+</ul>
+</li>
+<li>$\text{NP}={L(M)|M$ is a polynomial-time nondeterministic TM$}$
+<ul>
+<li>verifier for $L$: $A$ works on $\Sigma^<em>\times{0,1}^</em>$, $L=V(A)={\omega\in\Sigma^<em>|\exists c\in{0,1}^</em>,A$ accepts $(\omega,c)}$</li>
+<li>$\text{NP}={V(A)|T_A(\omega,c)\in O(|\omega|^d)}$</li>
+<li>closed under $\cap,\cup,\cdot,\star$</li>
+</ul>
+</li>
+<li>polynomial-time reduction (Karp, many-one) $L_1\leq_p L_2$: $\exists$ poly. time $f$ that $\forall x: x\in L_1\iff f(x)\in L_2$
+<ul>
+<li>Cook/Turing reduction: an algorithm that solves Problem $A$ using a polynomial number of calls to a subroutine for Problem $B$, and polynomial time outside of those subroutine calls</li>
+</ul>
+</li>
+<li>$\text{NP}$-hard $L$: $\forall U\in \text{NP},U\leq_p L$</li>
+<li>$\text{NP}$-complete $L$: $L\in \text{NP}$ and $L$ is $\text{NP}$-hard</li>
+<li>co-$\text{NP}$: $\overline{L}\in \text{NP}$, $x\not\in L$ can be poly. time verified with $c$</li>
+<li>strongly $\text{NP}$: $\text{NP}$ when all of its numerical parameters are bounded by a polynomial in the length of the input</li>
+<li>$\text{L}\subseteq\text{NL}\subseteq\text{P}\subseteq\text{ZPP}\subseteq\text{NP}\subseteq\text{PH}\subseteq\text{PSPACE}=\text{NPSPACE}\subseteq\text{EXP}\subseteq\text{NEXP}\subseteq\text{EXPSPACE}\subseteq\text{ELEMENTARY}\subseteq\text{PR}\subseteq\text{R}\subseteq\text{RE}\subseteq\text{ALL}$
+<ul>
+<li>$\text{P}\neq\text{EXP}$</li>
+<li>$\text{NP}\neq\text{NEXP}$</li>
+</ul>
+</li>
+<li>$\text{P}\subseteq\text{ZPP}\subseteq\text{RP}\subseteq\text{BPP}\subseteq\text{PP}$</li>
+<li>$\text{P}\subseteq\text{BQP}\subseteq\text{PSPACE}$</li>
+<li>Conjecture: $\text{P}\neq \text{NP}$: no hope for a polynomial-time algorithm</li>
+<li>Conjecture: $\text{BPP}=\text{P}$: randomization alone not help</li>
+</ul>
+<h4 id="optimization-complexity">Optimization Complexity</h4>
+<ul>
+<li>$\text{NPO}$:
+<ul>
+<li>$L_I\in \text{P}$</li>
+<li>exists a polynomial $p_U$ such that
+<ul>
+<li>$\forall x\in L_I,y\in\mathcal{x},|y|\leq p_U(|x|)$</li>
+<li>exists a polynomial-time algorithm that $\forall y\in\Sigma_O^*,x\in L_I$ such that $|y|\leq p_U(|x|)$, decides wheter $y\in M(x)$</li>
+</ul>
+</li>
+<li>cost is computable in polynomial time</li>
+</ul>
+</li>
+<li>$\text{PO}$:
+<ul>
+<li>$U\in \text{NPO}$</li>
+<li>$\forall x\in L_I,\exists$ polynomial-time algorithm computes an optimal solution</li>
+</ul>
+</li>
+<li>threshold language of $U$ (minimum): $Lang_U={(x,a)\in L_I\times\Sigma^*_{bool}|Opt_U(x)\leq Number(a)}$</li>
+<li>$U$ is $\text{NP}$-hard if $Lang_U$ is $\text{NP}$-hard
+<ul>
+<li>$U\in \text{PO},Lang_U\in \text{P}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="reduction">Reduction</h3>
+<ul>
+<li>Cook&rsquo;s Theorem: C-SAT is $\text{NP}$-complete</li>
+<li>$\text{NPC}$
+<ul>
+<li>C-SAT $\leq_p$ SAT</li>
+<li>SAT $\leq_p$ 3SAT</li>
+<li>3SAT $\leq_p$ SOL-0/1-ILP: $x_1\vee\overline{x}_2\vee\overline{x}_3\iff x_1+(1-x_2)+(1-x_2)\geq1$</li>
+<li>3SAT $\leq_p$ SUBSET-SUM</li>
+<li>3SAT $\leq_p$ Clique: $K_{3,3,\cdots,3}$</li>
+<li>Clique $\leq_p$ VC: $(G,k)\in$ Clique$\iff(\overline{G},|V|-k)\in$ VC</li>
+<li>VC $\leq_p$ HAM-CYCLE</li>
+<li>VC $\leq_p$ SCP</li>
+<li>HAM-CYCLE $\leq_p$ HAM-PATH</li>
+<li>HAM-CYCLE $\leq_p$ TSP</li>
+<li>MAX-CUT</li>
+</ul>
+</li>
+<li>strongly $\text{NPC}$: 3-Partition</li>
+<li>PM $\in\text{NP}\cap$co-$\text{NP}$</li>
+<li>$\text{EXP}$-complete: Go</li>
+<li>$\text{NEXP}$-complete: equivalence of regular expressions with squaring, concatenating and union</li>
+<li>$\text{EXPSPACE}$-complete: equivalence of regular expressions with squaring, concatenating, union and Kleene</li>
+</ul>
+<h2 id="approximation">Approximation</h2>
+<h3 id="error">Error</h3>
+<ul>
+<li>relative error $\epsilon_A(x)=\frac{|cost(A(x))-Out_U(x)|}{Opt_U(x)}$
+<ul>
+<li>$\epsilon_A(n)=\max{\epsilon_A(x)|x\in L_I\cap(\Sigma_I)^n}$</li>
+</ul>
+</li>
+<li>approximation ratio $R_A(x)=\max{\frac{cost(A(x))}{Opt_U(x)},\frac{Opt_U(x)}{cost(A(x))}}$
+<ul>
+<li>$R_A(n)=\max{R_A(x)|x\in L_I\cap(\Sigma_I)^n}$</li>
+<li>(minimization) $R_A(x)=1+\epsilon_A(x)$</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NPO</th>
+<th>Name</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\text{FPTAS}$</td>
+<td>fully polynomial-time approximation scheme</td>
+<td>$\text{Time}_A(x,\epsilon^{-1})$ bounded by a function that is polynomial in both $\lvert x\rvert$ and $\epsilon^{-1}$</td>
+<td>knapsack</td>
+</tr>
+<tr>
+<td>$\text{PTAS}$</td>
+<td>polynomial-time approximation scheme</td>
+<td>$\forall (x,\epsilon)\in L_I\times\mathbb{R}^+$, $A$ computes a feasible solution $A(x)$ with $\epsilon_A(x)&lt;\epsilon$ and $\text{Time}_A(x,\epsilon^{-1})$ can be bounded by a function that is polynomial in $\vert x\vert$</td>
+<td>MSP</td>
+</tr>
+<tr>
+<td>$\text{APX}$</td>
+<td>$\delta$-approximation algorithm</td>
+<td>$\forall x\in L_I,R_A(x)\leq \delta$</td>
+<td>MIN-VCP, MAX-SAT, $\delta$-TSP</td>
+</tr>
+<tr>
+<td>$\log\text{-APX}$</td>
+<td>$f(n)$-approximation algorithm</td>
+<td>$R_A(n)\leq f(n),f(n)$ is bounded by a polylogarithmic function $\sum_{i}a_i\log^i(n)$</td>
+<td>SCP</td>
+</tr>
+<tr>
+<td>$f(n)\text{-APX}$</td>
+<td>$f(n)$-approximation algorithm</td>
+<td>$R_A(n)\leq f(n),f(n)$ is not bounded by any polylogarithmic function</td>
+<td>TSP, MAX-CL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="distance">Distance</h3>
+<ul>
+<li>distance function from $\overline{U}$ according to $L_I$: $h_L:L\rightarrow\mathbb{R}^+$
+<ul>
+<li>$\forall x\in L_I, h_L(x)=0$</li>
+<li>$h_L$ is polynomial-time computable</li>
+</ul>
+</li>
+<li>$Ball_{r,h}(L_I)={w\in L|h(w)\leq r}$</li>
+<li>$U_r=(\Sigma_I,\Sigma_O,L,Ball_{r,h}(L_I),M,cost,goal)$</li>
+<li>property of infinite jumps: If $Ball_{q,h'}(L_I)\subset Ball_{r,h'}(L_I)$ for some $q&lt;r$, then $|Ball_{r,h'}(L_I)|-|Ball_{q,h'}(L_I)|$ is infinite</li>
+</ul>
+<p>for $\delta$-approximation $A$</p>
+<table>
+<thead>
+<tr>
+<th>Stability according to $h$</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$p$-stable</td>
+<td>$\forall r\leq p,\exists \delta_{r,\epsilon}\in\mathbb{R}^{&gt;1},A$ is $\delta_{r,\epsilon}$-approximation algorihtm for $U_r$</td>
+</tr>
+<tr>
+<td>stable</td>
+<td>$A$ is $p$-stable according to $h$ for all $p\in R^+$</td>
+</tr>
+<tr>
+<td>$(r,f_r(n))$-quasistable</td>
+<td>$A$ is an $f_r(n)$-approxiamtion algorithm for $U_r$</td>
+</tr>
+</tbody>
+</table>
+<p>for PTAS $A$:</p>
+<table>
+<thead>
+<tr>
+<th>Stability according to $h$</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stable</td>
+<td>$\forall r&gt;0,\forall\epsilon&gt;0,A_\epsilon$ is a $\delta_{r,\epsilon}$-approximation algorithm for $U_r$</td>
+</tr>
+<tr>
+<td>superstable</td>
+<td>$\delta_{r,\epsilon}\leq f(\epsilon)g(r)$, $f,g$ are some functions from $\mathbb{R}^{\geq0}$ to $\mathbb{R}^+$ and $\lim_{\epsilon\rightarrow0}f(\epsilon)=0$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>constraint distance function for $u$ is $h:L_I\times\Sigma^*_O\rightarrow\mathbb{R}^{\geq0}$, $\forall S\in M(x),h(x,S)=0$, $\forall S\not\in M(x),h(x,S)&gt;0$ and $h$ is polynomial-time computable.
+<ul>
+<li>$\epsilon$-ball of $M(x)$ according to $h$: $M_\epsilon^h(x)={S\in\Sigma^*_O|h(x,S)\leq\epsilon}$</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>$h$-dual</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PTAS</td>
+<td>$\forall (x,\epsilon)\in L_I\times\mathbb{R}^+,A(x,\epsilon)\in M_\epsilon^h(x)$ and $cost(A(x,\epsilon))\geq Opt_U(x)$ if goal=max and $\text{Time}_A(x,\epsilon^{-1})$ is bounded by a function that is polynomial in $\lvert x\rvert$</td>
+</tr>
+<tr>
+<td>FPTAS</td>
+<td>$\text{Time}_A(x,\epsilon^{-1})$ can be bounded by a function that is polynoimal in both $\lvert x\rvert$ and $\epsilon^{-1}$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="randomization">Randomization</h2>
+<ul>
+<li>$\text{Random}_A(x)$: the maximum number of random bits used
+<ul>
+<li>$\text{Random}_A(n)$: $\max{\text{Random}_A(x)||x|=n}$</li>
+<li>derandomization: $\text{Random}_A(n)\leq\log n$</li>
+</ul>
+</li>
+<li>$\text{Prob}_{A,x}(C)$: Probability of the executaion $C$ on $x$
+<ul>
+<li>$\text{Prob}(A(x)=y) = \sum_{C\text{ outputs }y}\text{Prob}_{A,x}(C)$</li>
+</ul>
+</li>
+<li>$\text{Exp-Time}<em>A(x)=\sum_C\text{Prob}</em>{A,x}(C)*Time(C)$
+<ul>
+<li>$\text{Exp-Time}_A(n)=\max{\text{Exp-Time}_A(x)||x|=n}$</li>
+</ul>
+</li>
+<li>$\text{Time}_A(x)=\max{\text{Time}(C)|C\text{ runs on }x}$
+<ul>
+<li>$\text{Time}_A(n)=\max{\text{Time}_A(x)||x|=n}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="decision-problem">Decision Problem</h3>
+<table>
+<thead>
+<tr>
+<th>Classification</th>
+<th>Name</th>
+<th>Description</th>
+<th>Repeat k times</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\text{ZPP}$</td>
+<td>Las Vegas algorithm</td>
+<td>$\text{Prob}(A(x)=F(x))\geq\frac{1}{2}$ <!-- raw HTML omitted --> $\text{Prob}(A(x)=?)&lt;\frac{1}{2}$</td>
+<td>$L\in \text{ZPP}_{1-(1-\delta)^k}$</td>
+</tr>
+<tr>
+<td>$\text{RP}$</td>
+<td>One-sided-error Monte Carlo algorithm</td>
+<td>$\forall x\in L,\text{Prob}(A(x)=F(x)=1)\geq\frac{1}{2}$ <!-- raw HTML omitted --> $\forall x\not\in L,\text{Prob}(A(x)=F(x)=0)=1$</td>
+<td>$L\in \text{RP}_{1-(1-\delta)^k}$</td>
+</tr>
+<tr>
+<td>$\text{BPP}$</td>
+<td>Two-sided-error Monte Carlo algorithm</td>
+<td>$\text{Prob}(A(x)=F(x))\geq\frac{1}{2}+\epsilon,0&lt;\epsilon\leq\frac{1}{2}$</td>
+<td>$k\geq\frac{2\ln 2\delta}{\ln(1-4\epsilon^2)},L\in \text{BPP}_{1-\delta}$</td>
+</tr>
+<tr>
+<td>$\text{PP}$</td>
+<td>Unbounded-error Monte Carlo algorithm</td>
+<td>$\text{Prob}(A(x)=F(x))&gt;\frac{1}{2}$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="optimization-problem">Optimization Problem</h3>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\text{RFPTAS}$</td>
+<td>$p(\vert x\vert,\delta^{-1})$ is polynomial in both $\vert x\vert$ and $\delta^{-1}$</td>
+</tr>
+<tr>
+<td>$\text{RPTAS}$ (randomized polynomial-time approximation scheme)</td>
+<td>$\text{Prob}(A(x)\in M(x))=1$ and $\text{Prob}(\epsilon_A(x,\delta)\leq\delta)\geq\frac{1}{2}$ and $Time_A(x,\delta^{-1})\leq p(\vert x\vert,\delta^{-1})$ and $p$ is a polynomial in $\vert x\vert$</td>
+</tr>
+<tr>
+<td>randomized $f(n)$-approximation algorithm</td>
+<td>$\text{Prob}(A(x)\in M(x))=1$ and $\text{Prob}(R_A(x)\leq f(\vert x\vert))\geq\frac{1}{2}$</td>
+</tr>
+<tr>
+<td>randomized $\delta$-approximation</td>
+<td>$\text{Prob}(A(x)\in M(x))=1$ and $\text{Prob}(R_A(x)\leq\delta)\geq\frac{1}{2}$</td>
+</tr>
+<tr>
+<td>randomized $\delta$-expected approximation</td>
+<td>$\text{Prob}(A(x)\in M(x))=1$ and $E(R_A(x))\leq\delta$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>w.h.p (with high probility): $p_c=O(1-\frac{1}{n})$</li>
+<li>Median Trick
+<ul>
+<li>$\forall\epsilon$, return a $\hat Z$ in time poly($|\phi|,\frac{1}{\epsilon}$), $P((1-\epsilon)Z\leq\hat Z\leq(1+\epsilon)Z)\geq\frac{2}{3}$</li>
+<li>Repeat $O(\log\frac{1}{\delta})$ and choose median number (Chernoff Bound)</li>
+<li>FPRAS: $\forall\epsilon,\delta$, return a $\hat Z$ in time Poly($|\phi|,\frac{1}{\epsilon},\log\frac{1}{\delta}$), $P((1-\epsilon)Z\leq\hat Z\leq(1+\epsilon)Z)\geq1-\delta$</li>
+</ul>
+</li>
+</ul>
+<h3 id="paradigms-of-design-of-randomized-algorithm">Paradigms of Design of Randomized Algorithm</h3>
+<ul>
+<li>Foiling an adversary</li>
+<li>Abundance of witness: decision Problem
+<ul>
+<li>Fingerprinting: equivalence Problem</li>
+</ul>
+</li>
+<li>random sampling
+<ul>
+<li>relexation and random rounding</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

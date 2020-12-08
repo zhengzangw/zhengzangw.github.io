@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>概率不等式与鞅论 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#basic-tail-inequality">Basic Tail inequality</a></li>
+    <li><a href="#moment-generating-functions">Moment Generating Functions</a></li>
+    <li><a href="#chernoff-bound">Chernoff Bound</a></li>
+    <li><a href="#martingales-鞅论">Martingales (鞅论)</a>
+      <ul>
+        <li><a href="#definition">Definition</a></li>
+        <li><a href="#azumas-inequality">Azuma&rsquo;s Inequality</a></li>
+        <li><a href="#doob-sequence">Doob Sequence</a></li>
+        <li><a href="#method-of-bounded-differences">Method of Bounded Differences</a></li>
+        <li><a href="#hoeffdings-bound">Hoeffding&rsquo;s Bound</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="basic-tail-inequality">Basic Tail inequality</h2>
+<p>Markov&rsquo;s Inequality</p>
+<p>$$P(X\geq t)\leq\frac{E(x)}{t}$$</p>
+<p>Chebyshev&rsquo;s Inequality</p>
+<p>$$P(|X-E(X)|\geq t)\leq\frac{V(X)}{t^2}$$</p>
+<h2 id="moment-generating-functions">Moment Generating Functions</h2>
+<p>Moment-generating function of a random variable $X$:</p>
+<p>$$M_X(t)=E[e^{tX}]=\sum_{k=0}^\infty\frac{t^k}{k!}E(X^k)=\int_{-\infty}^{\infty}e^{tx}f(x)dx,t\in\mathbb{R}$$</p>
+<p>Some Moment-generating function</p>
+<table>
+<thead>
+<tr>
+<th>$t\sim$</th>
+<th>$M_X(t)$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bernoulli $p$</td>
+<td>$1-p+pe^t$</td>
+</tr>
+<tr>
+<td>Geometric $p$</td>
+<td>$\frac{pe^t}{1-(1-p)e^t}$</td>
+</tr>
+<tr>
+<td>Binomial $B(n,p)$</td>
+<td>$(1-p+pe^t)^n$</td>
+</tr>
+<tr>
+<td>Poisson $P(\lambda)$</td>
+<td>$e^{\lambda(e^t-1)}$</td>
+</tr>
+<tr>
+<td>Normal $N(\mu,\sigma^2)$</td>
+<td>$e^{t\mu+\frac{1}{2}\sigma^2t^2}$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="chernoff-bound">Chernoff Bound</h2>
+<p>Generic Chernoff Bound:</p>
+<p>$$P(X\geq t)=P(e^{\lambda X}\geq e^{\lambda t})\leq\frac{E[e^{\lambda X}]}{e^{\lambda t}}\newline  P(X\leq t)=P(e^{-\lambda X}\geq e^{-\lambda t})\leq\frac{E[e^{-\lambda X}]}{e^{-\lambda t}}$$</p>
+<p>Chernoff Bound for $X=\sum_{i=1}^nX_i$ of **independent** events</p>
+<p>$$P(X\geq t)\leq \min_{\lambda&gt;0}e^{-\lambda t}\prod_i E[e^{tX_i}]$$</p>
+<p>Chernoff Bound for concentration $t=(1+\delta)\mu,\mu=E[X]$</p>
+<p>$$P(X\geq (1+\delta)\mu)=P(e^{\lambda X}\geq e^{\lambda(1+\delta)\mu})\leq\frac{E(e^{\lambda X})}{e^{\lambda(1+\delta)\mu}}$$</p>
+<p>Chernoff Bound for independent Poisson trials (Bernoulii)</p>
+<p>$$P(X\geq(1+\delta)\mu)\leq(\frac{e^\delta}{(1+\delta)^{(1+\delta)}})^\mu$$
+$$P(X\leq(1-\delta)\mu)\leq(\frac{e^{-\delta}}{(1-\delta)^{(1-\delta)}})^\mu$$</p>
+<p>Useful forms of Chernoff Bound for independent Poisson trials</p>
+<p>$$P(X\geq(1+\delta)\mu)&lt;e^{-\frac{\mu\delta^2}{3}},0&lt;\delta\leq 1$$
+$$P(X\leq(1-\delta)\mu)&lt;e^{-\frac{\mu\delta^2}{2}},0&lt;\delta\leq 1$$
+$$P(X\geq t)\leq 2^{-t},t\geq 2e\mu$$</p>
+<p>Chernoff bound for $\chi^2$-distribution $X\sim\chi^2(k)$</p>
+<p>$$P(X\geq(1+\epsilon)k)&lt;e^{-\frac{\epsilon^2k}{8}}\newline P(X\geq(1-\epsilon)k)&lt;e^{-\frac{\epsilon^2k}{8}}\newline X\sim\mathcal{N}(0,1),\mathbb{E}(e^{sX^2})=\frac{1}{\sqrt{1-2s}}$$</p>
+<h2 id="martingales-鞅论">Martingales (鞅论)</h2>
+<h3 id="definition">Definition</h3>
+<ul>
+<li>martingale: a sequence of random varibles $X_0,X_1,\cdots,\mathbb{E}(X_i|X_0,\cdots,X_{i-1})=X_{i-1}$</li>
+<li>martingale (general version): a sequence of varibales $Y_0,Y_1,\cdots$ is a martingale with respect to $X_0,X_1,\cdots$ if
+<ul>
+<li>$Y_i$ is a function of $X_0,X_1,\cdots,X_i$</li>
+<li>$\mathbb{E}(Y_{i+1}|X_0,\cdots,X_i)=Y_i$</li>
+</ul>
+</li>
+</ul>
+<h3 id="azumas-inequality">Azuma&rsquo;s Inequality</h3>
+<p>Azuma&rsquo;s Inequality: $X_0,X_1,\cdots$ is a martingale satisfying bounded difference condition ($|X_k-X_{k-1}|\leq c_k,k\geq 1$), then</p>
+<p>$$P(|X_n-X_0|\geq t)\leq 2e^{-\frac{t^2}{2\sum_{k=1}^nc_k^2}}$$</p>
+<p>Corollary of Azuma&rsquo;s Inequality: martingale satisfying bounded difference condition with same $c$</p>
+<p>$$P(|X_n-X_0|\geq ct\sqrt{n})\leq 2e^{-\frac{t^2}{2}}$$</p>
+<h3 id="doob-sequence">Doob Sequence</h3>
+<ul>
+<li>Doob Sequence of a function $f$ respect to $X_1,\cdots,X_n$ is: $Y_i=\mathbb{E}[f(X_1,\cdots,X_n)|X_1,\cdots,X_i]$
+<ul>
+<li>$Y_0=\mathbb{E}(f(X_1,\cdots,X_n))$</li>
+<li>$Y_n=f(X_1,\cdots,X_n)$</li>
+</ul>
+</li>
+<li>edge exposure martingale: $Y_0,Y_1,\cdots,Y_m$
+<ul>
+<li>$m={n\choose 2}$, fix an arbitrary numbering of potential edges between the $n$ vertices, $X_i=[e_i\in G],Y_0=E(f(G)),Y_i=E(f(G)|X_1,\cdots,X_i)$</li>
+</ul>
+</li>
+<li>vertex exposure martingale: $Y_0,Y_1,\cdots,Y_n$
+<ul>
+<li>$X_i$ is the subgraph of $G$ induced by the vertex set $[i]$</li>
+</ul>
+</li>
+<li>Shamir and Spencer Theorem: $G\sim G(n,p)$</li>
+</ul>
+<p>$$P(|\chi(G)-\mathbb{E}(\chi(G))|\geq t\sqrt{n})\leq 2e^{\frac{-t^2}{2}}$$</p>
+<h3 id="method-of-bounded-differences">Method of Bounded Differences</h3>
+<ul>
+<li>Method of Averaged Bounded Differences
+<ul>
+<li>Averaged Bounded Condition: $|E(f(X)|X_1,\cdots,X_i)-E(f(X)|X_1,\cdots,X_{i-1})|\leq c_i$</li>
+<li>Averaged Lipschitz condition(ALC): $\forall a,b, |E(f(X)|X_1,\cdots,X_i=a_i)-E(f(X)|X_1,\cdots,X_{i-1},X_i=b_i)|\leq c_i$</li>
+<li>Restate of Azuma&rsquo;s inequality</li>
+</ul>
+</li>
+<li>Lipshitz condition: $|f(x_1,\cdots,x_n)-f(x_1,\cdots,x_{i-1},y_i,x_{i+1},\cdots,x_n)|\leq c_i$</li>
+<li>Method of Bounded Difference: $n$ dependent random variables $X_1,\cdots,X_n$ and $f(X)$ satisfies the Lipshitz condition</li>
+</ul>
+<p>$$P(f(X)\geq E(f(X))+t)\leq e^{-\frac{t^2}{2\sum_{i=1}^nc_i^2}}\newline  P(f(X)\geq E(f(X))-t)\leq e^{-\frac{t^2}{2\sum_{i=1}^nc_i^2}}$$</p>
+<h3 id="hoeffdings-bound">Hoeffding&rsquo;s Bound</h3>
+<p>For independent $X_1,X_2,\cdots,X_n$ with $X_i\in[a_i,b_i],X=\sum_{i=1}^nX_i,\forall t&gt;0,\mu=E[X]$</p>
+<p>$$P(X\geq \mu+t)\leq e^{-\frac{t^2}{2\sum_{i=1}^n(b_i-a_i)^2}}\newline  P(X\leq \mu-t)\leq e^{-\frac{t^2}{2\sum_{i=1}^n(b_i-a_i)^2}}$$</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

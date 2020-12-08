@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7-Unsupervised Learning | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#unsupervised-feature-learning">Unsupervised Feature Learning</a></li>
+    <li><a href="#probabilistic-density-estimation">Probabilistic Density Estimation</a></li>
+    <li><a href="#clustering">Clustering</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="unsupervised-feature-learning">Unsupervised Feature Learning</h2>
+<ul>
+<li>
+<p>PCA</p>
+</li>
+<li>
+<p>Sparse Coding（字典学习）</p>
+</li>
+<li>
+<p>自编码器</p>
+<ul>
+<li>
+<p>编码器：$f:\mathbb{R}^D\rightarrow\mathbb{R}^M$</p>
+</li>
+<li>
+<p>解码器：$g:\mathbb{R}^M\rightarrow\mathbb{R}^D$</p>
+</li>
+<li>
+<p>优化目标：最小化重构错误</p>
+<p>$$L=\sum_{n=1}^N|x^{(n)}-g(f(x^{(n)}))|+\lambda|W|^2$$</p>
+</li>
+<li>
+<p>捆绑权重：$W^{(2)}=W^{(1)\top}$</p>
+</li>
+</ul>
+</li>
+<li>
+<p>稀疏自编码器</p>
+<ul>
+<li>
+<p>$M&gt;D$ 且 $z$ 稀疏</p>
+<p>$$L=\sum_{n=1}^N|x^{(n)}-g(f(x^{(n)}))|+\eta\rho(Z)+\lambda|W|^2$$</p>
+</li>
+<li>
+<p>稀疏性度量函数：$\rho$</p>
+<ul>
+<li>
+<p>$l_1$ 范数：$\rho(z)=\sum_{m=1}^M|z_m|$</p>
+</li>
+<li>
+<p>对数函数：$\rho(z)=\sum_{m=1}^M\log(1+z_m^2)$</p>
+</li>
+<li>
+<p>指数函数：$\rho(z)=\sum_{m=1}^M-\exp(-z_m^2)$</p>
+</li>
+<li>
+<p>$\rho(z)=\sum_{j=1}^p\text{KL}(\rho^*|\hat\rho_j)$</p>
+<p>第 $j$ 个神经元激活概率近似（平均活性值）：$\hat\rho_j=\frac{1}{N}\sum_{n=1}^Nz_j^{(n)}$</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>堆叠自编码器</p>
+</li>
+<li>
+<p>降噪自编码器：先根据一 个比例 $𝜇$ 随机将 $𝒙$ 的一些维度的值设置为 $0$，得到一个被损坏的向量 $𝒙̃$，然后将被损坏的向量 $𝒙̃$ 输入给自编码器得到编码 $𝒛$，并重构出无损的原始输入 $𝒙$。</p>
+</li>
+</ul>
+<h2 id="probabilistic-density-estimation">Probabilistic Density Estimation</h2>
+<ul>
+<li>参数估计
+<ul>
+<li>最大似然估计</li>
+</ul>
+</li>
+<li>非参数密度估计
+<ul>
+<li>直方图方法</li>
+<li>核方法估计（Parzen 窗方法）</li>
+<li>$K$ 近邻方法</li>
+</ul>
+</li>
+</ul>
+<h2 id="clustering">Clustering</h2>
+<ul>
+<li>See Machine Learning Clustering</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Setup: PHP | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><h1 id="set-up-vm">Set up VM</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update
+adduser newuser
+usermod -aG sudo newuser
+sudo nano /etc/ssh/sshd_config
+<span style="color:#75715e"># change PasswordAuthentication from no to yes (Afterwards you can change it back)</span>
+sudo systemctl restart sshd
+ssh-keygen -f .ssh/id_rsa_new <span style="color:#75715e"># local</span>
+ssh-copy-id newuser@server <span style="color:#75715e">#local, and edit .ssh/config</span>
+sudo apt install curl git unzip build-essential
+</code></pre></div><h1 id="set-up-apache">Set up Apache</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install apache2
+sudo apache2ctl configtest
+sudo nano /etc/apache2/apache2.conf
+<span style="color:#75715e"># change ServerName -domain-</span>
+sudo apache2ctl configtest
+sudo systemctl restart apache2
+<span style="color:#75715e">#sudo ufw app list</span>
+<span style="color:#75715e">#sudo ufw app info &#34;Apache Full&#34;</span>
+<span style="color:#75715e">#sudo ufw allow in &#34;Apache Full&#34;</span>
+</code></pre></div><h1 id="set-up-apache-virtual-hosts">Set up Apache Virtual Hosts</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkdir -p /var/www/domain.com/
+sudo mkdir -p /var/www/test.domain.com/
+sudo chown -R $USER:$USER /var/www/domain.com
+sudo chown -R $USER:$USER /var/www/test.domain.com
+sudo chmod -R <span style="color:#ae81ff">755</span> /var/www
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/domain.com.conf
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/domain.com.conf
+<span style="color:#75715e"># change ServerAdmin,DocumentRoot, add ServerName domain.com, ServaerAlias www.domain.com</span>
+sudo a2ensite domain.com.conf
+sudo a2ensite test.domain.com.conf
+sudo a2dissite 000-default.conf
+sudo systemctl restart apache2
+</code></pre></div><h1 id="set-up-tlsssl-certificate">Set up TLS/SSL certificate</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:certbot/certbot
+sudo apt update
+sudo apt install python-certbot-apache
+sudo certbot --apache -d domain.com -d test.domain.com
+<span style="color:#75715e"># https://www.ssllabs.com/ssltest/analyze.html?d=domain.com&amp;latest</span>
+<span style="color:#75715e"># sudo certbot renew --dry-run</span>
+</code></pre></div><h1 id="set-up-mysql">Set up MySQL</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install mysql-server
+mysql_secure_installation
+</code></pre></div><h1 id="set-up-php">Set up PHP</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install php libapache2-mod-php  php-mysql
+sudo nano /etc/apache2/mods-enabled/dir.conf
+<span style="color:#75715e"># change the position</span>
+sudo systemctl restart apache2
+<span style="color:#75715e"># sudo systemctl status apache2</span>
+</code></pre></div><h1 id="set-up-phpmyadmin">Set up phpMyadmin</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install phpmyadmin php-mbstring php-gettext php-cli
+sudo phpenmod mbstring
+sudo systemctl restart apache2
+sudo mysql
+<span style="color:#75715e"># mysql&gt; SELECT user,authentication_string,plugin,host FROM mysql.user;</span>
+<span style="color:#75715e"># ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;password&#39;;</span>
+<span style="color:#75715e"># FLUSH PRIVILEGES;</span>
+<span style="color:#75715e"># Above Enable root to log in</span>
+<span style="color:#75715e"># CREATE USER &#39;newuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;</span>
+<span style="color:#75715e"># GRANT ALL PRIVILEGES ON *.* TO &#39;sammy&#39;@&#39;localhost&#39; WITH GRANT OPTION;</span>
+<span style="color:#75715e"># Above create a new user</span>
+sudo ln -s /usr/share/phpmyadmin /var/www/domain/
+</code></pre></div><h1 id="set-up-composer">Set up Composer</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -sS https://getcomposer.org/installer -o composer-setup.php
+export HASH<span style="color:#f92672">=</span><span style="color:#75715e"># SHA value from https://composer.github.io/pubkeys.html</span>
+php -r <span style="color:#e6db74">&#34;if (hash_file(&#39;SHA384&#39;, &#39;composer-setup.php&#39;) === &#39;</span>$HASH<span style="color:#e6db74">&#39;) { echo &#39;Installer verified&#39;; } else { echo &#39;Installer corrupt&#39;; unlink(&#39;composer-setup.php&#39;); } echo PHP_EOL;&#34;</span>
+sudo php composer-setup.php --install-dir<span style="color:#f92672">=</span>/usr/local/bin --filename<span style="color:#f92672">=</span>composer
+</code></pre></div><p>To use Composer:</p>
+<ul>
+<li>Search on <a href="https://packagist.org">packagist</a></li>
+<li><code>composer require vendor/package</code></li>
+<li>Or add in composer.json and run <code>composer install</code></li>
+<li>in php file, require vendor/autoload.php</li>
+</ul>
+<h1 id="use-phpmailer">Use PHPmailer</h1>
+<p>See following tutorials:</p>
+<ul>
+<li><a href="https://github.com/PHPMailer/PHPMailer">PHPMailer</a></li>
+<li><a href="https://edu.unethost.com/%E4%B8%BB%E6%A9%9F%E7%9B%B8%E9%97%9C/phpmailer-%E9%81%8B%E7%94%A8gmail%E4%BE%86%E5%AF%84%E4%BF%A12/">phpmailer</a></li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

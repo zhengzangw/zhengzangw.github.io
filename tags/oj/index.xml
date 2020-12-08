@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>oj on Zangwei</title>
+    <link>https://zhengzangw.com/tags/oj/</link>
+    <description>Recent content in oj on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Mon, 17 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/oj/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>贪心专题</title>
+      <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-greedy/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-greedy/</guid>
+      <description>&lt;h1 id=&#34;活动选择问题&#34;&gt;活动选择问题&lt;/h1&gt;
+&lt;p&gt;最早结束&lt;/p&gt;
+&lt;h1 id=&#34;哈夫曼树&#34;&gt;哈夫曼树&lt;/h1&gt;
+&lt;p&gt;最小合并&lt;/p&gt;
+&lt;h2 id=&#34;合并花费最小问题&#34;&gt;合并花费最小问题&lt;/h2&gt;
+&lt;h1 id=&#34;字符串拼接字典序最小&#34;&gt;字符串拼接字典序最小&lt;/h1&gt;
+&lt;p&gt;比较a+b与b+a&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linear Recurrence</title>
+      <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-linear-recurrence/</link>
+      <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-linear-recurrence/</guid>
+      <description>&lt;h1 id=&#34;常系数齐次线性递推式&#34;&gt;常系数齐次线性递推式&lt;/h1&gt;
+&lt;p&gt;快速幂: $O(k^3logn)$
+黑科技：$O(klogklogn+k)$
+虽然过了洛谷的数据，但是常数还没压下来，N=10^9,K=32000要3.5s。标程可以进1s。以后再压常数。&lt;/p&gt;
+&lt;h2 id=&#34;幻想三步走&#34;&gt;幻想三步走&lt;/h2&gt;
+&lt;p&gt;设转移矩阵为A，初始值向量为v&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>背包九讲</title>
+      <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-knapsack/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-knapsack/</guid>
+      <description>dp 九讲
+01 背包 $$F[i,v] = \max{F[i-1,v],F[i-1,v-Ci]+Wi}$$
+for i=1 to N for v = V to Ci F[v] = max{F[v],F[v-Ci]+Wi} 恰好装满：$F[1..V] = -\infty; F[0] = 0$
+无必要： $F[0..V] = 0$
+完全背包 $$F[i,v] = \max{F[i-1,v-kCi] + kWi | 0&amp;lt;=kCi&amp;lt;=v &amp;amp;&amp;amp; 0&amp;lt;=k&amp;lt;Mi}$$ （利用$F[i,v-Ci]$代换）
+ $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物品 j 直接去掉，不用考虑 $O(V+N)$ 首先将费用大于 V 的物品去掉，然后使用类似计数排序的做法，计算出费用相同的物品中价值最高的是哪个 把第 i 种物品拆成费用为 Ci2k、价值为 Wi2k 的若干件物品，其中 k 取遍满足 Ci2k≤V 的非负整数  for i = 1 to N for v = Ci to v F[v] = max(F[v],F[v-Ci]+Wi) 多重背包 完全背包思路（可以看作是分组背包问题）</description>
+    </item>
+    
+    <item>
+      <title>DP优化——四边形不等式</title>
+      <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-optimization/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-optimization/</guid>
+      <description>&lt;h2 id=&#34;四边形不等式条件&#34;&gt;四边形不等式条件&lt;/h2&gt;
+&lt;p&gt;任意 $a1\leq a2&amp;lt;b1\leq b2$,有 $F(a_1,b_1)+F(a_2,b_2)\leq F(a_1,b_2)+F(a_2,b_1)$
+则函数 F 满足四边形不等式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>区间动归</title>
+      <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-interval/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-interval/</guid>
+      <description>&lt;h1 id=&#34;interval-dp&#34;&gt;Interval DP&lt;/h1&gt;
+&lt;h2 id=&#34;区间动归特征&#34;&gt;区间动归特征&lt;/h2&gt;
+&lt;p&gt;利用序作为状态&lt;/p&gt;
+&lt;h2 id=&#34;题目一览&#34;&gt;题目一览&lt;/h2&gt;
+&lt;p&gt;石子合并、能量项链、数字游戏、乘积最大、加分二叉树、关路灯、选择数字、Acting Cute、GF弹钢琴、水果姐逛水果街Ⅰ&lt;/p&gt;
+&lt;h2 id=&#34;石子合并&#34;&gt;石子合并&lt;/h2&gt;
+&lt;h3 id=&#34;question&#34;&gt;Question:&lt;/h3&gt;
+&lt;p&gt;在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。
+试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

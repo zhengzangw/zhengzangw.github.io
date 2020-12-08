@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>群论 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#群作用的基本概念">群作用的基本概念</a></li>
+    <li><a href="#pólya-theory-of-counting">Pólya Theory of Counting</a></li>
+    <li><a href="#p群与-sylow-定理">$p$群与 Sylow 定理</a></li>
+    <li><a href="#群作用的例子">群作用的例子</a></li>
+    <li><a href="#正规群列与合成群">正规群列与合成群</a></li>
+    <li><a href="#导群与可解群">导群与可解群</a></li>
+    <li><a href="#abel-群结构">Abel 群结构</a></li>
+    <li><a href="#其它">其它</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="群作用的基本概念">群作用的基本概念</h2>
+<ul>
+<li>群 $G$ 在集合 $X$（$G$-集） 上的（左）作用$\circ$： $G$ 为群， $X$ 为非空集合，若 $\forall g\in G, x\in X, !\exists g\circ x\in X$ 且
+<ul>
+<li>$\forall x\in X(e\circ x=x)$</li>
+<li>$g_1\circ(g_2\circ x) = (g_1g_2) \circ x$</li>
+</ul>
+</li>
+<li><strong>定理</strong>：$G$ 在 $X$ 上的群作用与 $G$ 到 $S(X)$ 的同态构成双射</li>
+<li>轨道：$O_x=Gx={g\circ x:g\in G}$，是 $X$ 上的等价类
+<ul>
+<li>$X/G={O_x|x\in G}$</li>
+<li>若$O_x=X$，则 $G$ 在 $X$ 上可迁</li>
+<li>$X=\bigsqcup O_x$</li>
+</ul>
+</li>
+<li>稳定化子(stabilizers)：$G_x=\text{stab}(x)={g\in G: g\circ x=x}\leqslant G$
+<ul>
+<li>$[G:G_x]=|O_x|$</li>
+</ul>
+</li>
+<li>作用核：$\text{ker}(X)=\cap_{x\in X}G_x={g\in G:\forall x\in X, g\circ x=x}$
+<ul>
+<li>$\text{ker}(X)\trianglelefteq G$ 且 $G/\text{ker}(X)$ 可嵌入到 $S(X)$ 中</li>
+</ul>
+</li>
+<li>$g$-不动点(invariant set)：$X_g=\text{fix}(g)={x\in X:g\circ x=x}$</li>
+<li>不动点：$\text{fix}(G)=\cap_{g\in G}X_g={x\in X: \forall g\in G(g\circ x=x)}$</li>
+<li><strong>Burnside引理</strong>: $|X/G|=\frac{1}{|G|}\sum_{g\in G}|X_g|$</li>
+<li><strong>定理</strong>：非不动点个数可表达成 $|G|$ 的一些素因子相加（可重复）</li>
+<li>$|O_x|=1\iff x\in \text{fix}(G)$</li>
+</ul>
+<h2 id="pólya-theory-of-counting">Pólya Theory of Counting</h2>
+<ul>
+<li>$M_\pi(x_1,x_2,\cdots,x_n)=\prod_{i=1}^k x_{l_i}$</li>
+<li>cycle index of $G$: $P_G(x_1,x_2,\cdots,x_n) = \frac{1}{|G|}\sum_{\pi\in G}M_\pi(x_1,x_2,\cdots,x_n)$</li>
+<li>pattern inventory: $F_G(y_1,y_2,\cdots,y_m)=\sum_{v}a_vy_1^{n_1}y_2^{n_2}\cdots y_m^{n_m}$
+<ul>
+<li>$v=(n_1,n_2,\cdots,n_m),\sum_{i=1}^m = n$</li>
+</ul>
+</li>
+<li>Pólya&rsquo;s enumeration formula: $F_G(y_1,y_2,\cdots,y_m)=P_G(\sum_{i=1}^my_i,\sum_{i=1}^my_i^2,\cdots,\sum_{i=1}^my_i^n)$</li>
+</ul>
+<h2 id="p群与-sylow-定理">$p$群与 Sylow 定理</h2>
+<ul>
+<li>$p$群：$p^\alpha$阶群</li>
+<li><strong>定理</strong>：
+<ul>
+<li>$p$群作用在$X$上，则$|X|\equiv|Fix(G)| (\bmod p)$
+<ul>
+<li>$p\not|\ |X|$, 则必有不动点</li>
+</ul>
+</li>
+<li>$p$群中心$Z(G)$有非单位元</li>
+<li>$p^2$阶群为$Abel$ 群</li>
+</ul>
+</li>
+<li>$ord_p(a)=n$：$p^n\ ||\ a$</li>
+<li>Sylow $p$子群：$|H| = p^{ord_p|G|}$</li>
+<li>$G$ 必有$p(p\ |\ |G|)$阶元</li>
+<li><strong>Sylow 定理</strong>：
+<ul>
+<li><strong>Sylow 第一定理</strong>（存在性）：$G$ 必有Sylow $p$子群</li>
+<li><strong>Sylow 第二定理</strong>（关系）：$H$为有限群 $G$ 的一个Sylow $p$子群，则 $G$ 的任一个 $p$子群 $K$ 都被包含在某个与 $H$ 共轭的子群中
+<ul>
+<li>${G$ 的Sylow $p$子群$}={aHa^{-1}:a\in G}$</li>
+<li>$p$为有限群 $G$ 的 Sylow $p$子群，则 $p\trianglelefteq G\iff p$是唯一的 Sylow $p$子群</li>
+<li>(Fratinni) $H$ 是群 $G$ 的有穷正规子群，$P$是 $H$ 的 Sylow $p$-子群，则 $G=HN_G(P)$</li>
+</ul>
+</li>
+<li><strong>Sylow 第三定理</strong>（数量）：$|G|=p^\alpha m$，则
+<ul>
+<li>$n_p|m$</li>
+<li>$n_p\equiv 1(\bmod p)$</li>
+<li>$n_p=[G:N_G(H)],H$为任一Sylow $p$子群</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="群作用的例子">群作用的例子</h2>
+<ul>
+<li>$G$ 为群，$H$ 为子群。$h\in H,x\in X=G$, $h\circ x=hx$
+<ul>
+<li>$O_x=Hx$，轨道分解即为右陪集分解</li>
+<li>$stab(x)={e}$</li>
+<li>$|Hx|=|O_x|=[H:stab_x]=|H|$</li>
+</ul>
+</li>
+<li>$X=G, \forall g\in G,x \in X, g\circ x=gxg^{-1}$
+<ul>
+<li>$O_x=C(x)$ 为 $x$ 所在的共轭类</li>
+<li>$stab(x)=C_G(x)={g\in X: gx=xg}$ 为中心化子</li>
+<li>$ker(X)=Z(X)$ 为中心</li>
+<li>$G/Z(G)\cong Inn(G)$ 可嵌入 $S(G)$ 中</li>
+</ul>
+</li>
+<li>$H\leqslant G,X=G/H$（所有左陪集）$g\circ (xH)=gxH$
+<ul>
+<li>$O_x=X$</li>
+<li>$stab(x)=xHx^{-1}$</li>
+<li>$[G:xHx^{-1}]=|X|=[G:H]$</li>
+<li>$ker(X)=H_G$ 为 $H$ 在 $G$ 中的正规核</li>
+<li>$G/H_G$ 可嵌入 $S(G/H)$
+<ul>
+<li>$[G:H][H:H_G] = |G/H_G|\ |\ |S(G/H)|=[G:H]!\Rightarrow [H:H_G]\ |\ ([G:H]-1)!$</li>
+<li>$[G:H]$ 为 $|G|$ 中的最小素因子$p$时，$H\trianglelefteq G$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$H\trianglelefteq G$, $X={aHa^{-1}:a\in G}, g\circ (aHa)=(ga)H(ga)^{-1}$
+<ul>
+<li>$O_x=X$</li>
+<li>$stab(aHa^{-1})=N_G(H)$</li>
+<li>$[G:N_G(H)]=|O_x|=|X|$，与$H$共轭的$G$的子群个数等于正规化子的指标</li>
+</ul>
+</li>
+</ul>
+<h2 id="正规群列与合成群">正规群列与合成群</h2>
+<ul>
+<li>$G_0={e}\trianglelefteq G_1\trianglelefteq G_2 \trianglelefteq\cdots\trianglelefteq G_n=G$ 则称此为 $G$ 的一个正规群列，$n$ 为正规群长度，相应的商群 $G_1/G_0, G_2/G_1,\cdots, G_n/G_{n-1}$</li>
+<li>若一个正规群列的子群(1)都在另一个正规群列(2)中出现，则称(2)为(1)的加细。若不存在异于自身的加细，则称(1)为群 $G$ 的一个合成群列
+<ul>
+<li>合成群列$\iff G_{i-1}$为$G_i$的极大正规群$\iff G_i/G_{i-1}$ 为单群</li>
+</ul>
+</li>
+<li>列(1)与列(2)等价指 $m=n$ 且 $\sigma\in S_n$，使 $G_i/G_{i-1}\cong H_{\sigma(i)}/H_{\sigma(i)-1}$</li>
+<li>$G$ 的极大正规群 $H$：$H\trianglelefteq G$ 且没有 $G$ 的正规子群 $K$ 使 $H&lt;K&lt;G$</li>
+<li><strong>Schreier 定理</strong>：群 $G$ 的任两个正规群列有等价的加细</li>
+<li><strong>Jordan-Holder 定理</strong>：群 $G$ 的有合成群列
+<ul>
+<li>$G$ 的每个正规群列可加细成合成群列</li>
+<li>$G$ 任何两个合成群列等价</li>
+</ul>
+</li>
+<li>$H$ 在 $G$ 中次正规：存在从$H$到$G$的正规群列
+<ul>
+<li>$H$ 是群 $G$ 的指标有穷的次正规子群，则存在从 $H$ 到 $G$ 的合成群列
+<ul>
+<li>有限群必有合成群列</li>
+</ul>
+</li>
+<li>$H,K\leqslant G$, $H$ 在 $G$ 中次正规
+<ul>
+<li>$H\cap K$ 在 $K$ 中次正规</li>
+<li>$K\trianglelefteq G$，$HK$ 在 $G$ 中次正规</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="导群与可解群">导群与可解群</h2>
+<ul>
+<li>x, y的换位子（commutator）：$[x,y]=x^{-1}y^{-1}xy=(yx)^{-1}xy$</li>
+<li>$H,K\leqslant G$，$[H,K]=\langle [h,k]:h\in H, k\in K\rangle$</li>
+<li>导群（换位子群）：$G'=[G,G]=\langle [x,y]:x,y\in G\rangle$</li>
+<li>$[x,y]=e\iff xy=yx$</li>
+<li>$[x,y]^{-1}=[y,x]$</li>
+<li>$[H,K]=[K,H]$</li>
+<li>$H,K\trianglelefteq G\Rightarrow[H,K]\trianglelefteq G$，$H\trianglelefteq G\Rightarrow H'\trianglelefteq G$</li>
+<li>$G/H$ 为 Abel 群的最小正规子群 $H=G'$
+<ul>
+<li>$G$ 为 Abel 群 $\iff G'={e}$</li>
+</ul>
+</li>
+<li>$G^{(0)}=G,G^{(1)}=G',G^{(n)}=(G^{(n-1)})'$, $G^{(n)}$ 为 $G$ 的 $n$ 阶导群</li>
+<li>$n\in N$，则 $G^{(n)}\trianglelefteq G$。$H\trianglelefteq G$ 时，$(G/H)^{(n)}=G^{(n)}H/H$</li>
+<li>导列：$G=G^{(0)}\trianglerighteq G^{(1)}\trianglerighteq \cdots$。若$G^{(n)}=G^{(n+1)}$，则导列长度为 $n$</li>
+<li>可解群：$G$ 的群列 $G_0={e}\unlhd G_1\unlhd \cdots \unlhd G_n$ 相应的商群 $G_1/G_0, G_2/G_1,\cdots, G_n/G_{n-1}$ 都是 Abel 群，则 $G$ 其为 Abel 列。有 Abel 列的群为可解群
+<ul>
+<li>$G$ 可解 $\iff \exists n\in N(G^{(n)}={e})$</li>
+<li>可解群 $G$ 的导列是下降最快的 Abel 列</li>
+</ul>
+</li>
+<li>可解单群为素数阶循环群</li>
+<li>$|G|=p^n$ 为可解群，且 $G$ 有 $p^i$ 阶正规子群 $H_i$，${e}= H_0\unlhd H_1\unlhd\cdots H_n=G$</li>
+<li>有限群 $G$ 可解$\iff\exists$ 正规群列 $G_0={e}\unlhd G_1 \unlhd G_2 \unlhd \cdots \unlhd G_n=G$ 其中 $G_i/G_{i-1}$ 为素数阶循环群</li>
+<li><strong>定理</strong>
+<ul>
+<li>可解群的子群和商群为可解</li>
+<li>$H\unlhd G$，若 $H$ 与 $G/H$ 皆可解，则 $G$ 可解</li>
+<li>$H\unlhd G, K\unlhd G$，则 $G/(H\cap K)$ 可解 $\iff G/H$ 可解且 $G/K$ 可解</li>
+</ul>
+</li>
+<li><strong>Burnside 定理</strong>：$p^aq^b$ 阶群可解
+<ul>
+<li>$p^2q$ 阶群可解</li>
+</ul>
+</li>
+<li><strong>Feit-Thompson 定理(1963)</strong>：奇数阶群可解
+<ul>
+<li>不可解单群必须为偶数阶（奇合数单群不可解）</li>
+</ul>
+</li>
+<li><strong>有限单群的分类(2004)</strong>
+<ul>
+<li>26散在单群，最大的散在单群（魔群）阶为 $2^{40}\cdot3^{20}\times5^{9}\cdot7^{6}\cdot11^{2}\cdot13^3\cdot17\cdot19\cdot23\cdot29\cdot31\cdot41\cdot47\cdot59\cdot71\approx 8\cdot10^{53}$</li>
+</ul>
+</li>
+<li><strong>定理</strong>
+<ul>
+<li>$n\in Z^+, S_n'=A_n$</li>
+<li>$n\leq 3,S_n''=A_n'={e}$</li>
+<li>$n=4,S_4''=A_4'$ 为 Klein 四元群 ${(1),(12)(34),(13)(24),(14)(23)}$，$S_4'''={e}$</li>
+</ul>
+</li>
+<li><strong>Galois</strong>：$n\geq 5$
+<ul>
+<li>$A_n$ 为单群 （证明复杂没听）</li>
+<li>$S_n$ 与 $A_n$ 不可解</li>
+</ul>
+</li>
+</ul>
+<h2 id="abel-群结构">Abel 群结构</h2>
+<ul>
+<li>幂指数$exp(G)$: $\forall x,x^n=e$ 最小的 $n$
+<ul>
+<li>$exp(G)= lcm(o(x_i))$</li>
+</ul>
+</li>
+<li>有限 Abel 群 $G$，$a,b\in G$ 且 $(o(a),o(b))=1$， 则 $o(ab)=o(a)o(b)$</li>
+<li>有限 Abel 群 $G$，$exp(G)=max_{g\in G}o(g)$
+<ul>
+<li>$n_1,n_2,\dots,n_k$ 两两互素，则 $C_{n_1}\times C_{n_2}\times \dots C_{n_k} \cong C_{n_1n_2\dots c_k}$</li>
+</ul>
+</li>
+<li>有限 Abel 群 $|G|=p_1^{\alpha_1}\cdots p_n^{\alpha_n}$，则 $G\cong G_1\times\cdots G_n$，其中 $G_i$ 为 $G$ 的 Sylow $p_i$子群</li>
+<li><strong>有限 Abel 群的结构定理</strong>：$G$ 为阶大于1的有限 Abel 群
+<ul>
+<li>有唯一的一组正整数 $n_1,\dots,n_k$使$1&lt;n_1|n_2|n_3|\cdots|n_k$ 且 $G\cong C_1\times\cdots\times C_{n_k}$</li>
+<li>可以唯一表示成一些循环 $p$群的直积</li>
+</ul>
+</li>
+<li><strong>有限生成的 Abel 群的结构定理</strong>：
+<ul>
+<li>$Tor(G)={a\in G:o(a)有穷}$ 为 $G$ 的有限子群（挠子群，torsion subgroup）</li>
+<li>$G\cong Tor(G)\times Z\times\cdots\times Z$($r$个)，$rank(G)=r$</li>
+</ul>
+</li>
+<li><strong>Mordell-Weil 定理</strong></li>
+</ul>
+<h2 id="其它">其它</h2>
+<ul>
+<li>几何研究不变量的，代数研究结构</li>
+<li>群论与组合
+<ul>
+<li>(Haul) $G={g_1,\dots,g_n}$ 为 $n$ 阶加法 Abel 群，$a_1,a_2,\dots,a_n\in G$，$\sum{a_i}=0$，一定存在$\sigma$ 使得  $a_\sigma(i)+g=G$</li>
+<li>(Snevily猜想) $0&lt;k&lt;n,a_1,\dots,a_k\in Z$，则有 $1,\dots,k$ 的排列 $i_1,\dots,i_k$ 使得 $a_i+k_i$ 模 $n$ 的余数两两不同
+<ul>
+<li>$k\leq\frac{n+1}{2}$ 时猜想成立</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

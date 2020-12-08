@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learning to Match | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ad-hoc-retrieval">Ad-hoc Retrieval</a></li>
+    <li><a href="#learning-to-rank">Learning to Rank</a></li>
+    <li><a href="#recommedation-systems">Recommedation Systems</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#boolean-model">Boolean Model</a></li>
+    <li><a href="#概率模型">概率模型</a></li>
+    <li><a href="#vector-space-model">Vector Space Model</a>
+      <ul>
+        <li><a href="#lsi-latent-semantic-indexing">LSI (Latent Semantic Indexing)</a></li>
+      </ul>
+    </li>
+    <li><a href="#learning">Learning</a>
+      <ul>
+        <li><a href="#dssm">DSSM</a></li>
+        <li><a href="#drmm">DRMM</a></li>
+        <li><a href="#classification">Classification</a></li>
+        <li><a href="#ordinal-regression">Ordinal Regression</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="problem">Problem</h1>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QA (Question Ansering)</td>
+<td></td>
+</tr>
+<tr>
+<td>Machine Comprehension</td>
+<td></td>
+</tr>
+<tr>
+<td>Dialogue Systems</td>
+<td></td>
+</tr>
+<tr>
+<td>Ad-hoc Retrieval</td>
+<td></td>
+</tr>
+<tr>
+<td>Learning to Rank</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="datasets">Datasets</h1>
+<h2 id="ad-hoc-retrieval">Ad-hoc Retrieval</h2>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gov2</td>
+<td></td>
+</tr>
+<tr>
+<td>Robust04</td>
+<td></td>
+</tr>
+<tr>
+<td>ClueWeb 12</td>
+<td></td>
+</tr>
+<tr>
+<td>ClueWeb 09</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="learning-to-rank">Learning to Rank</h2>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Time</th>
+<th>Description</th>
+<th>Company</th>
+<th>Domain</th>
+<th>X nums</th>
+<th>Y nums</th>
+<th>pos rel nums</th>
+<th>rel nums</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LETOR3.0</td>
+<td>Dec. 2008</td>
+<td>LEarning TO Rank</td>
+<td>Microsoft</td>
+<td>IR(q-d)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/1306.2597">LETOR4.0</a></td>
+<td>July 2009</td>
+<td></td>
+<td>Microsoft</td>
+<td>IR(q-d)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LETOR4.0:MQ2007</td>
+<td></td>
+<td>Million Query track of TREC 2007</td>
+<td></td>
+<td></td>
+<td>1700</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LETOR4.0:MQ2008</td>
+<td></td>
+<td>Million Query track of TREC 2008</td>
+<td></td>
+<td></td>
+<td>800</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.microsoft.com/en-us/research/project/mslr/">MSLR-WEB10k/30k</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Yahoo! Learning to Rank Challenge</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="recommedation-systems">Recommedation Systems</h2>
+<ul>
+<li><a href="https://grouplens.org/datasets/movielens/">MovieLens</a>
+<ul>
+<li>MovieLens 20M</li>
+<li>MovieLens 1M</li>
+</ul>
+</li>
+<li><a href="http://jmcauley.ucsd.edu/data/amazon/">Amazon product data</a></li>
+</ul>
+<h1 id="relevence-label">Relevence Label</h1>
+<ul>
+<li>relevance level
+<ul>
+<li>Binary: $l(t)=1,t\in C(r)$
+<ul>
+<li>relevant documents $C(r)$</li>
+</ul>
+</li>
+<li>$\text{rel}(t)\in[l_{\max}]$</li>
+</ul>
+</li>
+<li>pairwise preference</li>
+<li>total order of docs and queries</li>
+</ul>
+<h1 id="metrics">Metrics</h1>
+<ul>
+<li>One query $r\rightarrow$ One permutation $\pi$</li>
+<li>One query $r\rightarrow$ retrieved documents $R(r)$</li>
+<li>precision: $\text{precision}=P=\frac{|C(r)\cap R(r)|}{|R(r)|}$
+<ul>
+<li>$\text{precision}@k$
+<ul>
+<li>$|R(r)|=k$</li>
+<li>$\frac{\sum_{t\leq k}l(\pi(t))}{k}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>recall: $\text{recall}=\frac{|C(r)\cap R(r)|}{|R(r)|}$
+<ul>
+<li>$\text{recall}@k, |R(r)|=k$</li>
+</ul>
+</li>
+<li>AP(AveP, Average precision): $\text{AP}=\frac{\sum_{k=1}^{|C(r)|}P@k\cdot l(\pi(k))}{|R(r)|}$</li>
+<li>MAP(Mean average precision): $\text{MAP}=\frac{\sum_{q=1}^Q\text{AP}(q)}{Q}$</li>
+<li>CG(Cumulative Gain): $\text{CG}@k=\sum_{i=1}^k \text{rel}(i)$</li>
+<li>DCG(Discounted cumulative gain): $\text{DCG}@k=\sum_{i=1}^k\text{rel}(i)\eta(i)$
+<ul>
+<li>折扣因子 $\eta(i)$: $\frac{1}{\log(i+1)}$</li>
+</ul>
+</li>
+<li>IDCG(Ideal DCG): $\text{IDCG}@k=\max_{\pi}\text{DCG}@k(\pi)$</li>
+<li>nDCG(Normalized DCG): $\text{IDCG}@k=\frac{\text{DCG}_p}{\text{IDCG}_p}$</li>
+<li>RR(reciprocal rank): $\text{rank}_i$ 第一个正确答案的排名</li>
+<li>MRR(Mean reciprocal rank): $\text{MRR}=\frac{1}{|Q|}\sum_{i=1}^{|Q|}\frac{1}{\text{rank}_i}$</li>
+<li>Cascade Models: 用户在位置 $k$ 需求满足的概率 $\text{PP}(k)=\prod_{i=1}^{k-1}(1-R(i))R(k)$
+<ul>
+<li>该文档满足需求的概率：$R(t)=\frac{2^{\text{rel(t)}}-1}{2^{l_{\max}}}$</li>
+</ul>
+</li>
+<li>ERR(Expected reciprocal rank): 用户需求满足时停止位置的倒数的期望 $\text{ERR}=\sum_{r=1}^n\frac{1}{r}\text{PP}_r$</li>
+</ul>
+<h1 id="methods">Methods</h1>
+<ul>
+<li>pointwise
+<ul>
+<li>Input space: vec(doc) + vec(query)</li>
+<li>Output space: $\text{rel}(\text{doc})$</li>
+<li>Hypothesis space: $f(\text{doc})$</li>
+<li>Loss: $|f(\text{doc})-\text{rel}(\text{doc})|$</li>
+<li>Method:
+<ul>
+<li>Regression: 实值相关度</li>
+<li>Classification: 无序类别</li>
+<li>Ordinal Regression: 有序类别</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>pairwise
+<ul>
+<li>Input space: vec(doc) + vec(doc) + vec(query)</li>
+<li>Output space: pairwise preference</li>
+<li>Hypothesis space: $f(\text{doc},\text{doc})$</li>
+<li>Loss: 预测与真实间的差异</li>
+</ul>
+</li>
+<li>listwise
+<ul>
+<li>Input space: list(vec(doc)) + vec(query)</li>
+<li>Output space: permutation</li>
+</ul>
+</li>
+</ul>
+<h1 id="data-cleaning">Data Cleaning</h1>
+<ul>
+<li>Crawling</li>
+<li>Tokenize</li>
+<li>Normalization
+<ul>
+<li>Lower case</li>
+</ul>
+</li>
+<li>Stop</li>
+<li>Stemming</li>
+<li>Link analysis
+<ul>
+<li>Anchor Text</li>
+<li>PageRank</li>
+<li>TrustRank</li>
+</ul>
+</li>
+<li>Indexing</li>
+</ul>
+<h1 id="algorithm">Algorithm</h1>
+<h2 id="boolean-model">Boolean Model</h2>
+<ul>
+<li>Document：关键词集合(无序)</li>
+<li>Query：关键字布尔组合</li>
+<li>Match: 文档满足关键字</li>
+</ul>
+<h2 id="概率模型">概率模型</h2>
+<p>Unsuperviesd Ranking Models</p>
+<ul>
+<li>$\text{TF-IDF}(i,d)=\text{TF}(i,d)\cdot\text{IDF}(i)$
+<ul>
+<li>$\text{TF}(q_i,D)=\frac{n_{q_i,D}}{\sum_kn_{q_k,D}}$</li>
+<li>$\text{IDF}(q_i)=\lg\frac{N}{|{j:q_i\in D_j}|}$</li>
+<li>$N$: number of documents</li>
+</ul>
+</li>
+<li>$\text{BM25}(D,q_i)=\text{IDF}(q_i)\frac{n_{q_i,D}(k_1+1)}{n_{q_i,D}+k_1(1-b+b\frac{|D|}{\text{avg}(|D|)})}$
+<ul>
+<li>$\text{IDF}(q_i)=\log\frac{N-n(q_i)+0.5}{n(q_i)+0.5}$</li>
+<li>$k_1,b$: free parameter
+<ul>
+<li>usually: $k_1\in[1.2,2.0],b=0.75$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="vector-space-model">Vector Space Model</h2>
+<p>Linear projection model, Inference</p>
+<ul>
+<li>cosine-similarity$(q,d)=\frac{V(q)\cdot V(d)}{\lVert V(q)\rVert\lVert V(d)\rVert}$</li>
+<li>one-hot 编码</li>
+<li>TF-IDF 编码</li>
+</ul>
+<h3 id="lsi-latent-semantic-indexing">LSI (Latent Semantic Indexing)</h3>
+<p>1990</p>
+<ul>
+<li>两个词的语义越相近，它们共现的概率也就越大</li>
+<li>Item-Document Matrix: $A=U_{m\times r}\Sigma_{r\times r}V^T_{r\times n}$</li>
+<li>PLSI</li>
+<li>LDA</li>
+</ul>
+<h2 id="learning">Learning</h2>
+<h3 id="dssm">DSSM</h3>
+<p>CIKM'13</p>
+<ul>
+<li>Deep Learning learn Latent Semantic Feature</li>
+<li>Word Hashing (n-gram presentation)
+<ul>
+<li>reduce the dimensionality f bag-of-words term vectors</li>
+<li>solve oov problems</li>
+</ul>
+</li>
+<li>CDSSM(CLSM)</li>
+<li>LSTM-DSSM</li>
+</ul>
+<h3 id="drmm">DRMM</h3>
+<p>CIKM'16</p>
+<h3 id="classification">Classification</h3>
+<ul>
+<li>McRank</li>
+<li>BayesNetRank</li>
+</ul>
+<h3 id="ordinal-regression">Ordinal Regression</h3>
+<ul>
+<li>PRanking</li>
+<li>Large margin</li>
+</ul>
+<h1 id="tools">Tools</h1>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lemur</td>
+<td>包含各种 IR 模型的实验平台</td>
+<td>C++</td>
+</tr>
+<tr>
+<td>SMART</td>
+<td>向量空间模型工具</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Weka</td>
+<td>分类工具</td>
+<td>Java</td>
+</tr>
+<tr>
+<td>Lucene</td>
+<td>开源检索工具</td>
+<td></td>
+</tr>
+<tr>
+<td>Larbin</td>
+<td>采集工具</td>
+<td>C++</td>
+</tr>
+<tr>
+<td>Firtex</td>
+<td>检索平台</td>
+<td>C++</td>
+</tr>
+<tr>
+<td>ntlk</td>
+<td>NLP 预处理工具</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>gensim</td>
+<td>检索工具</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>matchzoo</td>
+<td>文本匹配工具</td>
+<td>Python</td>
+</tr>
+</tbody>
+</table></main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7. Security | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安全通信要求">安全通信要求</a></li>
+    <li><a href="#threats">Threats</a>
+      <ul>
+        <li><a href="#intruders">Intruders</a></li>
+        <li><a href="#malicious-softwaremalware">Malicious software(malware)</a></li>
+      </ul>
+    </li>
+    <li><a href="#密码学">密码学</a></li>
+    <li><a href="#应用层">应用层</a></li>
+    <li><a href="#运输层">运输层</a>
+      <ul>
+        <li><a href="#ssl-record-protocol">SSL Record Protocol</a></li>
+        <li><a href="#handshake-protocol">Handshake Protocol</a></li>
+      </ul>
+    </li>
+    <li><a href="#网络层">网络层</a></li>
+    <li><a href="#链路层">链路层</a></li>
+    <li><a href="#防火墙">防火墙</a></li>
+    <li><a href="#入侵检测系统">入侵检测系统</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="安全通信要求">安全通信要求</h2>
+<ul>
+<li>CIA triad
+<ul>
+<li>Confidentiality
+<ul>
+<li>Data confidentiality</li>
+<li>Privacy</li>
+</ul>
+</li>
+<li>Integrity
+<ul>
+<li>Data Integrity</li>
+<li>System integrity</li>
+</ul>
+</li>
+<li>Availability</li>
+</ul>
+</li>
+<li>Authenticity</li>
+<li>Accountability</li>
+<li>operational security</li>
+</ul>
+<h2 id="threats">Threats</h2>
+<table>
+<thead>
+<tr>
+<th>Threat consequence</th>
+<th>Thread Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unauthorized Disclosure</td>
+<td>Exposure,Interception,inference,Intrusion</td>
+</tr>
+<tr>
+<td>Deception</td>
+<td>Masquerade,Falsification,repudiation</td>
+</tr>
+<tr>
+<td>Disrupction</td>
+<td>Incapacitation,Corruption,Obstruction</td>
+</tr>
+<tr>
+<td>Usurpation</td>
+<td>Misappropriation,Misuse</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Availability</th>
+<th>Confidentiality</th>
+<th>Integrity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hardware</td>
+<td>denying service</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Software</td>
+<td>Programs deleted</td>
+<td>unauthorized copy of software</td>
+<td>working program modified</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Files deleted</td>
+<td>unauthorized read</td>
+<td>files modified, new files fabricated</td>
+</tr>
+<tr>
+<td>Communication Lines</td>
+<td>Messages destroyed</td>
+<td>Messages read</td>
+<td>Messages modified</td>
+</tr>
+</tbody>
+</table>
+<h3 id="intruders">Intruders</h3>
+<ul>
+<li>Masquerader: An individual who is not authorized to use the computer and who penetrates a system&rsquo;s access controls to exploit legitimate user&rsquo;s account</li>
+<li>Misfeasor: A legitimate user access authorized data or programs</li>
+<li>Clandestine user: An individual seizes supervisory control of the system</li>
+</ul>
+<h3 id="malicious-softwaremalware">Malicious software(malware)</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virus</td>
+<td>Malware that, when executed, tries to replicate itself into other executable code; when it succeeds the code is said to be infected. When the infected code is executed, the virus also executes.</td>
+</tr>
+<tr>
+<td>Worm</td>
+<td>A computer program that can run independently and can propagate a complete working version of itself onto other hosts on a network.</td>
+</tr>
+<tr>
+<td>Logic bomb</td>
+<td>A program inserted into software by an intruder. A logic bomb lies dormant until a predefined condition is met; the program then triggers an unauthorized act.</td>
+</tr>
+<tr>
+<td>Trojan horse</td>
+<td>A computer program that appears to have a useful function, but also has a hidden and potentially malicious function that evades security mechanisms</td>
+</tr>
+<tr>
+<td>Backdoor</td>
+<td>ANy mechanisms that bypasses a normal security check</td>
+</tr>
+<tr>
+<td>Mobile code</td>
+<td>Software that can be shipped unchanged to a heteorgeneous collection of planforms</td>
+</tr>
+<tr>
+<td>Spammer programs</td>
+<td>Used to send large volumes of unwanted e-mail</td>
+</tr>
+<tr>
+<td>Flooders</td>
+<td>Used to attack networked computer systems with a large volume of traffic to carry out a DoS attact</td>
+</tr>
+<tr>
+<td>Keyloggers</td>
+<td></td>
+</tr>
+<tr>
+<td>RootKit</td>
+<td></td>
+</tr>
+<tr>
+<td>Zombie, bot</td>
+<td>Program activated on an infected machine that is activated to launch attacks on other machines.</td>
+</tr>
+<tr>
+<td>Spyware</td>
+<td></td>
+</tr>
+<tr>
+<td>Adware</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="密码学">密码学</h2>
+<ul>
+<li>对称秘钥密码体制
+<ul>
+<li>块密码：DES, 3DES, AES</li>
+<li>密码块连接（CBC）：仅第一个报文发送一个随机值，然后双方使用计算的编码块代替后续随机数</li>
+<li>攻击方法
+<ul>
+<li>唯密文攻击</li>
+<li>已知明文攻击</li>
+<li>选择明文攻击</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>公开秘钥加密
+<ul>
+<li>RSA</li>
+<li>会话秘钥
+<ul>
+<li>Diffe-Hellman 算法
+<ul>
+<li>large prime $p$, integer $g$ is a generator of $Z^*_p$</li>
+<li>Alice: $a\in Z_{p-1},A=g^a\bmod p$</li>
+<li>Bob: $b\in Z_{p-1},B=g^b\bmod p$</li>
+<li>share $A,B$, $K=A^b=B^a=g^{ab}\bmod p$</li>
+<li>离散对数问题</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>密码散列函数：找到任意两个 $x,y,H(x)=H(y)$ 在计算上不可能
+<ul>
+<li>MD5</li>
+<li>SHA-1 (160 bits)</li>
+</ul>
+</li>
+<li>报文鉴别码(MAC) $H(m+s)$
+<ul>
+<li>鉴别秘钥 $s$</li>
+<li>Alice 发送报文 $(m,H(m+s))$</li>
+<li>Bob 验证 $m=H(m+s)$</li>
+</ul>
+</li>
+<li>数字签名：$K_B^-(m)$</li>
+<li>公钥认证
+<ul>
+<li>认证中心(CA)：验证真实身份，颁发证书
+<ul>
+<li>主流机构：Symantec,GeoTrust,TrustAsia,Comodo,DigiCert,GlobalSign,Let&rsquo;s Encrypt</li>
+</ul>
+</li>
+<li>证书：$K_{CA}^-((K_B^+,B))$
+<ul>
+<li>SSL 证书验证级别
+<ul>
+<li>DVSSL 域名型证书</li>
+<li>OVSSL 企业型证书</li>
+<li>EVSSL 增强型证书</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="应用层">应用层</h2>
+<ul>
+<li>安全电子邮件 PGP(Pretty Good Privacy) 协议</li>
+<li>SSH</li>
+</ul>
+<h2 id="运输层">运输层</h2>
+<p>SSL and TLS: provide a reliable end-to-end secure service</p>
+<h3 id="ssl-record-protocol">SSL Record Protocol</h3>
+<ul>
+<li>Confidentiality: Handshake Protocol defines a shared secret key used for symmetric encryption of SSL payloads</li>
+<li>Message integrity: Handshake Protocol defines a shared secret key used to form a message authentication code (MAC)</li>
+<li>Process: fragmentation -&gt; compression -&gt; add MAC -&gt; Encrypt -&gt; Append SSL Record Header</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Content Type</th>
+<th>Major Version</th>
+<th>Minor Version</th>
+<th>Compressed Length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 bits</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+</tr>
+<tr>
+<td>higher-layer protocol</td>
+<td>major version of SSL (3 for SSLv3)</td>
+<td>(0 for SSLv3)</td>
+<td>max is $2^14+2048$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="handshake-protocol">Handshake Protocol</h3>
+<ul>
+<li>Phase 1: ClientHello
+<ul>
+<li>Version</li>
+<li>1st Random: 32-bit timestap + 28 bytes generated random number</li>
+<li>Session ID</li>
+<li>CipherSuite: a list that contains the combinations of crytographic algorithms supported by the client, in decreasing order of preference</li>
+<li>Compression method: a list of the compression methods that client supports</li>
+</ul>
+</li>
+<li>Phase 2: SeverHello
+<ul>
+<li>send certificate from CA</li>
+<li>send 2nd Random</li>
+<li>wait for a client response</li>
+</ul>
+</li>
+<li>Phase 3: Certificate Verify
+<ul>
+<li>verify server&rsquo;s certificate</li>
+<li>第三个随机数，该随机数用服务器公钥加密，防止被窃听</li>
+<li>编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送</li>
+<li>客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验</li>
+<li>ChangeCipherSpec</li>
+</ul>
+</li>
+<li>Phase 4: Server Finish</li>
+</ul>
+<h2 id="网络层">网络层</h2>
+<p>IPSec 协议族</p>
+<ul>
+<li>AH 协议（Authentication Header, 鉴别首部）
+<ul>
+<li>源鉴别服务</li>
+<li>数据完整性服务</li>
+</ul>
+</li>
+<li>ESP 协议 (Encapsulation Security Payload, 封装安全性载荷)
+<ul>
+<li>源鉴别</li>
+<li>数据完整性</li>
+<li>机密性</li>
+</ul>
+</li>
+<li>安全关联（SA）：一个单工逻辑连接
+<ul>
+<li>安全参数索引(SPI)：32 bits</li>
+<li>SA 初始接口和 SA 目的接口</li>
+<li>加密类型，加密秘钥，完整性检查类型，鉴别秘钥</li>
+</ul>
+</li>
+<li>IPSec 数据报
+<ul>
+<li>隧道模式
+<ul>
+<li>初始IPv4后附上 ESP 尾部 (填充 + 填充长度 + 下一首部)</li>
+<li>加密上述结果，在之前附上 ESP 首部 (SPI + 序号)</li>
+<li>以上算法生成鉴别 MAC</li>
+<li>以上结果为载荷，增加新 IP 首部（隧道端点的 IP 地址，协议号 50）</li>
+</ul>
+</li>
+<li>运输模式</li>
+</ul>
+</li>
+<li>IKE 协议（Internet Key Exchange, RFC 5996）：交换秘钥</li>
+<li>VPN(虚拟专用网络)：通过相对而言不太安全的网络互相连接在一起</li>
+</ul>
+<h2 id="链路层">链路层</h2>
+<ul>
+<li>WEP (Wired Equivalent Privacy, 有线等价保密)</li>
+<li>IEEE 802.11i</li>
+</ul>
+<h2 id="防火墙">防火墙</h2>
+<ul>
+<li>目标
+<ul>
+<li>内外进出流量都通过防火墙</li>
+<li>仅被授权的流量允许tongg</li>
+<li>防火墙免于渗透</li>
+</ul>
+</li>
+<li>分类
+<ul>
+<li>传统分组过滤器</li>
+<li>状态过滤器</li>
+<li>应用程序网关</li>
+</ul>
+</li>
+</ul>
+<h2 id="入侵检测系统">入侵检测系统</h2>
+<ul>
+<li>IDS: Intrusion Detection System</li>
+<li>IPS: Intrusion Prevention System</li>
+<li>E.g.
+<ul>
+<li>Snort: 检测 nmap 的 ping 扫描</li>
+<li>GFW</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

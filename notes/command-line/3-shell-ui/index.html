@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3. Shell UI | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#escape-code">Escape Code</a></li>
+    <li><a href="#escape-character">Escape Character</a></li>
+    <li><a href="#terminfo">terminfo</a></li>
+    <li><a href="#c-program">C Program</a>
+      <ul>
+        <li><a href="#tcgetattr">tcgetattr</a></li>
+        <li><a href="#tcsetattr">tcsetattr</a></li>
+        <li><a href="#游戏模型">游戏模型</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="escape-code">Escape Code</h2>
+<table>
+<thead>
+<tr>
+<th>Escape Sequence</th>
+<th>Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\a</td>
+<td>alert</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>newline</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>Horizontal Tab</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>Vertical Tab</td>
+</tr>
+<tr>
+<td>',&quot;,?</td>
+<td>Symbol</td>
+</tr>
+<tr>
+<td>\nnn</td>
+<td>ASCII in octal</td>
+</tr>
+<tr>
+<td>\xhh</td>
+<td>ASCII</td>
+</tr>
+<tr>
+<td>\uhhhh</td>
+<td>Unicode</td>
+</tr>
+<tr>
+<td>\uhhhhhhhh</td>
+<td>Unicode</td>
+</tr>
+</tbody>
+</table>
+<h2 id="escape-character">Escape Character</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo -e <span style="color:#e6db74">&#34;\033[32;31mstring \033[0m&#34;</span> <span style="color:#75715e"># Different format seperated by ;</span>
+echo <span style="color:#e6db74">&#34;\e[32;31mstring\e[0m&#34;</span>
+echo <span style="color:#e6db74">&#34;\x1b[32;31mstring\x1b[0m&#34;</span>
+</code></pre></div><blockquote>
+<p>(x): not work in iterm</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Default</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Dim</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Underline</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Blink (x)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Reverse (invert the foreground and background colors)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Hidden (x)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>strikes (x)</td>
+</tr>
+<tr>
+<td>20+i</td>
+<td>Reset above values</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Default fg color</td>
+</tr>
+<tr>
+<td>30+i</td>
+<td>8 color: Black,R,G,Y,B,M,C,Light gray</td>
+</tr>
+<tr>
+<td>90+i</td>
+<td>16 color: Dark gray,lR,lG,lY,lB,lM,lC,W</td>
+</tr>
+<tr>
+<td>38;5;ASCII</td>
+<td>256 color</td>
+</tr>
+<tr>
+<td>38;2;R;G;B</td>
+<td>RGB color</td>
+</tr>
+<tr>
+<td>49</td>
+<td>Default bg color</td>
+</tr>
+<tr>
+<td>40+i</td>
+<td>8 color for bg</td>
+</tr>
+<tr>
+<td>100+i</td>
+<td>16 color for bg</td>
+</tr>
+<tr>
+<td>48;5;ASCII</td>
+<td>256 color</td>
+</tr>
+<tr>
+<td>48;2;R;G;B</td>
+<td>RGB color</td>
+</tr>
+</tbody>
+</table>
+<p>Without m:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K</td>
+<td>Delete everything from the cursor to the end of the line.</td>
+</tr>
+<tr>
+<td>2K</td>
+<td>erases everything written on line before this</td>
+</tr>
+<tr>
+<td>nA</td>
+<td>moves cursor n line above</td>
+</tr>
+<tr>
+<td>nB</td>
+<td>moves cursor n line under</td>
+</tr>
+<tr>
+<td>nC</td>
+<td>moves cursor n spacing to the right</td>
+</tr>
+<tr>
+<td>nD</td>
+<td>moves cursor n spacing to the left</td>
+</tr>
+<tr>
+<td>s</td>
+<td>save cursor position</td>
+</tr>
+<tr>
+<td>u</td>
+<td>restore cursor position</td>
+</tr>
+<tr>
+<td>?25l</td>
+<td>Hide cursor</td>
+</tr>
+<tr>
+<td>?25h</td>
+<td>Show cursor</td>
+</tr>
+<tr>
+<td>H</td>
+<td>Move the cursor to the upper-left corner of the screen</td>
+</tr>
+<tr>
+<td>r;cH</td>
+<td>Move the cursor to row r, column c (Start at 1)</td>
+</tr>
+<tr>
+<td>2J</td>
+<td>Clear the screen</td>
+</tr>
+</tbody>
+</table>
+<h2 id="terminfo">terminfo</h2>
+<p>使用 tput 调用 terminfo 数据库</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#66d9ef">$(</span>tput setab 0<span style="color:#66d9ef">)$(</span>tput setaf 1<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39;string&#39;</span> <span style="color:#75715e"># Set background and foreground</span>
+echo <span style="color:#66d9ef">$(</span>tput bold<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#39;string&#39;</span> <span style="color:#75715e"># dim, smul, rmul, rev, smso, rmso, sgr0</span>
+echo <span style="color:#66d9ef">$(</span>tput clear<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 清屏</span>
+echo <span style="color:#66d9ef">$(</span>tput sc<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 保存当前光标位置</span>
+echo <span style="color:#66d9ef">$(</span>tput cup <span style="color:#ae81ff">10</span> 13<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 光标移动</span>
+echo <span style="color:#66d9ef">$(</span>tput civis<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 光标不可见</span>
+echo <span style="color:#66d9ef">$(</span>tput cnorm<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 光标可见</span>
+echo <span style="color:#66d9ef">$(</span>tput rc<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 显示输出</span>
+</code></pre></div><h2 id="c-program">C Program</h2>
+<ul>
+<li>isattr(STDOUT_FILENO): 判断是否为终端</li>
+<li>屏幕输入：<code>&lt;termios.h&gt;</code> <code>&lt;unistd.h&gt;</code>
+<ul>
+<li>tcgetattr</li>
+<li>tcsetattr</li>
+</ul>
+</li>
+<li>获取终端大小：<code>&lt;sys/ioctl.h&gt;</code>
+<ul>
+<li>struct winsize w</li>
+<li>ioctl(STDOUT_FILENO, TIOCGWINSZ, &amp;w);</li>
+<li>w.ws_row, w.ws_col</li>
+</ul>
+</li>
+</ul>
+<h3 id="tcgetattr">tcgetattr</h3>
+<p><code>int tcgetattr(int fd, struct termios *termios_p);</code></p>
+<ul>
+<li>struct termios
+<ul>
+<li>c_iflag 输入模式</li>
+<li>c_oflag 输出模式</li>
+<li>c_cflag 控制模式</li>
+<li>c_lflag 局部模式
+<ul>
+<li>ECHO 显示字符</li>
+<li>ICANON 启用特殊字符</li>
+</ul>
+</li>
+<li>c_cc 特殊控制字符</li>
+</ul>
+</li>
+</ul>
+<h3 id="tcsetattr">tcsetattr</h3>
+<p><code>int tcsetattr(int fd, int optional_actions, const struct termios *termios_p);</code></p>
+<ul>
+<li>STDIN_FILENO: 标准输入</li>
+<li>optional_action:
+<ul>
+<li>TCSANOW 立即改变</li>
+<li>TCSADRAIN 当目前输出完成时改变</li>
+<li>TCSAFLUSH 当目前输入完成时改变并舍弃目前所有输入</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setBufferedInput</span>(<span style="color:#66d9ef">bool</span> enable) {
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">bool</span> enabled <span style="color:#f92672">=</span> true;
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">termios</span> old;
+  <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">termios</span> <span style="color:#66d9ef">new</span>;
+
+  <span style="color:#66d9ef">if</span> (enable <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>enabled) {
+    tcsetattr(STDIN_FILENO,TCSANOW,<span style="color:#f92672">&amp;</span>old);
+    enabled <span style="color:#f92672">=</span> true;
+  } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>enable <span style="color:#f92672">&amp;&amp;</span> enabled) {
+    tcgetattr(STDIN_FILENO,<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">new</span>);
+    old <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span>;
+    <span style="color:#66d9ef">new</span>.c_lflag <span style="color:#f92672">&amp;=</span>(<span style="color:#f92672">~</span>ICANON <span style="color:#f92672">&amp;</span> <span style="color:#f92672">~</span>ECHO);
+    tcsetattr(STDIN_FILENO,TCSANOW,<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">new</span>);
+    enabled <span style="color:#f92672">=</span> false;
+  }
+}
+</code></pre></div><h3 id="游戏模型">游戏模型</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">next_frame <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
+  <span style="color:#66d9ef">while</span> (uptime() <span style="color:#f92672">&lt;</span> next_frame) ; <span style="color:#75715e">// 等待一帧的到来
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">while</span> ((key <span style="color:#f92672">=</span> readkey()) <span style="color:#f92672">!=</span> _KEY_NONE) {
+    kbd_event(key);         <span style="color:#75715e">// 处理键盘事件
+</span><span style="color:#75715e"></span>  }
+  game_progress();          <span style="color:#75715e">// 处理一帧游戏逻辑，更新物体的位置等
+</span><span style="color:#75715e"></span>  screen_update();          <span style="color:#75715e">// 重新绘制屏幕
+</span><span style="color:#75715e"></span>  next_frame <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1000</span> <span style="color:#f92672">/</span> FPS; <span style="color:#75715e">// 计算下一帧的时间
+</span><span style="color:#75715e"></span>}
+</code></pre></div></main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>蜂窝无线网络 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#蜂窝cell">蜂窝(cell)</a></li>
+    <li><a href="#蜂窝系统">蜂窝系统</a></li>
+    <li><a href="#移动无线电传播效应">移动无线电传播效应</a></li>
+    <li><a href="#五代蜂窝网络">五代蜂窝网络</a></li>
+    <li><a href="#mimo-天线">MIMO 天线</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="蜂窝cell">蜂窝(cell)</h2>
+<ul>
+<li>Area divided into cells
+<ul>
+<li>约 6.5km - 13km</li>
+<li>每个蜂窝有自己的天线
+<ul>
+<li>低功率发送器：~100W</li>
+</ul>
+</li>
+<li>每个蜂窝分配一个频带
+<ul>
+<li>相邻蜂窝指派频率不同以防止干扰</li>
+</ul>
+</li>
+<li>每个蜂窝分配一个基站提供服务
+<ul>
+<li>传输功率控制：既可以使通信使用给定的频率，又要限制该功率逃逸到邻近蜂窝</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>六边形
+<ul>
+<li>Distance from center to vertex equals to length</li>
+<li>$d=\sqrt{3}R$</li>
+<li>$R$ 为其外接圆半径</li>
+</ul>
+</li>
+<li>频率重用
+<ul>
+<li>频率总数为 $K$（通常指派10-50个频率）
+<ul>
+<li>每个蜂窝有$\frac{K}{N}$个频率</li>
+</ul>
+</li>
+<li>重用系数 $N$：重复模式中的蜂窝数
+<ul>
+<li>六边形中，$N=I^2+J^2+IJ,I,J\in\mathbb{N}$</li>
+</ul>
+</li>
+<li>$D$: 使用相同频率的蜂窝（即同波道）中心间最小距离
+<ul>
+<li>$\frac{D}{d}=\sqrt{N}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>增大容量
+<ul>
+<li>添加新信道</li>
+<li>频率借用</li>
+<li>蜂窝分裂
+<ul>
+<li>最小一般 1.5km</li>
+<li>导致切换(handoff)增加</li>
+</ul>
+</li>
+<li>蜂窝扇区化</li>
+<li>微蜂窝</li>
+</ul>
+</li>
+</ul>
+<h2 id="蜂窝系统">蜂窝系统</h2>
+<ul>
+<li>控制通道：交换建立与维持呼叫的信息</li>
+<li>业务通道：承载用户间的话语和数据连接</li>
+<li>典型呼叫步骤</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>移动单元初始化</td>
+<td>定期扫描, 选择使用最强的基站建立控制信道, 并与控制该蜂窝的MTSO握手, 之后监听是否有寻呼</td>
+</tr>
+<tr>
+<td>移动台发起的呼叫</td>
+<td>移动单元通过在已选的建立信道上, 若信道空闲, 发送被叫单元的号码来发起呼叫</td>
+</tr>
+<tr>
+<td>寻呼</td>
+<td>MTSO根据被叫号码, 向某些基站发送寻呼信息</td>
+</tr>
+<tr>
+<td>呼叫接收</td>
+<td>被叫单元识别寻呼, 向基站发通知 -&gt; 基站向MTSO发通知 -&gt; MTSO建立电路, 选两个业务信道, 通知两个基站 -&gt; 基站通知单元</td>
+</tr>
+<tr>
+<td>呼叫进行中</td>
+<td>话音或数据信号: 单元 &lt;-&gt; 基站 &lt;-&gt; MTSO &lt;-&gt; 基站 &lt;-&gt; 单元</td>
+</tr>
+<tr>
+<td>切换</td>
+<td>移动单元跨蜂窝移动, 业务信道切换到指派给新蜂窝的业务信道, 不警告用户</td>
+</tr>
+<tr>
+<td>呼叫终止</td>
+<td>用户挂机, MTSO得到通知, 释放业务信道</td>
+</tr>
+<tr>
+<td>呼叫阻塞</td>
+<td>没有空闲业务信道, 将重试数次, 耗尽次数返回忙音</td>
+</tr>
+<tr>
+<td>呼叫掉线</td>
+<td>信号强度低于最小信号强度, MTSO将得到通知, 释放信道</td>
+</tr>
+<tr>
+<td>连接固定用户</td>
+<td>MTSO与公用电话交换网络连接</td>
+</tr>
+<tr>
+<td>连接远程用户</td>
+<td>MTSO通过电话网或专用线路, 与远程MTSO连接, 并为二者用户建立连接</td>
+</tr>
+</tbody>
+</table>
+<h2 id="移动无线电传播效应">移动无线电传播效应</h2>
+<ul>
+<li>信号强度
+<ul>
+<li>太强：同信道干扰</li>
+<li>太弱：不足以维持连接</li>
+</ul>
+</li>
+<li>传播机制
+<ul>
+<li>反射：物体表面大于波长</li>
+<li>衍射：物体边缘大于波长</li>
+<li>散射：物体大小小于波长</li>
+</ul>
+</li>
+<li>衰弱
+<ul>
+<li>多径效应：物体表面大于波长
+<ul>
+<li>LOS + 多径脉冲</li>
+<li>信噪比下降</li>
+<li>码间干扰(ISI)</li>
+<li>补偿机制
+<ul>
+<li>前向纠错：发送总比特数为接受比特数2-3倍</li>
+<li>自适应均衡</li>
+<li>分集</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>快衰弱</td>
+<td>振幅的变化高达20一30dB这种类型的迅速衰落变化</td>
+</tr>
+<tr>
+<td>慢衰弱</td>
+<td>接收功率除了出现快速波动之外, 接收到的平均功率水平也会变化</td>
+</tr>
+<tr>
+<td>平坦衰弱</td>
+<td>接收信号的所有频率成分的波动是同时的且成相同比例的</td>
+</tr>
+<tr>
+<td>选择性衰弱</td>
+<td>对一个无线电信号的不同頻谱成分的影响是不同的</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Hata模型：$L_{dB}=69.55+26.16\log f_c-13.82\log h_t-A(h_r)+(44.9-6.55\log h_t)\log d$</li>
+</ul>
+<h2 id="五代蜂窝网络">五代蜂窝网络</h2>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>1G</th>
+<th>2G</th>
+<th>2.5G</th>
+<th>3G(IMT-2000)</th>
+<th>3.9G</th>
+<th>4G(IMT-Advanced)</th>
+<th>5G(IMT-2020)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>设计时间</td>
+<td>1970</td>
+<td>1980</td>
+<td>1985</td>
+<td>1985</td>
+<td></td>
+<td>2000</td>
+<td></td>
+</tr>
+<tr>
+<td>应用时间</td>
+<td>1984</td>
+<td>1991</td>
+<td>2012</td>
+<td>1999</td>
+<td>2008</td>
+<td>2012</td>
+<td></td>
+</tr>
+<tr>
+<td>服务</td>
+<td>Voice</td>
+<td>SMS</td>
+<td>Inernet</td>
+<td>大容量分组数据化(Video)</td>
+<td></td>
+<td>完全基于IP</td>
+<td></td>
+</tr>
+<tr>
+<td>调制频率</td>
+<td>150MHz+</td>
+<td>800-1900MHz</td>
+<td></td>
+<td>1900-2200MHz</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(静态)数据率</td>
+<td>1.9kbps</td>
+<td>14.4kbps</td>
+<td>144kbps</td>
+<td>384kbps (3.1Mbps)</td>
+<td></td>
+<td>200Mbps</td>
+<td></td>
+</tr>
+<tr>
+<td>复用技术</td>
+<td>FDMA</td>
+<td>TDMA,CDMA</td>
+<td></td>
+<td>CDMA,TDMA</td>
+<td>OFDMA,SC-FDMA</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>核心网络</td>
+<td>PSTN</td>
+<td>PSTN</td>
+<td></td>
+<td>PSTN, 分组网络</td>
+<td>IP 干线网</td>
+<td>IP 干线网</td>
+<td></td>
+</tr>
+<tr>
+<td>技术规格</td>
+<td>AMPS(AT&amp;T)</td>
+<td>GSM(3GGP)</td>
+<td>GPRS(114kps)</td>
+<td>WCDMA(IMT-DS,联通,欧洲)</td>
+<td>LTE(3GPP, 299.6Mbps)</td>
+<td>LTE-A(3GPP)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>NMT(北欧)</td>
+<td>PCS(IS-95,2.5G)</td>
+<td>EDGE(2.75G, 268kbps)</td>
+<td>CDMA2000(IMT-MC,电信,美国)</td>
+<td>LTE-TDD(TD-LTE,中国)</td>
+<td>WirelessMAN-Advanced(IEEE 802.16)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>TD-SCDMA(IMT-TC,移动，中国)</td>
+<td>WiMAX(IEEE 802.16)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>HSPA(3.5G, 14Mbps) HSPA+(3.75G, 168Mbps)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>优点</td>
+<td></td>
+<td>数字业务,加密</td>
+<td></td>
+<td>带宽限制在5MHz内</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>差错检验与纠正(交织)</td>
+<td></td>
+<td>码片速率3Mcps,多速率</td>
+<td></td>
+<td>MIMO天线</td>
+<td>MIMO天线</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>LTE-Advanced 体系结构
+<ul>
+<li>核心：演进型NodeB(eNodeB)
+<ul>
+<li>与用户设备(UB)接口基于OFDMA</li>
+<li>没有使用 RNC(无线网络控制器)，而是自己的控制功能</li>
+</ul>
+</li>
+<li>中继节点(RN)
+<ul>
+<li>DL频带：下行</li>
+<li>UP频带：上行</li>
+<li>既充当基站，又充当UB</li>
+</ul>
+</li>
+<li>演进型分组核心网(EPC)
+<ul>
+<li>分组交换</li>
+<li>移动管理实体(MME)</li>
+<li>服务网关(SGW)</li>
+<li>分组数据网络网关(PGW)</li>
+<li>归属用户服务器(HSS)</li>
+</ul>
+</li>
+<li>毫微微蜂窝(femtocell)</li>
+<li>载波聚合
+<ul>
+<li>带内连续: 相邻的信道被看作被放大的信道</li>
+<li>带内不连续: 多个分量载波CC在带内不连续, 需要多个收发器</li>
+<li>带间不连续: 多个收发器</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="mimo-天线">MIMO 天线</h2>
+<p>源数据划分为 n 个子流对应 n 个发送天线</p>
+<ul>
+<li>空间分集：同样数据编码后多部天线同时传输；发射功率与发射天线数量成正比</li>
+<li>空间复用：源数据流在发送天线间分配；信道容量增幅与发送器和接收器有效天线较少的那一侧天线数成正比</li>
+<li>MU-MIMO(多用户MIMO)
+<ul>
+<li>上行链路多址接入信道(MIMO-MAC)</li>
+<li>下行链路广播信道(MIMO-BC)</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

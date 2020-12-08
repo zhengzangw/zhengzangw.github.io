@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>REVIEW | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#访问-web-页面的过程">访问 Web 页面的过程</a></li>
+    <li><a href="#知识提纲">知识提纲</a></li>
+    <li><a href="#算法">算法</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="访问-web-页面的过程">访问 Web 页面的过程</h2>
+<p>电缆 -&gt; 以太网交换机 -&gt; 路由器(提供 DHCP, NAT) -&gt; ISP(提供 DNS)</p>
+<ol>
+<li>获取IP: [DHCP|UDP|IP(255.255.255.255)|以太网(FF:FF:FF:FF:FF:FF)] -&gt; 交换机 -&gt; 路由器 分配 CIDR块 68.85.2.0/24（同时获得默认网关 IP 地址）</li>
+<li>HTTP -&gt; DNS -&gt; ARP: IP=网关地址</li>
+<li>HTTP -&gt; DNS: 网关 -&gt; ISP DNS 查询</li>
+<li>HTTP: [HTTP|TCP|IP(DNS结果)|以太网(网关MAC地址)]</li>
+</ol>
+<h2 id="知识提纲">知识提纲</h2>
+<ul>
+<li>接入网络
+<ul>
+<li>网络边缘</li>
+<li>接入方法</li>
+<li>ISP 组织方式</li>
+</ul>
+</li>
+<li>运输层：提供逻辑链路
+<ul>
+<li>多路复用与多路分解</li>
+<li>完整性检验</li>
+<li>可靠数据传输</li>
+<li>拥塞控制</li>
+</ul>
+</li>
+<li>网络层
+<ul>
+<li>尽力而为服务</li>
+<li>分片与重组</li>
+<li>路由服务</li>
+</ul>
+</li>
+<li>链路层
+<ul>
+<li>成帧</li>
+<li>链路接入</li>
+<li>差错检验与纠正</li>
+</ul>
+</li>
+</ul>
+<h2 id="算法">算法</h2>
+<ul>
+<li>TCP 拥塞传输算法</li>
+<li>DV 路由选择</li>
+<li>LS 路由选择</li>
+<li>CSMA/CD 随机接入</li>
+<li>CSMA/CA 随机接入</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

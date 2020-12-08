@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4. Network Layer | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#提供服务">提供服务</a></li>
+    <li><a href="#ipv4">IPv4</a>
+      <ul>
+        <li><a href="#服务">服务</a></li>
+        <li><a href="#ipv4-数据报格式">IPv4 数据报格式</a></li>
+        <li><a href="#ipv4-分片">IPv4 分片</a></li>
+        <li><a href="#ipv4-地址">IPv4 地址</a></li>
+        <li><a href="#dhcp">DHCP</a></li>
+        <li><a href="#nat">NAT</a></li>
+      </ul>
+    </li>
+    <li><a href="#ipv6">IPv6</a>
+      <ul>
+        <li><a href="#ipv6-地址">IPv6 地址</a></li>
+      </ul>
+    </li>
+    <li><a href="#路由选择">路由选择</a>
+      <ul>
+        <li><a href="#路由选择算法">路由选择算法</a></li>
+      </ul>
+    </li>
+    <li><a href="#路由选择协议">路由选择协议</a>
+      <ul>
+        <li><a href="#ospf">OSPF</a></li>
+        <li><a href="#bgp">BGP</a></li>
+      </ul>
+    </li>
+    <li><a href="#icmp">ICMP</a></li>
+    <li><a href="#snmpv2">SNMPv2</a></li>
+    <li><a href="#多播">多播</a>
+      <ul>
+        <li><a href="#igmp-网际组管理协议">IGMP 网际组管理协议</a></li>
+        <li><a href="#pim">PIM</a></li>
+      </ul>
+    </li>
+    <li><a href="#移动ip">移动IP</a>
+      <ul>
+        <li><a href="#发现">发现</a></li>
+        <li><a href="#登记">登记</a></li>
+        <li><a href="#隧道">隧道</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="提供服务">提供服务</h2>
+<ul>
+<li>分片与重组</li>
+<li>路由服务</li>
+<li>服务分类
+<ul>
+<li>确保交付
+<ul>
+<li>确保时延上限的确保交付</li>
+<li>有序分组交付</li>
+</ul>
+</li>
+<li>确保最小带宽</li>
+<li>安全性</li>
+<li>尽力而为服务（无服务，数据报服务）</li>
+</ul>
+</li>
+<li>审计服务</li>
+</ul>
+<h2 id="ipv4">IPv4</h2>
+<h3 id="服务">服务</h3>
+<ul>
+<li>原语：执行的功能
+<ul>
+<li>发送原语：请求数据单元的传输</li>
+<li>交付原语：通知有数据到达</li>
+</ul>
+</li>
+<li>参数：传递数据和控制信息
+<ul>
+<li>源地址，目的地址</li>
+<li>协议</li>
+<li>服务类型指示，标识，不分片标识符，生存时间，数据长度，数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="ipv4-数据报格式">IPv4 数据报格式</h3>
+<p>首部通常长 20 字节</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>互联网首部长度 IHL</th>
+<th>DS</th>
+<th>ECN</th>
+<th>总长度</th>
+<th>标识</th>
+<th>标志</th>
+<th>Fragment Offset</th>
+<th>Time to Live</th>
+<th>协议</th>
+<th>首部检验和</th>
+<th>源地址</th>
+<th>目的地址</th>
+<th>选择+填充</th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 bits</td>
+<td>4 bits</td>
+<td>6</td>
+<td>2</td>
+<td>16</td>
+<td>16</td>
+<td>3</td>
+<td>13</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>32</td>
+<td>32</td>
+<td></td>
+<td>$&lt;65535*8$</td>
+</tr>
+<tr>
+<td>4</td>
+<td>以32比特为单位首部长度，最小值为5</td>
+<td>区分服务功能</td>
+<td>阻塞通知字段</td>
+<td></td>
+<td></td>
+<td></td>
+<td>数据报片在源数据报中的位置</td>
+<td>TTL</td>
+<td>TCP=6,UDP=17</td>
+<td>因特网检验和</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ipv4-分片">IPv4 分片</h3>
+<ul>
+<li>片(fragment)：分片成的较小的数据报封装成的帧</li>
+<li>重装工作在端系统中完成</li>
+<li>属于同一数据报的片具有相同标识</li>
+<li>最后一片标志比特为0，其余为1</li>
+<li>以 64 bit 为单位</li>
+</ul>
+<h3 id="ipv4-地址">IPv4 地址</h3>
+<p>一个 IP 地址与一个接口相关联<br>
+子网：分开主机和路由器第每个接口产生的网络岛<br>
+子网掩码：子网的地址 x.x.x.x/x</p>
+<p>分类编址</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>格式</th>
+<th></th>
+<th>默认子网掩码</th>
+<th>子网掩码举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保留</td>
+<td>主机部分全零或全一</td>
+<td>前缀(网络)(主机)</td>
+<td>255.0.0.0</td>
+<td>255.192.0.0</td>
+</tr>
+<tr>
+<td>A类</td>
+<td>0(7)(24)</td>
+<td>$126$ 网络地址</td>
+<td>255.255.0.0</td>
+<td>255.255.248.0</td>
+</tr>
+<tr>
+<td>B类</td>
+<td>10(14)(16)</td>
+<td>$2^{14}=16384$ 网络地址</td>
+<td>255.255.255.0</td>
+<td>255.255.255.252</td>
+</tr>
+<tr>
+<td>C类</td>
+<td>110(21)(8)</td>
+<td>$2^{21}=2097152$ 网络地址</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>D类</td>
+<td>1110(28)</td>
+<td>多播</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E类</td>
+<td>1111(28)</td>
+<td>留用</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Private Address</td>
+<td>10./172.16~172.31/192.168.0~192.168.255</td>
+<td>1个A类地址，16个B类地址，256个C类地址</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>无类别域间路由选择 (Classless InterDomain Routing, CIDR)  a.b.c.d/x
+网络前缀 x</p>
+<h3 id="dhcp">DHCP</h3>
+<p>动态主机配置协议</p>
+<ul>
+<li>端口 67</li>
+<li>动态为主机分配IP地址，即插即用协议</li>
+<li>客户机/服务器模式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>DHCP 报文</th>
+<th>对应步骤</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DHCPDISCOVER</td>
+<td>服务器发现</td>
+<td>客户机用广播找出有效服务器</td>
+</tr>
+<tr>
+<td>DHCPOFFER</td>
+<td>服务器提供</td>
+<td>服务器响应 DHCPDISCOVER，提供配置参数，广播</td>
+</tr>
+<tr>
+<td>DHCPREQUEST</td>
+<td>请求</td>
+<td>客户机选择服务器</td>
+</tr>
+<tr>
+<td>DHCPACK</td>
+<td>ACK</td>
+<td>服务器到客户机的报文，携带配置参数和网络地址</td>
+</tr>
+<tr>
+<td>DHCPRELEASE</td>
+<td></td>
+<td>客户机表示放弃对网络地址的租用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nat">NAT</h3>
+<p>Network Address Translation, 网络地址转换</p>
+<ul>
+<li>NAT 使能路由器
+<ul>
+<li>内部：提供专用网络的路由</li>
+<li>外部：相当于单一设备</li>
+<li>NAT 转换表
+<ul>
+<li>WAN端：ip, port （端口用于主机寻址）</li>
+<li>LAN端：ip, port</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>NAT不允许公网主机主动访问内网主机
+<ul>
+<li>NAT 穿越工具</li>
+<li>UPnP 协议（Universal Plug and Play, 通用即插即用）</li>
+</ul>
+</li>
+</ul>
+<h2 id="ipv6">IPv6</h2>
+<p>IPv6 数据报</p>
+<table>
+<thead>
+<tr>
+<th>IPv6 首部</th>
+<th>逐帧选项首部(可选)</th>
+<th>路由选择首部(可选)</th>
+<th>分片首部(可选)</th>
+<th>目的地选择首部(可选)</th>
+<th>TCP首部(可选)</th>
+<th>应用数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40 bytes</td>
+<td>variable</td>
+<td>variable</td>
+<td>8</td>
+<td>variable</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>逐跳处理</td>
+<td>路由选择</td>
+<td>分片和重装信息</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>IPv6 首部</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>DS/ECN</th>
+<th>流标号</th>
+<th>有效载荷长度</th>
+<th>下一首部</th>
+<th>跳数限制</th>
+<th>源地址</th>
+<th>目的地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 bits</td>
+<td>6+2</td>
+<td>20</td>
+<td>16</td>
+<td>8</td>
+<td>8</td>
+<td>128</td>
+<td>128</td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+<td>为分组做标记</td>
+<td>扩展首部+数据单元长度</td>
+<td>IPv6首部后类型</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>扩大的地址容量</li>
+<li>简化的40字节首部</li>
+<li>不允许分片与重装</li>
+<li>无首部检验和</li>
+<li>流
+<ul>
+<li>源点角度：某一应用实例生成并具有相同传送服务需求的分组序列</li>
+<li>路由器角度：相同属性分组序列</li>
+</ul>
+</li>
+<li>任播：一组接口的标识符，交付到最近的一个接口上</li>
+<li>兼容 IPv4
+<ul>
+<li>隧道：将整个 IPv6 数据报放入 IPv4 数据报的数据段中</li>
+</ul>
+</li>
+</ul>
+<h3 id="ipv6-地址">IPv6 地址</h3>
+<p>地址为结点上的接口设置；地址格式 ipv6地址/前缀长度</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>IPv6表示法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>嵌入式IPv4</td>
+<td>::FFFF:x.x.x.x/96</td>
+</tr>
+<tr>
+<td>回路</td>
+<td>::1/128</td>
+</tr>
+<tr>
+<td>链路本地单播</td>
+<td>FE80::/10</td>
+</tr>
+<tr>
+<td>多播:</td>
+<td>FF00::/8</td>
+</tr>
+<tr>
+<td>全局单播</td>
+<td>其它所有</td>
+</tr>
+</tbody>
+</table>
+<h2 id="路由选择">路由选择</h2>
+<ul>
+<li>性能评估标准：代价（时延，吞吐量，跳数），公平性</li>
+<li>固定式路由选择: 为每一对源节点何目的结点选择永久路由；每个结点只需知道路由上第一个结点标识</li>
+<li>洪泛：每个结点收到分组后传到除分组到达所经过的链路外其它链路；设置跳数计数器或重复则抛弃
+<ul>
+<li>优点：高度稳健</li>
+<li>缺点：通信负荷高，安全风险</li>
+</ul>
+</li>
+<li>随机路由选择：为每个输出链路分配一个概率，例如基于数据率 $P_i=\frac{R_i}{\sum_jR_j}$</li>
+<li>自适应路由选择
+<ul>
+<li>判决条件：故障或拥塞</li>
+</ul>
+</li>
+<li>集中式路由选择：链路状态算法</li>
+<li>分散式路由选择：距离向量算法</li>
+</ul>
+<h3 id="路由选择算法">路由选择算法</h3>
+<h4 id="appanet-第一代距离向量-dv-bellman-ford">APPANET 第一代(距离向量 DV, Bellman-Ford)</h4>
+<ul>
+<li>每个结点维护两个向量：$D_i,S_i$
+<ul>
+<li>$D_i$: 结点$i$的时延向量，$D_{ij}$ 为从$i$到$j$的最小时延的当前估算值</li>
+<li>$S_i$: 结点$i$的后继结点向量，$S_{ij}$ 为$i$到$j$最小时延路由的下一个结点</li>
+</ul>
+</li>
+<li>周期性与相邻结点交换时延向量
+<ul>
+<li>$A$: 相邻结点集合</li>
+<li>$l_{ki}$: 从$k$到$i$的当前估计时延</li>
+<li>$D_{kj}=\min_{i\in A}(D_{ij}+l_{ki})$</li>
+<li>$S_{kj}=\arg\min_{i\in A}(D_{ij}+l_{ki})$</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>没有考虑容量</li>
+<li>导致振荡状态</li>
+</ul>
+</li>
+<li>路由选择环路问题
+<ul>
+<li>毒性逆转：如果 $z$ 通过 $y$ 到达目的地 $x$，则 $z$ 通告 $y$ 到 $x$ 距离无穷大</li>
+</ul>
+</li>
+<li>无穷计数问题
+<ul>
+<li>毒性逆转只能解决两个点环路问题</li>
+</ul>
+</li>
+<li>报文复杂性较低</li>
+<li>收敛速度较慢</li>
+<li>健壮性较差</li>
+</ul>
+<h4 id="appanet-第二代链路状态-ls-dijkstra">APPANET 第二代(链路状态 LS, Dijkstra)</h4>
+<ul>
+<li>分组中包含时延信息，所有结点维护了网络中各条网络中各链路上的估算时延</li>
+<li>每10s交换一次，新信息到达则用 Dijstra 计算路由选择表</li>
+<li>缺点
+<ul>
+<li>链路上测量的分组时延与链路实际遇到的时延不符</li>
+<li>导致振荡状态：非所有路由器同时运行 LS 算法</li>
+</ul>
+</li>
+<li>报文复杂性较高 $O(|N||E|)$</li>
+<li>收敛速度 $O(|N|^2)$</li>
+<li>健壮性较高</li>
+</ul>
+<h4 id="appanet-第三代">APPANET 第三代</h4>
+<ul>
+<li>改变代价函数
+<ul>
+<li>单排队服务模式：利用率 $\rho=\frac{2(T_s-T)}{T_s-2T}$</li>
+<li>服务时间 $T_x$ 为平均分组长度处理链路比特率</li>
+<li>平均利用率 $U(n+1)=0.5*\rho(n+1)+0.5*U(n)$</li>
+<li>链路代价为平均利用率的函数</li>
+</ul>
+</li>
+</ul>
+<h2 id="路由选择协议">路由选择协议</h2>
+<h3 id="ospf">OSPF</h3>
+<p>开放最短路径优先协议，RFC 2328，自治系统内部路由选择协议</p>
+<ul>
+<li>基于 IP</li>
+<li>使用 Dijkstra 算法</li>
+<li>每个路由器维护一个数据库，反映该路由器掌握的所属自治系统的拓扑结构
+<ul>
+<li>顶点：路由器或网络</li>
+<li>边：路由器与路由器点对点连或路由器与网络顶点连</li>
+</ul>
+</li>
+</ul>
+<h3 id="bgp">BGP</h3>
+<p>边界网关协议，自治系统间路由选择协议</p>
+<ul>
+<li>179 端口， TCP</li>
+<li>网关路由器</li>
+<li>内部路由器</li>
+<li>外部 BGP(eBGP)：连接不同 AS 中的网关路由器</li>
+<li>内部 BGP(iBGP)：每个 AS 间的路由器</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>报文类型</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open</td>
+<td>实现邻站获取</td>
+</tr>
+<tr>
+<td>Update</td>
+<td>传输路由信息</td>
+</tr>
+<tr>
+<td>Keepalive</td>
+<td>确认 Open 及周期性保持邻站可达性</td>
+</tr>
+<tr>
+<td>Notification</td>
+<td>检测到错误时发送</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>Length</th>
+<th>Type</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16bytes</td>
+<td>2</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>鉴别</td>
+<td>报文长度</td>
+<td>报文类型</td>
+<td>四种类型不同</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Update
+<ul>
+<li>AS-PATH: 路由已经通过的自治系统</li>
+<li>Next-Hop: 起始的路由器接口的 IP 地址</li>
+<li>NLRI: 某自治系统中所有网络列表（由OSPF得到）</li>
+</ul>
+</li>
+<li>增加 AS 外部目的地的步骤
+<ul>
+<li>从 AS 间协议学到多个网关可到达子网 x</li>
+<li>从 AS 内部协议学到到达各个网关的开销</li>
+<li>热土豆路由选择：尽可能快的送出 AS
+<ul>
+<li>本地偏好 -&gt; 最短 AS-PATH -&gt; 热土豆路由选择 -&gt; BGP 表示符</li>
+</ul>
+</li>
+<li>确定通往该网关的接口 I，增加表现 (x,I)</li>
+</ul>
+</li>
+<li>IP 任播(Anycasting)
+<ul>
+<li>访问某任播地址的报文可以被 IP 网络路由到这一组目标中的任何一台主机上</li>
+<li>根据 BGP 路径选择得到最近的服务</li>
+<li>用于 DNS 服务, CDN 服务</li>
+</ul>
+</li>
+</ul>
+<h2 id="icmp">ICMP</h2>
+<p>网际控制报文协议</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>编码</th>
+<th>检验和</th>
+<th>参数</th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 bits</td>
+<td>8</td>
+<td>16</td>
+<td>32</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>终点不可达;超时;源站抑制</td>
+<td>路由器不知道如何到达；生存时间超时或重装超时；流量控制</td>
+</tr>
+<tr>
+<td>参数问题,Echo</td>
+<td>语法或语义错误</td>
+</tr>
+<tr>
+<td>重定向</td>
+<td>建议一条更好的路由</td>
+</tr>
+<tr>
+<td>回送和回送回答</td>
+<td>测试两个实体能否通信</td>
+</tr>
+<tr>
+<td>时间戳和时间戳回答</td>
+<td>对互联网时延特性采样</td>
+</tr>
+<tr>
+<td>地址掩码请求和地址掩码回答</td>
+<td>使主机知道所连接的局域网地址掩码</td>
+</tr>
+</tbody>
+</table>
+<h2 id="snmpv2">SNMPv2</h2>
+<p>简单网络管理协议，Simple Network Manage Protocol, RFC 3416</p>
+<ul>
+<li>网络管理框架
+<ul>
+<li>管理服务器：运行在网络运营中心(NOC)的应用程序，人类管理员与网络设备打交道</li>
+<li>被管设备</li>
+<li>管理信息库(MIB)</li>
+<li>网络管理代理：被管设备中的进程</li>
+<li>网络管理协议</li>
+</ul>
+</li>
+<li>SNMP：请求-响应</li>
+</ul>
+<h2 id="多播">多播</h2>
+<ul>
+<li>应用：多媒体，电话会议，数据库，分布式计算，实时工作组</li>
+<li>多播产生的通信量小于广播和多次单播：构建生成树</li>
+</ul>
+<h3 id="igmp-网际组管理协议">IGMP 网际组管理协议</h3>
+<p>IGMPv3, IPv6 中整合进 ICMPv6</p>
+<ul>
+<li>成员关系查询</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>最长响应时间</th>
+<th>检验和</th>
+<th>组地址</th>
+<th>Res</th>
+<th>S</th>
+<th>QRV</th>
+<th>QQIC</th>
+<th>源数量</th>
+<th>源地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8bits</td>
+<td>8</td>
+<td>16</td>
+<td>32</td>
+<td>4</td>
+<td>1</td>
+<td>3</td>
+<td>8</td>
+<td>16</td>
+<td></td>
+</tr>
+<tr>
+<td>一般查询/指明组查询/指明组合源查询</td>
+<td>单位：0.1s</td>
+<td></td>
+<td>0/有效多播地址</td>
+<td></td>
+<td>1：抑制因收到查询而执行正常计时器更新</td>
+<td>非零则包含查询者所用的健壮性变量值</td>
+<td>查询者的查询者间隙</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>成员关系报告</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>Res</th>
+<th>检验和</th>
+<th>Res</th>
+<th>组记录数量</th>
+<th>组记录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8bits</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+<td>包含记录类型，辅助数据长度，源数量，多播地址，源地址和辅助数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pim">PIM</h3>
+<p>协议独立多播，路由选择协议</p>
+<ul>
+<li>稀疏模式 PIM (RFC 2362)
+<ul>
+<li>多播组其中一台路由器为集合点 RP</li>
+<li>组目的路由器向集合点发送 Join 报文。路由器用单播向该集合点发送，逆路径成为分布树一部分</li>
+<li>允许目的路由器用通往源路由器的最短路径树替换共享树（发送Prune）</li>
+</ul>
+</li>
+<li>密集模式 PIM：适用于自治系统内部的多播路由选择，对 MOSPF 的备用协议
+<ul>
+<li>归属网络：一个移动结点被分配给的特定的网络
+<ul>
+<li>归属代理</li>
+<li>归属地址</li>
+</ul>
+</li>
+<li>外地网络
+<ul>
+<li>外地代理</li>
+<li>转交地址</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="移动ip">移动IP</h2>
+<p>RFC 3344</p>
+<p>让移动设备用户，能够从一个网上系统中，移动到另一个网上系统，但是设备的IP地址保持不变</p>
+<h3 id="发现">发现</h3>
+<p>移动结点使用一种发现过程来识别预期的归属代理和外地代理</p>
+<ul>
+<li>利用 ICMP 路由器通告报文</li>
+<li>移动结点判断自己是在归属网络还是外地网络</li>
+<li>代理通告报文：充当代理的路由器或其他网络设备定期发布带有通告扩展的路由器通告 ICMP 报文</li>
+</ul>
+<h3 id="登记">登记</h3>
+<ul>
+<li>移动结点通过向它希望使用的外地代理发送一个等级请求报文来请求转发服务</li>
+<li>外地代理将这个请求转交给移动结点的归属代理</li>
+<li>归属代理接受或者拒绝这个请求，向外地代理发送一个登记回答</li>
+<li>外地代理将这个回答转交给移动结点</li>
+</ul>
+<h3 id="隧道">隧道</h3>
+<ul>
+<li>为了捕获正在归属网络中传播目的为该结点的分组，归属代理需要盗用移动结点身份</li>
+<li>封装：归属代理将整个IP数据报放入一个外部IP数据报中
+<ul>
+<li>IP在IP中的封装(RFC 2003)：增加一个完整的新IP首部</li>
+<li>最小封装 (RFC 2004)：生成新的外部IP首部时，原始IP首部进行修改</li>
+<li>普通选路封装 (RFC 1701)</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

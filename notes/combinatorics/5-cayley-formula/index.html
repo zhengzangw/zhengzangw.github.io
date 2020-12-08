@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5. Cayley&#39;s Formula | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#double-counting">Double Counting</a></li>
+    <li><a href="#prüfer-code">Prüfer code</a></li>
+    <li><a href="#kirchhoffs-matrix-tree-theorem">Kirchhoff&rsquo;s Matrix-Tree Theorem</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>Cayley&rsquo;s formula: There are $n^{n-2}$ different trees on $n$ distinct vertices</li>
+</ul>
+<h2 id="double-counting">Double Counting</h2>
+<ul>
+<li>Count: # of sequences of adding directed edges to an empty graph to form a rooted tree
+<ul>
+<li>From a Tree: $T_nn(n-1)!=n!T_n$</li>
+<li>From an empty graph: $\prod_{k=0}^{n-2}n(n-k-1)=n^{n-2}n!$</li>
+</ul>
+</li>
+</ul>
+<h2 id="prüfer-code">Prüfer code</h2>
+<ul>
+<li>encoder:
+<ul>
+<li>$T_1=T$</li>
+<li>for i=1 to n-1
+<ul>
+<li>$u_i$: smallest leaf in $T_i$</li>
+<li>$(u_i,v_i)$: edge in $T_i$</li>
+<li>$T_{i+1}=T_i\backslash u_i$</li>
+</ul>
+</li>
+<li>return $(v_1,v_2,\cdots,v_{n-2})$</li>
+</ul>
+</li>
+<li>decoder:
+<ul>
+<li>$T=\emptyset,v_{n-1}=n$</li>
+<li>for i=1 to n-1
+<ul>
+<li>$u_i$: smallest not in ${u_1,\cdots,u_{i-1}}\cup{v_i,\cdots,v_{n-1}}$</li>
+<li>$T\cup={u_i,v_i}$</li>
+</ul>
+</li>
+<li>return $T$</li>
+</ul>
+</li>
+</ul>
+<h2 id="kirchhoffs-matrix-tree-theorem">Kirchhoff&rsquo;s Matrix-Tree Theorem</h2>
+<ul>
+<li>Adjacent matrix $A$: $A_{ij}=[{i,j}\in E]$</li>
+<li>Degree matrix $D$: $D_{ij}=\text{deg}(i)[i=j]$</li>
+<li>incidence matrix: $B_{n\times m}$</li>
+</ul>
+<p>$$
+B(i,e)=\begin{cases}
+1 &amp; e={i,j}\wedge i&lt;j\newline
+-1 &amp; e={i,j}\wedge i&gt;j\newline
+0 &amp; o.w.
+\end{cases}
+$$</p>
+<ul>
+<li>Laplacian matrix: $L=D-A$
+<ul>
+<li>$xLx^T=\frac{1}{2}\sum_{ij\in E}(x_i-x_j)^2$</li>
+<li>$L=BB^T$</li>
+<li>$L_{i,i}=B_iB_i^T$</li>
+</ul>
+</li>
+<li>Kirchhoff&rsquo;s Matrix-Tree Theorem
+<ul>
+<li>$L_{i,i}$: submatrix of $L$ obtained by removing the ith row and ith collumn</li>
+<li>$t(G)$: number of spanning trees in $G$</li>
+<li>$\forall i,t(G)=\det(L_{i,i})$</li>
+</ul>
+</li>
+<li>Cauchy-Binet Theorem
+<ul>
+<li>$\det(AB)=\sum_{S\in C_{[m]}^n}\det(A_{[n],S})\det(B_{S,[n]})$</li>
+<li>${\displaystyle A_{[n],S}}$ and ${\displaystyle B_{S,[n]}}$ denote, respectively, the ${\displaystyle n\times n}$ submatrices of $A$ and $B$, consisting of the columns of $A$, or the rows of $B$, indexed by elements of $S$</li>
+</ul>
+</li>
+<li>$\det(B_{[n]\backslash{i},S})=\pm 1$ if $S$ is a spanning tree of $G$ o.w. $0$</li>
+<li>${\displaystyle {\begin{aligned}\det(L_{i,i})&amp;=\sum _{S\in {[m] \choose n-1}}\det(C_{[n-1],S})^{2}.\end{aligned}}}$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

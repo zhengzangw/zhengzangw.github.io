@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1-Perceptron | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#perceptron">Perceptron</a></li>
+    <li><a href="#神经元">神经元</a></li>
+    <li><a href="#激活函数">激活函数</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="perceptron">Perceptron</h2>
+<p>1957</p>
+<ul>
+<li>模型：$\hat y=\text{sgn}(\omega^\top x)$</li>
+<li>参数学习：错误驱动在线学习算法
+<ul>
+<li>$\omega\leftarrow 0$</li>
+<li>对于 $y\omega^\top x&lt;0,\omega\leftarrow \omega+yx$</li>
+<li>$L(\omega;x,y)=\max(0,-y\omega^\top x)$</li>
+</ul>
+</li>
+<li>感知机收敛性：$\mathcal{D}={(\mathbf{x}^{(n)},y^{(n)})}_{n=1}^N,R=\max_n|x^{(n)}|$，若 $\mathcal{D}$ 可分，则两类感知机权重更新不超过 $\frac{R^2}{\gamma^2}$</li>
+</ul>
+<h2 id="神经元">神经元</h2>
+<ul>
+<li>神经元
+<ul>
+<li>净输入：$z=\omega^\top x+b$</li>
+<li>活性值：$a=f(z)$</li>
+<li>激活函数：$f$</li>
+</ul>
+</li>
+</ul>
+<h2 id="激活函数">激活函数</h2>
+<ul>
+<li>Sigmoid 型函数：两端饱和函数
+<ul>
+<li>Logistic: $\sigma(x)=\frac{1}{1+\exp(-x)}$</li>
+<li>Tanh: $\tanh(x)=2\sigma(2x)-1=\frac{\exp(x)-\exp(-x)}{\exp(x)+\exp(-x)}$</li>
+<li>计算开销较大</li>
+</ul>
+</li>
+<li>hard-logistic$(x)=\max(\min(0.25x+0.5,1),0)$</li>
+<li>hard-Tanh$(x)=\max(\min(x,1),-1)$</li>
+<li>ReLU$(x)=\max(0,x)$
+<ul>
+<li>计算高效</li>
+<li>生物学合理性：单侧抑制、宽兴奋边界</li>
+<li>非零中心化：偏置偏移</li>
+<li>死亡 ReLU 问题</li>
+</ul>
+</li>
+<li>LeakyReLU$(x)=\max(x,\gamma x)$</li>
+<li>带参数 ReLU，对于第 $i$ 个神经元：PReLU$_i(x)=\max(0,x)+\gamma_i\min(0,x)$</li>
+<li>Exponential Linear Unit: ELU$(x)=\max(0,x)+\min(0,\gamma(\exp(x)-1))$
+<ul>
+<li>近似零中心化</li>
+</ul>
+</li>
+<li>Softplus$(x)=\log(1+\exp(x))$</li>
+<li>Swish$(x)=x\sigma(\beta x)$</li>
+<li>GELU$(x)=xP(X\leq x),P(X\leq x)$ 为高斯累积分布函数</li>
+<li>Maxout$(x)=\max_{k\in[1,K]}(z_k),z_k=\omega_k^\top x+b_k$
+<ul>
+<li>输入为向量</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

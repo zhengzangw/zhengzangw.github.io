@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to use Logging module in Python | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#level">level</a></li>
+    <li><a href="#init">init</a>
+      <ul>
+        <li><a href="#format">format</a></li>
+        <li><a href="#default-level">default level</a></li>
+        <li><a href="#filename">filename</a></li>
+        <li><a href="#example">example</a></li>
+      </ul>
+    </li>
+    <li><a href="#streamhandler">StreamHandler</a></li>
+    <li><a href="#日志回滚">日志回滚</a></li>
+    <li><a href="#loggingconfig-配置">logging.config 配置</a>
+      <ul>
+        <li><a href="#配置文件">配置文件</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="logging-module">Logging module</h1>
+<h2 id="level">level</h2>
+<p>CRITICAL &gt; ERROR &gt; WARNING &gt; INFO &gt; DEBUG &gt; NOTSET</p>
+<h2 id="init">init</h2>
+<p>logging.basicConfig()</p>
+<h3 id="format">format</h3>
+<ul>
+<li>%(levelno)s: 打印日志级别的数值</li>
+<li>%(levelname)s: 打印日志级别名称</li>
+<li>%(pathname)s: 打印当前执行程序的路径，其实就是sys.argv[0]</li>
+<li>%(filename)s: 打印当前执行程序名</li>
+<li>%(funcName)s: 打印日志的当前函数</li>
+<li>%(lineno)d: 打印日志的当前行号</li>
+<li>%(asctime)s: 打印日志的时间</li>
+<li>%(thread)d: 打印线程ID</li>
+<li>%(threadName)s: 打印线程名称</li>
+<li>%(process)d: 打印进程ID</li>
+<li>%(message)s: 打印日志信息</li>
+</ul>
+<h3 id="default-level">default level</h3>
+<ul>
+<li>默认级别为WARNING: 即低于WARNING的信息不输出</li>
+</ul>
+<h3 id="filename">filename</h3>
+<ul>
+<li>日志输出文件</li>
+</ul>
+<h3 id="example">example</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">logging<span style="color:#f92672">.</span>basicConfig(level<span style="color:#f92672">=</span>DEBUG,
+                      format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%(asctime)s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(filename)s</span><span style="color:#e6db74">[func:</span><span style="color:#e6db74">%(funcName)s</span><span style="color:#e6db74"> line:</span><span style="color:#e6db74">%(lineno)d</span><span style="color:#e6db74">] %(message))</span>
+</code></pre></div><h2 id="streamhandler">StreamHandler</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">console <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>streamHandler()  
+console<span style="color:#f92672">.</span>setLevel(logging<span style="color:#f92672">.</span>INFO)  
+
+formatter <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>Formatter(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%(name)-12s</span><span style="color:#e6db74">: </span><span style="color:#e6db74">%(levelname)-8s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#39;</span>)
+console<span style="color:#f92672">.</span>setFormatter
+logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>addHandler(console)
+</code></pre></div><h2 id="日志回滚">日志回滚</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> logging.handlers <span style="color:#f92672">import</span> RotatingFileHandler
+Rthandler <span style="color:#f92672">=</span> RotatingFileHandler(<span style="color:#e6db74">&#39;myapp.log&#39;</span>, maxBytes<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span>,backupCount<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
+Rthandler<span style="color:#f92672">.</span>setLevel(logging<span style="color:#f92672">.</span>INFO)
+formatter <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>Formatter(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%(name)-12s</span><span style="color:#e6db74">: </span><span style="color:#e6db74">%(levelname)-8s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#39;</span>)
+Rthandler<span style="color:#f92672">.</span>setFormatter(formatter)
+logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>addHandler(Rthandler)
+</code></pre></div><h2 id="loggingconfig-配置">logging.config 配置</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">logging<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>fileConfig(<span style="color:#e6db74">&#34;\&lt;filename\&gt;&#34;</span>)
+logger <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;\&lt;name\&gt;&#34;</span>)
+logger<span style="color:#f92672">.</span>warning()
+</code></pre></div><h3 id="配置文件">配置文件</h3>
+<pre><code class="language-conf" data-lang="conf">#logger.conf
+###############################################
+[loggers]
+keys=root,example01,example02
+[logger_root]
+level=DEBUG
+handlers=hand01,hand02
+[logger_example01]
+handlers=hand01,hand02
+qualname=example01
+propagate=0
+[logger_example02]
+handlers=hand01,hand03
+qualname=example02
+propagate=0
+###############################################
+[handlers]
+keys=hand01,hand02,hand03
+[handler_hand01]
+class=StreamHandler
+level=INFO
+formatter=form02
+args=(sys.stderr,)
+[handler_hand02]
+class=FileHandler
+level=DEBUG
+formatter=form01
+args=('myapp.log', 'a')
+[handler_hand03]
+class=handlers.RotatingFileHandler
+level=INFO
+formatter=form02
+args=('myapp.log', 'a', 10*1024*1024, 5)
+###############################################
+[formatters]
+keys=form01,form02
+[formatter_form01]
+format=%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s
+datefmt=%a, %d %b %Y %H:%M:%S
+[formatter_form02]
+format=%(name)-12s: %(levelname)-8s %(message)s
+datefmt=
+</code></pre></main>
+        </div>
+
+    </div>
+</body></html>

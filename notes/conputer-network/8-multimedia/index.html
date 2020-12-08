@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>8. Multimedia | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#流式存储视频">流式存储视频</a></li>
+    <li><a href="#ip-语音">IP 语音</a></li>
+    <li><a href="#通信量管理">通信量管理</a>
+      <ul>
+        <li><a href="#权标桶">权标桶</a></li>
+        <li><a href="#漏桶">漏桶</a></li>
+      </ul>
+    </li>
+    <li><a href="#多媒体网络">多媒体网络</a>
+      <ul>
+        <li><a href="#y1291-框架">Y.1291 框架</a></li>
+        <li><a href="#服务级别协约-sla">服务级别协约 (SLA)</a></li>
+        <li><a href="#综合服务体系结构-isa-rfc-1633">综合服务体系结构 ISA (RFC 1633)</a></li>
+        <li><a href="#rsvp-资源预约协议-rfc-2205">RSVP 资源预约协议 (RFC 2205)</a></li>
+        <li><a href="#区分服务-ds-rfc-2475">区分服务 (DS, RFC 2475)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="流式存储视频">流式存储视频</h2>
+<ul>
+<li>UDP 流</li>
+<li>HTTP 流
+<ul>
+<li>预取视频</li>
+<li>客户端应用缓存和TCP缓存</li>
+</ul>
+</li>
+<li>DASH</li>
+</ul>
+<h2 id="ip-语音">IP 语音</h2>
+<ul>
+<li>消除延时抖动：播放时延</li>
+<li>从丢包恢复
+<ul>
+<li>前向纠错</li>
+<li>交织</li>
+<li>差错掩盖</li>
+</ul>
+</li>
+</ul>
+<h2 id="通信量管理">通信量管理</h2>
+<ul>
+<li>丢弃的选择
+<ul>
+<li>公平性</li>
+<li>服务质量</li>
+<li>预留</li>
+</ul>
+</li>
+<li>通信量整形(traffic shaping)
+<ul>
+<li>通过减轻分组的堆集，使流量平滑</li>
+<li>关注离开交换机的通信量</li>
+</ul>
+</li>
+<li>通信量管制(traffic policing)
+<ul>
+<li>判断传入分组是否符合服务质量规约</li>
+<li>关注进入交换机的通信量</li>
+</ul>
+</li>
+</ul>
+<h3 id="权标桶">权标桶</h3>
+<ul>
+<li>权标补充速率 $R$: 可连续支持的数据率</li>
+<li>桶大小 $B$：短时间内允许数据率超过 $R$ 的量</li>
+<li>任意时间段 $T$ 内，发送的数量不能超过 $RT+B$</li>
+<li>权标生成器以 $R$ bps 向桶中补充权标，到达的分组消耗一定数量的权标进行传输</li>
+</ul>
+<h3 id="漏桶">漏桶</h3>
+<ul>
+<li>计数器 $X$: 泄露速率为 1 的漏桶</li>
+<li>每当有一个分组到达，计数器上升 $I$</li>
+<li>使计数器超过最大值的分组违规</li>
+</ul>
+<h2 id="多媒体网络">多媒体网络</h2>
+<ul>
+<li>尽可能服务</li>
+<li>区分服务</li>
+<li>每连接服务质量(QoS)保证</li>
+</ul>
+<h3 id="y1291-框架">Y.1291 框架</h3>
+<ul>
+<li>数据平面
+<ul>
+<li>队列管理算法：适当的时候丢弃分组来管理分组队列</li>
+<li>排队和调度算法</li>
+<li>拥塞避免</li>
+<li>分组标记</li>
+<li>通信量分类</li>
+<li>通信量管制</li>
+<li>通信量整形</li>
+</ul>
+</li>
+<li>控制平面
+<ul>
+<li>准入控制</li>
+<li>QoS路由选择</li>
+<li>资源预留</li>
+</ul>
+</li>
+<li>管理平面
+<ul>
+<li>服务级别协约</li>
+<li>通信量度量和记录</li>
+<li>通信量恢复</li>
+<li>策略</li>
+</ul>
+</li>
+</ul>
+<h3 id="服务级别协约-sla">服务级别协约 (SLA)</h3>
+<p>网络提供者与客户之间的一份合约，规定向客户提供的具体服务内容</p>
+<ul>
+<li>对将要提供的服务本质的描述</li>
+<li>希望获得的服务性能级别</li>
+<li>对服务级别的监视和报告处理过程</li>
+</ul>
+<h3 id="综合服务体系结构-isa-rfc-1633">综合服务体系结构 ISA (RFC 1633)</h3>
+<ul>
+<li>尽最大努力服务机制
+<ul>
+<li>路由选择算法</li>
+<li>分组丢弃</li>
+</ul>
+</li>
+<li>流：由相关IP分组构成的一个可区分的分组流，它是由单个用户活动产生的，并且要求相同的服务质量</li>
+<li>ISA功能
+<ul>
+<li>路由选择算法</li>
+<li>丢弃策略</li>
+<li>准入控制</li>
+<li>排队策略
+<ul>
+<li>公平排队策略</li>
+<li>加权公平排队</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ISA 服务类型
+<ul>
+<li>保证服务
+<ul>
+<li>提供保证的容量级别或数据率</li>
+<li>对排队时延指明上限</li>
+<li>没有排队损失</li>
+</ul>
+</li>
+<li>受控服务
+<ul>
+<li>和在网络无负载条件下雨尽最大努力服务相似</li>
+<li>排队时延不会明显超过某个最小传输时延</li>
+<li>几乎没有排队丢失</li>
+</ul>
+</li>
+<li>尽最大努力服务</li>
+</ul>
+</li>
+</ul>
+<h3 id="rsvp-资源预约协议-rfc-2205">RSVP 资源预约协议 (RFC 2205)</h3>
+<ul>
+<li>接受者发起预约</li>
+<li>软状态：无连接的方法，预约状态是缓存在路由器中的信息，由终端系统装载并周期性地刷新</li>
+<li>会话：目的IP地址+IP协议标识符+目的端口</li>
+<li>流描述符：目的端系统发起的预约=流规约+过滤器规约</li>
+<li>流规约：指明了所希望的服务质量=服务类别+RSpec（定义QoS）+TSpec（描述数据流）</li>
+<li>过滤器规约：请求预约的分组集合=源地址+UDP/TCP源端口</li>
+</ul>
+<h3 id="区分服务-ds-rfc-2475">区分服务 (DS, RFC 2475)</h3>
+<ul>
+<li>DS 码点 (6bits)：
+<ul>
+<li>xxxxx0：留作标准设置使用
+<ul>
+<li>000000：默认分组类别，尽最大努力转发</li>
+<li>xxx000： 为向下兼容 IPv4 保留，提供至少等同于 IPv4 优先级功能提供的服务</li>
+</ul>
+</li>
+<li>xxxx11：留作实验或本地使用</li>
+<li>xxxx01：将来可能分配</li>
+</ul>
+</li>
+<li>每跳行为(PHB)
+<ul>
+<li>快速转发</li>
+<li>确认转发</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

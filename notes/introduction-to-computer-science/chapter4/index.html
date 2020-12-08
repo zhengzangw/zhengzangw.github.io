@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 4 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#编译汇编过程">编译汇编过程</a></li>
+    <li><a href="#生成可执行文件">生成可执行文件</a></li>
+    <li><a href="#elf详解">ELF详解</a>
+      <ul>
+        <li><a href="#object-file-format">Object File Format</a></li>
+        <li><a href="#ehdr-elf-header">Ehdr (ELF header)</a></li>
+        <li><a href="#shdr-section-header">shdr (Section header)</a></li>
+        <li><a href="#section">Section</a></li>
+        <li><a href="#symbol-tables">Symbol Tables</a></li>
+        <li><a href="#符号解析过程">符号解析过程</a></li>
+        <li><a href="#phdr-program-header">Phdr (Program header)</a></li>
+        <li><a href="#relocation-entries">Relocation entries</a></li>
+        <li><a href="#memory-mapping">Memory Mapping</a></li>
+      </ul>
+    </li>
+    <li><a href="#dynamic">Dynamic</a>
+      <ul>
+        <li><a href="#运行时动态链接">运行时动态链接</a></li>
+        <li><a href="#pic-position-independent-code">PIC (Position-Independent Code)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="编译汇编过程">编译汇编过程</h2>
+<p>Preprocessor: cpp / gcc -E -o main.i main.c<br>
+Compile: ccl / gcc -S -o main.s main.i<br>
+Assemble: as / gcc -c -o main.o main.s<br>
+Relocatable object file: .o</p>
+<p>vim :%!xxd (-r) 查看二进制文件<br>
+file:查看文件类型<br>
+strip -s: 丢弃符号信息</p>
+<h2 id="生成可执行文件">生成可执行文件</h2>
+<p>符号解析：将每个符号引用于符号定义关联<br>
+relocation：根据ABI规范确定的memory mapping确定位置</p>
+<h2 id="elf详解">ELF详解</h2>
+<p>readelf -a</p>
+<h3 id="object-file-format">Object File Format</h3>
+<ul>
+<li>DOS - COM</li>
+<li>System V UNIX - COFF (Common Object File-Format)</li>
+<li>Windows - PE (Portable Executable)</li>
+<li>Linux - ELF (Executable and * Linkable Format)</li>
+</ul>
+<h3 id="ehdr-elf-header">Ehdr (ELF header)</h3>
+<p>readelf -h<br>
+32 - 52bit, 64 - 64bit</p>
+<ul>
+<li>e_indent:
+<ul>
+<li>4: EI_MAG 0x7F E L F</li>
+<li>1: EI_CLASS architecture 32/64</li>
+<li>1: EI_DATA data encoding LSB/MSB</li>
+<li>1: EI_VERSION ELF specification version</li>
+<li>1: EI_OSABI ABI</li>
+<li>1: EI_ABIVERSION</li>
+<li>1: EI_PAD reserved to be 0</li>
+<li>1: EI_NINDENT size of e_ident</li>
+</ul>
+</li>
+<li>e_type: object file type (ET_REL/EXEC/DYN/CORE)</li>
+<li>e_machine: EM_386/EM_MIPS/EM_X86_64</li>
+<li>e_version: file version</li>
+<li>e_entry</li>
+<li>e_phoff: program header table&rsquo;s file offset</li>
+<li>e_shoff: section header table&rsquo;s file offset</li>
+<li>e_flags</li>
+<li>e_ehsize: ELF header&rsquo;s size</li>
+<li>e_phentsize: one entry size of ph</li>
+<li>e_phnum: number of ph</li>
+<li>e_shentsize</li>
+<li>e_shnum</li>
+<li>e_shstrndx: the section header index of the entry associated with the section name string table.</li>
+</ul>
+<h3 id="shdr-section-header">shdr (Section header)</h3>
+<p>readelf -S<br>
+32 - 40bits</p>
+<ul>
+<li>sh_name: an index into shstrtab</li>
+<li>sh_type:
+<ul>
+<li>SHT_NULL: inactive</li>
+<li>SHT_PROGBITS: info defined by program, which format and meaning are determined solely by the program</li>
+<li>SHT_SYMTAB: symbol table</li>
+<li>SHT_STRTAB: string table</li>
+<li>SHT_RELA: relocation entries with explicit addends</li>
+<li>SHT_REL: relocation entries without explicit addends</li>
+<li>SHT_HASH: symbol hash table</li>
+<li>SHT_DYNAMIC</li>
+<li>SHT_NOTE</li>
+</ul>
+</li>
+<li>sh_flags: write, executable, alloc</li>
+<li>sh_addr: If this section appears in the memory image of a process, it is the address at which the section&rsquo;s first byte reside</li>
+<li>sh_offset: offset in the file</li>
+<li>sh_size</li>
+<li>sh_link</li>
+<li>sh_info</li>
+<li>sh_addralign</li>
+<li>sh_entsize</li>
+</ul>
+<h3 id="section">Section</h3>
+<ul>
+<li>.bss: uninitialized data (SHT_NOBITS)</li>
+<li>.comment: version control infomation</li>
+<li>.ctors: uninitialized pointers to C++ constructor functions (SHT_NOBITS)</li>
+<li>.data: initialized data</li>
+<li>.data1: same as above</li>
+<li>.debug: info for symbolic debugging</li>
+<li>.dtors: initialized pointers</li>
+<li>.dynamic</li>
+<li>.dynstr</li>
+<li>.dynsym</li>
+<li>.fini: executables instructions contributing to the process termination code</li>
+<li>.gnu.version \ .gnu.version_d \ .gnu.version_r</li>
+<li>.got: global offset table</li>
+<li>.hash: symbol has table</li>
+<li>.init</li>
+<li>.interp: program interpreter 包含动态连接器路径名</li>
+<li>.line: line number infomation for symbolic debugging</li>
+<li>.note \ .note.gnu.build-id \ .note.GNU-stack</li>
+<li>.plt procedure linkage table</li>
+<li>.relNAME holds relocation information</li>
+<li>.relaNAME</li>
+<li>.rodata \ .rodata1</li>
+<li>.shstrtab: holds section names</li>
+<li>.strtab: strings table</li>
+<li>.symtab: symbol table</li>
+<li>.text 0x08048000</li>
+</ul>
+<h3 id="symbol-tables">Symbol Tables</h3>
+<p>readelf -s</p>
+<ul>
+<li>st_name: index into the object file&rsquo;s str tab</li>
+<li>st_value: value or index into its section</li>
+<li>st_size</li>
+<li>st_info: type
+<ul>
+<li>BIND 4 low bits
+<ul>
+<li>STB_LOCAL</li>
+<li>STB_GLOBAL</li>
+<li>STB_WEAK</li>
+</ul>
+</li>
+<li>TYPE 4 high bits
+<ul>
+<li>NOTYPE</li>
+<li>OBJECT</li>
+<li>FUNC</li>
+<li>SECTION</li>
+<li>FILE</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>st_other: symbol visibility</li>
+<li>st_shndx: index into section header table</li>
+</ul>
+<h3 id="符号解析过程">符号解析过程</h3>
+<p>E,U,D<br>
+nm 查看符号表<br>
+ar -rv 存档文件
+gcc -static</p>
+<h3 id="phdr-program-header">Phdr (Program header)</h3>
+<p>readelf -l</p>
+<ul>
+<li>p_type:
+<ul>
+<li>PT_NULL</li>
+<li>PT_LOAD</li>
+<li>PT_DYNAMIC</li>
+<li>PT_INTERP</li>
+<li>PT_GNU_STACK</li>
+</ul>
+</li>
+<li>p_offset</li>
+<li>p_vaddr</li>
+<li>p_paddr: often invalid</li>
+<li>p_filesz: number of bytes in the file image of the segment</li>
+<li>p_memsz: in the memory</li>
+<li>p_flags: x,w,r</li>
+<li>p_align</li>
+</ul>
+<h3 id="relocation-entries">Relocation entries</h3>
+<p>relNAME:</p>
+<ul>
+<li>r_offset: the location at which to apply the relocation action</li>
+<li>r_info:
+<ul>
+<li>high 24: r_sym, the index into symtab</li>
+<li>low 8: r_type:
+<ul>
+<li>R_386_PC32: 重定位值 = 转移目标地址 - PC(next instruction) = ADDR(r_sym) - ((ADDR(.text) + r_offset) - init), init is the offset between the beginning of next instruction and the place need to be relocated</li>
+<li>R_386_32: 重定位值 = ADDR(r_sym)</li>
+<li>R_386_GOT32</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="memory-mapping">Memory Mapping</h3>
+<ul>
+<li>
+<p>.text 0x8048000</p>
+</li>
+<li>
+<p>run-time heap: after RW segment 4KB</p>
+</li>
+<li>
+<p>run-time user stack: 0xC0000000</p>
+</li>
+<li>
+<p>共享库： 0x40000000</p>
+<p>loader: UNIX - execve</p>
+</li>
+</ul>
+<h2 id="dynamic">Dynamic</h2>
+<ul>
+<li>shared object file</li>
+<li>dynamic linker:
+<ul>
+<li>UNIX - .so</li>
+<li>Windows - .dll (Dynamic Link Library)</li>
+</ul>
+</li>
+<li>共享库命名:
+<ul>
+<li>linker name</li>
+<li>soname: 主版本号</li>
+<li>real name: 完整版本号</li>
+</ul>
+</li>
+<li>生成共享库 gcc -shared -fPIC</li>
+<li>加载器 execve</li>
+<li>动态连接器 ld-linux.so</li>
+<li>Idd 模拟运行</li>
+</ul>
+<h3 id="运行时动态链接">运行时动态链接</h3>
+<p>gcc -rdynamic -ldl<br>
+&lt;dlfcn.h&gt;</p>
+<ul>
+<li><code>void *handle = dlopen(&quot;./mylib.so&quot;, RTLD_LAZY</code></li>
+<li><code>void (*myfunc1)() = dlsym(handle, &quot;myfunc1&quot;)</code></li>
+<li><code>myfunc1()</code></li>
+<li><code>dlclose(handle)</code></li>
+<li><code>fprintf(stderr, &quot;%s\n&quot;, dlerror())</code></li>
+</ul>
+<h3 id="pic-position-independent-code">PIC (Position-Independent Code)</h3>
+<ul>
+<li>模块内过程跳转 PC相对寻址</li>
+<li>模块内数据引用 __get_pc获得引用a的地址，基址加偏移量得到a的地址</li>
+<li>模块间数据引用 GOT (Global Offset Table)</li>
+<li>模块间过程跳转 朴素多3条；延迟绑定：
+<ul>
+<li>PLT (Procedure Linkage Table)</li>
+<li>PLT[0] 以GOT[2]为参数，调用GOT[1]</li>
+<li>PLT[1+i] 第i个外部参数的调用指令(3)</li>
+<li>GOT[0] .dynamic节首址</li>
+<li>GOT[1] 动态链接器标识信息</li>
+<li>GOT[2] 延迟绑定代码入口地址</li>
+<li>GOT[3+i] 第i个外部函数地址（一次访问PLT[0]后获得）</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

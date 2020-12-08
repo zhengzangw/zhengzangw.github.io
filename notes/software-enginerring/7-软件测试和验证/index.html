@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7-软件测试和验证 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#软件缺陷">软件缺陷</a></li>
+    <li><a href="#程序分析">程序分析</a></li>
+    <li><a href="#软件测试">软件测试</a>
+      <ul>
+        <li><a href="#黑盒方法">黑盒方法</a></li>
+        <li><a href="#白盒方法">白盒方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#软件验证">软件验证</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="软件缺陷">软件缺陷</h2>
+<ul>
+<li>Error: 人的错误行为导致软件中出现不希望或不可接受的内部状态</li>
+<li>Fault: 软件运行时出现不希望或不可接受的状态</li>
+<li>Failure: 软件运行时产生了不希望或不可接受的外部行为结果</li>
+<li>incident: 软件运行中出现了与失效类似的现象</li>
+<li>anomaly: 软件运行中出现了未预期的现象</li>
+<li>Vulnerability: 能被利用进行攻击的代码缺陷</li>
+<li>variance: 软件中于要求不一致处</li>
+<li>Defect (Bug): 存在于软件生存期中哪些不希望或不可接受的偏差
+<ul>
+<li>错误</li>
+<li>遗漏</li>
+<li>额外实现</li>
+</ul>
+</li>
+<li>因需求产生的缺陷最多</li>
+<li>在软件生存期中，缺陷发现和清除的越晚，需付出的代价越大</li>
+<li>技术手段
+<ul>
+<li>需求/设计
+<ul>
+<li>自然语言：评审</li>
+<li>半形式语言（UML）：评审+验证</li>
+<li>形式语言：自动验证</li>
+</ul>
+</li>
+<li>代码
+<ul>
+<li>评审</li>
+<li>分析：程序分析</li>
+<li>验证：模型检验、推理证明</li>
+</ul>
+</li>
+<li>可执行系统
+<ul>
+<li>测试：白盒、黑河、灰盒</li>
+<li>运行时验证</li>
+<li>监控/容错</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="程序分析">程序分析</h2>
+<ul>
+<li>静态分析与动态分析</li>
+<li>工具：Coverity, PCLint, Clang, Klocwork</li>
+</ul>
+<h2 id="软件测试">软件测试</h2>
+<ul>
+<li>测试活动：标识 - 设计 - 开发 - 执行 - 比较</li>
+</ul>
+<p><img src="/images/content/SE-testing.png" alt="软件测试分类"></p>
+<ul>
+<li>功能测试与非功能测试</li>
+</ul>
+<h3 id="黑盒方法">黑盒方法</h3>
+<ul>
+<li>将测试对象看做黑色盒子，只依据程序的需求规格说明书，检查程序的功能是否符合它的功能说明</li>
+<li>穷尽测试：黑盒测试中穷尽所有可能输入条件和输出条件（不可能）</li>
+</ul>
+<h4 id="等价类划分法">等价类划分法</h4>
+<ul>
+<li>将程序输入域划分为若干部分，每个子集中选取少数具有代表性的数据作为测试用例</li>
+<li>有效等价类：检验程序是否实现了规格说明中预先规定的功能和性能</li>
+<li>无效等价类：无意义的、不合理的输入数据所构成的集合</li>
+<li>标准等价类测试：不考虑无效数据值，测试用例使用每个等价类中的一个值</li>
+<li>健壮等价类测试：对无效输入，一个测试用例有一个无效值，其他值均取有效值
+<ul>
+<li>需要花费精力定义无效测试用例的期望输出</li>
+<li>对强类型的语言没有必要考虑无效的输入</li>
+</ul>
+</li>
+<li>测试用例设计
+<ul>
+<li>
+<p>构建等价类表</p>
+<p><img src="/images/content/SE-equal.png" alt="等价类表例"></p>
+</li>
+<li>
+<p>为每个等价类规定唯一编号</p>
+</li>
+<li>
+<p>设计一个新的测试用例，使它能够尽量覆盖尚未覆盖的有效等价类；直到全覆盖</p>
+</li>
+<li>
+<p>设计一个新的测试用例，使它仅覆盖一个尚未覆盖的无效等价类；直到全覆盖</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="边界值分析法">边界值分析法</h4>
+<ul>
+<li>在等价类的边界以及两侧的情况设计测试用例</li>
+</ul>
+<h4 id="因果图法">因果图法</h4>
+<ul>
+<li>方法步骤
+<ul>
+<li>根据说明书确定因（输入条件）和过（输出结果），画出因果图</li>
+<li>将因果图转换为判定表</li>
+<li>为判定表每一列设计一个测试用例</li>
+</ul>
+</li>
+</ul>
+<h3 id="白盒方法">白盒方法</h3>
+<ul>
+<li>循环度量</li>
+</ul>
+<h4 id="逻辑覆盖与基本路径方法">逻辑覆盖与基本路径方法</h4>
+<ul>
+<li>语句覆盖：选取足够多的测试数据，使被测试程序中每个语句至少执行一次</li>
+<li>判定覆盖：选取足够多的测试数据，使被测试程序中不仅每个语句至少执行一次，而且每个判定的每种可能的结果都至少执行一次</li>
+<li>条件覆盖：选取足够多的测试数据，使被测试程序中不 仅每个语句至少执行一次，而且每个判定表达式中的每个条件都取到各种可能的结果</li>
+<li>判定/条件覆盖：选取足够多的测试数据，使得判定表达式中的每个条件都取到各种可能的结果，而 且每个判定表达式也都取到各种可能的结果</li>
+<li>条件组合覆盖：选取足够多的测试数据，使得判定表达式中条件的各种可能组合都至少出现一次</li>
+<li>路径覆盖：选取足够多的测试数据，使得程序的每条可能路径都至少执行一次(若程序图中有环， 则每个环至少经过一次)</li>
+<li>路径选择
+<ul>
+<li>嵌套型：$n$ 个判定语句，$n+1$ 个测试用例</li>
+<li>连锁型：$n$ 个判定语句，$2^n$ 个测试用例</li>
+</ul>
+</li>
+<li>循环路径选择
+<ul>
+<li>简单循环</li>
+<li>连锁循环</li>
+<li>嵌套循环</li>
+<li>非结构循环</li>
+</ul>
+</li>
+</ul>
+<h2 id="软件验证">软件验证</h2>
+<ul>
+<li>形式化方法
+<ul>
+<li>规约</li>
+<li>验证：定理证明、模型检验</li>
+</ul>
+</li>
+<li>Kripke Model</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

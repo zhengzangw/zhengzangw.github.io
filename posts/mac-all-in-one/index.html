@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>All you need on Macos (2020) | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ide">IDE</a></li>
+    <li><a href="#virtural-machine">Virtural Machine</a></li>
+    <li><a href="#network">Network</a></li>
+    <li><a href="#terminal">Terminal</a></li>
+    <li><a href="#auxiliary-tools">Auxiliary Tools</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#textcolor">Text&amp;Color</a></li>
+    <li><a href="#image">Image</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#text">Text</a></li>
+    <li><a href="#slides">Slides</a></li>
+    <li><a href="#data">Data</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#reading">Reading</a></li>
+    <li><a href="#management">Management</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#social-network">Social Network</a></li>
+    <li><a href="#game">Game</a></li>
+    <li><a href="#video-1">Video</a></li>
+    <li><a href="#music-1">Music</a></li>
+    <li><a href="#surfing">Surfing</a></li>
+    <li><a href="#download">Download</a></li>
+    <li><a href="#english">English</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#zip">Zip</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#mobile">Mobile</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#brew">Brew</a></li>
+    <li><a href="#native">Native</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><p>笔者 Mac 也用了三年，一直在寻找着适合 Mac 的配置、软件。今天准备第三次重装电脑（第一次是装驱动坏了返厂重修，第二次和这次一样，来个大整理）。希望这次重装后，能达到以下效果：</p>
+<ul>
+<li>进一步加强文件管理，多用软件管理而非原生目录</li>
+<li>奥卡姆剃刀：如无必要，勿增实体</li>
+<li>在电脑上完成一整套学习和工作的工作流（Workflow）</li>
+<li>配置可复现化（降低 macos 新系统配置代价）</li>
+</ul>
+<p>希望这次重装后，我的整个工作环境能够稳定下来。本博客希望传递的知识是</p>
+<ul>
+<li>让你知道，关于 Mac 你还有不知道的东西</li>
+</ul>
+<p>而不是</p>
+<ul>
+<li>让你知道，关于 Mac 你知道的东西怎么做</li>
+</ul>
+<p>在开始重装前，先介绍一下我为 mac 配的外设和硬件：</p>
+<ul>
+<li>扩展坞/转接口：注意如果是金属的可能会影响 wifi 信号</li>
+<li>键盘 + 屏幕保护膜：后悔买迟了</li>
+<li>背面贴纸：没贴</li>
+<li>magic mouse：不怎么用，主要还是触控板</li>
+<li>1T 移动固态：电脑 500G 也不够用了。机械暂时不知道放哪合适</li>
+</ul>
+<p>我们以重装的流程，组织介绍的顺序。在备份资料后，我们首先要做一下几部</p>
+<ul>
+<li>保存主目录下的 <code>.</code> 文件（GNU stow），以方便快捷导出</li>
+<li>记录 brew 下载的应用</li>
+</ul>
+<h1 id="developers-tools">Developer&rsquo;s Tools</h1>
+<h2 id="ide">IDE</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Xcode
+vscode: Main Code Editor
+Anaconda: Python
+PyCharm CE: Python
+Sagemath: sage
+IntelliJ IDEA CE: Java
+Android Studio
+MATLAB R2019a: Matlab
+script editor: (native) Apple Script
+Qt Series: Qt
+
+<span style="color:#f92672">- CocosCreator: 游戏引擎，基于 cocos
+</span><span style="color:#f92672">- Orange3: 快速测试 ML 算法
+</span><span style="color:#f92672">- Ecllipse: Java, 选择 IntelliJ 替代
+</span><span style="color:#f92672">- CLion: C++, 选择终端命令执行
+</span><span style="color:#f92672">- Visual Studio: C#
+</span><span style="color:#f92672">- CodeRunner: multi language
+</span><span style="color:#f92672">- DataGrip: SQL
+</span><span style="color:#f92672">- Mathematica: Mathematica
+</span></code></pre></div><h2 id="virtural-machine">Virtural Machine</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">virtualbox
+docker
+
+<span style="color:#f92672">- Parallels Desktop
+</span></code></pre></div><h2 id="network">Network</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">wireshark: catch packages
+
+<span style="color:#f92672">- Charles: catch packages
+</span><span style="color:#f92672">- WiFi Explorer: Analyse Wifi
+</span><span style="color:#f92672">- Microsoft Remote Desktop
+</span></code></pre></div><h2 id="terminal">Terminal</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">terminal
+iTerm
+</code></pre></div><h2 id="auxiliary-tools">Auxiliary Tools</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Dash: documents
+sequal pro: SQL
+<span style="color:#a6e22e">+ Dropdmg
+</span><span style="color:#a6e22e">+ VNC Viewer
+</span><span style="color:#a6e22e">+ VNC Server
+</span><span style="color:#a6e22e"></span>
+<span style="color:#f92672">- Gitkraken: github
+</span><span style="color:#f92672">- SPSS: for data analysis
+</span><span style="color:#f92672">- MAMP PRO: mysql&amp;php setup
+</span><span style="color:#f92672">- XQuartz: Necessary for desktop remote link
+</span></code></pre></div><h1 id="designers-tools">Designer&rsquo;s Tools</h1>
+<h2 id="textcolor">Text&amp;Color</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">colorwell: color
+HelloFont: font Management
+Font Books
+
+<span style="color:#f92672">- RightFont: manage font
+</span></code></pre></div><h2 id="image">Image</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Photoshop: Picture Design
+MediBangPaintPro: Draw
+Photos
+Wix Photo Albums
+snipaste: Screenshot
+paparazzi!: Webshot
+<span style="color:#a6e22e">+ Magicavoxel: 3D
+</span><span style="color:#a6e22e"></span>
+<span style="color:#f92672">- Polarr Photo Edit: easy photo edit
+</span><span style="color:#f92672">- ColorSnapper2: color
+</span><span style="color:#f92672">- xScope: icon design
+</span><span style="color:#f92672">- annotate: for screenshot
+</span><span style="color:#f92672">- jietu: for screenshot
+</span><span style="color:#f92672">- GIPHY capture: for screenshot
+</span><span style="color:#f92672">- LICEcap: for screen recording gif
+</span></code></pre></div><h2 id="music">Music</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Logic Pro X: Music Design
+XLD: Music Conversion
+<span style="color:#a6e22e">+ Sibelius: 打谱
+</span><span style="color:#a6e22e"></span>
+<span style="color:#f92672">- VOCOLOID 5 Editor: Music Design
+</span><span style="color:#f92672">- Audition
+</span></code></pre></div><h2 id="video">Video</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#a6e22e">+ Adobe Premiere Pro 2020
+</span><span style="color:#a6e22e"></span>Total Video Converter Pro: Convertion
+GIF Brewery
+Arctime Pro: Caption
+kap: Screenshot
+screenflow: Screen recording and editing
+
+<span style="color:#f92672">- Gifrocket: for gif generation
+</span><span style="color:#f92672">- After Effects
+</span></code></pre></div><h2 id="text">Text</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Words
+Pages
+OmniGraffle: mind map
+Mactex(TexShop, BibDesk, LaTeXiT, Tex Live Utility
+TextEdit
+<span style="color:#a6e22e">+ iText: OCR
+</span><span style="color:#a6e22e"></span>
+<span style="color:#f92672">- Mweb: for markdown
+</span><span style="color:#f92672">- Writer Pro: for plain text
+</span><span style="color:#f92672">- Evernote: for note
+</span><span style="color:#f92672">- UltraEdit: for 16bit edit
+</span></code></pre></div><h2 id="slides">Slides</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">PowerPoint
+<span style="color:#a6e22e">+ Deckset
+</span><span style="color:#a6e22e"></span>
+<span style="color:#f92672">- Keynote
+</span></code></pre></div><h2 id="data">Data</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Excel
+
+<span style="color:#f92672">- Number
+</span></code></pre></div><h1 id="readers-tools">Reader&rsquo;s Tools</h1>
+<h2 id="reading">Reading</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">PDF Experts
+CAJ Cloud Viewer: CAJ
+<span style="color:#a6e22e">+ CHM Viewer Star
+</span><span style="color:#a6e22e"></span>
+<span style="color:#f92672">- Adobe Acrobat
+</span><span style="color:#f92672">- Kaleidoscope: for file diff
+</span><span style="color:#f92672">- CHM Reader: for chm
+</span></code></pre></div><h2 id="management">Management</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#a6e22e">+ QSpace
+</span><span style="color:#a6e22e">+ DEVONthink 3: 准备卸载
+</span><span style="color:#a6e22e"></span>Papers
+Calibre
+jabref
+</code></pre></div><h1 id="routine">Routine</h1>
+<h2 id="social-network">Social Network</h2>
+<p><a href="https://github.com/TKkk-iOSer/QQPlugin-macOS">QQ 助手</a>
+<a href="https://github.com/TKkk-iOSer/wechat-alfred-workflow">微信助手</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">QQ
+WeChat
+Reeder
+Mail
+zoom.us
+Messages
+<span style="color:#a6e22e">+ Skype
+</span><span style="color:#a6e22e">+ Telegram
+</span><span style="color:#a6e22e">+ 腾讯会议
+</span><span style="color:#a6e22e">+ Gitter
+</span><span style="color:#a6e22e">+ Slack
+</span><span style="color:#a6e22e"></span>
+<span style="color:#f92672">- Tweetbot: for tweet
+</span><span style="color:#f92672">- AliWangwang
+</span><span style="color:#f92672">- Maipo
+</span></code></pre></div><h2 id="game">Game</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">steam
+UU booster: for steam
+<span style="color:#a6e22e">+ Google Earth Pro
+</span><span style="color:#a6e22e"></span>Futu bull: stock
+Electrum
+cheatengine
+</code></pre></div><h2 id="video-1">Video</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">ivideo: video player
+Quicktime Player
+IINA: video player
+
+<span style="color:#f92672">- VLC: video player
+</span><span style="color:#f92672">- youku
+</span><span style="color:#f92672">- aiqiyi
+</span><span style="color:#f92672">- 在线视频播放器: for TV
+</span></code></pre></div><h2 id="music-1">Music</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">NeteaseMusic
+QQ Music
+Music
+Noizio
+Lyrics
+</code></pre></div><h2 id="surfing">Surfing</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Chrome
+
+<span style="color:#f92672">- Safari
+</span><span style="color:#f92672">- Firefox
+</span></code></pre></div><h2 id="download">Download</h2>
+<p><a href="https://github.com/CodeTips/BaiduNetdiskPlugin-macOS">baidu disk plugin</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Transmit
+Transmission
+Proxyee Down
+Baidu Disk
+one drive
+Dropbox
+Downie 3
+Sitesucker
+
+<span style="color:#f92672">- FileZilla: for ftp
+</span><span style="color:#f92672">- cyberduck: for ftp
+</span><span style="color:#f92672">- uTorrent
+</span><span style="color:#f92672">- Downie 3: Download video
+</span><span style="color:#f92672">- xiaotong: 城通云盘
+</span><span style="color:#f92672">- Folx
+</span><span style="color:#f92672">- Aria2GUI
+</span><span style="color:#f92672">- WebTorrent: Quick view for BT
+</span></code></pre></div><h2 id="english">English</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">TPO
+GPO
+
+<span style="color:#f92672">- EuDic: English
+</span></code></pre></div><h2 id="schedule">Schedule</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Reminder
+Notes
+Stickers
+Calenders
+
+<span style="color:#f92672">- OmniFocus: GTD
+</span><span style="color:#f92672">- Fantastical 2
+</span></code></pre></div><h2 id="zip">Zip</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">betterzip: (un)archiver
+The Unarchiver
+</code></pre></div><h1 id="plugins">Plugins</h1>
+<p>按推荐程度排序</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Alfred 4
+Paste
+1Password 7
+Bartender 3
+Mailbutler
+hyperdock: preview of apps
+V2rayU
+Spectacle: windows layout
+NewFileMenu
+Mounty
+<span style="color:#a6e22e">+ Boom 3D
+</span><span style="color:#a6e22e"></span>Irvue: change desktop
+FreeMyDesktop
+EasyConnect
+<span style="color:#a6e22e">+ AppCleaner
+</span><span style="color:#a6e22e">+ Timer
+</span><span style="color:#a6e22e"></span>CheetSheet: shortcut reminder
+Flux: bright adjustment
+<span style="color:#a6e22e">+ Yoink
+</span><span style="color:#a6e22e">+ PixelScheduler
+</span><span style="color:#a6e22e"></span>smcFanControl
+<span style="color:#a6e22e">+ Karabiner: 拳皇改键
+</span><span style="color:#a6e22e"></span>gfxCardStatus: manage graphics card
+Background Music
+Pock
+<span style="color:#a6e22e">+ context
+</span><span style="color:#a6e22e"></span>popclip
+V2rayX
+ShandowsocksX-NG-R8
+MurGaa Recorder
+Creative Cloud
+Adobe zii
+
+<span style="color:#f92672">- caffeine
+</span><span style="color:#f92672">- unetbooter: make boot disk
+</span><span style="color:#f92672">- Fuse
+</span><span style="color:#f92672">- superDuper!: for backup
+</span><span style="color:#f92672">- boom: Enlarge voice
+</span><span style="color:#f92672">- iStat Menus: System status
+</span><span style="color:#f92672">- Xee: View picture
+</span><span style="color:#f92672">- minutes: Countdown
+</span><span style="color:#f92672">- Multitimer: Countdown
+</span><span style="color:#f92672">- Tickeys: Sound
+</span><span style="color:#f92672">- Gemini 2: Delete duplication
+</span><span style="color:#f92672">- Shandowsocks R
+</span><span style="color:#f92672">- Manico
+</span><span style="color:#f92672">- Moom: windows
+</span><span style="color:#f92672">- youdaodict: interact with alfred3
+</span><span style="color:#f92672">- InsomniaX: Disable sleep
+</span><span style="color:#f92672">- HazeOver: Highlight current window
+</span><span style="color:#f92672">- Total Finder: plugins for finder
+</span><span style="color:#f92672">- RescueTime: Record
+</span><span style="color:#f92672">- BetterTouchTool: TrackPad
+</span></code></pre></div><h2 id="mobile">Mobile</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">duet
+airserver
+remote for mac
+splashtop streamer
+air video server HD
+Android File Transfer
+balenaEtcher: make boot disk
+
+<span style="color:#f92672">- IMazing: Substitute iTunes
+</span><span style="color:#f92672">- Reflector 2: make mac apple TV
+</span><span style="color:#f92672">- 1Keyboard: make mac remote keyboard for iphone
+</span></code></pre></div><h1 id="shell">Shell</h1>
+<h2 id="brew">Brew</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">cscope
+ctags
+curl
+conda
+<span style="color:#a6e22e">+ ffmpeg
+</span><span style="color:#a6e22e"></span>fzf
+graphviz
+imagemagick
+macvim
+mas
+node
+pandoc
+pdftk
+pstree
+tesseract
+tldr
+tmux
+tree
+<span style="color:#a6e22e">+ webkit2png
+</span><span style="color:#a6e22e"></span>wget
+yarn
+<span style="color:#a6e22e">+ you-get
+</span><span style="color:#a6e22e"></span>zsh
+</code></pre></div><h2 id="native">Native</h2>
+<h1 id="drive">Drive</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">Wacom
+Canon Utility
+Epson Remote Print Utility
+OpenGL Extension Viewer
+</code></pre></div></main>
+        </div>
+
+    </div>
+</body></html>

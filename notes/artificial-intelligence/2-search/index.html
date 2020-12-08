@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2-搜索 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#无信息搜索">无信息搜索</a></li>
+    <li><a href="#启发式搜索">启发式搜索</a>
+      <ul>
+        <li><a href="#贪婪优先搜索">贪婪优先搜索</a></li>
+        <li><a href="#a-搜索">A$^*$ 搜索</a></li>
+        <li><a href="#ant-system">Ant System</a></li>
+      </ul>
+    </li>
+    <li><a href="#局部搜索">局部搜索</a>
+      <ul>
+        <li><a href="#爬山法贪婪局部搜索">爬山法（贪婪局部搜索）</a></li>
+        <li><a href="#模拟退火搜索">模拟退火搜索</a></li>
+        <li><a href="#局部束搜索">局部束搜索</a></li>
+        <li><a href="#遗传算法-genetic-algorithm">遗传算法 (genetic algorithm)</a></li>
+        <li><a href="#tabu-search">Tabu Search</a></li>
+      </ul>
+    </li>
+    <li><a href="#不确定部分观测搜索">不确定/部分观测搜索</a></li>
+    <li><a href="#对抗搜索零和博弈">对抗搜索（零和博弈）</a>
+      <ul>
+        <li><a href="#极小极大算法">极小极大算法</a></li>
+        <li><a href="#monte-caro-树搜索">Monte Caro 树搜索</a></li>
+      </ul>
+    </li>
+    <li><a href="#约束满足问题csp">约束满足问题(CSP)</a></li>
+    <li><a href="#规划">规划</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="无信息搜索">无信息搜索</h2>
+<ul>
+<li>问题定义：初始状态，可能行动，转移模型，目标测试，路径耗散</li>
+<li>参数
+<ul>
+<li>分支因子 $d$：每个状态有 $d$ 个后继</li>
+<li>最优解代价 $C^*$</li>
+<li>每个行动代价至少为 $\epsilon$</li>
+<li>任一结点最大深度</li>
+</ul>
+</li>
+<li>性能度量
+<ul>
+<li>完备性：有解则一定能找到</li>
+<li>最优性：能找到最优解</li>
+<li>时间复杂度</li>
+<li>空间复杂度</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>标准</th>
+<th>宽度优先</th>
+<th>一致代价</th>
+<th>深度优先</th>
+<th>深度受限</th>
+<th>迭代加深</th>
+<th>双向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完备性</td>
+<td>$b&lt;\infty$</td>
+<td>$b&lt;\infty$</td>
+<td>No</td>
+<td>No</td>
+<td>$b&lt;\infty$</td>
+<td>$b&lt;\infty$</td>
+</tr>
+<tr>
+<td>最优性</td>
+<td>单步代价相同</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>双向为宽度优先</td>
+</tr>
+<tr>
+<td>时间复杂度</td>
+<td>$O(b^d)$</td>
+<td>$O(n^{1+\frac{C^*}{\epsilon}})$</td>
+<td>$O(b^m)$</td>
+<td>$O(b^l)$</td>
+<td>$O(b^d)$</td>
+<td>$O(b^{d/2})$</td>
+</tr>
+<tr>
+<td>空间复杂度</td>
+<td>$O(b^d)$</td>
+<td>$O(n^{1+\frac{C^*}{\epsilon}})$</td>
+<td>$O(bm)$</td>
+<td>$O(bl)$</td>
+<td>$O(bd)$</td>
+<td>$O(b^{d/2})$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="启发式搜索">启发式搜索</h2>
+<ul>
+<li>a heuristic is a robust technique for the design of randomized algorithms for Optimziation Problems
+<ul>
+<li>not able to guarantee the efficiency and the qulity of the computed feasible solution</li>
+</ul>
+</li>
+<li>评价函数: $f(n)$</li>
+<li>已花费的代价：$g(n)$</li>
+<li>启发函数：$h(n)=$结点$n$到目标结点最小代价的估计值</li>
+</ul>
+<h3 id="贪婪优先搜索">贪婪优先搜索</h3>
+<p>$f(n)=h(n)$</p>
+<h3 id="a-搜索">A$^*$ 搜索</h3>
+<p>$f(n)=g(n)+h(n)$</p>
+<ul>
+<li>最优性条件
+<ul>
+<li>树搜索：可采纳启发式，$h(n)$ 小于实际代价</li>
+<li>图搜索：一致性，$h(n)\leq c(n,a,n')+h(n')$
+<ul>
+<li>一致的启发式都是可采纳的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内存占用大：保存所有结点
+<ul>
+<li>IDA$^*$ 搜索：截断值是 $f$</li>
+<li>RBFS 递归最佳优先搜索：记录从当前结点的祖先可得到的最佳的可选路径的 $f$值，如果当前结点超过了这个限制，递归将回到可选路径上</li>
+<li>SMA$^*$：内存耗尽时，删掉当前 $f$ 最差结点，将其值回填到父节点</li>
+</ul>
+</li>
+</ul>
+<h3 id="ant-system">Ant System</h3>
+<ul>
+<li>heuristic value $\eta(s_i,s_j)$</li>
+<li>pheromone $\tau(s_i,s_j)$
+<ul>
+<li>update
+<ul>
+<li>for all edge: $\tau=(1-\rho)\tau$</li>
+<li>then for edge path: $\tau += f(\text{cost})$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>agent(ant)</li>
+<li>path selection: $p_{ij}=\frac{\tau_{ij}^\delta\eta_{ij}^\beta}{\sum_k\tau_{ik}^\delta\eta_{ik}^\beta}$</li>
+</ul>
+<h2 id="局部搜索">局部搜索</h2>
+<h3 id="爬山法贪婪局部搜索">爬山法（贪婪局部搜索）</h3>
+<ul>
+<li>扩展该结点及其子节点，评估</li>
+<li>选择局部最优子节点</li>
+<li>缺点
+<ul>
+<li>局部极大值</li>
+<li>山脊</li>
+<li>高原</li>
+</ul>
+</li>
+<li>随机爬山法</li>
+<li>随机重启爬山</li>
+<li>连续空间
+<ul>
+<li>梯度下降</li>
+<li>Newton-Raphson 方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="模拟退火搜索">模拟退火搜索</h3>
+<ul>
+<li>local search scheme
+<ul>
+<li>multistart local search</li>
+<li>threshold local search</li>
+</ul>
+</li>
+<li>Difference with LSS: may accept a deterioration with $e^{-\frac{E(q)-E(s)}{k_B*T}}$
+<ul>
+<li>Boltzmann distribution</li>
+</ul>
+</li>
+<li>free variable
+<ul>
+<li>neighborhood choice</li>
+<li>cooling schedule
+<ul>
+<li>initial temperature $T$</li>
+<li>temperature reduction function $f(T,t)$
+<ul>
+<li>$T:=rT$</li>
+<li>$T:=\frac{T}{\log_2(k+2)}$</li>
+</ul>
+</li>
+<li>termination condition</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>asymptotic convergence
+<ul>
+<li>$M(x)$ is reachable from $\forall x\in M(x)$</li>
+<li>$T$ is at least as large as the depth of the deepest local, nonglobal minimum</li>
+</ul>
+</li>
+<li>Avoid following structural properties
+<ul>
+<li>spiky structure</li>
+<li>deep trough</li>
+<li>large plateau-like areas</li>
+</ul>
+</li>
+</ul>
+<h3 id="局部束搜索">局部束搜索</h3>
+<p>从整个后继列表中选择 $k$ 个最佳后继</p>
+<ul>
+<li>随机束搜索：依概率选择 $k$ 个后继</li>
+</ul>
+<h3 id="遗传算法-genetic-algorithm">遗传算法 (genetic algorithm)</h3>
+<ul>
+<li>算法
+<ul>
+<li>评估种群 $P(t)$ 中每个染色体的适应度</li>
+<li>根据适应度函数选择部分染色体</li>
+<li>产生后代并替换</li>
+</ul>
+</li>
+<li>染色体设计
+<ul>
+<li>01 串</li>
+</ul>
+</li>
+<li>适应函数设计 (fitness)：$f(h)$
+<ul>
+<li>值越高，解越优</li>
+</ul>
+</li>
+<li>基于适应度函数的选择
+<ul>
+<li>轮盘赌选择：与适应度成比例</li>
+<li>锦标赛选择：按预定义概率 $p$ 选择较大适应度假设</li>
+<li>排序选择</li>
+</ul>
+</li>
+<li>遗传算子 (GA operator)：对从当前群体中选择的染色体进行重组
+<ul>
+<li>交叉：选择两个候选个体，分解一个个体，然后交换分量形成候选个体</li>
+<li>变异：选择一个候选个体，随机选择一位取反</li>
+</ul>
+</li>
+<li>模式定理(John Holland 1970s)：Short schemata with large fitness will increase their representation in the population during the evolution
+<ul>
+<li>模式：0,1,#组成的任意串，代表一个 01 串集合</li>
+<li>轮盘赌选择：$P(h)=\frac{f(h)}{n\overline{f}(t)}$</li>
+<li>$P(h\in s)=\frac{\hat u(s,t)}{n\overline{f}(t)}m(s,t)$
+<ul>
+<li>$m(s,t)$: 第 $t$ 代种群中模式 $s$ 的实例数量</li>
+<li>$\hat u(s,t)$: 第 $t$ 代中模式 $s$ 的染色体平均适应度</li>
+</ul>
+</li>
+<li>模式定理 $E(m(s,t+1))\geq\frac{\hat u(s,t)}{\overline{f}(t)}m(s,t)(1-p_c\frac{d(s)}{l-1})(1-p_m)^{o(s)}$
+<ul>
+<li>$p_c$：单点交叉概率</li>
+<li>$p_m$：变异概率</li>
+<li>$o(H)$：阶，模式中确定位置的个数</li>
+<li>$d(H)$: 长度，模式中第一个确定位置到最后一个确定位置的距离</li>
+<li>$l$: 染色体长度</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="tabu-search">Tabu Search</h3>
+<ul>
+<li>forbid any feasible solution in the last k steps</li>
+<li>or require local transformations do not always change the same parts of the representation</li>
+<li>or modify the cost function</li>
+</ul>
+<h2 id="不确定部分观测搜索">不确定/部分观测搜索</h2>
+<p>解为应急规划（策略），即包含条件语句</p>
+<ul>
+<li>不确定动作搜索
+<ul>
+<li>转移模型输出具有不确定性</li>
+<li>与或搜索树
+<ul>
+<li>确定条件下：或结点</li>
+<li>与结点：包含所有可能结果</li>
+<li>如果状态在路径中出现，则此路径无非循环解</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无传感问题（相容问题）
+<ul>
+<li>信念转态空间搜索</li>
+</ul>
+</li>
+<li>部分可感知问题
+<ul>
+<li>与或树搜索</li>
+</ul>
+</li>
+<li>联机搜索
+<ul>
+<li>竞争比：实际开销与最优解开销</li>
+<li>存在不可逆情况</li>
+<li>无法在状态间随意传送</li>
+<li>ONLINE-DFS-Agent</li>
+<li>Learning Real-time A$^<em>$ (LRTA$^</em>$)
+<ul>
+<li>选择 $\min c(s,a,s')+H(s')$</li>
+<li>更新 $H(s)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="对抗搜索零和博弈">对抗搜索（零和博弈）</h2>
+<h3 id="极小极大算法">极小极大算法</h3>
+<p>$$
+\text{MINIMAX}(s)= \begin{cases}
+\text{UTILITY}(s) &amp; s\text{ Terminated}\newline
+\max_{a\in A(s)} \text{MINIMAX}(\text{RESULT}(s,a)) &amp; s\text{ is MAX}\newline
+\min_{a\in A(s)} \text{MINIMAX}(\text{RESULT}(s,a)) &amp; s\text{ is MIN}
+\end{cases}
+$$</p>
+<ul>
+<li>$\alpha-\beta$ 剪枝
+<ul>
+<li>$\alpha$= 到目前为止路径上发现的 MAX 的最佳最大选择</li>
+<li>$\beta$= 到目前为止路径上发现的 MIN 的最佳最小选择</li>
+<li>MAX 结点中，$v\geq\beta$ 则剪枝</li>
+<li>MIN 结点中，$v\leq\alpha$ 则剪枝</li>
+<li>$\beta\leq v\leq\alpha$</li>
+</ul>
+</li>
+<li>行棋排序
+<ul>
+<li>使用较好的行棋</li>
+<li>绝招：最好行棋，绝招启发式</li>
+<li>换位：不同棋序相同状态</li>
+<li>换位表：棋局的哈希表</li>
+</ul>
+</li>
+<li>前向剪枝：在某个结点上直接剪枝一些子节点
+<ul>
+<li>柱剪枝：只考虑最好的前几种方案</li>
+<li>PROBCUT 算法</li>
+</ul>
+</li>
+<li>查表优化</li>
+<li>实时决策
+<ul>
+<li>计算性局限</li>
+<li>评估函数：适用于静态棋局</li>
+<li>静态搜索：扩展非静态棋局到静态棋局</li>
+<li>地平线效应：对手招数使我方严重损失且无法避免</li>
+<li>单步延伸：对于某些招无视深度限制延伸</li>
+</ul>
+</li>
+<li>随机博弈</li>
+</ul>
+<p>$$
+\text{ExpectedMINIMAX}(s)=\begin{cases}
+\text{UTILITY}(s) &amp; s\text{ is Terminated}\newline
+\max_a\text{ExpectedMINIMAX}(\text{Result}(s,a)) &amp; s\text{ is MAX}\newline
+\min_a\text{\text{ExpectedMINIMAX}}(\text{Result}(s,a)) &amp; s\text{ is MIN}\newline
+\sum_rP(r)\text{ExpectedMINIMAX}(\text{Result}(s,r)) &amp; s\text{ is CHANCE}
+\end{cases}
+$$</p>
+<ul>
+<li>部分可观测博弈</li>
+</ul>
+<h3 id="monte-caro-树搜索">Monte Caro 树搜索</h3>
+<ul>
+<li>随机抽样+假设检验+树搜索</li>
+<li>解决数空间太大的问题</li>
+<li>预测值：节点上有两个数字
+<ul>
+<li>该子树上获胜次数</li>
+<li>该子树上模拟次数</li>
+</ul>
+</li>
+<li>UCT 策略：平衡 Exploration 和 Exploitation
+<ul>
+<li>UCT(node)=$\frac{W(n)}{N(n)}+(\frac{\ln(N(\text{parent node})}{N(n)})^{\frac{1}{c}}$</li>
+<li>$N(n)$: 结点被访问次数</li>
+<li>$W(n)$: 仿真获胜次数</li>
+</ul>
+</li>
+<li>算法
+<ul>
+<li>SELECTION：利用树策略选择节点</li>
+<li>EXPANSION: 添加一个 ? 节点</li>
+<li>SIMULATION(playout/rollout): 执行操作到结束状态或到阈值，基于模拟结果建立新节点值</li>
+<li>BACKPROPAGATION: 利用新节点值更新之前的树</li>
+</ul>
+</li>
+</ul>
+<h2 id="约束满足问题csp">约束满足问题(CSP)</h2>
+<ul>
+<li>定义
+<ul>
+<li>$X$: 变量集合</li>
+<li>$D$: 值域集合，离散/连续</li>
+<li>$C$: 约束集合，单元/多元/全局约束</li>
+<li>解：$X$的赋值
+<ul>
+<li>相容性：不违反约束</li>
+<li>完整赋值：每个变量都赋值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>约束传播：使用约束缩小一个变量的合法取值范围</li>
+<li>局部相容性
+<ul>
+<li>结点相容：满足所有一元约束</li>
+<li>弧相容：满足所有二元约束
+<ul>
+<li>AC-3 算法</li>
+</ul>
+</li>
+<li>路径相容：两个变量对另一个变量相容，则每个相容赋值，另一变量可以使其与两个中任一都相容
+<ul>
+<li>PC-2 算法(1977)</li>
+</ul>
+</li>
+<li>$k$-相容：对于任何 $k-1$ 个变量的相容赋值，第 $k$ 个变量总能被赋予一个和前 $k-1$ 个变量相容的值
+<ul>
+<li>建立 $k$ 相容的算法最坏情况需要 $n$ 的指数级时间</li>
+</ul>
+</li>
+<li>全局约束
+<ul>
+<li>Alldiff</li>
+<li>Atmost</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CSP 回溯搜索：搜索中若不相容则回溯
+<ul>
+<li>变量取值
+<ul>
+<li>最少剩余值启发式（MRV）</li>
+<li>度启发式</li>
+<li>最少约束启发式</li>
+</ul>
+</li>
+<li>运用推理
+<ul>
+<li>前向检验：对每个与刚赋值的变量相连的变量，删去与破坏弧相容的值</li>
+<li>维护弧相容(MAC)：从相连变量调用 AC-3</li>
+</ul>
+</li>
+<li>回溯策略
+<ul>
+<li>时序回溯</li>
+<li>冲突集回溯</li>
+<li>冲突指导的回跳
+<ul>
+<li>约束学习</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CSP 局部搜索
+<ul>
+<li>最少冲突启发</li>
+</ul>
+</li>
+</ul>
+<h2 id="规划">规划</h2>
+<p>设计一个动作规划以达成目的</p>
+<ul>
+<li>PDDL(planning domain definition language)
+<ul>
+<li>流：基元的（无变量的），无函数的原子</li>
+<li>状态：流的合取</li>
+<li>初始状态：Init</li>
+<li>目标状态：Goal</li>
+<li>动作：Action(Name(x,y),PRECOND:,EFFECT:)
+<ul>
+<li>$a\in\text{Action}(s)\iff s\vDash\text{Precond}(a)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>规划搜索算法
+<ul>
+<li>前向状态空间搜索</li>
+<li>后向相关状态搜索</li>
+<li>启发式
+<ul>
+<li>规划图算法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>资源约束：Resources, Use</li>
+<li>时间约束：偏序关系，持续时间
+<ul>
+<li>关键路径</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

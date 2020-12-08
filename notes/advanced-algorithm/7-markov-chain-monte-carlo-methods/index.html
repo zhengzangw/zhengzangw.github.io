@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7. Markov Chain Monte Carlo Methods | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#monte-carlo-method">Monte Carlo Method</a>
+      <ul>
+        <li><a href="#counting-dnf-solutions">Counting DNF Solutions</a></li>
+      </ul>
+    </li>
+    <li><a href="#markov-chain">Markov Chain</a>
+      <ul>
+        <li><a href="#fundamental-theorem-of-markov-chain">Fundamental Theorem of Markov Chain</a></li>
+        <li><a href="#random-walk">Random Walk</a></li>
+        <li><a href="#pagerank">PageRank</a></li>
+        <li><a href="#reversibility">Reversibility</a></li>
+      </ul>
+    </li>
+    <li><a href="#mcmc">MCMC</a>
+      <ul>
+        <li><a href="#metropolis-algorithm">Metropolis Algorithm</a></li>
+        <li><a href="#gibbs-sampling">Gibbs Sampling</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="monte-carlo-method">Monte Carlo Method</h2>
+<ul>
+<li>(P)Problem
+<ul>
+<li>Universe $U$, subset $S\subseteq U$ where $\rho=\frac{|S|}{|U|}$</li>
+<li>Assume a uniform sampler for elements</li>
+<li>Estimate $Z=|S|$</li>
+</ul>
+</li>
+<li>Monte Carlo Method (for estimating)
+<ul>
+<li>Sample $X_1,X_2,\cdots,X_N$ uniformly and independently from $U$</li>
+<li>$Y_i=[X_i\in S]$</li>
+<li>counting: $\hat Z=\frac{|U|}{N}\sum_{i=1}^NY_i$</li>
+</ul>
+</li>
+<li>$\epsilon$-approx estimator: $(1-\epsilon)Z\leq\hat Z\leq(1+\epsilon)Z$</li>
+<li>Estimator Theorem(Naive): $N\geq\frac{4}{\epsilon^2\rho}\ln\frac{2}{\delta}=\Theta(\frac{1}{\epsilon^2\rho}\ln\frac{1}{\delta})\Rightarrow P(\hat Z$ is $\epsilon$-approx of $|S|)\geq 1-\delta$</li>
+<li>Monte Carlo Method (for sampling)
+<ul>
+<li>rejection sampling: inefficient if $\rho$ is small</li>
+</ul>
+</li>
+</ul>
+<h3 id="counting-dnf-solutions">Counting DNF Solutions</h3>
+<ul>
+<li>(P)Counting DNF Solutions: #$\text{P}$-hard
+<ul>
+<li>Input: DNF formula $\phi:{T,F}^n\rightarrow{T,F},U={T,F}^n$</li>
+<li>Output: $Z=|\phi^{-1}(T)|,S=\phi^{-1}(T)$</li>
+<li>$\rho=\frac{|S|}{|U|}$ can be exponentially small</li>
+</ul>
+</li>
+<li>(P)Union of Sets
+<ul>
+<li>Input: $m$ sets $S_1,S_2,\cdots,S_m$, estimate $|\bigcup_{i=1}^mS_i|$</li>
+<li>Output: $|\bigcup_{i=1}^mS_i|$</li>
+</ul>
+</li>
+<li>Coverage Algorithm: $\rho\geq \frac{1}{m}$
+<ul>
+<li>$U={(x,i)|x\in S_i}$ (multiset union)</li>
+<li>$\overline{S}={(x,i^*)|x\in S_{i^*}\text{ and }x\in S_i\Rightarrow i^*\leq i}$</li>
+<li>Sample unifomr $(x,i)\in U$
+<ul>
+<li>Sample $i\in{1,2,\cdots,m}$</li>
+<li>Sample uniform $x\in S_i$</li>
+</ul>
+</li>
+<li>check if $(x,i)\in\overline{S}$
+<ul>
+<li>$x\in S_i$</li>
+<li>and $\forall j&lt;i,x\not\in S_j$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Counting by Coverage Algorithm: $|U|=\sum_i|S_i|$</li>
+<li>Sampling by Coverage Algorithm: Rejection Sampling</li>
+</ul>
+<h2 id="markov-chain">Markov Chain</h2>
+<p>$${X_t|t\in T},X_t\in\Omega$$</p>
+<ul>
+<li>discrete time: $T={0,1,\cdots}$</li>
+<li>discrete space: $\Omega$ is finite</li>
+<li>state $X_t\in\Omega$</li>
+<li>chain: stochastic process in discrete time and discrete state space</li>
+<li>Markov property(memoryless): $X_{t+1}$ depends only on $X_t$</li>
+</ul>
+<p>$$ P[X_{t+1}=y|X_0=x_0,\cdots,X_{t-1}=x_{t-1},X_t=x]=P[X_{t+1}=y|X_t=x] $$</p>
+<ul>
+<li>Markov chain(memoryless): discrete time discrete space stochastic process with Markov property</li>
+<li>homogeneity: transition does not depend on time</li>
+<li>homogenous Markov chain $\mathfrak{M} = (\Omega,P)$: $P[X_{t+1}=y|X_t=x]=P_{xy}$
+<ul>
+<li>transition matrix $P$ over $\Omega\times\Omega$</li>
+<li>(row-)stochastic matrix $P\mathbf{1}=\mathbf{1}$</li>
+<li>distribution $p^{(t)}(x)=P[X_t=x]$</li>
+<li>$p^{(t+1)}=p^{(t)}P$</li>
+</ul>
+</li>
+<li>stationary distribution $\pi$ of matrix $P$: $\pi P=\pi$</li>
+<li>Perron-Frobenius Theorem</li>
+</ul>
+<h3 id="fundamental-theorem-of-markov-chain">Fundamental Theorem of Markov Chain</h3>
+<p>If a <strong>finite</strong> Markov chain is <strong>irreducible</strong> and <strong>ergodic</strong>(aperiodic), then $\forall$ initial distribution $\pi^{(0)},\lim_{t\rightarrow\infty}\pi^{(0)}P^t=\pi$ where $\pi$ is a **unique** stationary distribution</p>
+<ul>
+<li><strong>finite</strong>: the stationary distribution $\pi$ exists</li>
+<li><strong>irreducible</strong>: the stationary distribution is unique
+<ul>
+<li>all pairs of states communicate</li>
+<li>Special case
+<ul>
+<li>not connected: $\pi=\lambda\pi_A+(1-\lambda)\pi_B$</li>
+<li>weak connected(absorbing case): $\pi=(0,\pi_B)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>aperiodicity</strong>: distribution converges to $\pi$
+<ul>
+<li>period of state $x$: $d_x=\gcd{t|P^t_{x,x}&gt;0}$</li>
+<li>aperiodic: all states have period $1$</li>
+<li>if $\forall x\in\Omega,P(x,x)&gt;0$(self-loop), then a chain is aperiodic</li>
+<li>$x$ and $y$ communicate $\Rightarrow$ $d_x=d_y$</li>
+</ul>
+</li>
+</ul>
+<p>If Markov chain is infinite: positive recurrent</p>
+<h3 id="random-walk">Random Walk</h3>
+<ul>
+<li>random walk: Markov Chain Sample on stationary distribution $\pi$</li>
+<li>Fundamental Theorem of Markov Chain on Graph
+<ul>
+<li>irreducible: $G$ is connected</li>
+<li>aperiodic: $G$ is non-bipartite</li>
+</ul>
+</li>
+<li>uniform random walk (on undirected graph) $\mathfrak{M} = (V,P)$
+<ul>
+<li>Strategy: At each step, uniformly at random move to a neighbor $v$ of current vertex</li>
+<li>necessary condition for stationary distribution: $\pi(u)=\frac{\text{deg(u)}}{2|E|}$</li>
+</ul>
+</li>
+</ul>
+<p>$$P(u,v)=\begin{cases}\frac{1}{\text{deg}(u)} &amp; uv\in E\newline 0&amp;uv\not\in E\end{cases}$$</p>
+<ul>
+<li>lazy random walk $\mathfrak{M} = (V,\frac{1}{2}(I+P))$
+<ul>
+<li>Strategy: At each step, uniformly at random move to a neighbor $v$ of current vertex with probability $\frac{1}{2}$, otherwise do nothing</li>
+<li>$\pi P=\pi\Rightarrow \pi\frac{1}{2}(I+P)=\pi$</li>
+</ul>
+</li>
+</ul>
+<p>$$P(u,v)=\begin{cases}\frac{1}{2} &amp; u=v\newline \frac{1}{2\text{deg}(u)} &amp; uv\in E\newline 0&amp;uv\not\in E\end{cases}$$</p>
+<h3 id="pagerank">PageRank</h3>
+<ul>
+<li>Rank $r(v)$:importance of a page
+<ul>
+<li>pointed by more high-rank pages</li>
+<li>high-rank page have greater influence</li>
+<li>pages pointing to few others have greater influence</li>
+</ul>
+</li>
+<li>$d_+(u)$: out-degree</li>
+<li>$r(v)=\sum_{u:(u,v)\in E}\frac{r(u)}{d_+(u)}$</li>
+<li>random walk: $P(u,v)=[(u,v)\in E]\frac{1}{d_+(u)}$</li>
+<li>stationary distribution: $rP=r$</li>
+</ul>
+<h3 id="reversibility">Reversibility</h3>
+<ul>
+<li>Detailed Balance Equation: $\pi(x)P(x,y)=\pi(y)P(y,x)$</li>
+<li>time-reversible Markov chain: $\exists\pi,\forall x,y\in\Omega,\pi(x)P(x,y)=\pi(y)P(y,x)$
+<ul>
+<li>time-reversible: when start from $\pi$, $(X_0,X_1,\cdots,X_n)\sim(X_n,X_{n-1},\cdots,X_0)$</li>
+<li>$\forall x,y\in\Omega,\pi(x)P(x,y)=\pi(y)P(y,x)\Rightarrow \pi$ is a stationary distribution</li>
+</ul>
+</li>
+<li>Analyze $\pi$ for a given $P$ (Random walk on graph)
+<ul>
+<li>$u=v,u\not\sim v$: DBE holds</li>
+<li>$u\sim v$: $\pi(u)\propto\frac{1}{P(u,v)}\propto\text{deg}(u),\Delta=\max_v\text{deg}(v)$</li>
+</ul>
+</li>
+<li>Design $P$ to make $\pi$ uniform distribution</li>
+</ul>
+<p>$$
+P(u,v)=\begin{cases}
+1-\frac{\text{deg}(u)}{2\Delta} &amp; u=v\newline
+\frac{1}{2\Delta} &amp; uv\in E\newline
+0 &amp; o.w.
+\end{cases}
+$$</p>
+<h2 id="mcmc">MCMC</h2>
+<ul>
+<li>Problem setting
+<ul>
+<li>Given a Markov chain with transition matrix $Q$</li>
+<li>Goal: a new Markov chain $P$ with stationary distribution $\pi$</li>
+</ul>
+</li>
+<li>Detailed Balance Equation with acceptance ratio: $\pi(i)Q(i,j)\alpha(i,j)=\pi(j)Q(j,i)\alpha(j,i)$
+<ul>
+<li>$P(i,j)=Q(i,j)\alpha(i,j)$</li>
+<li>$\alpha(i,j)=\pi(j)Q(j,i)$</li>
+</ul>
+</li>
+<li>Original MCMC
+<ul>
+<li>(proposal) propose $y\in\Omega$ with probability $Q(x,y),x$ is current state</li>
+<li>(accept-reject sample) accept the proposal and move to $y$ with probability $\pi(y)$</li>
+<li>run above $T$ times and return</li>
+</ul>
+</li>
+<li>mixing time $T$: time to be close to the stationary distribution
+<ul>
+<li>前沿研究</li>
+</ul>
+</li>
+</ul>
+<h3 id="metropolis-algorithm">Metropolis Algorithm</h3>
+<ul>
+<li>Metroplis-Hastings Algorithm (symmetric case)
+<ul>
+<li>(proposal) propose $y\in\Omega$ with probability $Q(x,y),x$ is current state</li>
+<li>(filter) accept the proposal and move to $y$ with probability $\min{1,\frac{\pi(y)}{\pi(x)}}$</li>
+</ul>
+</li>
+<li>New Transition Matrix (Meet Detailed Balance Equation)</li>
+</ul>
+<p>$$P(x,y)=\begin{cases} Q(x,y)\min{1,\frac{\pi(x)}{\pi(y)}}&amp; x\neq y\newline  1-\sum_{y\neq x}P(x,y) &amp; x=y\end{cases} $$</p>
+<ul>
+<li>Metropolis Algorithm (M-H for sampling uniform random CSP solution)
+<ul>
+<li>Initially, start with an arbitrary CSP solution $\sigma=(\sigma_1,\cdots,\sigma_n)$</li>
+<li>(proposal) pick a variable $i\in[n]$ and value $c\in[q]$ uniformly at random</li>
+<li>(filter) accept the proposal and change $\sigma_i$ to $c$ if it does not violate any constraint</li>
+</ul>
+</li>
+</ul>
+<h3 id="gibbs-sampling">Gibbs Sampling</h3>
+<ul>
+<li>For $A(x_1,y_1),B(x_1,y_2)$, we have</li>
+</ul>
+<p>$$ \pi(A)\pi(y_2|x_1)=\pi(x_1,y_1)\pi(y_2|x_1)=\pi(x_1)\pi(y_1|x_1)\pi(y_2|x_1)\newline =\pi(x_1,y_2)\pi(y_1|x_1)=\pi(B)\pi(y_1|x_1)$$</p>
+<p>Let $P(A,B)$ be the marginal distribution on their corrdinate of the same value, then DBE condition holds.</p>
+<ul>
+<li>Goal: Sample a random vector $X=(X_1,\cdots,X_n)$ according to a joint distribution $\pi(x_1,\cdots,x_n)$</li>
+<li>Gibbs Sampling
+<ul>
+<li>Initially, start with an arbitrary possible $X$</li>
+<li>run following after $T$ steps:
+<ul>
+<li>pick a variable $i\in[n]$ uniformly at random</li>
+<li>resample $X_i$ according to the marginal distribution of $X_i$ conditioning on the current values of $(X_1,\cdots,X_{i-1},X_{i+1},\cdots,X_n)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="glauber-dynamics">Glauber Dynamics</h4>
+<ul>
+<li>Glauber Dynamics for CSP
+<ul>
+<li>Initially, start with an arbitrary CSP solution; at each step, the current CSP solution is $\sigma$</li>
+<li>pick avarible $i\in[n]$ uniformly at random</li>
+<li>change value of $\sigma_i$ to a uniform value $c$ among all $\sigma$&rsquo;s available values $c$, namely changing $\sigma_i$ to $c$ won&rsquo;t violate any constraint</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>[A] 机器学习 Machine Learning on Zangwei</title>
+    <link>https://zhengzangw.com/notes/machine-learning/</link>
+    <description>Recent content in [A] 机器学习 Machine Learning on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction</title>
+      <link>https://zhengzangw.com/notes/machine-learning/1-introduction/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/1-introduction/</guid>
+      <description>机器学习  机器学习要素  模型 学习准则 优化算法   数据集：$D={x_1,x_2,\cdots,x_m}$  通常假设全体样本服从一个未知分布 $\mathcal{D}$，且采样 i.i.d   归纳偏好  No Free Lunch Theorem Occam&amp;rsquo;s Razor Ugly Duckling Theorem   all vectors are assumed to be column vectors $N$ number of input, $p$ number of features 训练集 $\bf{X}_{N\times p}$  $i$-th row $x_i^T$: length $p$ $j$-th column $\bf{x}_j$: length $N$ input vector: $X_{p\times 1}$ $X^T=(X_1,X_2,\cdots,X_p)$, $X_i$ is a scalar   $\bf{y}_{N\times 1}$  $Y\in\mathbb{R}$ $\bf{Y}_{N\times l}$, each row has one 1   $(X_1,X_2 )$ : 行并列 $(X_1^T;X_2^T)$ : 列并列 偏差-方差分解：$E(f;D)=\text{bias}^2(x)+\text{var}(x)+\epsilon^2=(\overline{f}(x)-y)^2+E_D((f(x;D)-\overline{f}(x))^2)+E_D((y_D-y)^2)$  评估方法  留出法 cross validation  将数据集分层采样划分为 $k$ 个大小相似的互斥子集，每次用 $k-1$ 个子集的并集作为训练集，余下的子集作为测试集，最终返回 $k$ 个测试结果的均值 $k$ 最常用的取值是 10.</description>
+    </item>
+    
+    <item>
+      <title>Linear Model</title>
+      <link>https://zhengzangw.com/notes/machine-learning/2-linearmodel/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/2-linearmodel/</guid>
+      <description>多元线性回归  $f(x)=\omega^Tx+b$ 决策平面：$f(x;\omega)=0$  有向距离：$\gamma=\frac{f(x;\omega)}{|\omega|}$   最小二乘法  $\hat\omega^*=\arg\min_{\hat\omega}(y-X\hat\omega)^T(y-X\hat\omega)=(X^TX)^{-1}X^Ty$   广义线性模型：$y=g^{-1}(w^Tx+b)$  对数几率回归  单位跃阶函数（Heaviside function): 理想但不连续  $$y=\begin{cases}0,&amp;amp; z&amp;lt;0\newline 0.5,&amp;amp; z=0\newline 1,&amp;amp;z&amp;gt;0\end{cases}$$
+ 对数几率函数 (logistic function/Sigmoid function)  $g=\ln\frac{y}{1-y}$  几率：$\frac{y}{1-y}$，反映了 $x$ 作为正例的相对可能性   $g^{-1}=S(x)=\frac{1}{1+e^{-x}}$  $S(x)&#39;=S(x)(1-S(x))$     对数几率回归：用线性模型逼近真实标记的几率  $\ln\frac{p_1}{p_0}=\hat x\beta=(x,1)(\omega; b)$  二分类：$y_ia+(1-y_i)b=a^{y_i}b^{1-y_i}$   Maxmimum likelihood method  $l(\beta)=\sum_{i=1}^m\ln p(y_i|x_i;\beta_i)=\sum_{i=1}^my_i\ln (g(\hat x_i\beta)+(1-y_i)\ln (1-g(\hat x_i\beta)))$ $l&#39;=\sum_{i=1}^m(y_i-g(\hat x_i\beta))\hat x_i^T=X^T(Y-g(\beta^TX))$ $l&#39;&#39;=\sum_{i=1}^m\hat x_i\hat x_i^Tp_1(\hat x_i;\beta)(1-p_1(\hat x_i;\beta))$   交叉熵作损失函数梯度下降   梯度下降：$\theta_{t+1}=\theta_{t}-\alpha\frac{\partial L}{\partial \theta}$  Softmax 回归  $p(y=c|x)=\text{softmax}(\omega_c^Tx)=\frac{\exp(\omega_c^Tx)}{\sum_{c&#39;=1}^C\exp(\omega_{c&#39;}^Tx)}=\frac{\exp(W^Tx)}{1_C^T\exp(W^Tx)}$  LDA  给定训练集数据，设法将样例投影到一条直线上，使得同类样例投影点尽可能接近，异类投影点尽可能远离 协方差矩阵：$\Sigma=\frac{1}{n-1}(X-\mu I)(X-\mu I)^T$  $\Sigma_{ij}=\sigma(x_i,x_j)$ 投影后：$\omega^T\Sigma\omega$        两类 一般     Within-class scatter matrix $S_\omega=\Sigma_0+\Sigma_1$ $S_w=\sum_{i=1}^N\Sigma_i$   Between-class scatter maxtrix $S_b=(\mu_0-\mu_1)(\mu_0-\mu_1)^T$ $S_b=\sum_{i=1}^{N}m_i(\mu_i-\mu)(\mu_i-\mu)^Y$   全局散度矩阵 $S_t=S_b+S_w$ $\sum_{i=1}^m(x_i-\mu)(x_i-\mu)^T$   优化目标 $\max_\omega\frac{\omega^TS_b\omega}{\omega^TS_w\omega}$ $\max_W\frac{tr(W^TS_bW)}{tr(W^TS_wW)}$   闭式解 $w=S_w^{-1}(\mu_0-\mu_1)$ $S_w^{-1}S_b$ 前 $k$ 大广义特征向量    </description>
+    </item>
+    
+    <item>
+      <title>Decision Tree</title>
+      <link>https://zhengzangw.com/notes/machine-learning/3-decisiontree/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/3-decisiontree/</guid>
+      <description>决策树算法  当前节点包含样本全部同类：标记为该类 当前样本属性值为空/取值相同：标记为最多一类 属性划分选择 为属性每个值分配一个结点继续执行算法  若某属性值上为空则标记为当前最多一类    划分选择    指标名称 指标 辅助函数 例子 Remark     Information Gain $\text{Gain}(D,a)=\text{Ent}(D)-\sum_{v=1}^{V}\frac{\vert D^v\vert }{\vert D\vert }\text{Ent}(D^v)$ $\text{Ent}(D)=-\sum_{k=1}^{ \vert Y \vert }p_k\log_2p_k$ ID3 对可取值数目较多的属性有偏好   Gain ratio $\text{Gain-ratio}(D,a)=\frac{\text{Gain}(D,a)}{\text{IV}(a)}$ $\text{IV}(a)=-\sum_{v=1}^{V}\frac{\vert D^v\vert}{\vert D\vert}log_2\frac{\vert D^v\vert}{\vert D\vert}$ C4.5 从候选划分中找出信息增益高于平均水平的属性，再从中选择增益率最高的   Gini ratio $\text{Gini-index}(D,a)=\sum_{v=1}^V\frac{\vert D^v\vert}{\vert D\vert}\text{Gini}(D^v)$ $\text{Gini}(D)=1-\sum_{k=1}^{\vert Y\vert}p_k^2$ CART Gini 指数为随机抽取两个样本类别标记不一致的概率,越小纯度越高    剪枝处理    方法 指标 过拟合 欠拟合 训练时间     预剪枝 Precision 降低过拟合风险 有欠拟合风险 较小   后剪枝 Precision 降低过拟合风险 欠拟合风险小 较长    连续与缺失值  连续属性离散化（二分法）  $T_a={\frac{a^i+a^{i+1}}{2}|1\leq i\leq n-1}$ $\text{Gain}(D,a,t)$   缺失值  $\tilde{D}$: $D$在属性 $a$ 上没有缺失值的样本子集 $\tilde{D}^v$: $\tilde{D}$ 中属性 $a$ 上取值为 $a^v$ 的样本子集 $\tilde{D}_k$: $\tilde{D}$ 中类别为 $k$ 的样本子集 $\omega_x$: 每个样本的权重 $\rho=\frac{\sum_{x\in\tilde{D}}\omega_x}{\sum_{x\in D}\omega_x}$ 属性 $a$ 无缺失样本所占比例 $\tilde{p}k=\frac{\sum{x\in\tilde{D}k}\omega_x}{\sum{x\in D}\omega_x}$ 无缺失样本中第 $k$ 类占比 $\tilde{r}v=\frac{\sum{x\in\tilde{D}^v}\omega_x}{\sum_{x\in D}\omega_x}$ 无缺失样本中属性 a 取值 $a^v$ 占比 $\text{Ent}(\tilde{D})=-\sum_{k=1}^{|Y|}\tilde{p}_k\log_2\tilde{p}_k$ $\text{Gain}(D,a)=\rho*\text{Gain}(\tilde{D},a)=\rho*(\text{Ent}(\tilde{D})-\sum_{v=1}^V\tilde{r}_v\text{Ent}(\tilde{D}^v))$    多变量决策树  每个叶节点用 $\sum_{i=1}^dw_ia_i=t$ 的线性分类器 特征预处理  </description>
+    </item>
+    
+    <item>
+      <title>Bayesian Classifier</title>
+      <link>https://zhengzangw.com/notes/machine-learning/4-bayesian/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/4-bayesian/</guid>
+      <description>Bayesian decision theory     定义 最小化分类错误率     loss $\lambda_{ij}$ $[i=j]$   Expected loss $R(c_i\vert x)=\sum_{j=1}^N\lambda_{ij}P(c_j\vert x)$ $1-P(c\vert x)$   Bayes optimal classifier $h^*(x)=\arg\min_{c\in Y}R(c\vert x)$ $\arg\max_{c\in Y}P(c\vert x)$   decison loss $R(h)=E_x(R(h(x)\vert x))$ $P(h^*(x)\vert x)$   Bayes risk $1-R(h^*)$ $1-P(h^*(x)\vert x)$    贝叶斯定理 $$ P(c|x)=\frac{P(x,c)}{P(x)}=\frac{P(c)P(x|c)}{\int p(c)P(x|c)dc}$$
+ prior: $P(c)$ evidence: $P(x)$ class-conditional probability/likelihood: $P(x|c)$  class-conditional probability: $x$ likelihood: $\theta, P(x|c)(\theta)$  $P(D_c|\theta_c)=\prod_{x\in D_c}P(x|\theta_c)$ $\text{LL}(\theta_c)=\log P(D_c|\theta_c)=\sum_{x\in D_c}\log P(x|\theta_c)$      k 近邻学习  lazy learning 最邻近分离器的泛化错误率不会超过贝叶斯最优分类器错误率的两倍  朴素贝叶斯分类器  属性条件独立性假设: $P(x|c)=\prod_{i=1}^{d}P(x_i|c)$ $h_{nb}=\arg\max_{c\in Y}P(c)\prod_{i=1}^dP(x_i|c)$  $P(c)=\frac{|D_c|}{|D|}$ $P(x_i|c)=\frac{|D_{c,x_i}|}{|D_c|}$   拉普拉斯修正  $\hat P(c)=\frac{|D_c|+1}{|D|+N}$  $N$ 为 $D$ 中可能的类别   $\hat P(x_i|c)=\frac{|D_{c,x_i}|+1}{|D_c|+N_i}$  $N_i$ 为第 $i$ 个属性可能取值数     连续属性  $p(x_i|c)\sim N(\mu_{c,i},\sigma_{c,i}^2)$    半朴素贝叶斯分类器 独依赖估计 (One-Dependent Estimator ODE)  $P(c|x) \propto P(c)\prod_{i=1}^dP(x_i|c,p(a_i))$  SPODE (super-parent ODE)  假设所有属性都依赖于同一个属性: $p(a_i)=x_t$  AODE (Averaged One-Dependent Estimator)  SPODE 的集成 $P(c|x)\propto \sum_{i=1,|D_{x_i}|\geq m&#39;}^dP(c,x_i)\prod_{j=1}^dP(x_j|c,x_i)$  TAN (Tree Augmented naive Bayes)  仅保留了强相关属性间的依赖性 基于最大带权生成树 算法  conditional mutual information: $I(x_i,x_j|y)=\sum_{x_i,x_j,c}P(x_i,x_j|c)\log\frac{P(x_i,x_j|c)}{P(x_i|c)P(x_j|c)}$  在已知类别情况下的相关性   在以属性为节点，互信息为边建完全图上构造最大带权生成树，挑选根节点，边置为有向 加入类别节点 y，增加 y 到每个属性的边    kDE (k-Dependent Estimator)  样本不足：高阶联合概率估计困难，需要的样本数指数级增加  </description>
+    </item>
+    
+    <item>
+      <title>Support Vector Machine</title>
+      <link>https://zhengzangw.com/notes/machine-learning/5-svm/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/5-svm/</guid>
+      <description>SVM 基本型  划分超平面：$\omega^Tx+b=0$  点到超平面的距离：$\frac{|\omega^Tx+b|}{||\omega||}$    $$ \begin{cases} \omega^Tx_i+b\geq y_i, &amp;amp; y_i=+1 \newline \omega^Tx_i+b\leq y_i, &amp;amp; y_i=-1 \end{cases} $$
+ 支持向量（support vector）：使上式成立取等的样本点 间隔（margin）：两个异类支持向量到超平面的距离 $\frac{2}{||\omega||}$ SVM 基本型(Support Vector Machine)  $$ \begin{aligned} \min_{\omega,b} &amp;amp; \frac{1}{2}||\omega||^2 &amp;amp; \newline s.t. &amp;amp; y_i(\omega^Tx_i+b)\geq 1, &amp;amp;i=1,2,\cdots,m \end{aligned}\newline $$
+ 凸优化求解：复杂度与样本维度（等于权值 $\omega$ 的维度）有关  对偶问题  复杂度与样本数量（等于拉格朗日算子$\alpha$的数量）有关 解的稀疏性：最终模型仅与支持向量有关  KKT 条件导出    对偶问题的转化  Step1: 拉格朗日函数：$L(\omega,b,\alpha)$ Step2: 对 $\omega$ 和 $b$ 求偏导并令为零  $\omega=\sum_{i=1}^m\alpha_iy_ix_i$   Step3: 回代可得  $$ \begin{aligned} \max_{\alpha} &amp;amp; \sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{i=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j \newline s.</description>
+    </item>
+    
+    <item>
+      <title>Essemble Learning</title>
+      <link>https://zhengzangw.com/notes/machine-learning/6-essemble/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/6-essemble/</guid>
+      <description>集成学习  个体学习器  同质：基学习器，基学习算法 异质：组件学习器 准确性，多样性   学习器结合可能带来的好处  统计：学习任务假设空间大，多个假设在训练集上达到同等性能，使用单学习器可能因误选而导致泛化性能不佳 计算：降低陷入糟糕局部极小点的风险 表示：某些学习任务的真实假设可能不在当前算法所考虑的假设空间中，使用多学习器可能学得较好的近似    序列化方法  Boosting  Train a weak learner $h_t$ from distribution $D_t$ Evaluate the error $\epsilon_t$ of $h_t$ $D_{t+1}=\text{Adjust_Distribution}(D_t,\epsilon_t)$    AdaBoost  加性模型(additive model): $H(x)=\sum_{t=1}^T\alpha_th_t(x)$ exponential loss funciton: $l_{exp}(H|D)=E_{x\sim D}(e^{-f(x)H(x)})$  指数损失函数最小化，分类错误率也将最小化（与 0/1 损失函数一致）   分类器权重更新公式: $\alpha_t=\frac{1}{2}\ln\frac{1-\epsilon_t}{\epsilon_t}$ 调整样本分布: $D_{t+1}(x)=\frac{D_t(x)e^{-\alpha_tf(x)h_t(x)}}{Z_t}$  并行化方法 Bagging  采样 $T$ 次，训练 $T$ 个学习器，分类简单投票，回归简单平均 out-of-bag estimate: $H^{oob}(x)$ 为未使用 $x$ 训练的基学习器在 $x$ 上的预测  $H^{oob}(x)=\arg_{y\in Y}\max\sum_{t=1}^T[h_t(x)=y][x\not\in D_t]$ $\epsilon^{oob}=\frac{1}{|D|}\sum_{(x,y)\in D}[H^{oob}(x)\not=y]$    随机森林  Bagging + 在随机选择的 $k$ 个属性中选择最优属性  推荐值 $k=\log_2d$    结合策略 平均法  简单平均法: $H(x)=\frac{1}{T}\sum_{i=1}^Th_i(x)$ 加权平均法: $H(x)=\frac{1}{T}\sum_{i=1}^Tw_ih_i(x)$  投票法  绝对多数投票法  可能拒绝预测   相对多数投票法 加权投票法 $h(x)$ 输出不同  hard voting: 类标记投票 soft voting: 类概率投票 基学习器类型不同，其概率值不能直接进行比较    学习法  Stacking  初级学习器（个体学习器） 次级学习器（元学习器）   BMA(贝叶斯模型平均)  多样性 误差-分歧分解  $E=\overline{E}-\overline{A}$  $h_i$ 的分歧：$A(h_i|x)=(h_i(x)-H(x))^2$ 集成的分歧：$\overline{A}(h|x)=\sum_{i=1}^T\omega_iA(h_i|x))$ $E(h_i|x)=(f(x)-h_i(x))^2$ $\overline{E}(h|x)=\sum_{i=1}^T\omega_iE(h_i|x)$    多样性度量  预测结果列联表(contingency table), $m=a+b+c+d$      $h_i=+1$ $h_i=-1$     $h_j=+1$ a c   $h_j=-1$ b d       指标      不合度量(disagreement measure) $\text{dis}_{ij}=\frac{b+c}{m}$   相关系数 $\rho_{ij}=\frac{ad-bc}{\sqrt{(a+b)(a+c)(c+d)(b+d)}}$   $Q$-statistic $Q_{ij}=\frac{ad-bc}{ad+bc}$   $\kappa$-statistic $\kappa=\frac{p_1-p_2}{1-p_2}$   $\kappa$ 图 $\kappa$-平均误差图     取得一致的概率：$p_1=\frac{a+d}{m}$ 偶然取得一致的概率：$p_2=\frac{(a+b)(a+c)+(c+d)(b+d)}{m^2}$  多样性增强  数据样本扰动  Bootstrap 对不稳定基学习器（决策树，神经网络）有效   输入属性扰动  random subspace 算法   输出表示扰动  Flipping Output Output Smearing ECOC   算法参数扰动  负相关法 不同增强机制同时使用    </description>
+    </item>
+    
+    <item>
+      <title>Cluster</title>
+      <link>https://zhengzangw.com/notes/machine-learning/7-cluster/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/7-cluster/</guid>
+      <description>性能度量  性能度量，有效性指标 validity index 外部指标：与某个参考模型比较  簇划分：$\mathcal{C}={C_1,C_2,\cdots,C_k}$, 参考模型簇划分 $\mathcal{C}^={C_1^,C_2^,\cdots,C_s^}$,$\lambda,\lambda^*$ 为分别为两者簇标记向量，定义  $a=|\text{SS}|,\text{SS}={(x_i,x_j)|\lambda_i=\lambda_j,\lambda_i^=\lambda_j^,i&amp;lt;j}$ $b=|\text{SD}|,\text{SD}={(x_i,x_j)|\lambda_i=\lambda_j,\lambda_i^\not=\lambda_j^,i&amp;lt;j}$ $c=|\text{DS}|,\text{DS}={(x_i,x_j)|\lambda_i\not=\lambda_j,\lambda_i^=\lambda_j^,i&amp;lt;j}$ $d=|\text{DD}|,\text{DD}={(x_i,x_j)|\lambda_i\not=\lambda_j,\lambda_i^\not=\lambda_j^,i&amp;lt;j}$ $a+b+c+d=\frac{m(m-1)}{2}$   JC (Jaccard Coefficent)  $\text{JC}=\frac{a}{a+b+c}$   FMI (Fowlkes and Mallows Index)  $\text{FMI}=\sqrt{\frac{a}{a+b}\frac{a}{a+c}}$   RI (Rand Index)  $\text{RI}=\frac{2(a+d)}{m(m-1)}$     内部指标  簇划分：$\mathcal{C}={C_1,C_2,\cdots,C_k}$  $\text{avg}(C)=\frac{2}{|C|(|C|-1)}\sum_{1\leq i&amp;lt;j\leq|C|}\text{dist}(x_i,x_j)$ 簇内样本平均距离 $\text{diam}(C)=\max_{1\leq i&amp;lt;j\leq|C|}\text{dist}(x_i,x_j)$ 簇内样本间最远距离 $d_{\min}(C_i,C_j)=\min_{x_i\in C_i,x_j\in C_j}\text{dist}(x_i,x_j)$ $d_{\text{cen}}(C_i,C_j)=\text{dist}(\mu_i,\mu_j)$   DBI (Davies-Bouldin Index)  $\text{DBI}=\frac{1}{k}\sum_{i=1}^k\max_{j\not=i}(\frac{\text{avg}(C_i)+\text{avg}(C_j)}{d_{\text{cen}}(C_i,C_j)})$ 越小越好   DI (Dunn Index)  $\text{DI}=\min_{1\leq i\leq k}(\min_{j\not=i}(\frac{d_{\min}(C_i,C_j)}{\max_{1\leq l\leq k}\text{diam}(C_l)}))$ 越大越好      原型聚类  SOM: self-organizing maps  k-means  最小化平均误差 $E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||_2^2$ ($\text{NP}$-hard) 贪心策略：迭代优化 k-medoids: represented by objects near center  LVQ Learning Vector Quantization 学习向量量化</description>
+    </item>
+    
+    <item>
+      <title>Dimension Reduction</title>
+      <link>https://zhengzangw.com/notes/machine-learning/8-reduction/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/8-reduction/</guid>
+      <description>线性降维  维数灾难 curse of dimensionality  高维空间样本稀疏 计算内积难    MDS Multiple Dimensional Scaling, 多维放缩
+ 样本间距离在低维空间保持 算法  由距离矩阵 $D$ 求内积矩阵：$b_{ij}=-\frac{1}{2}(D_{ij}^2-D_{i*}^2-D_{*j}^2+D_{**}^2)$ 特征值分解：$B=V\Lambda V^T$，非零特征值构成 $\Lambda_*=diag{\lambda_1,\lambda_2,\cdots,\lambda_{d^*}}$ 坐标 $Z=\Lambda_*^{\frac{1}{2}}V_*^T$，可取前 $d&#39;$ 个最大特征值    PCA (Principal Component Analysis)  最近重构性：样本点到这个超平面距离足够近 最大可分性：样本点在这个超平面上的投影尽可能的分开  $$ \begin{aligned} \max &amp;amp;\ \text{tr}(W^TXX^TW)\newline s.t &amp;amp;\ W^TW=1 \end{aligned} $$
+ 算法  中心化 计算协方差矩阵 $XX^T$ 并特征值分解 取最大 $d&#39;$ 个特征向量为投影矩阵   PCA: 最佳描述特征 LDA: 最佳分类特征  非线性降维 核化线性降维  KPCA KLDA  流形学习 Isomap  只考虑局部距离 算法  最短路径算法求出任意两点距离 代入 MDS    LLE(Locally Linear Embedding 局部线性嵌入)   只考虑邻域内样本间的线性关系，在低维空间重构权值</description>
+    </item>
+    
+    <item>
+      <title>Distance Learning</title>
+      <link>https://zhengzangw.com/notes/machine-learning/9-distance/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/9-distance/</guid>
+      <description>距离  正定性 对称性 三角不等式  有序距离  闵可夫斯基距离：$l=(\sum_{i=1}^n|x_i-y_i|^p)^{\frac{1}{p}}$  切比雪夫距离：$l_\infty=\max_{i=1}^n|x_i-y_i|$ 欧几里得距离：$l_2=\sqrt{\sum_{i=1}^n(x_i-y_i)^2}$ 曼哈顿距离：$l_1=\sum_{i=1}^n|x_i-y_i|$ 加权闵可夫斯基距离：$l=(\sum_{i=1}^nw_i|x_i-y_i|^p)^{\frac{1}{p}}$   马氏距离：$d(\vec x,\vec y)=\sqrt{(\vec x-\vec y)^TS^{-1}(\vec x-\vec y)}$  $S$: 协方差矩阵 $dist^2_{mah}(x_i,x_j)=(x_i-x_j)^TM(x_i-x_j)=||x_i-x_j||^2_M$，度量矩阵 $M$ 为半正定矩阵 $M=PP^T$  $\Vert x_i-x_j\Vert_M=\Vert P^Tx_i-P^Tx_j\Vert$     余弦距离：$d(x,y)=\frac{&amp;lt;x,y&amp;gt;}{|x||y|}$  离散距离 簇  VDM(Value Difference Metric)  $m_{u,a}$: 在属性 $u$ 上取值为 $a$ 的样本数 $m_{u,a,i}$: 第$i$个样本簇在属性为 $a$ 的样本数 $\text{VDM}p(a,b)=\sum{i=1}^k|\frac{m_{u,a,i}}{m_{u,a}}-\frac{m_{u,b,i}}{m_{u,b}}|$   $\text{MinkovDM}p=(\sum|x{iu}-x_{ju}|^p+\sum\text{VDM}_p(x_{iu},x_{ju}))^{\frac{1}{p}}$  字符串  海明距离 Lee 距离 Levenshtein (编辑距离)  $$ \text{lev}{a,b}=\begin{cases} \max(i,j); \min(i,j)=0\newline \min(\text{lev}{a,b}(i-1,j)+1,\text{lev}{a,b}(i,j-1)+1,\text{lev}{a,b}(i-1,j-1)+[a_i\not=b_i]) \end{cases} $$</description>
+    </item>
+    
+    <item>
+      <title>Feature Selection</title>
+      <link>https://zhengzangw.com/notes/machine-learning/10-featureselection/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/10-featureselection/</guid>
+      <description>特征选择方法  冗余特征  去除：减轻负担 保留：对应中间概念   特征选择方法  子集搜索  前向 后向   子集评价    过滤式选择 先过滤，再训练
+Relief  near-hit: 同类样本中最近 near-miss: 异类样本中最近 相关统计量（属性$j$）: $\delta^j=\sum_i-\text{diff}(x_i^j,x_{i,nh}^j)^2+\text{diff}(x_i^j,x_{i,nm}^j)^2$  若 $x_i$ 与其猜中邻近在属性上的距离小于猜错邻近，增大相关统计量    Relief-F  $\delta^j=\sum_i-\text{diff}(x_i^j,x_{i,nh}^j)^2+\sum_{l\not=k}(p_l*\text{diff}(x_i^j,x_{i,l,nm}^j)^2)$  $p_l$ 为所占比例    包裹式选择 先训练，再选择
+ LVW(Las Vegas Wrapper)  随机抽取特征 $A$ 后评估    嵌入式选择  L1 正则化（LASSO，Least Absolute Shrinkage and Selection Operator）  PGD 近端梯度下降  满足 L-Lipschitz 条件 二阶泰勒在 $x_k$ 展开：$\hat f(x)\simeq \frac{L}{2}||x-(x_k-\frac{1}{L}\nabla f(x_k)||^2_2+C$ 最小值取在 $x_{k+1}=x_k-\frac{1}{L}\nabla f(x_k)$     L2 正则化（岭回归）  </description>
+    </item>
+    
+    <item>
+      <title>Dictionary Learning</title>
+      <link>https://zhengzangw.com/notes/machine-learning/11-dictionary/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/11-dictionary/</guid>
+      <description>稀疏表达 稀疏表达（稀疏编码，字典学习）
+ $x=Az$  字典 $A$：过完备，一般不独立且不正交   优化目标：$\min_{B,\alpha_i}\sum_i^m||x_i-B\alpha_i||_2^2+\lambda\sum_{i=1}^m||\alpha_i||_1$ 变量交替优化  固定 $B$，LASSO 求解 $\alpha_i$ 固定 $\alpha$，求解 $B$  KSVD     稠密向量：分布式表达 稀疏编码  减少计算量 可解释性 特征自动选择    压缩感知  $y=\Phi x$  $x$: 长度为 $m$ $y$: 长度为 $n&amp;laquo;m$ 低于奈奎斯特采样频率采样，难以还原 $x$   $y=\Phi\Psi s=As, s=\Psi x$  $\Psi=\mathbb{R}^{m\times m}$ $A$: 字典 若 $s$ 具有稀疏性，则可以还原   感知测量：对原始信号处理得到稀疏样本表示  傅里叶变换 小波变换 字典学习   重构恢复（压缩感知）：基于稀疏性从少量观测中恢复原信号  限定等距性 RIP  k-RIP: $A$ 满足 $\exists\delta_k\in(0,1),\forall s,$ 子矩阵$A_k\in\mathbb{R}^{n\times k}$ 有 $(1-\delta_k)||s||_2^2\leq||A_ks||_2^2\leq(1+\delta_k)||s||^2_2$ 可通过 $\min ||s||_0, y=As$ 恢复出稀疏信号 $s$ ($\text{NP}$-hard)     矩阵补全  $\min_X \text{rank}(X),s.</description>
+    </item>
+    
+    <item>
+      <title>History</title>
+      <link>https://zhengzangw.com/notes/machine-learning/others/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/others/</guid>
+      <description>技术浪潮     神经网络 支持向量机 神经网络     年份 89-94 95-05 06-   代表性技术 BP 算法 核方法，统计学习理论 深度学习    生成式与判别式     判别式(discriminative) 生成式(generative)      对 $P(c\vert x)$ 建模 对 $P(c \vert x)=\frac{P(x,c)}{P(x)}$ 建模   实例 决策树，BP 神经网络，SVM 贝叶斯分类器   实际环境中问题 i.i.d. 改变，concept driven，后验概率不变     没有做“多余”工作 做了“多余”工作    神经网络发展史  第一阶段  1943 年, McCulloch 和 Pitts 提出第一个神经元数学模型, 即 M-P 模型, 并从原理上证明了人工神经网络能够计算任何算数和逻辑函数 1949 年, Hebb 发表《The Organization of Behavior》一书, 提出生物神经元学习的机理, 即 Hebb 学习规则 1958 年, Rosenblatt 提出感知机网络(Perceptron)模型和其学习规则 1960 年, Widrow 和 Hoff 提出自适应线性神经元(Adaline)模型和最小均方学习算法 1969 年, Minsky 和 Papert 发表《Perceptrons》一书, 指出单层神经网路不能解决非线性问题, 多层网络的训练算法尚无希望.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Field-Theory | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><h1 id="coordinate-system">Coordinate system</h1>
+<ul>
+<li>Cartesian system $(\vec i,\vec j,\vec k)$
+<ul>
+<li>orthogonal: $\vec i\cdot\vec j=\vec j\cdot\vec k=\vec k\cdot\vec i=0$</li>
+<li>right-handed screw relation: $\vec i\times\vec j=\vec k$, $\vec j\times\vec k=\vec i$, $\vec k\times \vec i=\vec j$</li>
+<li>$A\cdot B = A_1B_1+A_2B_2+A_3B_3$</li>
+<li>$$
+A\times B=\det(\left[
+\begin{matrix}
+\vec i &amp; \vec j &amp; \vec k\newline
+A_1 &amp; A_2 &amp; A_3\newline
+B_1 &amp; B_2 &amp; B_3
+\end{matrix}
+\right])
+$$</li>
+</ul>
+</li>
+<li>polar coordinate systems $(\vec e_\rho, \vec e_\phi)$
+<ul>
+<li>moving frames</li>
+<li>position vector $\vec\rho=\rho\vec e_\rho$</li>
+<li>$\vec e_\rho=cos\varphi\vec i+sin\varphi\vec j$</li>
+<li>$\frac{d\vec e_\rho}{dt}=\dot{\varphi}\vec e_\varphi$</li>
+<li>$\frac{d\vec e_\varphi}{dt}=-\dot{\varphi}\vec e_\rho$</li>
+</ul>
+</li>
+<li>Spherical systems $(\vec e_\rho, \vec e_\phi, \vec k)$</li>
+<li>Cylindrical systems</li>
+<li>intrinsic system</li>
+</ul>
+<h1 id="temp">temp</h1>
+<ul>
+<li>In sperical coordinate system: $\nabla^2=\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial}{\partial r})+\frac{1}{r^2}[\frac{1}{sin\theta}\frac{\partial}{\partial \theta}(sin\theta\frac{\partial}{\partial \theta})+\frac{1}{sin^2\theta}\frac{\partial^2}{\partial \varphi^2}]$</li>
+</ul>
+<h1 id="场论">场论</h1>
+<ul>
+<li>$\nabla\times(\nabla\times A) = \nabla(\nabla\cdot A) - \nabla^2 A$</li>
+<li>柱坐标系： $\nabla = \frac{\partial}{\partial\rho}+\frac{1}{\rho}\cdot\frac{\partial}{\partial\phi}+\frac{\partial}{\partial z}$</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

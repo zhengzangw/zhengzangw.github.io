@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>9. SDN | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#通用转发">通用转发</a></li>
+    <li><a href="#sdn-software-defined-network">SDN (Software Defined Network)</a></li>
+    <li><a href="#openflow-onf">OpenFlow (ONF)</a>
+      <ul>
+        <li><a href="#openflow-交换机">OpenFlow 交换机</a></li>
+        <li><a href="#openflow-协议">OpenFlow 协议</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="通用转发">通用转发</h2>
+<ul>
+<li>基于目的地转发的特征：匹配 + 动作</li>
+<li>分组交换机（同时负责第三和第二层）
+<ul>
+<li>匹配动作表：远程控制器计算，安装和更新（位于控制平面）</li>
+<li>基于匹配动作表更新：数据平面</li>
+</ul>
+</li>
+</ul>
+<h2 id="sdn-software-defined-network">SDN (Software Defined Network)</h2>
+<p>利用定义成熟的 API 将网络设备的数据与控制功能分离，集中管理，可编程化
+可编程交换机: Google B4 20%-&gt;80%</p>
+<ul>
+<li>需求
+<ul>
+<li>服务器虚拟化应用越来越广泛</li>
+<li>流量要求灵活</li>
+<li>企业员工越来越多使用移动设备访问，应对资源、QoS和安全性要求</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SDN 体系结构</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用平面</td>
+<td>云端管理，业务应用，SDN应用</td>
+</tr>
+<tr>
+<td>控制平面</td>
+<td>流量工程，路由选择，移动性</td>
+</tr>
+<tr>
+<td>数据平面</td>
+<td>路由器，分组交换机等网络设备</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>SDN 域
+<ul>
+<li>SDNi 协议</li>
+</ul>
+</li>
+<li>Networking Operating System
+<ul>
+<li>OC-Y</li>
+<li>SONiC (Software for Open Networking in the Cloud) (Microsoft)</li>
+</ul>
+</li>
+</ul>
+<h2 id="openflow-onf">OpenFlow (ONF)</h2>
+<p>在MAC层仅支持以太网，在上层支持各种协议和网络服务</p>
+<h3 id="openflow-交换机">OpenFlow 交换机</h3>
+<ul>
+<li>动作：系列动作构成动作集
+<ul>
+<li>Output:转发分组到指定端口</li>
+<li>Set-Queue:设置队列ID</li>
+<li>Group:使用指定的组来处理分组</li>
+<li>Push-Tag/Pop-Tag: 为VLAN或MPLS 分组推进货弹出一个标签</li>
+<li>Set-Field: 通过字段的类型来标识各种不同的Set-Field动作</li>
+<li>Change-TTL: 修改分组中的TTL值</li>
+</ul>
+</li>
+<li>流表: 传入的分组与某个特定的流相匹配，并指明分组应当执行什么功能
+<ul>
+<li>流表项
+<ul>
+<li>匹配字段
+<ul>
+<li>传入端口：端口标识符</li>
+<li>以太网源和目的地址</li>
+<li>IP协议号，IP源地址和目的地址</li>
+<li>TCP源端口和目的端口</li>
+<li>UDP源端口和目的端口</li>
+</ul>
+</li>
+<li>优先级</li>
+<li>计数器</li>
+<li>指令
+<ul>
+<li>引导分组通过流水线：Goto-Table指令引导分组到达下一个表</li>
+<li>对分组执行动作：分组与表项匹配时，可能会对该分组进行某些操作</li>
+<li>更新动作集</li>
+<li>更新元数据</li>
+</ul>
+</li>
+<li>超时</li>
+<li>Cookie</li>
+</ul>
+</li>
+<li>table-miss 流表项</li>
+</ul>
+</li>
+<li>流水线：多个流表组成</li>
+<li>组表：流表可能将流引导到组表</li>
+<li>计量表：在流的基础上触发各种性能相关动作</li>
+</ul>
+<h3 id="openflow-协议">OpenFlow 协议</h3>
+<p>发生在 OpenFlow 控制器和 OpenFlow 交换机间的报文交换</p>
+<ul>
+<li>从控制器到交换机的</li>
+<li>异步的</li>
+<li>对称的</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

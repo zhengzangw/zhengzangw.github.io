@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>notes on Zangwei</title>
+    <link>https://zhengzangw.com/tags/notes/</link>
+    <description>Recent content in notes on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1-极限与连续</title>
+      <link>https://zhengzangw.com/notes/calculus/section1/</link>
+      <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/calculus/section1/</guid>
+      <description>基本概念  上界（下界）：$\exists M\in\mathbb{R},\forall x\in E,x\leq M$  $\sup E(\inf E)$: 上界中最小值 无上界：$\sup E=+\infty$   $\max(\min)$：$x_0\in E,\forall x\in E,x_0\geq x$ $x$ 的 $\delta$-邻域：$U(x;\delta)=(x-\delta,x+\delta)$ $x$ 的 $\delta$-去心邻域：$\check{U}(x;\delta)\backslash{x}$ 聚点：$E\subseteq\mathbb{R},x\in\mathbb{R},\forall\delta&amp;gt;0,\check{U}(x;\delta)\cap E\not=\emptyset$ 孤立点：$E\subseteq\mathbb{R},x_0\in E,x_0$ 非 $E$ 的聚点  $E$ 中点为聚点或孤立点   内点：$E\subseteq\mathbb{R},x_0\in\mathbb{R},\exists\delta&amp;gt;0,U(x_0;\delta)\subseteq E$ 开集：$E\subseteq\mathbb{R}$, $E$ 的点皆为 $E$ 的内点 凸性：$\forall x\in I,\forall y\in I$, 连接$x$与$y$的线段含于 $I$ 闭集：$\mathbb{R}\backslash E$ 为开集  有上界的非空闭子集有最大值   紧集：有界闭集（紧性）  $f$ 为连续函数，$\mathfrak{D}_f$ 为有界闭集，$\mathfrak{R}_f$ 为有界闭集   映射：$f:X\rightarrow Y$  定义域：$\mathfrak{D}_f=X$ 上域：$Y$ 值域（象）：$\mathfrak{R}=f(X)$ 复合 $g\circ f$ 限制 $f|_{X_1}$ 延拓   函数 $f:E\rightarrow \mathbb{R}$  图：$\mathcal{G}_f={(x,f(x))|x\in E}$ 基本初等函数  常函数 指数函数 对数函数 三角函数 反三角函数   初等函数：由基本初等函数出发，有限次四则运算和复合得到  $x^a=e^{a\ln x}$     极值：$x_0\in\mathfrak{D},\exists\delta&amp;gt;0,\forall x\in U(x_0;\delta)\cap\mathfrak{D},f(x)\leq f(x_0)(f(x)\geq f(x_0)$ 临界点：$x_0$ 为内点且 $f&#39;(x_0)=0$ 单调性 凸函数:$\forall x_1\in I,\forall x_2\in I,\forall\lambda\in[0,1]$ 有 $f(\lambda x_1+(1-\lambda)x_2)\leq\lambda f(x_1)+(1-\lambda)f(x_2)$  $f&#39;$ 增   Euler 公式：$e^{x+i\theta}=e^x(\cos\theta+i\sin\theta)$ $\lim_{n\rightarrow+\infty}(1+\frac{1}{n})^n=\lim_{x\rightarrow 0}(1+x)^{\frac{1}{x}}e$ Stirling 公式：$n!</description>
+    </item>
+    
+    <item>
+      <title>1-概论</title>
+      <link>https://zhengzangw.com/notes/artificial-intelligence/1-introduction/</link>
+      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/artificial-intelligence/1-introduction/</guid>
+      <description>科学与技术关系的探讨  周光绍  科学：正确反映客观世界现象、物质内部结构和运动规律的系统理论知识 技术：在科学指导下，总结实践经验，各方面的系统知识   白春礼  科学：发现、探索研究事物运动的客观规律 技术：[做什么、怎么做   人工智能  强人工智能：人工智能使探索人脑与意识的科学 弱人工智能：模拟人脑相应功能且得到应用，偏向于技术    何为人工智能  像人一样行动  图灵测试  自然语言处理 知识表示 自动推理 机器学习   完全图灵测试  计算机视觉 机器人学     像人一样思考  领会人脑用途  内省：捕捉思维过程 心理实验 脑成像   认知科学   合理地思考 合理地行动  学科交叉  哲学  图灵测试(1950)  西尔勒中文屋子(1980)：能否从表现来评判智能 人为陷阱：能否真的了解人类的智能水平 缸中之脑(1981) 反向图灵测试(CAPTCHA,2002)   智能的哲学发展  笛卡尔(1596-1650)：可通过可编程机械实现智能 莱布尼茨(1646-1716)：不存在预先设置的机器智能  磨坊论证：知觉的存在是对智能的存在不可或缺的吗？   霍布斯(1588-1679，符号流派哲学先驱)：机械化的心灵观，仅仅限制在理性（推理） 休谟(1711-1776，联结流派哲学先驱)：心智模型是“自底而上”构建的，最底层是感觉，其次是抽象和记忆，再上是想象 康德(1724-1804)：心智模型是知觉的“从上(知性)至下(高阶 知觉)” 和“自下(感性)而上(低阶知觉)”,两者不可或缺 霍布斯·德瑞福斯(1929-)：真实的思维是不可以被程序穷尽，依赖计算力的“智能”不是人类智能 罗德尼·布洛克斯（行为流派先驱）：世界是最大的认知模型，更重要的是如何由嵌入式的方式认知外部世界，而并不需要创造中间符号 乔姆斯基  大脑是“认知”的 大部分智力活动是“先天”的 模式是大脑认知的关键结构       数学 经济学  囚徒困境 投票悖论 冷扑大师：博弈均衡策略求解算法   神经科学 心理学 计算机工程 控制论 自动化 语言学  Spaif-Whorf 假说：语言决定人们对世界的理解   大数据  4V:Volume,Velocity,Variety,Veracity  多源异构数据 海量分布数据 流数据 交互型数据 图数据   4I:Inexact,Incremental,Integrated,Inductive 大数据的表示模型：数据表示如何充分体现大数据的内在规律 大数据的计算模型：超越样本多项式时间复杂度的大数据计算模型  在线学习 近似学习   大数据的决策模型：面向多个行为实体的大数据复杂决策技术（数据分析到博弈推理）    历史发展  孕育期(1943-1955) 达特茅斯会议(1956)  克劳德·香农 约翰·麦卡锡  搜索与剪枝   马文·明斯基  知识表示和推理   奥利弗·赛弗里奇 赫伯特·西蒙 &amp;amp; 阿兰·纽维尔   推理期(1952-1969)  第一次低潮  早期程序对其主题一无所知 求解问题的难解性；组合爆炸 流派之争 Perceptrons  符号学派（逻辑） 连接学派（仿生） 行为学派（控制）       知识期(1970-1980 末)  第二次高潮（符号学派成功） 专家系统 第二次低潮（五代机计划失败）   学习期  第三次高潮（机器学习的成功）   深度期 新一代人工智能五个方向  大数据智能 群体智能 跨媒体智能 混合增强智能 自主无人系统    智能 Agent  理性  依赖于：性能度量，先验知识，可能的行动，感知序列 对环境的先验知识  可以完成的行动：执行器 截止此时的感知序列：信息收集，传感器   期望性能最大化 完美：实际性能最大化   任务环境 = (Performance Measurement,Environment,Actuators,Sensors) PEAS 任务环境的性质  Observable: 传感器是否能在每个时间点上获得完整信息 Multi Agents: 存在其它 Agents Deterministic: 下一状态是否完全决定于当前转态与行为 Episodic Static or Dynamic  Dynamic: Agent 计算时环境会变化 Semi: 环境不变，但性能评价变化   离散/连续 环境已知/未知   Agent 函数：将感知信息映射到行动 Agent 程序：实现 Agent 函数 Agent = 体系结构（执行器，传感器，计算装置） + Agent 程序 Agent 程序  Table Driven Agent Simple Reflex Agent  RULE-MATCH 仅使用当前状态   Model Based Reflex Agent  拥有内部状态（模型） 使用当前状态与内部状态   Agent with Goal  不使用 RULE-MATCH 确定当前状态与内部状态及动作后果，与目标比较后选择执行   Agent with Utility   学习 Agent 表达能力  原子表示：单点 要素化表示：集合 结构化表示：逻辑等    解决问题  CV  人脸识别 姿态识别   NLP  自然语言生成 语音识别 虚拟助理   IR  推荐系统 搜索引擎   交叉  机器人 决策管理 自动驾驶 生物：基因组 医疗：辅助决策、医学信息分析 金融：量化交易、安全、服务 网络安全 教育    </description>
+    </item>
+    
+    <item>
+      <title>Math Foundation</title>
+      <link>https://zhengzangw.com/notes/quantum-computation/math-foundation/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/quantum-computation/math-foundation/</guid>
+      <description>&lt;h2 id=&#34;linear-algebra&#34;&gt;Linear Algebra&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Vector: $|\psi\rangle$&lt;/li&gt;
+&lt;li&gt;Row vector: $\langle\psi|=(\overline{|\psi\rangle})^T$&lt;/li&gt;
+&lt;li&gt;Inner product: $\langle\psi|\varphi\rangle=\sum_i\overline{u}_iv_i$
+&lt;ul&gt;
+&lt;li&gt;$\langle\varphi|A|\psi\rangle$: Inner product between $|\varphi\rangle$ and $A|\psi\rangle$&lt;/li&gt;
+&lt;li&gt;$\lVert\psi\rVert=\sqrt{\langle\psi|\psi\rangle}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Tensor product: $A=(a_{ij}),B=(b_{ij}),A\otimes B=(c_{(i_1,i_2),(j_1,j_2)})$
+&lt;ul&gt;
+&lt;li&gt;$H^{\otimes n}=H\otimes H\otimes \cdots \otimes H$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;$|\psi\rangle|\varphi\rangle=|\psi\rangle\otimes|\varphi\rangle=|\psi\varphi\rangle=|\psi,\varphi\rangle$
+&lt;ul&gt;
+&lt;li&gt;$|0^n\rangle=|00\cdots0\rangle$&lt;/li&gt;
+&lt;li&gt;$(A\otimes B)(C \otimes D)=(AC)\otimes(BD)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;$M^\dagger=\overline{M}^T$&lt;/li&gt;
+&lt;li&gt;Unitary matrix $U$: $U^\dagger U=I$&lt;/li&gt;
+&lt;li&gt;Hermitian matrix: $H=U^\dagger DU$, $U$ is unitary and $D$ is a real diagonal matrix(eigenvalues of $H$)&lt;/li&gt;
+&lt;li&gt;Positive semidefinite: $H$ is Hermitina and its eigenvalues are nonnegative&lt;/li&gt;
+&lt;li&gt;orthonormal basis ${|v_1\rangle,\cdots,|v_d\rangle}$
+&lt;ul&gt;
+&lt;li&gt;Completeness relation: $\sum_i|v_i\rangle\langle v_i|=I$&lt;/li&gt;
+&lt;li&gt;Computational basis in $\mathbb{C}^d$: $|i\rangle=(0,\cdots,1,0,\cdots,0)^T$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;noraml operator: $MM^\dagger=M^\dagger M$
+&lt;ul&gt;
+&lt;li&gt;Spectral/Eigenvalue decomposition: $M=\sum_{i=1}^d\lambda_i|v_i\rangle\langle v_i|=U\Lambda U^*$
+&lt;ul&gt;
+&lt;li&gt;$M$ is Hermitian iff $\lambda_i$ are reals&lt;/li&gt;
+&lt;li&gt;$M$ is a projector if $M$ is Hermitian and $M^2=M$/$\lambda_i\in{0,1}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;$f:\mathbb{C}^d\rightarrow\mathbb{C},f(M)=\sum_{i=1}^df(\lambda_i)|v_i\rangle\langle v_i|$&lt;/li&gt;
+&lt;li&gt;$Tr(A)=\sum_i A_{ii}=\sum_i \langle i|A|i\rangle$
+&lt;ul&gt;
+&lt;li&gt;$Tr(AB)=Tr(BA)$&lt;/li&gt;
+&lt;li&gt;$Tr(M)=\sum_{i}\lambda_i$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Propositional Logic (PL)</title>
+      <link>https://zhengzangw.com/notes/mathematic-logic/propositional-logic/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/mathematic-logic/propositional-logic/</guid>
+      <description>语言  字母表：命题符+联结词+辅助符  命题符(propositional symbol)：$\text{PS}={P_n|n\in\mathbb{N}}$   命题集 $\text{PROP}$ (proposition)：为函数 $C_\neg,C_*$ 下 $\text{PS}$ 的归纳闭包  $C_\neg(A)=(\neg A),C_*(A,B)=(A*B),*\in{\vee,\wedge,\rightarrow}$   free variable：$\text{FV}(A)={P\in \text{PS}|P 出现在 A 中}$  定理  括号引理：$A$ 为命题，则 $A$ 中左右括号个数相等 构造序列：$A\in \text{PROP}\iff \exists A_0,\cdots,A_n,n\in\mathbb{N},A=A_n$ 且对于任意的 $A_i,i\leq n$ 至少满足下列三条之一  $A_i\in PS$ $\exists k&amp;lt;i,A_i=A_k$ $\exists k,l&amp;lt;i, A_i=(A_k*A_l)$   结构归纳：对 $A$ 的构造长度作归纳，是自然数上的归纳  数学归纳法：  Basis I.H. Ind. Step      语义  真值集 $B={T,F}$  $\neg:H_\neg:B\rightarrow B$ $*:H_*:B^2\rightarrow B$   赋值：函数 $v:\text{PS}\rightarrow B$ 命题的解释：函数 $\hat v:\text{PROP}\rightarrow B$  $\hat v(P_n)=v(P_n),n\in \mathbb{N}$ $\hat v(\neg A)=H_\neg(\hat v(A))$ $\hat v(A*B)=H_\neg(\hat v(A),\hat v(B))$   满足：$\vDash$  $v \vDash A\iff\hat v(A)=T$ $v\vDash P\iff v(P)=T$ $v\not\vDash \phi \iff v\vDash \neg \phi$ $v\vDash \phi_1 \wedge/\vee \phi_2\iff v\vDash \phi_1 \text{ and/or }\phi_2$ $v\vDash \phi_1 \rightarrow \phi_2\iff v\not\vDash\phi_1\text{ or }v\vDash\phi_2$ tautology: $\vDash A\iff\forall v:v\vDash A$ $A$ 可满足：$\exists v,v\vDash A$ 语义结论：$\Gamma\subset \text{PROP},\Gamma\vDash A\iff\forall v$ 有 $\forall B\in\Gamma,\hat v(B)=T$ 则 $\hat v(A)=T$    定理  $v\upharpoonright \text{FV}(A)$：$v$ 的限制  $v_1\upharpoonright \text{FV}(A)=v_2\upharpoonright \text{FV}(A)$ 则$\hat v_1(A)=\hat v_2(A)$   $n$ 元真值函数：$A\in \text{PROP}, \text{FV}(A)={Q_1,\cdots,Q_n},H_A:B^n\rightarrow B,\forall (a_1,\cdots,a_n)\in B^n, H_A(a_1,\cdots,a_n)=\hat v(A),v$满足$v(Q_i)=a_i(1\leq i\leq n)$.</description>
+    </item>
+    
+    <item>
+      <title>1-随机事件</title>
+      <link>https://zhengzangw.com/notes/probability-and-mathematical-statistics/1-%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/probability-and-mathematical-statistics/1-%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6/</guid>
+      <description>随机事件  随机试验 $E$ 样本空间 $\Omega={E\text{ 的所有可能结果}}$ 样本点 $e$（基本事件）：$E$的每个结果 随机事件：$A,B,C$ 为 $\Omega$ 的子集  $B\subset A$：$A$ 发生必然导致 $A$ 发生 必然事件：$\Omega$ 不可能事件：$\emptyset$   $A\cup B/A+B$： $A,B$ 至少发生一个 $A\cap B/AB$： $A,B$ 同时发生 $A - B$：$A$ 发生， $B$ 不发生 $\overline{A}$： 对立事件 De Morgan: $\overline{\bigcup A_i}=\bigcap \overline{A_i},\overline{\bigcap A_i}=\bigcup \overline{A_i}$  概率定义与性质  概率定义：  $0\leq P(A)$ $P(\Omega)=1$ （可列可加性）若 $A_1,\cdots$ 两两互不相容，则 $P(A_1\cup\cdots)=P(A_1)\cup\cdots$   概率性质  $P(A-B)=P(A)-P(AB)=P(A\overline{B})$  $A=(A-B)\cup AB$   $P(A\cup B)=P(A)+P(B)-P(AB)$   乘法公式：$P(AB)=P(B)P(A|B)$  条件概率：$P(A|B)=\frac{P(AB)}{P(B)}$   全概率公式：对于划分 $A_1,\cdots,A_n, P(B)=\sum_{k=1}^nP(A_k)P(B|A_k)$ 贝叶斯公式：对于划分 $A_1,\cdots,A_n$, $P(A_i|B)=\frac{P(A_i)P(B|A_i)}{\sum_{k=1}^nP(A_k)P(B|A_k)}$ 互不相容：$P(A\cup B)=P(A)+P(B)$  对立事件：$P(A)+P(B)=1$   独立性：$P(AB)=P(A)P(B)$  $P(\bigcup_iA_i)=1-\prod_i P(\overline{A_i})$   Union Bound: $P(\bigcup A_i)\leq\sum P(A_i)$ $k$-wise independent: $P(A_1\cdots A_k)=P(A_1)\cdots P(A_k)$  pairwise independent: $P(AB)=P(A)P(B)$   mutually independent: $\forall k,k$-wise independent  $X_1,\cdots,X_m$ is mutually independent, then $n=2^m-1$ pairwise indenpent bits can be generated: $Y_j=(\sum_{i\in S_j}X_i)\mod 2$ ($S_j\subseteq \mathbb{Z}_m$)    概型  可靠性分析（独立工作系统）  可靠性：正常工作的概率 串联方式：$P(B)=P(A_1\cdots A_n)$ 并联方式：$P(B)=1-\prod_i P(\overline{A_i})$   古典概型  $P(A)=\frac{m}{n}$   几何概型 独立重复试验概型：$n$ 重伯努利试验  两个结果 $A$ 与 $\overline{A}$ 试验进行 $n$ 次，每次结果   $n$ 重伯努利试验中， $A$ 发生 $k$ 次的概率 $P_n(k)=C_n^kp^kq^{n-k}$ 泊松定理：$\lim_{n\rightarrow\infty}C_n^kp_n^k(1-p_n)^{n-k}=\frac{\lambda^k}{k!</description>
+    </item>
+    
+    <item>
+      <title>民歌</title>
+      <link>https://zhengzangw.com/notes/music-review/%E5%9B%BD%E5%86%85%E6%B0%91%E6%AD%8C/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/music-review/%E5%9B%BD%E5%86%85%E6%B0%91%E6%AD%8C/</guid>
+      <description>第一课  新民歌/原生态民歌 民歌的基本特征  口头性 集体性 流传变异性 短小精悍 鲜明的风格色彩   独唱，对唱（重唱）  同声合唱 混声合唱   分类  体裁  号子：体力劳动过程中编唱，并直接为之服务的民歌  搬运、工程、农事、船渔、作坊号子   山歌：山野劳动中  一般山歌，放牧山歌，田秧山歌   小调   地域  北方 南方      例子  广东民歌《落雨大》 江西民歌《十送红军》 船运号子 云南山歌《弥渡山歌》  第二课  华北、东北色彩区 西北色彩区  山歌  信天游 花儿  男-少儿 女-花儿 大令/小令   山曲、爬山调  起伏大       号子  东北林号子 黄河硪号，夯号 黄河船夫号   时调  在民间休闲娱乐为助兴唱的民歌  反花调 对花      第三课  汉族南方的民歌 号子  农事号子  连枷号子 春米号子   船夫号子 采石号子   山歌  江浙山歌 客家山歌 西南山歌 云南山歌  《小河淌水》 《放马山歌》   川南山歌   小调  北方少数民族  蒙古族  长调民歌 短调民歌  叙事性、抒情性     朝鲜族 180多万  道拉基   达斡尔族，鄂伦春族，赫哲族 维吾尔族  阿拉木汉 马车夫之恋   哈萨克族  第四课  藏族民歌  谐：歌舞  果谐，堆谐，康谐，囊玛，莱谐   鲁：歌曲  卓鲁（牧歌），（山歌）     苗族民歌  山歌（飞歌，央恰） 生活风俗歌曲   白族民歌  白族调 汉调   纳西族民歌 佤族 傣族  </description>
+    </item>
+    
+    <item>
+      <title>综述</title>
+      <link>https://zhengzangw.com/notes/data-communication/0-%E7%BB%BC%E8%BF%B0/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/data-communication/0-%E7%BB%BC%E8%BF%B0/</guid>
+      <description>通信系统  source $\rightarrow$ transmitter 源系统)$\rightarrow$ transmission system $\rightarrow$(目的系统 reciver $\rightarrow$ destination  单工 (simplex)：电视 半双工 (half duplex)：对讲机 双工 (full duplex)：电话   数字通信系统：数字基带传输  （模拟/数字）信息源$\rightarrow$信源编码$\rightarrow$加密$\rightarrow$信道编码$\rightarrow$数字调制$\rightarrow$信道$\rightarrow$数字解调$\rightarrow$信道译码$\rightarrow$解密$\rightarrow$信源译码$\rightarrow$受信者   模拟通信系统：利用模拟信号来传输信息的通信系统  模拟信息源（模拟消息）$\rightarrow$ 原始电信号（基带信号）$\rightarrow$调制器（已调信号）$\rightarrow$信道$\rightarrow$解调器（基带信号）$\rightarrow$受信者（模拟信号）   混成系统  网络体系结构  TCP/IP 5层模型      内容     应用层 支持各种不同应用程序的逻辑   传输层 提供端到端的传输服务   网际互联层 提供多个网络的路由选择，能够让数据跨越多个互联网络   数据链路层 为与同一个网络相连的两个系统提供网络接入   物理层 负责数据传输设备与传输媒体的物理接口   媒介 传输媒介     套接字：端口值+IP地址+(协议)  流套接字：TCP 数据报套接字：UCP 原始套接字(raw socket)：IP    </description>
+    </item>
+    
+    <item>
+      <title>Responsive Web Design</title>
+      <link>https://zhengzangw.com/notes/web-develop/responsive-web-design/</link>
+      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/web-develop/responsive-web-design/</guid>
+      <description>&lt;h1 id=&#34;basic-html-and-html5&#34;&gt;Basic HTML and HTML5&lt;/h1&gt;
+&lt;p&gt;HTML5 tags: header, footer, nav, video, article, section, main&lt;/p&gt;
+&lt;h2 id=&#34;text&#34;&gt;Text&lt;/h2&gt;
+&lt;p&gt;h1-h6,p,s,u,em,strong,a,time&lt;/p&gt;
+&lt;h2 id=&#34;list&#34;&gt;List&lt;/h2&gt;
+&lt;p&gt;ul,ol,li&lt;br&gt;
+table: &lt;code&gt;&amp;lt;table&amp;gt;&amp;lt;thead&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/thead&amp;gt;&amp;lt;tbody&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/tbody&amp;gt;&amp;lt;/table&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;figure&#34;&gt;Figure&lt;/h2&gt;
+&lt;p&gt;figure,figcaption,img&lt;br&gt;
+i&lt;/p&gt;
+&lt;h2 id=&#34;form&#34;&gt;Form&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;form: &lt;code&gt;&amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;/form&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;text field: &lt;code&gt;&amp;lt;input type=&amp;quot;text&amp;quot; placeholder=&amp;quot;&amp;quot; required&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;fieldset, legend&lt;/li&gt;
+&lt;li&gt;radio/checkbox: &lt;code&gt;&amp;lt;label for=&amp;quot;name&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;name&amp;quot; checked&amp;gt; Name &amp;lt;/label&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;button: &lt;code&gt;&amp;lt;button type=&amp;quot;submit&amp;quot;&amp;gt; &amp;lt;/button&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;others&#34;&gt;Others&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;audio: &lt;code&gt;&amp;lt;audio id=&amp;quot;meowClip&amp;quot; controls&amp;gt;&amp;lt;source src=&amp;quot;audio/meow.mp3&amp;quot; type=&amp;quot;audio/mpeg&amp;quot; /&amp;gt;&amp;lt;source src=&amp;quot;audio/meow.ogg&amp;quot; type=&amp;quot;audio/ogg&amp;quot; /&amp;gt;&amp;lt;/audio&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;accesskey&lt;/li&gt;
+&lt;li&gt;tabindex&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>2-一元微积分</title>
+      <link>https://zhengzangw.com/notes/calculus/section2/</link>
+      <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/calculus/section2/</guid>
+      <description>积分  Riemann 和  $P:a=x_0&amp;lt;\cdots&amp;lt;x_n=b$ 为 $[a,b]$ 的分隔 特殊点选取 $\xi$： $\xi_i\in[x_{i-1},x_i]$，定义域${1,2,\cdots,n}$，自变量 $i$，函数值 $\xi_i$ $\Delta x_i= x_i-x_{i-1}$ $S(f,P,\xi)=\sum_{i=1}^nf(\xi_i)\Delta x_i,\lVert P\rVert=\max{|\Delta x_i||1\leq i\leq n}$   Riemann 可积：$\forall\epsilon&amp;gt;0,\exists\delta&amp;gt;0,\forall P,\lVert P\rVert&amp;lt;\delta,\forall\xi,|S(f,P,\xi)-I|&amp;lt;\epsilon$  $I=\int_a^b f(x)dx$ 有界性：$f$ Riemann 可积则 $f$ 在 $[a,b]$ 上有界 唯一性 线性 单调性 非负性 三角不等式：$|\int_a^b fdx|\leq\int_a^b|f|dx$ $f$ 在 $[a,b]$ 上有界且至多有有限个间断点，则 $f$ 在 $[a,b]$ 上可积   积分计算  换元积分法  $\int f(\varphi(x))\varphi&#39;(x)dx=\int f(u)du$ $\int_a^b f(\varphi(x))\varphi&#39;(x)dx=\int_a^bf(\varphi(x))d\varphi(x)=\int_{\varphi(a)}^{\varphi(b)}f(u)du$  $f(u)$ 在 $I$ 上连续，$\varphi(x)$ 在 $[a,b]$ 上连续可微 $f(u)$ 在 $I$ 上可积，$\varphi(x)$ 在 $[a,b]$ 上可微且单调，$\varphi&#39;(x)$ 在 $[a,b]$ 上可积   第二换元积分法：$u=\varphi(x),\alpha=\varphi(a),\beta=\varphi(b),\int_\alpha^\beta f(u)du=\int_a^bf(\varphi(x))\varphi&#39;(x)dx$   分布积分法  $\int f(x)dg(x)=f(x)g(x)-\int g(x)df(x)$ $\int_a^b f(x)g&#39;(x)dx = f(x)g(x)|_a^b-\int_a^b f&#39;(x)g(x)dx$   公式  $\int x^{-1}=\ln |x|+C$ $\int a^x=\frac{a^x}{\ln a}+C$ $\int \frac{dx}{\sqrt{x^2+a}}=\ln|x+\sqrt{x^2+a}|+C$   有理积分  有理函数：$R(x)=\frac{P(x)}{Q(x)}$，$P,Q$ 为实系数多项式 部分分式分解：待定系数法 有理指数函数：$R(a^x)$ 有理三角积分：$R(\cos x,\sin x)$     无穷积分  $f$ 定义在 $[a,+\infty]$ 上，$\forall c\in[a,+\infty]$，$f$ 在 $[a,c]$ 上 Riemann 可积，若 $\lim_{c\rightarrow+\infty}\int_a^c f(x)dx=A$ 则 $\int_a^{+\infty} f(x)dx=A$  收敛：$A\not=\pm\infty$ 发散：$A=\pm\infty$ 或极限不存在   $\exists d\in\mathbb{R},\int_{-\infty}^df(x)dx,\int_d^{+\infty}f(x)dx$ 皆收敛，$\int_{-\infty}^{+\infty}f(x)dx = \int_{-\infty}^df(x)dx+\int_d^{+\infty}f(x)dx$   瑕积分  瑕点：$\forall c\in (a,b),f$ 在 $[a,c]$ 上可积，在 $b$ 附近无界 $f$ 定义在 $[a,b)$ 上，$\lim_{c\rightarrow b^-}\int_a^cf(x)dx=A$ 则 $f$ 在 $[a,b]$ 上的瑕积分为 $A$, $\int_a^bf(x)dx=A$   非负的积分: $f$ 在 $[a,+\infty]$ 上非负，$\forall c&amp;gt;a,f$ 在 $[a,c]$ 上可积  $\int_a^{+\infty}f(x)dx$ 有值且非负 $\int_a^{+\infty}f(x)dx$ 收敛当且仅当 $\int_a^{+\infty}f(x)dx&amp;lt;+\infty$ 比较判别法 I：$f\geq g$  $\int_a^{+\infty}f(x)dx$ 收敛，则 $\infty_a^{+\infty}g(x)dx$ 收敛 $\int_a^{+\infty}g(x)dx$ 发散，则 $\infty_a^{+\infty}f(x)dx$ 发散   比较判别法 II  $\lim_{x\rightarrow+\infty}\frac{f(x)}{g(x)}=c&amp;lt;+\infty,\int_a^{+\infty}g(x)dx$ 收敛，则 $\int_a^{+\infty}$ 收敛 $\lim_{x\rightarrow+\infty}\frac{f(x)}{g(x)}=c&amp;gt;0,\int_a^{+\infty}g(x)dx$ 发散，则 $\int_a^{+\infty}$ 发散     绝对收敛：$\int_a^{+\infty}|f(x)|dx$ 收敛  绝对收敛则收敛    导数  $f$ 在 $x=x_0$ 处可导（可微）：$\lim_{x\rightarrow x_0}\frac{f(x)-f(x_0)}{x-x_0}=A$  唯一性，局部性 可导$\Rightarrow$连续 线性 Leibniz 法则：$(fg)&#39;(x_0)=f&#39;(x_0)g(x_0)+f(x_0)g&#39;(x_0)$ 链法则：$(f\circ g)&#39;(x_0)=f&#39;(g(x_0))g&#39;(x_0)$ 参数求导法：$\frac{dy}{dx}|{x=x(t_0)}=\frac{\frac{dy}{dx}|{t=t_0}}{\frac{dx}{dt}|_{t=t_0}}$ $(a^x)&#39;=a^x\ln a$ $(\log_a|x|)&#39;=(x\ln a)^{-1}$ 单侧导数 初等函数导函数是初等函数   $f^{(m)}(x_0)$：$m$阶导数  光滑：任意阶可微 任意阶 Leibniz 法则：$(fg)^{(m)}(x_0)=\sum_{i=0}^mC_m^if^{(m-i)}(x_0)g^{(i)}(x_0)$   $f$ 在 $x=x_0$ 处可导 $\iff x\rightarrow x_0,f(x)-f(x_0)=A(x-x_0)+o(|x-x_0|)$  $A=f&#39;(x_0)$ $R(x)$ 为余项    微分  线性函数 $f:\mathbb{R}\rightarrow\mathbb{R}$  $f(\omega_1+\omega_2)=f(\omega_1)+f(\omega_2)$ $\forall k\in\mathbb{R},f(k\omega)=kf(\omega)$   $dx$: 恒等函数 $dx(\omega)=\omega$ $df(x_0)$：$f(x)$ 在 $x=x_0$ 处可导，函数 $df(x_0):\mathbb{R}\rightarrow\mathbb{R}$  $df(x_0)=f&#39;(x_0)dx$ $df(x,\omega)=df(x)(\omega)=f&#39;(x)\omega$ 线性 Leibniz 法则 链法则    微积分基本定理  微积分基本定理:  $f$ 在 $[a,b]$ 上连续则 $F(x)=\int_a^xf(t)dt$ 在 $[a,b]$ 上可微，且$F&#39;=f$  $\frac{d}{dx}\int_a^xf(t)dt=f(x)$ $F$ 为 $f$ 的原函数 $\int f(x)dx=F(x)+C$   $f$ 在 $[a,b]$ 上可积，则 $F$ 在 $[a,b]$ 上连续，且若 $f(x)$ 在 $x_0$ 处连续，$F&#39;(x_0)=f(x_0)$   Newton-Leibniz 公式：$F$ 在 $[a,b]$ 上连续可微，则 $\int_a^b\frac{d}{dx}F(x)dx=F(b)-F(a)=F|^b_a$ Rolle 中值定理：$f$ 在 $[a,b]$ 上连续，在$(a,b)$上可导，$f(a)=f(b)$ 则 $\exists\xi\in[a,b],f&#39;(\xi)=0$ Lagrange 中值定理：$F$ 在 $[a,b]$ 上连续，在$(a,b)$上可微，则$\exists\xi\in(a,b),F(b)-F(a)=F&#39;(\xi)(b-a)$ L&amp;rsquo;Hospital 法则：  $\frac{0}{0}:\lim_{x\rightarrow a^+}f(x)=\lim_{x\rightarrow a^+}g(x)=0,\lim_{x\rightarrow a^+}\frac{f&#39;(x)}{g&#39;(x)}=A$ 则 $\lim_{x\rightarrow a^+}\frac{f(x)}{g(x)}=A$ $\frac{\infty}{\infty}:\lim_{x\rightarrow a^+}g(x)=\pm\infty,\lim_{x\rightarrow a^+}\frac{f&#39;(x)}{g&#39;(x)}=A$ 则 $\lim_{x\rightarrow a^+}\frac{f(x)}{g(x)}=A$ $0\cdot\infty=\frac{0}{\frac{1}{\infty}}$ $0^0=e^{0\ln 0}=e^{0\cdot\infty}$ $\infty^0=e^{0\ln \infty}=e^{0\cdot\infty}$ $1^\infty=e^{\infty\cdot0}$ $(+\infty)-(+\infty)=\ln\frac{0}{0}=\frac{1}{0}-\frac{1}{0}$   Taylor 公式：$f$ 定义在 $(a,b)$ 上，$x_0\in(a,b),f$ 在 $x_0$ 处 $n$ 阶可导，则  $f(x)=\sum_{i=0}^n\frac{f^{(i)}(x_0)}{i!</description>
+    </item>
+    
+    <item>
+      <title>Postulates of Quantum Mechanics</title>
+      <link>https://zhengzangw.com/notes/quantum-computation/postualates/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/quantum-computation/postualates/</guid>
+      <description>Postulates  Associated to any isolated physical system is a complex vector space with inner product known as state space of the system. The system is completely describled by its state vector/density operator, which is a unit vector in the systems state  state vector: $|\psi_i\rangle$ density operator: $\rho=\sum_ip_i|\psi_i\rangle\langle\psi_i|$   The evolution of a closed quantum system is described by a unitary transformation  $|\psi&#39;\rangle=U|\psi\rangle$ $\rho&#39;=U\rho U^\dagger$   Quantum measuerments are described by a collection ${M_m}$ of measurement operator ($m$ is number of possible outcome).</description>
+    </item>
+    
+    <item>
+      <title>First Order Logic (FOL)</title>
+      <link>https://zhengzangw.com/notes/mathematic-logic/first-order-logic/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/mathematic-logic/first-order-logic/</guid>
+      <description>语言  字母表  逻辑符集合  变元集 $V$ 联结词、辅助词、(等词) 量词 $\forall,\exists$   非逻辑符集合 $\mathscr{L}$  常元集合 $\mathscr{L}_c$ 函数集合 $\mathscr{L}_f$, $\mu(f)&amp;gt;0$ 为 $f$ 的元数 谓词集合 $\mathscr{L}_P$, $\mu(P)\geq0$ 为 $f$ 的元数     项 $T$：变元符 $\cup$ 常元符 $\cup f(v_1,\cdots)$  自由变元  $\text{\text{FV}}(x)={x}$, $\text{\text{FV}}(c)={}$ $\text{\text{FV}}(f(t_1,\cdots))=\bigcup_{i=1}^n\text{\text{FV}}(t_i)$   闭项：$\text{\text{FV}}(t)=\emptyset$ 替换：$s[\frac{t}{x}]$   公式 $\Psi$：${t_1\doteq t_2}$ $\cup$ $P(t_1,\cdots)$ $\cup$ 公式在联结词、量词下的组合  自由变元  $\text{\text{FV}}(t_1\doteq t_2)=\text{\text{FV}}(t_1)\cup\text{\text{FV}}t_2$ $\text{\text{FV}}(P(t_1,\cdots))=\bigcup_{i=1}^n\text{\text{FV}}(t_i)$ 联结词取并 $\text{\text{FV}}(Qx.A)=\text{FV}(A)\backslash{x}$   句子：$\text{\text{FV}}(A)=\emptyset$ 替换：$A[\frac{t}{x}]$  $(Qx.</description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>https://zhengzangw.com/notes/web-develop/javascript/</link>
+      <pubDate>Fri, 22 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/web-develop/javascript/</guid>
+      <description>&lt;h1 id=&#34;basic-knowledge&#34;&gt;Basic Knowledge&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;数据类型
+&lt;ul&gt;
+&lt;li&gt;number
+&lt;ul&gt;
+&lt;li&gt;isInteger&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;string
+&lt;ul&gt;
+&lt;li&gt;.length&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;boolean&lt;/li&gt;
+&lt;li&gt;object
+&lt;ul&gt;
+&lt;li&gt;Object.freeze()&lt;/li&gt;
+&lt;li&gt;get&lt;/li&gt;
+&lt;li&gt;set&lt;/li&gt;
+&lt;li&gt;construct&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;array
+&lt;ul&gt;
+&lt;li&gt;filter(item, index, array)&lt;/li&gt;
+&lt;li&gt;map&lt;/li&gt;
+&lt;li&gt;spread operator: &amp;hellip; return comma seperated array&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;symbol&lt;/li&gt;
+&lt;li&gt;undefined&lt;/li&gt;
+&lt;li&gt;null&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;未声明的变量使用时自动在全局定义&lt;/li&gt;
+&lt;li&gt;===, !==&lt;/li&gt;
+&lt;li&gt;let : 不能多次声明
+&lt;ul&gt;
+&lt;li&gt;When you declare a variable with the let keyword inside a block, statement, or expression, its scope is limited to that block, statement, or expression&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;use strict&amp;rdquo;; : 必须声明&lt;/li&gt;
+&lt;li&gt;const : read-only
+&lt;ul&gt;
+&lt;li&gt;objects (including arrays and functions) assigned to a variable using const are still mutable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Anonymous Functions: arrow function syntax
+&lt;ul&gt;
+&lt;li&gt;function() {}&lt;/li&gt;
+&lt;li&gt;() =&amp;gt; {}&lt;/li&gt;
+&lt;li&gt;() =&amp;gt; &amp;ldquo;value&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;require&lt;/li&gt;
+&lt;li&gt;import&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>外国民歌</title>
+      <link>https://zhengzangw.com/notes/music-review/%E5%A4%96%E5%9B%BD%E6%B0%91%E6%AD%8C/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/music-review/%E5%A4%96%E5%9B%BD%E6%B0%91%E6%AD%8C/</guid>
+      <description>第五课  外国民歌  朝鲜民歌 《阿里郎》《小白船》 日本民歌  盂兰盆节（中元节，鬼节） 拉网小调 樱花   印度尼西亚 100多民族  星星索 哎哟妈妈   土耳其民歌  厄尔嘎兹   缅甸民歌  海鸥   意大利  我的太阳 重归苏莲托 桑塔露琪亚 好朋友   英国  夏日最后的玫瑰 友谊天长地久（离歌）      第六课  德国 俄罗斯  三套车 伏尔加船夫曲 德涅泊尔   南斯拉夫（-2003） 斯洛伐克民歌  牧童   美国  铃儿响铃铛 克里门泰因 红河谷   巴西 古巴  鸽子    歌剧  哈巴涅拉 我亲爱的爸爸 斗牛士之歌  </description>
+    </item>
+    
+    <item>
+      <title>数据传输理论</title>
+      <link>https://zhengzangw.com/notes/data-communication/1-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%90%86%E8%AE%BA/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/data-communication/1-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%90%86%E8%AE%BA/</guid>
+      <description>数据：传达某种意义或信息的实体  模拟数据：连续的值 数字数据：离散的值   信号：数据的电气或电磁表示方式  模拟信号：连续变化的电磁波 数字信号：电压脉冲序列，在导向媒体传输  大规模集成电路 数据完整性好 容量利用率高 安全保密 易于储存      傅里叶分析  正弦波：$s(t)=A\sin(2\pi ft+\phi)$  波长：$\lambda=vT$   周期信号的傅里叶级数：$x(t)=\frac{A_0}{2}+\sum_{n=1}^\infty[A_n\cos(2\pi nf_0t)+B_n\sin(2\pi nf_0t)]$  直流分量：$A_0=\frac{2}{T}\int_0^Tx(t)dt$ 基频：$f_0=\frac{1}{T}$ 谐频：$kf_0$ $A_n=\frac{2}{T}\int^T_0x(t)\cos(2\pi nf_0t)dt$ $B_n=\frac{2}{T}\int^T_0x(t)\sin(2\pi nf_0t)dt$ $P=\frac{1}{4}A_0^2+\frac{1}{2}\sum(A_i^2+B_i^2)$   方波信号：$s(t)=\frac{4A}{\pi}\sum_{2\not\vert k}\frac{\sin(2\pi kft)}{k}$ 频谱 spectrum: 所包含的频率范围 绝对带宽 absolute bandwidth: 频谱的宽度 有效带宽(3dB带宽)：绝大部分能量集中的相当窄的频带范围 $f_1-f_0$ 数据率：单位时间内在数据传输系统设备之间传送的比特数 $R_b=\frac{1}{T_b}=\frac{2}{T}$  $T_b$：发送1比特的时间 其它项不变，带宽加倍数据率加倍 给定带宽可以根据接收器在噪声和其它损伤的情况下鉴别能力来支持不同的数据率   误码率  传输损伤 衰减 (attenuation)  强度衰减  放大器（模拟） amplifier 转发器（数字） repeater   衰减失真（模拟）  频率越高，衰减越严重（传输损耗越大，覆盖范围越小，绕射能力越弱，但高频资源丰富） 衰减均衡技术 放大器：放大高频倍数更高    失真 (distortion)  衰减失真 时延失真  靠近中心频率的地方其传播速度趋于最快 码间串扰（数字）    噪声 (noise) 噪声是传输系统性能的主要制约因素</description>
+    </item>
+    
+    <item>
+      <title>群论</title>
+      <link>https://zhengzangw.com/notes/modern-algebra/group/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/modern-algebra/group/</guid>
+      <description>群作用的基本概念  群 $G$ 在集合 $X$（$G$-集） 上的（左）作用$\circ$： $G$ 为群， $X$ 为非空集合，若 $\forall g\in G, x\in X, !\exists g\circ x\in X$ 且  $\forall x\in X(e\circ x=x)$ $g_1\circ(g_2\circ x) = (g_1g_2) \circ x$   定理：$G$ 在 $X$ 上的群作用与 $G$ 到 $S(X)$ 的同态构成双射 轨道：$O_x=Gx={g\circ x:g\in G}$，是 $X$ 上的等价类  $X/G={O_x|x\in G}$ 若$O_x=X$，则 $G$ 在 $X$ 上可迁 $X=\bigsqcup O_x$   稳定化子(stabilizers)：$G_x=\text{stab}(x)={g\in G: g\circ x=x}\leqslant G$  $[G:G_x]=|O_x|$   作用核：$\text{ker}(X)=\cap_{x\in X}G_x={g\in G:\forall x\in X, g\circ x=x}$  $\text{ker}(X)\trianglelefteq G$ 且 $G/\text{ker}(X)$ 可嵌入到 $S(X)$ 中   $g$-不动点(invariant set)：$X_g=\text{fix}(g)={x\in X:g\circ x=x}$ 不动点：$\text{fix}(G)=\cap_{g\in G}X_g={x\in X: \forall g\in G(g\circ x=x)}$ Burnside引理: $|X/G|=\frac{1}{|G|}\sum_{g\in G}|X_g|$ 定理：非不动点个数可表达成 $|G|$ 的一些素因子相加（可重复） $|O_x|=1\iff x\in \text{fix}(G)$  Pólya Theory of Counting  $M_\pi(x_1,x_2,\cdots,x_n)=\prod_{i=1}^k x_{l_i}$ cycle index of $G$: $P_G(x_1,x_2,\cdots,x_n) = \frac{1}{|G|}\sum_{\pi\in G}M_\pi(x_1,x_2,\cdots,x_n)$ pattern inventory: $F_G(y_1,y_2,\cdots,y_m)=\sum_{v}a_vy_1^{n_1}y_2^{n_2}\cdots y_m^{n_m}$  $v=(n_1,n_2,\cdots,n_m),\sum_{i=1}^m = n$   Pólya&amp;rsquo;s enumeration formula: $F_G(y_1,y_2,\cdots,y_m)=P_G(\sum_{i=1}^my_i,\sum_{i=1}^my_i^2,\cdots,\sum_{i=1}^my_i^n)$  $p$群与 Sylow 定理  $p$群：$p^\alpha$阶群 定理：  $p$群作用在$X$上，则$|X|\equiv|Fix(G)| (\bmod p)$  $p\not|\ |X|$, 则必有不动点   $p$群中心$Z(G)$有非单位元 $p^2$阶群为$Abel$ 群   $ord_p(a)=n$：$p^n\ ||\ a$ Sylow $p$子群：$|H| = p^{ord_p|G|}$ $G$ 必有$p(p\ |\ |G|)$阶元 Sylow 定理：  Sylow 第一定理（存在性）：$G$ 必有Sylow $p$子群 Sylow 第二定理（关系）：$H$为有限群 $G$ 的一个Sylow $p$子群，则 $G$ 的任一个 $p$子群 $K$ 都被包含在某个与 $H$ 共轭的子群中  ${G$ 的Sylow $p$子群$}={aHa^{-1}:a\in G}$ $p$为有限群 $G$ 的 Sylow $p$子群，则 $p\trianglelefteq G\iff p$是唯一的 Sylow $p$子群 (Fratinni) $H$ 是群 $G$ 的有穷正规子群，$P$是 $H$ 的 Sylow $p$-子群，则 $G=HN_G(P)$   Sylow 第三定理（数量）：$|G|=p^\alpha m$，则  $n_p|m$ $n_p\equiv 1(\bmod p)$ $n_p=[G:N_G(H)],H$为任一Sylow $p$子群      群作用的例子  $G$ 为群，$H$ 为子群。$h\in H,x\in X=G$, $h\circ x=hx$  $O_x=Hx$，轨道分解即为右陪集分解 $stab(x)={e}$ $|Hx|=|O_x|=[H:stab_x]=|H|$   $X=G, \forall g\in G,x \in X, g\circ x=gxg^{-1}$  $O_x=C(x)$ 为 $x$ 所在的共轭类 $stab(x)=C_G(x)={g\in X: gx=xg}$ 为中心化子 $ker(X)=Z(X)$ 为中心 $G/Z(G)\cong Inn(G)$ 可嵌入 $S(G)$ 中   $H\leqslant G,X=G/H$（所有左陪集）$g\circ (xH)=gxH$  $O_x=X$ $stab(x)=xHx^{-1}$ $[G:xHx^{-1}]=|X|=[G:H]$ $ker(X)=H_G$ 为 $H$ 在 $G$ 中的正规核 $G/H_G$ 可嵌入 $S(G/H)$  $[G:H][H:H_G] = |G/H_G|\ |\ |S(G/H)|=[G:H]!</description>
+    </item>
+    
+    <item>
+      <title>2-矩阵</title>
+      <link>https://zhengzangw.com/notes/linear-algebra/2-%E7%9F%A9%E9%98%B5/</link>
+      <pubDate>Sun, 25 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/linear-algebra/2-%E7%9F%A9%E9%98%B5/</guid>
+      <description>矩阵运算  可逆：$AB=BA=I$  求矩阵的逆  $[A|I]\rightarrow[I|A^{-1}]$ 有零行，不可逆     trace: $tr(A)=\sum_{i=1}^na_{ii}$  行列变换  分块矩阵 初等行列变换  初等阵  $P(i,j)$ $P(j,i(k))$ $P(i(k))$   对 A 作 k 个初等变换得到 B  $B=AQ_1Q_2\cdots Q_k$      秩  行秩=列秩 $rank(A_{m*n})\leq min(m,n)$ $rank(PA)\leq rank(A)$ 取等 if P 可逆 $rank(AQ)\leq rank(A)$ 取等 if Q 可逆 求秩: 高斯消元 可逆$\Leftrightarrow$满秩 线性方程组可解$\Leftrightarrow$$rank(A)=rank([A|b])$ $null(A) = dimH$ $rank(A) + null(A) = n$ 子阵：A 的某$k$行与某$l$列的交点，得$k*l$子阵  若$rank(A)\geq k$,则$\exist B$为$A$的 k 阶子方阵且$B$可逆 若$rank(A)&amp;lt;l$,则$\forall B$为$A$的 l 阶子方阵且$B$不可逆    行列式   排列</description>
+    </item>
+    
+    <item>
+      <title>Chapter 2</title>
+      <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter2/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter2/</guid>
+      <description> 进制转换 定点表示  机器数：编码后的表示 真值 原码表示 补码表示：$X_c=(M+X)\pmod M$  -：取反加一（与数据类型无关）  -2147483648 : 0x80000000     反码表示 移码：表示浮点数   浮点表示  $X=(-1)^SMR^E$  $M$: mantissa $E$: exponent $R$: radix   IEEE 754  FLOAT: 1+8+23 DOUBLE: 1+11+52 Intel FPU: 1+15+(1)+63 偏置常数 B: $2^{n-1}-1$ 分类  0: -0/+0 非规格化数：$(-1)^s * 0.f *(1-B)$ 全1阶码全0尾数：$\infty$ 全1阶码非全0尾数：NaN（分静止的和通知的）  最高有效位为1：静止的   规格化数：$(-1)^s1.f2^{e-B}$       浮点运算的舍入  右规时，直接截断 IEEE754 至少两位附加位（guard,round,sticky） 就近舍入到偶数   整数表示  有符号: $-2^{n-1}\sim(2^{n-1}-1)$ 整数常量（无后缀）  C90 : int - $*$ - unsigned long int C99 : int - $*$ - long long int     BCD码 数据宽度  字长 word size：指明指针数据的标称大小（决定虚拟地址空间最大大小） KMGTPEZY 小端：MSB在大地址中 #pragma pack(n) 设置对齐方式 __attribute__((n)) 设置单独的对齐方式，大于n的数据结构按n对齐    </description>
+    </item>
+    
+    <item>
+      <title>3-级数</title>
+      <link>https://zhengzangw.com/notes/calculus/section3/</link>
+      <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/calculus/section3/</guid>
+      <description>级数：形式和：$\sum_{n=1}^{+\infty}a_n=a_1+a_2+\cdots$ 部分和：$S_n=\sum_{k=1}^na_k$ 收敛 $\sum_{n=1}^{+\infty}a_n=A$：$\lim_{n\rightarrow+\infty}S_n=A$ 发散：不收敛 Cauchy 准则：收敛 $\iff\forall\epsilon&amp;gt;0,\exists N\in\mathbb{R},\forall m&amp;gt;N,\forall n&amp;gt;N,m&amp;gt;n$ 有 $|\sum_{k=n+1}^ma_k|&amp;lt;\epsilon$ 线性：收敛时满足 非负项级数：$a_n\geq 0$  $\sum_{n=1}^{+\infty}$ 有值非负，收敛 $\iff&amp;lt;+\infty$ 比较判别法 I： $a_n\geq b_n\geq 0$  $\sum_{n=1}^{+\infty}a_n$ 收敛，$\sum_{n=1}^{+\infty}b_n$ 收敛 $\sum_{n=1}^{+\infty}b_n$ 发散，$\sum_{n=1}^{+\infty}a_n$ 发散   比较判别法 II  $\lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=c&amp;lt;+\infty$，且 $\sum_{n=1}^{+\infty}b_n$ 收敛，$\sum_{n=1}^{+\infty}a_n$ 收敛 $\lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=c&amp;gt;0$，且 $\sum_{n=1}^{+\infty}b_n$ 发散，$\sum_{n=1}^{+\infty}a_n$ 发散   比值法（D&amp;rsquo;Alembert）  $\lim_{n\rightarrow+\infty}\frac{a_{n+1}}{a_n}=q&amp;lt;1$，则 $\sum_{n=1}^{+\infty}a_n$ 收敛 $\lim_{n\rightarrow+\infty}\frac{a_{n+1}}{a_n}=q&amp;gt;1$，则 $\sum_{n=1}^{+\infty}a_n$ 发散   根式法（Cauchy）  $\lim_{n\rightarrow+\infty}\sqrt[n]{a_n}=q&amp;lt;1$, 收敛 $\lim_{n\rightarrow+\infty}\sqrt[n]{a_n}=q&amp;gt;1$, 发散   积分法：$f$ 在 $[k,+\infty]$ 上可积，$f|_{(n,n+1)}\geq a_n$  $\sum_{n=k}^{+\infty}a_n\leq\int_k^\infty f(x)dx$     交错级数 Leibniz 判别法：${|a_n|}$ 单调且极限为 $0$，则 $\sum_{n=1}^{+\infty}$ 收敛 绝对收敛：$\sum_{n=1}^{+\infty}|a_n|$ 收敛  绝对收敛则收敛 条件收敛：收敛但非绝对收敛   重排: $\sum_{n=1}^{+\infty}a_{\varphi(n)}$  Riemann 定理：$\forall A,\sum_{n=1}^{+\infty}a_n$ 为实级数且条件收敛，则存在重排 $\sum_{n=1}^{+\infty}b_n=A$ $\sum_{n=1}^{+\infty}a_n$ 收敛则可对相继项加括号 $\sum_{n=1}^{+\infty}a_n$ 绝对收敛则可重排 Cauchy 定理：$\sum_{n=1}^{+\infty}a_n,\sum_{n=1}^{+\infty}b_n$ 绝对收敛, 则 $a_mb_n$ 可任意方式排成级数皆绝对收敛于值 $(\sum_{n=1}^{+\infty}a_n)(\sum_{n=1}^{+\infty}b_n)$   幂级数：$\sum_{n=0}^{+\infty}a_n(z-z_0)^n$ 中心为 $z_0$  Abel 定理：$\exists0\leq\rho\leq+\infty,|z|&amp;lt;\rho,\sum_{n=0}^{+\infty}a_nz^n$ 绝对收敛，$|z|&amp;gt;\rho,\sum_{n=0}^{+\infty}a_nz^n$ 发散  收敛半径：$\rho$ 收敛域：使 $\sum_{n=0}^{+\infty}a_n(x-x_0)^n$ 收敛的所有 $x\in\mathbb{R}$ 构成的集合 Cauchy-Hadmard 公式：若 $\lim_{n\rightarrow+\infty}|\frac{a_{n+1}{a_n}}|=L$ 或 $\lim_{n\rightarrow+\infty}\sqrt[n]{|a_n|}=L$，则$\rho=\frac{1}{L}$   幂级数函数：$f(x)=\sum_{n=0}^{+\infty}a_n(x-x_0)^n$，定义域为收敛域  Abel: 幂级数函数在收敛域上连续 逐项求导：$f(x)$ 在收敛域光滑，$f^{(m)}(x)=\sum_{n=0}^{+\infty}a_n\frac{d^m}{dx^m}(x-x_0)^n$  $a_n=\frac{f^{(n)}}{n!</description>
+    </item>
+    
+    <item>
+      <title>Quantum Algorithm</title>
+      <link>https://zhengzangw.com/notes/quantum-computation/quantum-algorithm/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/quantum-computation/quantum-algorithm/</guid>
+      <description>Query value of function  $U_f:|x,y\rangle\rightarrow|x,y\oplus f(x)\rangle$  $f:{0,1}^n\rightarrow{0,1}$ 对应的矩阵为置换阵 $2^n\times 2^n$   Quantum Parallelism: $U_f H^{\oplus n}|0^n\rangle=\frac{1}{\sqrt{2^n}}\sum_x|x,f(x)\rangle$ Store the query in phase: $O_f|x\rangle=(-1)^{f(x)}|x\rangle$  $U_f|x,-\rangle=(-1)^{f(x)}|x\rangle|-\rangle$   Deutsch Algorithm  Question: Given a function $f:{0,1}\rightarrow{0,1}$, decide whether $f(0)=f(1)$ $|0\rangle \rightarrow H \rightarrow O_f \rightarrow H \rightarrow M(|0\rangle,|1\rangle)$   Deutsch-Joszsa Algorithm  Question: Given a function $f:{0,1}^n\rightarrow{0,1}$, it is either constant or balanced($|f^{-1}(0)|=|f^{-1}(1)|=2^{n-1}$). $|0\rangle^{\otimes n}\rightarrow H^{\otimes n}\rightarrow O_f\rightarrow H^{\otimes n}\rightarrow M(|0^n\rangle)$    Quantum Teleportation Super-dense Coding one qubit encode two bits (tight)</description>
+    </item>
+    
+    <item>
+      <title>Model Logic</title>
+      <link>https://zhengzangw.com/notes/mathematic-logic/model-logic/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/mathematic-logic/model-logic/</guid>
+      <description>模态语言    模式 分支 应用     可能与必然 基本模态逻辑    过去与将来 时态逻辑(temporal) 软硬件系统形式化验证   知道与相信 认知逻辑(epistemic) 知识表示   义务与允许 道义逻辑(deontic) 分布式智能系统进行协同与控制的规范系统     模态逻辑特征  模态逻辑是用于描述关系结构的简单而富于表达力的语言 模态语言为关系结构提供了一种内部和局部的视角 模态逻辑并不是孤立的形式化系统   关系结构 $\mathfrak{F}=(W,R_1,\cdots,R_n)$, $W$ 为 domain/universe, $R_i$ 为 $\mathfrak{F}$ 上的关系  $W$ 中的元素可以为不同名称如点、状态、世界、时间、状况等。关系结构通常可以表示为简单图形 严格偏序  全序   标注转换系统（LTS）$(W,{R_a|a\in A}),a\in A,R_a\subseteq W\times W$ 时间的内在结构为全序集 $(S,&amp;lt;)$  假设：1.时间离散 2.有一个没有前驱的时刻 3.有无穷后续时刻进入未来      基本模态逻辑 语言  命题符集合 $\Phi$ 一元模态算子 $\diamondsuit$  读作 &amp;ldquo;可能&amp;rdquo; 对偶算子 $\square\varphi:=\neg\diamondsuit\neg\varphi$  读作 &amp;ldquo;不可能不/必然&amp;rdquo;   $\varphi\wedge\psi:=\neg(\neg\varphi\vee\neg\psi)$ $\top:=\neg\perp$   合式公式(well-formed formula) $\varphi::=p|\perp|\neg\varphi|\varphi\vee\phi|\diamondsuit\varphi$ 部分合式公式  $K:\square(\varphi\rightarrow\phi)\rightarrow(\square\varphi\rightarrow\square\phi)$ $T:\square\varphi\rightarrow\phi$ $4:\square\phi\rightarrow\square\square\phi$ $B:\varphi\rightarrow\square\diamondsuit\varphi$ $D:\square\varphi\rightarrow\diamondsuit\varphi$ $5:\diamondsuit\varphi\rightarrow\square\diamondsuit\phi$    标准翻译  $\mathcal{L}^1(\Phi)$ 为一阶语言  具有一元谓词 $P_0,P_1,\cdots$ 对应 $\Phi$ 中命题符 $p_0,p_1,\cdots$ 具有二元关系 $R$ 对应 $\diamondsuit$   标准翻译 $\text{ST}_x$:  $\text{ST}_x(p)=P_x$ $\text{ST}_x(\perp)=x\not=x$ $\text{ST}_x(\neg\phi)=\neg\text{ST}_x(\phi)$ $\text{ST}_x(\phi\vee\psi)=\text{ST}_x(\phi)\vee\text{ST}_x(\psi)$ $\text{ST}_x(\diamondsuit\phi)=\exists y(Rxy\wedge\text{ST}_y(\phi))$, y 为新变元   $\mathfrak{M},\omega\Vdash\varphi\iff\mathfrak{M}\vDash\text{ST}_x(\varphi)[\omega]$  $\text{ST}_x(\varphi)[\omega]$: $\omega$ 被赋给自由变元 $y$   $\forall\mathfrak{M},\omega\Vdash\varphi\iff\mathfrak{M}\vDash\forall x\text{ST}_x(\varphi)$  语义  Kripke 模型：$\mathfrak{M}=(W,R,L)=(\mathfrak{F},L)$  状态 $\omega\in W$ $R$ 为 $W$ 上的关系 $L:W\rightarrow 2^\Phi$ 为标记函数，把 $W$ 每个点标记上再该点为真的命题符   $\mathfrak{M},\omega\Vdash\varphi$ 基本模态公式 $\varphi$ 在状态 $\omega$ 被满足  $\mathfrak{M},\omega\Vdash p,p\in\Phi\iff p\in L(\omega)$ $\mathfrak{M},\omega\Vdash \perp$ 从不成立 $\mathfrak{M},\omega\Vdash\neg\varphi\iff \mathfrak{M},\omega\Vdash\varphi$ 不成立 $\mathfrak{M},\omega\Vdash\varphi\vee\psi\iff\mathfrak{M},\omega\Vdash\varphi$ 或 $\mathfrak{M},\omega\Vdash\psi$ $\mathfrak{M},\omega\Vdash\diamondsuit\varphi\iff$ 存在 $v\in W,Rwv,\mathfrak{M},\omega\Vdash\varphi$  $\mathfrak{M},\omega\Vdash\square\varphi\iff$ 对于任意的 $v\in W,Rw v,\mathfrak{M},\omega\Vdash\varphi$     盲状态：不能到达任意后续状态的状态，$\square\varphi$ 空真 $\mathfrak{F},\omega\Vdash\varphi$：任意的 $L$, $\mathfrak{M},\omega\Vdash\varphi$ $\mathfrak{F}\Vdash\varphi$: 任意的 $\omega$, $\mathfrak{F},\omega\Vdash\varphi$ $\mathbb{F}\Vdash\varphi$: 任意的 $\mathfrak{F}\in\mathbb{F},\mathfrak{F}\Vdash\varphi$  $\Lambda_\mathbb{F}$: $\mathbb{F}$ 的逻辑，对 $\mathbb{F}$ 有效的所有公式的集合   $\Vdash\varphi$: 任意的 $\mathbb{F}$, $\mathbb{F}\Vdash\varphi$  线性时间时态逻辑 (LTL) 语言  线性时间时态算子  $\mathcal{U}$: until $\bigcirc$: next-time   常用时态算子  $\diamondsuit\phi:=\top\mathcal{U}\phi$: Finally $\square\phi:=\neg\diamondsuit\neg\phi$: Globally $\overset{\infty}{\diamondsuit}\phi:=\square\diamondsuit\phi$: Infinitely Often $\overset{\infty}{\square}\phi:=\diamondsuit\square\phi$: Almost Everywhere $\phi_1\mathcal{R}\phi_2:=\neg(\neg\phi_1\mathcal{U}\neg\phi_2)$: Release   $\psi::=p|\perp|\neg\psi|\psi_1\vee\psi_2|\bigcirc\psi|\psi_1\mathcal{U}\psi_2,p\in\Phi$  语义  模型 $\mathfrak{M}=(S,x,L)$  $S$: 非空状态集 $x:N\rightarrow S$：状态的无穷序列 $L:W\rightarrow2^\Phi$   $\mathfrak{M},x\vDash\psi$: 在模型 $\mathfrak{M}$ 的时间线 $x$ 上，公式 $\psi$ 为真  $\mathfrak{M},x\vDash p,p\in\Psi\iff p\in L(s_0)$ $\mathfrak{M},x\vDash\perp$ 从不成立 $\mathfrak{M},x\vDash \neg\psi\iff\mathfrak{M},x\vDash \psi$ 不成立 $\mathfrak{M},x\vDash \psi_1\vee\psi_2\iff\mathfrak{M},x\vDash \psi_1$ 或 $\mathfrak{M},x\vDash \psi_2$ $\mathfrak{M},x\vDash \psi_1\mathcal{U}\psi_2\iff\exists j(\mathfrak{M},x^j\vDash \psi_2$ 且 $\forall k&amp;lt;j(\mathfrak{M},x^k\vDash \psi_1))$ $\mathfrak{M},x\vDash\bigcirc\psi\iff\mathfrak{M},x^1\vDash\psi$  $x^i$ 表示 $s$ 的后缀 $s_i,s_{i+1},\cdots$      分支时间时态逻辑 语言 BTL  命题符 $\Psi$ 线性时态算子 路径选择算子 $\exists$: for some futures  $\forall\psi:=\neg\exists\neg\psi$: for all futures   路径公式：$\psi::=\phi|\psi_1\vee\psi_2|\neg\psi|\bigcirc\psi|\psi_1\mathcal{U}\psi_2$ 状态公式：$\varphi::=p|\perp|\varphi_1\vee\varphi_2|\neg\varphi|\exists\psi$  Sublanguage  路径公式：$\psi::=\bigcirc\varphi|\varphi_1\mathcal{U}\varphi_2$  不允许线性时态算子的布尔组合和嵌套 状态公式不变   等价于：  基本时态算子：$\exists\bigcirc,\exists\square,\exists\mathcal{U}$  $\forall\bigcirc\varphi:=\neg\exists\bigcirc\neg\varphi$ $\forall\square\varphi:=\neg\exists\diamondsuit\neg\varphi$ $\forall\diamondsuit\varphi:=\neg\exists\square\neg\varphi$ $\exists\diamondsuit\varphi:=\exists(\perp\mathcal{U}\varphi)$ $\forall(\varphi_1\mathcal{U}\varphi_2):=\neg\exists(\neg\varphi_2\mathcal{U}\neg\varphi_2)\wedge\neg\exists\square\neg\varphi_2$   $\varphi::=p|\perp|\neg\varphi|\varphi_1\vee\varphi_2|\exists\bigcirc\varphi|\exists\square\varphi|\exists(\varphi_1\mathcal{U}\varphi_2)$    语义 Computation Tree Logic CTL$^*$  Kripke 模型：$\mathfrak{M}=(S,R,L)$  $S$：非空状态集 $R\subset S\times S$ 是一个完全的二元关系  完全：$\forall s\in S\exists t\in S:(s,t)\in R$   $L:S\rightarrow2^\Phi$   全路径(full path) $x=(s_0,s_1,\cdots)$：$\forall i\in\mathbb{N}:(s_i,s_{i+1})\in R$ $\mathfrak{M},s_0\vDash\varphi$: 在 $\mathfrak{M}$ 的状态 $s_0$ 为真  (S1)  $\mathfrak{M},s_0\vDash p\iff p\in L(s_0)$ $\mathfrak{M},s_0\vDash\perp$ 从不成立   (S2)  $\mathfrak{M},s_0\vDash\varphi_1\vee\varphi_2\iff\mathfrak{M},s_0\vDash\varphi_1$ 或 $\mathfrak{M},s_0\vDash\varphi_2$ $\mathfrak{M},s_0\vDash\neg\varphi\iff\mathfrak{M},s_0\vDash\varphi$ 不成立   (S3) $\mathfrak{M},s_0\vDash\exists\psi\iff\mathfrak{M}$ 中存在全路径 $x,\mathfrak{M},x\vDash\psi$   $\mathfrak{M},x\vDash\psi$: 在 $\mathfrak{M}$ 中的全路径 $x$ 为真  (P1) $\mathfrak{M},x\vDash\varphi\iff\mathfrak{M},s_0\vDash\varphi$ (P2)  $\mathfrak{M},x\vDash\psi_1\vee\psi_2\iff\mathfrak{M},x\vDash\psi_1$ 或 $\mathfrak{M},x\vDash\psi_2$ $\mathfrak{M},x\vDash\neg\psi\iff\mathfrak{M},x\vDash\psi$ 不成立   (P3)  $\mathfrak{M},x\vDash\psi_1\mathcal{U}\psi_2\iff\exists j(\mathfrak{M},x^j\vDash\psi_2$且$\forall k&amp;lt;j(\mathfrak{M},x^k\vDash\psi_1))$ $\mathfrak{M},x\vDash\bigcirc\varphi\iff\mathfrak{M},x^1\vDash\psi$      CTL  S1,S2,S3 S4  $\mathfrak{M},s_0\vDash\exists\bigcirc\varphi\iff\exists s_1,Rs_0s_1,\mathfrak{M},s_1\vDash\varphi$ $\mathfrak{M},s_0\vDash\exists\square x,\forall i\in\mathbb{N},\mathfrak{M},s_i\vDash\psi$ $\mathfrak{M},s_0\vDash\exists(\varphi_1\mathcal{U}\varphi_2)\iff\exists x,\exists j(\mathfrak{M},s_j\vDash\psi_2$且$\forall k&amp;lt;j(\mathfrak{M},s_k\vDash\psi_1))$    语法 正规模态逻辑 $\Lambda$  包含 TAUT,K,Dual 对规则 MP,US,N 封闭  $K$  公理  TAUT: 所有重言式 K: $\square(p\rightarrow q)\rightarrow(\square p\rightarrow \square q)$ Dual: $\diamondsuit p\leftrightarrow\neg\square\neg p$   规则  MP (Modus Ponens): $\frac{\varphi\rightarrow\psi,\varphi}{\psi}$ US (Uniform Substitutious): $\frac{\varphi}{\theta}$  $\theta$ 为将 $\varphi$ 中命题符一致地替换为任意的公式而得到的公式   N (Generalization): $\frac{\varphi}{\square\varphi}$   $K$-系统对应基本模态逻辑  soundness completeness   最小的正规模态逻辑为 $K$  $K\Gamma$  $K4$  增加公理 $\diamondsuit\diamondsuit p\rightarrow\diamondsuit p$ 对应传递框架    其它  定理等级  Fundamental Thm Main Thm Theorem Lemma Proposition Law Thesis   三次数学危机  小数$\rightarrow$无理数  希伯索斯   $\infty$ (牛顿-莱布尼茨)  柯西   罗素悖论 (集合论)  公理逻辑论      </description>
+    </item>
+    
+    <item>
+      <title>3-随机向量及其分布</title>
+      <link>https://zhengzangw.com/notes/probability-and-mathematical-statistics/3-%E9%9A%8F%E6%9C%BA%E5%90%91%E9%87%8F/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/probability-and-mathematical-statistics/3-%E9%9A%8F%E6%9C%BA%E5%90%91%E9%87%8F/</guid>
+      <description> 离散型随机变量  概率分布表（列联表） 联合分布函数：$F(x,y)=P(X\leq x,Y\leq y)$  $p_{ij}=F(x_i,y_j)-F(x_i,y_{j-1})-F(x_{i-1},y_j)+F(x_{i-1},y_{j-1})$   边缘分布函数：$F_X(x)=F(x,+\infty)$  （离散型向量）边缘分布率   条件概率: $P(Y=y_j|X=x_i)=\frac{p_{ij}}{p_i}$   离散型随机变量分布  多项分布 $(X_1,X_2)\sim M(n;p_1,p_2,p_3)$: $P(X_1=k_1, X_2=k_2)=\frac{n!}{k_1!k_2!(n-k_1-k_2)!}p_1^{k_1}p_2^{k_2}(1-p_1-p_2)^{n-k_1-k_2}$  $X|_{Y=k_2}\sim B(n-k_2,\frac{p_1}{1-p_2})$   多元超几何分布：$P(X_1=n_1,X_2=n_2)=\frac{C_{N_1}^{n_1}C_{N_2}^{n_2}C_{N_3}^{n_3}}{C_N^n}$   连续性随机变量  联合分布函数：$F(x,y)=\int^x_{-\infty}\int^y_{-\infty}p(u,v)dudv$ 为 联合概率密度函数：$p(x,y)$ $p(x,y)$ 为概率密度函数的充要条件  $p(x,y)\geq0$ $\int_{-\infty}^{\infty}p(x,y)d xdy=1$   $F(x,y)$ 为分布函数的充要条件  $0\leq F(x,y)\leq 1$ $F(-\infty,y)=\lim_{x\rightarrow\infty}F(x,y)=F(x,-\infty)=\lim_{y\rightarrow\infty}=F(-\infty,-\infty)=0,F(\infty,\infty)=1$ 右连续：$F(x,y)=\lim_{z\rightarrow x^+}F(z,y)=\lim_{z\rightarrow y+}F(x,y)$ $x_1\leq x_2,y_1\leq y_2,F(x_2,y_2)-F(x_1,y_2)-F(x_2,y_1)+F(x_1,y_1)\geq0$   $P(x_1&amp;lt;X\leq x_2,y_1&amp;lt;Y\leq y_2)=\int_{x_1}^{x_2}\int_{y_1}^{y_2}p(u,v)dudv$ $P((X,Y)\in G)=\iint_Gp(x,y)dxdy$ $\frac{\partial^2F(x,y)}{\partial x\partial y}|_{(x_0,y_0)}=p(x_0,y_0)$ $X$ 的边缘分布 $F_X(x)=\int_{-\infty}^x\int_{-\infty}^{\infty}p(u,v)dudv$  边缘密度函数 $p_X(x)=\int_{-\infty}^{\infty}p(x,v)dv$   条件分布函数 $F_{Y|X=x}(y)=P(Y\leq y|X=x)=\int^y_{-\infty}\frac{p(x,v)}{p_X(x)}dv$  $p_{X|Y=y}(x)=\frac{p(x,y)}{p_Y(y)}$ $p(x,y)=p_{Y|X=x}(y)p_X(x)$     连续性随机变量分布  （平面）均匀分布 $p(x,y)=\frac{1}{S},(x,y)\in G$ 二维正态分布 $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$: $p(x,y)=\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}((\frac{x-\mu_1}{\sigma_1})^2-2\rho(\frac{x-\mu_1}{\sigma_1})(\frac{x-\mu_2}{\sigma_2})+(\frac{y-\mu_2}{\sigma_2})^2)}$  $\text{cov}(X,Y)=\sigma_1\sigma_2\rho$   $N$ 维正态分布：$p(x)=\frac{1}{(2\pi)^\frac{n}{2}|\Sigma|^\frac{1}{2}}e^{-\frac{1}{2}|(x-\mu)\Sigma^{-1}(x-\mu)^T|}$  $Y|_{X=x}\sim N(\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1), \sigma_2^2(1-\rho^2))$ 独立性与不相关等价   瑞利分布：$X,Y\sim N(0,1), Z=\sqrt{X^2+Y^2}$, $p(z)=ze^{-\frac{z^2}{2}},z\geq0$   随机变量相互独立：  $P(X=x_i,Y=y_j)=P(X=x_i)P(Y=y_j)$ $X_1,\cdots,X_n$ 相互独立，则 $Y_1=g_1(X_1,\cdots,X_m)$ 和 $Y_2=g_2(X_{m+1},\cdots,X_n)$ 相互独立 $p(x_1,\cdots,x_n)=p_1(x_1)p_2(x_2)\cdots p_n(x_n)$ $F(x,y)=F_X(x)F_Y(y)$ 独立性：存在 $g_1(x),g_2(y)$ 使得 $p(x,y)=g_1(x)g_2(y)$   二维随机向量函数分布  离散型  $P(Z=z_k)=P(g(X,Y)=z_k)=\sum_{g(x_i,y_j)=z_k}p_{ij}$ 随机变量和 $Z=X+Y$ $P(Z=z_k)=\sum_{x_i}P(X=x_i,Y=z_k-x_i)$ 随机变量商 $Z=X/Y$ $P(Z=z_k)=\sum_{y_j}P(X=z_k*y_j,Y=y_j)$   连续型  $F_Z(z)=P(Z\leq z)=P(g(X,Y)\leq z)=\iint_{g(x,y)\leq z}p(x,y)dxdy$ 卷积公式：$p_Z(z)=\int^{+\infty}_{-\infty}p(x,z-x)dx$ 商的分布：$p_Z(z)=\int^{+\infty}_{-\infty}|y|p(zy,y)dy$ 最大值：$p_M(z)=p_X(z)F_Y(z)+F_X(z)p_Y(z)$  独立：$F_M(z)=F_X(z)F_Y(z)$   最小值：$p_N(z)=p_X(z)(1-F_Y(z))+p_Y(z)(1-F_X(z))$  独立：$F_N(z)=1-(1-F_X(z))(1-F_Y(z))$     $(U,V)$ 满足存在唯一逆变换且 $J(u,v)\not=0$，则 $p&#39;(u,v)=p(x(u,v),y(u,v))|J(u,v)|$    </description>
+    </item>
+    
+    <item>
+      <title>传输媒介</title>
+      <link>https://zhengzangw.com/notes/data-communication/2-%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/data-communication/2-%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/</guid>
+      <description>信道指标：数据率，传输距离 电磁波频谱：($10^2$)ELF,VF,VLF,LF,MF,HF,VHF,UHF,SHF,EHF,$10^{12}$,$10^{13}$,$10^{14}$,可见光  导向传输媒介  guided media：电磁波在导线引导下沿某一物理路径前进 点对点：导向媒体在两个设备之间提供了一条仅被这两个设备共享的直连链路  双绞线  扭绞结构 模拟传输  放大器：5km 有限带宽：1MHz   数字传输  转发器：2km 数据率：100Mbps  短距离：1Gbps   随频率增高迅速增加 易受信号反射或回波损耗影响   UTP 非屏蔽双绞线 STP 屏蔽双绞线  金属箔双绞线 FTP 屏蔽的双绞线 F/UTP 完全屏蔽的双绞线 S/FTP   568-C标准 与 ISO/IEC 11801标准  5e/D 6/E 6A/E$_{A}$ 7/F 7A/F$_{A}$   插入损耗（insertion loss, 模拟）  从发送系统到接受系统链路上的衰减 频率的递增函数   近端串扰（near end crosstalk, NEXT）  从一对导体到另一对导体上的信号耦合，越大越好 端现象   衰耗串扰比： $\text{ACR}{dB}=\text{NEXT}{dB}-A_{dB}$  $\text{ACR}&amp;gt;0\Rightarrow P_r&amp;gt;P_c$    同轴电缆 光纤 Optical Fiber  优点  容量大：100M-100Gbps/km 体积小 衰减小 电磁隔离 转发器间隔更远   分类  多模突变：入射角平缓的光束被反射并沿着纤维向前转播，其他被周围的物质吸收 多模渐变：中心较高的折射率使得光线沿轴线前进的速度比靠近覆层的慢，光束呈现螺旋状 单模：仅有一个角度能够通过传输纤维   光纤模块  GBIC 接 LC光纤连接器 SFP 接 SC光纤连接器    无导向媒介  unguided media 真空、空气、海水  天线  发射电磁能量和接受电磁能量的电导体 双向通行中，同一个天线可以同时收发 天线种类  各向同性天线 抛物线反射天线   天线增益：$G_{dB}=10\lg(\frac{P_2}{P_1})$, $P_1$ 为定向天线发射功率，$P_2$ 为参考天线功率 有效面积：$G=\frac{4\pi A_e}{\lambda^2}$  $A_e=0.</description>
+    </item>
+    
+    <item>
+      <title>德奥艺术歌曲</title>
+      <link>https://zhengzangw.com/notes/music-review/%E5%BE%B7%E5%A5%A5%E8%89%BA%E6%9C%AF%E6%AD%8C%E6%9B%B2/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/music-review/%E5%BE%B7%E5%A5%A5%E8%89%BA%E6%9C%AF%E6%AD%8C%E6%9B%B2/</guid>
+      <description>classical music: 巴洛克时期到20世纪早期 维也纳：奥地利共和国首都🇦🇹 德语文化圈  德国，奥地利，列支敦士登，瑞士，卢森堡，比利时   古典音乐命名  作品号：唯一标识某作曲家每部作品，有出版商/编目者编号  Op. 时间顺序  no. 作品中多首乐曲   BWV. 巴赫（作品体裁） HWV. 亨廷顿 KV. 莫扎特 D. 舒伯特  奥地利音乐学家多依奇编号     系列号 组曲号：一部组曲各个曲目编号 乐章号   Lied 利德  lieder 民谣，乐曲   舒伯特  魔王 D328 纺车旁的格丽卿 D118 歌德 野玫瑰 D257 鳟鱼 D550 摇篮曲 D527 即兴曲三首其二 D946   莫扎特  紫罗兰 K.476 渴望春天 K.596   舒曼  献词 Op.</description>
+    </item>
+    
+    <item>
+      <title>环论</title>
+      <link>https://zhengzangw.com/notes/modern-algebra/ring/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/modern-algebra/ring/</guid>
+      <description>环：$R$为非空集合，其上有两个代数运算$+,\times$，且 $R$ 对于加法构成 Abel 群， 对于乘法构成半群，且满足分配律：$a(b+c)=ab+ac,(b+c)a=ba+ca$ 交换环：环的乘法有交换律 幺环：环 $R$ 对于乘法构成幺半群，则乘法的单位元$e$称为单位元 零因子：若 $ab=0,a\not=0,b\not=0$ 则称 $a$ 为左零因子， $b$ 为右零因子 整环：没有零因子的交换幺环 对于 $R$ 中元素 $a$，定义 $na=a+a+a+\cdots+a$，$0a\equiv 0$，$(-n)a=-(na)$ 定理  $a_1,\cdots,a_m,b_1,\cdots,b_m,(\sum_{i=1}^na_i)(\sum_{i=1}^mb_i)=\sum_{i=0}^n\sum_{j=0}^ma_ib_j$ 环 $R$ 无零因子 $\iff$ 环 $R$ 有消去律 $a\in R, m\in Z, 0a=a0=0, a(mb)=(ma)b=m(ab)$ 交换环 $R$， $a,b\in R,n\in Z$ 有 $(a+b)^n=a^n+\sum_{k=1}^{n-1}\binom{n}{k}a^kb^{n-k}+b^n$   子环：$R$ 为环，$S$ 为 $R$ 的非空子集，若 $S$ 按 $R$ 中加乘法在 $S*S$ 上限制也构成环，则 $S$ 为 $R$ 的子环，记为 $S\leq R$  $S\leq R\iff S$ 对减法封闭且 $S$ 对乘法封闭 零环：最小子环 ${0}$ 非零环加乘法单位元不同   理想：$R$ 为环，$\emptyset\not=I\leq R$，若 $I$ 对加减法封闭且 $a\in I,r\in R$ 时，$ar,ra\in I$，则 $I$ 为环 $R$ 的理想，$I\unlhd R$ $a,b\in R$，记$a\equiv b(\bmod\ I)$ 表示 $a-b\in I$ （$a,b$ 模理想 $I$ 同余） 同态：$\sigma$ 为环 $R$ 到 $\overline{R}$ 的映射，若$\forall a,b\in R,\sigma(a+b)=\sigma(a)+\sigma(b),\sigma(ab)=\sigma(a)\sigma(b)$，则 $\sigma$ 为 $R$ 到 $\overline{R}$ 的同态  单同态：单射 满同态：满射sudo 双射：同构 $R\cong \overline{R}$   同态核：$ker\sigma={a\in R:\sigma(a)=0}$ 同态限：$Im\sigma={\sigma(a):a\in R}$ 环的同态基本定理：$\sigma$ 为环 $R$ 到 $\overline{R}$ 的同态  $ker\sigma$ 为理想 $Im\sigma\leq \overline{R}$ $R/ker\sigma\cong Im\sigma$   $\sigma$ 为环 $R$ 到 $\overline{R}$ 的同态，$I=ker\sigma$，$R$的包含 $I$ 的子环与 $Im\sigma$ 的子环一一对应($I\leq S\leq R,\sigma(S)\leq Im\sigma$)。$R$ 的包含 $I$ 的理想与 $Im\sigma$ 的理想一一对应 ($I\leq J\unlhd R,\sigma(J)\unlhd Im\sigma$)，且 $R/J\cong \sigma(R)/\sigma(J)$  $R/I$ 理想形如 $J/I,I\leq J\unlhd R$ $I\leq J\unlhd R,(R/I)/(J/I)=R/J$   $S\leq R, I\unlhd R$ 则 $(I\cap S)\unlhd S,I+S\unlhd R,S/(I\cap S)\cong (I+S)/I$ $(m,n)[m,n]=mn$  中国剩余定理  外直和：$R_1,\cdots,R_n$ 为环， $R=R_1\times\cdots R_n={r=\langle r_1,\cdots,r_n\rangle}$。定义 $R$ 上加法和乘法。在此加法乘法之下构成环。  $R_i^\star ={\langle0,\cdots,a_i,\cdots,0\rangle :a_i\in R_i}\cong R_i\unlhd R$ $R$ 中每个元素可唯一的表成 $x_1+\cdots+x_n,x_i\in R_i^\star $   内直和：$R_1,\cdots,R_n$ 为环 $R$ 的理想，若 $R$ 中每个元素可唯一的表成 $x_1+\cdots+x_n,x_i\in R_i$ 直和：内直和同构与外直和 由 $X$ 生成的理想：包含 $X$ 的最小理想。$\langle X \rangle=\cap_{X\leq I\unlhd R} I$  $R$ 为幺环时， $\langle X \rangle={\sum_{i=1}^n r_ix_is_i:x_i\in X,r_i\in R,s_i\in R}$ $R$ 为交换幺环时，$\langle X \rangle={\sum_{i=1}^n r_ix_i:x_i\in X,r_i\in R}$  $(a_1,\cdots,a_n)={\sum_{i=1}^nr_ia_i:r_i\in R}$ $(a)=Ra$     $I,J\unlhd R$  $I+J\equiv{i+j:i\in I,j\in J}$ $IJ\equiv{\sum_{i=1}^na_ib_i:a_i\in I,b_j\in J}=(ab:a\in I,b\in J)$   $I,J$ 为环 $R$ 的理想，若 $I+J=R$ 则 $I,J$ 互素 $I,J,K\unlhd R$  $I,J,K$ 都互素时， $I$ 与 $JK$ 互素 $I,J$ 互素时，$IJ+JI=I\cap J$  交换环中，$IJ=I\cap J$     The Chinese Reminder Theorem(CRT)  幺环 $R$ 的理想 $A_1,\cdots,A_k$ 互素，则 $R/\cap_{i=1}^kA_i\cong R/A_1\oplus\cdots\oplus R/A_n$，若 $R$ 交换，则 $R/(A_1\cdots A_n)\cong R/A_1\oplus\cdots\oplus R/A_n$ $m_1,\cdots,m_k$ 为互素正整数，$a_1,\cdots a_k$ 为整数，则同余式组 $x\equiv a_i (\bmod\ m_i)$ 有通解 $x=\sum_{i=1}^{k}a_iM_iM_i^\star (\bmod M)$  $M = m_1\cdots m_k$ $M_i = M/a_i$ $M_i^\star M_i\equiv 1(\bmod\ m_i)$   幺环 $R$ 中，$u\in R$ 整除 $R$ 单位元 1，即 $u$ 乘法可逆，则 $u$ 为 $R$ 的单位  单位群：$U(R)$      例子  整数环：$\langle Z,+,\times\rangle$为环结构，$Z$ 为整环  理想：${mq:m\in Z}=(m)$ $Z/mZ={\overline{a}=a+mI:a\in Z}$ $(m)\cap(n)=([m,n])$ $(m)(n)=(mn)$ $(m)+(n)=((m,n))$ $m&amp;gt;1,(m)$ 为极大理想 $\iff (m)$ 为素理想 $\iff$ $m$ 为素数   模 $m$ 的剩余类环：$Z/mZ$ 按剩余类的加法和乘法构成交换幺环  $Z/pZ$ 为整环   $R$上一元多项式环：$R$ 为环，$R={\sum_{i=0}^na_ix^i:a_i\in R}$ 按多项式的加法和乘法构成环  $R$ 有单位元 $1$ 时， $x^0$ 为 $R$ 单位元 $R$ 为整环，则 $R$ 为整环   $R$上$n$阶矩阵构成的环：$M_n(R)={n阶方阵 A=(a_{ij}),a_{ij}\in R}$ 按矩阵的加法和乘法构成环  $a$所在的模 $I$ 同余类：$\overline{a}=a+I$ 商环：$R/I ={\overline{a}=a+I:a\in R}$  $\overline{a}+\overline{b}=\overline{ab}$ $\overline{a}\overline{b}=\overline{ab}$      素理想与极大理想  素理想：$R$ 为交换幺环，$I\not=R$ 为 $R$ 的理想满足$\forall a,b\in R, ab\in I$ 则 $a\in I$ 或 $b\in I$.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 3</title>
+      <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter3/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter3/</guid>
+      <description> 汇编格式  AT&amp;amp;T: op src, dst Intel: op dst, src   Intel处理器  8086(16)-80286-i386(32)-i486(FPU)-Pentium-PentiumPro(P6)-Pentium/MMX-PentinumIII(SSE)-Pentium4E(x86-64)-Core2(多核)-Core i7   i386寄存器组织  定点寄存器  EAX,EBX,ECX,EDX,ESP,EIP,ESI,EDI EIP,EFLAGS CS,SS,DS,ES,FS,GS   寻址模式  立即寻址，寄存器寻址 基址加比例变址加位移寻址：$LA=(SR)+(B)+(I)*S+A$ 相对寻址   浮点处理架构  x87 FPU: ST(0)-ST(7),80位。控制寄存器、状态寄存器、标记寄存器各一个。组织为浮点寄存器栈。64位尾数。 MMX指令: MM0-MM7，通常借用ST(0)-ST(7)，使用64位 SSE指令集（兼容MMX，采用SIMD（单指令多数据）技术）: 增加8个128位SSE专用多媒体扩展通用寄存器XMM0-XMM7 AVX指令集：矢量扩展指令集 FMA指令集：fused multiply-accumulate   过程调用  储存传递参数 保存返回地址，转移控制权 被调用者保存现场，并分配空间 执行函数体 恢复现场，释放空间 取出返回地址，转移到调用者函数   非静态局部变量的储存分配方式属于未定义行为；不同变量的地址除(!=和==)外为未定义行为 缓冲区溢出防范  ASLR(Address Space Layout Randomization) 栈破坏检测 可执行代码区域限制   char可为signed char，也可为unsigned char，为不确定类型 union的存放顺序是所有成员从低地址开始，利用该特性可测试CPU的大/小端方式    </description>
+    </item>
+    
+    <item>
+      <title>4-多元微分</title>
+      <link>https://zhengzangw.com/notes/calculus/section4/</link>
+      <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/calculus/section4/</guid>
+      <description>偏导数：$\frac{\partial f}{\partial x_i}(P_0)=g&#39;(a_i)$ 可微：$\exists\delta &amp;gt;0,U(P_0;\delta)\subseteq D_f,\exists A_i\in\mathbb{R},\forall P s.t. \lVert\Delta P\rVert&amp;lt;\delta$ 有 $f(P_0+\Delta P)-f(P_0)=\sum_{i=1}^nA_i\Delta x_i+R(P_0+\Delta P)$ 且 $\lim_{\Delta P\rightarrow 0}\frac{R(P_0+\delta P)}{\lVert\Delta\rVert}$  $\Delta f(P_0;\Delta P)=df(P_0;\Delta P)+o(\lVert\Delta P\rVert),\Delta P\rightarrow 0$ $\forall i,\frac{\partial f}{\partial x_i}(P_0)=A_i$   微分：$df(P_0)=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(P_0)dx_i$ 连续可微：各个偏导函数皆连续  连续可微则可微   链法则：$\frac{\partial f(g_1,\cdots,g_m)}{\partial x_k}|{P=P_0}=\sum{i=1}^m\frac{\partial f}{\partial u_i}(Q_0)\frac{\partial g_i}{\partial x_k}(P_0)$ 隐函数求导法  $F(x_1,\cdots,x_{n+1})=C$ 由上式决定的隐函数：$x_{n+1}=f(x_1,\cdots,x_n)$ $\frac{\partial x_{n+1}}{\partial x_i}(a_1,\cdots,a_{n+1})=-\frac{\frac{\partial F}{\partial x_{n+1}}(a_1,\cdots,a_{n+1})}{\frac{\partial F}{\partial x_i}(a_1,\cdots,a_{n+1})}$   求导换序：$\frac{\partial^2 f}{\partial x_i\partial x_j},\frac{\partial^2 f}{\partial x_j\partial x_i}$ 在 $U$ 上存在且在 $P$ 处连续，则$\frac{\partial^2 f}{\partial x_i\partial x_j}(P)=\frac{\partial^2 f}{\partial x_j\partial x_i}(P)$  二阶连续可微可换序   Fermat 定理：$P$ 为 $f$ 极值点且为 $D_f$ 内点，$f$ 在 $p$ 处可微，则 $df(P)=0$, $P$ 为临界点 Hesse 阵  二阶连续可微函数  $\forall k,H(f)(P)$ 的 $k$ 阶顺序主子式为正，则 $P$ 为极小值点 $\forall k,H(f)(P)$ 的 $k$ 阶顺序主子式皆与 $(-1)^k$ 同号，则 $P$ 为 $f$ 极大值点 鞍点：$df(P)=0,|H(f)(P)|\not=0$ 且不满足上两条，则 $P$ 非极值点      $$ H(f)(P)=(\frac{\partial^2 f}{\partial x_i\partial x_j}(P))_{n\times n}=\begin{bmatrix} \frac{\partial^2 f}{\partial x_1^2} &amp;amp; \frac{\partial^2 f}{\partial x_1\partial x_2} &amp;amp; \cdots \newline \frac{\partial^2 f}{\partial x_2\partial x_1} &amp;amp; \ddots &amp;amp; \vdots \newline \vdots &amp;amp; \cdots &amp;amp; \frac{\partial^2 f}{\partial x_n^2} \end{bmatrix} $$</description>
+    </item>
+    
+    <item>
+      <title>Query Complex</title>
+      <link>https://zhengzangw.com/notes/quantum-computation/query-complex/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/quantum-computation/query-complex/</guid>
+      <description>Polynomial method  T-query algorithm: $|\psi_x^t\rangle=U_tO_xU_{t-1}O_x\cdots U_2O_xU_1O_x|\psi\rangle=\sum_{x,i}\alpha_{x,i}^{(t)}|i\rangle|\psi_{x,i}^t\rangle$  $\alpha_{x,i}^t$ is a deg $t$ polynomial probability outputting $f(x)$ is a degree $2t$ polynomial   Adversary method - polynomial method  negative adversary method learning graph   $\text{deg}_\epsilon(f)=\min{d:f \text{ is a degree }d\text{ polynomial and }\forall x\in{0,1}^n,|f(x)-p(x)|\leq\frac{1}{3}}$ $Q_\epsilon(f)=\min{t:\exists t$-query algorithm that computes $f$ correctly with probabiliy at least $1-\epsilon}$ Theorem: $Q_\epsilon(f)\geq\frac{1}{2}\text{deg}_\epsilon(f)$ Parity function: $f:{0,1}^n\rightarrow{0,1},f(x)=[2|\sum_i x_i]$  $\text{deg}_\epsilon(f)=\Omega(n)$   Symmetriazation  Given any $n$-variate multilinear polynomiial $p$, $P(k)=E_{|x|=k}[p(x)]$.</description>
+    </item>
+    
+    <item>
+      <title>信号编码技术</title>
+      <link>https://zhengzangw.com/notes/data-communication/3-%E4%BF%A1%E5%8F%B7%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/data-communication/3-%E4%BF%A1%E5%8F%B7%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF/</guid>
+      <description>基带信号：信源发出的没有经过调制，低频信号 载波信号：调制到高频的信号  数字基带信号（数数）    Data Element Signal Element     Data rate $R$ Signal rate $D=\frac{R}{L}=\frac{R}{\log_2M}$   $T_b=\frac{1}{R}$ 调制速率   比特差错率 BER      接受端需求  每比特定时关系 每比特信号电平   BER 影响  信噪比 数据率 带宽 编码机制       编码术语      单极性 正、零电平   双极性 正、负电平   归零 信号电压在码元终止前回到零电平   双相位 单码用多相位表示   差分波形 利用相邻码元的电平跳变和不变来表示消息代码   多电平波形      码型选择  信号谱频：  传输功率集中在带宽中心位置 减少高频 去掉直流：0，1 等概率则无直流分量   时钟同步  定时信息   差错检测 信号干扰 降低通信延迟和成本    不归零码 NRZ  NRZ-L：双极性不归零 NRZI: 双极性不归零差分 缺点  包含直流成分 缺乏同步能力    多电平二进制  双极性 AMI: 没有信号为 0，1 为正负脉冲交替 伪三进制码：没有信号为 1，0 为正负脉冲交替 nBmB 码：低速情况解决同步问题 $B_T=0.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 4</title>
+      <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter4/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter4/</guid>
+      <description>编译汇编过程 Preprocessor: cpp / gcc -E -o main.i main.c
+Compile: ccl / gcc -S -o main.s main.i
+Assemble: as / gcc -c -o main.o main.s
+Relocatable object file: .o
+vim :%!xxd (-r) 查看二进制文件
+file:查看文件类型
+strip -s: 丢弃符号信息
+生成可执行文件 符号解析：将每个符号引用于符号定义关联
+relocation：根据ABI规范确定的memory mapping确定位置
+ELF详解 readelf -a
+Object File Format  DOS - COM System V UNIX - COFF (Common Object File-Format) Windows - PE (Portable Executable) Linux - ELF (Executable and * Linkable Format)  Ehdr (ELF header) readelf -h</description>
+    </item>
+    
+    <item>
+      <title>5-多元积分</title>
+      <link>https://zhengzangw.com/notes/calculus/section5/</link>
+      <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/calculus/section5/</guid>
+      <description>第一型  $E\subset \mathbb{R}^n,\forall \epsilon&amp;gt;0,\exists\delta&amp;gt;0,\forall P$ 为 $E$ 分割，$\lVert P\rVert&amp;lt;\delta,\forall\xi$ 为 $P$ 特殊点选取，有 $|S(f,P,\xi)-I|&amp;lt;\epsilon$ 则 $f$ 在 $E$ 上 Riemann 可积，$I=\int_E f(x_1,x_2,\cdots,x_n)dx_1dx_2\cdots dx_n=\int_E f$  Riemann 可积 $\iff$ $f$ 间断点集测度为 $0$ 线性，单调性，非负性，三角不等式，积分域可加   累次积分：$\int_{[a,b]\times[c,d]}f(x,y)dxdy=\int_a^b(\int_c^df(x,y)dy)dx$ 积分换元定理：$E$ 为 $\mathbb{R}^n$ 中的非空有界闭集，$\Phi:E\rightarrow\mathbb{R}^n$ 且为单射，$f$ 在 $\Phi(E)$ 上 Riemann 可积，则 $\int_E(f\circ \Phi)|\det(D\Phi)|=\int_{\Phi(E)}f$  极坐标变换：$\Phi(r,\theta)=(r\cos\theta,r\sin\theta),\det(D\Phi)=r$ 柱坐标变换：$\Phi(r\cos\theta,r\sin\theta,z)=(x,y,z),\det(D\Phi)=r$ 球坐标变换：$\Phi(r,\varphi,\theta)=(r\sin\varphi\cos\theta,r\sin\varphi\cos\theta,r\cos\varphi)=(x,y,z),\det(D\Phi)=r^2\sin\varphi$   第一型曲线积分：$\gamma:[a,b]\rightarrow\mathbb{R}^n$ 连续可微，$f$ 在 $\gamma([a,b])$ 上有定义，若 $f(\gamma(t))\lVert\gamma&#39;(t)\rVert$ 在 $[a,b]$ 上可积，则 $f$ 在 $\gamma$ 上第一型可积，$\int_\gamma fds=\int_a^bf(\gamma(t))\lVert\gamma&#39;(t)\rVert dt$ 第一型曲面积分：$E\subseteq\mathbb{R}^2,\Phi:E\rightarrow\mathbb{R}^3$ 为连续可微曲面，$\int_\Phi fd\sigma=\int_E f\circ\Phi\lVert\frac{\partial\Phi}{\partial u}\times\frac{\partial\Phi}{\partial v}\rVert dudv$  第二型  定向：$\mathbb{R}^n$ 有两个定向，由有序向量组 ${X_1,\cdots,X_n}$ 代表定向, 正向 $\det([X_1,\cdots,X_n])&amp;gt;0$  有序标准基 ${e_1,\cdots,e_n}$ 正向 对换改变定向 $\mathbb{R}^3$ 手系：以拇指为第一轴, 食指为第二轴, 中指为第三轴作标架  右手系为正向   映射  保向：$\det(D\Phi)$ 恒正 反向：$\det(D\Phi)$ 恒负   曲面定向  可定向：若能在 $S$ 上每一点 $P$ 处指定以一非零向量 $n(P)$ 使 $P$ 在 $S$ 上连续运动时，$n(P)$ 的方向也连续变化   边界定向：$\partial D$  头向读者，$D$在人左     外积：$dx_i\wedge dx_j$  反交换律 $dx_1\wedge\cdots\wedge dx_n(a_1,\cdots,a_n)=\det([a_1,\cdots,a_n])$   微分形式  零阶微分形式：$f$  自变量为定向点   一阶微分形式：$\omega=f_1(x_1,\cdots,x_n)dx_1+\cdots+f_n(x_1,\cdots,x_n)dx_n$  自变量为 $\square(P;v)$ $\omega(\square(P;v))=\sum_{i=1}^nf_i(P)dx_i(v)$   二阶微分形式：$\omega=\sum_{i,j}f_{ij}(x_1,\cdots,x_n)dx_i\wedge dx_j$  $\omega(\square(P;a,b))=f(P)dx\wedge dy(a,b)=f(P)\cdot\det([a,b])$     第二型积分：$f$ 在 $D$ 上 Riemann 可积  $\int_D\omega = \int_Df(x_1,\cdots,x_n)dx_1dx_2\cdots dx_n$ $\int_{-D}\omega = \int_Df(x_1,\cdots,x_n)dx_1dx_2\cdots dx_n$   拉回：$\Phi:U_1\rightarrow U_2$ 可微映射，$\Phi^*(f(x_1,x_2)dx_1\wedge dx_2)=(f\circ\Phi)(y_1,y_2)d\Phi_1\wedge d\Phi_2,\Phi(y_1,y_2)=(\phi_1,\phi_2)$  $\Phi^*(fdx_1\wedge\cdots\wedge dx_n)=(f\circ\Phi)\det(D\Phi)dy_1\wedge\cdots\wedge dy_n$ 链法则：$\Phi_1:U_1\rightarrow U_2,\Phi_2\rightarrow U_3,(\Phi_2\circ\Phi_1)^\omega=\Phi_1^(\Phi_2^*\omega)$   积分换元定理：$\Phi:D\rightarrow E$ 是连续可微之一一对应，且 $\det(D\Phi)$ 恒正或负，$\omega$ 可积，则 $\int_D\Phi^*\omega=\int_\Phi(D)\omega$  $\Phi(D)$ 定向由 $\Phi$ 诱导   第二型曲线积分：$\int_\gamma\omega=\int_{[a,b]}\gamma^*\omega$ 第二型曲面积分：$\int_\Phi\omega=\int_D\Phi^*\omega$ 外微分：$d\omega$  二次连续可微：$dd\omega=0$ 二次连续可微：$d\Phi^*\omega=\Phi^*d\omega$       名称 对象 公式 $\omega$ 向量场形式     曲线 Newton-Leibniz 公式 $\mathbb{R}$ $\int_Cdf=\int_{\partial C}f$     Green 公式 $\mathbb{R}^2$区域 $\int_Dd\omega=\int_{\partial D}\omega$ $P(x,y)dx+Q(x,y)dy$    Stokes 公式 $\mathbb{R}^3$定向曲面 $\int_Sd\omega=\int_{\partial S}\omega$ $P(x,y,z)dx+Q(x,y,z)dy+R(x,y,z)dz$ $\int_S\langle\text{curl}\mathbf{X},\mathbf{n}\rangle d\sigma=\int_{\partial S}\langle X,T\rangle ds$   Gauss 公式 $\mathbb{R}^3$区域 $\int_Dd\omega=\int_{\partial D}\omega$ $P(x,y,z)dy\wedge dz+Q(x,y,z)dz\wedge dx+R(x,y,z)dx\wedge dy$ $\int_D\text{div}\mathbf{X}dxdydz=\int_{\partial D}\langle\mathbf{X},\mathbf{n}\rangle d\sigma$    </description>
+    </item>
+    
+    <item>
+      <title>差错检验和纠正</title>
+      <link>https://zhengzangw.com/notes/data-communication/4-%E5%B7%AE%E9%94%99%E6%A3%80%E9%AA%8C%E5%92%8C%E7%BA%A0%E6%AD%A3/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/data-communication/4-%E5%B7%AE%E9%94%99%E6%A3%80%E9%AA%8C%E5%92%8C%E7%BA%A0%E6%AD%A3/</guid>
+      <description>差错类型  单比特差错 突发差错     概率值      $P_b$ BER, 接受到一个差错比特的概率   $P_1$ 无比特差错帧到达概率   $P_2$ 某种差错检测算法下，含有一个或多个未检测到的比特差错的帧的到达概率   $P_3$ 某种差错检测算法下，含有一个或多个且没有未检测到的比特差错的帧的到达概率    差错检测 奇偶检验  两个比特错误无法检测 同步传输：偶校验 异步传输：奇校验  二维奇偶检验  $i+j+1$ 个 矩形四个错误无法检测  因特网检验和  发送方计算检验位  将两个数字视为无符号二进制整数相加 如果最左边有进位比特，则和再加1 取反码   接收方验证  加上检验位后应全1    循环冗余检验 (CRC,Cyclic Redundancy Check)  发送的数据：$T[D(k)|F(n-k)]$  $D$ 数据 $F$ 检验序列 $P(n-k+1)$ 除数 $T=2^{n-k}D+F\equiv0\pmod{P}$   $F=2^{n-k}D\bmod P$  模2运算 多项式表示  $11001 \rightarrow X^4+X^3+1$   寄存器  Galois 域除法器      差错纠正  汉明距离 $d(v_1,v_2)$  差错检测+差错重传  无线链路:高比特差错率导致大量重传 卫星链路: 长传播时延导致效率低下  前向纠错 (FEC)  差错类型  无差错 可检测，可纠正差错 可检测，不可纠正之差错 不可检测之差错   见《代数编码》  </description>
+    </item>
+    
+    <item>
+      <title>Chapter 5</title>
+      <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter5/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter5/</guid>
+      <description>基本概念  指令周期：CPU取出并执行一条指令的时间 PC: 程序计数器（IP） IR: 指令寄存器 ID: 指令译码器 地址线、数据线、控制线：不属于CPU 启停控制逻辑：脉冲源（时钟脉冲）+启停控制线 数据通路： 指令执行过程中数据所经过的路径（包括路径上的部件） execution/function unit: 数据运算的部件 IAS计算机：储存程序计算机 1946 分散连接结构 Clock-to-Q(Latch Prop): 触发沿开始到输出端改变 Cycle Time = Clk-to-Q + Longest Delay + 建立时间 + clock skew 数据通路的时序控制  早期：机器周期、节拍和脉冲三级时序 现代：时钟信号，时钟周期=节拍    单总线数据通路  内总线 MDR: Memory Data Register MAR: Memory Address Register 四种基本操作  通用寄存器间传递数据  $R0_{out}, Y_{in}$   算术逻辑运算  $R1_{out}, Y_{in}$ $R2_{out}, add (Z_{in})$ $Z_{out}, R3_{in}$   主存读取一个字  MFC信号: Memory Function Complete WMFC控制信号 异步  $R1_{out}, MAR_{in}$ $read, WMFC$ $MDR_{out}, R2_{in}$   同步： SDRAM芯片   写入主存  $R1_{out}, MDR_{in}$ $R2_{out}, MAR_{in}$ $write, WMFC$      三总线数据通路  dual-port register file 三操作数指令执行可在一个时钟周期完成  单周期数据通路  单周期处理器：所以有指令的指令周期为一个时钟周期 MIPS 时钟周期以最复杂指令所用的指令周期为准  流水线数据通路  指令流水线  IF ID OF: 取操作数 EX WB   CPI = 1 组合逻辑+寄存器延时 适合流水线的指令集特征  指令长度一致 指令格式规整 load/store型指令风格   流水线冒险(hazard) : 流水线阻塞(stall)  structural hazard (hardware resource conflict) 访存冲突。 解决方法： 哈佛结构（指令储存器和数据储存器分离）， cache data hazard (data dependency) 前面指令的结果还没产生。 解决方法  软件方法 nop 数据转发 (forwarding) 通过bypass送到后续ALU 硬件阻塞 （插入气泡） load-use数据冒险只能如此解决 一个周期内特殊处理 (MIPS实现中)  RAW WAR WAW     control hazard  延迟损失时间片 C branch hazard  插入气泡 或 插入nop， 数量为C        高级流水线实现技术 super-pipelining  增加流水线级数，CPI仍为1，减小时钟周期  multiple issue pipeling  同时启动多条命令, CPI &amp;lt; 1。 IPC: 4路多发射流水线理性IPC为4 前提：数据通路中有多个执行部件 任务一：冒险处理 任务二：指令打包 ： 将能够并行处理的多条指令同时发送到发射槽中  speculation: 猜测指令执行结果调整执行顺序  软件推测： 编译器通过推测来静态重排指令，此种推测一定正确  静态多发射：主要通过静态推测，指令打包后多条指令合成VLIW(Very Long Instrution Word)。 VLIW处理器，Intel称为EPIC(Explicitly Parallel Instruction Computer)   硬件推测：处理器执行中通过推测动态调度指令  动态多发射：super-scalar processor (超标量处理器)  简单超标量处理器： 指令顺序发射，每次一条或多条 out-of-order execution： 使用dynamic pipeline scheduling技术， 通过指令相关性检测和动态分支预测，投机选择执行          指令集  CISC: 难以使用硬连线路控制器，只能用微程序控制器 RISC 控制器: 译码并产生控制信号 硬连线路控制器：指令执行过程中每个时钟周期所包含的控制信号为一个状态 微程序控制器  微程序：每条指令的执行过程的表示，由微指令组成 控制存储器（CS, 控存）：存储每条指令对于微程序的ROM 微程序定序器：计数器法/断定法（下址字段法）    </description>
+    </item>
+    
+    <item>
+      <title>6-场论</title>
+      <link>https://zhengzangw.com/notes/calculus/section6/</link>
+      <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/calculus/section6/</guid>
+      <description> 场（向量场）：$\mathbf{X}:U\rightarrow\mathbb{R}^n$ 梯度场：$\Delta f=\text{grad} f=(\frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z})^T$  $0$ 阶微分形式的外微分   旋度场：$\text{curl} \mathbf{X} = \text{rot} \mathbf{X} = (\frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z},\frac{\partial P}{\partial z}-\frac{\partial R}{\partial x},\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})$  $1$ 阶微分形式的外微分   散度：$\text{div} \mathbf{X}=\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial z}+\frac{\partial R}{\partial z}$  $2$ 阶微分形式的外微分   $\text{curl}({\nabla f})=0$ $\text{div}({\text{curl} \mathbf{X}})=0$  </description>
+    </item>
+    
+    <item>
+      <title>6-数理统计基础</title>
+      <link>https://zhengzangw.com/notes/probability-and-mathematical-statistics/6-%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/probability-and-mathematical-statistics/6-%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%9F%BA%E7%A1%80/</guid>
+      <description>推断统计与描述统计
+ 总体：研究对象全体  个体：总体中每个成员   样本，抽样，样本容量，样本值 简单随机样本：代表性，独立性 统计量：$T(x_1,x_2,\cdots,x_n)$  样本均值：$\overline X=\frac{1}{n}\sum_{i=1}^n X_i$ 样本方差：$S^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline X)^2$  样本标准差   样本二阶中心矩：$S^{*2}=\frac{1}{n}\sum_{i=1}^n(X_i-\overline X^2)$ 样本$k$阶原点矩：$A_k=\frac{1}{n}\sum_{i=1}^kX_i^k$ 样本$k$阶中心矩：$B_k=\frac{1}{n}\sum_{i=1}^n(X_i-\overline X)^k$ 协方差：$S_{XY}=\frac{1}{n-1}\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})$ 协方差矩阵：$\Sigma(i,j)=S_{i,j}$  $X$ 标准化后，协方差矩阵 $\Sigma=XX^T$   样本相关系数：$\frac{S_{XY}}{S^*_XS^*_Y}$   大样本理论：$\frac{\sum_{i=1}^nX_i-n\mu}{\sqrt{n}\sigma}\rightarrow N(0,1)$, 则 $X_i\sim N(\mu,\frac{\sigma^2}{n})$ 正态总体  $\chi^2$ 分布：$X_i\sim N(0,1)$ 独立同分布，则 $\chi^2_n=\sum_{i=1}^nX_i^2\sim\chi^2(n)$, $p(x)=\frac{1}{2^{\frac{n}{2}}\Gamma(\frac{n}{2})}e^{-\frac{x}{2}x^{\frac{n}{2}-1}},x&amp;gt;0$  $\chi_1^2\sim\chi^2(n_1),\chi_2^2\sim\chi^2_2,\chi_1^2+\chi_2^2\sim\chi^2(n_1+n_2)$ Cochran 分解定理：$X_i\sim N(0,1)$ 独立同分布，$\sum_{i=1}^kQ_i=\sum_{i=1}^nX_i^2$,$Q_i$ 为秩为 $n_i$ 的$X_1,X_2,\cdots,X_n$ 的非负二次型，则 $Q_i(i=1,2,\cdots,k)$ 相互独立且分别服从于自由度为 $n_i$ 的$\chi^2$ 分布的充要条件为 $\sum_{i=1}^k=n$   t 分布：$X\sim N(0,1),Y\sim\chi^2(n)$, $X$ 与 $Y$ 独立，则$T=\frac{X}{\sqrt\frac{Y}{n}}\sim t(n)$, $p(x)=\frac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi}\Gamma(\frac{n}{2})}(1+=\frac{x^2}{n})^{-\frac{n+1}{2}}$ F 分布：$U\sim\chi^2(n_1),V\sim\chi^2(n_2)$, $U$ 与 $V$ 独立，则 $F=\frac{U/n_1}{V/n_2}\sim F(n_1,n_2)$, $p(x)=\frac{\Gamma((n_1+n_2)/2)}{\Gamma(n_1/2)\Gamma(n_2/2)}(\frac{n_1}{n_2})^\frac{n_1}{2}x^{\frac{n_1}{2}-1}(1+\frac{n_1}{n_2}x)^{-\frac{n_1+n_2}{2}}$  $F\sim F(n_1,n_2),\frac{1}{F}\sim F(n_2,n_1)$ $T\sim t(n),T^2\sim F(1,n)$   上 $\alpha$ 分位点 $\gamma_\alpha$: $P(X&amp;gt;\lambda_\alpha)=\alpha$  $u_{1-\alpha}=-u_\alpha$ $t_{1-\alpha}(n) = -t_\alpha(n)$ $F_{1-\alpha}(n_1,n_2)=\frac{1}{F_\alpha(n_2,n_1)}$         $N(0,1)$ $\chi^2(n)$ $t(n)$ $F(n_1,n_2)$     $u_\alpha$ $\chi^2_\alpha(n)$ $t_\alpha(n)$ $F_\alpha(n_1,n_2)$     样本 $X_i\sim N(\mu,\sigma)$  $\overline{X}\sim N(\mu,\frac{\sigma^2}{n})$ $\frac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1)$  $\overline{X}$ 与 $S^2$ 独立   $T=\frac{\overline{X}-\mu}{S/\sqrt{n}}\sim t(n-1)$ $F=\frac{S_1^2\sigma_2^2}{S_2^2\sigma_1^2}\sim F(n_1-1,n_2-1)$ $U=\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}\sim N(0,1)$ $T=\sqrt{\frac{n_1n_2(n_1+n_2-2)}{n_1+n_2}}\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{(n_1-1)S_1^2+(n_2-1)S_2^2}\sim t(n_1+n_2-2)$    </description>
+    </item>
+    
+    <item>
+      <title>数据链路层</title>
+      <link>https://zhengzangw.com/notes/data-communication/5-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/data-communication/5-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</guid>
+      <description>基本概念  $d$: 链路长度 $v$: 传播速度 $L$: 帧长度（比特） $B=RD$: 链路比特长度 $B&#39;$: 链路帧长度     性能指标      传输时间(transmission time) 与帧长度有关, $T=\frac{L}{R}$   传播时间(propagation time) 与链路有关，$D=\frac{d}{v}$   处理时延    排队时延 等待被传输的时间    流量控制  确保发送的数据不会超出接收实体接收数据能力的技术 Fragmentation：把大块的数据切分成小数据块传输  接收方缓存有限 重传大小小 避免一个站点长时间占用媒体传输    停止等待流量控制 Stop and Wait  (S)Send Data $\rightarrow$ (R)Receive Data &amp;amp; Send ACK $\rightarrow$ (S)Receive ACK &amp;amp; Send Data&#39; $T_F=D+T+D+t_{ack}+t_{proc}=2D+T$ $a=\frac{D}{T}=\frac{B}{L}$ $U=\frac{T}{T_F}=\frac{1}{1+2a}$  滑动窗口流量控制    参数      滑窗字段大小 $k$   帧编号 $0\sim2^{k}-1$   窗口大小 $W\leq 2^{k}-1$       帧类型      F$_n$ 数据帧，当窗口用完后停止发送   RR$_n$ 已接受到$n-1$的帧，准备接受$n$(双方更新窗口)   RNR$_n$ 已接受到$n-1$的帧，停止接受   捎带 双工时 F$_n$捎带确认信息    $$ U=\begin{cases} \frac{W}{2B&#39;+1} &amp;amp; W&amp;lt;2B&#39;+1\newline 1 &amp;amp; W\geq2B&#39;+1 \end{cases} $$</description>
+    </item>
+    
+    <item>
+      <title>Chapter 6</title>
+      <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter6/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter6/</guid>
+      <description>储存器分类  储存元件  半导体储存器 磁表面储存器 光盘储存器（光介质）  基板，记录层，反射层，保护层，印刷层 CD(Compact disc) 1.2mm 700MB DVD(digital versatile disc) 0.6mm+0.6mm 4.7GB Blue-ray Disc     存取方式  RAM (Random Access Memory) SAM (Sequential Access Memory) DAM (Direct Access Memory) CAM (Content Addressed Memory) or AM (Associative Memory) : TLB   可更改性  ROM (Readly Only Memory)  Flash ROM 闪存 U盘，BIOS   RWM  SRAM: Static RAM 6个晶体管一个二进制位，cache DRAM: Dynamic RAM 一个晶体管一个二进制位，主存     断电后可保存性  Nonvolatile Memory Volatile Memory   功能  寄存器(1ns, &amp;lt;1KB) &amp;lt;- cache(2ns, 4MB) &amp;lt;- 主存储器(10ns, 500MB-4GB) &amp;lt;- 辅助存储器(辅存)(10ms, 40GB-500GB) &amp;lt;- 海量后备储存器 (10s, 10TB-100TB)(与辅存合称外部存储器)   储存器指标  访问时间：  读出时间：从存储器接到读命令开始至信息被送到数据线上所需的世界 读入时间：从存储器接到写命令开始至信息被写入存储器的时间   存储周期：存储器进行一次读写操作所需全部时间 带宽B：存储器被连续访问时可以提供的数据传送速率，位每秒    主存   SDRAM: Synchronous DRAM</description>
+    </item>
+    
+    <item>
+      <title>7-常微分方程</title>
+      <link>https://zhengzangw.com/notes/calculus/section7/</link>
+      <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/calculus/section7/</guid>
+      <description>变量可分方程 $$ p(y)dy=q(x)dx $$
+ 通解 $\int p(y)dy=\int q(x)dx$ 初值问题：有初始条件，解为特解 解的存在于唯一性定理 解的延伸定理  一阶线性方程 $$\frac{dy}{dt}+p(t)y=q(t)$$
+ 通解：$y=e^{-\int p(t)}\int e^{\int p(t)}q(t)dt$  常系数齐次方程 $$\sum_{j=0}^na_j\frac{d^jy}dt^j=0$$
+ 解的线性组合仍为解 特征多项式：$P(\lambda)=\sum_{j=0}^na_j\lambda^j=\prod_{j=1}^k(\lambda-r_j)^{m_j}$ 特征根：$P(\lambda)$ 的根  $e^{rt}$ 为解 $\iff P(r)=0$   $y(t)=\sum_{i=1}^{k}\sum_{j=0}^{m_k-1}t^je^{r_it}$  常系数非齐次方程 $$\sum_{j=0}^na_j\frac{d^jy}dt^j=q(t)$$
+ Lagrange 常数变易法  </description>
+    </item>
+    
+    <item>
+      <title>复用</title>
+      <link>https://zhengzangw.com/notes/data-communication/6-%E5%A4%8D%E7%94%A8/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/data-communication/6-%E5%A4%8D%E7%94%A8/</guid>
+      <description>多个点对点通信共享数据链路容量
+频分复用 (Frequency Division Multiplexing) 各路信号$m_i(t)$ $\rightarrow$ (副载波调制器$f_i$ $\rightarrow$ $s_i(t)$ $\rightarrow$ 叠加$\Sigma$)复用器 $\rightarrow$ 复合基带调制信号 $m_b(t)$ $\rightarrow$ 发送器$f_c$ $\rightarrow$ FDM 信号 $s(t)$ $\rightarrow$ (主接收器 $\rightarrow$ 复合基带信号 $\rightarrow$ 带通滤波器$f_i$)分用器 $\rightarrow$ $s_i(t)$ $\rightarrow$ 解调器$f_i$ $\rightarrow$ $m_i(t)$
+ 有效带宽大于被传输的信号的带宽：$B&amp;gt;\sum_{i=1}^nB_i$ 串扰  防护频带：未被使用的部分   互调噪声  FDM 机制  基群  带宽：48kHz 话音数量：12 频谱：60-108kHz   超群，主群  AT&amp;amp;T ITU-T 波分复用 WDM  不同频率光路在同一光纤上传输  正交频分复用 (OFDM，多载波调制)  副载波正交  实际可用 IFFT -&amp;gt; FFT 循环前缀   一个数据源 $R$ bps, 每个比特持续时间为 $\frac{1}{R}$， 通过 OFDM，每个比特的持续时间为 $\frac{N}{R}$ 优点  衰减仅影响部分副载波 克服码间干扰    同步时分复用 (Synchronous Time Division Mutliplexing) 各路信号$m_i(t)$ $\rightarrow$ 缓存 $\rightarrow$ $m_i(t)$ $\rightarrow$ 扫描操作 $\rightarrow$ TDM 流 $m_c(t)$ $\rightarrow$ 调制解调器 $\rightarrow$ $s(t)$ $\rightarrow$ 调制解调器 $\rightarrow$ TDM 流 $\rightarrow$ 扫描操作 $\rightarrow$ $m_i(t)$ $\rightarrow$ 缓存 $\rightarrow$ $m_i(t)$</description>
+    </item>
+    
+    <item>
+      <title>7-Number Theory</title>
+      <link>https://zhengzangw.com/notes/problem-solving/7-number-theory/</link>
+      <pubDate>Wed, 16 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/7-number-theory/</guid>
+      <description>背景知识  自然数的集合论定义：  $a^+:=a\cup{a}$ 归纳集  $\emptyset\in A$ $\forall a(a\in A\rightarrow a^+\in A)$   $\mathbb{N}$ 为所有归纳集之交   Peano 结构  $e\in S$ $\forall a\in S,f(a)\in S$ $\forall b\in S,\forall c\in S,f(b)=f(c)\rightarrow b=c$ $\forall a\in S,f(a)\not= e$ $\forall A\subseteq S, (e\in A\wedge(\forall a\in A)(f(a)\in A))\rightarrow A=S$   良序公理与数学归纳法原理等价  数论基础  带余除法: $a=bq+r,b&amp;gt;0,0\leq r&amp;lt;b$  存在性证明：良序公理 唯一性证明   整除及其性质  $a|b,a|c\Rightarrow a|nb+mc$   最大公因子 (hcf/gcd)  裴蜀定理：$\gcd(a,b)=ar+bs$  证明：良序公理+带余除法   Strong Duality for GCD: $\max{d_i:d\in\mathbb{Z},d|a,d|b}=\min{ax+by:x\in\mathbb{Z},y\in\mathbb{Z},ax+by&amp;gt;0}$  证明  $d|s,s|d$ Weak Duality + $\exists$   唯一性证明   $\text{lcm}(a,b)\gcd(a,b)=ab$  证明  Isomorphism Theorem Unique Factorization $d|(a,b)\Leftrightarrow d|\frac{ab}{[a,b]}$   $(a,b,c)[a,b,c]=\frac{abc}{[(a,b),(b,c),(c,a)]}$ $[a,b,c]=\frac{abc(a,b,c)}{(a,b)(a,c)(b,c)}$   $\gcd(a,b,c)=\gcd(\gcd(a,b),c)$   质数  $\pi(x)\sim\frac{x}{\ln{x}}$ 无限质数证明  $P=p_1p_2\cdots p_n+1$ Fermat Numer $F_n=2^{2^n}+1$ 两两互素  $F_n-2=\prod_{k=1}^{n-1}F_k$   Mersenne Number $2^p-1$  $2^p\equiv 1\pmod{q}\Rightarrow p|q-1$     Dirichlet&amp;rsquo;s Theorem: $\gcd(a,m)=1$ then there are infinitely many primes $p,p\equiv a\pmod{m}$   筛法求素数 算术基本定理  存在性证明：良序公理（找不满足中最小的） 唯一性证明：$1\rightarrow n$     $\varphi(n)=n\prod_{p|n}(1-\frac{1}{p}),p$ is prime  $\varphi(p)=p-1$ $\varphi(n)&amp;gt;\frac{n}{e^\gamma\ln\ln n+\frac{3}{\ln\ln n}},\gamma=0.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 7</title>
+      <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter7/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter7/</guid>
+      <description>基本概念  CPU控制流：CPU所执行的地址序列 正常控制流：按指令存放顺序或转移类指令指示地址得到的控制流 ECF: Excptional Control of Flow process descriptor: 结构类型task_structure task_list: 双向循环列表，每个元素为进程描述符 TSS: Task State Segment 逻辑控制流：进程确定的指令执行地址序列 物理控制流：多个逻辑控制流组成 concurrency: 并发，不同进程的逻辑控制流在时间上交错 parallelism: 并行，并发的特例，同时进行的两个进程 time slice: 连续执行同一个进程的时间段 时间片轮转处理器调度  context switching 实现班班通进程中指令交替执行的机制
+ 进程的上下文：物理实体和支持进程运行的环境 用户堆栈：运行时堆和用户栈 用户级上下文：程序块、数据块、用户堆栈等组成的用户空间信息 系统级上下文：进程标识信息、进程现场信息、进程控制信息（各种内核数据结构）和系统内核栈组成的内核空间信息 硬件/寄存器上下文 上下文切换  将寄存器上下文保存到当前进程的系统级上下文中 将新进程系统级上下文中的现场信息恢复到寄存器中 将控制转移到新进程    memory mapping 将进程虚拟地址空间中的一个区域与硬盘上一个对象关联，初始化一个vm_area_struct结构
+mmap函数
+ void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offset 返回值 MAP_FAILED(-1), 成功则为指向映射区域的指针 prot 访问权限 PROT_EXE/READ/WRITE/NONE flags 对象类型  普通文件  MAP_PRIVATE: 只读代码和已初始化数据，私有对象，写时拷贝  私有的写时拷贝页   MAP_SHARED: 共享对象   匿名文件：MAP_ANON 内核创建，全部由0组成。对应区域页面称为demand-zero page    loader  execve() 启动加载器 int execve(char *filename, char *argv[], *envp[]) 失败 -1 成功 _start(定义于crtl.</description>
+    </item>
+    
+    <item>
+      <title>8-Cryptography</title>
+      <link>https://zhengzangw.com/notes/problem-solving/8-cryptography-and-coding/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/8-cryptography-and-coding/</guid>
+      <description>概论  密码系统：$(\mathcal{K}, \mathcal{M}, \mathcal{C})$  $\mathcal{K}$ 所有可能秘钥组成的集合 $\mathcal{M}$ 所有可能明文组成的集合 $\mathcal{C}$ 所有可能密文组成的集合   密码：$(E,D)$  $E$: 加密算法 $\mathcal{M}\times\mathcal{K}\rightarrow\mathcal{C}$ $D$: 解密算法 $\mathcal{D}\times\mathcal{K}\rightarrow\mathcal{M}$   一致性原则：$\forall m\in M,k\in K,D(k,E(k,m))=m$  通常 $E$ 是一个随机化算法 $D$ 一定是一个确定化算法    OTP (One Time Pad)  $K={0,1}^n$ $M={0,1}^n$ $C={0,1}^n=\mathcal{M}$ $E(m,k)=k\oplus m$ $D(c,k)=k\oplus c$  PRG 伪随机数生成器  高效，确定，不可预测  流密码 A stream cipher is a symmetric key cipher where plaintext digits are combined with a pseudorandom cipher digit stream (keystream).</description>
+    </item>
+    
+    <item>
+      <title>交换</title>
+      <link>https://zhengzangw.com/notes/data-communication/8-%E4%BA%A4%E6%8D%A2/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/data-communication/8-%E4%BA%A4%E6%8D%A2/</guid>
+      <description>名词 解释     站点(station) 需要通信的终端设备   结点(node) 提供通信功能的交换设备   通信网络 结点集合   QoS quality of Service     分组交换：Best Effort  Paket Drop Congestion delay 方差高 解决方法：多发选收    电路交换  两个站点间有一条专用的通信通路  电路建立  通路中的每一对结点必须为该信道保留容量 网络连接透明   数据传输 电路断连    应用  公共电话网 PSTN 专用小交换机 PBX 专线网路  电路交换结点  数字交换机  空分交换 时分交换   网络接口 控制单元  建立连接 维护连接 拆除连接    空分交换 信号通路之间在物理上被空间分隔的交换机</description>
+    </item>
+    
+    <item>
+      <title>Chapter 8</title>
+      <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter8/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter8/</guid>
+      <description>I/O子系统  runtime system(runtime environment/runtime) I/O子系统  用户空间I/O软件（用户I/O软件）  I/O请求 运行时系统   内核空间I/O软件（系统I/O软件）  与设备无关的I/O软件 设备驱动程序 中断服务程序   I/O硬件  I/O总线结构 I/O接口（设备管理器，I/O端口） I/O设备     用户程序中I/O函数  C标准I/O库函数  文件I/O函数 控制台I/O函数 缓冲  _IOFBF: fully buffered _IOLBF: line buffered _IO_NBF: no buffering     系统调用封装函数  头文件unistd.h int creat(char *name, mode_t perms);  perms:访问权限：文件拥有者+拥有者所在组成员+其它用户的读、写、执行权限   int open(char *name, int flags, mode_t perms);  perms = 0: 非创建方式 flags: 定义在 fcntl.</description>
+    </item>
+    
+    <item>
+      <title>蜂窝无线网络</title>
+      <link>https://zhengzangw.com/notes/data-communication/9-%E8%9C%82%E7%AA%9D%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/data-communication/9-%E8%9C%82%E7%AA%9D%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/</guid>
+      <description>蜂窝(cell)  Area divided into cells  约 6.5km - 13km 每个蜂窝有自己的天线  低功率发送器：~100W   每个蜂窝分配一个频带  相邻蜂窝指派频率不同以防止干扰   每个蜂窝分配一个基站提供服务  传输功率控制：既可以使通信使用给定的频率，又要限制该功率逃逸到邻近蜂窝     六边形  Distance from center to vertex equals to length $d=\sqrt{3}R$ $R$ 为其外接圆半径   频率重用  频率总数为 $K$（通常指派10-50个频率）  每个蜂窝有$\frac{K}{N}$个频率   重用系数 $N$：重复模式中的蜂窝数  六边形中，$N=I^2+J^2+IJ,I,J\in\mathbb{N}$   $D$: 使用相同频率的蜂窝（即同波道）中心间最小距离  $\frac{D}{d}=\sqrt{N}$     增大容量  添加新信道 频率借用 蜂窝分裂  最小一般 1.</description>
+    </item>
+    
+    <item>
+      <title>扩频</title>
+      <link>https://zhengzangw.com/notes/data-communication/10-%E6%89%A9%E9%A2%91/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/data-communication/10-%E6%89%A9%E9%A2%91/</guid>
+      <description>在扩频码（伪随机数）下调制使带宽增加
+Spread Spectrum Frequency Hopping(FHSS)  signal is broadcast over seemingly random series of frequencies receiver hops between frequencies in sync with transmitter Slow $T_{\text{shift}}\geq T_{\text{symbol}}$ Fast $T_{\text{shift}}&amp;lt; T_{\text{symbol}}$ 信号带宽远大于数据信号带宽 提高抗人为干扰能力  直接序列扩频(DSSS)  each bit is represented by multiple bits using a spreading code  Code Division Multiple Access  break each bit into k chips according to a fixed chipping code specific to each user 用户码 码片率：新信道码片数据率 接收器解码：用相同用户码做乘积，若为 $\pm N$ 则接受，否则拒绝  </description>
+    </item>
+    
+    <item>
+      <title>Introduction to Meta Learning</title>
+      <link>https://zhengzangw.com/posts/meta-learning/</link>
+      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/meta-learning/</guid>
+      <description>&lt;h1 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Mechanistic view
+&lt;ul&gt;
+&lt;li&gt;DNN model that can read in an entire dataset and make predictions for new data point&lt;/li&gt;
+&lt;li&gt;Training this network uses a meta-dataset, which itself consists of many datasets, each for a different task&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Probabilistic view
+&lt;ul&gt;
+&lt;li&gt;Extract prior information from a set of tasks taht allows effcient learning of new tasks&lt;/li&gt;
+&lt;li&gt;Learning a new task this prior and training set to infer most likely posterior parameters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;supervised learnings
+&lt;ul&gt;
+&lt;li&gt;$\arg\max\limits_{\phi}p(\phi|\mathcal{D})=\arg\max\limits_{\phi} \log p(\mathcal{D}|\phi)+\log p(\phi)$&lt;/li&gt;
+&lt;li&gt;require large amounts of labeled data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gates</title>
+      <link>https://zhengzangw.com/notes/quantum-computation/gate/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/quantum-computation/gate/</guid>
+      <description>matrix = operator = gate
+Single qubit operator  Pauli operators  $I=(1,0;0,1)$ $X=(0,1;1,0)$ (非门)  $X|0\rangle=|1\rangle,X|1\rangle=|0\rangle$   $Y=(0,-i;i,0)$  $Y=iXZ,XY=-YX,XZ=-ZX,YZ=-ZY$   $Z=(1,0;0,-1)$  $Z|0\rangle=|0\rangle,X|1\rangle=-|1\rangle$     Hadamard gate: $H=\frac{1}{\sqrt{2}}(1,1;1,-1)$  $H|0\rangle=|+\rangle=\frac{|0\rangle+|1\rangle}{\sqrt{2}},H|+\rangle=|0\rangle$ $H|1\rangle=|-\rangle=\frac{|0\rangle-|1\rangle}{\sqrt{2}},H|-\rangle=|0\rangle$ $H^{\otimes n}|0^n\rangle=\frac{1}{\sqrt{2^n}}\sum_{x\in{0,1}^n}|x\rangle$ $H|x\rangle=\sum_z\frac{(-1)^{xz}}{\sqrt{2}}|z\rangle$ $H^{\oplus n}|x\rangle=\frac{\sum_z(-1)^{x\cdot z}|z\rangle}{\sqrt{2^n}}$  $x\cdot z$: binary product mod 2   $HXH=Z,HZH=X,HYH=-Y$   Phase Gate: $S=(1,0;0,i)$ T gate($\frac{\pi}{8}$ gate): $T=(1,0;0,e^{i\frac{\pi}{4}})=e^{i\frac{\pi}{8}}(e^{-i\frac{\pi}{8}}, 0;0,e^{i\frac{\pi}{8}})$ Rotation  $R|0\rangle=\cos\theta|0\rangle-\sin\theta|1\rangle$ $R|1\rangle=\sin\theta|0\rangle+\cos\theta|1\rangle$    Approximating unitary operators  Bloch sphere and rotation operators  二维复平面球同构与三维实平面球同构 $SU(2)\cong SO(3)$ $|\varphi\rangle = \cos\frac{\theta}{2}|0\rangle+e^{i\varphi}\sin\frac{\theta}{2}|1\rangle$ $A^2=I,e^{i\theta A}=\cos(\theta)I+i\sin(\theta)A$ $R_{x}(\theta)=e^{\frac{-i\theta X/Y/Z}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}X$ $R_{y}(\theta)=e^{\frac{-i\theta X/Y/Z}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}Y$ $R_{z}(\theta)=e^{\frac{-i\theta X/Y/Z}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}Z$ $R_{\hat n}=e^{-i\hat n\cdot\frac{\vec\sigma}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}(n_xX+n_yY+n_zZ)$  $\hat n=(n_x,n_y,n_z)$ real unit vector     Z-Y decomposition: $U=e^{i\alpha}R_z(\beta)R_y(\gamma)R_z(\delta)$  $U=e^{i\alpha}(\beta)R_{\hat n}R_{\hat m}(\gamma)R_{\hat n}(\delta)$   $\lVert U-V\rVert=\max\limits_{|\psi\rangle}\lVert(U-V)|\psi\rangle\rVert$  $|\langle\psi|U^\dagger M_iU|\psi\rangle-\langle\psi|V^\dagger M_iV|\psi\rangle|\leq 2\lVert U-V\rVert$ $\lVert U_tU_{t-1}\cdots U_1-V_tV_{t-1}\cdots V_1\rVert\leq\sum_i\lVert U_i-V_i\rVert$   $THTH=R_{\hat n}(\theta),\theta=2\arccos(\cos^2\frac{\pi}{8}),\hat n=(\cos\frac{\pi}{8},\sin\frac{\pi}{8},\sin\frac{\pi}{8})$ up to a normalization  $T=R_z(\frac{\pi}{4})$ $HTH=R_x(\frac{\pi}{4})$ $THTH=\cos^{\pi}{8}I-i(\cos\frac{\pi}{8}(X+Z)+\sin\frac{\pi}{8}Y)\sin\frac{\pi}{8}$ Densely filled: $\forall\delta&amp;gt;0,N=\lceil\frac{2\pi}{\delta}\rceil+1,\exists k!</description>
+    </item>
+    
+    <item>
+      <title>History</title>
+      <link>https://zhengzangw.com/notes/machine-learning/others/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/machine-learning/others/</guid>
+      <description>技术浪潮     神经网络 支持向量机 神经网络     年份 89-94 95-05 06-   代表性技术 BP 算法 核方法，统计学习理论 深度学习    生成式与判别式     判别式(discriminative) 生成式(generative)      对 $P(c\vert x)$ 建模 对 $P(c \vert x)=\frac{P(x,c)}{P(x)}$ 建模   实例 决策树，BP 神经网络，SVM 贝叶斯分类器   实际环境中问题 i.i.d. 改变，concept driven，后验概率不变     没有做“多余”工作 做了“多余”工作    神经网络发展史  第一阶段  1943 年, McCulloch 和 Pitts 提出第一个神经元数学模型, 即 M-P 模型, 并从原理上证明了人工神经网络能够计算任何算数和逻辑函数 1949 年, Hebb 发表《The Organization of Behavior》一书, 提出生物神经元学习的机理, 即 Hebb 学习规则 1958 年, Rosenblatt 提出感知机网络(Perceptron)模型和其学习规则 1960 年, Widrow 和 Hoff 提出自适应线性神经元(Adaline)模型和最小均方学习算法 1969 年, Minsky 和 Papert 发表《Perceptrons》一书, 指出单层神经网路不能解决非线性问题, 多层网络的训练算法尚无希望.</description>
+    </item>
+    
+    <item>
+      <title>日本語</title>
+      <link>https://zhengzangw.com/notes/japanese/japanese/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/japanese/japanese/</guid>
+      <description>&lt;h1 id=&#34;語法&#34;&gt;語法&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;「名」は「名」です&lt;/li&gt;
+&lt;li&gt;「名」も「名」です&lt;/li&gt;
+&lt;li&gt;「名」は「名」ではありません
+&lt;ul&gt;
+&lt;li&gt;「名」は「名」じゃありません&lt;/li&gt;
+&lt;li&gt;「名」は何もありませｎ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;「名」は「名」ですか
+&lt;ul&gt;
+&lt;li&gt;はい、そうです&lt;/li&gt;
+&lt;li&gt;いいえ、ちがいます&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;「名」の「名」&lt;/li&gt;
+&lt;li&gt;これ/それ/あれは「名」です&lt;/li&gt;
+&lt;li&gt;この/その/あの「名」は「名」です&lt;/li&gt;
+&lt;li&gt;ここ/そこ/あそこは「名」です
+&lt;ul&gt;
+&lt;li&gt;こちら/そちら/あちら&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;「名」はでれ/何/どこ/いくらですか
+&lt;ul&gt;
+&lt;li&gt;どなたですか&lt;/li&gt;
+&lt;li&gt;どちら&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;どれ
+&lt;ul&gt;
+&lt;li&gt;どの「名」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;「場所」に「名」があります/います&lt;/li&gt;
+&lt;li&gt;「場所」で「動」&lt;/li&gt;
+&lt;li&gt;「名」は「場所」にあります/います&lt;/li&gt;
+&lt;li&gt;「名」と「名」&lt;/li&gt;
+&lt;li&gt;「名」か「名」&lt;/li&gt;
+&lt;li&gt;「名」や「名」&lt;/li&gt;
+&lt;li&gt;「人」と「動」&lt;/li&gt;
+&lt;li&gt;今〜時〜分です&lt;/li&gt;
+&lt;li&gt;「動」ます/ません&lt;/li&gt;
+&lt;li&gt;「動」ました/ませんでした&lt;/li&gt;
+&lt;li&gt;「時間」に「動」&lt;/li&gt;
+&lt;li&gt;「時間」から「時間」まで「動」&lt;/li&gt;
+&lt;li&gt;いつ「動」ますか&lt;/li&gt;
+&lt;li&gt;「場所」へ「動」&lt;/li&gt;
+&lt;li&gt;「場所」から「動」「場所」まで「動」&lt;/li&gt;
+&lt;li&gt;「交通機関」/「工具」で「動」&lt;/li&gt;
+&lt;li&gt;「名」を「動」&lt;/li&gt;
+&lt;li&gt;「人」は「人」に「名」をあげます&lt;/li&gt;
+&lt;li&gt;「人」は「人」に「名」をもらいます&lt;/li&gt;
+&lt;li&gt;「人」に会います&lt;/li&gt;
+&lt;li&gt;「名」は「一类形」です
+&lt;ul&gt;
+&lt;li&gt;以「い」结尾　熱い&lt;/li&gt;
+&lt;li&gt;否定：熱くないです/熱くありません&lt;/li&gt;
+&lt;li&gt;过去：熱かった&lt;/li&gt;
+&lt;li&gt;过去否定：熱くなかったです/熱くありませんでした&lt;/li&gt;
+&lt;li&gt;「一类形」+「名」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;あまり「一类形」/「動」&lt;/li&gt;
+&lt;li&gt;「名」は「二类形」です/でした&lt;/li&gt;
+&lt;li&gt;「名」は「二类形」ではありません/ありませんでした&lt;/li&gt;
+&lt;li&gt;「名」は「二类形」な「名」です&lt;/li&gt;
+&lt;li&gt;「名」でした/ではありませんでした&lt;/li&gt;
+&lt;li&gt;どんな「名」&lt;/li&gt;
+&lt;li&gt;情感：「人」は「名」が「形」です&lt;/li&gt;
+&lt;li&gt;能力：「人」は「名」が分かります/できます&lt;/li&gt;
+&lt;li&gt;から&lt;/li&gt;
+&lt;li&gt;だから&lt;/li&gt;
+&lt;li&gt;どうしてですか&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Extension</title>
+      <link>https://zhengzangw.com/notes/operating-system/os-extension/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/operating-system/os-extension/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Operating System: Three Easy Pieces
+&lt;a href=&#34;http://ics.nju.edu.cn/~jyywiki&#34;&gt;讲义&lt;/a&gt;
+NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;labs&#34;&gt;Labs&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;No.&lt;/th&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Knowledge Point&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;M1&lt;/td&gt;
+&lt;td&gt;pstree&lt;/td&gt;
+&lt;td&gt;打印进程之间的树状的父子关系&lt;/td&gt;
+&lt;td&gt;命令行参数；分析/proc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M2&lt;/td&gt;
+&lt;td&gt;libco&lt;/td&gt;
+&lt;td&gt;实现轻量级的用户态协程库&lt;/td&gt;
+&lt;td&gt;协程概念；内联汇编更换栈&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M3&lt;/td&gt;
+&lt;td&gt;sperf&lt;/td&gt;
+&lt;td&gt;统计它执行的每个系统调用所占的时间&lt;/td&gt;
+&lt;td&gt;系统 API 使用；shell UI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M4&lt;/td&gt;
+&lt;td&gt;crepl&lt;/td&gt;
+&lt;td&gt;C交互式shell&lt;/td&gt;
+&lt;td&gt;系统 API 使用；动态加载&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M5&lt;/td&gt;
+&lt;td&gt;frecov&lt;/td&gt;
+&lt;td&gt;FAT32文件系统镜像 bmp 文件还原&lt;/td&gt;
+&lt;td&gt;FAT32文件系统分析；数据还原&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M6&lt;/td&gt;
+&lt;td&gt;libkvdb&lt;/td&gt;
+&lt;td&gt;实现持久、崩溃一致的key-value数据库API&lt;/td&gt;
+&lt;td&gt;多线程、进程、崩溃一致性程序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L0&lt;/td&gt;
+&lt;td&gt;amgame&lt;/td&gt;
+&lt;td&gt;编写直接运行在AbstractMachine上游戏&lt;/td&gt;
+&lt;td&gt;类 Flappy Bird&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L1&lt;/td&gt;
+&lt;td&gt;kalloc&lt;/td&gt;
+&lt;td&gt;pmm模块&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L2&lt;/td&gt;
+&lt;td&gt;kthreads&lt;/td&gt;
+&lt;td&gt;os,kmt模块&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L3&lt;/td&gt;
+&lt;td&gt;vfs&lt;/td&gt;
+&lt;td&gt;vfs模块, shell&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L4&lt;/td&gt;
+&lt;td&gt;uproc&lt;/td&gt;
+&lt;td&gt;uproc模块（未完成）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    
+    <item>
+      <title>Galois 理论</title>
+      <link>https://zhengzangw.com/notes/modern-algebra/galois-theory/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/modern-algebra/galois-theory/</guid>
+      <description> 分裂域：最小的代数扩张 $L/K$ 使得 $f(x)$ 的所有根在 $L$ 中 $L/K$ 为代数扩张，$\alpha\in L$ 为 $K$ 上可分元指 $\alpha$ 在 $K$ 上极小多项式在其分裂域中无重根  若每个 $\alpha\in L$ 为 $K$ 上可分元，则称 $L/K$ 为可分扩   单扩张定理：$L/K$ 为有限可分扩张，则有 $\gamma\in L$ 使得 $L=K(\gamma)$ 正规扩张：$L/K$ 为代数扩张，若对于任何不可约 $f(x)\in K$, $f(x)=0$ 在 $L$ 有根 $\Rightarrow$ $f(x)$ 所有根在 $L$ 中 Galois 扩张：$L/K$ 是有限可分正规扩张 域扩张 $L/K$ 的 Galois 群 $Gal(L/K)={\sigma\in Aut(L):\forall a\in K(\sigma(a)=a)}$ 按复合构成 $Aut(L)$ 的子群 $H\leq Gal(L/K)$, 则不变域 $Inv(H)={\alpha\in L:\forall \sigma\in H(\sigma(\alpha)=\alpha)}$ 构成 $L$ 的子域， $K\leq M\leq L$ Galois 理论基本定理：设 $L/K$ 为域的 Galois 扩张，则  设 $K\leq M\leq L$，则 $L/M$ 为 Galois 扩张且 $Gal(L/M)\leq Gal(L/K), |Gal(L/M)|=[L:M], H=Inv(Gal(L/M))=M$ 任给 $H\leq Gal(L/K),M=Inv(H)$, 有 $K\leq M\leq L$，且 $Gal(L/M)=H$ 设 $K\leq M\leq L$ 则 $M/K$ 为正规扩张 $\iff Gal(L/M)\unlhd Gal(L/K)$。 $M/K$是正规扩张时，$Gal(M/K)\cong Gal(L/K)/Gal(L/M)$   $K$ 为域，$K(\sqrt[n]{a})/K$ 称为根式扩充。$Gal(K(\sqrt[n]{a}/K))\cong U(Z/nZ)$ 为有限 Abel 群 $f(x)\in K$, $f(x)$ 根式可解指存在域扩张 $K_0=K\leq K_1\leq \cdots\leq K_n=L$ 使得 $K_{i+1}/K_i$ 每步都是根式可导的且 $f(x)=0$ 在 $L$ 中可完全分解成一次式乘积 域$K$，$f(x)\in K$ 次数大于 0，且分裂元为 $L$，则 $f(x)$ 根式可解 $\iff Gal(L/K)$ 为可解群 尺规不可三等分角  尺（一次）规（二次）只能做根号，无法进行3次扩张    </description>
+    </item>
+    
+    <item>
+      <title>域</title>
+      <link>https://zhengzangw.com/notes/modern-algebra/domain/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/modern-algebra/domain/</guid>
+      <description> 域： $F$ 为环, $F^\star$ 按乘法构成 Abel 群  域的特征和扩张  加法阶  $F$ 加法群的阶为最小的 $n$, $na=0$ $na=a+a+\cdots+a=0$, 最小的 $n$ 为 $a$ 的加法阶 $F$ 中非零元的加法阶就是单位元的加法阶 若 $e,2e,3e,\dots\not=0$, 则称 $F$ 的特征为 $0$. $ch(F)=0$ 域 $F$ 单位元 $e$ 的加法阶 $p&amp;lt;\infty$, 则 $p$ 为素数。$ch(F)=p$   $ch(F)=p$, 则 $\sigma:m\rightarrow me$ 是 $Z$ 到 $F$ 的环同态，$ker\sigma=pZ$，$Z/pZ={me:m\in Z}$ 为 $F$ 的最小子域 $F$ 为特征为 $p$ 的域，则 $a_1,\cdots,a_m\in F$ 时 $(a_1+\cdots+a_m)^{p^n}=a_1^{p^n}+\cdots+a_m^{p_n}$ 有限域(Galois 域)：$F$ 中只有有限个元素  $GF(p)$ 模 p 加乘 $GF(p^w)$ 为含 $p^w$ 个元素的有限域，多项式系数只能取 p  由本原多项式在乘法下生成     $q$ 元域：恰有 $q$ 个元素的域  $q$ 元域 $F$ 中有 $x^q-x=\prod_{a\in F}(x-a)$   域的扩张：$K$ 为 $L$ 子域，$L$ 为 $K$ 扩域， 记为 $L/K$, 即 $L$ 为 $K$ 的扩张 线性空间：$V$ 是域 $F$ 上向量空间  $V$ 按加法构成 Abel 群 数乘运算  $a(x+y)=ax+ay$ $(a+b)x=ax+bx$ $1x=x$ $(ab)x=a(bx)$     扩张次数 $[L:K]$：$L$ 是数域 $K$ 上的向量空间，$L/K$的维数  $[L:k]=n$：$L$ 为 $K$ 的 $n$ 次扩域 $[L:K]&amp;lt;\infty$：$L$ 为 $K$ 的有限扩域   $F$ 为 $q$ 元有限域，则 $q$ 必为素数幂次；$q=p^n$ 为素数幂时，必有 $q$ 元域且任意两个 $q$ 元域同构，记为 $F_q$ 或 $GF(q)$  代数扩张  $X$ 生成的 $K$ 的扩环（在 $K$ 上添加 $X$ 生成的环）： $L/K$ 为域扩张，$X\subset L$, 令 $K=\bigcap_{R为 L 子环，R\subset K\cup X} R$ 是 $L$ 包含 $K$ 与 $X$ 的最小子环 $X$ 生成的 $K$ 上扩域：$K(X)=\bigcap_{K\leq L,F\subset K\cup X}$ 为 $L$ 包含 $K$ 与 $X$ 的最小子域  $X$ 有限时，$K=K[\alpha_1,\cdots,\alpha_n],K(X)=K(\alpha_1,\cdots, \alpha_n)$ $K[\alpha_1,\cdots,\alpha_n]={P(\alpha_1,\cdots,\alpha_n)}$ $K(\alpha_1,\cdots,\alpha_n)={\frac{P(\alpha_1,\cdots,\alpha_n)}{Q(\alpha_1,\cdots,\alpha_n)}}$ 单扩张： $K(\alpha)/K$   代数元：$L/K$, $\alpha\in L$, 存在 $K$ 中非零多项式 $f(x)$, $f(\alpha)=0$ 超越元：非代数元  $e,\pi$   $L/K$, $\alpha$ 为 $K$ 上代数元，则 $I={g(x)\in K:g(\alpha)=0}$ 为 $K$ 的理想。 又 $K$ 为 PID, 故 $I$ 有唯一的首一多项式 $f\in K$ 使得 $I=(f)$。 该首一多项式为 $\alpha$ 在 $K$ 上的极小多项式。 极小多项式为 $n$ 次，则称 $\alpha$ 为 $n$ 次代数元。 $L/K$, ${\alpha\in L:\alpha 为K上代数元}$ 为 $L$ 的子域 $L/K$, $\alpha\in L$ 为 $K$ 上 $n$ 次代数元，则  $K(\alpha)=K[\alpha],[K(\alpha):K]=n$，且 $K$ 上向量空间 $K(\alpha)$ 有基底 $1,\alpha,\alpha^2,\cdots,\alpha^{n-1}$ $K/(f)\cong K(\alpha)$   $K$ 为域， 若 $K$ 中次数大于$1$的多项式均可约，即 $n$ 次 $f(x)\in K$ 可写成 $c(x-\alpha_1)\cdots(x-\alpha_n)$ 则称 $K$ 为代数闭域  任何域 $K$ 可扩张称一个代数闭域   代数基本定理（Gauss 博士论文证明）：$\mathbb{C}$ 为代数闭域（或可正所有代数数构成代数闭域） $L/K$, $L$ 中元都是 $K$ 中代数元，则称 $L/K$ 为代数扩张。否则称为超越扩张 $L/K$为代数扩张, 则 $[L:K]&amp;lt;\infty \iff$ 有有限个 $K$ 上代数元 $\alpha_1,\cdots,\alpha_n$ 使 $L=K(\alpha_1,\cdots,\alpha_n)$ $L/M$ 与 $M/K$ 都为代数扩张，则 $L/K$ 为代数扩张  域的例子  $\mathbb{Q},\mathbb{R},\mathbb{C}$  $\mathbb{C}=\mathbb{R}(i)\cong R/(x^2+1)$(Cauchy)$={a+bx \bmod (x^+1),a,b\in \mathbb{R}}$， $i=x \bmod x^2+1$, $\mathbb{C}$ 为 $\mathbb{R}$ 上的二维线性空间，$1,i$ 为一组基底 $\mathbb{Q}$ 上的代数元为 代数数 $\alpha\in \mathbb{C}$ 为 代数整数 指有首一的正系数多项式使得 $f(x)=0$   $p$ 为素数， $\mathbb{F}=\mathbb{Z}/p\mathbb{Z}$  $Z/pZ$ 上必有 $n$ 次不可约多项式，域 $F_p/(f)$ 中有 $p^n$ 个元素    </description>
+    </item>
+    
+    <item>
+      <title>矩阵论</title>
+      <link>https://zhengzangw.com/notes/matrix-theory/matrix-theory/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/matrix-theory/matrix-theory/</guid>
+      <description>&lt;h2 id=&#34;概念补充&#34;&gt;概念补充&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;同构算子：$\mathcal{A}:V\rightarrow V&#39;$
+&lt;ul&gt;
+&lt;li&gt;全映射&lt;/li&gt;
+&lt;li&gt;可逆映射&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;同构：$V$与$V&#39;$是同构的线性空间&lt;/li&gt;
+&lt;li&gt;数域$P$上两个有限线性空间同构$\iff$两空间维数相同&lt;/li&gt;
+&lt;li&gt;相似$A\sim B$:基 1 下矩阵为$A$，基 2 下矩阵为$B$，从基 1 到基 2 的过渡矩阵为$C$，则$B=C^{-1}AC$&lt;/li&gt;
+&lt;li&gt;相抵$A\simeq B$: A,B$为$m*n$阶矩阵，$m$阶方阵$D$和$n$阶方阵$C$满足$B=DAC$
+&lt;ul&gt;
+&lt;li&gt;不同维线性空间$V^n$和$V^m$下，同一个线性变换在不同基偶下所对应的矩阵$A$和$B$之间的关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;非奇异$\iff$非退化$\iff$满秩$\iff$可逆&lt;/li&gt;
+&lt;li&gt;当$A$有 n 个线性无关特征向量时，$A$有完备的特征向量系；否则$A$为亏损矩阵&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Concurrency</title>
+      <link>https://zhengzangw.com/notes/operating-system/os-concurrency/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/operating-system/os-concurrency/</guid>
+      <description>&lt;h2 id=&#34;概念定义&#34;&gt;概念定义&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Concept&lt;/th&gt;
+&lt;th&gt;Definition&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;thread&lt;/td&gt;
+&lt;td&gt;separate process that 共享代码、共享数据、拥有独立栈堆&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;multi-thread&lt;/td&gt;
+&lt;td&gt;parallelism and can avoid blocking program progress due to slow I/O&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;race condition&lt;/td&gt;
+&lt;td&gt;the results depend on the timing execution of the code&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;critical section&lt;/td&gt;
+&lt;td&gt;a piece of code that accesses a shared resource and must not be concurrently executed by more than one thread&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;POSIX&lt;/td&gt;
+&lt;td&gt;Portable Operating System Interface&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;synchronization primitives&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    
+    <item>
+      <title>Persistance</title>
+      <link>https://zhengzangw.com/notes/operating-system/os-persistance/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/operating-system/os-persistance/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Operating System: Three Easy Pieces
+&lt;a href=&#34;http://ics.nju.edu.cn/~jyywiki&#34;&gt;讲义&lt;/a&gt;
+NJU: 操作系统 - 蒋炎岩&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;储存介质-non-volatile-memory&#34;&gt;储存介质 (Non-Volatile Memory)&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Year&lt;/th&gt;
+&lt;th&gt;原理&lt;/th&gt;
+&lt;th&gt;Remarks&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Magnetic Tape&lt;/td&gt;
+&lt;td&gt;1928&lt;/td&gt;
+&lt;td&gt;磁比特数组&lt;/td&gt;
+&lt;td&gt;无法进行高效的随机读写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Magnetic Drum&lt;/td&gt;
+&lt;td&gt;1932&lt;/td&gt;
+&lt;td&gt;并行版磁带&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hard Disk&lt;/td&gt;
+&lt;td&gt;1956&lt;/td&gt;
+&lt;td&gt;二维并行版磁带&lt;/td&gt;
+&lt;td&gt;柱面(platter)+磁道(track)+扇区(sector)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Floppy Disk&lt;/td&gt;
+&lt;td&gt;1971&lt;/td&gt;
+&lt;td&gt;读写头与盘片分离&lt;/td&gt;
+&lt;td&gt;floppy drive 每个电脑一份&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Compact Disk&lt;/td&gt;
+&lt;td&gt;1980&lt;/td&gt;
+&lt;td&gt;1bit = 挖坑/填坑&lt;/td&gt;
+&lt;td&gt;CD-ReWritable: 激光改变反射率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Solid State Drive&lt;/td&gt;
+&lt;td&gt;1991&lt;/td&gt;
+&lt;td&gt;NAND Flash&lt;/td&gt;
+&lt;td&gt;NAND(x,y)=$!(x&amp;amp;y)$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;FTL(Flash translation layer)&lt;/td&gt;
+&lt;td&gt;运行操作系统和闪存管理程序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;USB Flash Disk&lt;/td&gt;
+&lt;td&gt;1999&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;放电做不到100%干净&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    
+    <item>
+      <title>Virtualization</title>
+      <link>https://zhengzangw.com/notes/operating-system/os-virtualization/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/operating-system/os-virtualization/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Operating System: Three Easy Pieces
+&lt;a href=&#34;http://ics.nju.edu.cn/~jyywiki&#34;&gt;讲义&lt;/a&gt;
+NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;process&#34;&gt;Process&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;单个程序$\rightarrow$ 状态机$(M,R)$
+&lt;ul&gt;
+&lt;li&gt;分时复用处理器：利用中断$(M,R)$到状态机上&lt;/li&gt;
+&lt;li&gt;分时复用寄存器
+&lt;ul&gt;
+&lt;li&gt;$(M_1,R_1)\rightarrow(M_2,R_2)\rightarrow\cdots$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;系统调用
+&lt;ul&gt;
+&lt;li&gt;操作系统为用户进程提供的一组API，通常在内核空间中实现，实现用户进程对操作系统对象/物理硬件访问的请求&lt;/li&gt;
+&lt;li&gt;查看系统调用: strace/dtruss(macos)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;File descriptor: 指向操作系统内对象的指针&lt;/li&gt;
+&lt;li&gt;terminal
+&lt;ul&gt;
+&lt;li&gt;The processes belonging to a single command are called a process group or job&lt;/li&gt;
+&lt;li&gt;A session is a larger group of processes&lt;/li&gt;
+&lt;li&gt;session leader&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basics of Linux</title>
+      <link>https://zhengzangw.com/posts/linux-tutor/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/linux-tutor/</guid>
+      <description>&lt;p&gt;Linux 私房菜&lt;/p&gt;
+&lt;h1 id=&#34;命令&#34;&gt;命令&lt;/h1&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mechanics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-mechanics/</link>
+      <pubDate>Sat, 24 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-mechanics/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫
+NJU: University Physics I - 卢德鑫&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;kinematics&#34;&gt;Kinematics&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;diplacement: $\Delta\vec r=\vec r(t+\Delta t)-(\vec t)$&lt;/li&gt;
+&lt;li&gt;velocity: $\overline{\vec v}=\frac{\Delta\vec r}{\Delta t}$&lt;/li&gt;
+&lt;li&gt;speed: $\overline{v}=\frac{\Delta s}{\Delta t}$&lt;/li&gt;
+&lt;li&gt;acceleration: $\vec a=\frac{d\vec v}{dt}$&lt;/li&gt;
+&lt;li&gt;angular velocity vector: $\vec \omega =\frac{d\vec\theta}{dt} = \dot{\varphi}\vec k$&lt;/li&gt;
+&lt;li&gt;velocity in circular motion: $\dot{\vec \rho}=\vec \omega\times\vec\rho$&lt;/li&gt;
+&lt;li&gt;Oscillation: temporal periodicity and spatial repetitiveness&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Fundamental Modern Physics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-modern/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-modern/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫
+NJU: University Physics II - 许望&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;energy-quantization&#34;&gt;Energy Quantization&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;$\nu\lambda=c$&lt;/li&gt;
+&lt;li&gt;Blackbody radiation(infrared to visible spectrum): $u=u(\nu,T)$ or $u=u(\lambda,T)$&lt;/li&gt;
+&lt;li&gt;Stefan-Boltzman Law: $J_B=\sigma T^4$&lt;/li&gt;
+&lt;li&gt;relation between density of outgoing energy flow $J_u$ and density of energy u in the cavity: $J_u=\frac{1}{4}uc$, $u(T)=\int_0^\infty(\nu,T)d\nu$&lt;/li&gt;
+&lt;li&gt;Radiation spectrun(or spectrum density): $u(\nu,T)$&lt;/li&gt;
+&lt;li&gt;mean energy $\overline{\varepsilon}$: $u(\nu)d\nu=\frac{8\pi\nu^2}{c^3}\overline{\varepsilon}d\nu$&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Thermal Physics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-thermal/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-thermal/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫
+NJU: University Physics I - 卢德鑫&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;temperature&#34;&gt;Temperature&lt;/h1&gt;
+&lt;h2 id=&#34;basic-concept&#34;&gt;Basic Concept&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;phase: homogeneous part of system&lt;/li&gt;
+&lt;li&gt;equilibrium state: a state of a system in which macroscopic variables have definite values that remain constant as long as the external conditions are unchanged&lt;/li&gt;
+&lt;li&gt;relaxation time: $\tau$, the time system needs to adjust itself to follow the change of the surrounding.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Field-Theory</title>
+      <link>https://zhengzangw.com/notes/physics/field-theory/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/field-theory/</guid>
+      <description>&lt;h1 id=&#34;coordinate-system&#34;&gt;Coordinate system&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Cartesian system $(\vec i,\vec j,\vec k)$
+&lt;ul&gt;
+&lt;li&gt;orthogonal: $\vec i\cdot\vec j=\vec j\cdot\vec k=\vec k\cdot\vec i=0$&lt;/li&gt;
+&lt;li&gt;right-handed screw relation: $\vec i\times\vec j=\vec k$, $\vec j\times\vec k=\vec i$, $\vec k\times \vec i=\vec j$&lt;/li&gt;
+&lt;li&gt;$A\cdot B = A_1B_1+A_2B_2+A_3B_3$&lt;/li&gt;
+&lt;li&gt;$$
+A\times B=\det(\left[
+\begin{matrix}
+\vec i &amp;amp; \vec j &amp;amp; \vec k\newline
+A_1 &amp;amp; A_2 &amp;amp; A_3\newline
+B_1 &amp;amp; B_2 &amp;amp; B_3
+\end{matrix}
+\right])
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;polar coordinate systems $(\vec e_\rho, \vec e_\phi)$
+&lt;ul&gt;
+&lt;li&gt;moving frames&lt;/li&gt;
+&lt;li&gt;position vector $\vec\rho=\rho\vec e_\rho$&lt;/li&gt;
+&lt;li&gt;$\vec e_\rho=cos\varphi\vec i+sin\varphi\vec j$&lt;/li&gt;
+&lt;li&gt;$\frac{d\vec e_\rho}{dt}=\dot{\varphi}\vec e_\varphi$&lt;/li&gt;
+&lt;li&gt;$\frac{d\vec e_\varphi}{dt}=-\dot{\varphi}\vec e_\rho$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Spherical systems $(\vec e_\rho, \vec e_\phi, \vec k)$&lt;/li&gt;
+&lt;li&gt;Cylindrical systems&lt;/li&gt;
+&lt;li&gt;intrinsic system&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Math Miscellaneous</title>
+      <link>https://zhengzangw.com/posts/math-not-yet-classifed/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/math-not-yet-classifed/</guid>
+      <description>&lt;h1 id=&#34;特殊函数&#34;&gt;特殊函数&lt;/h1&gt;
+&lt;h2 id=&#34;gamma-function&#34;&gt;Gamma Function&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Gamma Function: $\Gamma(x)=\int^\infty_0e^{-t}t^{x-1}dt$&lt;/li&gt;
+&lt;li&gt;性质
+&lt;ul&gt;
+&lt;li&gt;$\Gamma(x+1)=x\Gamma(x)$&lt;/li&gt;
+&lt;li&gt;$\Gamma(n+1)=n!$&lt;/li&gt;
+&lt;li&gt;$\Gamma(\frac{1}{2})=\sqrt{\pi}$&lt;/li&gt;
+&lt;li&gt;$\Gamma(n+\frac{1}{2})=\frac{\sqrt\pi}{2^n}(2n-1)!!$&lt;/li&gt;
+&lt;li&gt;$\Gamma(\frac{1}{2}-n)=(-1)^n\frac{2^n\sqrt{\pi}}{(2n-1)}!!$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;$I_n=\int^\infty_0x^ne^{-x^2}dx=\frac{1}{2}\Gamma(\frac{n+1}{2})$&lt;/li&gt;
+&lt;li&gt;Guassian Integral: $\int_{-\infty}^{\infty}ae^{\frac{-(x-b)^2}{c^2}}=ac\sqrt{\pi}$&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Electromagnetism</title>
+      <link>https://zhengzangw.com/notes/physics/physics-electromagnetism/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-electromagnetism/</guid>
+      <description>&lt;h1 id=&#34;electromagnetism&#34;&gt;Electromagnetism&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Coulomb&amp;rsquo;s Law: $\overrightarrow{F_{21}} = -\overrightarrow{F_{12}} = k\frac{q_1q_2}{r_{12}^3}\overrightarrow{r_{12}}$&lt;/li&gt;
+&lt;li&gt;Electric Field: $\overrightarrow{E} \equiv lim_{q\rightarrow 0}\frac{\vec F}{q} = \frac{1}{4\pi\epsilon}*\frac{q}{r^3}\overrightarrow{r_{12}}$&lt;/li&gt;
+&lt;li&gt;Dipole moment(dipole field): $p\equiv q*2a$&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://zhengzangw.com/notes/deep-learning/deep-learning/</link>
+      <pubDate>Sun, 02 Sep 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/deep-learning/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Deep Learning&lt;/em&gt;
+&lt;a href=&#34;https://www.bilibili.com/video/av9770302/?p=5&#34;&gt;李宏毅课程&lt;/a&gt;
+&lt;a href=&#34;http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS17.html&#34;&gt;李宏毅的主页&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;第六章&#34;&gt;第六章&lt;/h2&gt;
+&lt;p&gt;Input -&amp;gt; FL -&amp;gt; FL -&amp;gt; FL -&amp;gt; Softmax -&amp;gt;&lt;/p&gt;
+&lt;h3 id=&#34;输出单元&#34;&gt;输出单元&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;高斯输出分布线性单元&lt;/li&gt;
+&lt;li&gt;Bernoulli输出分布sigmoid单元&lt;/li&gt;
+&lt;li&gt;Multinoulli输出分布softmax单元&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>[S] 操作系统 Operating System on Zangwei</title>
+    <link>https://zhengzangw.com/notes/operating-system/</link>
+    <description>Recent content in [S] 操作系统 Operating System on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/operating-system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Extension</title>
+      <link>https://zhengzangw.com/notes/operating-system/os-extension/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/operating-system/os-extension/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Operating System: Three Easy Pieces
+&lt;a href=&#34;http://ics.nju.edu.cn/~jyywiki&#34;&gt;讲义&lt;/a&gt;
+NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;labs&#34;&gt;Labs&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;No.&lt;/th&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Knowledge Point&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;M1&lt;/td&gt;
+&lt;td&gt;pstree&lt;/td&gt;
+&lt;td&gt;打印进程之间的树状的父子关系&lt;/td&gt;
+&lt;td&gt;命令行参数；分析/proc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M2&lt;/td&gt;
+&lt;td&gt;libco&lt;/td&gt;
+&lt;td&gt;实现轻量级的用户态协程库&lt;/td&gt;
+&lt;td&gt;协程概念；内联汇编更换栈&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M3&lt;/td&gt;
+&lt;td&gt;sperf&lt;/td&gt;
+&lt;td&gt;统计它执行的每个系统调用所占的时间&lt;/td&gt;
+&lt;td&gt;系统 API 使用；shell UI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M4&lt;/td&gt;
+&lt;td&gt;crepl&lt;/td&gt;
+&lt;td&gt;C交互式shell&lt;/td&gt;
+&lt;td&gt;系统 API 使用；动态加载&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M5&lt;/td&gt;
+&lt;td&gt;frecov&lt;/td&gt;
+&lt;td&gt;FAT32文件系统镜像 bmp 文件还原&lt;/td&gt;
+&lt;td&gt;FAT32文件系统分析；数据还原&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M6&lt;/td&gt;
+&lt;td&gt;libkvdb&lt;/td&gt;
+&lt;td&gt;实现持久、崩溃一致的key-value数据库API&lt;/td&gt;
+&lt;td&gt;多线程、进程、崩溃一致性程序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L0&lt;/td&gt;
+&lt;td&gt;amgame&lt;/td&gt;
+&lt;td&gt;编写直接运行在AbstractMachine上游戏&lt;/td&gt;
+&lt;td&gt;类 Flappy Bird&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L1&lt;/td&gt;
+&lt;td&gt;kalloc&lt;/td&gt;
+&lt;td&gt;pmm模块&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L2&lt;/td&gt;
+&lt;td&gt;kthreads&lt;/td&gt;
+&lt;td&gt;os,kmt模块&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L3&lt;/td&gt;
+&lt;td&gt;vfs&lt;/td&gt;
+&lt;td&gt;vfs模块, shell&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L4&lt;/td&gt;
+&lt;td&gt;uproc&lt;/td&gt;
+&lt;td&gt;uproc模块（未完成）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    
+    <item>
+      <title>Concurrency</title>
+      <link>https://zhengzangw.com/notes/operating-system/os-concurrency/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/operating-system/os-concurrency/</guid>
+      <description>&lt;h2 id=&#34;概念定义&#34;&gt;概念定义&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Concept&lt;/th&gt;
+&lt;th&gt;Definition&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;thread&lt;/td&gt;
+&lt;td&gt;separate process that 共享代码、共享数据、拥有独立栈堆&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;multi-thread&lt;/td&gt;
+&lt;td&gt;parallelism and can avoid blocking program progress due to slow I/O&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;race condition&lt;/td&gt;
+&lt;td&gt;the results depend on the timing execution of the code&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;critical section&lt;/td&gt;
+&lt;td&gt;a piece of code that accesses a shared resource and must not be concurrently executed by more than one thread&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;POSIX&lt;/td&gt;
+&lt;td&gt;Portable Operating System Interface&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;synchronization primitives&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    
+    <item>
+      <title>Persistance</title>
+      <link>https://zhengzangw.com/notes/operating-system/os-persistance/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/operating-system/os-persistance/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Operating System: Three Easy Pieces
+&lt;a href=&#34;http://ics.nju.edu.cn/~jyywiki&#34;&gt;讲义&lt;/a&gt;
+NJU: 操作系统 - 蒋炎岩&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;储存介质-non-volatile-memory&#34;&gt;储存介质 (Non-Volatile Memory)&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Year&lt;/th&gt;
+&lt;th&gt;原理&lt;/th&gt;
+&lt;th&gt;Remarks&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Magnetic Tape&lt;/td&gt;
+&lt;td&gt;1928&lt;/td&gt;
+&lt;td&gt;磁比特数组&lt;/td&gt;
+&lt;td&gt;无法进行高效的随机读写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Magnetic Drum&lt;/td&gt;
+&lt;td&gt;1932&lt;/td&gt;
+&lt;td&gt;并行版磁带&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hard Disk&lt;/td&gt;
+&lt;td&gt;1956&lt;/td&gt;
+&lt;td&gt;二维并行版磁带&lt;/td&gt;
+&lt;td&gt;柱面(platter)+磁道(track)+扇区(sector)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Floppy Disk&lt;/td&gt;
+&lt;td&gt;1971&lt;/td&gt;
+&lt;td&gt;读写头与盘片分离&lt;/td&gt;
+&lt;td&gt;floppy drive 每个电脑一份&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Compact Disk&lt;/td&gt;
+&lt;td&gt;1980&lt;/td&gt;
+&lt;td&gt;1bit = 挖坑/填坑&lt;/td&gt;
+&lt;td&gt;CD-ReWritable: 激光改变反射率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Solid State Drive&lt;/td&gt;
+&lt;td&gt;1991&lt;/td&gt;
+&lt;td&gt;NAND Flash&lt;/td&gt;
+&lt;td&gt;NAND(x,y)=$!(x&amp;amp;y)$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;FTL(Flash translation layer)&lt;/td&gt;
+&lt;td&gt;运行操作系统和闪存管理程序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;USB Flash Disk&lt;/td&gt;
+&lt;td&gt;1999&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;放电做不到100%干净&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    
+    <item>
+      <title>Virtualization</title>
+      <link>https://zhengzangw.com/notes/operating-system/os-virtualization/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/operating-system/os-virtualization/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Operating System: Three Easy Pieces
+&lt;a href=&#34;http://ics.nju.edu.cn/~jyywiki&#34;&gt;讲义&lt;/a&gt;
+NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;process&#34;&gt;Process&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;单个程序$\rightarrow$ 状态机$(M,R)$
+&lt;ul&gt;
+&lt;li&gt;分时复用处理器：利用中断$(M,R)$到状态机上&lt;/li&gt;
+&lt;li&gt;分时复用寄存器
+&lt;ul&gt;
+&lt;li&gt;$(M_1,R_1)\rightarrow(M_2,R_2)\rightarrow\cdots$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;系统调用
+&lt;ul&gt;
+&lt;li&gt;操作系统为用户进程提供的一组API，通常在内核空间中实现，实现用户进程对操作系统对象/物理硬件访问的请求&lt;/li&gt;
+&lt;li&gt;查看系统调用: strace/dtruss(macos)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;File descriptor: 指向操作系统内对象的指针&lt;/li&gt;
+&lt;li&gt;terminal
+&lt;ul&gt;
+&lt;li&gt;The processes belonging to a single command are called a process group or job&lt;/li&gt;
+&lt;li&gt;A session is a larger group of processes&lt;/li&gt;
+&lt;li&gt;session leader&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

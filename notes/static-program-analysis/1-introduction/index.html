@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Introduction | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#intermediate-representation">Intermediate Representation</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="introduction">Introduction</h2>
+<ul>
+<li>Programming Language
+<ul>
+<li>Theory: Language Design, Type system, Semantics and logics</li>
+<li>Environment: Compilers, Runtime system</li>
+<li>Application: Program analysis, Program verification, Program synthesis</li>
+</ul>
+</li>
+<li>Static Analysis: analyzes program $P$ to reason about its behaviors and determines whether it stisfies some properties before running $P$</li>
+<li>Rice&rsquo;s Theorem: Any non-trivial property of behavior of programs in a r.e. langugage is <strong>undecidabel</strong>
+<ul>
+<li>r.e. = recursively enumerable = recognizable by a Turing-machine</li>
+<li>non-trivial properties $\approx$ interesting properties $\approx$ the properties related with run-time behaviors of programs</li>
+<li>No Perfect static analysis: Round and Complete</li>
+</ul>
+</li>
+<li>Useful static analysis
+<ul>
+<li>Compromise soundness 漏报</li>
+<li>Compromise completeness 勿报：Mostly sound but not fully-precise</li>
+</ul>
+</li>
+<li>sound + precise/imprecise + expensive/cheap</li>
+<li>Abstraction + Over-approximation</li>
+</ul>
+<h2 id="intermediate-representation">Intermediate Representation</h2>
+<ul>
+<li>soot: java 3AC IR</li>
+<li>invoke
+<ul>
+<li>invokespecial: super, constructor</li>
+<li>invodevirtual: instance methods call (virtual dispatch)</li>
+<li>invokeinterface: cannot optimization, checking interface implementation</li>
+<li>invokestatic: call static methods</li>
+<li>invokedynamic (Java 7): for dynamic language</li>
+</ul>
+</li>
+<li>method signature
+<ul>
+<li>class name</li>
+<li>return type</li>
+<li>type method name (parameter types)</li>
+</ul>
+</li>
+<li>BB finding algorithm
+<ul>
+<li>Determine leaders
+<ul>
+<li>the first instruction</li>
+<li>target instruction of a conditional or unconditional jump</li>
+<li>instruction immediately follows a conditional or unconditional jump</li>
+</ul>
+</li>
+<li>BB consists of a leader and all its subsequent instructions until the next leader</li>
+</ul>
+</li>
+<li>Control Flow Graph (CFG)
+<ul>
+<li>Basic Blocks(BB): maximal sequences of consecutive three-address instructions with the properties that
+<ul>
+<li>enter only at the first instruction in the block</li>
+<li>exit only at the last instruction in the block</li>
+</ul>
+</li>
+<li>edge from block A to block B iff
+<ul>
+<li>there is jump from the end of A to the start of B</li>
+<li>B immediately follows A in the original order of instructions (except the last instruction is unconditional jump)</li>
+<li>it is normal to replace the jumps to instruction labels by jumps to basic blocks</li>
+</ul>
+</li>
+<li>Entry</li>
+<li>Exit</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

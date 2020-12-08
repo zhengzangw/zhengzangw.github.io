@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2. Space-saving | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#problems">Problems</a></li>
+    <li><a href="#fingerprint">Fingerprint</a>
+      <ul>
+        <li><a href="#communication-protocol">Communication Protocol</a></li>
+        <li><a href="#checking-distinctness">Checking distinctness</a></li>
+      </ul>
+    </li>
+    <li><a href="#hashing">Hashing</a>
+      <ul>
+        <li><a href="#distinct-elements">Distinct Elements</a></li>
+      </ul>
+    </li>
+    <li><a href="#sketch">Sketch</a>
+      <ul>
+        <li><a href="#set-membership">Set Membership</a></li>
+        <li><a href="#frequency-estimation">Frequency Estimation</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="problems">Problems</h2>
+<ul>
+<li>Checking Identity
+<ul>
+<li>$\text{EQ}(a,b)=[a=b]$ (bit-string $x\in{0,1}^n$)</li>
+<li>Communication cost</li>
+</ul>
+</li>
+<li>checking distinctness
+<ul>
+<li>Input: $A,B\in{1,2,\cdots,n}$</li>
+<li>Determine whether $A=B$(multiset equivalence)</li>
+</ul>
+</li>
+<li>counting distinct elements
+<ul>
+<li>Data: Stream Model, $n$ is unknown and elements is presented one at a time</li>
+<li>Input: a sequence $x_1,x_2,\cdots,x_n\in\Omega$</li>
+<li>Output: an estimation of $z=|{x_1,x_2,\cdots,x_n}|$</li>
+</ul>
+</li>
+<li>Set Membership
+<ul>
+<li>Data: a set of elements $x_1,\cdots,x_n\in\Omega$</li>
+<li>Input: $x\in\Omega$</li>
+<li>Output: $[x\in\Omega]$</li>
+</ul>
+</li>
+<li>Frequency Estimation
+<ul>
+<li>Data: a sequence of elements $x_1,\cdots,x_n\in\Omega$</li>
+<li>Input: $x\in\Omega$</li>
+<li>Output: $f_x=|{i|x_i=x}$|</li>
+</ul>
+</li>
+</ul>
+<h2 id="fingerprint">Fingerprint</h2>
+<ul>
+<li>use Fingerprint to design One-sided-error Monte Carlo algorithm
+<ul>
+<li>$\text{FING}(\cdot)$: function easy to compute and compare</li>
+<li>$X=Y,\text{FING}(X)=\text{FING}(Y)$</li>
+<li>$X\not=Y,P(\text{FING}(X)=\text{FING}(Y))$ is small</li>
+</ul>
+</li>
+</ul>
+<h3 id="communication-protocol">Communication Protocol</h3>
+<ul>
+<li>Theorem (Yao 1979): Any deterministic communication protocol computing EQ on two $n$-bit strings costs $n$ bits of communication in the worst-case.</li>
+<li>Fingerprinting by PIT
+<ul>
+<li>$\text{FING}(x)=\sum_{i=0}^{n-1}x^ir^i$ under $\mathbb{Z}_p$, $r$ chosen uniformly at random</li>
+<li>$x\neq y,P(\text{FING}(x)=\text{FING}(y))\leq\frac{n-1}{p}$
+<ul>
+<li>$p\in[n^2,2n^2],P\leq\frac{1}{n}$</li>
+</ul>
+</li>
+<li>communication cost: $O(\log p)$</li>
+</ul>
+</li>
+<li>Fingerprinting by check sum
+<ul>
+<li>$\text{FING}(x)=x\bmod p,p\in[k],k=2n^2\ln n$</li>
+<li>$x\neq y,P(\text{FING}(x)=\text{FING}(y))=P(|x-y|\bmod p=0)\leq\frac{n}{\pi(k)}\leq\frac{1}{n}$</li>
+<li>Proof technique
+<ul>
+<li>number of prime divisors of $n\leq \log_2n$</li>
+<li>number of primes in $[k]$: $\pi(k)\sim\frac{k}{\ln k}$</li>
+</ul>
+</li>
+<li>communication cost: $O(\log k)=O(\log n)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="checking-distinctness">Checking distinctness</h3>
+<ul>
+<li>$\text{FING}(A)=f_A(r)=\prod_{i=1}^n(r-a_i),r\in \mathbb{Z}_p$
+<ul>
+<li>$p\in [(n\log n)^2,2(n\log n)^2]$</li>
+<li>Theorem (Lipton 1989): $A\not=B,P(\text{FING}(A)=\text{FING}(b))=O(\frac{1}{n})$</li>
+<li>Proof technique
+<ul>
+<li>$A\not=B,P(\text{FING}(A)=\text{FING}(B))=P(f_A(r)=f_B(r)|f_A\not\equiv f_B)P(f_A\not\equiv f_B)+P(f_A(r)=f_B(r)|f_A\equiv f_B)P(f_A\equiv f_B)$</li>
+</ul>
+</li>
+<li>space cost: $O(\log p)=O(\log n)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="hashing">Hashing</h2>
+<h3 id="distinct-elements">Distinct Elements</h3>
+<ul>
+<li>deterministic: $O(n)$ space</li>
+<li>$(\epsilon,\delta)$-estimator $\hat Z$: $P((1-\epsilon)z\leq \hat Z\leq(1+\epsilon)z))\geq1-\delta$
+<ul>
+<li>$\epsilon$: approximation error</li>
+<li>$\delta$: confidence error</li>
+</ul>
+</li>
+<li>UHA(uniform hash assumption)
+<ul>
+<li>$h:[N]\rightarrow[M]$ takes $\Omega(N\log M)$ bits according to information theory</li>
+<li>SUHA(Simple UHA): A uniform random function $h:[N]\rightarrow[M]$ is available and the computation of $h$ is efficient.</li>
+</ul>
+</li>
+<li>Hashing Estimator
+<ul>
+<li>$h:\Omega\rightarrow[0,1]$</li>
+<li>Compute $h(x_i)$: independent values in $[0,1]$</li>
+<li>$Z=\frac{1}{\min_ih(x_i)}-1$
+<ul>
+<li>$E(\min_{1\leq i\leq n}h(x_i))=E($length of a subinterval$)=\frac{1}{z+1}$</li>
+<li>drawback: $V(\min_ih(x_i))$ is too large</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Flajolet-Martin algorithm (1985)
+<ul>
+<li>$\overline{Y}=\frac{1}{k}\sum_{j=1}^k Y_j$</li>
+<li>$E(\overline{Y})=\frac{1}{z+1}$</li>
+<li>$Z=\frac{1}{\overline{Y}}-1$</li>
+<li>$k\geq\lceil\frac{4}{\epsilon^2\delta}\rceil,\forall \epsilon,\delta&lt;\frac{1}{2}$</li>
+<li>Space cost: $O(\epsilon^{-2}\log n)$ bits</li>
+</ul>
+</li>
+<li>2010: $\Theta(\epsilon^{-2}+\log n)$</li>
+</ul>
+<h2 id="sketch">Sketch</h2>
+<ul>
+<li>sketch: lossy representation of data and tolerate a bounded error in answering queries</li>
+</ul>
+<h3 id="set-membership">Set Membership</h3>
+<ul>
+<li>Dictionary data structure
+<ul>
+<li>balanced tree: $O(n\log|\Omega|)$ space, $O(\log n)$ time</li>
+<li>perfect hashing: $O(n\log|\Omega|)$ space, $O(1)$ time</li>
+</ul>
+</li>
+<li>Bloom filter (1970)
+<ul>
+<li>$h_1,h_2,\cdots,h_k:\Omega\rightarrow [cn]$ are uniform and independent random hash function</li>
+<li>Data Structure $A$ of $cn$ bits $O(n)$
+<ul>
+<li>initially: all $0$</li>
+<li>for each $x\in S,A[h_i(x)]=1$ for $1\leq i\leq k$</li>
+</ul>
+</li>
+<li>Query: yes if $A[h_i(x)]=1,1\leq i\leq k$
+<ul>
+<li>time cost: $O(k)$</li>
+</ul>
+</li>
+<li>$\text{RP}$
+<ul>
+<li>$x\in S$: always correct</li>
+<li>$x\not\in S$:
+<ul>
+<li>$P(A[h_1(x)]=0)=(1-\frac{1}{cn})^{kn}\approx e^{\frac{-k}{c}}$</li>
+<li>$P=(1-e^{\frac{-k}{c}})^k$</li>
+<li>$k=c\ln 2,P=(0.6185)^c$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="frequency-estimation">Frequency Estimation</h3>
+<ul>
+<li>Additive error: $P(|\hat f_x-f_x|\leq\epsilon n)\geq 1-\delta$
+<ul>
+<li>heavy hitters: elements $x$ with $f_x&gt;\epsilon n$</li>
+</ul>
+</li>
+<li>Count-min sketch (Cormode and Muthukrishnan, 2003)
+<ul>
+<li>Data Structure: $k\times m$ integer array $\text{CMS}[k][m]$
+<ul>
+<li>initially: $\text{CMS}[k][m] = 0$</li>
+<li>for each $x_i$, $\text{CMS}[j][h_j(x_i)]$++</li>
+</ul>
+</li>
+<li>Query: $\hat f_x=\min_{1\leq j\leq k}\text{CMS}[j][h_j(x)]$
+<ul>
+<li>Time cost: $O(\frac{1}{\epsilon})$</li>
+</ul>
+</li>
+<li>Space cost: $O(km\log n)=O(\frac{1}{\epsilon}\log\frac{1}{\delta}\log n)$</li>
+<li>Proof
+<ul>
+<li>$\text{CMS}[j][h_j(x)]\geq f_x$</li>
+<li>$\mathbb{E}(\text{CMS}[j][h_j(x)])\leq f_x+\frac{n}{m}$</li>
+<li>$P(|\hat f_x-f_x|\leq\epsilon n)\leq\frac{1}{\epsilon m}^k$</li>
+<li>$m=\lceil\frac{e}{\epsilon}\rceil,k=\lceil\ln\frac{1}{\delta}\rceil$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

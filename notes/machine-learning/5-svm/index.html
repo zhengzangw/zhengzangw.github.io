@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Support Vector Machine | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#svm-基本型">SVM 基本型</a></li>
+    <li><a href="#对偶问题">对偶问题</a>
+      <ul>
+        <li><a href="#对偶问题的转化">对偶问题的转化</a></li>
+        <li><a href="#求解对偶问题">求解对偶问题</a></li>
+      </ul>
+    </li>
+    <li><a href="#核函数">核函数</a></li>
+    <li><a href="#软间隔">软间隔</a></li>
+    <li><a href="#支持向量回归-svr">支持向量回归 SVR</a></li>
+    <li><a href="#核方法">核方法</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="svm-基本型">SVM 基本型</h2>
+<ul>
+<li>划分超平面：$\omega^Tx+b=0$
+<ul>
+<li>点到超平面的距离：$\frac{|\omega^Tx+b|}{||\omega||}$</li>
+</ul>
+</li>
+</ul>
+<p>$$
+\begin{cases}
+\omega^Tx_i+b\geq y_i, &amp; y_i=+1 \newline
+\omega^Tx_i+b\leq y_i, &amp; y_i=-1
+\end{cases}
+$$</p>
+<ul>
+<li>支持向量（support vector）：使上式成立取等的样本点</li>
+<li>间隔（margin）：两个异类支持向量到超平面的距离 $\frac{2}{||\omega||}$</li>
+<li>SVM 基本型(Support Vector Machine)</li>
+</ul>
+<p>$$
+\begin{aligned}
+\min_{\omega,b} &amp; \frac{1}{2}||\omega||^2 &amp; \newline
+s.t. &amp; y_i(\omega^Tx_i+b)\geq 1, &amp;i=1,2,\cdots,m
+\end{aligned}\newline
+$$</p>
+<ul>
+<li>凸优化求解：复杂度与样本维度（等于权值 $\omega$ 的维度）有关</li>
+</ul>
+<h2 id="对偶问题">对偶问题</h2>
+<ul>
+<li>复杂度与样本数量（等于拉格朗日算子$\alpha$的数量）有关</li>
+<li>解的稀疏性：最终模型仅与支持向量有关
+<ul>
+<li>KKT 条件导出</li>
+</ul>
+</li>
+</ul>
+<h3 id="对偶问题的转化">对偶问题的转化</h3>
+<ul>
+<li>Step1: 拉格朗日函数：$L(\omega,b,\alpha)$</li>
+<li>Step2: 对 $\omega$ 和 $b$ 求偏导并令为零
+<ul>
+<li>$\omega=\sum_{i=1}^m\alpha_iy_ix_i$</li>
+</ul>
+</li>
+<li>Step3: 回代可得</li>
+</ul>
+<p>$$
+\begin{aligned}
+\max_{\alpha} &amp; \sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{i=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j \newline
+s.t. &amp; \sum_{i=1}^m\alpha_iy_i=0 \newline
+&amp; \alpha_i\geq 0
+\end{aligned}
+$$</p>
+<h3 id="求解对偶问题">求解对偶问题</h3>
+<ul>
+<li>SMO (Sequential Minimal Optimization)
+<ul>
+<li>选取一对需要更新的变量 $\alpha_i$ 和 $\alpha_j$
+<ul>
+<li>先选违背 KKT 条件最大者，再选使目标函数增长最快</li>
+<li>实际中启发式：选取两变量所对应样本之间间隔最大</li>
+</ul>
+</li>
+<li>固定其它参数，更新 $\alpha_i$ 和 $\alpha_j$</li>
+</ul>
+</li>
+</ul>
+<h2 id="核函数">核函数</h2>
+<ul>
+<li>$f(x)=\omega^T\phi(x)$</li>
+<li>核函数：$\kappa(x_i,x_j)=\langle\phi(x_i),\phi(x_j)\rangle$
+<ul>
+<li>$\kappa$ 为核函数 $\iff$ 核矩阵 $K$ 半正定</li>
+</ul>
+</li>
+<li>$\kappa_1,\kappa_2$ 为核函数，则以下为核函数
+<ul>
+<li>$\gamma\kappa_1+\gamma\kappa_2$</li>
+<li>$\kappa_1\otimes\kappa_2(x,z)=\kappa_1(x,z)\kappa_2(x,z)$</li>
+<li>$\kappa(x,z)=g(x)\kappa_1(x,z)g(z)$</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>常用核函数</th>
+<th>$\kappa(x_i,x_j)$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线性核</td>
+<td>$x_i^Tx_j$</td>
+</tr>
+<tr>
+<td>多项式核</td>
+<td>$(x_i^Tx_j)^d$</td>
+</tr>
+<tr>
+<td>高斯核</td>
+<td>$e^{-\frac{\Vert x_i-x_j\Vert^2}{2\sigma^2}}$</td>
+</tr>
+<tr>
+<td>拉普拉斯核</td>
+<td>$e^{-\frac{\Vert x_i-x_j\Vert}{\sigma}}$</td>
+</tr>
+<tr>
+<td>Sigmoid 核</td>
+<td>$\tanh(\beta x_i^Tx_j+\theta)$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>支持向量展式（利用对偶问题）：$f(x)=\omega^T\phi(x)+b=\sum_{i=1}^m\alpha_iy_i\kappa(x,x_i)+b$</li>
+</ul>
+<h2 id="软间隔">软间隔</h2>
+<ul>
+<li>优化目标：$\min_{\omega,b}\frac{1}{2}||\omega||^2+C\sum_{i=1}^m\xi_i$
+<ul>
+<li>松弛变量 $\xi_i=l(y_i(\omega^Tx_i+b)-1)$</li>
+</ul>
+</li>
+<li>原问题</li>
+</ul>
+<p>$$
+\begin{aligned}
+\min_{\omega,b} &amp; \frac{1}{2}||\omega||^2+C\sum_{i=1}^m\xi_i &amp; \newline
+s.t. &amp; y_i(\omega^Tx_i+b)\geq 1-\xi_i \newline
+&amp; \xi_i\geq 0
+\end{aligned}
+$$</p>
+<ul>
+<li>对偶问题（损失函数为 hinge）</li>
+</ul>
+<p>$$
+\begin{aligned}
+\max_{\alpha} &amp; \sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{i=1}^m\alpha_i\alpha_jy_iy_j\phi(x_i)^T\phi(x_j) \newline
+s.t. &amp; \sum_{i=1}^m\alpha_iy_i=0 \newline
+&amp; C\geq \alpha_i\geq 0
+\end{aligned}
+$$</p>
+<table>
+<thead>
+<tr>
+<th>损失函数</th>
+<th>$l(z)$</th>
+<th>Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0/1</td>
+<td>$1,z&lt;0$</td>
+<td>不易求解</td>
+</tr>
+<tr>
+<td>hinge</td>
+<td>$\max(0,1-z)$</td>
+<td>保持稀疏性</td>
+</tr>
+<tr>
+<td>exp</td>
+<td>$e^{-z}$</td>
+<td></td>
+</tr>
+<tr>
+<td>log</td>
+<td>$\log(1+e^{-z})$</td>
+<td>几率回归模型，无稀疏性</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>一般形式：$\min_f\Omega(f)+C\sum_{i=1}^ml(f(x_i),y_i)$
+<ul>
+<li>结构风险：$\Omega(f)$</li>
+<li>经验风险：$\sum_{i=1}^ml(f(x_i),y_i)$，模型与训练数据契合程度</li>
+</ul>
+</li>
+</ul>
+<h2 id="支持向量回归-svr">支持向量回归 SVR</h2>
+<ul>
+<li>$\min_{\omega,b}\frac{1}{2}||\omega||^2+C\sum_{i=1}^ml_\epsilon(f(x_i)-y_i)$
+<ul>
+<li>落入中间 $2\epsilon$ 间隔带的样本不计算损失，</li>
+</ul>
+</li>
+</ul>
+<p>$$
+\begin{cases}
+0, &amp; |z|\leq\epsilon \newline
+|z|-\epsilon, &amp; otherwise
+\end{cases}
+$$</p>
+<h2 id="核方法">核方法</h2>
+<ul>
+<li>
+<p>表示定理：对于任意的单调递增函数 $\Omega$ 和任意非负损失函数 $l$，优化问题</p>
+<p>$$\min_{h\in\mathbb{H}}F(h)=\Omega(||h||_\mathbb{H})+l(h(x_1),h(x_2),\cdots,h(x_m))$$</p>
+<p>的解总可以写成 $h^*(x)=\sum_{i=1}^m\alpha_i\kappa(x,x_i)$</p>
+</li>
+<li>
+<p>KLDA</p>
+</li>
+<li>
+<p>KPCA</p>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

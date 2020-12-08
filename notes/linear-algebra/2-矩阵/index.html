@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2-矩阵 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#矩阵运算">矩阵运算</a></li>
+    <li><a href="#行列变换">行列变换</a></li>
+    <li><a href="#秩">秩</a></li>
+    <li><a href="#行列式">行列式</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="矩阵运算">矩阵运算</h2>
+<ul>
+<li>可逆：$AB=BA=I$
+<ul>
+<li><strong>求矩阵的逆</strong>
+<ul>
+<li>$[A|I]\rightarrow[I|A^{-1}]$</li>
+<li>有零行，不可逆</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>trace: $tr(A)=\sum_{i=1}^na_{ii}$</li>
+</ul>
+<h2 id="行列变换">行列变换</h2>
+<ul>
+<li>分块矩阵</li>
+<li>初等行列变换
+<ul>
+<li>初等阵
+<ul>
+<li>$P(i,j)$</li>
+<li>$P(j,i(k))$</li>
+<li>$P(i(k))$</li>
+</ul>
+</li>
+<li>对 A 作 k 个初等变换得到 B
+<ul>
+<li>$B=AQ_1Q_2\cdots Q_k$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="秩">秩</h2>
+<ul>
+<li>行秩=列秩</li>
+<li>$rank(A_{m*n})\leq min(m,n)$</li>
+<li>$rank(PA)\leq rank(A)$ 取等 if P 可逆</li>
+<li>$rank(AQ)\leq rank(A)$ 取等 if Q 可逆</li>
+<li><strong>求秩</strong>: 高斯消元</li>
+<li>可逆$\Leftrightarrow$满秩</li>
+<li>线性方程组可解$\Leftrightarrow$$rank(A)=rank([A|b])$</li>
+<li>$null(A) = dimH$</li>
+<li>$rank(A) + null(A) = n$</li>
+<li>子阵：A 的某$k$行与某$l$列的交点，得$k*l$子阵
+<ul>
+<li>若$rank(A)\geq k$,则$\exist B$为$A$的 k 阶子方阵且$B$可逆</li>
+<li>若$rank(A)&lt;l$,则$\forall B$为$A$的 l 阶子方阵且$B$不可逆</li>
+</ul>
+</li>
+</ul>
+<h2 id="行列式">行列式</h2>
+<ul>
+<li>
+<p>排列</p>
+<ul>
+<li>逆序数：$\tau(P)$</li>
+<li>排列的奇偶性与变为自然排列所需对换的奇偶性相同</li>
+</ul>
+</li>
+<li>
+<p>$\det(A) = \sum_{(j_1,j_2,\cdots,j_n)}(-1)^{\tau(j_1,j_2,\cdots,j_n)}a_{1j_1}a_{1j_2}\cdots a_{nj_n}$</p>
+</li>
+<li>
+<p>外积</p>
+<ul>
+<li>分配律</li>
+<li>数乘提取</li>
+<li>对换为负
+<ul>
+<li>外积运算：结合律</li>
+</ul>
+</li>
+<li>$a_1\wedge\cdots\wedge a_m=0\Leftrightarrow$线性相关</li>
+</ul>
+</li>
+<li>
+<p>方阵可逆$\Leftrightarrow|A|\not=0$</p>
+</li>
+<li>
+<p>矩阵基础变化的影响</p>
+<ul>
+<li>$r_i\leftrightarrow r_j$ : -1</li>
+<li>$kr_i + r_j \rightarrow r_j$ : no change</li>
+<li>$kr_i \rightarrow r_i$ : k</li>
+</ul>
+</li>
+<li>
+<p>上三角矩阵： $|A| = \prod_{i=1}^na_{ii}$</p>
+</li>
+<li>
+<p>$\det(B<em>C)=\det(B)</em>\det(C)$</p>
+</li>
+<li>
+<p>$|AB|=|BA|$</p>
+</li>
+<li>
+<p>$\det(A^{-1})=\frac{1}{\det(A)}$</p>
+</li>
+<li>
+<p><strong>行列式计算</strong> 高斯消元化为上三角阵</p>
+</li>
+<li>
+<p>$$
+\begin{bmatrix}
+B_{11} &amp; B_{12} \newline
+0 &amp; B_{22}
+\end{bmatrix}
+$$</p>
+<p>则 $\det(B)=\det(B_{11})\det(B_{22})$</p>
+</li>
+<li>
+<p>$$
+\begin{bmatrix}
+0 &amp; B_{12} \newline
+B_{21} &amp; B_{22}
+\end{bmatrix}
+$$</p>
+<p>则 $\det(B)=(-1)^{mn}\det(B_{12})\det(B_{21})$</p>
+</li>
+<li>
+<p>代数余子式$A_{ij}=(-1)^{i+j}\det(R_{ij})$,其中$R_{ij}$为 A 删去第 i 行第 j 列得到的(n-1)阶方阵 （余子阵）</p>
+<ul>
+<li>|A|展开： $|A|=\sum_{j=1}^na_{ij}A_{ij}$</li>
+</ul>
+</li>
+<li>
+<p>$\sum a_{ik}A_{jk}=|A|,i=j$; $0,i \not= j$</p>
+</li>
+<li>
+<p>伴随阵 <strong>求伴随阵</strong></p>
+</li>
+</ul>
+<p>$$
+\begin{bmatrix}
+A_{11} &amp; A_{21} &amp; \cdots &amp; A_{n1} \newline
+A_{12} &amp; A_{22} &amp; \cdots &amp; A_{n2} \newline
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \newline
+A_{1n} &amp; A_{2n} &amp; \cdots &amp; A_{nn}
+\end{bmatrix}
+$$</p>
+<ul>
+<li>$A^<em>A=AA^</em>=\det(A)*I$</li>
+<li>$\det(A)\not=0$时，$A^{-1}=\frac{1}{\det(A)}A^*$</li>
+<li>
+<table>
+<thead>
+<tr>
+<th>rank($A$)</th>
+<th>rank($A^*$)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n</td>
+<td>n</td>
+</tr>
+<tr>
+<td>n-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>&lt;n-1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>$|xI|=x^n$</li>
+<li><strong>求二阶方阵的逆</strong></li>
+<li>$|A+B|=|A^{-1}+B^{-1}|=|A(A^{-1}+B^{-1})B|$</li>
+<li>$|A|\neq0\iff rank(A)=n$</li>
+</ul>
+<p>$$
+\begin{bmatrix}
+1 &amp; 1 \newline
+0 &amp; 1
+\end{bmatrix}
+^n=
+\begin{bmatrix}
+1 &amp; n \newline
+0 &amp; 1
+\end{bmatrix}
+$$</p>
+<ul>
+<li>$(\alpha\beta^T)^n=C(\alpha\beta^T)$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

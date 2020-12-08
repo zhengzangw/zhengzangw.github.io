@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Introduction to Meta Learning | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#related-problem">Related Problem</a></li>
+    <li><a href="#dataset-few-shot-image-recognition">Dataset (few-shot image recognition)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#black-box-adaptation">Black-box adaptation</a></li>
+    <li><a href="#optimization-based-inference-model-agnostic-meta-learning">Optimization-based inference (Model-agnostic meta-learning)</a></li>
+    <li><a href="#non-parametric-methods">Non-parametric methods</a></li>
+    <li><a href="#comparison">Comparison</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="problem-statement">Problem Statement</h1>
+<ul>
+<li>Mechanistic view
+<ul>
+<li>DNN model that can read in an entire dataset and make predictions for new data point</li>
+<li>Training this network uses a meta-dataset, which itself consists of many datasets, each for a different task</li>
+</ul>
+</li>
+<li>Probabilistic view
+<ul>
+<li>Extract prior information from a set of tasks taht allows effcient learning of new tasks</li>
+<li>Learning a new task this prior and training set to infer most likely posterior parameters</li>
+</ul>
+</li>
+<li>supervised learnings
+<ul>
+<li>$\arg\max\limits_{\phi}p(\phi|\mathcal{D})=\arg\max\limits_{\phi} \log p(\mathcal{D}|\phi)+\log p(\phi)$</li>
+<li>require large amounts of labeled data</li>
+</ul>
+</li>
+</ul>
+<h2 id="description">Description</h2>
+<ul>
+<li>meta-parameters: $\theta$: $p(\theta|\mathcal{D}_{\text{meta-train}})$
+<ul>
+<li>$\phi$⫫$\mathcal{D}_{\text{meta-train}}|\theta$</li>
+<li>$\theta^*=\arg\max\limits_\theta\log p(\theta|D_{\text{meta-train}})=\arg\max\limits_\theta\sum_{i=1}^n\log p(\phi_i|\mathcal{D}_i^{\text{ts}}),\phi_i=f_\theta(D_i^\text{tr})$</li>
+</ul>
+</li>
+<li>$\arg\max\limits_\phi\log p(\phi|\mathcal{D},\mathcal{D}_{\text{meta-train}})$
+<ul>
+<li>$\log p(\phi|D,D_{\text{meta-train}})=\log \int_\Theta p(\phi|\mathcal{D},\theta)p(\theta|D_{\text{meta-train}})d\theta\approx \log p(\phi|\mathcal{D},\theta^*)+\log p(\theta^*|\mathcal{D}_{\text{meta-train}})$</li>
+<li>$\arg\max\limits_\phi\log p(\phi|\mathcal{D},\mathcal{D}_{\text{meta-train}})\approx \arg\max\limits_\phi\log p(\phi|\mathcal{D},\theta^*)$</li>
+</ul>
+</li>
+<li>Dataset
+<ul>
+<li>$\mathcal{D}_{\text{meta-train}}={(D_1^{\text{tr}},D_1^{\text{ts}}),\cdots,(D_n^{\text{tr}},D_n^{\text{ts}})}=$ support set
+<ul>
+<li>$\mathcal{D}_i^{\text{tr}}={(x_1^i,y_1^i),\cdots,(x_k^i,y_k^i)}$
+<ul>
+<li>$k$-shot: $k$ instances per class</li>
+<li>$t$-way: $t$ classes</li>
+</ul>
+</li>
+<li>$\mathcal{D}_i^{\text{ts}}={(x_1^i,y_1^i),\cdots,(x_l^i,y_l^i)}$</li>
+<li>$\mathcal{D}_i=\mathcal{D}_i^{\text{tr}}+\mathcal{D}_i^{\text{ts}}$</li>
+<li>episode/task: $\mathcal{T}_i=D_i^{\text{tr}}+D_i^{\text{ts}}$</li>
+</ul>
+</li>
+<li>$\mathcal{D}_{\text{meta-validation}}$</li>
+<li>$\mathcal{D}_{\text{meta-test}}=$ query</li>
+</ul>
+</li>
+</ul>
+<h2 id="related-problem">Related Problem</h2>
+<ul>
+<li>multi-task learning
+<ul>
+<li>special case of meta-learning where $\phi_i=\theta$</li>
+</ul>
+</li>
+<li>hyperparameter optimization
+<ul>
+<li>$\theta$ = hyperparameters, $\phi$ = network weights</li>
+</ul>
+</li>
+<li>auto-ML
+<ul>
+<li>$\theta$ = architecture, $\phi$ = network weights</li>
+</ul>
+</li>
+</ul>
+<h2 id="dataset-few-shot-image-recognition">Dataset (few-shot image recognition)</h2>
+<ul>
+<li><a href="https://github.com/brendenlake/omniglot">Omniglot dataset</a>
+<ul>
+<li>1623 characters from 50 different alphabets</li>
+<li>20 instances of each character</li>
+</ul>
+</li>
+<li>Minilmagenet</li>
+<li>CIFAR</li>
+<li><a href="http://www.vision.caltech.edu/visipedia/CUB-200-2011.html">CUB</a></li>
+<li>CelebA</li>
+</ul>
+<h1 id="meta-learning-algrithms">Meta-learning algrithms</h1>
+<h2 id="black-box-adaptation">Black-box adaptation</h2>
+<p>Train a neural network to represent $p(\phi_i|\mathcal{D}_i^{\text{tr}},\theta)$</p>
+<ul>
+<li>For now: use deterministic $\phi=f_\theta(D_i^\text{tr})$
+<ul>
+<li>$y^\text{ts}=f_\theta(\mathcal{D}_i^{\text{tr}}, x^\text{ts})$</li>
+</ul>
+</li>
+<li>Form of $f_\theta$
+<ul>
+<li>RNN</li>
+<li>LSTM</li>
+<li>NTM (Neural turing machine)</li>
+<li>Self-attention</li>
+<li>1D convolutions</li>
+<li>feedforward + average</li>
+</ul>
+</li>
+<li>Loss Function: $\mathcal{L}(\phi_i,\mathcal{D}<em>i^\text{ts})=\sum</em>{(x,y)\sim D_i^{\text{ts}}}\log g_{\phi_i}(y|x)$
+<ul>
+<li>supervised learning: $\min\limits_\theta\sum_{\mathcal{T}_i}\mathcal{L}(f_\theta(\mathcal{D}_i^\text{tr}),\mathcal{D}_i^\text{ts})$</li>
+</ul>
+</li>
+<li>Algorithm: for each iteration</li>
+</ul>
+<blockquote>
+<p>Sample task $\mathcal{T}_i$<br>
+Sample disjoint datasets $\mathcal{D}_i^\text{tr},\mathcal{D}_i^\text{ts}$ from $\mathcal{D}<em>i$<br>
+Compute $\phi_i\leftarrow f</em>\theta(\mathcal{D}<em>i^\text{tr})$<br>
+Update $\theta$ using $\nabla</em>\theta\mathcal{L}(\phi_i,\mathcal{D}_i^{\text{ts}})$</p>
+</blockquote>
+<ul>
+<li>Challenges &amp; Solution
+<ul>
+<li>Outputting all neural net parameters does not seem scalable &amp; only sufficient statistics</li>
+</ul>
+</li>
+<li>Essays
+<ul>
+<li>Optimization as a model for few-shot learning</li>
+</ul>
+</li>
+</ul>
+<h2 id="optimization-based-inference-model-agnostic-meta-learning">Optimization-based inference (Model-agnostic meta-learning)</h2>
+<p>Acquire $\phi_i$ through optimization</p>
+<ul>
+<li>$y^\text{ts}=f_\text{MAML}(\mathcal{D}_i^\text{tr},x^\text{ts})=f_{\phi_i}(x^\text{ts})$
+<ul>
+<li>$\phi_i=\theta-\alpha\nabla_\theta\mathcal{L}(\theta,\mathcal{D}_i^\text{tr})$</li>
+<li>$\max\limits_{\phi_i}\log p(\mathcal{D}_i^\text{tr}|\phi_i)+\log p(\phi_i|\theta)$</li>
+</ul>
+</li>
+<li>Meta-parameters $\theta$ serve as a prior
+<ul>
+<li>Initialization</li>
+<li>Fine-tuning</li>
+</ul>
+</li>
+<li>Loss Function: $\min\limits_\theta\sum_{i}\mathcal{L}(\theta-\alpha\nabla_\theta\mathcal{L}(\theta,\mathcal{D}_i^\text{tr}), \mathcal{D}_i^\text{ts})$</li>
+</ul>
+<blockquote>
+<p>Sample task $\mathcal{T}_i$<br>
+Sample disjoint datasets $\mathcal{D}_i^\text{tr},\mathcal{D}_i^\text{ts}$ from $\mathcal{D}<em>i$<br>
+Optimize $\phi_i\leftarrow\theta-\alpha\nabla</em>\theta\mathcal{L}(\theta,\mathcal{D}<em>i^\text{tr})$<br>
+Update $\theta$ using $\nabla</em>\theta\mathcal{L}(\phi_i,\mathcal{D}_i^{\text{ts}})$</p>
+</blockquote>
+<ul>
+<li>Essays
+<ul>
+<li>Model-agnostic meta-learning</li>
+</ul>
+</li>
+</ul>
+<h2 id="non-parametric-methods">Non-parametric methods</h2>
+<p>use parametric meta-learners that produce effective non-parametric learners</p>
+<ul>
+<li>Key idea: use non-parametric learner
+<ul>
+<li>Siamese network: 两个网络共享权值，衡量输入相似程度
+<ul>
+<li>Contrastive Loss</li>
+<li>Cosine Loss</li>
+</ul>
+</li>
+<li>pseudo siamese network</li>
+</ul>
+</li>
+<li>$y^{\text{ts}}=f_{PN}(\mathcal{D}_i^{\text{tr}},x^{\text{ts}})=\text{softmax}(-d(f_\theta(x),c_k))$
+<ul>
+<li>Prototype: $c_k=\frac{1}{|D_i^{\text{tr}}}|\sum_{(x,y)\in D_i^{tr}}f_\theta(x)$</li>
+</ul>
+</li>
+<li>Loss function: $J(\phi)=-\log p_{\phi}(y=k|x)$
+<ul>
+<li>learn embedding $f_\phi:\mathbb{R}^D\rightarrow\mathbb{R}^M$</li>
+</ul>
+</li>
+<li>Essays
+<ul>
+<li>Prototypical Networks for Few-shot Learning</li>
+</ul>
+</li>
+</ul>
+<h2 id="comparison">Comparison</h2>
+<p><img src="/images/general/meta-learning.png" alt="comparison"></p></main>
+        </div>
+
+    </div>
+</body></html>

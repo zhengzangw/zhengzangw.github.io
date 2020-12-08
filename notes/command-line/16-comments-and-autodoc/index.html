@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>16. Comments and Autodoc | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#注释风格">注释风格</a>
+      <ul>
+        <li><a href="#file-comments">File Comments</a></li>
+        <li><a href="#c">C++</a></li>
+        <li><a href="#python">Python</a></li>
+        <li><a href="#modifiers">Modifiers</a></li>
+      </ul>
+    </li>
+    <li><a href="#工具">工具</a></li>
+    <li><a href="#restructuredtext">reStructuredText</a></li>
+    <li><a href="#类型注解">类型注解</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="注释风格">注释风格</h2>
+<h3 id="file-comments">File Comments</h3>
+<p>Python</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python</span>
+<span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+<span style="color:#75715e"># @Time    : ${DATE} ${TIME}</span>
+<span style="color:#75715e"># @Author  : Shark</span>
+<span style="color:#75715e"># @Site    : ${SITE}</span>
+<span style="color:#75715e"># @File    : ${NAME}.py</span>
+<span style="color:#75715e"># @Software: ${PRODUCT_NAME}</span>
+</code></pre></div><p>C++</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">//
+</span><span style="color:#75715e">// @brief: 简单介绍
+</span><span style="color:#75715e">// @copyright: Copyright 2020 Google Inc
+</span><span style="color:#75715e">// @license: GPL
+</span><span style="color:#75715e">// @birth: created by Dablelv on 2018-08-02
+</span><span style="color:#75715e">// @version: V1.1.1
+</span><span style="color:#75715e">// @revision: last revised by lvlv on 2018-09-02
+</span><span style="color:#75715e">//
+</span></code></pre></div><h3 id="c">C++</h3>
+<p>Doxygen</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> *&lt;A short one line description&gt;
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> *&lt;Longer description&gt;
+</span><span style="color:#75715e"> *&lt;May span multiple lines or paragraphs as needed&gt;
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> *@param  &lt;参数名&gt; &lt;参数说明&gt;
+</span><span style="color:#75715e"> *@param  ...
+</span><span style="color:#75715e"> *@return &lt;返回值说明&gt;
+</span><span style="color:#75715e"> *@see    &lt;相关函数&gt;
+</span><span style="color:#75715e"> *@note   &lt;注意&gt;
+</span><span style="color:#75715e"> */</span>
+</code></pre></div><h3 id="python">Python</h3>
+<p>Epytext: javadoc 风格</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">docstring_epytext</span>(parm_a, parm_b, parm_c):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Epytext Style
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    @param parm_a: this is a
+</span><span style="color:#e6db74">    @type parm_a: int
+</span><span style="color:#e6db74">    @param parm_b: this is b
+</span><span style="color:#e6db74">    @type parm_b: int
+</span><span style="color:#e6db74">    @param parm_c: this is c
+</span><span style="color:#e6db74">    @type parm_c: str
+</span><span style="color:#e6db74">    @return: the result
+</span><span style="color:#e6db74">    @raise keyError: raises an exception
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</code></pre></div><p>reST: Sphinx</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">docstring_restructruedtext</span>(parm_a: int, parm_b: int, parm_c: str) <span style="color:#f92672">-&gt;</span> bool:
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    reStructed Style
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    :param int parm_a: this is a
+</span><span style="color:#e6db74">    :param int parm_b: this is b
+</span><span style="color:#e6db74">    :param str parm_c: this is c
+</span><span style="color:#e6db74">    :return: the result
+</span><span style="color:#e6db74">    :raises keyError: raises an exception
+</span><span style="color:#e6db74">    :example:
+</span><span style="color:#e6db74">        &gt;&gt;&gt; my_fuction(2, 3)
+</span><span style="color:#e6db74">        6
+</span><span style="color:#e6db74">        &gt;&gt;&gt; my_faction(&#39;a&#39;, 3)
+</span><span style="color:#e6db74">        &#39;aaa&#39;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    :Author:  yourname
+</span><span style="color:#e6db74">    :Create:  2020-03-04
+</span><span style="color:#e6db74">    :Blog:    https://zhengzangw.com
+</span><span style="color:#e6db74">    Copyright (c) 2020, All Rights Reserved.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</code></pre></div><p>Google</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">docstring_google</span>(parm_a, parm_b, parm_c):
+    <span style="color:#e6db74">&#34;&#34;&#34;Summary here.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Google Style long description
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Arg:
+</span><span style="color:#e6db74">        parm_a: int
+</span><span style="color:#e6db74">            this is a
+</span><span style="color:#e6db74">        parm_b: this is b
+</span><span style="color:#e6db74">        parm_c: this is c
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Returns:
+</span><span style="color:#e6db74">        The result
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Raises:
+</span><span style="color:#e6db74">        KeyError: raises an exception
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">docstring_google_class</span>(object):
+    <span style="color:#e6db74">&#34;&#34;&#34;Summary here
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Longer
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Attributes:
+</span><span style="color:#e6db74">        attr_1: this is attr 1
+</span><span style="color:#e6db74">        attr_2: this is attr 2
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</code></pre></div><p>Numpy</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">docstring_numpy</span>(parm_a, parm_b, parm_c):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Numpy Style
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Parameters
+</span><span style="color:#e6db74">    ----------
+</span><span style="color:#e6db74">    parm_a (int): this is a
+</span><span style="color:#e6db74">    parm_b (str): this is b
+</span><span style="color:#e6db74">    parm_c (bool): this is c
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Returns
+</span><span style="color:#e6db74">    -------
+</span><span style="color:#e6db74">    this is result
+</span></code></pre></div><h3 id="modifiers">Modifiers</h3>
+<p>TODO</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">// TODO(zhengzangw@gmail.com): Add comments to your code
+</span><span style="color:#75715e">// TODO(issue 12345): fix it
+</span></code></pre></div><p>DEPRECATED</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">// DEPRECATED some comments
+</span></code></pre></div><h2 id="工具">工具</h2>
+<p>sphinx</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pip install sphinx
+mkdir docs <span style="color:#f92672">&amp;&amp;</span> cd docs
+sphinx-quickstart
+<span style="color:#75715e"># Separate source and build directories</span>
+<span style="color:#75715e"># Modify source/conf.py</span>
+sphinx-apidoc -o source ../src/
+make html
+</code></pre></div><p>Modify source/conf.py</p>
+<ul>
+<li>
+<p>import file</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> sys
+sys<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(<span style="color:#e6db74">&#39;../../../src))</span>
+</code></pre></div></li>
+<li>
+<p>language: <code>language='zh_cn'</code> 中文支持</p>
+</li>
+<li>
+<p>theme: <code>pip install sphinx-rtd-theme</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sphinx_rtd_theme
+html_theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;sphinx_rtd_theme&#34;</span>
+html_theme_path <span style="color:#f92672">=</span> [sphinx_rtd_theme<span style="color:#f92672">.</span>get_html_theme_path()]
+</code></pre></div></li>
+<li>
+<p>extensions</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">extensions <span style="color:#f92672">=</span> [
+  <span style="color:#e6db74">&#39;sphinx.ext.autodoc&#39;</span>,
+  <span style="color:#e6db74">&#39;sphinx.ext.napoleon&#39;</span>,  <span style="color:#75715e"># Able to parse Numpy and Google</span>
+  <span style="color:#e6db74">&#39;sphinx_autodoc_typehints&#39;</span>, <span style="color:#75715e"># pip install sphinx-autodoc-typehints</span>
+  <span style="color:#e6db74">&#39;sphinx.ext.todo&#39;</span>,
+  <span style="color:#e6db74">&#39;sphinx.ext.ifconfig&#39;</span>,
+  <span style="color:#e6db74">&#39;sphinx.ext.mathjax&#39;</span>,
+  <span style="color:#e6db74">&#39;recommonmark&#39;</span>
+]
+napoleon_use_param <span style="color:#f92672">=</span> True
+</code></pre></div></li>
+<li>
+<p>中文 LaTeX</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">latex_engine <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;xelatex&#39;</span>
+latex_elements <span style="color:#f92672">=</span> {
+  <span style="color:#75715e"># The paper size (&#39;letterpaper&#39; or &#39;a4paper&#39;).</span>
+  <span style="color:#75715e"># &#39;papersize&#39;: &#39;letterpaper&#39;,</span>
+
+  <span style="color:#75715e"># The font size (&#39;10pt&#39;, &#39;11pt&#39; or &#39;12pt&#39;).</span>
+  <span style="color:#75715e"># &#39;pointsize&#39;: &#39;10pt&#39;,</span>
+
+  <span style="color:#75715e"># Additional stuff for the LaTeX preamble.</span>
+  <span style="color:#e6db74">&#39;preamble&#39;</span>: <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">  \addto\captionsenglish{\renewcommand{\chaptername}{}}
+</span><span style="color:#e6db74">  \usepackage[UTF8, scheme = plain]{ctex}
+</span><span style="color:#e6db74">  \setCJKmainfont{STSongti-SC-Regular}
+</span><span style="color:#e6db74">  &#39;&#39;&#39;</span>,
+
+  <span style="color:#75715e"># Latex figure (float) alignment</span>
+  <span style="color:#75715e"># &#39;figure_align&#39;: &#39;htbp&#39;,</span>
+}
+</code></pre></div></li>
+</ul>
+<h2 id="restructuredtext">reStructuredText</h2>
+<p><a href="https://github.com/seayxu/CheatSheet/blob/master/files/reStructuredText-Quick-Syntax.md">reStructuredText-Quick-Syntax</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst">.. <span style="color:#f92672">toctree</span>::<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#a6e22e">:maxdepth:</span> <span style="color:#a6e22e">2</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#a6e22e">:caption:</span> <span style="color:#a6e22e">Contents:</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   modules<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   A file &lt;test1.rst&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   test2<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   c<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>.. <span style="color:#f92672">code-block</span>:: python<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">:linenos:</span>
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  import project<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  # Get your stuff done<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  project.do_stuff()<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h2 id="类型注解">类型注解</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">form typing <span style="color:#f92672">import</span> List
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test</span>(a: List[List[int]] <span style="color:#f92672">=</span>[[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]]) <span style="color:#f92672">-&gt;</span> int:
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><p>使用 <code>mypy</code> 检查</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

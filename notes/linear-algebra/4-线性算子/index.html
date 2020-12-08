@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4-线性算子 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#特征值与特征向量">特征值与特征向量</a>
+      <ul>
+        <li><a href="#对角化">对角化</a></li>
+      </ul>
+    </li>
+    <li><a href="#二次型">二次型</a>
+      <ul>
+        <li><a href="#正定">正定</a></li>
+      </ul>
+    </li>
+    <li><a href="#实对称阵">实对称阵</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="特征值与特征向量">特征值与特征向量</h2>
+<ul>
+<li>相似: 存在可逆阵$Q$, $B=Q^{-1}AQ$</li>
+<li>特征值与特征向量</li>
+<li>特征多项式：$P(\lambda) = \det(\lambda I-A)$</li>
+<li>$\sum(\lambda)=tr(A)$, $\prod(\lambda)=\det(A)$</li>
+<li>特征子空间：$V_{\lambda_i}={\lambda_i的特征向量}\cup{0}$</li>
+<li>$\lambda$为$A$的特征值，$X$为$A$属于$\lambda$的特征向量。$f(t)=\sum_{j=0}^ka_jt^j$, $f(\lambda)$为$f(A)$的特征值，$X$为属于$f(\lambda)$的特征向量</li>
+<li><strong>求特征值与特征向量</strong>
+<ul>
+<li>$P(\lambda)=0$求特征值</li>
+<li>检验</li>
+<li>对每个特征值，高斯消元求解基础解系，得特征子空间 L()</li>
+</ul>
+</li>
+</ul>
+<h3 id="对角化">对角化</h3>
+<ul>
+<li>可对角化：$\exist Q,Q^{-1}AQ=diag(\lambda_1,\dots,\lambda_n)$</li>
+<li>$Q^{-1}AQ=diag{\lambda_1,\dots,\lambda_n}$ iff $\forall i$, $A\alpha_i=\lambda_i\alpha_i$</li>
+<li>属于不同特征值的特征向量线性无关</li>
+<li>代数重数：$P(\lambda)=(\lambda-\lambda_1)^{n_1}\dots(\lambda-\lambda_k)^{n_k}$, $n_i$ 为$i$的代数重数</li>
+<li>几何重数：$\dim{V_{\lambda_i}}$</li>
+<li>$1\leq$几何重数$\leq$代数重数</li>
+<li>$A$可对角化$\iff$所有特征值代数重数等于几何重数</li>
+<li><strong>对角化</strong>
+<ul>
+<li>$P(\lambda)=0$求特征值与其代数重数</li>
+<li>检验</li>
+<li>对每个特征值，高斯消元求解基础解系，得特征子空间的基和几何重数</li>
+<li>判断几何重数=代数重数</li>
+<li>若可对角化，令 Q=[$e_1,\dots,e_n$], $Q^{-1}AQ=diag{\lambda_1,\dots,\lambda_n}$</li>
+</ul>
+</li>
+<li>已知$\lambda,|\lambda I-A|$; 已知$X$，$AX=\lambda X$</li>
+<li>$A\sim B\iff (A+I)\sim (B+I)$</li>
+</ul>
+<h2 id="二次型">二次型</h2>
+<ul>
+<li>二次型：$\mathbb{F}^n$上的二次齐次 n 元多项式$f(x_1,\dots,x_n)=\sum_{i=1}^{n}a_{ii}x_i^2+\sum_{i&lt;j}2a_{ij}x_ix_j$为二次型。</li>
+<li>令$X=[x_1,\dots,x_n]^T$, 则$f(x_1,\dots,x_n)=X^TAX$</li>
+<li>$A$对称，$C$可逆，则$A$与$C^TAC$合同</li>
+<li>合同规范型:
+$$ \left[\begin{matrix} I_k &amp; 0 &amp; 0\newline 0 &amp; -I_s &amp; 0\newline 0 &amp; 0 &amp; 0 \end{matrix}\right] $$</li>
+<li><strong>化为合同规范型</strong>
+<ul>
+<li>做矩阵,其中 D 为对角阵
+$$\left[ \begin{matrix} A\newline I \end{matrix}\right] \rightarrow \left[ \begin{matrix} D\newline C_1 \end{matrix}\right]$$</li>
+<li>分三类考虑
+<ul>
+<li>第一行与第一列均为 0, 则考虑下一层</li>
+<li>$a_{11}=0$, $\exist j, a_{1j}=a_{j1}\not= 0$
+<ul>
+<li>$a_{jj}\not=0$ 做变换$r_1\leftrightarrow r_j,c_1\leftrightarrow c_j$</li>
+<li>$a_{jj}=0$ 做变换 $r_1+r_j\rightarrow r_1,c_1+c_j\rightarrow c_1$</li>
+</ul>
+</li>
+<li>$a_{11}\not= 0$, 做行高斯消元与列高斯消元，用$a_{11}$将$j&gt;1$的$a_{1j},a_{j1}$消去（共$2*(j-1)$次）</li>
+</ul>
+</li>
+<li>得$C_1^TAC_1=D$</li>
+<li>将对角型$D$用对换和$\frac{1}{\sqrt{|a_{ii}|}}r_i\rightarrow r_i,\frac{1}{\sqrt{|a_{ii}|}}c_i\rightarrow c_i$化为规范型，得
+$$ C^TAC=\left[\begin{matrix} I_k &amp; 0 &amp; 0\newline 0 &amp; -I_s &amp; 0\newline 0 &amp; 0 &amp; 0 \end{matrix}\right] $$</li>
+</ul>
+</li>
+<li>$k$ 为 A 的正惯性指数，$s$为负惯性指数，$k-s$为符号差</li>
+<li>实对称矩阵$A$的合同规范型是唯一的，进而正负惯性指数和符号差唯一，但可逆阵$C$不唯一</li>
+<li>$A$与$B$合同，则有相同的合同规范型</li>
+<li>$rank(A)=k+s$</li>
+<li>令$X=CY$, 则$f(x_1,\dots,x_n)=Y^T(C^TAC)Y=g(y_1,\dots,y_n)$, g 为 f 的规范型</li>
+</ul>
+<h3 id="正定">正定</h3>
+<ul>
+<li>半正定：$\forall X\in\mathbb{R}^n$, $X^TAX\geq 0$</li>
+<li>实对称矩阵正定条件：
+<ul>
+<li>$\forall X\in\mathbb{R}^n,X\not=0$, $X^TAX&gt;0$</li>
+<li>$\forall i,\lambda_i&gt;0$</li>
+<li>$\exist R,|R|\not=0,A=R^TR$</li>
+<li>顺序主子式皆为正</li>
+</ul>
+</li>
+<li>若$A$是实对称矩阵，则$A$半正定$\iff$ $-A$半负定$\iff$ $A$的负惯性指数为 0， $A$正定$\iff -A$负定$\iff\ A$的合同规范性为$I$ $\iff$ $A$的顺序主子式皆为正</li>
+<li>$A$负定$\iff$ $A$的顺序主子式与$(-1)^k$同号</li>
+<li>顺序主子式不小于 0 得不到半正定</li>
+<li>$A$与$B$合同，且为实对称矩阵，则同正定或半正定</li>
+<li>$k$阶顺序主子阵：$A_k$</li>
+<li>$k$阶顺序主子式：$\det(A_k)$</li>
+<li>Hesse 阵：$f$在$p$处的黑塞阵为$H(f,p)=(\frac{\partial^2f}{\partial x_i\partial x_j}(p))$
+<ul>
+<li>$H(f,p)$正定，则$p$为极小值点</li>
+<li>$H(f,p)$可逆但既不正定又不负定，则$p$不是极值点</li>
+</ul>
+</li>
+<li>正定矩阵与半正定矩阵之和为正定矩阵</li>
+</ul>
+<h2 id="实对称阵">实对称阵</h2>
+<ul>
+<li>对称矩阵：$A=A^T$</li>
+<li>$A^{*}=\overline{A}^\top$
+<ul>
+<li>$(A+B)^{<em>} = A^{</em>} + B^{*}$</li>
+<li>$(kA)^{<em>} = \overline{k}A^{</em>}$</li>
+<li>$(AB)^*=B^<em>A^</em>$</li>
+<li>$(A^<em>)^</em> = A$</li>
+<li>$X^*X\geq0$</li>
+</ul>
+</li>
+<li>实对称阵的特征值$\lambda\in\mathbb{R}^n$</li>
+<li>实对称阵可对角化</li>
+<li>实对称阵$A$不同特征值$\lambda_1,\lambda_2$，则其属特征向量$X_1\perp X_2$</li>
+<li>正交对角化：$A^T=A$则存在正交阵$Q$，$Q^{-1}AQ=Q^{T}AQ=D$，$D$为对角阵</li>
+<li><em>正交对角化</em>：
+<ul>
+<li>解得特征值</li>
+<li>特征值对应特征向量的基</li>
+<li>Schmidt 正交化，$Q=[e_1,\dots,e_n]$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

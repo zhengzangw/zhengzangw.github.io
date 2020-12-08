@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DP优化——四边形不等式 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#四边形不等式条件">四边形不等式条件</a></li>
+    <li><a href="#基本概念">基本概念</a></li>
+    <li><a href="#优化">优化</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="四边形不等式条件">四边形不等式条件</h2>
+<p>任意 $a1\leq a2&lt;b1\leq b2$,有 $F(a_1,b_1)+F(a_2,b_2)\leq F(a_1,b_2)+F(a_2,b_1)$
+则函数 F 满足四边形不等式</p>
+<h2 id="基本概念">基本概念</h2>
+<p>区间包含的单调性：如果对于 $i≤i'&lt;j≤j'$，有 $w(i',j)≤w(i,j')$，那么说明 w 具有区间包含的单调性。（小区间的值不超过大区间的值）</p>
+<p>定理一：如果上述的 w 函数同时满足区间包含单调性和四边形不等式性质，那么函数 m 也满足四边形不等式性质</p>
+<p>定义 s(i,j)表示 m(i,j)取得最优值时对应的下标（即 $i≤k≤j$ 时，k 处的 w 值最大，则 $s(i,j)=k$)</p>
+<p>定理二：假如 m(i,j)满足四边形不等式，那么 s(i,j)单调，即 $s(i,j)≤s(i,j+1)≤s(i+1,j+1)$</p>
+<h2 id="优化">优化</h2>
+<p>若 F 满足
+F[i,j] = opt{F[i,k]+F[k,j] + w(i,j)} (i&lt;=k&lt;=j)
+时间复杂度为 O(N^3)</p>
+<p>如果 w 函数满足区间包含单调性和四边形不等式性质,则原来的状态转移方程可以改写为下式：
+$$F(i,j)=min{F(i,k-1),F(k,j)}+w(i,j)(s(i,j-1)≤k≤s(i+1,j))$$</p></main>
+        </div>
+
+    </div>
+</body></html>

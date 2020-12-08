@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skip list | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#构造">构造</a></li>
+    <li><a href="#查找">查找</a></li>
+    <li><a href="#插入">插入</a></li>
+    <li><a href="#删除">删除</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="skip-list">Skip List</h1>
+<h2 id="构造">构造</h2>
+<ol>
+<li>给定一个有序的链表。</li>
+<li>选择连表中最大和最小的元素，然后从其他元素中按照一定算法（随机）随即选出一些元素，将这些元素组成有序链表。</li>
+<li>为刚选出的每个元素添加指针指向下一层中值同自己相等的元素。Top指针指向该层首元素</li>
+<li>重复2、3步，直到不再能选择出除最大最小元素以外的元素。</li>
+</ol>
+<h2 id="查找">查找</h2>
+<ol>
+<li>从最上层的链（Sh）的开头开始</li>
+<li>假设当前位置为p，它向右指向的节点为q（p与q不一定相邻），且q的值为y。将y与x作比较
+(1) $x=y$  输出查询成功及相关信息
+(2) $x&gt;y$  从p向右移动到q的位置
+(3) $x&lt;y$  从p向下移动一格</li>
+<li>如果当前位置在最底层的链中（S0），且还要往下移动的话，则输出查询失败</li>
+</ol>
+<h2 id="插入">插入</h2>
+<p>$r \rightarrow random()$<br>
+if $r&lt;p$ then do A<br>
+else do B</p>
+<p>初始时列高为1。插入元素时，不停地执行随机决策模块。如果要求执行的是A操作，则将列的高度加1，并且继续反复执行随机决策模块。直到第i次，模块要求执行的是B操作，我们结束决策，并向跳跃表中插入一个高度为i的列。</p>
+<h2 id="删除">删除</h2>
+<ul>
+<li>在跳跃表中查找到这个元素的位置，如果未找到，则退出</li>
+<li>将该元素所在整列从表中删除</li>
+<li>将多余的“空链”删除</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

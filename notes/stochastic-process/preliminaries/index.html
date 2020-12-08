@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stochastic Processes | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#probability">Probability</a>
+      <ul>
+        <li><a href="#definition-of-probability">Definition of Probability</a></li>
+        <li><a href="#sequence-of-events">Sequence of Events</a></li>
+      </ul>
+    </li>
+    <li><a href="#random-variable">Random Variable</a></li>
+    <li><a href="#expected-value">Expected Value</a>
+      <ul>
+        <li><a href="#probability-identities">Probability Identities</a></li>
+      </ul>
+    </li>
+    <li><a href="#moment-generating">Moment Generating</a></li>
+    <li><a href="#conditional-expectation">Conditional Expectation</a>
+      <ul>
+        <li><a href="#ballot-problem">Ballot Problem</a></li>
+      </ul>
+    </li>
+    <li><a href="#exponential-distribution">Exponential Distribution</a></li>
+    <li><a href="#inequality">Inequality</a></li>
+    <li><a href="#stochastic-process">Stochastic Process</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="probability">Probability</h2>
+<h3 id="definition-of-probability">Definition of Probability</h3>
+<p>Three Axioms</p>
+<ul>
+<li>
+<p>$0\leq P(E)\leq 1$</p>
+</li>
+<li>
+<p>$P(S)=1$</p>
+</li>
+<li>
+<p>For any sequence of eventes $E_1,E_2,\cdots,$ that are mutually exclusive</p>
+<p>$$P(\bigcup_{i=1}^\infty E_i)=\sum_{i=1}^{\infty}P(E_i))$$</p>
+</li>
+</ul>
+<h3 id="sequence-of-events">Sequence of Events</h3>
+<ul>
+<li>
+<p>increasing sequence of events: ${E_n,n\geq 1},E_n\subset E_{n+1}$</p>
+<p>$$\lim_{n\rightarrow\infty}E_n=\bigcup_{i=1}^\infty E_i$$</p>
+</li>
+<li>
+<p>decreasing sequence of events: ${E_n,n\geq 1},E_n\supset E_{n+1}$</p>
+<p>$$\lim_{n\rightarrow\infty}E_n=\bigcap_{i=1}^\infty E_i$$</p>
+</li>
+<li>
+<p>for an increasing or decreasing sequences of events</p>
+<p>$$\lim_{n\rightarrow\infty}P(E_n)=P(\lim_{n\rightarrow\infty}E_n)$$</p>
+</li>
+<li>
+<p>Borel-Cantelli Lemma</p>
+<p>if $\sum_{n=1}^{\infty}P(E_n)&lt;\infty$, then</p>
+<p>$$P(\text{an infinite number of the }E_i\text{ occur})=P(\lim\sup_{t\rightarrow\infty}E_i)=P(\bigcap_{n=1}^\infty\bigcup_{i=n}^\infty E_i)=0$$</p>
+</li>
+<li>
+<p>Converse</p>
+<p>$E_i$ are independent events, $\sum_{n-1}^\infty P(E_n)=\infty$, then</p>
+<p>$$P(\text{an infinite number of the }E_i\text{ occur})=1$$</p>
+</li>
+</ul>
+<h2 id="random-variable">Random Variable</h2>
+<ul>
+<li>
+<p>Random Varible $X$: a function that assigns a real value to each outcome in $S$</p>
+<p>$$P(X\in A)=P(X^{-1}(A))$$</p>
+</li>
+<li>
+<p>Distribution function $F$:</p>
+<p>$$F(x)=P(X\leq x)=P(X\in(-\infty,x])$$
+$$\overline{F}(x)=P(X&gt;x)$$</p>
+</li>
+</ul>
+<h2 id="expected-value">Expected Value</h2>
+<ul>
+<li>$$E<input checked="" disabled="" type="checkbox"> =\int_{-\infty}^{\infty}xdF(x)=\begin{cases}\int_{-\infty}^{\infty}xf(x)dx \newline  \sum_xxP(X=x)\end{cases}$$</li>
+<li>$$Var<input checked="" disabled="" type="checkbox"> =E[X^2]-E^2<input checked="" disabled="" type="checkbox"> $$</li>
+<li>$$Var[\sum X_i]=\sum Var(X_i)+2{\sum\sum}_{i&lt;j}Cov(X_i,X_j)$$</li>
+<li>$$Cov(X,Y)=E[XY]-E<input checked="" disabled="" type="checkbox"> E[Y]$$</li>
+</ul>
+<h3 id="probability-identities">Probability Identities</h3>
+<p>Let $A_1,A_2,\cdots,A_n$ be events; $I_i=[[A_i$ occurs$]]$; $N=\sum_{i=1}^nI_i$; $I=[[N&gt;0]]$</p>
+<ul>
+<li>
+<p>容斥原理</p>
+<p>$$
+\begin{aligned}
+1-I &amp;= (1-1)^N \newline
+&amp; = \sum_{i=0}^n{N\choose i}(-1)^i\newline
+E[I] &amp;= E[N] = E[{N\choose 2}] +\cdots + (-1)^{n+1}E[{N\choose n}]\newline
+P(\bigcup_{1}^{n}A_i) &amp;=\sum_{i=1}^n P(A_i)-{\sum\sum}_{i&lt;j}P(A_iA_j)+\cdots+(-1)^{n+1}P(A_1A_2\cdots A_n)
+\end{aligned}
+$$</p>
+</li>
+<li>
+<p>exactly $r$ of the events $A_1,\cdots, A_n$ occur</p>
+<p>$$
+\begin{aligned}
+I_r &amp;= [[N=r]] \newline
+&amp;= {N\choose r}(1-1)^{N-r}\newline
+&amp;= {N\choose r}\sum_{i=0}^{N-r}{N-r\choose i}(-1)^i \newline
+&amp;= \sum_{i=0}^{n-r}{N\choose r+i}{r+i\choose r}(-1)^i\newline
+P   &amp;= E[I_r] =\sum_{i=0}^{n-r}(-1)^i{r+i\choose r}E[{N\choose r+i}]\newline
+&amp;= \sum_{i=0}^{n-r}(-1)^i{r+i\choose r}{\sum\cdots\sum}_{j_1&lt;j_2&lt;\cdots j_{r+i}}P(A_{j_1}\cdots A_{j_{r+i}})
+\end{aligned}
+$$</p>
+</li>
+</ul>
+<h2 id="moment-generating">Moment Generating</h2>
+<ul>
+<li>
+<p>moment generating function of $X$</p>
+<p>$$ \psi(t)=E[e^{tX}]=\int e^{tX}dF(x)$$</p>
+<p>$E[X^n]=\psi^n(0),n\geq 1$</p>
+</li>
+<li>
+<p>moment generating function of random variable $X_1,\cdots,X_n$</p>
+<p>$$ \psi(t<em>1,\cdots,t_n)=E[e^{\sum</em>{j=1}^nt_jX_j}]$$</p>
+<p>MGF determines probability distribution, but doesn&rsquo;t always exist</p>
+</li>
+<li>
+<p>characteristic function of $X$</p>
+<p>$$\phi(t)=E[e^{itX}]$$</p>
+<p>CF determines probability distribution, and always exist</p>
+</li>
+<li>
+<p>Laplace transform of distribution $F$ (for nonnegative values):</p>
+<p>$$\widetilde{F}(s)=\int_{0}^{\infty}e^{-sx}dF(x)$$</p>
+</li>
+</ul>
+<h2 id="conditional-expectation">Conditional Expectation</h2>
+<ul>
+<li>$$E[X|Y=y]=\int_{-\infty}^{\infty}xdF(x|y)$$</li>
+<li>$$E<input checked="" disabled="" type="checkbox"> =E[E[X|Y]]=\int E[X|Y=y]dF_Y(y)$$</li>
+</ul>
+<h3 id="ballot-problem">Ballot Problem</h3>
+<p>The probability $A$ receiving $n$ votes is always ahead in the count of $B$ receiving $m$ votes: $\frac{n-m}{n+m}$</p>
+<h2 id="exponential-distribution">Exponential Distribution</h2>
+<ul>
+<li>
+<p>$E[e^{tX}]=\int_0^{\infty}e^{tx}\lambda e^{-\lambda x}dx=\frac{\lambda}{\lambda-t}$</p>
+</li>
+<li>
+<p>Gamma with parameters $(n,\lambda)$: $S=\sum X$</p>
+<ul>
+<li>$E[e^{tS}]=(\frac{\lambda}{\lambda-t})^n$</li>
+<li>$f(x)=\frac{\lambda e^{-\lambda x}(\lambda x)^{n-1}}{\Gamma(n-1)}$</li>
+</ul>
+</li>
+<li>
+<p>memeoryless: $P(X&gt;s+t|X&gt;t)=P(X&gt;s)$</p>
+</li>
+<li>
+<p>failure rate funtion: probability intensity that a $t$-year-old item will fail</p>
+<p>$$\lambda(t)=\frac{f(t)}{\overline{F}(t)}$$</p>
+<p>$$\overline{F}(t)=\exp(-\int_{0}^t\lambda(t)dt)</p>
+</li>
+</ul>
+<h2 id="inequality">Inequality</h2>
+<ul>
+<li>Jensen&rsquo;s inqeuality: $E[f(X)]\geq f(E<input checked="" disabled="" type="checkbox"> )$</li>
+</ul>
+<h2 id="stochastic-process">Stochastic Process</h2>
+<ul>
+<li>stochastic process $\underline{X}={X(t),t\in T}$, $T$ is an index set</li>
+<li>discrete-time stochastic process: $T$ is a countable set</li>
+<li>sample path: realization of $\underline{X}$</li>
+<li>independent increments (continuous-time): $X(t_n)-X(t_{n-1})$ are independent</li>
+<li>stationary increments: $X(t+s)-X(t)$ has same distribution for all $t$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

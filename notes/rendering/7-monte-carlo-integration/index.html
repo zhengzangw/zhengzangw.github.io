@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monte Carlo Integration | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数值积分">数值积分</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="数值积分">数值积分</h2>
+<ul>
+<li>Limitation
+<ul>
+<li>对于 $d$ 维函数 $f$，一维情况下 $O(n^{-r})$ 收敛，则高维仅 $O(n^{-\frac{r}{s}})$ 收敛</li>
+<li>不连续：$O(n^{-\frac{r}{s}})$</li>
+</ul>
+</li>
+<li>Monte Carlo Method: $\int_0^1f(x)dx =\frac{1}{N}\sum_{i=1}^Nf(x_i)$
+<ul>
+<li>Adavantage
+<ul>
+<li>Easy to implement</li>
+<li>Robust</li>
+<li>efficient for high dimensional integrals</li>
+</ul>
+</li>
+<li>Disadvantages
+<ul>
+<li>noisy: 按概率采样</li>
+<li>slow</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Monte Carlo estimator: $F_N=\frac{b-a}{N}\sum_{i=1}^Nf(X_i)$
+<ul>
+<li>$E[F_N]=\int_a^bf(x)dx$</li>
+</ul>
+</li>
+<li>sample
+<ul>
+<li>$F_N=\frac{1}{N}\sum_{i=1}^N\frac{f(X_i)}{p(X_i)}$</li>
+<li>最理想：$p(x)=\frac{f(x)}{\int f(x)dx}$</li>
+</ul>
+</li>
+<li>采样
+<ul>
+<li>inversion
+<ul>
+<li>求 CDF</li>
+<li>逆函数 CDF$^{-1}$</li>
+<li>均匀采样</li>
+</ul>
+</li>
+<li>rejection
+<ul>
+<li>accept $U_1$ if $U_2&lt;f(U_1)$</li>
+<li>一般方法
+<ul>
+<li>find $q(x)$, $p(x)&lt;Mq(x)$</li>
+<li>Dart throwing $\xi &lt; p(X)/Mq(X)$</li>
+</ul>
+</li>
+<li>efficiency = area / area of rectangle</li>
+</ul>
+</li>
+<li>transform
+<ul>
+<li>$Y=y(X)$</li>
+<li>$P_y(y(x))=P_x(x)$</li>
+<li>$p_y(y)=(\frac{dy}{dx})^{-1}p_x(x)$</li>
+<li>$p_y(T(x))=|J_T(x)|^{-1}p_x(x)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Multidimensional sampling: sample with $p(x)$ and $p(y|x)$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

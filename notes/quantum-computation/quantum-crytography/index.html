@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quantum Error Correction | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#quantum-simulation">Quantum Simulation</a></li>
+    <li><a href="#quantum-distribution-computation">Quantum Distribution Computation</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>Vernam cipher/ One-time pad: 绝对安全（信息论安全），Eve 做任何计算
+<ul>
+<li>加密前后概率分布需一样</li>
+<li>Theorem: the secret key has to be as long as the message</li>
+</ul>
+</li>
+<li>密码学安全：Eve 在多项式时间内无法得到任何有效信息</li>
+<li>DH Key Exchange: 离散对数问题，量子计算机下不安全</li>
+<li>Information reconciliation
+<ul>
+<li>Condition: flipped bits $\leq\delta$ fraction of bits</li>
+<li>Goal: Alice and Bob</li>
+<li>Error encoding code</li>
+</ul>
+</li>
+<li>BB84 QKD protocol
+<ul>
+<li>$a,b\in_R{0,1}^{(4+\delta)n}$</li>
+<li>$|\psi\rangle=\otimes_{k=1}^{(4+\delta)n}|\psi_{a_k,b_k}\rangle$
+<ul>
+<li>$|\psi_{0,0}\rangle=|0\rangle,|\psi_{1,0}\rangle=|1\rangle,|\psi_{0,1}\rangle=|+\rangle,|\psi_{1,1}\rangle=|-\rangle$</li>
+</ul>
+</li>
+<li>Bob announce achievement</li>
+<li>Bob $b'\in_R{0,1}^{(4+\delta)n}$
+<ul>
+<li>$b'_i=0$ measure $i$-th bit at ${|0\rangle,|1\rangle}$</li>
+<li>$b'_i=1$ measure $i$-th bit at ${|+\rangle,|-\rangle}$</li>
+</ul>
+</li>
+<li>Alice announce $b$</li>
+<li>Discard the bits where $b$ and $b'$ differ</li>
+<li>Together select a subset of $n$ bits</li>
+<li>Announce these $n$ bits and compare</li>
+<li>Information reconciliation</li>
+<li>privacy amplification
+<ul>
+<li>Collision entrop: $H_c(X)=-\log(\sum_xp(x)^2)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>QKD 应用
+<ul>
+<li>京沪干线</li>
+<li>墨子号卫星</li>
+</ul>
+</li>
+<li>Q Monkey
+<ul>
+<li>基于长时间保存量子态</li>
+</ul>
+</li>
+<li>Post-Quantum Cryptography
+<ul>
+<li>经典密码学</li>
+<li>单向函数设计时对付量子计算机</li>
+<li>替换大数分解
+<ul>
+<li>Lattice-based: 理论完善（量子计算难）</li>
+<li>Multivariate</li>
+<li>Hash-based</li>
+<li>Code-based</li>
+<li>Supersingular elliptic curve isogeney</li>
+</ul>
+</li>
+<li>NIST: Post-Quantum Cryptography Standardization</li>
+</ul>
+</li>
+<li>Delegated Q. Computation
+<ul>
+<li>验证对方是量子计算机
+<ul>
+<li>Factor $\in$ BQP$\backslash$P</li>
+<li>only 1000 quib</li>
+<li>Factor 上万比特</li>
+</ul>
+</li>
+<li>协议要求
+<ul>
+<li>honest: complete</li>
+<li>dishonest: user is able to detect</li>
+<li>(Bonus) does not learn anything</li>
+</ul>
+</li>
+<li>08: 2台</li>
+<li>18: 1台</li>
+</ul>
+</li>
+</ul>
+<h2 id="quantum-simulation">Quantum Simulation</h2>
+<p>近 5-10 年可用，解薛定谔方程</p>
+<p>需要懂物理，理解 $H$</p>
+<h2 id="quantum-distribution-computation">Quantum Distribution Computation</h2>
+<p>量子分布计算，混合计算</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

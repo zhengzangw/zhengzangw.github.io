@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>代码生成 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#目标语言">目标语言</a></li>
+    <li><a href="#基本块与流图">基本块与流图</a>
+      <ul>
+        <li><a href="#dag">DAG</a></li>
+      </ul>
+    </li>
+    <li><a href="#代码生成器">代码生成器</a></li>
+    <li><a href="#寄存器分配">寄存器分配</a></li>
+    <li><a href="#优化">优化</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="目标语言">目标语言</h2>
+<ul>
+<li>
+<p>代码生成器的任务</p>
+<ul>
+<li>指令选择</li>
+<li>寄存器分配和指派</li>
+<li>指令排序</li>
+</ul>
+</li>
+<li>
+<p>地址</p>
+<ul>
+<li>
+<p>静态分配</p>
+<ul>
+<li>
+<p>call callee</p>
+<pre><code class="language-mips" data-lang="mips">ST callee.staticArea, #here + 20
+BR callee.codeArea
+</code></pre></li>
+<li>
+<p>return</p>
+<pre><code class="language-mips" data-lang="mips">BR *callee.staticArea
+</code></pre></li>
+<li>
+<p>name</p>
+<pre><code class="language-mips" data-lang="mips">LD 112, #0
+LD 12(SP), #0
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p>栈式分配</p>
+<ul>
+<li>
+<p>call callee</p>
+<pre><code class="language-mips" data-lang="mips">ADD SP, SP, #caller.recordSize
+ST 0(SP), #here + 16
+BR callee.codeArea
+</code></pre></li>
+<li>
+<p>return</p>
+<pre><code class="language-mips" data-lang="mips">BR *0(SP)
+SUB SP, SP, #caller.recordSize
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="基本块与流图">基本块与流图</h2>
+<ul>
+<li>确定 leader
+<ul>
+<li>第一个三地址指令</li>
+<li>任一个跳转指令</li>
+<li>任一个跳转目标指令</li>
+</ul>
+</li>
+<li>活跃性
+<ul>
+<li>开始时非临时变量活跃</li>
+<li>反向扫描</li>
+<li>i: x = y + z
+<ul>
+<li>x: 不活跃（之前的值不使用），无后续使用</li>
+<li>y,z: 活跃，指明下一次使用设置为语句 i</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>循环定义
+<ul>
+<li>存在唯一入口结点，前驱在循环之外，到达其余结点路径必然经过该结点</li>
+</ul>
+</li>
+</ul>
+<h3 id="dag">DAG</h3>
+<ul>
+<li>DAG 图构造
+<ul>
+<li>为基本块中每个出现的变量建立结点</li>
+<li>x = y op z：建立指令结点 N，标号 op，令 x 和 N 关联</li>
+<li>x = y：假设 y 关联 N，则 x 关联 N</li>
+</ul>
+</li>
+<li>消除死代码：在 DAG 图上消除没有附加活跃变量的根节点</li>
+<li>数组引用
+<ul>
+<li>x=a[i] 对应于 =[] 的结点</li>
+<li>a[j]=y 对应于 []= 的结点</li>
+</ul>
+</li>
+<li>指针赋值、过程调用：无法消除死码</li>
+<li>重组基本块：如果两个指令间互相影响，则其顺序不该改变</li>
+</ul>
+<h2 id="代码生成器">代码生成器</h2>
+<ul>
+<li>尽可能把值保留在寄存器中</li>
+<li>寄存器描述符：寄存器存放了哪些变量</li>
+<li>地址描述符：各个变量的当前值存放在哪些位置</li>
+<li>getReg(I): 根据寄存器描述符合地址描述符等数据流信息，为指令 I 选择最佳的寄存器</li>
+<li>减少 LD/ST 指令</li>
+</ul>
+<h2 id="寄存器分配">寄存器分配</h2>
+<ul>
+<li>v 的地址描述符可以在别的地方找到</li>
+<li>v 就是计算结果变量</li>
+<li>v 在之后不会被使用</li>
+<li>生成保存指令 ST v, R 并修改地址描述符</li>
+</ul>
+<h2 id="优化">优化</h2>
+<ul>
+<li>窥孔优化:使用滑动窗口检查目标指令
+<ul>
+<li>冗余指令消除</li>
+<li>控制流优化</li>
+<li>代数化简/强度消减</li>
+<li>机器特有指令使用</li>
+</ul>
+</li>
+<li>全局寄存器分配</li>
+<li>树重写实现指令选择
+<ul>
+<li>重写规则：replacement &lt;- template { action }</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://blog.csdn.net/qq_31108501/article/details/51842166">gcc 优化</a></p>
+</main>
+        </div>
+
+    </div>
+</body></html>

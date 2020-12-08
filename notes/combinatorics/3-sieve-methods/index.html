@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3. Sieve methods | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#pie">PIE</a>
+      <ul>
+        <li><a href="#surjections">Surjections</a></li>
+        <li><a href="#derangements">Derangements</a></li>
+        <li><a href="#permutations-with-restricted-positions">Permutations with restricted positions</a></li>
+        <li><a href="#euler-totient-function">Euler totient function</a></li>
+      </ul>
+    </li>
+    <li><a href="#inversion">Inversion</a>
+      <ul>
+        <li><a href="#剩余系">剩余系</a></li>
+        <li><a href="#boolean-algebra">Boolean algebra</a></li>
+        <li><a href="#number-theory">Number Theory</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="pie">PIE</h2>
+<ul>
+<li>PIE(Priciple of Inclusion-Exclusion)
+<ul>
+<li>$A_I=\bigcap_{i\in I}A_i$</li>
+<li>$|\bigcup_{i=1}^nA_i|=\sum_{I\subseteq{1,\cdots,n},|I|\geq 1}(-1)^{|I|-1}|A_I|$</li>
+<li>$|\bigcap_{i=1}^n\overline{A_i}|=\sum_{I\subseteq{1,\cdots,n}}(-1)^{|I|}|A_I|$</li>
+</ul>
+</li>
+<li>Sieve methods: 计算恰好具备某种性质的 $\Rightarrow$ 计算不具有一系列坏性质的
+<ul>
+<li>Define $|U|$</li>
+<li>Define &lsquo;bad&rsquo; properties $A_i$</li>
+<li>Use PIE count the number</li>
+</ul>
+</li>
+</ul>
+<h3 id="surjections">Surjections</h3>
+<ul>
+<li>Count Surjections $f:N\rightarrow M$</li>
+<li>$U={f:[n]\rightarrow[m]}, |U|=m^n$</li>
+<li>$A_i={f:[n]\rightarrow[m]\backslash{i}},|A_i|=(m-1)^n$</li>
+<li>$A_I={f:[n]\rightarrow[m]\backslash I},|A_I|=(m-|I|)^n$</li>
+<li>$|\bigcap_{i=1}^n\overline{A_i}|=\sum_{I\subseteq{1,\cdots,n}}(-1)^{|I|}|A_I|=\sum_{j=0}^m(-1)^j{m\choose j}(m-j)^n=m!{n\brace m}$</li>
+</ul>
+<h3 id="derangements">Derangements</h3>
+<ul>
+<li>fixed point $i$: $i\in{1,2,\cdots,n},\pi(i)=i$</li>
+<li>derangement of ${1,2,\cdots,n}$ is $\pi$ that has no fixed points</li>
+<li>$U=S_n,|U|=n!$</li>
+<li>$A_i={\pi|\pi(i)=i}$, $|A_i|=(n-1)!$</li>
+<li>$|A_I|=(n-|I|)!$</li>
+<li>$\sum_{I\subseteq[n]}(-1)^{|I|}|A_I|=n!\sum_{k=0}^n\frac{(-1)^k}{k!}\approx\frac{n!}{e}$</li>
+</ul>
+<h3 id="permutations-with-restricted-positions">Permutations with restricted positions</h3>
+<ul>
+<li>$B\subseteq [n]\times[n]$</li>
+<li>$G_\pi(V,E)={(i,\pi(i))|i\in [n]}$</li>
+<li>$N_0=|{\pi|B\cap G_\pi=\emptyset}$ (Non-attacking rooks)</li>
+<li>$r_k:|{S\in{B\choose k}|\forall(i_1,j_1),(i_2,j_2)\in S,i_1\not= i_2,j_1\not=j_2}$</li>
+<li>$N_0=\sum_{k=0}^n(-1)^kr_k(n-k)!$</li>
+</ul>
+<h4 id="derangement-problem">Derangement problem</h4>
+<p>$B={(i,i)|i\in [n]}$</p>
+<h4 id="probleme-des-menages">Probleme des menages</h4>
+<ul>
+<li>$n$ couples at a circular table, M&amp;F in alternate and no one sits next to his/her spouse</li>
+<li>Lady: $2(n!)$</li>
+<li>Men: $B={(0,0),(1,1),\cdots,(n-1,n-1),(0,1),(1,2),\cdots,(n-2,n-1),(n-1,0)}$
+<ul>
+<li>$r_k$: choosingn $k$ points, no two consecutive, from a collection of $2n$ points arranged in a circle
+<ul>
+<li>line: ${m-k+1\choose k}$</li>
+<li>circle: $\frac{m}{m-1}{m-k\choose k}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$N_0=\sum_{k=0}^n(-1)^k\frac{2n}{2n-k}{2n-k\choose k}(n-k)!$</li>
+</ul>
+<h3 id="euler-totient-function">Euler totient function</h3>
+<ul>
+<li>$\phi(n)=n\prod_{i=1}^r(1-\frac{1}{p_i})$</li>
+<li>$\sum_{d|n}\phi(d)=n$</li>
+</ul>
+<h2 id="inversion">Inversion</h2>
+<ul>
+<li>Poset $P$: partially ordered set
+<ul>
+<li>Set $P$ with $\leq_P$ satisfying reflexivity, antisymmetry and transitivity</li>
+<li>comparable: $x\leq y$ or $y\leq x$</li>
+</ul>
+</li>
+<li>incidence algebra: algebra $I(P)$
+<ul>
+<li>$I(P)={\alpha:P\times P\rightarrow\mathbb{R}|\alpha(x,y)=0,\forall x\not\leq_P y}$ ($\alpha$ can be seen as matrix)</li>
+<li>if $\alpha,\beta\in I(P)$ then $\alpha+\beta\in I(P)$</li>
+<li>if $\alpha\in I(P)$ then $c\alpha\in I(P)$</li>
+<li>$(\alpha\beta)(x,y)=\sum_{z\in P}\alpha(x,z)\beta(z,y)=\sum_{x\leq z\leq y}\alpha(x,z)\beta(z,y)$</li>
+</ul>
+</li>
+<li>zeta function $\zeta(x,y)=[x\leq_P y]\in I(P)$</li>
+<li>Möbius function: $\mu\zeta=I$
+<ul>
+<li>$I(x,y)=[x=y]$</li>
+<li>$\sum_{x\leq z\leq y}\mu(x,z)=[x=y]$</li>
+</ul>
+</li>
+</ul>
+<p>$$
+\mu(x,y)=
+\begin{cases}
+-\sum_{x\leq z&lt;y}\mu(x,z) &amp; x&lt;y \newline
+1 &amp; x=y \newline
+0 &amp; x\not\leq y
+\end{cases}
+$$</p>
+<ul>
+<li>$P\times Q$: $\forall (x,y),(x',y')\in P\times Q,(x,y)\leq(x',y')$ iff $x\leq x',y\leq y'$
+<ul>
+<li>product rule: $\mu_{P\times Q}((x,y),(x',y'))=\mu_P(x,x')\mu_Q(y,y')$</li>
+</ul>
+</li>
+<li>$(f\zeta)(x)=\sum_{y\in P}f(y)\zeta(y,x)=\sum_{y\leq x}f(y)$</li>
+<li>$(g\mu)(x)=\sum_{y\in P}g(y)\mu(y,x)=\sum_{y\leq x}g(y)\mu(y,x)$
+<ul>
+<li>$f,g:P\rightarrow \mathbb{R}$</li>
+</ul>
+</li>
+<li>Mobius inversion formula
+<ul>
+<li>$\forall x\in P,g(x)=\sum_{y\leq x}f(y)\iff\forall x\in P,f(x)=\sum_{y\leq x}g(y)\mu(y,x)$</li>
+<li>$f\zeta=g\iff f=g\mu$</li>
+<li>dual form: $\zeta f\iff f=\mu g$</li>
+</ul>
+</li>
+</ul>
+<h3 id="剩余系">剩余系</h3>
+<p>$P=[n],\leq_P$ if $i=j+1$</p>
+<p>$$
+\mu(i,j)=
+\begin{cases}
+1 &amp; i=j \newline
+-1 &amp; i+1=j \newline
+0 &amp; o.w.
+\end{cases}
+$$</p>
+<h3 id="boolean-algebra">Boolean algebra</h3>
+<p>$P=2^U,\leq_P$ is $\subseteq$</p>
+<p>$$
+\mu(S,T)=
+\begin{cases}
+(-1)^{|T|-|S|} &amp; S\subseteq T\newline
+0 &amp; o.w.
+\end{cases}
+$$</p>
+<ul>
+<li>$g(J)=|\bigcap_{i\in J}A_i|=\sum_{i\supseteq J}f(I)$</li>
+<li>belongs to exactly the sets $A_i,i\in J$: $f(J)=|(\bigcap_{i\in J}A_i)\backslash(\bigcup_{i\not\in J}A_i)|=\sum_{I\supseteq J}g(I)\mu(J,I)=\sum_{I\supseteq J}(-1)^{|I|-|J|}|\bigcap_{i\in I}A_i|$</li>
+<li>PIE:
+<ul>
+<li>$f(\emptyset)=|U\backslash\bigcup_iA_i|=\sum_{I\subseteq[n]}(-1)^{|I|}|\bigcap_{i\in I}A_i|$</li>
+<li>$\sum_{T\subseteq I\subseteq S}(-1)^{|S|-|I|}=0$ if $S\not=T$ else $1$, $A_1=A_2=\cdots=A_n={1}$</li>
+</ul>
+</li>
+<li>Bipartite Perfect Matching
+<ul>
+<li>$A_{i,j}=1$ if $(i,j)\in E$</li>
+<li>perm(A) = $\sum_{\pi\in S_n}\prod_{i\in[n]}A_{i,\pi(i)}$ (#P-hard)</li>
+<li>det(A) = $\sum_{\pi\in S_n}(-1)^{r(\pi)}\prod_{i\in[n]}A_{i,\pi(i)}$ (poly-time)</li>
+<li>Ryser&rsquo;s formula: $\sum_{\pi\in S_n}\prod_{i\in[n]}A_{i,\pi(i)}=\sum_{I\subseteq[n]}(-1)^{n-|I|}\prod_{i\in[n]}\sum_{j\in I}A_{i,j}$
+<ul>
+<li>$O(n!)\rightarrow O(n2^n)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="number-theory">Number Theory</h3>
+<p>$P={a&gt;0|a|n},\leq_p$ is $|$</p>
+<p>$$
+\mu(a,b)=
+\begin{cases}
+(-1)^r &amp; \frac{b}{a} \text{ is the product of }r\text{ distinct primes} \newline \newline
+0 &amp; o.w.
+\end{cases}
+$$</p>
+<ul>
+<li>number-theoretical Mobius function: $\mu(\frac{n}{d})=\mu(n,d)$
+<ul>
+<li>$\sum_{d|n}\mu(d)=[n=1]$</li>
+<li>$\phi\zeta=\text{id}$</li>
+<li>$\phi=\text{id}\mu=\sum_{d|n}\mu(d)\frac{n}{d}$</li>
+</ul>
+</li>
+<li>$g(n)=\sum_{d|n}f(d)$</li>
+<li>$f(n)=\sum_{d|n}g(d)\mu(\frac{n}{d})$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>绪论 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数值分析研究对象与特点">数值分析研究对象与特点</a></li>
+    <li><a href="#误差">误差</a></li>
+    <li><a href="#病态问题与条件数">病态问题与条件数</a></li>
+    <li><a href="#算法中需要注意的地方">算法中需要注意的地方</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="数值分析研究对象与特点">数值分析研究对象与特点</h2>
+<ul>
+<li>计算方法：在计算机上求解数学问题的理论、方法及其软件实现</li>
+<li>现代科学三个组成：科学理论，科学实验和科学计算</li>
+</ul>
+<h2 id="误差">误差</h2>
+<ul>
+<li>误差来源
+<ul>
+<li>建立数学模型：模型误差</li>
+<li>测量数据：测量误差</li>
+<li>构成数值算法：方法误差</li>
+<li>数值运行执行
+<ul>
+<li>表示数据有限：舍入误差</li>
+<li>计算机对无穷过程截断：截断误差</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>绝对误差：$|e^*|$
+<ul>
+<li>精确值：$x^*$</li>
+<li>$e^<em>=x-x^</em>$</li>
+<li>绝对误差界：$|e^<em>|&lt;\epsilon^</em>$</li>
+</ul>
+</li>
+<li>相对误差：$e_r=\frac{e^<em>}{|x^</em>|},x^*\neq0$
+<ul>
+<li>相对误差界：$e_r^<em>=\frac{\epsilon^</em>}{|x^*|}$</li>
+</ul>
+</li>
+<li>有效位数：$x=\pm 0.a_1a_2\cdots a_n\times 10^m$
+<ul>
+<li>四舍五入后绝对误差界限为被保留的数字中最后数位的半个单位：$0.5\times 10^{m-n}$</li>
+<li>有效数字：如果近似值的误差限是某一位上的半个单位，且该位置到 x 的第一位非零数字一共 n 位， 则称近似值 x 有 n 位有效数字 $0.5\times 10^{m-n-1}&lt;|x-x^*|\leq 0.5\times10^{m-n}$</li>
+<li>取 $n$ 位有效数字，则先对 $n+1$ 位四舍五入</li>
+</ul>
+</li>
+<li>误差界运算
+<ul>
+<li>$\epsilon(x_1^<em>\pm x_2^</em>)=\epsilon(x_1^<em>)+\epsilon(x_2^</em>)$</li>
+<li>$\epsilon(x_1^<em>x_2^</em>)\approx|x_1|\epsilon(x_2^<em>)+|x_2|\epsilon(x_1^</em>)$</li>
+<li>$\epsilon(\frac{x_1^<em>}{x_2^</em>})\approx\frac{|x_1|\epsilon(x_2^<em>)+|x_2|\epsilon(x_1^</em>)}{|x_2^*|^2}$</li>
+<li>$\epsilon(f(x^<em>))\approx |f'(x^</em>)|\epsilon(x^*)$
+<ul>
+<li>$f(x)-f(x^<em>)= f'(x^</em>)(x-x^<em>)+\frac{f''(\xi)}{2}(x-x^</em>)^2, \xi\in[x,x^*]$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="病态问题与条件数">病态问题与条件数</h2>
+<ul>
+<li>病态：初始数据微小扰动，导致计算结果产生很大影响（反之良态）
+<ul>
+<li>即时算法数值稳定，也无法得到好的解（采集数据就有误差）</li>
+</ul>
+</li>
+<li>计算函数值的条件数：$C_p=|\frac{f(x)-f(x^*)}{f(x)}|/|\frac{\Delta x}{x}|=\frac{xf'(x)}{f(x)}$</li>
+</ul>
+<h2 id="算法中需要注意的地方">算法中需要注意的地方</h2>
+<ul>
+<li>
+<p>使用数值稳定的算法：输入数据有误差，但在运算过程中摄入误差不增长的算法为数值稳定的</p>
+</li>
+<li>
+<p>避免绝对值远小于分子的数做分母</p>
+</li>
+<li>
+<p>避免两个绝对值很大的数相乘</p>
+</li>
+<li>
+<p>避免两个相近的数相减</p>
+<ul>
+<li>$x$ 很大时</li>
+</ul>
+<p>$$\sqrt{x+k}-\sqrt{x}-\frac{k}{\sqrt{x+k}+\sqrt{x}}$$</p>
+<ul>
+<li>$x_1,x_2$ 相近</li>
+</ul>
+<p>$$\lg x_1-\lg x_2=\lg \frac{x_1}{x_2}$$</p>
+<ul>
+<li>$f(x)\approx f(x^<em>)$ 但 $x,x^</em>$ 不接近</li>
+</ul>
+<p>$$f(x)-f(x^<em>)=f'(x^</em>)(x-x^<em>)+\frac{1}{2}f''(x-x^</em>)^2+\cdots$$</p>
+</li>
+<li>
+<p>避免大数吃小数</p>
+</li>
+<li>
+<p>简化计算步骤，减少运算次数</p>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

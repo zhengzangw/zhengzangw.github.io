@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>6. Existence by Counting | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#existence-by-counting">Existence by Counting</a></li>
+    <li><a href="#double-counting">Double Counting</a></li>
+    <li><a href="#pigeonhole-principle">Pigeonhole Principle</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="existence-by-counting">Existence by Counting</h2>
+<ul>
+<li>Shannon 1949: There is a boolean function $f:{0,1}^n\rightarrow{0,1}$ which cannot be computed by any circuit with $\frac{2^n}{3n}$ gates
+<ul>
+<li>$f$ computable by $t$ gates: $2^{2^n}$</li>
+<li>circuits with $t$ gates: $&lt;2^t(2n+t+1)^{2t}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="double-counting">Double Counting</h2>
+<ul>
+<li>Handshaking Lemma: $\sum_{v\in V}d(v)=2|E|$</li>
+<li>Sperner&rsquo;s Lemma(1928): For any properly colored trangulation, there existst a cell receiving all three colors
+<ul>
+<li>trangulation: a decompostion of $abc$ to small triangles(cells) such that any two different cells are either disjoint or share and edge of vertex</li>
+<li>proper coloring: color with 3 color that
+<ul>
+<li>$a,b,c$ has different color</li>
+<li>The vertices in each of the three lines $ab,bc,ac$ receive two colors</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Brouwer&rsquo;s fixed point theorem (1911)
+<ul>
+<li>$\forall$ continous function $f:B\rightarrow B$ of an $n$-dimensional ball, $\exists$ a fixed point $x=f(x)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="pigeonhole-principle">Pigeonhole Principle</h2>
+<ul>
+<li>General Pigeonhole Principle: If a set consisting of more than $mn$ objects is partitioned into $n$ classes, then some class receives more than $n$ objects.</li>
+<li>Inevitable divisors</li>
+<li>Monotonic subsequences</li>
+<li>Dirichlet&rsquo;s approximation: $x$ is an irrational number, $\forall n\in\mathbb{N},\exists\frac{p}{q},1\leq q\leq n$ and $|x-\frac{p}{q}|&lt;\frac{1}{nq}$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

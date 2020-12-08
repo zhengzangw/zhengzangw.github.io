@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7. Probabilistic Method | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#existence-by-probability">Existence by Probability</a>
+      <ul>
+        <li><a href="#lower-bound-for-ramseys-number">Lower Bound for Ramsey&rsquo;s Number</a></li>
+        <li><a href="#paradoxical-tournament">Paradoxical Tournament</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-averaging-principle">The Averaging principle</a>
+      <ul>
+        <li><a href="#hamilton-path-in-tournament">Hamilton Path in Tournament</a></li>
+        <li><a href="#independent-sets">Independent sets</a></li>
+        <li><a href="#coloring-large-girth-graphs">Coloring large-girth graphs</a></li>
+      </ul>
+    </li>
+    <li><a href="#lovász-local-lemma">Lovász Local Lemma</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="existence-by-probability">Existence by Probability</h2>
+<p>$$\exists x,A(x)\Leftarrow P(A(x))&gt;0$$</p>
+<p>$$\exists x,A(x)\Leftarrow P(\neg A(x))&lt;1$$</p>
+<p>$$P(A)=P(\wedge_{i=1}^n\overline{A}_i)&gt;0\Leftarrow P(\vee_{i=1}^nA_i)&lt;1\Leftarrow \sum_{i=1}^nP(A_i)$$</p>
+<h3 id="lower-bound-for-ramseys-number">Lower Bound for Ramsey&rsquo;s Number</h3>
+<ul>
+<li>$R(k,k),\forall$ two coloring of $K_n,n&gt;R(k,k),\exists$ a monochromactic $K_k$</li>
+<li>Erdős Theorem(1947): ${n\choose k}2^{1-C_k^2}&lt;1$ then it is possible to color the edges of $K_n$ with two colors so that there is no monochromatic $K_k$ subgraph</li>
+</ul>
+<h3 id="paradoxical-tournament">Paradoxical Tournament</h3>
+<ul>
+<li>orientation of the edges of the complete graph on set of vertices $V$</li>
+<li>$k$-paradoxical: $\forall V, |V|=k,\exists v$ beats them all</li>
+<li>Theorem (Erdős 1963): if ${n\choose k}(1-2^{-k})^{n-k}&lt;1$, there is a tournament on $n$ vertices that is $k$-paradoxical</li>
+</ul>
+<h2 id="the-averaging-principle">The Averaging principle</h2>
+<p>$$\exists x,A(x)\geq t\Leftarrow E(x)\geq t$$</p>
+<h3 id="hamilton-path-in-tournament">Hamilton Path in Tournament</h3>
+<ul>
+<li>Theorem (Szele 1943): There is a tournament on $n$ players with at least $n!2^{-(n-1)}$ Hamiltonian paths</li>
+</ul>
+<h3 id="independent-sets">Independent sets</h3>
+<ul>
+<li>independent set: a set of vertices with no edges between them</li>
+<li>Theorem: $G$ has an independent set with at least $\frac{n^2}{4m}$ vertices</li>
+</ul>
+<h3 id="coloring-large-girth-graphs">Coloring large-girth graphs</h3>
+<ul>
+<li>$G(n,p)$: graph of $n$ vertices and each edge occurs at probability $p$</li>
+<li>girth: $g(G)$ is the length of the shortest cycle in $G$</li>
+<li>$\chi(G)=\min(C\in\mathbb{N}|\exists :V\rightarrow [C],\forall uv\in E,f(u)\neq f(v))$</li>
+<li>Independent number: $\alpha(G)=\max{|S||S\subseteq V \text{ and }\forall u,v\in S,uv\not\in E}$</li>
+<li>Lemma: $\chi(G)\geq\frac{n}{\alpha(G)}$</li>
+<li>Theorem (Erdős 1959): $\forall k,\ell,\exists G,g(G)&gt;\ell,\chi(G)&gt;k$</li>
+</ul>
+<h2 id="lovász-local-lemma">Lovász Local Lemma</h2>
+<p>Consider a set of &ldquo;bad&rdquo; events $A_1,A_2,\cdots,A_n$, suppose $P(A_i)\leq p,1\leq i\leq n$</p>
+<ul>
+<li>Mutually independent events: $P(\wedge_{i=1}^n\overline{A_i})\geq(1-p)^n$</li>
+<li>Arbirarily dependent events: $P(\wedge_{i=1}^n\overline{A_i})=1-P(\vee_{i=1}^n)\geq 1-np$</li>
+<li>dependency graph: $D(V,E)$
+<ul>
+<li>$ij\in E\iff A_i$ and $A_j$ are dependent</li>
+<li>$d=\max{\deg(i)}$</li>
+</ul>
+</li>
+<li>Lovasz Local Lemma
+<ul>
+<li>$\forall i,P(A_i)\leq p$</li>
+<li>$ep(d+1)\leq 1$ or $4dp\leq 1$</li>
+<li>Then $P(\wedge_{i=1}^n\overline{A}_i)&gt;0$</li>
+</ul>
+</li>
+<li>General Lovasz Local Lemma
+<ul>
+<li>$\exists x_1,\cdots,x_n\in [0,1),\forall i, P(A_i)\leq x_i\prod_{(j,i)\in E}(1-x_j)$</li>
+<li>Then $P(\wedge_{i=1}^n\overline{A}_i)\geq \prod_{i=1}^n(1-x_i)$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

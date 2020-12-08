@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Macos Shortcut | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#iterm2">Iterm2</a></li>
+    <li><a href="#vim">Vim</a>
+      <ul>
+        <li><a href="#命令">命令</a></li>
+        <li><a href="#文字处理">文字处理</a></li>
+        <li><a href="#替换">替换</a></li>
+        <li><a href="#设置">设置</a></li>
+        <li><a href="#其它">其它</a></li>
+      </ul>
+    </li>
+    <li><a href="#vscode">Vscode</a>
+      <ul>
+        <li><a href="#导航">导航</a></li>
+        <li><a href="#显示">显示</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#normal模式快捷键">Normal模式快捷键</a></li>
+    <li><a href="#命令-1">命令</a>
+      <ul>
+        <li><a href="#帮助文档">帮助文档</a></li>
+        <li><a href="#jupyter-magic">Jupyter Magic</a></li>
+        <li><a href="#shell-命令">Shell 命令</a></li>
+        <li><a href="#latexmarkdown单元">LaTex(Markdown单元)</a></li>
+      </ul>
+    </li>
+    <li><a href="#内核">内核</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="快捷键">快捷键</h1>
+<h2 id="iterm2">Iterm2</h2>
+<ul>
+<li>⌘; 历史命令</li>
+<li>⌘⇧h 剪贴板历史</li>
+<li>⌃u 清行</li>
+<li>⌃a 行首</li>
+<li>⌃e 行尾</li>
+<li>⌃f 前进</li>
+<li>⌃b 后退</li>
+<li>⌃p 上一条命令</li>
+<li>⌃r 搜索历史</li>
+<li>⌃d 删除当前字符</li>
+<li>⌃h 删除光标前字符</li>
+<li>⌃w 删除光标前单次</li>
+<li>⌃k 删除到文末</li>
+<li>⌃t 交换光标出文本</li>
+<li>⌘r 清屏</li>
+</ul>
+<h2 id="vim">Vim</h2>
+<h3 id="命令">命令</h3>
+<ul>
+<li>:open file</li>
+<li>:split file</li>
+<li>:bn 下一个文件</li>
+<li>:bp 上一个文件</li>
+<li>:args 文件列表</li>
+<li>:q! 强制退出并忽略所有更改</li>
+<li>:e! 放弃所有修改，并打开原来文件。</li>
+<li>:close 最后一个窗口不能使用此命令，可以防止意外退出vim。</li>
+<li>:q 如果是最后一个被关闭的窗口，那么将退出vim。</li>
+<li>:only 关闭所有窗口，只保留当前窗口</li>
+<li>:wq 保存并退出</li>
+<li>% 括号匹配</li>
+<li>i 当前插入 a 当前后插入</li>
+<li>I 当前首插入 A 当前尾插入</li>
+<li>o 当前行后插入 O 当前行前插入</li>
+<li>/text 查找  ?test 反向查找</li>
+<li>将光标移动到词上，按*或#键搜索该词一正一反。</li>
+<li>n 下一个 N 上一个</li>
+<li>转义 .*[]^%/?~$</li>
+<li>⌃e 向下滚动一行</li>
+<li>⌃y 向上滚动一行</li>
+<li>⌃d 向下滚动半屏</li>
+<li>⌃u 向上滚动半屏</li>
+<li>⌃f 向下滚动一屏</li>
+<li>⌃b 向上滚动一屏</li>
+<li>u 撤销 U 撤销对整行的操作</li>
+<li>⌃r 重做</li>
+<li>ZZ 保存并退出</li>
+</ul>
+<h3 id="文字处理">文字处理</h3>
+<ul>
+<li>x 删除 dl</li>
+<li>X 删除前一个 dh</li>
+<li>dd</li>
+<li>dj 上一行</li>
+<li>dk 下一行</li>
+<li>D = d$</li>
+<li>J 删除两行间空行</li>
+<li>:1,10d 删除1-10行</li>
+<li>:11,$d 删除11行及以后所有的行</li>
+<li>:1,$d 删除所有行</li>
+<li>yy 拷贝当前行</li>
+<li>p  在当前光标后粘贴,如果之前使用了yy命令来复制一行，那么就在当前行的下一行粘贴。</li>
+<li>⇧p 在当前行前粘贴</li>
+<li>正常模式下按v（逐字）或V（逐行）进入可视模式，然后用jklh命令移动即可选择某些行或字符，再按d即可剪切</li>
+</ul>
+<h3 id="替换">替换</h3>
+<ul>
+<li>:s/old/new/ 用old替换new，替换当前行的第一个匹配</li>
+<li>:s/old/new/g 用old替换new，替换当前行的所有匹配</li>
+<li>:10,20 s/^/    /g 在第10行知第20行每行前面加四个空格，用于缩进。</li>
+<li>kjhl</li>
+<li>w前 e前尾</li>
+<li>b后</li>
+<li>^首非空</li>
+<li>0本行第一个字符</li>
+<li>$行尾</li>
+<li>gg [[移动到头</li>
+<li>G ]</li>
+<li>fx 光标后第一个</li>
+<li>F 反向</li>
+<li>:num</li>
+</ul>
+<h3 id="设置">设置</h3>
+<ul>
+<li>:set ignorecase　　忽略大小写的查找</li>
+<li>:set noignorecase　　不忽略大小写的查找</li>
+<li>:set hlsearch　　高亮搜索结果，所有结果都高亮显示，而不是只显示一个匹配。</li>
+<li>:set nohlsearch　　关闭高亮搜索显示</li>
+<li>:nohlsearch　　关闭当前的高亮显示，如果再次搜索或者按下n或N键，则会再次高亮。</li>
+<li>:set incsearch　　逐步搜索模式，对当前键入的字符进行搜索而不必等待键入完成。</li>
+<li>:set wrapscan　　重新搜索，在搜索到文件头或尾时，返回继续搜索，默认开启。</li>
+</ul>
+<h3 id="其它">其它</h3>
+<ul>
+<li>:!⌘ SHELL 命令</li>
+<li>:3,5 s/^/#/g 注释第3-5行</li>
+<li>:3,5 s/^#//g 解除3-5行的注释</li>
+<li>:1,$ s/^/#/g 注释整个文档。</li>
+<li>:%s/^/#/g 注释整个文档，此法更快。</li>
+<li>:syntax 列出已经定义的语法项</li>
+<li>:help or F1 显示整个帮助</li>
+</ul>
+<h2 id="vscode">Vscode</h2>
+<ul>
+<li>⌘⇧P / F1  显示命令面板</li>
+<li>⌘P 快速打开</li>
+<li>⌘⇧N 打开新窗口</li>
+<li>⌘X 剪切（未选中文本的情况下，剪切光标所在行）</li>
+<li>⌥Up 向上移动行</li>
+<li>⌘⇧Up 向上复制行</li>
+<li>⌘⇧K 删除行</li>
+<li>⌘Enter 下一行插入</li>
+<li>⌘⇧Enter 上一行插入</li>
+<li>⌘⇧\ 跳转到匹配的括号</li>
+<li>⌘[ 减少缩进</li>
+<li>⌘] 增加缩进</li>
+<li>⌘Up 跳转至文件开头</li>
+<li>⌘Down 跳转至文件结尾</li>
+<li>⌘⌘[ 折叠代码块</li>
+<li>⌘⇧] 展开代码块</li>
+<li>⌘K ⌘[ 折叠全部子代码块</li>
+<li>⌘K ⌘] 展开全部子代码块</li>
+<li>⌘K ⌘0 折叠全部代码块</li>
+<li>⌘K ⌘J 展开全部代码块</li>
+<li>⌘K ⌘C 添加行注释</li>
+<li>⌘K ⌘U 移除行注释</li>
+<li>⌘/ 添加、移除行注释</li>
+<li>⌘⌥A 添加、移除块注释</li>
+<li>⌥Z 自动换行、取消自动换行</li>
+<li>⌥点击 插入多个光标</li>
+<li>⌘⌥Up  向上插入光标</li>
+<li>⌘⌥Down  向下插入光标</li>
+<li>⌘U 撤销上一个光标操作</li>
+<li>⌥⇧I 在所选行的行尾插入光标</li>
+<li>⌘I 选中当前行</li>
+<li>⌘⇧L 选中所有与当前选中内容相同部分</li>
+<li>⌘F2 选中所有与当前选中单词相同的单词</li>
+<li>⌘⌥⇧Left 折叠选中</li>
+<li>⌘⌃⇧Right 展开选中</li>
+<li>⌥⇧拖动鼠标 选中代码块</li>
+<li>⌘⇧⌥Up 列选择 向上</li>
+<li>⌘⇧⌥Down 列选择 向下</li>
+<li>⌘⇧⌥Left 列选择 向左</li>
+<li>⌘⇧⌥Right 列选择 向右</li>
+<li>⌘F 查找</li>
+<li>⌘⌥F 替换</li>
+<li>⌘G 查找下一个</li>
+<li>⌘⇧G 查找上一个</li>
+<li>⌥Enter 选中所有匹配项</li>
+<li>⌘D 向下选中相同内容</li>
+<li>⌘K  ⌘D 移除前一个向下选中相同内容</li>
+<li>⌃Space 打开建议</li>
+<li>⌘⇧Space 参数提示</li>
+<li>Tab Emmet插件缩写补全</li>
+<li>⌥⇧F 格式化</li>
+<li>⌘K ⌘F 格式化选中内容</li>
+<li>F12 跳转到声明位置</li>
+<li>⌥F12 查看具体声明内容</li>
+<li>⌘KF12  分屏查看具体声明内容</li>
+<li>⌘. 快速修复</li>
+<li>⇧F12 显示引用</li>
+<li>F2 重命名符号</li>
+<li>⌘⇧. 替换为上一个值</li>
+<li>⌘⇧, 替换为下一个值</li>
+<li>⌘K ⌘X 删除行尾多余空格</li>
+<li>⌘K M 更改文件语言</li>
+</ul>
+<h3 id="导航">导航</h3>
+<ul>
+<li>⌘T 显示所有符号</li>
+<li>⌃G 跳转至某行</li>
+<li>⌘P 跳转到某个文件</li>
+<li>⌘⇧O 跳转到某个符号</li>
+<li>⌘⇧M 打开问题面板</li>
+<li>F8 下一个错误或警告位置</li>
+<li>⇧F8 上一个错误或警告位置</li>
+<li>⌃⇧Tab 编辑器历史记录</li>
+<li>⌃- 后退</li>
+<li>⌃⇧- 前进</li>
+<li>⌃⇧M Tab 切换焦点</li>
+<li>⌘W 关闭编辑器</li>
+<li>⌘K  F 关闭文件夹</li>
+<li>⌘\  编辑器分屏</li>
+<li>⌘1 切换到第一分组</li>
+<li>⌘2 切换到第二分组</li>
+<li>⌘3  切换到第三分组</li>
+<li>⌘K  ⌘Left 切换到上一分组</li>
+<li>⌘K  ⌘Right 切换到下一分组</li>
+<li>⌘K  ⌘⇧Left 左移编辑器</li>
+<li>⌘K ⌘⇧Right 右移编辑器</li>
+<li>⌘K Left 激活左侧编辑组</li>
+<li>⌘K Right 激活右侧编辑组</li>
+<li>⌘⌥+S 全部保存</li>
+<li>⌘K ⌘W 全部关闭</li>
+<li>⌘⇧T 重新打开被关闭的编辑器</li>
+<li>⌘K  Enter 保持打开</li>
+<li>⌃Tab 打开下一个</li>
+<li>⌃⇧Tab 打开上一个</li>
+<li>⌘K  P 复制当前文件路径</li>
+<li>⌘K  R 在资源管理器中查看当前文件</li>
+<li>⌘K  O 新窗口打开当前文件</li>
+</ul>
+<h3 id="显示">显示</h3>
+<ul>
+<li>⌘⌃F 全屏、退出全屏</li>
+<li>⌘⌥1 切换编辑器分屏方式（横、竖）</li>
+<li>⌘+ 放大</li>
+<li>⌘- 缩小</li>
+<li>⌘B 显示、隐藏侧边栏</li>
+<li>⌘⇧E 显示资源管理器 或 切换焦点</li>
+<li>⌘⇧F 显示搜索框</li>
+<li>⌃⇧G 显示Git面板</li>
+<li>⌘⇧D 显示调试面板</li>
+<li>⌘⇧X 显示插件面板</li>
+<li>⌘⇧H 全局搜索替换</li>
+<li>⌘⇧J 显示、隐藏高级搜索</li>
+<li>⌘⇧C 打开新终端</li>
+<li>⌘⇧U 显示输出面板</li>
+<li>⌘⇧V Markdown预览窗口</li>
+<li>⌘K V 分屏显示 Markdown预览窗口</li>
+<li>F9 设置 或 取消断点</li>
+<li>F5 开始 或 继续</li>
+<li>F11 进入</li>
+<li>⇧F11 跳出</li>
+<li>F10 跳过</li>
+<li>⌘K ⌘I 显示悬停信息</li>
+<li>⌃` 显示终端</li>
+<li>⌃⇧` 新建终端</li>
+<li>⌘Up 向上滚动</li>
+<li>⌘Down 向下滚动</li>
+<li>PgUp 向上翻页</li>
+<li>PgDown 向下翻页</li>
+<li>⌘Home 滚动到顶部</li>
+<li>⌘End 滚动到底部</li>
+</ul>
+<h1 id="jupyter-notebook">Jupyter Notebook</h1>
+<h2 id="normal模式快捷键">Normal模式快捷键</h2>
+<ul>
+<li>Cmd + Shift + P 命令面板</li>
+<li>f 查找</li>
+<li>o cell与输出结果间切换</li>
+<li>Shift + J 上一个</li>
+<li>Shift + K 下一个</li>
+<li>Shift + M 合并cell</li>
+<li>x 删除 dd</li>
+<li>a 上面插入</li>
+<li>b 在下方插入新单元</li>
+<li>M 单元转入markdown状态</li>
+<li>Y 单元转入代码状态</li>
+<li>Shift +V 在上方粘贴单元</li>
+<li>Shift Enter 执行当前cell，并自动跳到下一个cell</li>
+<li>Ctrl-Enter  执行当前cell，执行后不自动调转到下一个cell</li>
+<li>L 加入line number</li>
+<li>1 将当前的cell转化为具有一级标题的maskdown</li>
+<li>2 将当前的cell转化为具有二级标题的maskdown2</li>
+<li>Crtl / 为一行或者多行添加/取消注释：</li>
+<li>z 撤销对某个cell的删除</li>
+</ul>
+<h2 id="命令-1">命令</h2>
+<h3 id="帮助文档">帮助文档</h3>
+<p>?str.replace() 链接文档</p>
+<h3 id="jupyter-magic">Jupyter Magic</h3>
+<ul>
+<li>%env 设置环境变量</li>
+<li>%run 运行python代码</li>
+<li>%load 插入代码</li>
+<li>%store 在notebook文件之间传递变量</li>
+<li>%who 列出所有的全局变量</li>
+<li>%%time</li>
+<li>%%timeit 使用了Python的 timeit 模块，该模块运行某语句100，000次（默认值），然后提供最快的3次的平均值作为结果。</li>
+<li>%%writefile 导出cell内容</li>
+<li>%pycat 显示外部内容</li>
+<li>%prun 程序中每个函数消耗的时间</li>
+<li>%pdb 调试程序</li>
+</ul>
+<h3 id="shell-命令">Shell 命令</h3>
+<ul>
+<li>!ls *.csv</li>
+</ul>
+<h3 id="latexmarkdown单元">LaTex(Markdown单元)</h3>
+<p>$$ P(A \mid B) = \frac{P(B \mid A) , P(A)}{P(B)} $$</p>
+<h2 id="内核">内核</h2>
+<p>在每个单元格的起始，用Jupyter magics调用kernal的名称：</p>
+<ul>
+<li>%%bash</li>
+<li>%%HTML</li>
+<li>%%python2</li>
+<li>%%python3</li>
+<li>%%ruby</li>
+<li>%%perl</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

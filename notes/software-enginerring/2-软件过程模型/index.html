@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2-软件过程模型 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#经典软件工程方法">经典软件工程方法</a></li>
+    <li><a href="#software-process">software process</a>
+      <ul>
+        <li><a href="#waterfall-model">waterfall model</a></li>
+        <li><a href="#evolution-tree-life-cycle-model">evolution-tree life-cycle model</a></li>
+        <li><a href="#iterative-and-incremental-process-models">Iterative-and-incremental Process Models</a></li>
+        <li><a href="#generic-process-framework">generic process framework</a></li>
+      </ul>
+    </li>
+    <li><a href="#software-life-cycle-model">software life-cycle model</a>
+      <ul>
+        <li><a href="#code-and-fix-life-cycle-model">Code-and-Fix life-cycle model</a></li>
+        <li><a href="#waterfall-life-cycle-model">waterfall life-cycle model</a></li>
+        <li><a href="#rapid-prototyping-life-cycle-model">Rapid-prototyping life-cycle model</a></li>
+        <li><a href="#v-model">V-model</a></li>
+        <li><a href="#spiral-life-cycle-model">Spiral life-cycle model</a></li>
+        <li><a href="#full-spiral-life-cycle-model">Full spiral life-cycle model</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="经典软件工程方法">经典软件工程方法</h2>
+<p>问题定义 -&gt; 需求 -&gt; 分析 -&gt; 设计 -&gt; 编码 -&gt; 测试 -&gt; 维护</p>
+<h2 id="software-process">software process</h2>
+<ul>
+<li>the way we produce software, 以人为主体
+<ul>
+<li>evolution model</li>
+<li>waterfall model</li>
+<li>Iterative-and-incremental Process Models</li>
+</ul>
+</li>
+</ul>
+<h3 id="waterfall-model">waterfall model</h3>
+<p><img src="/images/content/SE_1.png" alt="waterfall model"></p>
+<h3 id="evolution-tree-life-cycle-model">evolution-tree life-cycle model</h3>
+<p>at the end of each episode we have a baseline: a complete set of artifacts</p>
+<p>artifact: a constituent component of a software product</p>
+<h3 id="iterative-and-incremental-process-models">Iterative-and-incremental Process Models</h3>
+<ul>
+<li>Incrementation(增量): 指对于产品的功能上、模块上的增加</li>
+<li>Iteration(迭代): 指增量部分仍然使用相同的流程来开发</li>
+</ul>
+<p><img src="/images/content/SE_0.png" alt="superimposing of evolution-tree and incremental"></p>
+<h3 id="generic-process-framework">generic process framework</h3>
+<p><img src="/images/content/SE_2.png" alt="generic process framework"></p>
+<ul>
+<li>framework activities
+<ul>
+<li>Communication</li>
+<li>Planning</li>
+<li>Modeling</li>
+<li>Construction</li>
+<li>Deployment</li>
+</ul>
+</li>
+<li>umbrella activities：普适性活动，是所有框架性活动都会涉及到的
+<ul>
+<li>project tracking and control</li>
+<li>risk management</li>
+<li>quality assurance</li>
+<li>configuration management</li>
+<li>technical reviews</li>
+</ul>
+</li>
+</ul>
+<h2 id="software-life-cycle-model">software life-cycle model</h2>
+<ul>
+<li>a description of the steps that should be performed when building a software product，从软件自身来看</li>
+<li>core workflows in life-cycles
+<ul>
+<li>Requirements workflow</li>
+<li>Analysis workflow</li>
+<li>Design workflow</li>
+<li>Implementation workflow</li>
+<li>Test workflow</li>
+</ul>
+</li>
+</ul>
+<h3 id="code-and-fix-life-cycle-model">Code-and-Fix life-cycle model</h3>
+<p><img src="/images/content/SE_3.png" alt="code-and-fix"></p>
+<h3 id="waterfall-life-cycle-model">waterfall life-cycle model</h3>
+<p>or classic life cycle</p>
+<p><img src="/images/content/SE_4.png" alt="waterfall"></p>
+<ul>
+<li>Communication - Planning - Modeling - Construction - Deployment</li>
+</ul>
+<h3 id="rapid-prototyping-life-cycle-model">Rapid-prototyping life-cycle model</h3>
+<p><img src="/images/content/SE_6.png" alt="Rapid-prototyping"></p>
+<h3 id="v-model">V-model</h3>
+<p><img src="/images/content/SE_5.png" alt="V-model"></p>
+<h3 id="spiral-life-cycle-model">Spiral life-cycle model</h3>
+<p>Spiral model ≈ Prototyping model + waterfall model</p>
+<p><img src="/images/content/SE_7.png" alt="Spiral"></p>
+<h3 id="full-spiral-life-cycle-model">Full spiral life-cycle model</h3>
+<p><img src="/images/content/SE_8.png" alt="Full Spiral"></p>
+</main>
+        </div>
+
+    </div>
+</body></html>

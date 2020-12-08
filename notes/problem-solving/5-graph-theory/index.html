@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5-图论 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#digraph">Digraph</a></li>
+      </ul>
+    </li>
+    <li><a href="#isomorphism">Isomorphism</a></li>
+    <li><a href="#trees">Trees</a></li>
+    <li><a href="#degrees">Degrees</a></li>
+    <li><a href="#connectivity">Connectivity</a>
+      <ul>
+        <li><a href="#vertex">Vertex</a></li>
+        <li><a href="#edge">Edge</a></li>
+        <li><a href="#mengers-theorem">Menger&rsquo;s Theorem</a></li>
+      </ul>
+    </li>
+    <li><a href="#traversability">Traversability</a></li>
+    <li><a href="#search">Search</a></li>
+    <li><a href="#distance">Distance</a></li>
+    <li><a href="#shortest-path">Shortest Path</a></li>
+    <li><a href="#matching">Matching</a></li>
+    <li><a href="#flow">Flow</a></li>
+    <li><a href="#factorization">Factorization</a></li>
+    <li><a href="#decomposition">Decomposition</a></li>
+    <li><a href="#embedding">Embedding</a>
+      <ul>
+        <li><a href="#plane">Plane</a></li>
+        <li><a href="#surface">Surface</a></li>
+        <li><a href="#minor">Minor</a></li>
+      </ul>
+    </li>
+    <li><a href="#coloring">Coloring</a></li>
+    <li><a href="#ramsey-numbers">Ramsey Numbers</a></li>
+    <li><a href="#domination">Domination</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="introduction">Introduction</h2>
+<ul>
+<li>Graph $G=(V,E)$
+<ul>
+<li>order $|V|$</li>
+</ul>
+</li>
+<li>incident $u\sim v$: u and v are neighbors
+<ul>
+<li>walk $W = (u=v_0, v_1, \dots, v_k = v)$
+<ul>
+<li>open walk: $u\neq v$</li>
+<li>closed walk: $u=v$</li>
+</ul>
+</li>
+<li>trail: $u$-$v$ walk in which no edge is traversed more than once</li>
+<li>circuit: a closed trial of length 3 or more</li>
+<li>path: $u$-$v$ walk in which no vertices are repeated</li>
+<li>cycle: a circuit that repeats no vertex, except for the first and last</li>
+</ul>
+</li>
+<li>connected: $\exists$ $u$-$v$ path
+<ul>
+<li>distance $d(u,v)$: exists smallest $u$-$v$ path $P=(u=v_0,\dots,v_k=v)$</li>
+<li>geodesic $u$-$v$ of length $d(u,v)$</li>
+<li>diamemter $\text{diam}(G)=\max_{u,v}(d(u,v))$</li>
+</ul>
+</li>
+<li>subgraph
+<ul>
+<li>proper $G'=(V',E'),V'\subsetneq V$ or $E'\subsetneq E$</li>
+<li>spanning $G'=(V,E'),E'\subseteq E$</li>
+<li>induced $G'=(V',E')$: $\forall u,v\in V',$ if $uv\in E$, then $uv\in E'$</li>
+<li>edge-induced</li>
+<li>component: 最大连通子图</li>
+</ul>
+</li>
+<li>Common Graphs
+<ul>
+<li>trivial graph: $|V|=1$</li>
+<li>$P_n$ : path (graph)</li>
+<li>$C_n$: circle (graph)</li>
+<li>$K_n$ : complete graph</li>
+<li>bipartite graph: contains no odd cycle
+<ul>
+<li>$K_{s,t}$: complete bipartite graph</li>
+<li>$K_{1,t}$ or $K_{s,1}$: star</li>
+</ul>
+</li>
+<li>k-partite graph
+<ul>
+<li>$K_{i_1,\dots,i_k}$: complete k-partite graph</li>
+</ul>
+</li>
+<li>n-cubes (hypercubes): $Q_n = Q_{n-1} \times K_2$, $Q_1 = K_2$</li>
+</ul>
+</li>
+<li>Operation
+<ul>
+<li>Complement: $\overline{G}=(V,K_n-E)$</li>
+<li>Union: $G_1 \cup G_2=(V_1\cup V_2,E_1\cup E_2)$</li>
+<li>Join: $G+H=(V_1\cup V_2, E_1\cup E_2\cup (V_1\times V_2))$</li>
+<li>Cartesian product $G\times H=(V(G)\times V(H),E'),((u,v),(x,y))\in E'$ if $u=x,vy\in E(H)$ or $v=y,ux\in E$</li>
+</ul>
+</li>
+<li>multigraph: $E$ is a multiset
+<ul>
+<li>parallel edges: join the same pair of vertices</li>
+</ul>
+</li>
+<li>pseudograph: $(u,u)\in E$</li>
+<li>oriented graph: if $(u,v)\in E$, $(v,u)\notin E$
+<ul>
+<li>oritentation of G</li>
+</ul>
+</li>
+<li><strong>Storage</strong>
+<ul>
+<li>adjacent matrix</li>
+<li>edge set（可以链式前向星实现）</li>
+</ul>
+</li>
+</ul>
+<h3 id="digraph">Digraph</h3>
+<ul>
+<li>digraph (directed graph): $(v,u)\neq (u,v)$</li>
+<li>$(u,v)$: $u$ adjacent to $v$, $v$ adjacent from $u$</li>
+<li>symmetric: $(u,v)\in E\iff(v,u)\in E$</li>
+<li>underlying graph: replace direction and parallel edges</li>
+<li>tournament: orientation of complete graph
+<ul>
+<li>transitive: $(u,v),(v,w)\in T,(u,w)\in T$</li>
+<li>every tournament contains a Hamiltonian path</li>
+<li>Hamiltonian iff strong</li>
+</ul>
+</li>
+<li>weakly connected: underlying graph is connected</li>
+<li>strongly connected: $\forall u,v,\exists P$ from $u$ to $v$ and vice versa
+<ul>
+<li>strongly connected component (SCC)</li>
+</ul>
+</li>
+<li>Semiconnected Digraph: $u\sim v$ or $v\sim u$
+<ul>
+<li>Toposort + edges $(v_i,v_{i+1})$ exsits</li>
+</ul>
+</li>
+</ul>
+<h2 id="isomorphism">Isomorphism</h2>
+<ul>
+<li>isomorphic $G\cong H$: $\exists$ 1-1 $\phi:V(G)\rightarrow V(H)$ such that $uv\in E(G)\Rightarrow\phi(u)\phi(v)\in E(H)$
+<ul>
+<li>self-complementary: $G \cong \overline G$</li>
+<li>isomorphism is an equivalence relation of the set of all graphs</li>
+</ul>
+</li>
+<li>automorphism: isomorphism from $G$ to $G$</li>
+<li>$\text{Aut}(H)$: automorphism group of $G$ (under composition)
+<ul>
+<li>$u$ and $v$ are similar: they are in same orbit</li>
+<li>vertex-transitive: $G$ contains a single orbit</li>
+</ul>
+</li>
+<li><strong><em>Frucht&rsquo;s Theorem</em></strong>: For every finite group $A$, there exists a graph $G$ such that $\text{Aut}(G)$ is isomorphic to $A$</li>
+<li>recognizable: a parameter of $G$ can be determined from $G-v,v\in V(G)$
+<ul>
+<li>$|V|$</li>
+<li>$|E|$ for $|V|\geq3$</li>
+<li>degree sequence for $|V|\geq 3$</li>
+</ul>
+</li>
+<li>reconstructible: $G$ can be uniquely determined (up to isomorphism) from subgraphs $G-v_i$
+<ul>
+<li>Reconstruction Conjecture: $G$ is reconstructible for $|V|\geq 3$</li>
+</ul>
+</li>
+</ul>
+<h2 id="trees">Trees</h2>
+<ul>
+<li>bridge $e$: $G$ is connected, $G-{e}$ is disconnected
+<ul>
+<li>bridge $\iff$ $!\exists n, C_n\subseteq G, e\in C_n$</li>
+<li>nontrivial connected graph has a strong orientation $\iff$ no bridges in $G$</li>
+</ul>
+</li>
+<li>acyclic graph(forests): $!\exists n,C_n\subseteq G$</li>
+<li>tree: acyclic graph + connected</li>
+<li>spanning tree of G
+<ul>
+<li>cycle property</li>
+<li>cut property</li>
+<li>weight: $w(H)=sum_{e\in E(H)}w(e)$</li>
+</ul>
+</li>
+<li><strong>Kruskal&rsquo;s Algorithm</strong>: $O(E\lg V)$</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sort G<span style="color:#f92672">.</span>E <span style="color:#75715e"># into nondecreasing order by weight</span>
+<span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> E:
+  <span style="color:#66d9ef">if</span> find_set(u) <span style="color:#f92672">!=</span> find_set(v):
+     ans <span style="color:#f92672">+=</span> {u,v}
+     merge(u,v)
+</code></pre></div><ul>
+<li><strong>Prim&rsquo;s Algorithm</strong>: $O(E + V\lg V)$</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> u <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>V:
+  u<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> inf
+  u<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> NIL
+s<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+Q <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>V
+<span style="color:#66d9ef">while</span> Q:
+  u <span style="color:#f92672">=</span> Extract_Min(Q)
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
+    <span style="color:#66d9ef">if</span> v <span style="color:#f92672">in</span> Q <span style="color:#f92672">and</span> w(u,v) <span style="color:#f92672">&lt;</span> v<span style="color:#f92672">.</span>key:
+      v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
+      v<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> w(u,v)
+</code></pre></div><ul>
+<li><strong><em>Carley&rsquo;s Theorem</em></strong>: the spanning tree of $K_n$ of order n is $n^{n-2}$</li>
+<li><strong><em>Matrix Tree Theorem</em></strong>: The spanning tree of an arbitrary graph is any cofactor of matrix</li>
+</ul>
+<p>$$
+C=\left[\begin{matrix}
+\deg v_1 &amp; -a_{12} &amp; &hellip; &amp; -a_{1n}\newline
+-a_{21} &amp; \deg v_2 &amp; &hellip; &amp; -a_{2n}\newline
+\vdots &amp; \vdots &amp; \ldots &amp; \vdots\newline
+-a_{n1} &amp; -a_{n2} &amp; &hellip; &amp; \deg v_n
+\end{matrix}\right]
+$$</p>
+<h2 id="degrees">Degrees</h2>
+<ul>
+<li>$\deg v=|{u:u\sim v}|=N(v)$
+<ul>
+<li>isolated vertex: $\deg v=0$</li>
+<li>end-vertex(leaf): $\deg v=1$</li>
+</ul>
+</li>
+<li>$\delta(G)=\min_{v\in G}(\deg v)$</li>
+<li>$\Delta(G)=\max_{v\in G}(\deg v)$</li>
+<li><strong><em>The First Theorem of Graph Theory</em></strong>: $\sum_{v\in V(G)} deg(v) = 2|E|$</li>
+<li>$r$-regular graph: $\delta(G) = \Delta(G) = r$
+<ul>
+<li>$r$-regular graph of order $n$ exists iff at least one of $r$ and $n$ is even ($H_{r,n}$: Harary graphs)</li>
+<li>cubic graph(3-regular graph): $K_4, K_{3,3}, Q_3$, Petersen graph</li>
+</ul>
+</li>
+<li>degree sequence: non-increasing</li>
+<li>graphical: finite and can be a degree sequence</li>
+<li><strong><em>Havel-Hakimi Theorem</em></strong>: non-increaing sequence $s:d_1,d_2,&hellip;,d_n$ where $d_1\geq 1$ is graphical iff $s_1:d_2-1,d_3-1,&hellip;,d_{d_1+1}-1,d_{d_1+2},&hellip;,d_n$ is graphical.</li>
+<li>irregular graph: $\forall u,v\in V,\deg u\neq \deg v$
+<ul>
+<li><strong><em>The Party Theorem</em></strong>: At any party, there is a pair of people who have the same number of friends present</li>
+<li>No nontrivial graph is irregular</li>
+</ul>
+</li>
+<li>$F$-degree of $v$: number of copies of $F$ in $G$ contain $v$
+<ul>
+<li>$G$ contain $m$ copies of $F$, then $\sum_{u\in V(G)}\deg_F v =km$</li>
+<li>$F$-(ir)regular</li>
+</ul>
+</li>
+<li>adjacency matrix $A$: $V\times V$</li>
+<li>incidence matrix $B$: $V\times B$</li>
+</ul>
+<h2 id="connectivity">Connectivity</h2>
+<h3 id="vertex">Vertex</h3>
+<ul>
+<li>cut-vertex: $G$ is connected and $G-{v}$ is disconnected</li>
+<li>nonseparable graph (biconnected): a nontrivial connected graph with no cut-vertices</li>
+<li>block (bicomponent)
+<ul>
+<li>maximal nonseparable subgraph of $G$</li>
+<li>equivalence class defined by $R, e R f$ if $e,f$ lie on a common cycle</li>
+</ul>
+</li>
+<li>vertex-cut: a set $U$ of vertices of $G$ such that $G-U$ is disconnected
+<ul>
+<li>minimum vertex-cut</li>
+</ul>
+</li>
+<li>vertex-connectivity: $\kappa(G)=\min|U|,G-U$ disconnected
+<ul>
+<li>equals $\max_{u\sim v}|{\text{disjoint u-v path}}|$</li>
+<li>$k$-connected: $\kappa(G)\geq k$</li>
+<li>$2$-connected: no vertex-cut</li>
+</ul>
+</li>
+</ul>
+<h3 id="edge">Edge</h3>
+<ul>
+<li>edge-cut: $G$ is connected and $G-{e}$ is disconnected
+<ul>
+<li>minimum edge-cut</li>
+</ul>
+</li>
+<li>edge-connectivity: $\lambda(G)$
+<ul>
+<li>$k$-edge-connected</li>
+</ul>
+</li>
+<li>$\kappa(G)\leq\lambda(G)\leq\delta(G)$
+<ul>
+<li>cubic graph: $\kappa(G)=\lambda(G)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="mengers-theorem">Menger&rsquo;s Theorem</h3>
+<ul>
+<li>$u$-$v$ separating set $S$: $u\not\sim v$ and belong to seperate components of $G-S$
+<ul>
+<li>minimum $u$-$v$ separating set</li>
+</ul>
+</li>
+<li>internal vertex of $u$-$v$ path $P$: $w\in P,w\neq v,w\neq u$</li>
+<li>internally disjoint paths: A collection of u-v paths that every two of them have no vertices in common other than u and v</li>
+<li><strong><em>Menger&rsquo;s Theorem</em></strong>: minimum cardinality of $u$-$v$ separating set = maximum number of internally disjoint $u$-$v$ paths in G
+<ul>
+<li>induction on the size of graph, discussion on the property of separating set</li>
+</ul>
+</li>
+<li><strong><em>Whitney&rsquo;s Theorem</em></strong>: $k$-connected $\iff\forall u,v$ there are at least $k$ internally disjoint $u$-$v$ paths</li>
+</ul>
+<h2 id="traversability">Traversability</h2>
+<ul>
+<li>Eulerian circuit: a circuit contains every edge of G
+<ul>
+<li>Eulerian graph: graph G contians an Eulerian circuit</li>
+<li>A nontrivial connected graph G is Eulerian iff every vertex of G has even degree</li>
+<li>(directed) $\text{od} v=\text{id} u$</li>
+</ul>
+</li>
+<li>Eulerian trail: an open trail that contains every edge of G
+<ul>
+<li>$K\ddot{o}nigsberg$ Bridge Problem</li>
+<li>A connected graph G contains an Eulerian trail iff exactly two vertices of G have odd degree.</li>
+</ul>
+</li>
+<li>Hamiltonian cycle: a cycle in a graph $G$ that contains every vertex of $G$
+<ul>
+<li>Hamiltonian graph</li>
+</ul>
+</li>
+<li>Hamiltonian path: a path in $G$ contains every vertex of $G$</li>
+<li>$k(G)$: number of components in G
+<ul>
+<li>(neccessary) Hamiltonian Graph: $\forall S,k(G-S)\leq|S|$</li>
+<li>(sufficient) $n\geq3,\forall u\not\sim v,\deg u+\deg v\geq n$, then $G$ is Hamiltonian</li>
+</ul>
+</li>
+<li>closure $C(G)$: the graph obtained from $G$(order $n$) by recursively joining pairs of nonadjacent vertices whose degree sum $\geq n$ until no such pair remains
+<ul>
+<li>(neccessary) Hamiltonian Graph: $C(G)$ is Hamiltonian</li>
+</ul>
+</li>
+</ul>
+<h2 id="search">Search</h2>
+<ul>
+<li><strong>BFS</strong>: $\Theta(V+E)$</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> u <span style="color:#f92672">in</span> vertices:
+  u<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> NIL
+  u<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> False
+s<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> True
+Q <span style="color:#f92672">=</span> {s}
+<span style="color:#66d9ef">while</span> Q:
+  u <span style="color:#f92672">=</span> Q<span style="color:#f92672">.</span>pop()
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> u<span style="color:#f92672">.</span>visitied:
+      v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
+      v<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> True
+      Q<span style="color:#f92672">.</span>push(u)
+</code></pre></div><ul>
+<li><strong>DFS</strong>: $\Theta(V+E)$</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># all colored white</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">dfs</span>(u):
+  u<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> True
+  <span style="color:#75715e"># color gray</span>
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[v]:
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> v<span style="color:#f92672">.</span>visited:
+      v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
+      v<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> True
+      dfs(v)
+<span style="color:#75715e"># color black</span>
+</code></pre></div><ul>
+<li>DFS properties
+<ul>
+<li>Parenthesis theorem</li>
+<li>Nesting of descendant&rsquo;s intervals</li>
+<li>White-path theorem</li>
+</ul>
+</li>
+<li>Classification of Edges
+<ul>
+<li>Tree edge: edge in $G_\pi$ (white)</li>
+<li>Back edge: ancestor (gray)</li>
+<li>Forward edge: descendant (black)</li>
+<li>Cross edge (black)</li>
+<li>There is no Forward edges and Cross edge in undirected graphs</li>
+</ul>
+</li>
+<li>directed acyclic graph(DAG): no back edge</li>
+<li><strong>Toposort</strong> on dag: sort vertices in descending order of their finish times
+<ul>
+<li>component graph: dag of its SCCs</li>
+</ul>
+</li>
+<li><strong>Kosaraju&rsquo;s Algorithm</strong>: $\Theta(V+E)$</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dfs(G) <span style="color:#75715e"># compute u.f for each vertex u</span>
+dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in order of decreasing u.f in main loop</span>
+<span style="color:#75715e"># SCC is trees in depth-first forest</span>
+</code></pre></div><ul>
+<li><strong>Tarjan&rsquo;s Algorithm</strong>: $\Theta(V+E)$
+<ul>
+<li>cut-vertex(undirected): $\exists v$ son of $u$, low[v] $\geq$ dnf[u]</li>
+<li>bridge(undirected): $\exists v$ son of $u$, low[v] &gt; dnf[u]</li>
+<li>directed: SCC</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tarjan_dfs</span>(u):
+  t <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+  dfn[u] <span style="color:#f92672">=</span> low[u] <span style="color:#f92672">=</span> t
+  Stack<span style="color:#f92672">.</span>push(u)
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> v<span style="color:#f92672">.</span>visited:
+      tarjan_dfs(v)
+      low[u] <span style="color:#f92672">=</span> min(low[u], low[v])
+    <span style="color:#66d9ef">elif</span> v <span style="color:#f92672">in</span> Stack:
+      low[u] <span style="color:#f92672">=</span> min(low[u], dfn[v])
+  <span style="color:#66d9ef">if</span> dfn[u] <span style="color:#f92672">==</span> low[u]:
+    <span style="color:#66d9ef">while</span> v <span style="color:#f92672">!=</span> Stack<span style="color:#f92672">.</span>top():
+      Stack<span style="color:#f92672">.</span>pop()
+</code></pre></div><h2 id="distance">Distance</h2>
+<ul>
+<li>distance
+<ul>
+<li>positive</li>
+<li>reflexivity</li>
+<li>symmetric</li>
+<li>triangle inequatity</li>
+</ul>
+</li>
+<li>metric space: $(V(G), d)$</li>
+<li>eccentricity: $e(v)=\max_{u\in V(G)}d(u,v)$</li>
+<li>radius: $\text{rad}(G)=min_{v\in V(G)}e(v)$
+<ul>
+<li>center: $Cen(G)={v:e(v)=\text{rad}(G)}$
+<ul>
+<li>self-centered: $Cen(G) = G$</li>
+<li>center is subgraph of block</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>diameter: $\text{diam}(G)=max_{v\in V(G)}e(v)$
+<ul>
+<li>periphery: $Per(G)={v:e(v)=\text{diam}(G)}$</li>
+</ul>
+</li>
+<li>$\text{rad}(G)\leq \text{diam}(G) \leq 2\text{rad}(G)$</li>
+<li>eccentric vertex of $u={v:d(u,v)=e(u)}$
+<ul>
+<li>$Ecc(G)={v:\exists u,d(u,v)=e(u)}$</li>
+</ul>
+</li>
+<li>boundary vertex of a vertex $u={v:\forall w\sim v,d(u,w)\leq d(u,v)}$
+<ul>
+<li>peripheral $\Rightarrow$ eccentric $\Rightarrow$ boundary</li>
+</ul>
+</li>
+<li>complete vertex (extrem or simplicial vertex): the subgraph of G induced by the neighbors of v is complete
+<ul>
+<li>complete $\Rightarrow$ boundary</li>
+</ul>
+</li>
+<li>interior vertex: $\forall u, \exists w, d(u,w)=d(u,v)+d(v,w)$
+<ul>
+<li>$Int(G)$: subgraph induced by interior vertices</li>
+<li>boundary $\Rightarrow$ not interior (connected graph)</li>
+</ul>
+</li>
+</ul>
+<h2 id="shortest-path">Shortest Path</h2>
+<ul>
+<li>simple path -&gt; path</li>
+<li>path -&gt; walk</li>
+<li>in DAG or only positive edges: path = simple path</li>
+<li>shortest path: walk
+<ul>
+<li>single source shortest path(sssp):</li>
+<li>all pair shortest path(assp)</li>
+</ul>
+</li>
+<li>longest path: simple path, NP</li>
+<li>relaxation</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">relax</span>(u,v,w):
+  <span style="color:#66d9ef">if</span> v<span style="color:#f92672">.</span>d <span style="color:#f92672">&gt;</span> u<span style="color:#f92672">.</span>d <span style="color:#f92672">+</span> w(u,v):
+     v<span style="color:#f92672">.</span>d <span style="color:#f92672">=</span> u<span style="color:#f92672">.</span>d <span style="color:#f92672">+</span> w(u,v)
+     v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
+</code></pre></div><ul>
+<li>Properties
+<ul>
+<li>Triangle inequality</li>
+<li>Upper-bound property</li>
+<li>No-path property</li>
+<li>Convergence property</li>
+<li>Path-relaxation property</li>
+<li>Predecessor-subgraph property</li>
+</ul>
+</li>
+<li><strong>Bellman-Ford Algorithm</strong>: $\Theta(VE)$</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">s<span style="color:#f92672">.</span>d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#f92672">|</span>G<span style="color:#f92672">.</span>V<span style="color:#f92672">|</span>):
+  <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>E:
+    relax(e<span style="color:#f92672">.</span>u, e<span style="color:#f92672">.</span>v, w)
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#f92672">|</span>G<span style="color:#f92672">.</span>V<span style="color:#f92672">|</span>):
+  <span style="color:#66d9ef">if</span> v<span style="color:#f92672">.</span>d <span style="color:#f92672">&gt;</span> u<span style="color:#f92672">.</span>d <span style="color:#f92672">+</span> w(u,v):
+    <span style="color:#66d9ef">return</span> False
+<span style="color:#66d9ef">return</span> True
+</code></pre></div><ul>
+<li>DAG shortest path: $\Theta(V+E)$
+<ul>
+<li>critical path: longest path through dag</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> u <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>topo:
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
+    relax(u,v,w)
+</code></pre></div><ul>
+<li><strong>Dijkstra Algorithm</strong>: all edges are nonnegative
+<ul>
+<li>Array: $O(V^2)$</li>
+<li>Min-heap: $O(E\lg V)$ for sparse graph $E=o(\frac{V^2}{\lg V})$</li>
+<li>Fib-heap: $O(E+V\lg V)$</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Q <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>V
+<span style="color:#66d9ef">while</span> Q:
+  u <span style="color:#f92672">=</span> Extract_Min(Q)
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
+    relax(u, v, w)
+</code></pre></div><ul>
+<li>matrix multiplication and repeated squaring: $\Theta(n^3\lg n)$</li>
+<li><strong>Floyed-Warshall Algorithm</strong>: $\Theta(V^3)$
+<ul>
+<li>dynamic programming on first $k$ vertices as intermediate vertices</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(n):
+  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):
+    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(n):
+      d[i][j] <span style="color:#f92672">=</span> min(d[i][j], d[i][k] <span style="color:#f92672">+</span> d[k][j])
+</code></pre></div><ul>
+<li><strong>Johnson&rsquo;s Algorithm</strong>: $\Theta(V^2\lg V+VE)$
+<ul>
+<li>reweighting: $\hat \omega(u,v)=\omega(u,v)+h(u)-h(v)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="matching">Matching</h2>
+<ul>
+<li>independent set(matching) $F$: $\forall e_1,e_2\in F,e_1\cap e_2=\emptyset$</li>
+<li><strong><em>Theorem</em></strong>: partite graph $G$ has partite sets $U$ and $W$ such that $r=|U|\leq|W|$. Then $G$ contains a matching of cardinality $r$ iff $G$ satisfies Hall&rsquo;s condition.
+<ul>
+<li>$N(X)={v:\exists u\in X,u\sim v}$</li>
+<li>Hall&rsquo;s condition: $\forall X\neq \emptyset, X\subseteq U,|N(X)|\geq|X|$</li>
+<li>equivalent
+<ul>
+<li>a system of distinct representatives</li>
+<li>marriage theory</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Hungarian algorithm</strong>: $O(VE)$
+<ul>
+<li>alternate path: unmatched edge - matched edge - unmatched edge - $\cdots$ - unmatched edge</li>
+<li>argumentation path: alternate path covering unmatched vertex</li>
+</ul>
+</li>
+<li>perfect matching: a graph of order $2k$ has a matching $M$ of cardinality $k$
+<ul>
+<li>Every $r$-regular bipartite graph has a perfect matching</li>
+</ul>
+</li>
+<li>edge independence number(maximum matching): $\alpha'(G)=\max |M|$</li>
+<li>edge covering number $\beta'(G)=$ cardinality of minimum edge cover
+<ul>
+<li>cover: a vertex and an incident edge are said to cover each other</li>
+<li>edge cover: a set of edges of G that covers all vertices of G</li>
+</ul>
+</li>
+<li>vertice independence number $\alpha(G)$: maximum cardinality of an independent set of vertices in G
+<ul>
+<li>vertice independence: no two vertices in the set are adjacent</li>
+<li>maximum independent set</li>
+</ul>
+</li>
+<li>vertex covering number $\beta(G)$</li>
+<li><strong><em>Gallai Identity</em></strong>: $\forall G,|G|=n$, containing no isolated vertices, $\alpha'(G)+\beta'(G)=n, \alpha(G)+\beta(G)=n$</li>
+<li><strong><em>Konig Theorem</em></strong>: bipartite graph $G$ has $\alpha'(G)=\beta(G),\alpha(G)=\beta'(G)$</li>
+</ul>
+<h2 id="flow">Flow</h2>
+<ul>
+<li>Flow network: $G=(V,E)$
+<ul>
+<li>Capacity constraint: $\forall u,v\in V$, we require $0\leq f(u,v)\leq c(u,v)$</li>
+<li>Flow conservation: $\forall u\in V-{s,t}$, $\sum_{v\in V}f(v,u)=\sum_{v\in V}f(u,v)$</li>
+</ul>
+</li>
+<li>special cases
+<ul>
+<li>antiparallel edges: split</li>
+<li>multiple sources and sinks: add source or sink</li>
+</ul>
+</li>
+<li>flow: $|f(u,v)|=\sum_{v\in V}f(s,v)-\sum_{v\in V}f(v,s)$</li>
+<li>net flow: $f(S,T)=\sum_{u\in S}\sum_{v\in T}f(u,v)-\sum_{u\in S}\sum_{v\in T}f(v,u)$</li>
+<li>capacity of cut: $c(S,T)=\sum_{u\in S}\sum_{v\in T}c(u,v)$</li>
+<li><strong><em>Max-flow Min-cut Theorem</em></strong>: The maximum flow $=$ the minimum cut capacity</li>
+<li><strong>Ford-Fulkerson Method</strong>
+<ul>
+<li>residual networks $G_f$: $E_f={(u,v)\in V\times V:c_f(u,v)&gt;0}$
+$$c_f(u,v)=\begin{cases}c(u,v)-f(u,v) &amp; (u,v)\in E\newline f(v,u) &amp; (v,u)\in E \newline  0 &amp; o.w.\end{cases}$$</li>
+<li>augmentation: $f'$ is flow of residual network, if $(u,v)\in E$, $(f\uparrow f')(u,v)=f(u,v)+f'(u,v)-f'(v,u)$
+<ul>
+<li>$|f\uparrow f'|=|f|+|f'|$</li>
+</ul>
+</li>
+<li>augmentation path: simple path from $s$ to $t$ in residual network</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># initial flow f to 0</span>
+<span style="color:#66d9ef">while</span> augmenting_path <span style="color:#f92672">in</span> residual_network:
+  augment(f,augmenting_path)
+<span style="color:#66d9ef">return</span> f
+</code></pre></div><ul>
+<li><strong>Basic Ford-Fulkerson Algorithm</strong>: $O(|f^*|E)$ arbitrary with integer</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">while</span> augmenting_path <span style="color:#f92672">in</span> residual_network:
+  c_f(p) <span style="color:#f92672">=</span> min([c_f(u,v) <span style="color:#66d9ef">for</span> (u,v) <span style="color:#f92672">in</span> p])
+  <span style="color:#66d9ef">for</span> (u,v) <span style="color:#f92672">in</span> p:
+    <span style="color:#66d9ef">if</span> (u,v) <span style="color:#f92672">in</span> E
+      (u,v)<span style="color:#f92672">.</span>f <span style="color:#f92672">+=</span> c_f(p)
+    <span style="color:#66d9ef">else</span>:
+      (v,u)<span style="color:#f92672">.</span>f <span style="color:#f92672">-=</span> c_f(p)
+</code></pre></div><ul>
+<li><strong>Edmonds-Karp Algorithm</strong>: $O(VE^2)$
+<ul>
+<li>search augmenting path by BFS in residual network, where each edge has unit distance</li>
+</ul>
+</li>
+<li><strong>Push-relabeled algorithms</strong>: $O(V^2E)$</li>
+<li><strong>relabel-to-front algorithm</strong>: $O(V^3)$</li>
+</ul>
+<h2 id="factorization">Factorization</h2>
+<ul>
+<li>$k_o(G)$: number of odd components of $G$</li>
+<li>factor $F$: spanning subgraph of $G$</li>
+<li>factorable: $E(G)=\bigsqcup_{i=1}^{k}E(F_i)$</li>
+<li>$F$-factorable: factorable and $F_i\cong F$</li>
+<li>$r$-factorable: factorable and $F_i$ is $r$-regular graph</li>
+<li>$1$-factorable: perfect matching
+<ul>
+<li><strong><em>Tutte&rsquo;s Theorem</em></strong>: $\forall S\in V(G),k_0(G-S)\leq|S|$, then $G$ contains a $1$-factor</li>
+<li><strong><em>Petersen&rsquo;s Theorem</em></strong>: Every 3-regular bridgeless graph contains a 1-factor</li>
+<li>Every $r$-regular bipartite graph is $1$-factorable</li>
+</ul>
+</li>
+<li>$2$-factorable: cyclic factorization
+<ul>
+<li>$G$ is 2-factorable iff $G$ is $r$-regular, $r$ is positive even integer</li>
+</ul>
+</li>
+<li>Hamiltonian-factorization
+<ul>
+<li>$\forall k\geq1$, $K_{2k+1}$ is Hamiltonian-factorable</li>
+<li>$\forall k\geq1$, $K_{2k}$ can be factored into $k-1$ Hamiltonian-cycles and a $1$-factor</li>
+</ul>
+</li>
+<li>Kirkman&rsquo;s Schoolgirl Problem: Is there a $5K_3$-factorization of $K_{15}$</li>
+</ul>
+<h2 id="decomposition">Decomposition</h2>
+<ul>
+<li>decomposable: $E(G)=\bigsqcup_{i=1}^{k}E(H_i)$
+<ul>
+<li>if $H$ is spanning subgraph, then it is factorization</li>
+</ul>
+</li>
+<li>$H$-decomposable: $H_i\cong H$</li>
+<li>graceful labeling $f:V(G)\rightarrow\mathbb{Z}_m$:
+<ul>
+<li>one-to-one</li>
+<li>$f'(e)=|f(u)-f(v)|$ is one-to-one.</li>
+</ul>
+</li>
+<li>graceful graph: $G$ possessing a graceful labeling</li>
+<li><strong><em>Conjecture</em></strong>: Every tree is graceful</li>
+<li>girth: $\min_{C_n\subseteq G} n$</li>
+<li>$g$-cage: minimal 3-regular graph that has girth $g\geq3$
+<ul>
+<li>$g=3,K_4$</li>
+<li>$g=4,K_{3,3}$</li>
+<li>$g=5$ Petersen</li>
+<li>$g=6$ Heawoo</li>
+<li>$g=7$ McGee</li>
+<li>$g=8$ Tutte-Coxeter</li>
+<li>$g\leq8$, the g-cages are all sole</li>
+</ul>
+</li>
+</ul>
+<h2 id="embedding">Embedding</h2>
+<h3 id="plane">Plane</h3>
+<ul>
+<li>plane graph: $G$ is drawed on(embeded into) a plane with no edge crossing
+<ul>
+<li>regions $R$: connected area divied by plane graph</li>
+<li>exterior regions: a region without bounding</li>
+<li>boundary of $R$: subgraph corresponding to a region</li>
+</ul>
+</li>
+<li>planar graph: $\exists P$ is a plane graph, $G\cong P$</li>
+<li><strong><em>Euler Identity</em></strong>: a connected plane graph of order n, number of edge m and r regions, $n-m+r=2$
+<ul>
+<li>a planar graph of order $n\geq3$ then $m\leq3n-6$ ($2m\geq3r$)</li>
+<li>every planar graph contains a vertex of degree $5$ or less</li>
+</ul>
+</li>
+<li>maximal planar: planar but any addition of an edge results in nonplanar graph</li>
+<li><strong><em>Kuratowski Theorem</em></strong>: G is planar $\iff$ it does not contain a subgraph of $K_5,K_{3,3}$ or subdivision of $K_5, K_{3,3}$
+<ul>
+<li>subdivision: inserting vertex of degree 2 into $G$</li>
+</ul>
+</li>
+</ul>
+<h3 id="surface">Surface</h3>
+<ul>
+<li>$S_k$ surface of genus $k$: a surface with $k$ handle
+<ul>
+<li>$S_0$: sphere
+<ul>
+<li>planar graph can be embedded into a sphere</li>
+</ul>
+</li>
+<li>$S_1$: torus</li>
+</ul>
+</li>
+<li>$\gamma(G)$: minimal integer $k$ that $G$ can be embedded into $S_k$</li>
+<li>$A$ and $A'$ are in the same region if there is a line connecting there without crossing edges or vertices of $G$</li>
+<li>2-cell embedding: every region is 2-cell embedding
+<ul>
+<li>2-cell: a region in which any closed curves can shrink into a node continuously</li>
+</ul>
+</li>
+<li><strong><em>Theorem</em></strong>: If $G$ is 2-cell embedded into $S_k$ then $n-m+r=2-2k$
+<ul>
+<li>$n\geq3,\gamma(G)\geq\frac{m}{6}-\frac{n}{2}+1$</li>
+</ul>
+</li>
+<li>$\gamma(K_n)=\lceil\frac{(n-3)(n-4)}{12}\rceil$</li>
+</ul>
+<h3 id="minor">Minor</h3>
+<ul>
+<li>$G'$ is got from $G$ by contracting edge $e$ (or identifying the vertices u,v)</li>
+<li>minor: $H$ can be got be a series of edge contraction from $G$</li>
+<li>$G$ is a subdivision of $H\Rightarrow H$ is a minor of $G$</li>
+<li>$H$ is a minor of $G\Rightarrow\gamma(H)\leq\gamma(G)$</li>
+<li><strong><em>Wagner Theorem</em></strong>: $G$ is planar $\iff$ $K_5,K_{3,3}$ is not a minor of $G$</li>
+<li><strong><em>The Graph Minor Theorem</em></strong>: For any infinite set $S$ of graphs, there are two distinct graph in $S$ that one is a minor of the other</li>
+</ul>
+<h2 id="coloring">Coloring</h2>
+<ul>
+<li>clique: a complete subgraph of graph</li>
+<li>clique number $\omega(G)$: the largest order of clique in $G$
+<ul>
+<li>$\beta(G)=\omega(\overline G)$</li>
+</ul>
+</li>
+<li>coloring (proper coloring) $c:V(G)\rightarrow\mathbb{N},\forall u\sim v,c(u)\neq c(v)$
+<ul>
+<li>color class: the independet set division corresponding to a coloring</li>
+</ul>
+</li>
+<li>$\chi(G)$: chromatic number, the minimal number of color to color G
+<ul>
+<li>$k$-colorable: $\chi(G)\leq k$</li>
+<li>$\chi(G)=1\iff G$ has no edges</li>
+<li>$\chi(G)=2\iff G$ is a nonempty partite graph</li>
+<li>$\chi(C_{2n+1})=3$</li>
+<li>$\chi(G)=4$ for triangle-free graph (Grotzsch graph)</li>
+<li><strong><em>Four Color Theorem</em></strong>: For every planar graph G, $\chi(G)\leq4$</li>
+</ul>
+</li>
+<li>$\chi(G)$ inequality
+<ul>
+<li>$\chi(G)\geq\omega(G)$</li>
+<li>$\chi(G)\geq\frac{n}{\beta(G)}$</li>
+<li>$\chi(G)\leq 1+\Delta(G)$</li>
+<li><strong><em>Brook Theorem</em></strong>: $G$ is odd circle or complete graph, then $\chi(G)\leq \Delta(G)$</li>
+<li>$\chi(G)\leq 1+\max(\delta(H))$, $H$ is all possible induced subgraph</li>
+</ul>
+</li>
+<li>perfect: $\forall H\subseteq G,\chi(H)=\omega(H)$
+<ul>
+<li>perfect iff complement is perfect</li>
+</ul>
+</li>
+<li>edge coloring $c:E(G)\rightarrow\mathbb{N},\forall e_1\cap e_2\neq\emptyset,c(e_1)\neq c(e_2)$</li>
+<li>$\chi'(G)$: edge chromatic number(chromatic index)
+<ul>
+<li>Divide $G$ into minimum number of 1-regulation graph</li>
+</ul>
+</li>
+<li><strong><em>Vizing Theorem</em></strong>: $\chi'(G)=\Delta G$ or $=\Delta G+1$
+<ul>
+<li>If $m&gt;\frac{(n-1)\Delta G}{2}$ then $\chi'(G)=1+\Delta(G)$</li>
+<li><strong><em>Konig Theorem</em></strong>: For nonempty partite graph, $\chi'(X)=\Delta(G)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="ramsey-numbers">Ramsey Numbers</h2>
+<ul>
+<li>Ramsey&rsquo;s Theorem: $\forall k+1\geq 3$ positive integers $t,n_1,n_2,\cdots,n_k,\exists n&gt;0,\forall S\subseteq \mathbb{Z}_{n},|S|=t$ is colored with one of $k$ colors, then $\exists S$ containing $n_i$ elements such that every $t$-element subset of $S$ is colored $i$
+<ul>
+<li>($t=2$) $\forall k\geq 2,n_1,n_2,\cdots,n_k,\exists n&gt;0,E(K_n)$ is colored by $k$ colors that $\exists i$, complete subgraph $K_{n_i}$ is colored $i$</li>
+</ul>
+</li>
+<li>Ramsey&rsquo;s number $r(F_1,F_2)$: the smallest positive integer n such that if every edge of Kn is colored red or blue in any manner whatsoever, then either a red F1 or a blue F2 is produced</li>
+</ul>
+<h2 id="domination">Domination</h2>
+</main>
+        </div>
+
+    </div>
+</body></html>

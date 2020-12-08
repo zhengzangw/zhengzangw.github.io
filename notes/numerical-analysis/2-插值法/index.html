@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>插值法 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#研究背景">研究背景</a></li>
+    <li><a href="#lagrange-polynomial">Lagrange Polynomial</a></li>
+    <li><a href="#newton-插值公式">Newton 插值公式</a></li>
+    <li><a href="#艾米尔特hermite插值法">艾米尔特（Hermite）插值法</a></li>
+    <li><a href="#分段低次插值">分段低次插值</a></li>
+    <li><a href="#三次样条插值">三次样条插值</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="研究背景">研究背景</h2>
+<ul>
+<li>函数表示法
+<ul>
+<li>解析式表示法</li>
+<li>图像法</li>
+<li>表格法</li>
+</ul>
+</li>
+<li>插值法：用简单函数为各种离散数组建立连续模型</li>
+<li>多项式插值问题
+<ul>
+<li>精确函数 $y=f(x)$ 非常复杂或未知，在节点 $x_0,\cdots,x_n$ 处测得函数值 $y_i=f(x_i)$</li>
+<li>构造 $p(x)\approx f(x)$ 满足条件 $p(x_i)=f(x_i) (i=0,\cdots,n)$</li>
+<li>$p(x)$ 为 $f(x)$ 的插值函数
+<ul>
+<li>代数多项式：Weierstrass 定理</li>
+<li>三角多项式</li>
+<li>有理分式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>最佳逼近多项式
+<ul>
+<li>$|f|<em>{\infty}=\max</em>{a\leq x\leq b}|f(x)|$</li>
+<li>$|f|_1 = \int_a^b|f(x)|dx$</li>
+<li>$|f|_2 = (\int_a^b|f^2(x)|dx)^{\frac{1}{2}}$</li>
+<li>$(f(x),g(x))=\int_a^b\rho(x)f(x)g(x)dx$, $\rho(x)$ 为给定的权函数</li>
+<li>$\Pi_n$：次数不超过 $n$ 的多项式集合</li>
+<li>最佳一致逼近多项式：$\overline{p}<em>n(x)$：$|f(x)-\overline{p}<em>n(x)|</em>\infty=\min</em>{p_n(x)\in\Pi_n}|f(x)-p_n(x)|_\infty$</li>
+<li>最佳平方逼近多项式：$|f(x)-\overline{p}_n(x)|<em>2^2=\min</em>{p_n(x)\in\Pi_n}|f(x)-p_n(x)|_2^2$</li>
+</ul>
+</li>
+<li>研究问题
+<ul>
+<li>唯一性</li>
+<li>构造方法</li>
+<li>误差估计</li>
+</ul>
+</li>
+</ul>
+<h2 id="lagrange-polynomial">Lagrange Polynomial</h2>
+<ul>
+<li>
+<p>求 $n$ 次多项式</p>
+<ul>
+<li>已知 $p_n(x_i)=y_i,i=0,\cdots,n,i\neq j\Rightarrow x_i\neq x_j$</li>
+<li>求 $P_n(x)=\sum_{i=0}^na_ix^i$</li>
+</ul>
+</li>
+<li>
+<p>Vandermonde 行列式</p>
+<p>$$V_n(x_0,x_1,\cdots,x_n)=\begin{vmatrix}1 &amp; x_0 &amp; \cdots &amp; x_0^n\newline  \vdots &amp; \cdots &amp; \ddots &amp; \vdots\newline  1 &amp; x_n &amp; \cdots &amp; x_n^n \end{vmatrix}=\prod_{0\leq j&lt;i\leq n}(x_i-x_j)\neq 0$$</p>
+<p>故插值多项式存在且唯一</p>
+</li>
+<li>
+<p>Lagrange 插值多项式：$L_n(x)=\sum_{k=0}^nf(x_k)l_k(x)$</p>
+<ul>
+<li>插值基函数 $l_i(x)$：$P_n(x)=\sum_{i=0}^nl_i(x)y_i$</li>
+<li>$l_k(x)=\frac{(x-x_0)\cdots(x-x_{k-1})(x-x_{k+1})\cdots(x-x_n)}{(x_k-x_0)\cdots(x_k-x_{k-1})(x_k-x_{k+1})\cdots(x_k-x_n)}$</li>
+</ul>
+</li>
+<li>
+<p>Lagrange 插值余项分析：$f\in C^n[a,b],f^{(n+1)}$ 存在，$R_n(x)=f(x)-L_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\omega_{n+1}(x),\xi\in(a,b),\omega_{n+1}(x)=\prod_{i=0}^n(x-x_i)$</p>
+<ul>
+<li>若 $\max_{a&lt;x&lt;b}|f^{(n+1)}(x)|=M_{n+1}$，则 $|R_n(x)|\leq\frac{M_{n+1}}{(n+1)!}|\omega_{n+1}(x)|$</li>
+<li>若 $f(x)$ 为次数 $\leq n$ 的多项式，$R_n(x)\equiv 0$</li>
+</ul>
+</li>
+<li>
+<p>内插通常优于外推</p>
+</li>
+</ul>
+<h2 id="newton-插值公式">Newton 插值公式</h2>
+<ul>
+<li>零阶差商：$f[x_i]=f(x_i)$</li>
+<li>一阶差商：$f[x_i,x_{i+1}]=\frac{f[x_{i+1}]-f[x_i]}{x_{i+1}-x_i}$</li>
+<li>$n$ 阶差商：$f[x_0,\cdots,x_n]=\frac{f[x_1,x_2,\cdots,x_n]-f[x_0,x_1,\cdots,x_{n-1}]}{x_n-x_0}$
+<ul>
+<li>可表为函数值线性组合：$f[x_0,\cdots,x_n]=\sum_{j=0}^n\frac{f(x_j)}{(x_j-x_0)\cdots(x_j-x_{j-1})(x_j-x_{j+1})\cdots(x_j-x_n))}$</li>
+<li>节点对称：$f[x_0,x_1,\cdots,x_n]=f[x_1,x_0,\cdots,x_n]=\cdots=f[x_n,x_{n-1},\cdots,x_0]$</li>
+<li>$f(x)$ 在 $[a,b]$ 存在 $n$ 阶导数，$\exists\xi\in(a,b),f[x_0,\cdots,x_n]=\frac{f^{(n)}(\xi)}{n!}$</li>
+</ul>
+</li>
+<li>差商表</li>
+<li>牛顿插值公式：$f(x)=f[x,x_0,\cdots,x_n]\omega_{n+1}(x)+\sum_{i=0}^nf[x_0,\cdots,x_i]\prod_{j=0}^{i-1}(x-x_j)=R_n(x)+N_n(x)$
+<ul>
+<li>$N_n(x)$ 为牛顿插值多项式，次数不超过 $n$</li>
+<li>$a_i=f[x_0,\cdots,x_i]$</li>
+</ul>
+</li>
+<li>牛顿插值公式与 Lagrange 插值公式对比
+<ul>
+<li>$L_n(x)\equiv N_n(x)$</li>
+<li>增加次数时，Lagrange 需要重新计算所有基函数</li>
+<li>Newton：$N_n(x)=N_{n-1}(x)+f<a href="x-x_0">x_0,\cdots,x_n</a>\cdots(x-x_{n-1})$</li>
+<li>牛顿插值公式节省 $\frac{1}{4}$ 到 $\frac{1}{3}$ 的计算</li>
+</ul>
+</li>
+</ul>
+<h2 id="艾米尔特hermite插值法">艾米尔特（Hermite）插值法</h2>
+<ul>
+<li>
+<p>Hermite 插值：已知在 $x_0,\cdots,x_n$ 处的函数值和导数值（$2n+2$个条件）</p>
+</li>
+<li>
+<p>$H_{2n+1}(x)=\sum_{i=0}^ny_i\alpha_i(x)+\sum_{i=0}^ny_i'\beta_i(x)$</p>
+<ul>
+<li>$\alpha_i(x_k)=\delta_{ik},\alpha'(x_k)=0$</li>
+<li>$\beta_i(x_k)=0,\beta_i'(x_k)=\delta_{ik}$</li>
+<li>Hermite 值问题解存在且唯一</li>
+</ul>
+</li>
+<li>
+<p>$\alpha_i(x)=(1-2(x-x_i)\sum_{k=0,k\neq i}^n\frac{1}{x_i-x_k})l^2_i(x)$</p>
+</li>
+<li>
+<p>$\beta_i(x)=(x-x_i)l^2_i(x)$</p>
+</li>
+<li>
+<p>余项：$R_{2n+1}(x)=\frac{f^{(2n+2)}(\xi)}{(2n+2)!}\prod_{j=0}^n(x-x_j)^2,\xi\in[a,b]$</p>
+</li>
+<li>
+<p>两点三次插值</p>
+<p>$$H_3(x)=f_0(1+2l_1(x))l^2_0(x)+f_1(1+2l_0(x))l_1^2(x)+f_0'(x-x_0)l_0^2(x)+f'_1(x-x_1)l^2_1(x)$$</p>
+</li>
+<li>
+<p>两点三次插值余项：$R_3(x)=f(x)-H_3(x)=K(x)(x-x_0)^2(x-x_1)^2$</p>
+<ul>
+<li>$K(x)=\frac{f^{(4)}(\xi)}{4},\xi\in[x_0,x_1]$</li>
+</ul>
+</li>
+<li>
+<p>多项式插值三次已经较高，太高会出现 Runge 现象，可以分度进行两点三次插值</p>
+</li>
+</ul>
+<h2 id="分段低次插值">分段低次插值</h2>
+<ul>
+<li>Runge 现象：并不是插值多项式次数越高，插值效果越好；精度也不一定是随次数提高而升高
+<ul>
+<li>$f(x)=\frac{1}{1+x^2},x\in[-5,5]$</li>
+</ul>
+</li>
+<li>优点：计算容易；解决 Runge 现象</li>
+<li>缺点：插值曲线在节点处出现尖点，不可导</li>
+<li>分段线性插值（折线逼近）：求分段折现函数 $P(x)$
+<ul>
+<li>$P(x_i)=f_i,a=x_0&lt;\cdots&lt;x_n=b$</li>
+<li>在 $[x_{i-1},x_i]$ 上，$P(x)$ 为一次多项式</li>
+<li>$P(x)\in C[a,b]$</li>
+</ul>
+</li>
+<li>分段线性插值余项
+<ul>
+<li>$R_1(x)=f(x)-\phi(x)=\frac{f''(\xi)}{2}(x-x_k)(x-x_{k+1})$</li>
+<li>$|R_1(x)|\leq\frac{1}{2}\max_{a\leq x\leq b}|f''(x)|\max_{x_k\leq x\leq x_{k+1}}|(x-x_k)(x-x_{k+1})|\leq \frac{1}{2}M_2\frac{1}{4}h^2=\frac{1}{8}M_2h^2$</li>
+<li>$h=\max_{1\leq i\leq n}(x_i-x_{i-1})$</li>
+</ul>
+</li>
+<li>分段三次 Hermite 插值
+<ul>
+<li>$|R_3(x)|\leq\frac{M_4}{4!}\max_{x_k\leq x\leq x_{k+1},0\leq k\leq n-1}(x-x_k)^2(x-x_{k+1})^2=\frac{M_4}{384}h^4$</li>
+</ul>
+</li>
+</ul>
+<h2 id="三次样条插值">三次样条插值</h2>
+<ul>
+<li>
+<p>1946 Schoenberg 将样条引入数学</p>
+</li>
+<li>
+<p>三次样条插值函数</p>
+<ul>
+<li>分割：$a\leq x_0,x_1,\cdots,x_n\leq b$</li>
+<li>三次样条函数：函数 $S$ 满足
+<ul>
+<li>$S(x)\in C^2[a,b]$</li>
+<li>$S(x)$ 在 $[x_k,x_{k+1}]$ 为三次多项式：共需要 $4n$ 个条件</li>
+</ul>
+</li>
+<li>三次样条插值函数： $S(x_j)=f_j$：共 $n+1$ 个条件</li>
+<li>内节点连续性条件
+<ul>
+<li>$S(x_j-0)=S(x_j+0)$</li>
+<li>$S'(x_j-0)=S'(x_j+0)$</li>
+<li>$S''(x_j=0)=S''(x_j+0)$</li>
+<li>共 $3n-3$ 个条件</li>
+</ul>
+</li>
+<li>边界条件 2 个
+<ul>
+<li>固支条件（一阶边界条件）：$S'(x_0)=f_0', S'(x_n)=f_n'$</li>
+<li>二阶边界条件：$S''(x_0)=f_0'', S''(x_n)=f_n''$</li>
+<li>二阶自然边界条件：$S''(x_0)=S''(x_n)=0$</li>
+<li>周期性条件：两段函数值，一阶函数，二阶函数相等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>待定系数法：解 $4n$ 变量方程</p>
+</li>
+<li>
+<p>三转角方法：通过二阶导数连续性，求出一阶导数，使用 Hermite 插值</p>
+<ul>
+<li>设 $S'(x_j)=m_j$</li>
+<li>令 $h_k=x_{x+1}-x_k,k=0,\cdots,n-1$</li>
+<li>逐个求 $f(x)$ 在 $[x_k,x_{k+1}]$ 上的三次插值多项式 $S_k(x)$</li>
+<li>由 $S''<em>k(x_k+0)=S''</em>{k-1}(x_k-0)$ 得 $n-1$ 个方程组，$n+1$ 个未知量</li>
+</ul>
+<p>$$\lambda_km_{k-1}+2m_k+\mu_km_{k+1}=g_k\newline \lambda_k=\frac{h_k}{h_k+h_{k-1}}\newline \mu_k=\frac{h_{k-1}}{h_k+h_{k-1}}\newline g_k=3\lambda_k\frac{y_k-y_{k-1}}{h_{k-1}}+\mu_k\frac{y_{k+1}-y_k}{h_k}\newline k=1,\cdots,n-1$$</p>
+<ul>
+<li>满足一阶边界条件：三对角方程组</li>
+<li>满足二阶自然边界条件：三对角方程组</li>
+<li>定理：$h=\max_{0\leq i\leq n-1} h_i,\delta=\min_{0\leq i\leq n-1}h_i$，当$\frac{h}{\delta}\leq c&lt;\infty$ 时，$S(x)$ 和 $S'(x)$ 一致收敛到 $f(x)$ 和 $f'(x)$</li>
+</ul>
+</li>
+<li>
+<p>三弯矩方法：求出二阶导数</p>
+<ul>
+<li>$M(x)=S''(x)=M_i\frac{x_{i+1}-x}{h_i}+M_{i+1}\frac{x-x_i}{h_i}$：隐含二阶导数连续</li>
+<li>两次不定积分：$S(x)=M_i\frac{(x_{i+1}-x)^3}{6h_i}+M_{i+1}\frac{(x-x_i)^3}{6h_i}+\alpha_i\frac{x_{i+1}-x}{h_i}+\beta_i\frac{x-x_i}{h_i}$</li>
+<li>由 $S(x_i)=f(x_i)$ 可得：$\alpha_i=f(x_i)-\frac{M_ih^2_i}{6}$, $\beta_i=f(x_{i+1})-\frac{M_{i+1}h_i^2}{6}$</li>
+<li>$S'(x)=-M_i\frac{(x_{i+1}-x)^2}{2h_i}+M_{i+1}\frac{(x-x_i)^2}{2h_i}+f[x_i,x_{i+1}]-\frac{h_i}{6}(M_{i+1}-M_i),x\in[x_i,x_{i+1}]$</li>
+<li>由 $S'(x_i+0)=S'(x_i-0)$ 可得 $n-1$ 个方程</li>
+</ul>
+<p>$$\mu_iM_{i-1}+2M_i+\lambda_iM_{i+1}=d_i,i=1,2,\cdots,n-1\newline \mu_i=\frac{h_{i-1}}{h_{i-1}+h_i}\newline \lambda_i=\frac{{h_i}}{h_{i-1}+h_i}=1-\mu_i\newline d_i=6f[x_{i-1},x_i,x_{i+1}]$$</p>
+<ul>
+<li>加上边界条件后，获得三对角方程组</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>可测函数 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#函数">函数</a></li>
+    <li><a href="#可测函数">可测函数</a></li>
+    <li><a href="#简单函数逼近">简单函数逼近</a></li>
+    <li><a href="#可测函数列收敛">可测函数列收敛</a></li>
+    <li><a href="#可测函数与连续函数">可测函数与连续函数</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="函数">函数</h2>
+<ul>
+<li>连续函数：$f:\mathbb{R}\rightarrow\mathbb{R},\forall x_0\in\mathbb{R},\forall\epsilon&gt;0,\exists\delta&gt;0,U(x_0,\delta)\subset f^{-1}(f(x_0)-\epsilon,f(x_0)+\epsilon)$</li>
+<li>连续函数：$f:X\rightarrow\mathbb{R}$，开集的原像是开集
+<ul>
+<li>可验证开区间的原像是开集</li>
+<li>可验证 $(a,b)$ 是开集</li>
+</ul>
+</li>
+<li>研究函数：$f:E\rightarrow\mathbb{R},E\subseteq\mathbb{R}^n$ 可测且 Borel 集的原像是可测集
+<ul>
+<li>减少需要验证的集合</li>
+<li>研究无穷的函数</li>
+</ul>
+</li>
+</ul>
+<h2 id="可测函数">可测函数</h2>
+<ul>
+<li>广义实值函数 $f:E\rightarrow\mathbb{R}\cup{+\infty,-\infty}$
+<ul>
+<li>$+\infty$ 大于所有实数，$-\infty$ 小于所有实数</li>
+</ul>
+</li>
+<li>有限函数：$f:E\rightarrow\mathbb{R}$</li>
+<li>有界函数：有界函数是有限函数</li>
+<li>可测函数：$f:E\rightarrow\mathbb{R}\cup{+\infty,-\infty}$ 可测，如果 $\forall a,{x\in E:f(x)&gt;a}\doteq E[f&gt;a]$ 可测
+<ul>
+<li>等价于：$\forall a,E[f\leq a]$ 可测</li>
+<li>等价于：$\forall a,E[f\geq a]$ 可测</li>
+<li>Borel 集的原像是可测集</li>
+</ul>
+</li>
+<li>可测函数四则运算仍为可测函数</li>
+<li>${f_n(x)}$ 是 $E$ 上至多可数个可测函数，则上下确界可测
+<ul>
+<li>连续函数无此性质</li>
+<li>上下极限可测</li>
+</ul>
+</li>
+<li>$f$ 的正部和负部可测
+<ul>
+<li>$f^+(x)=\max(f(x),0)$</li>
+<li>$f^-(x)=\min(f(x),0)$</li>
+</ul>
+</li>
+<li>可测函数例
+<ul>
+<li>$f=C\in\mathbb{R}$</li>
+<li>连续函数</li>
+<li>单调函数</li>
+<li>简单函数：广义实值函数在可数个互不相交可测集上的限制分别为常值函数
+<ul>
+<li>Dirichlet</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>可测函数的限制是可测函数</li>
+</ul>
+<h2 id="简单函数逼近">简单函数逼近</h2>
+<ul>
+<li>$E$ 是 $\mathbb{R}^n$ 可测集
+<ul>
+<li>$f(x)$ 在 $E$ 上非负可测，则存在非负简单函数 ${\varphi_k(x)}$，$\forall x\in E,\varphi_k(x)\leq\varphi_{k+1}(x),\lim_{k\rightarrow\infty}\varphi_k(x)=f(x)$</li>
+<li>$f(x)$ 在 $E$ 上可测，则存在简单函数 ${\varphi_k(x)},\forall x\in E,\lim_{k\rightarrow\infty}\varphi_k(x)=f(x)$
+<ul>
+<li>当 $f(x)$ 有界，一致收敛</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="可测函数列收敛">可测函数列收敛</h2>
+<ul>
+<li>逐点收敛：${f_k},\forall x\in E,\forall \epsilon&gt;0,\exists N\in\mathbb{N},\forall k\geq N,|f_k(x)-f(x)|&lt;\epsilon$</li>
+<li>一致收敛：${f_k},\forall \epsilon&gt;0,\exists N\in\mathbb{N},\forall x\in E,\forall k\geq N,|f_k(x)-f(x)|&lt;\epsilon$
+<ul>
+<li>等价：$\lim_{k\rightarrow\infty}\sup_{x\in E}|f_n(x)-f(x)|=0$</li>
+<li>非一致收敛例：$f_k(x)=x^k,E=[0,1]$</li>
+<li>一致收敛连续函数极限为连续函数</li>
+</ul>
+</li>
+<li>几乎处处（almost everywhere, a.e.）：某个性质在去掉一个 0 测集之后成立</li>
+<li>叶果罗夫（Egorov）定理：${f_k},f$ a.e. 有限可测函数，$m(E)&lt;\infty$，$f_k(x)\rightarrow f(x),k\rightarrow\infty$ a.e. 于 $E$，则 $\forall\delta&gt;0,\exists E_\delta\subset E,m(E_\delta)\leq\delta,{f_k}$
+在 $E-E_\delta$ 上一致收敛于 $f$</li>
+<li>依测度收敛 $f_n(x)\Rightarrow f(x)$：$f,{f_n}$ 定义在 $E$ 上的 a.e. 有限的可测函数，如果 $\forall\sigma&gt;0,\lim_{n\rightarrow\infty}m(E[|f-f_n|\geq\sigma])=0$
+<ul>
+<li>$f_n(x)\Rightarrow f(x),f_n(x)\Rightarrow g(x),m(E[f\neq g])=0$</li>
+<li>$f_n(x)=[x\geq n]$ 不依测度收敛，几乎处处收敛</li>
+</ul>
+</li>
+<li>（勒贝格）若函数满足叶果罗夫定理条件，则函数依测度收敛到 $f$</li>
+<li>（里斯）$E$ 上 ${f_n}$ 依测度收敛于 $f$，则存在子列 ${f_{n_s}}$ 在 $E$ 上 a.e. 收敛于 $f$</li>
+</ul>
+<h2 id="可测函数与连续函数">可测函数与连续函数</h2>
+<ul>
+<li>鲁津定理（Luzin）：$f(x)$ 是 $E$ 上可测函数，a.e. 有限，$\forall\delta&gt;0,\exists$ 闭集 $F_\delta\subset E,m(E-F_\delta)&lt;\delta$，$f(x)$ 在 $F_\delta$ 上连续</li>
+<li>$f(x)$ 是 $E\subset\mathbb{R}^1$ 上 a.e. 有限的可测函数，$\forall\delta&gt;0,\exists$ 闭集 $F_\delta$，及 $\mathbb{R}^1$ 上的连续函数 $g_\delta(x)$，使得 $m(E-F_\delta)&lt;\delta,f(x)$ 和 $g_\delta(x)$ 在 $F_\delta$ 上相等，且 $\sup_{\mathbb{R}^1}g_\delta(x)=\sup_{F_\delta}f(x),\inf_{\mathbb{R}^1}g_\delta(x)=\inf_{F_\delta}f(x)$</li>
+<li>Urysohn 引理：$X$ 上正规拓扑空间，$A,B\subset X$ 闭子集，$\exists$ 连续函数 $f:X\rightarrow [0,1]$ s.t. $f|_A\equiv 0,f|_B\equiv 1$</li>
+<li>Tietze 延拓定理：$X$ 是正规拓扑空间（$T_4$ 分离性），$F\subset X$ 闭子集，则可将 $F$ 上的连续函数延拓成 $X$ 上的连续函数</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

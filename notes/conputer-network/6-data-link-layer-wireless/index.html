@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>6. Data Link Layer: Wireless | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#无线网络分类">无线网络分类</a></li>
+    <li><a href="#ieee-80211">IEEE 802.11</a>
+      <ul>
+        <li><a href="#mac层">MAC层</a></li>
+        <li><a href="#帧格式">帧格式</a></li>
+        <li><a href="#物理层">物理层</a></li>
+        <li><a href="#wifi-加密">WiFi 加密</a></li>
+      </ul>
+    </li>
+    <li><a href="#ieee-80216">IEEE 802.16</a></li>
+    <li><a href="#个人域网络">个人域网络</a>
+      <ul>
+        <li><a href="#蓝牙">蓝牙</a></li>
+        <li><a href="#zigbee">ZigBee</a></li>
+      </ul>
+    </li>
+    <li><a href="#蜂窝无线网络">蜂窝无线网络</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="无线网络分类">无线网络分类</h2>
+<ul>
+<li>单跳有基础设施
+<ul>
+<li>802.11</li>
+<li>4G</li>
+</ul>
+</li>
+<li>单跳无基础设施
+<ul>
+<li>蓝牙</li>
+<li>自组织模式 802.11</li>
+</ul>
+</li>
+<li>多跳有基础设施
+<ul>
+<li>无线网状网络</li>
+</ul>
+</li>
+<li>多跳无基础设施
+<ul>
+<li>移动自组织网络(MANET)</li>
+</ul>
+</li>
+</ul>
+<h2 id="ieee-80211">IEEE 802.11</h2>
+<p>无线局域网,WiFi</p>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>控制模块(CM)</td>
+<td>含有网桥/路由器功能，无线局域网接口</td>
+</tr>
+<tr>
+<td>用户模块(UM)</td>
+<td></td>
+</tr>
+<tr>
+<td>接入点(AP)</td>
+<td>任何具有站点功能并能向建立连接的站点提供经过无线媒体及接入分发系统的实体</td>
+</tr>
+<tr>
+<td>基本服务集(BSS)</td>
+<td>单个协调功能所控制的站点集合</td>
+</tr>
+<tr>
+<td>协调功能(coordination function)</td>
+<td>判断在BSS内运行的节点何时允许传输，何时能够接收 PDU 的逻辑功能</td>
+</tr>
+<tr>
+<td>分发系统(DS)</td>
+<td>连接多个BSS以及综合局域网，形成ESS</td>
+</tr>
+<tr>
+<td>扩展服务集(ESS)</td>
+<td></td>
+</tr>
+<tr>
+<td>MPDU</td>
+<td>MAC协议数据单元</td>
+</tr>
+<tr>
+<td>MSDU</td>
+<td>MAC服务数据单元</td>
+</tr>
+<tr>
+<td>站点(STA)</td>
+<td>任何包含了 IEEE 802.11 MAC层和物理层的设备</td>
+</tr>
+<tr>
+<td>WiFi联盟</td>
+<td>Wireless Fidelity</td>
+</tr>
+</tbody>
+</table>
+<p>提供服务</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>服务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分发报文</td>
+<td>分发，综合，MSDU交付</td>
+</tr>
+<tr>
+<td>关联</td>
+<td>关联，重建关联，取消关联</td>
+</tr>
+<tr>
+<td>接入与保密</td>
+<td>鉴别，取消鉴别，保密</td>
+</tr>
+</tbody>
+</table>
+<p>安装 AP 时，分配服务集表示符(SSID)和信道号(共 11 个)，信道由4个或以上隔开时为无重叠<br>
+AP 周期性发送信标帧(SSID+MAC)</p>
+<h3 id="mac层">MAC层</h3>
+<ul>
+<li>分布式协调功能(DCF)
+<ul>
+<li>CSMA/CA</li>
+<li>链路层确认：等待 SIFS 后返回确认帧</li>
+<li>隐藏终端问题
+<ul>
+<li>两帧交换：(源)数据帧，(终)ACK</li>
+<li>四帧交换（解决隐藏终端问题）：(源)RTS，(终)CTS，(源)数据帧，(终)ACK</li>
+<li>threshold 控制模式转换：采用小的数据包碰撞，来避免大的数据包碰撞（如 2347Bytes）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>点协调功能(PCF)：可选子层，基本无产品
+<ul>
+<li>中央轮询主控器（点协调器）进行轮询，与 DCF 兼容工作</li>
+</ul>
+</li>
+</ul>
+<h3 id="帧格式">帧格式</h3>
+<table>
+<thead>
+<tr>
+<th>帧控制</th>
+<th>持续时间</th>
+<th>Address1</th>
+<th>Address2</th>
+<th>Address3</th>
+<th>序号控制</th>
+<th>Address4</th>
+<th>QoS 控制</th>
+<th>高吞吐控制</th>
+<th>帧主体</th>
+<th>FCS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$2*8$</td>
+<td>$1*8$</td>
+<td>$6*8$</td>
+<td>$6*8$</td>
+<td>$6*8$</td>
+<td>$2*8$</td>
+<td>$6*8$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>帧控制：Protocal(2)+Type(2)+Subtype(4)+Flag(8)</p>
+<h3 id="物理层">物理层</h3>
+<table>
+<thead>
+<tr>
+<th>标准</th>
+<th>802.11a</th>
+<th>802.11b</th>
+<th>802.11g</th>
+<th>802.11n</th>
+<th>802.11ac</th>
+<th>802.11ad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年份</td>
+<td>1999</td>
+<td>1999(已淘汰)</td>
+<td>2003</td>
+<td>2000</td>
+<td>2012</td>
+<td>2014</td>
+</tr>
+<tr>
+<td>最大速率</td>
+<td>54Mbps</td>
+<td>11Mbps</td>
+<td>54Mbps</td>
+<td>65~600Mbps</td>
+<td>78~2.1Mbpa</td>
+<td>6.76</td>
+</tr>
+<tr>
+<td>频段</td>
+<td>5GHz</td>
+<td>2.4GHz</td>
+<td>2.4GHz</td>
+<td>2.4/5GHz</td>
+<td>5GHz</td>
+<td>60GHz</td>
+</tr>
+<tr>
+<td>技术</td>
+<td>DSSS</td>
+<td>OFDM</td>
+<td>DSSS,OFDM</td>
+<td>OFDM</td>
+<td>SC-OFDM</td>
+<td>SC-OFDM</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wifi-加密">WiFi 加密</h3>
+<ul>
+<li>WEP(IEEE 802.11) = RC4 + CRC32</li>
+<li>WPA(WiFi) = (802.1x + EAP)/Pre-shared Key + TKIP + MIC</li>
+<li>WPA2(802.11i) = (802.1x + EAP)/Pre-shared Key + AES + CCMP</li>
+<li>EAP: 算法架构
+<ul>
+<li>LEAP</li>
+<li>MD5</li>
+<li>TTLS</li>
+</ul>
+</li>
+<li>数据传输加密算法：TKIP, AES</li>
+<li>数据完整性编码校验算法：MIC, CCMP</li>
+<li>WPA-PSK 四次握手</li>
+</ul>
+<h2 id="ieee-80216">IEEE 802.16</h2>
+<p>WiMAX,固定宽带无线接入,无线城域网</p>
+<p>美国(Intel)提出，被接纳为3G第四个标准，韩国台湾相继放弃，仅日本在用(wimax2+)</p>
+<h2 id="个人域网络">个人域网络</h2>
+<h3 id="蓝牙">蓝牙</h3>
+<p>提供通用的短距离无线通信能力，两个蓝牙设备在10m范围内最高720kbps<br>
+wifi的主要作用是取代网线，蓝牙的主要作用是取代数据线<br>
+IEEE 802.15 无线个人局域网(WPANs)，IEEE 802.15.1 为蓝牙协议，现不在使用<br>
+蓝牙技术联盟（SIG）维护技术标准</p>
+<p><img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=77da218f692762d09433acedc185639f/ae51f3deb48f8c544ad85b8330292df5e0fe7f17.jpg" alt="蓝牙协议栈"></p>
+<ul>
+<li>微网(piconet)：最多8台设备，同一区域可共存10微网</li>
+<li>分布网：一个设备科同时为主站或从站</li>
+<li>蓝牙射频（蓝牙无线电）：2.4GHz</li>
+<li>蓝牙基带
+<ul>
+<li>跳频(FH)：FH-TDD-TDMA, FH-CDMA</li>
+<li>物理链路
+<ul>
+<li>同步面向连接(SCO)：传输有时限的数据(如音频)</li>
+<li>异步无连接(ACL)</li>
+<li>分组格式：接入码(72)+首部(54)+有效载荷(0~2745)</li>
+<li>纠错
+<ul>
+<li>1/3编码率 FEC</li>
+<li>2/3编码率 FEC</li>
+<li>ARQ</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>蓝牙音频
+<ul>
+<li>脉冲编码调制(PCM)</li>
+<li>连续可变斜率增量(CVSD)</li>
+</ul>
+</li>
+<li>逻辑链路控制与自适应协议(L2CAP)：提供无连接与面向连接</li>
+<li>服务发现协议(SDP):建立连接</li>
+<li>电缆替代协议(RFCOMM)：提供虚拟串口</li>
+</ul>
+<h3 id="zigbee">ZigBee</h3>
+<p>低功率，低数据率，低工作周期</p>
+<h2 id="蜂窝无线网络">蜂窝无线网络</h2>
+<p>见数据通信</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

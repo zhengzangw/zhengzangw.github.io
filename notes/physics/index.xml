@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>[P] 大学物理 University Physics on Zangwei</title>
+    <link>https://zhengzangw.com/notes/physics/</link>
+    <description>Recent content in [P] 大学物理 University Physics on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/physics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mechanics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-mechanics/</link>
+      <pubDate>Sat, 24 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-mechanics/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫
+NJU: University Physics I - 卢德鑫&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;kinematics&#34;&gt;Kinematics&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;diplacement: $\Delta\vec r=\vec r(t+\Delta t)-(\vec t)$&lt;/li&gt;
+&lt;li&gt;velocity: $\overline{\vec v}=\frac{\Delta\vec r}{\Delta t}$&lt;/li&gt;
+&lt;li&gt;speed: $\overline{v}=\frac{\Delta s}{\Delta t}$&lt;/li&gt;
+&lt;li&gt;acceleration: $\vec a=\frac{d\vec v}{dt}$&lt;/li&gt;
+&lt;li&gt;angular velocity vector: $\vec \omega =\frac{d\vec\theta}{dt} = \dot{\varphi}\vec k$&lt;/li&gt;
+&lt;li&gt;velocity in circular motion: $\dot{\vec \rho}=\vec \omega\times\vec\rho$&lt;/li&gt;
+&lt;li&gt;Oscillation: temporal periodicity and spatial repetitiveness&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Fundamental Modern Physics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-modern/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-modern/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫
+NJU: University Physics II - 许望&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;energy-quantization&#34;&gt;Energy Quantization&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;$\nu\lambda=c$&lt;/li&gt;
+&lt;li&gt;Blackbody radiation(infrared to visible spectrum): $u=u(\nu,T)$ or $u=u(\lambda,T)$&lt;/li&gt;
+&lt;li&gt;Stefan-Boltzman Law: $J_B=\sigma T^4$&lt;/li&gt;
+&lt;li&gt;relation between density of outgoing energy flow $J_u$ and density of energy u in the cavity: $J_u=\frac{1}{4}uc$, $u(T)=\int_0^\infty(\nu,T)d\nu$&lt;/li&gt;
+&lt;li&gt;Radiation spectrun(or spectrum density): $u(\nu,T)$&lt;/li&gt;
+&lt;li&gt;mean energy $\overline{\varepsilon}$: $u(\nu)d\nu=\frac{8\pi\nu^2}{c^3}\overline{\varepsilon}d\nu$&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Thermal Physics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-thermal/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-thermal/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫
+NJU: University Physics I - 卢德鑫&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;temperature&#34;&gt;Temperature&lt;/h1&gt;
+&lt;h2 id=&#34;basic-concept&#34;&gt;Basic Concept&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;phase: homogeneous part of system&lt;/li&gt;
+&lt;li&gt;equilibrium state: a state of a system in which macroscopic variables have definite values that remain constant as long as the external conditions are unchanged&lt;/li&gt;
+&lt;li&gt;relaxation time: $\tau$, the time system needs to adjust itself to follow the change of the surrounding.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Field-Theory</title>
+      <link>https://zhengzangw.com/notes/physics/field-theory/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/field-theory/</guid>
+      <description>&lt;h1 id=&#34;coordinate-system&#34;&gt;Coordinate system&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Cartesian system $(\vec i,\vec j,\vec k)$
+&lt;ul&gt;
+&lt;li&gt;orthogonal: $\vec i\cdot\vec j=\vec j\cdot\vec k=\vec k\cdot\vec i=0$&lt;/li&gt;
+&lt;li&gt;right-handed screw relation: $\vec i\times\vec j=\vec k$, $\vec j\times\vec k=\vec i$, $\vec k\times \vec i=\vec j$&lt;/li&gt;
+&lt;li&gt;$A\cdot B = A_1B_1+A_2B_2+A_3B_3$&lt;/li&gt;
+&lt;li&gt;$$
+A\times B=\det(\left[
+\begin{matrix}
+\vec i &amp;amp; \vec j &amp;amp; \vec k\newline
+A_1 &amp;amp; A_2 &amp;amp; A_3\newline
+B_1 &amp;amp; B_2 &amp;amp; B_3
+\end{matrix}
+\right])
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;polar coordinate systems $(\vec e_\rho, \vec e_\phi)$
+&lt;ul&gt;
+&lt;li&gt;moving frames&lt;/li&gt;
+&lt;li&gt;position vector $\vec\rho=\rho\vec e_\rho$&lt;/li&gt;
+&lt;li&gt;$\vec e_\rho=cos\varphi\vec i+sin\varphi\vec j$&lt;/li&gt;
+&lt;li&gt;$\frac{d\vec e_\rho}{dt}=\dot{\varphi}\vec e_\varphi$&lt;/li&gt;
+&lt;li&gt;$\frac{d\vec e_\varphi}{dt}=-\dot{\varphi}\vec e_\rho$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Spherical systems $(\vec e_\rho, \vec e_\phi, \vec k)$&lt;/li&gt;
+&lt;li&gt;Cylindrical systems&lt;/li&gt;
+&lt;li&gt;intrinsic system&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Electromagnetism</title>
+      <link>https://zhengzangw.com/notes/physics/physics-electromagnetism/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-electromagnetism/</guid>
+      <description>&lt;h1 id=&#34;electromagnetism&#34;&gt;Electromagnetism&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Coulomb&amp;rsquo;s Law: $\overrightarrow{F_{21}} = -\overrightarrow{F_{12}} = k\frac{q_1q_2}{r_{12}^3}\overrightarrow{r_{12}}$&lt;/li&gt;
+&lt;li&gt;Electric Field: $\overrightarrow{E} \equiv lim_{q\rightarrow 0}\frac{\vec F}{q} = \frac{1}{4\pi\epsilon}*\frac{q}{r^3}\overrightarrow{r_{12}}$&lt;/li&gt;
+&lt;li&gt;Dipole moment(dipole field): $p\equiv q*2a$&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

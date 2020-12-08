@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Math Foundation | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#linear-algebra">Linear Algebra</a></li>
+    <li><a href="#fourier-transform">Fourier Transform</a></li>
+    <li><a href="#number-theory-and-group-theory">Number Theory and Group Theory</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="linear-algebra">Linear Algebra</h2>
+<ul>
+<li>Vector: $|\psi\rangle$</li>
+<li>Row vector: $\langle\psi|=(\overline{|\psi\rangle})^T$</li>
+<li>Inner product: $\langle\psi|\varphi\rangle=\sum_i\overline{u}_iv_i$
+<ul>
+<li>$\langle\varphi|A|\psi\rangle$: Inner product between $|\varphi\rangle$ and $A|\psi\rangle$</li>
+<li>$\lVert\psi\rVert=\sqrt{\langle\psi|\psi\rangle}$</li>
+</ul>
+</li>
+<li>Tensor product: $A=(a_{ij}),B=(b_{ij}),A\otimes B=(c_{(i_1,i_2),(j_1,j_2)})$
+<ul>
+<li>$H^{\otimes n}=H\otimes H\otimes \cdots \otimes H$</li>
+</ul>
+</li>
+<li>$|\psi\rangle|\varphi\rangle=|\psi\rangle\otimes|\varphi\rangle=|\psi\varphi\rangle=|\psi,\varphi\rangle$
+<ul>
+<li>$|0^n\rangle=|00\cdots0\rangle$</li>
+<li>$(A\otimes B)(C \otimes D)=(AC)\otimes(BD)$</li>
+</ul>
+</li>
+<li>$M^\dagger=\overline{M}^T$</li>
+<li>Unitary matrix $U$: $U^\dagger U=I$</li>
+<li>Hermitian matrix: $H=U^\dagger DU$, $U$ is unitary and $D$ is a real diagonal matrix(eigenvalues of $H$)</li>
+<li>Positive semidefinite: $H$ is Hermitina and its eigenvalues are nonnegative</li>
+<li>orthonormal basis ${|v_1\rangle,\cdots,|v_d\rangle}$
+<ul>
+<li>Completeness relation: $\sum_i|v_i\rangle\langle v_i|=I$</li>
+<li>Computational basis in $\mathbb{C}^d$: $|i\rangle=(0,\cdots,1,0,\cdots,0)^T$</li>
+</ul>
+</li>
+<li>noraml operator: $MM^\dagger=M^\dagger M$
+<ul>
+<li>Spectral/Eigenvalue decomposition: $M=\sum_{i=1}^d\lambda_i|v_i\rangle\langle v_i|=U\Lambda U^*$
+<ul>
+<li>$M$ is Hermitian iff $\lambda_i$ are reals</li>
+<li>$M$ is a projector if $M$ is Hermitian and $M^2=M$/$\lambda_i\in{0,1}$</li>
+</ul>
+</li>
+<li>$f:\mathbb{C}^d\rightarrow\mathbb{C},f(M)=\sum_{i=1}^df(\lambda_i)|v_i\rangle\langle v_i|$</li>
+<li>$Tr(A)=\sum_i A_{ii}=\sum_i \langle i|A|i\rangle$
+<ul>
+<li>$Tr(AB)=Tr(BA)$</li>
+<li>$Tr(M)=\sum_{i}\lambda_i$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="fourier-transform">Fourier Transform</h2>
+<ul>
+<li>$\forall v\in\mathbb{C}^N$ view it as $v:{0,1,\cdots,N-1}\rightarrow\mathbb{C},v(i)=v_i$</li>
+<li>Inner product: $\langle u,v\rangle=\sum_i\overline{u(i)}v(i)$</li>
+<li>orthonormal basis $(\chi_j)_{0\leq j\leq N-1},\chi_j(k)=\frac{1}{\sqrt{N}}\omega_N^{jk},\omega_N=e^{\frac{2\pi i}{N}}$
+<ul>
+<li>$\forall v\in\mathbb{C}^N,v=\sum_{j=0}^N\hat v(j)\chi_j$</li>
+</ul>
+</li>
+<li>$F_N=\frac{1}{\sqrt{N}}(\chi_j(k))_{N\times N}=\frac{1}{\sqrt{N}}(\chi_1,\cdots,\chi_N)$
+<ul>
+<li>Unitary and Symmetric</li>
+</ul>
+</li>
+<li>Fourier Transform
+<ul>
+<li>naïve way $O(N^2)$ steps</li>
+<li>$\hat v=F_N v$</li>
+<li>$v = F_N^\dagger, v(j)=\sum_k\hat v(N-k)\chi_j(k)$</li>
+<li>$F_2=H$</li>
+</ul>
+</li>
+<li>Convolution: $c_l=(a*b)<em>l=\frac{1}{\sqrt{N}}\sum</em>{j=0}^{N-1}a_jb_{(l-j)\bmod N}$
+<ul>
+<li>$(\widehat{a*b})_l=\hat a_l\cdot \hat b_l$</li>
+</ul>
+</li>
+<li>Fast Fourier Transform: $T(N)=2T(\frac{N}{2})+O(N)\Rightarrow T(N)=O(N\log N)$
+<ul>
+<li>$\hat v_j=\frac{1}{\sqrt{2}}(\hat v_{\text{even } j}+\omega_N^j\hat v_{\text{odd } j})$</li>
+</ul>
+</li>
+<li>Multiplying two polynomials: $p(x)=\sum_{j=0}^d a_jx^j,q(x)=\sum_{k=0}^d b_kx^k$
+<ul>
+<li>Naïve Alg: $O(d^2)$</li>
+<li>FFT: $O(d\log d)$
+<ul>
+<li>$O(d\log d)$: $\hat a,\hat b$</li>
+<li>$O(d)$: $\widehat{a*b}$</li>
+<li>$O(d\log d)$: $a*b$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Quantum Fourier transform $N=2^n$
+<ul>
+<li>$F_N|k\rangle=\frac{1}{\sqrt{N}}\sum_{j=0}^{N-1}e^{2\pi ijk/N}|j\rangle$</li>
+<li>$F_N|k_1k_2\cdots k_n\rangle=\bigotimes_{l=1}^n\frac{1}{\sqrt{2}}(|0\rangle+e^{2\pi ik/2^l}|1\rangle)=\bigotimes_{l=1}^n\frac{1}{\sqrt{2}}(|0\rangle+e^{2\pi i0.k_{n-l+1}\cdots k_n}|1\rangle)$</li>
+<li>$F_N|0^n\rangle=H^{\otimes n}|0^n\rangle$</li>
+</ul>
+</li>
+<li>经典与量子的区别
+<ul>
+<li>$\hat v=F_N v$</li>
+<li>$|\hat v\rangle=F_N|v\rangle$
+<ul>
+<li>不考虑量子态的制作时间</li>
+<li>无法全部读出 $|\hat v\rangle$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="number-theory-and-group-theory">Number Theory and Group Theory</h2>
+<ul>
+<li>$Z_n={0,\cdots,n-1},Z_n^*={x\in Z_n:\gcd(x,n)=1}$</li>
+<li>$Z_{p^\alpha}$ is cyclic if $p$ is an odd prime and $\alpha$ is a positive integer</li>
+<li>Continued fractions: $x=[a_0,a_1,\cdots],[a_0,\cdots,a_n]=\frac{p_n}{q_n}$, then $|x-\frac{p_n}{q_n}|\leq\frac{1}{q_n^2}$
+<ul>
+<li>$p_0=a_0,p_1=a_1a_0+1,p_n=a_np_{n-1}+p_{n-2}$</li>
+<li>$q_0=1,q_1=a_1,q_n=a_nq_{n-1}+q_{n-2}$</li>
+</ul>
+</li>
+<li>homomorphism: $\rho:G\rightarrow H$ is a homomorphism if $\rho(g\cdot h)=\rho(g)\cdot\rho(h),\forall g,h\in G$</li>
+<li>$\omega_N=e^{\frac{2\pi i}{N}}$</li>
+<li>representation: homomorphism $\rho: G\rightarrow GL(n,\mathbb{C})$, the character $\chi_\rho(g)=\text{Tr}(\rho(g))$</li>
+<li>Basi theorem: find Abelian group is isomorphic to $\mathbb{Z}<em>{N_1}\times\cdots\times\mathbb{Z</em>{N_t}}$</li>
+<li>Represention of $\mathbb{Z}<em>{N}$: ${\chi_k}</em>{0\leq k\leq N-1},\chi_k(j)=\omega_N^{jk}$</li>
+<li>Represention of $\mathbb{Z}<em>{N_1}\times\cdots\times\mathbb{Z</em>{N_t}}$: ${\chi_{k1}\cdots\chi_{k_t}}_{0\leq k_i\leq N_i-1}$</li>
+<li>dual group: $\hat G={\text{all characters of } G}$</li>
+<li>$|\chi\rangle =\frac{1}{\sqrt{N}}\sum_{j=0}^{N-1}\chi(j)|j\rangle$</li>
+<li>$F_N|k\rangle=|\chi_k\rangle$</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

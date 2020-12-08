@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>综述 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#通信系统">通信系统</a></li>
+    <li><a href="#网络体系结构">网络体系结构</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="通信系统">通信系统</h2>
+<ul>
+<li>source $\rightarrow$ transmitter 源系统)$\rightarrow$ transmission system $\rightarrow$(目的系统 reciver $\rightarrow$ destination
+<ul>
+<li>单工 (simplex)：电视</li>
+<li>半双工 (half duplex)：对讲机</li>
+<li>双工 (full duplex)：电话</li>
+</ul>
+</li>
+<li>数字通信系统：数字基带传输
+<ul>
+<li>（模拟/数字）信息源$\rightarrow$信源编码$\rightarrow$加密$\rightarrow$信道编码$\rightarrow$数字调制$\rightarrow$信道$\rightarrow$数字解调$\rightarrow$信道译码$\rightarrow$解密$\rightarrow$信源译码$\rightarrow$受信者</li>
+</ul>
+</li>
+<li>模拟通信系统：利用模拟信号来传输信息的通信系统
+<ul>
+<li>模拟信息源（模拟消息）$\rightarrow$ 原始电信号（基带信号）$\rightarrow$调制器（已调信号）$\rightarrow$信道$\rightarrow$解调器（基带信号）$\rightarrow$受信者（模拟信号）</li>
+</ul>
+</li>
+<li>混成系统</li>
+</ul>
+<h2 id="网络体系结构">网络体系结构</h2>
+<ul>
+<li>TCP/IP 5层模型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>支持各种不同应用程序的逻辑</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>提供端到端的传输服务</td>
+</tr>
+<tr>
+<td>网际互联层</td>
+<td>提供多个网络的路由选择，能够让数据跨越多个互联网络</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>为与同一个网络相连的两个系统提供网络接入</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>负责数据传输设备与传输媒体的物理接口</td>
+</tr>
+<tr>
+<td>媒介</td>
+<td><a href="#%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B">传输媒介</a></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>套接字：端口值+IP地址+(协议)
+<ul>
+<li>流套接字：TCP</li>
+<li>数据报套接字：UCP</li>
+<li>原始套接字(raw socket)：IP</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

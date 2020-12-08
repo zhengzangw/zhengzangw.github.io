@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7. 实体造型技术基础 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#实体的表示">实体的表示</a>
+      <ul>
+        <li><a href="#点集拓扑表示">点集拓扑表示</a></li>
+        <li><a href="#形体表示">形体表示</a></li>
+      </ul>
+    </li>
+    <li><a href="#实体的造型">实体的造型</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="实体的表示">实体的表示</h2>
+<h3 id="点集拓扑表示">点集拓扑表示</h3>
+<ul>
+<li>有效物体（实体）：具有一定形状，具有确定的封闭边界（表面），是一个内部连通的三维点集
+<ul>
+<li>内点：点集中完全包含于该点集充分小邻域的点</li>
+<li>边界点</li>
+</ul>
+</li>
+<li>正则运算 $r$：先对物体取内点再取闭包
+<ul>
+<li>边界 $b$</li>
+<li>内点 $i$</li>
+</ul>
+</li>
+<li>正则点集：$A=rA$</li>
+<li>实体的可计算性：对于一个占据空间的正则点集，如果其表面是二维流形，则该正则点集为实体</li>
+<li>正则集合运算 $A \text{ op}^*\ B=r(A \text{ op } B)$
+<ul>
+<li>只需计算 $b(A\text{ op}^*\ B)$</li>
+<li>$b(A\cap^* B)=(bA\cap iB)\cup(bB\cap iA)\cup(bA\cap bB)_{\text{same side}}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="形体表示">形体表示</h3>
+<ul>
+<li>形体信息
+<ul>
+<li>集合信息：欧式空间中位置和大小</li>
+<li>拓扑信息：各分量数目及其互相间的连接关系</li>
+</ul>
+</li>
+<li>习题表面：封闭，有向，非自交，有界，连续</li>
+<li>形体自身：刚性，三维一致性，表示有限性</li>
+<li>几何元素
+<ul>
+<li>体：欧式空间中非空有界的封闭子集</li>
+<li>体素：能用有限个尺寸参数定义一个简单封闭空间
+<ul>
+<li>长方体，圆柱体，球体，代数半空间，参数定义的截面旋转</li>
+</ul>
+</li>
+<li>壳：在观察方向上所能看到的形体的最大外轮廓线</li>
+<li>面：有限非零的区域，有一个外环和若干个内环界定范围</li>
+<li>环：由有序有向边组成的封闭边界
+<ul>
+<li>面上沿环前进，左侧面内</li>
+</ul>
+</li>
+<li>边：两个邻面或多个邻面的交界</li>
+<li>点：不允许孤立点</li>
+</ul>
+</li>
+<li>拓扑关系表示：相邻性，包含性</li>
+</ul>
+<h2 id="实体的造型">实体的造型</h2>
+<ul>
+<li>
+<p>多边形表面表示：用一组包围物体内部的表面多边形描述边界</p>
+<ul>
+<li>多边形边表表示：顶点表，边表，面表</li>
+<li>多边形平面方程：$Ax+By+Cz+D=0$</li>
+<li>多边形表面方向：从里向外以右手系逆时针方向选择 $V_1,V_2,V_3$，$N=(V_2-V_1)\times(V_3-V_1)$</li>
+</ul>
+</li>
+<li>
+<p>空间分割表示：实体被分割表示为互不相交的粘合在一起的体素</p>
+<ul>
+<li>空间位置枚举表示法：单一立方体</li>
+<li>八叉树表示法：每个结点为立方体，根据 Full, Partial, Empty 继续划分 Partial</li>
+<li>单元分解表示法：不同类型基本体素粘合</li>
+</ul>
+</li>
+<li>
+<p>扫掠几何/推移表示 (sweep representation)</p>
+<ul>
+<li>广义平移 sweep：允许二维区域大小变换，轨道可以不垂直与二维区域所在平面</li>
+<li>旋转 sweep</li>
+<li>广义 sweep：允许带推移物体在推移过程中任意变换</li>
+<li>正则集合运算困难</li>
+</ul>
+</li>
+<li>
+<p>边界表示：描述实体边界描述实体</p>
+<ul>
+<li>最简单：多边形表面表示</li>
+<li>半边数据结构：以边为核心
+<ul>
+<li>将边表示成拓扑意义上相反的两条半边</li>
+<li>顶点 -&gt; 半边 -&gt; 环 -&gt; 面 -&gt; 多边形</li>
+</ul>
+</li>
+<li>二维流形：每条边值严格属于两个多边形</li>
+<li>简单多面体：与球拓扑同构的多面体
+<ul>
+<li>满足欧拉公式：$v-e+f=2$</li>
+</ul>
+</li>
+<li>广义欧拉公式：$v-e+f-r=2(s-h)$
+<ul>
+<li>$r$：多面体上环的个数</li>
+<li>$h$：贯穿多面体的洞的个数</li>
+<li>$s$：相互分离的多面体数</li>
+</ul>
+</li>
+<li>欧拉运算操作
+<ul>
+<li>m: 生成</li>
+<li>k: 删除</li>
+</ul>
+</li>
+<li>正则集合运算
+<ul>
+<li>相交检测：预检查两个物体是否相交，包围盒技术</li>
+<li>交线计算</li>
+<li>表面分类</li>
+<li>结果表示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>构造实体几何表示 (CSG)：将一些简单的基本体素通过正则集合运算构造和表示新实体</p>
+<ul>
+<li>CSG 树：中间结点为正则集合运算，叶节点为基本体素</li>
+<li>不唯一，不便于输出显示，获取实体信息需要大量计算</li>
+</ul>
+</li>
+<li>
+<p>特征模型表示：用一组特征参数定义一簇类似的物体</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>特征</th>
+<th>CSG</th>
+<th>边界</th>
+<th>sweep</th>
+<th>空间分割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>精确性</td>
+<td>精确</td>
+<td>依赖于基本体素种类</td>
+<td>允许曲面则精确</td>
+<td>允许曲面则精确</td>
+<td>近似</td>
+</tr>
+<tr>
+<td>唯一性</td>
+<td>✓</td>
+<td>×</td>
+<td></td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>表示域</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>封闭性</td>
+<td>不能集合运算</td>
+<td>封闭</td>
+<td>不封闭</td>
+<td>不封闭</td>
+<td>封闭</td>
+</tr>
+<tr>
+<td>有效性验证</td>
+<td>自动保证</td>
+<td>简单</td>
+<td>难</td>
+<td>简单</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>简洁性</td>
+<td>简洁</td>
+<td>简洁</td>
+<td>中等</td>
+<td>简洁</td>
+<td>大量空间</td>
+</tr>
+<tr>
+<td>输入支持</td>
+<td>面向用户</td>
+<td>面向用户</td>
+<td>自由度大，但需要大量几何数据</td>
+<td>面向用户</td>
+<td>难</td>
+</tr>
+<tr>
+<td>输出支持</td>
+<td></td>
+<td>实体性质计算</td>
+<td>边界信息</td>
+<td></td>
+<td>实体性质计算</td>
+</tr>
+</tbody>
+</table>
+</main>
+        </div>
+
+    </div>
+</body></html>

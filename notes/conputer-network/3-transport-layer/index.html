@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3. Transport Layer | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#提供服务">提供服务</a></li>
+    <li><a href="#多路复用与多路分解">多路复用与多路分解</a></li>
+    <li><a href="#udp">UDP</a></li>
+    <li><a href="#可靠数据传输">可靠数据传输</a></li>
+    <li><a href="#tcp">TCP</a>
+      <ul>
+        <li><a href="#面向连接">面向连接</a></li>
+        <li><a href="#tcp-首部格式">TCP 首部格式</a></li>
+        <li><a href="#重传计时器管理">重传计时器管理</a></li>
+      </ul>
+    </li>
+    <li><a href="#流量控制">流量控制</a></li>
+    <li><a href="#tcp-拥塞控制">TCP 拥塞控制</a>
+      <ul>
+        <li><a href="#tcp-拥塞控制算法">TCP 拥塞控制算法</a></li>
+        <li><a href="#tcp-吞吐量">TCP 吞吐量</a></li>
+        <li><a href="#显示拥塞通知">显示拥塞通知</a></li>
+      </ul>
+    </li>
+    <li><a href="#数据报拥塞控制协议-dccp">数据报拥塞控制协议 (DCCP)</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="提供服务">提供服务</h2>
+<ul>
+<li>多路复用与多路分解：主机间的交付扩展到进程间交付</li>
+<li>完整性检验</li>
+<li>可靠数据传输 (TCP)
+<ul>
+<li>可靠：面向连接的LLC服务的局域网，面向连接的分组交换网络</li>
+<li>不可靠：使用IP的网际互联，无确认LLC服务的局域网</li>
+</ul>
+</li>
+<li>流量控制 (TCP)</li>
+<li>拥塞控制 (TCP)</li>
+</ul>
+<h2 id="多路复用与多路分解">多路复用与多路分解</h2>
+<ul>
+<li>套接字：源端口号，目的端口号，源IP，目的IP
+<ul>
+<li>不同套接字创建进程/线程</li>
+</ul>
+</li>
+<li>端口号 0-65535
+<ul>
+<li>0-1023 周知端口号</li>
+</ul>
+</li>
+<li>UDP 套接字：由(目的IP, 目的端口号)标识</li>
+<li>TCP 套接字：由(源端口号，目的端口号，源IP，目的IP)标识</li>
+</ul>
+<h2 id="udp">UDP</h2>
+<p>RFC 768</p>
+<ul>
+<li>UDP 优势
+<ul>
+<li>防止 TCP 的拥塞控制，应用层 进行拥塞控制</li>
+<li>无需连接建立</li>
+<li>无连接状态</li>
+<li>分组首部开销小</li>
+</ul>
+</li>
+<li>完整性检验：因特网检验和
+<ul>
+<li>基于端到端原则</li>
+</ul>
+</li>
+</ul>
+<p>UDP 报文段首部</p>
+<table>
+<thead>
+<tr>
+<th>Source Port</th>
+<th>Destination Port</th>
+<th>Length</th>
+<th>Checksum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16 bits</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<h2 id="可靠数据传输">可靠数据传输</h2>
+<ul>
+<li>经完全可靠信道的可靠数据传输 rdt1.0</li>
+<li>经具有比特差错信道的可导数据传输
+<ul>
+<li>rdt2.0: stop-and-wait</li>
+<li>rdt2.1: stop-and-wait 01</li>
+</ul>
+</li>
+<li>经具有比特差错的丢包信道的可导数据传输
+<ul>
+<li>rdt3.0: stop-and-wait 01 ARQ</li>
+</ul>
+</li>
+<li>流水线可靠数据协议
+<ul>
+<li>Go-Back-N ARQ</li>
+<li>Selective Reject ARQ</li>
+</ul>
+</li>
+</ul>
+<h2 id="tcp">TCP</h2>
+<h3 id="面向连接">面向连接</h3>
+<ul>
+<li>三次握手
+<ul>
+<li>C-&gt;S: SYN 1, seq i</li>
+<li>S-&gt;C: SYN 1, seq j, ack i+1</li>
+<li>C-&gt;S: SYN 0, seq i+1, ack j+1</li>
+<li>C-&gt;S: Data, seq i+1, ack j+1</li>
+</ul>
+</li>
+<li>结束连接
+<ul>
+<li>C-&gt;S: FIN</li>
+<li>S-&gt;C: ACK</li>
+<li>S-&gt;C: FIN</li>
+<li>C-&gt;S: ACK</li>
+</ul>
+</li>
+<li>发送缓存：三次握手期间建立</li>
+<li>最大报文段长度(MSS, Maximum Segment Size) e.g 1460</li>
+<li>最大传输单元(MTU, Maximum Transmit Unit) = MSS + 报文段首部 + 数据报首部(通常为40字节) e.g 1500</li>
+</ul>
+<h3 id="tcp-首部格式">TCP 首部格式</h3>
+<table>
+<thead>
+<tr>
+<th>Source Port</th>
+<th>Destination Port</th>
+<th>Seqence Number</th>
+<th>Acknowledgement Number</th>
+<th>Data Offset</th>
+<th>Reserved</th>
+<th>Flags</th>
+<th>Window</th>
+<th>Checksum</th>
+<th>Urgent Pointer</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16 bits</td>
+<td>16</td>
+<td>32</td>
+<td>32</td>
+<td>4</td>
+<td>4</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+<td>option,variable</td>
+</tr>
+<tr>
+<td>Telnet=13,HTTP=80,TFTP=69</td>
+<td></td>
+<td>第一个数据八位组的序号（SYN置位则加一）</td>
+<td>希望接受的序号（累积确认）</td>
+<td>首部32位字的数量</td>
+<td></td>
+<td>置1含义见下</td>
+<td>信用量分配W</td>
+<td>因特网检验和</td>
+<td>紧急数据最后一个八位组</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Flags</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CWR</td>
+<td>拥塞窗口减少</td>
+</tr>
+<tr>
+<td>ECE</td>
+<td>ECN-Echo</td>
+</tr>
+<tr>
+<td>URG</td>
+<td>urgent point 字段有效</td>
+</tr>
+<tr>
+<td>ACK</td>
+<td>acknowledegment 字段有效</td>
+</tr>
+<tr>
+<td>PSH</td>
+<td>推送功能</td>
+</tr>
+<tr>
+<td>PST</td>
+<td>连接复位</td>
+</tr>
+<tr>
+<td>SYN</td>
+<td>序号同步</td>
+</tr>
+<tr>
+<td>FIN</td>
+<td>发送者无其它数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="重传计时器管理">重传计时器管理</h3>
+<ul>
+<li>$\text{RTT}(i)$ = SampleRTT: 实际往返时延,对第$i$个传输的报文段所观察到的往返时间</li>
+<li>将重传计时器的值设置的比估计值大一点
+<ul>
+<li>超时间隔 = EstimateRTT + 4 DevRTT</li>
+</ul>
+</li>
+<li>简单平均：$\text{ARTT}(K+1)=\frac{K}{K+1}\sum_i{\text{RTT}(i)}$</li>
+<li>指数平均
+<ul>
+<li>EstimateRTT = $(1-\alpha)$ EstimateRTT + $\alpha$ SampleRTT</li>
+<li>DevRTT = $(1-\beta)$ DevRTT + $\beta$ |SampleRTT - EstimateRTT|</li>
+<li>RFC 793
+<ul>
+<li>$\text{RTO}(K+1)=\min(\text{UPBOUND},\max(\text{LBOUND},\beta\text{EstimateRTT}(K+1)))$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RTT 方差估计 (Jacobson 算法)
+<ul>
+<li>指数平均不能很好处理方差较高的情况</li>
+<li>$\text{SRTT}(K+1)=(1-g)\text{SRTT}(K)+g\text{RTT}(K+1)$</li>
+<li>$\text{SERR}(K+1)=\text{RTT}(K+1)-\text{SRTT}(K)$</li>
+<li>$\text{SDEV}(K+1)=(1-h)\text{SDEV}(K)|\text{SERR}(K+1)|$</li>
+<li>重传计时器 $\text{RTO}(K+1)=\text{SRTT}(K+1)+f\text{SDEV}(K+1)$</li>
+</ul>
+</li>
+<li>指数RTO退避：重传时 $\text{RTO}=q\text{RTO}$</li>
+<li>Karn 算法
+<ul>
+<li>报文超时重传后，收到确认既可能是第一次的 ACK，也可能是第二次的 ACK</li>
+<li>不对重传报文测得的 $\text{RTT}$ 更新</li>
+<li>发送重传后用指数RTO退避</li>
+<li>对后续报文使用 RTO 退避知道收到一个队未重传的报文段的确认为止</li>
+</ul>
+</li>
+</ul>
+<h2 id="流量控制">流量控制</h2>
+<ul>
+<li>丢弃溢出报文（可靠网络下很不合适）</li>
+<li>反压机制</li>
+<li>滑动窗口协议</li>
+<li>信用量机制
+<ul>
+<li>窗口(W): W = Buffer - (LastByteRcvd - LastByteRead)</li>
+</ul>
+</li>
+</ul>
+<h2 id="tcp-拥塞控制">TCP 拥塞控制</h2>
+<ul>
+<li>丢失的报文说明拥塞</li>
+<li>确认报文说明可增速</li>
+<li>带宽探测</li>
+</ul>
+<h3 id="tcp-拥塞控制算法">TCP 拥塞控制算法</h3>
+<ul>
+<li>慢启动
+<ul>
+<li>cwnd(拥塞窗口) 初始化微较小 MSS</li>
+<li>每收到一个确认增加 1个MSS （指数增长）</li>
+<li>结束状态
+<ul>
+<li>超时事件：ssthresh = cwnd/2, cwnd = 1, 慢启动</li>
+<li>cwnd $\geq$ sstresh: 拥塞避免模式</li>
+<li>3个冗余 ACK：快速重传（在定时器过期前重传丢失的报文段），sstresh = cwnd/2,  快速恢复</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>拥塞避免模式（加性增，乘性减）
+<ul>
+<li>每过一个往返时延将 cwnd 加一</li>
+<li>结束状态
+<ul>
+<li>超时事件：ssthresh = cwnd/2, cwnd = 1, 慢启动</li>
+<li>3个冗余 ACK: sstresh = cwnd/2, 快速恢复</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>快速恢复
+<ul>
+<li>TCP Taheo: cwnd = 1, 慢启动</li>
+<li>TCP Reneo: cwnd = sstresh + 3, 线性增长</li>
+</ul>
+</li>
+</ul>
+<h3 id="tcp-吞吐量">TCP 吞吐量</h3>
+<ul>
+<li>平均吞吐量
+<ul>
+<li>$B=\frac{0.75W}{\text{RTT}}$</li>
+<li>$B=\frac{1.22\text{MSS}}{\text{RTT}\sqrt{L}}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="显示拥塞通知">显示拥塞通知</h3>
+<ul>
+<li>ECN(Explicit Congestion Notification)
+<ul>
+<li>00:无能力</li>
+<li>01/10:有能力</li>
+<li>11:已遇到堵塞</li>
+</ul>
+</li>
+<li>发送方设置 ECN=01/10</li>
+<li>路由器检测到堵塞，准备丢弃的分组 ECN=01/10，则将该分组IP首部中 ECN 设为11并转发</li>
+<li>接收方收到 11，则恢复时在 TCP ACK 中将 ECN-Echo 置位</li>
+<li>发送方在下一个发送到接收方的分组中，将 CWR 置位</li>
+</ul>
+<h2 id="数据报拥塞控制协议-dccp">数据报拥塞控制协议 (DCCP)</h2>
+<ul>
+<li>拥塞崩溃：各行其道的流量过多且互不考虑</li>
+<li>TCP友好(TCP 兼容)：非TCP协议在遇到拥塞时可以产生与TCP类似行为
+<ul>
+<li>$T\leq\frac{1.22B}{R\sqrt{q}}$</li>
+<li>发送速率 $T$</li>
+<li>最大分组长度 $B$</li>
+<li>连接上的往返时延 $R$</li>
+<li>分组丢弃率 $p$</li>
+</ul>
+</li>
+<li>DCCP 运行在 IP 上，原本使用 UDP 的应用程序作为可替代的运输协议
+<ul>
+<li>不存在重传，确认字号为收到的最大序列号</li>
+<li>三次握手</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>分组类型</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DCCP-Request</td>
+<td>握手第一次</td>
+</tr>
+<tr>
+<td>DCCP-Response</td>
+<td>握手第二次</td>
+</tr>
+<tr>
+<td>DCCP-Data</td>
+<td></td>
+</tr>
+<tr>
+<td>DCCP-ACK</td>
+<td>无Data时ACK</td>
+</tr>
+<tr>
+<td>DCCP-DataAck</td>
+<td></td>
+</tr>
+<tr>
+<td>DCCP-CloseReq</td>
+<td>关闭请求</td>
+</tr>
+<tr>
+<td>DCCP-Close</td>
+<td>关闭连接</td>
+</tr>
+<tr>
+<td>DCCP-Reset</td>
+<td>终止连接</td>
+</tr>
+<tr>
+<td>DCCP-Sync</td>
+<td></td>
+</tr>
+<tr>
+<td>DCCP-SyncAck</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>源端口</th>
+<th>目标端口</th>
+<th>数据偏移</th>
+<th>CCVal</th>
+<th>CsCov(检验范围)</th>
+<th>检验和</th>
+<th>RES</th>
+<th>类型</th>
+<th>扩展序列号</th>
+<th>RES</th>
+<th>序列号</th>
+<th>可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16bits</td>
+<td>16</td>
+<td>8</td>
+<td>4</td>
+<td>4</td>
+<td>16</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>8</td>
+<td>48/28</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>应用数据开始偏移量</td>
+<td>发送方拥塞控制机制使用</td>
+<td>检验和检验范围</td>
+<td>因特网检验和</td>
+<td></td>
+<td>分组类型</td>
+<td>1则48bits</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>DCCP 拥塞控制
+<ul>
+<li>类TCP拥塞控制 CCID 2：宽带利用率最大化</li>
+<li>TCP 友好性速率控制 TFRC/CCID 3: 平滑性</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

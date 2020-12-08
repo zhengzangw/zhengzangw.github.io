@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FFT | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fft">FFT</a></li>
+    <li><a href="#ntt">NTT</a></li>
+    <li><a href="#分治fft">分治FFT</a></li>
+    <li><a href="#任意模数nttmtt">任意模数NTT（MTT）</a></li>
+    <li><a href="#kwt">KWT</a>
+      <ul>
+        <li><a href="#xor">xor</a></li>
+        <li><a href="#and">and</a></li>
+        <li><a href="#or">or</a></li>
+      </ul>
+    </li>
+    <li><a href="#kmt">KMT</a>
+      <ul>
+        <li><a href="#and-1">and</a></li>
+        <li><a href="#or-1">or</a></li>
+      </ul>
+    </li>
+    <li><a href="#多项式求逆">多项式求逆</a>
+      <ul>
+        <li><a href="#要求">要求</a></li>
+        <li><a href="#推导">推导</a></li>
+        <li><a href="#算法">算法</a></li>
+      </ul>
+    </li>
+    <li><a href="#多项式除法">多项式除法</a>
+      <ul>
+        <li><a href="#核心代码">核心代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#卡常技巧">卡常技巧</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="fft">FFT</h2>
+<p>迭代实现，计算卷积。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">FFT</span>(<span style="color:#66d9ef">int</span> limit, complex <span style="color:#f92672">*</span>a, <span style="color:#66d9ef">int</span> type)
+{
+  complex x, y;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> limit; <span style="color:#f92672">++</span>i)
+    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> r[i])
+      std<span style="color:#f92672">::</span>swap(a[i], a[r[i]]);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; mid <span style="color:#f92672">&lt;</span> limit; mid <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>)
+  {
+    complex Wn(cos(pi <span style="color:#f92672">/</span> mid), type <span style="color:#f92672">*</span> sin(pi <span style="color:#f92672">/</span> mid)), x, y;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> limit; j <span style="color:#f92672">+=</span> (mid <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>))
+    {
+      complex w(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>);
+      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; k <span style="color:#f92672">&lt;</span> mid; <span style="color:#f92672">++</span>k, w <span style="color:#f92672">=</span> w <span style="color:#f92672">*</span> Wn)
+      {
+        x <span style="color:#f92672">=</span> a[j <span style="color:#f92672">+</span> k];
+        y <span style="color:#f92672">=</span> w <span style="color:#f92672">*</span> a[j <span style="color:#f92672">+</span> mid <span style="color:#f92672">+</span> k];
+        a[j <span style="color:#f92672">+</span> k] <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y;
+        a[j <span style="color:#f92672">+</span> mid <span style="color:#f92672">+</span> k] <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> y;
+      }
+    }
+  }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">polymulti</span>(<span style="color:#66d9ef">int</span> n, <span style="color:#66d9ef">int</span> m, complex F[], complex G[])
+{
+  <span style="color:#66d9ef">int</span> limit, i,len;
+  <span style="color:#66d9ef">for</span> (limit <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,len <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; limit <span style="color:#f92672">&lt;=</span> n <span style="color:#f92672">+</span> m; limit <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>, <span style="color:#f92672">++</span>len)
+    ;
+  <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> limit; <span style="color:#f92672">++</span>i)
+    r[i] <span style="color:#f92672">=</span> (r[i <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">|</span> ((i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;&lt;</span> (len <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">//二进制反转
+</span><span style="color:#75715e"></span>  FFT(limit, F, <span style="color:#ae81ff">1</span>);
+  FFT(limit, G, <span style="color:#ae81ff">1</span>);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> limit; <span style="color:#f92672">++</span>i)
+    F[i] <span style="color:#f92672">=</span> F[i] <span style="color:#f92672">*</span> G[i];
+  FFT(limit, F, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+  <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> n <span style="color:#f92672">+</span> m; <span style="color:#f92672">++</span>i)
+    F[i].x <span style="color:#f92672">=</span> (<span style="color:#66d9ef">int</span>)(F[i].x <span style="color:#f92672">/</span> limit <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.5</span>);
+}
+</code></pre></div><h2 id="ntt">NTT</h2>
+<p>模意义下运算</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">//998244353 = 119*2^23 + 1; g = 3;
+</span><span style="color:#75715e">//1004535809 = 479*2^21 + 1; g = 3;
+</span><span style="color:#75715e">//2281701377 = 17*2^27 + 1; g = 3;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> P <span style="color:#f92672">=</span> <span style="color:#ae81ff">998244353</span>, G <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, Gni <span style="color:#f92672">=</span> <span style="color:#ae81ff">332748118</span>;
+</code></pre></div><p>加const不加const 速度两个级别。原因未知。</p>
+<h2 id="分治fft">分治FFT</h2>
+<p>cdq + FFT
+cdq框架</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cdq</span>(l,r){
+    cdq(l,mid);
+    add effect of l<span style="color:#f92672">--</span>mid to mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">--</span>r
+    cdq(mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,r)
+}
+</code></pre></div><h2 id="任意模数nttmtt">任意模数NTT（MTT）</h2>
+<p>设模mod<br>
+数范围m，数长度n，最大值为$nm^2$。取三个（或多个）素数乘积大于该值，再在模意义下利用中国剩余定理求解。<br>
+为防止精度爆炸，求解三项CRT时使用如下技巧：<br>
+$$Ans = kM+A = xm_3+a_3$$
+$$kM = a_3-A (mod m_3)$$
+$$k = （a_3-A）M^{-1} (m_3)$$
+继而在mod意义下计算kM+A即可<br>
+非素数模求逆不能用快速幂<br>
+注意：使用快乘</p>
+<h2 id="kwt">KWT</h2>
+<p>构造FWT(A)使FWT(A@B) = FWT(A)*FWT(B)</p>
+<h3 id="xor">xor</h3>
+<p>$$A@B = (A_0@B_0+A_1@B_1,A_1@B_0+A_0@B_1)$$
+$$FWT(A) = (FWT(A_0+A_1),FWT(A_0-A_1))$$
+$$DWT(A) = (DWT((A_0+A_1)/2),DWT((A_0-A_1)/2)))$$</p>
+<h3 id="and">and</h3>
+<p>$$A@B = (A_0@B0+A_0@B_1+A_1@B_0,A_1@B_1)$$
+$$FWT(A) = (FWT(A_0+A_1),FWT(A_1))$$
+$$DWT(A) = (DWT(A_0-A_1),DWT(A_1))$$</p>
+<h3 id="or">or</h3>
+<p>$$A@B = (A_0@B_0,A_0@B_1+A_1@B_0+A_1@B_1)$$
+$$FWT(A) = (FWT(A_0),FWT(A_0+A_1))$$
+$$DWT(A) = (DWT(A_0),DWT(A_1-A_0))$$</p>
+<h2 id="kmt">KMT</h2>
+<p>利用子集和变换及其逆变换，直接相乘<br>
+DPi(x) 为只考虑前x位的子集得到的变换<br>
+若DPi(x+1) = DPi(x) + DPi(x{i})</p>
+<p>集合意义下：
+$$f_{S\cup{i}}^i = f_S^{i-1} + f_{S\cup{i}}^{i-1}$$</p>
+<h3 id="and-1">and</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i)
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> n; j<span style="color:#f92672">++</span>)
+    <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">&gt;&gt;</span> i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>)
+      a[j] <span style="color:#f92672">=</span> md(a[j] <span style="color:#f92672">+</span> a[j <span style="color:#f92672">^</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> i)] <span style="color:#f92672">*</span> (type <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>));
+</code></pre></div><h3 id="or-1">or</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>n;<span style="color:#f92672">++</span>i)
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;j<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">1</span><span style="color:#f92672">&lt;&lt;</span>n;j<span style="color:#f92672">++</span>)
+    <span style="color:#66d9ef">if</span> (j<span style="color:#f92672">&gt;&gt;</span>i<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span>)
+        a[j] <span style="color:#f92672">=</span> md(a[j]<span style="color:#f92672">+</span>a[j<span style="color:#f92672">^</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">&lt;&lt;</span>i)]<span style="color:#f92672">*</span>(type<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span><span style="color:#f92672">?</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:-</span><span style="color:#ae81ff">1</span>));
+</code></pre></div><h2 id="多项式求逆">多项式求逆</h2>
+<h3 id="要求">要求</h3>
+<p>求n-1次多项式F关于模$x^{n}$的逆$F^{-1}$</p>
+<h3 id="推导">推导</h3>
+<p>$h(x)f(x)=1 (x^n)$<br>
+$h(x)f(x)-1 = 0 (x^n)$<br>
+$h^2(x)f^2(x)-2*h(x)*f(x)+1 = 0 (x^{2n})$<br>
+$h^2(x)f(x)-2h(x)+g(x) = 0 (x^{2n})$<br>
+$g(x) = 2h(x)-h^2(x)f(x) = h(x)(2-h(x)f(x)) (x^{2n})$</p>
+<h3 id="算法">算法</h3>
+<p>利用递归+FFT<br>
+也可不用递归，使用递推</p>
+<h2 id="多项式除法">多项式除法</h2>
+<p>$$A_R(x) = x^nA(\frac{1}{x})$$
+两函数满足：$A_R[i] = A[n-i]$</p>
+<p>推导：
+$$F(x) = Q(x)*G(x) + R(x)$$
+$$x^nF(\frac{1}{x}) = x^{n-m}Q(\frac{1}{x})*x^mG(\frac{1}{x})+ x^{n-m+1}x^{m-1}R)\frac{1}{x})$$
+$$F_R(x)=Q_R(x)*G_R(x)+x^{n-m+1}*R_R(x) (mod\ x^{n-m+1})$$
+$$Q_R(x) = F_R(x)*G_R^{-1}(x) (mod x^{n-m+1})$$</p>
+<p>继而，
+$$R(x) = F(x) - G(x)*Q(x)$$</p>
+<h3 id="核心代码">核心代码</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">//多项式除法
+</span><span style="color:#75715e">//O(nlogn) F(x) = Q(x)G(x) + R(x) n = m*(n-m) + (m-1)
+</span><span style="color:#75715e"></span>LL G_R[MAXN],G_R_inv[MAXN],F_R[MAXN],Q_R[MAXN],G_Q[MAXN];
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">poly_div</span>(<span style="color:#66d9ef">int</span> n,<span style="color:#66d9ef">int</span> m,<span style="color:#66d9ef">int</span> mod,LL F[],LL G[],LL Q[],LL R[]){
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;=</span>m;<span style="color:#f92672">++</span>i) G_R[i] <span style="color:#f92672">=</span> G[m<span style="color:#f92672">-</span>i];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>n<span style="color:#f92672">-</span>m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;=</span>n;<span style="color:#f92672">++</span>i) G_R[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    poly_inv(G_R, n<span style="color:#f92672">-</span>m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, mod, G_R_inv);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;=</span>n<span style="color:#f92672">-</span>m;<span style="color:#f92672">++</span>i) F_R[i] <span style="color:#f92672">=</span> F[n<span style="color:#f92672">-</span>i];
+    poly_mult(n<span style="color:#f92672">-</span>m, n<span style="color:#f92672">-</span>m, F_R, G_R_inv, Q_R);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;=</span>n<span style="color:#f92672">-</span>m;<span style="color:#f92672">++</span>i) Q[i] <span style="color:#f92672">=</span> Q_R[n<span style="color:#f92672">-</span>m<span style="color:#f92672">-</span>i];
+    poly_mult(m,n<span style="color:#f92672">-</span>m,G,Q,G_Q);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;=</span>n;<span style="color:#f92672">++</span>i) R[i] <span style="color:#f92672">=</span> md(F[i] <span style="color:#f92672">-</span> G_Q[i]);
+}
+</code></pre></div><h2 id="卡常技巧">卡常技巧</h2>
+<ul>
+<li>IO优化</li>
+<li>inline</li>
+<li>取模优化</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">  <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">inc</span>(<span style="color:#66d9ef">int</span> x,<span style="color:#66d9ef">int</span> v,<span style="color:#66d9ef">int</span> mod){x<span style="color:#f92672">+=</span>v;<span style="color:#66d9ef">return</span> x<span style="color:#f92672">&gt;=</span>mod<span style="color:#f92672">?</span>x<span style="color:#f92672">-</span>mod:x;} <span style="color:#75715e">//代替取模+
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">dec</span>(<span style="color:#66d9ef">int</span> x,<span style="color:#66d9ef">int</span> v,<span style="color:#66d9ef">int</span> mod){x<span style="color:#f92672">-=</span>v;<span style="color:#66d9ef">return</span> x<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span><span style="color:#f92672">?</span>x<span style="color:#f92672">+</span>mod:x;} <span style="color:#75715e">//代替取模-
+</span></code></pre></div><ul>
+<li>前置++</li>
+<li>bool改char</li>
+<li>()?():()快于if()else</li>
+<li>,快于;</li>
+<li>数组在用方括号时做了一次加法才能取地址</li>
+<li><strong>多维数组大数在前</strong>: int f[10000][1000][100]</li>
+<li>int 快于 long long</li>
+<li>STL常数可能大</li>
+<li>memset快</li>
+<li>strlen O(L)</li>
+<li>位运算</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

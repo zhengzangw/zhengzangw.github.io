@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1-随机事件 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#随机事件">随机事件</a></li>
+    <li><a href="#概率定义与性质">概率定义与性质</a></li>
+    <li><a href="#概型">概型</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="随机事件">随机事件</h2>
+<ul>
+<li>随机试验 $E$</li>
+<li>样本空间 $\Omega={E\text{ 的所有可能结果}}$</li>
+<li>样本点 $e$（基本事件）：$E$的每个结果</li>
+<li>随机事件：$A,B,C$ 为 $\Omega$ 的子集
+<ul>
+<li>$B\subset A$：$A$ 发生必然导致 $A$ 发生</li>
+<li>必然事件：$\Omega$</li>
+<li>不可能事件：$\emptyset$</li>
+</ul>
+</li>
+<li>$A\cup B/A+B$： $A,B$ 至少发生一个</li>
+<li>$A\cap B/AB$： $A,B$ 同时发生</li>
+<li>$A - B$：$A$ 发生， $B$ 不发生</li>
+<li>$\overline{A}$： 对立事件</li>
+<li>De Morgan: $\overline{\bigcup A_i}=\bigcap \overline{A_i},\overline{\bigcap A_i}=\bigcup \overline{A_i}$</li>
+</ul>
+<h2 id="概率定义与性质">概率定义与性质</h2>
+<ul>
+<li>概率定义：
+<ul>
+<li>$0\leq P(A)$</li>
+<li>$P(\Omega)=1$</li>
+<li>（可列可加性）若 $A_1,\cdots$ 两两互不相容，则 $P(A_1\cup\cdots)=P(A_1)\cup\cdots$</li>
+</ul>
+</li>
+<li>概率性质
+<ul>
+<li>$P(A-B)=P(A)-P(AB)=P(A\overline{B})$
+<ul>
+<li>$A=(A-B)\cup AB$</li>
+</ul>
+</li>
+<li>$P(A\cup B)=P(A)+P(B)-P(AB)$</li>
+</ul>
+</li>
+<li>乘法公式：$P(AB)=P(B)P(A|B)$
+<ul>
+<li>条件概率：$P(A|B)=\frac{P(AB)}{P(B)}$</li>
+</ul>
+</li>
+<li>全概率公式：对于划分 $A_1,\cdots,A_n, P(B)=\sum_{k=1}^nP(A_k)P(B|A_k)$</li>
+<li>贝叶斯公式：对于划分 $A_1,\cdots,A_n$, $P(A_i|B)=\frac{P(A_i)P(B|A_i)}{\sum_{k=1}^nP(A_k)P(B|A_k)}$</li>
+<li>互不相容：$P(A\cup B)=P(A)+P(B)$
+<ul>
+<li>对立事件：$P(A)+P(B)=1$</li>
+</ul>
+</li>
+<li>独立性：$P(AB)=P(A)P(B)$
+<ul>
+<li>$P(\bigcup_iA_i)=1-\prod_i P(\overline{A_i})$</li>
+</ul>
+</li>
+<li>Union Bound: $P(\bigcup A_i)\leq\sum P(A_i)$</li>
+<li>$k$-wise independent: $P(A_1\cdots A_k)=P(A_1)\cdots P(A_k)$
+<ul>
+<li>pairwise independent: $P(AB)=P(A)P(B)$</li>
+</ul>
+</li>
+<li>mutually independent: $\forall k,k$-wise independent
+<ul>
+<li>$X_1,\cdots,X_m$ is mutually independent, then $n=2^m-1$ pairwise indenpent bits can be generated: $Y_j=(\sum_{i\in S_j}X_i)\mod 2$ ($S_j\subseteq \mathbb{Z}_m$)</li>
+</ul>
+</li>
+</ul>
+<h2 id="概型">概型</h2>
+<ul>
+<li>可靠性分析（独立工作系统）
+<ul>
+<li>可靠性：正常工作的概率</li>
+<li>串联方式：$P(B)=P(A_1\cdots A_n)$</li>
+<li>并联方式：$P(B)=1-\prod_i P(\overline{A_i})$</li>
+</ul>
+</li>
+<li>古典概型
+<ul>
+<li>$P(A)=\frac{m}{n}$</li>
+</ul>
+</li>
+<li>几何概型</li>
+<li>独立重复试验概型：$n$ 重伯努利试验
+<ul>
+<li>两个结果 $A$ 与 $\overline{A}$</li>
+<li>试验进行 $n$ 次，每次结果</li>
+</ul>
+</li>
+<li>$n$ 重伯努利试验中， $A$ 发生 $k$ 次的概率 $P_n(k)=C_n^kp^kq^{n-k}$</li>
+<li>泊松定理：$\lim_{n\rightarrow\infty}C_n^kp_n^k(1-p_n)^{n-k}=\frac{\lambda^k}{k!}e^{-\lambda}, \lambda=np_n$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

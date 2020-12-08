@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Flow Analysis | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#applications">Applications</a>
+      <ul>
+        <li><a href="#reaching-definitions-analysis">Reaching Definitions Analysis</a></li>
+        <li><a href="#live-variables-analysis">Live Variables Analysis</a></li>
+        <li><a href="#available-expressions-analysis">Available Expressions Analysis</a></li>
+        <li><a href="#constant-propagation">Constant Propagation</a></li>
+      </ul>
+    </li>
+    <li><a href="#lattice">Lattice</a></li>
+    <li><a href="#foundation">Foundation</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="applications">Applications</h2>
+<p>How Data Flows on CFG? How application-specific Data Flows through the Nodes (BB) and Edges (control flows) of CFG (a program)</p>
+<ul>
+<li>may analysis: over-approximation</li>
+<li>must analysis: under-approximation</li>
+<li>input and output statses</li>
+<li>Transfer Function
+<ul>
+<li>forward analysis: $\text{OUT}[s]=f_s(\text{IN}[s])$</li>
+<li>backward analysis: $\text{IN}[s]=f_s(\text{OUT}[s])$</li>
+</ul>
+</li>
+<li>Control Flow
+<ul>
+<li>$\text{IN}[B]=\bigwedge_{P\text{ a predecessor of }B}\text{OUT}[P]$</li>
+</ul>
+</li>
+<li>Key
+<ul>
+<li>Domain, Direction, May/Must, Boundary, Initialization, Transfer function, Meet</li>
+</ul>
+</li>
+</ul>
+<h3 id="reaching-definitions-analysis">Reaching Definitions Analysis</h3>
+<ul>
+<li>definition of a variable: a statement that assigns to a value</li>
+<li>whether the a definition d is reachable at program point p</li>
+<li>usage
+<ul>
+<li>detect possible undefined variables</li>
+</ul>
+</li>
+<li>$\text{OUT}[B]=\text{gen}_B\cup(\text{IN}[B]-\text{kill}_B)$</li>
+</ul>
+<h3 id="live-variables-analysis">Live Variables Analysis</h3>
+<ul>
+<li>whether the value of variable v at program point p could be used along som path in CFG starting at p</li>
+<li>usage
+<ul>
+<li>register allocations</li>
+</ul>
+</li>
+<li>$\text{OUT}[B]=\bigcup_{\text{S a successor of B}}\text{IN}[B]$</li>
+<li>$\text{IN}[B]=\text{use}_B\cup(\text{OUT}[B]-\text{def}_B)$</li>
+</ul>
+<h3 id="available-expressions-analysis">Available Expressions Analysis</h3>
+<ul>
+<li>whether an expression must be constant at a point</li>
+<li>x op y is available if
+<ul>
+<li>all paths from the entry to p must pass through the evalution of x op y</li>
+<li>after the last evaluation of x op y, there is no redefinition of x or y</li>
+</ul>
+</li>
+<li>must-analysis</li>
+</ul>
+<h3 id="constant-propagation">Constant Propagation</h3>
+<ul>
+<li>Given a variable $x$ at program point $p$, determine whether $x$ is guaranteed to hold a constant value at $p$</li>
+<li>$\text{OUT}[B]=(x,v)$</li>
+<li>nondistributivity</li>
+</ul>
+<h2 id="lattice">Lattice</h2>
+<ul>
+<li>Partial Order: poset $(P,\subseteq),\subseteq$ is binary relation that defines a partial ordering over $P$, $\subseteq$ has the following properties:
+<ul>
+<li>reflexity: $\forall x\in P,x\subseteq x$</li>
+<li>antisymmetry: $\forall x,y\in P,x\subseteq y\wedge y\subseteq x\Rightarrow x = y$</li>
+<li>transtivity: $\forall x,y,z\in P,x\subseteq y\wedge y\subseteq z\Rightarrow x\subseteq z$</li>
+</ul>
+</li>
+<li>upper bound $u$: $\forall x\in S, x\subseteq u, S\subseteq P$</li>
+<li>lower bound $1$: $\forall x\in S, 1\subseteq x$</li>
+<li>least upper bound(lub or join) $\cup S\in P$: $\forall u, \cup S\subseteq u$
+<ul>
+<li>two elements: $a\cup b$</li>
+</ul>
+</li>
+<li>greatest lower bound(glb or meet) $\cap S$: $\forall 1, 1\subseteq\cap S$
+<ul>
+<li>two elements: $a\cap b$</li>
+<li>lub and glb is unique</li>
+</ul>
+</li>
+<li>lattice: $\forall a,b\exists a\cup b,a\cap b$</li>
+<li>semilattice: $\forall a,b\in P$
+<ul>
+<li>only $a\cup b$ exists, $(P,\subseteq)$ is called a join semilattice</li>
+<li>only $a\cap b$ exists, $(P, \subseteq)$ is called a meet semilattice</li>
+</ul>
+</li>
+<li>complete lattice: $\forall S\subseteq P,\exists\cup S,\cap S$
+<ul>
+<li>greatest element $\top=\cup P$</li>
+<li>least element $\perp=\cap P$</li>
+</ul>
+</li>
+<li>Every finite lattice is a complete lattice</li>
+<li>Product Lattice: $L_i=(P_i,\subseteq_i),L^n=(P,\subseteq)$
+<ul>
+<li>$P=P_1\times\cdots\times P_n$</li>
+<li>$(x_1,\cdots, x_n)\subseteq (y_1,\cdots, y_n)\iff (x_1\subseteq y_1)\wedge\cdots\wedge (x_n\subseteq y_n)$</li>
+</ul>
+</li>
+<li>A product lattice is a lattice</li>
+<li>if a product lattice $L$ is a product of complete lattices, then $L$ is also complete</li>
+<li>monotonicity: $f:L\rightarrow L,\forall x,y\in L,x\subseteq y\Rightarrow f(x)\subseteq f(y)$</li>
+<li>fixed-point theorem: if $f:L\rightarrow L$ is monotonic and $L$ is finite, then the least fixed point of $f$ can be found by iterating $f^k(\perp)$ until a fixed point is reached, greatest fixed point of $f$ can be found by iterating $f^k(\top)$</li>
+<li>height of a lattice $h$: the length of the longest path from Top to Bottom in the lattice</li>
+<li>distributed $F$: $F(x\cup y)=F(x)\cup F(y)$</li>
+</ul>
+<h2 id="foundation">Foundation</h2>
+<ul>
+<li>
+<p>Iterative Algorithm (IN/OUT equation system)</p>
+<ul>
+<li>Input: CFG (kill and gen computed for each basic block B)</li>
+<li>Output IN[B] and OUT[B] for each basic block B</li>
+<li>Algorithm</li>
+</ul>
+</li>
+</ul>
+<pre><code>OUT[entry] = {}
+for (each basic block B-entry)
+	OUT[B] = {}
+while (changes to any OUT occur)
+	for (each basic block B-entry){
+		IN[B] = union_{P a predecessor of B} OUT[P]
+		OUT[B] = gen_B union (IN[B] - kill_B)
+	}
+</code></pre><ul>
+<li>CFG with $k$ nodes: $X_i=(\text{OUT}[n_1],\dots,\text{OUT}[n_k])_i\in V^k,F:V^k\rightarrow V^k$
+<ul>
+<li>$X_{i+1}=F(X_i)$</li>
+<li>fixed point $X_i=X_{i+1}$</li>
+</ul>
+</li>
+<li>Data Flow Analysis Framework $(D,L,F)$
+<ul>
+<li>$D$: a direction of data flow</li>
+<li>$L$: a lattice including domain of the values $V$ and a meet or join operator</li>
+<li>$F$: a family of transfer functions from $V$ to $V$</li>
+</ul>
+</li>
+<li>Lattice height $h$, number of nodes $k$, at most $i=hk$ iterations</li>
+<li>may analysis
+<ul>
+<li>bottom $\perp$: unsafe = no definitions can reach</li>
+<li>top $\top$: safe but useless result = all definitions may reach</li>
+<li>truth</li>
+<li>least fixed point</li>
+</ul>
+</li>
+<li>must analysis
+<ul>
+<li>top $\top$: unsafe - all expressions must be available</li>
+<li>bottom $\perp$: safe but useless result - no expressions are availble</li>
+<li>greatest fixed point</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/content/spa-1.png" alt="must,may"></p>
+<ul>
+<li>MOP(Meet Over all Paths): $\text{MOP}[s_i]=\cup/\cap_{\text{A path P from Entry to }S_i} F_P(\text{OUT}[\text{Entry}])$
+<ul>
+<li>$F(x)\cup F(y)\subseteq F(x\cup y)$</li>
+<li>MOP $\subseteq$ Ours</li>
+<li>distributive then $=$ (Bit-vecotr or Gen/Kill problem)</li>
+</ul>
+</li>
+<li>Worklist Algorithm: add successors of changed B to Worklist</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

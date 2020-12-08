@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4-规范化理论 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#函数依赖fdfunctional-dependency">函数依赖（FD,Functional Dependency）</a></li>
+    <li><a href="#多值依赖-mvd">多值依赖 (MVD)</a></li>
+    <li><a href="#范式">范式</a></li>
+    <li><a href="#模式分解">模式分解</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><p>解决如何评价关系模式设计的好坏和如何设计性能良好的关系模式的问题</p>
+<ul>
+<li>关系设计模式：同一个关系数据库系统可以有多种关系模式设计方案
+<ul>
+<li>好方案：既有合理的数据冗余度，又没有插入和删除等操作异常现象</li>
+</ul>
+</li>
+<li>关系数据模型设计方法：建模(E-R model)，转换(set of tables)，规范化</li>
+</ul>
+<h2 id="函数依赖fdfunctional-dependency">函数依赖（FD,Functional Dependency）</h2>
+<p>给定关系 $R$，$X,Y$ 是 $R$ 两个属性子集，在关系 $R$ 中，每一个 $X$ 值都有唯一的一个 $Y$ 值与之对应</p>
+<ul>
+<li>$Y$ 函数依赖 $X$
+<ul>
+<li>$X$ 函数决定 $Y$($X\rightarrow Y$)</li>
+<li>关系 $R$ 满足函数依赖 $X\rightarrow Y$</li>
+<li>决定因素：$X$</li>
+<li>依赖因素：$Y$</li>
+</ul>
+</li>
+<li>只能证否，不能证明</li>
+<li>平凡函数依赖： $Y\not\subseteq X$</li>
+<li>完全函数依赖 $X\overset{f}{\rightarrow} Y$：$X\rightarrow Y,\forall X'\subsetneq X,X'\not\rightarrow Y$
+<ul>
+<li>部分函数依赖 $X\overset{p}{\rightarrow}Y$</li>
+</ul>
+</li>
+<li>传递函数依赖：$X\rightarrow Y,Y\not\rightarrow X,Y\rightarrow Z$, 则 $Z$ 传递函数依赖于 $X$</li>
+<li>Armstrong 公理系统：<strong>寻找所有函数依赖</strong>
+<ul>
+<li>基本规则
+<ul>
+<li>Reflexivity: $Y\subset X\Rightarrow X\rightarrow Y$</li>
+<li>Augmentation: $X\rightarrow Y\Rightarrow X\cup Z\rightarrow Y\cup Z$</li>
+<li>Transtivity: $X\rightarrow Y,Y\rightarrow Z\Rightarrow X\rightarrow Z$</li>
+</ul>
+</li>
+<li>扩充规则
+<ul>
+<li>Union: $X\rightarrow Y\cup Z\Rightarrow X\rightarrow Y,X\rightarrow Z$</li>
+<li>Decomposition: $X\rightarrow Y,X\rightarrow Z\Rightarrow X\rightarrow Y\cup Z$</li>
+<li>Pseudo transitivity: $X\rightarrow Y,W\cup Y\rightarrow Z\Rightarrow W\cup X\rightarrow Z$</li>
+</ul>
+</li>
+<li>逻辑蕴含：$F\vDash X\rightarrow Y,F$ 为一个函数依赖集</li>
+<li>函数依赖集的闭包：$F^+={X\rightarrow Y|F\vDash X\rightarrow Y}$</li>
+</ul>
+</li>
+<li>关键字（码,key）：$R(U,F),K\subset U,K$ 完全函数决定 $U$
+<ul>
+<li>主属性集：$R$ 的所有关键字中的属性构成的集合</li>
+<li>非主属性集</li>
+</ul>
+</li>
+<li>属性集 $X$ 的闭包：$X_F^+={A|F\vDash X\rightarrow A}$
+<ul>
+<li>计算闭包
+<ul>
+<li>while $X$ changes
+<ul>
+<li>for each $Y\rightarrow Z\in F$
+<ul>
+<li>if $Y\subset X,X=X\cup Z$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>关键字 $K$
+<ul>
+<li>$K_F^+=U$</li>
+<li>$\forall Z\subsetneq K,Z_F^+\neq U$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>计算关键字</strong>
+<ul>
+<li>法一：$F\vDash K\overset{f}{\rightarrow} U$</li>
+<li>法二
+<ul>
+<li>$K=U$</li>
+<li>for $A\in K$
+<ul>
+<li>if $(K-A)_F^+$ contains all attribute then $K=K-A$</li>
+</ul>
+</li>
+<li>优化：最小函数依赖集只在左边出现过的属性是主属性，只在右边出现过的属性为非主属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>函数依赖集的等价：$F_1^+=F_2^+$</li>
+<li>最小函数依赖集（最小覆盖）
+<ul>
+<li>判定方法：对于每个关系 $X\rightarrow A$ 需满足以下三条
+<ul>
+<li>$A$ 为单个属性</li>
+<li>$(F-{X\rightarrow A}))^+\neq F^+$</li>
+<li>$\forall Y\subset X,(F-{X\rightarrow X,Y\rightarrow A})^+\neq F^+$</li>
+</ul>
+</li>
+<li><strong>计算方法</strong>
+<ul>
+<li>$G=F$，将 $G$ 中每个 $X\rightarrow(A_1,\cdots,A_n)$ 的函数依赖替换为 $X\rightarrow A_1,\cdots,X\rightarrow A_n$</li>
+<li>消除部分函数依赖：对每个函数依赖 $X\rightarrow A$
+<ul>
+<li>对 $X$ 中每个属性 $B$
+<ul>
+<li>若 $A\in(X-B)_G^+$, 则用 $(X-B)\rightarrow A$ 替换 $X\rightarrow A$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>消除冗余函数依赖：对每个函数依赖 $X\rightarrow A$
+<ul>
+<li>若 $A\in X_N^+,N=G-{X\rightarrow A}$ 则从 $G$ 中删去 $X\rightarrow A$</li>
+</ul>
+</li>
+<li>将 $X\rightarrow A_1,\cdots,X\rightarrow A_n$ 合并为 $X\rightarrow(A_1,\cdots,A_n)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="多值依赖-mvd">多值依赖 (MVD)</h2>
+<ul>
+<li>$X\rightarrow\rightarrow Y$: $X$ 与 $Y$ 的一组值对应，且 $Y$ 的这组值与 $U-X-Y$ 无关</li>
+<li>非平凡的多值依赖：$U-X-Y\neq\emptyset$</li>
+<li>$X\rightarrow\rightarrow Y\Rightarrow X\rightarrow\rightarrow (U-X-Y)$</li>
+<li>$X\rightarrow Y\Rightarrow X\rightarrow\rightarrow Y$</li>
+<li>$X\rightarrow\rightarrow Y,W\supseteq Z\Rightarrow W\cup X\rightarrow\rightarrow Y\cup Z$</li>
+<li>$X\rightarrow\rightarrow Y,Y\rightarrow\rightarrow Z \Rightarrow X\rightarrow\rightarrow(Z-Y)$</li>
+<li>$X\rightarrow\rightarrow Y,W\cap Y=\emptyset,W\rightarrow Z,Y\subseteq Z\Rightarrow X\rightarrow Z$</li>
+</ul>
+<h2 id="范式">范式</h2>
+<ul>
+<li>范式：满足允许存在的函数依赖的要求的关系集合</li>
+<li>第一范式 $R\in$ 1NF：每个属性级都是不可分割的数据量
+<ul>
+<li>每个关系必须满足</li>
+</ul>
+</li>
+<li>第二范式 $R\in$ 2NF: $R\in$ 1NF 且每个非主属性完全依赖于关键字
+<ul>
+<li>判断方法
+<ul>
+<li>确定主属性集合非主属性级</li>
+<li>判断每个非主属性和关键字之间是否满足 2NF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第三范式 $R\in$ 3NF: $R\in$ 2NF 且每个非主属性不传递函数依赖于关键字</li>
+<li>BCNF 范式：$R\in$ 1NF，若 $X\rightarrow Y$ 则 $X$ 必含有该关系模式的关键字
+<ul>
+<li>$R\in$ BCNF 则 $R\in$ 3NF</li>
+</ul>
+</li>
+<li>第四范式 $R\in$ 4NF: $X\rightarrow\rightarrow Y$ 是非平凡多值依赖，则 $X$ 必含有关键字
+<ul>
+<li>$X\in$ BCNF</li>
+</ul>
+</li>
+</ul>
+<h2 id="模式分解">模式分解</h2>
+<ul>
+<li><strong>模式分解</strong>：将属性集合分解构成若干小的关系模式
+<ul>
+<li>找出不满足范式要求的函数依赖关系 $X\overset{f}{\rightarrow} Y$</li>
+<li>分解为
+<ul>
+<li>$R_1=(X\cup Y,{X\rightarrow Y})$</li>
+<li>$R_2=(\text{Head}(R)-Y, {A\rightarrow B|A\rightarrow B\in F^+,(A\cup B)\subseteq \text{Head}(R_2)})$</li>
+</ul>
+</li>
+<li>对子关系重复进行</li>
+<li>合并具有相同关键字的子关系模式</li>
+</ul>
+</li>
+<li>无损联结性：分解后原关系中的信息不会被丢失 $R=R_1\Join R_2$
+<ul>
+<li>$R$ 的分解为 $\rho={R_1,R_2}$，$F$ 为 $R$ 所满足的函数依赖集合，分解 $\rho$ 具有无损联结性的充分必要条件是：$R_1\cap R_2\rightarrow (R_1-R_2)$ 或 $R_1\cap R_2\rightarrow (R_2-R_1)$</li>
+</ul>
+</li>
+<li>依赖保持性：原有的函数依赖在分解后的关系模式上依然存在 $F^+=(F_1\cup F_2)^+$</li>
+<li>在必须同时满足无损联接性和依赖保持性的要求下，一个关系模式最高可以被分解到满足第三范式</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

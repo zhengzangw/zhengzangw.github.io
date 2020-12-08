@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Introduction | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#机器学习">机器学习</a></li>
+    <li><a href="#评估方法">评估方法</a></li>
+    <li><a href="#模型评估指标">模型评估指标</a>
+      <ul>
+        <li><a href="#regression">Regression</a></li>
+        <li><a href="#classification">Classification</a></li>
+        <li><a href="#ranking">Ranking</a></li>
+      </ul>
+    </li>
+    <li><a href="#多分类">多分类</a></li>
+    <li><a href="#类别不平衡">类别不平衡</a></li>
+    <li><a href="#假设检验">假设检验</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="机器学习">机器学习</h2>
+<ul>
+<li>机器学习要素
+<ul>
+<li>模型</li>
+<li>学习准则</li>
+<li>优化算法</li>
+</ul>
+</li>
+<li>数据集：$D={x_1,x_2,\cdots,x_m}$
+<ul>
+<li>通常假设全体样本服从一个未知分布 $\mathcal{D}$，且采样 i.i.d</li>
+</ul>
+</li>
+<li>归纳偏好
+<ul>
+<li>No Free Lunch Theorem</li>
+<li>Occam&rsquo;s Razor</li>
+<li>Ugly Duckling Theorem</li>
+</ul>
+</li>
+<li>all vectors are assumed to be column vectors</li>
+<li>$N$ number of input, $p$ number of features</li>
+<li>训练集 $\bf{X}_{N\times p}$
+<ul>
+<li>$i$-th row $x_i^T$: length $p$</li>
+<li>$j$-th column $\bf{x}_j$: length $N$</li>
+<li>input vector: $X_{p\times 1}$</li>
+<li>$X^T=(X_1,X_2,\cdots,X_p)$, $X_i$ is a scalar</li>
+</ul>
+</li>
+<li>$\bf{y}_{N\times 1}$
+<ul>
+<li>$Y\in\mathbb{R}$</li>
+<li>$\bf{Y}_{N\times l}$, each row has one 1</li>
+</ul>
+</li>
+<li>$(X_1,X_2 )$ : 行并列</li>
+<li>$(X_1^T;X_2^T)$ : 列并列</li>
+<li>偏差-方差分解：$E(f;D)=\text{bias}^2(x)+\text{var}(x)+\epsilon^2=(\overline{f}(x)-y)^2+E_D((f(x;D)-\overline{f}(x))^2)+E_D((y_D-y)^2)$</li>
+</ul>
+<h2 id="评估方法">评估方法</h2>
+<ul>
+<li>留出法</li>
+<li>cross validation
+<ul>
+<li>将数据集分层采样划分为 $k$ 个大小相似的互斥子集，每次用 $k-1$ 个子集的并集作为训练集，余下的子集作为测试集，最终返回 $k$ 个测试结果的均值</li>
+<li>$k$ 最常用的取值是 10.</li>
+<li>LOO: $k=1$</li>
+</ul>
+</li>
+<li>bootstrapping: 样本不被选到的概率$=\lim_{m\rightarrow\infty}(1-\frac{1}{m})^m=\frac{1}{e}=0.368$</li>
+</ul>
+<h2 id="模型评估指标">模型评估指标</h2>
+<ul>
+<li>$\text{T},\text{F}$: 分类正确与否</li>
+<li>$\text{P},\text{N}$: 预测结果</li>
+</ul>
+<h3 id="regression">Regression</h3>
+<ul>
+<li>均方误差: $E(f;D)=\frac{1}{m}\sum_{i=1}^m(f(x_i)-y_i)^2$</li>
+</ul>
+<h3 id="classification">Classification</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accuracy</td>
+<td>$\frac{\text{TP}+\text{TN}}{m}$</td>
+</tr>
+<tr>
+<td>precision</td>
+<td>$\frac{\text{TP}}{\text{TP}+\text{FP}}$</td>
+</tr>
+<tr>
+<td>recall</td>
+<td>$\frac{\text{TP}}{\text{TP}+\text{FN}}$</td>
+</tr>
+<tr>
+<td>macro-$\text{P}$</td>
+<td>$\frac{1}{n}\sum_{i=1}^n\text{P}_i$</td>
+</tr>
+<tr>
+<td>macro-$\text{R}$</td>
+<td>$\frac{1}{n}\sum_{i=1}^n\text{R}_i$</td>
+</tr>
+<tr>
+<td>micro-$\text{P}$</td>
+<td>$\frac{\overline{\text{TP}}}{\overline{\text{TP}}+\overline{\text{FP}}}$</td>
+</tr>
+<tr>
+<td>micro-$\text{R}$</td>
+<td>$\frac{\overline{\text{TP}}}{\overline{\text{TP}}+\overline{\text{FN}}}$</td>
+</tr>
+<tr>
+<td>平衡点(BEP)</td>
+<td>P-R 曲线上 $P=R$ 的点</td>
+</tr>
+<tr>
+<td>$\text{F1}$</td>
+<td>$\frac{2\text{P}\text{R}}{\text{P}+\text{R}}$,调和平均更重视较小值</td>
+</tr>
+<tr>
+<td>$\text{F}_\beta$</td>
+<td>$\frac{1}{\text{F}_\beta}=\frac{1}{1+\beta^2}(\frac{1}{P}+\frac{\beta^2}{R})$,$\beta&gt;1,R$ counts more</td>
+</tr>
+<tr>
+<td>$\text{TPR}$</td>
+<td>$\text{R}$</td>
+</tr>
+<tr>
+<td>$\text{FPR}$</td>
+<td>$\frac{\text{FP}}{\text{TN}+\text{FP}}$</td>
+</tr>
+<tr>
+<td>ROC</td>
+<td>TPR-FPR 图(Receiver Operating Characteristic)</td>
+</tr>
+<tr>
+<td>AUC</td>
+<td>(Area Under Curve)$\frac{1}{2}\sum_{i=1}^{m-1}(x_{i+1}-x_i)(y_i+y_{i+1})$</td>
+</tr>
+<tr>
+<td>$\text{FPR}$</td>
+<td>$1-\text{TPR}$</td>
+</tr>
+<tr>
+<td>cost curve</td>
+<td>横轴为正例概率代价，纵轴归一化代价</td>
+</tr>
+<tr>
+<td>Ranking Loss</td>
+<td>$\mathcal{l}=1-\text{AUC}$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ranking">Ranking</h3>
+<ul>
+<li>One query $r\rightarrow$ One permutation $\pi$</li>
+<li>One query $r\rightarrow$ retrieved documents $R(r)$</li>
+<li>precision: $\text{precision}=P=\frac{|C(r)\cap R(r)|}{|R(r)|}$
+<ul>
+<li>$\text{precision}@k$
+<ul>
+<li>$|R(r)|=k$</li>
+<li>$\frac{\sum_{t\leq k}l(\pi(t))}{k}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>recall: $\text{recall}=\frac{|C(r)\cap R(r)|}{|R(r)|}$
+<ul>
+<li>$\text{recall}@k, |R(r)|=k$</li>
+</ul>
+</li>
+<li>AP(AveP, Average precision): $\text{AP}=\frac{\sum_{k=1}^{|C(r)|}P@k}{|R(r)|}$</li>
+<li>mAP(Mean average precision): $\text{MAP}=\frac{\sum_{q=1}^Q\text{AP}(q)}{Q}$</li>
+<li>CG(Cumulative Gain): $\text{CG}@k=\sum_{i=1}^k \text{rel}(i)$</li>
+<li>DCG(Discounted cumulative gain): $\text{DCG}@k=\sum_{i=1}^k\text{rel}(i)\eta(i)$
+<ul>
+<li>折扣因子 $\eta(i)$: $\frac{1}{\log(i+1)}$</li>
+</ul>
+</li>
+<li>IDCG(Ideal DCG): $\text{IDCG}@k=\max_{\pi}\text{DCG}@k(\pi)$</li>
+<li>nDCG(Normalized DCG): $\text{IDCG}@k=\frac{\text{DCG}_p}{\text{IDCG}_p}$</li>
+<li>RR(reciprocal rank): $\text{rank}_i$ 第一个正确答案的排名</li>
+<li>MRR(Mean reciprocal rank): $\text{MRR}=\frac{1}{|Q|}\sum_{i=1}^{|Q|}\frac{1}{\text{rank}_i}$</li>
+<li>Cascade Models: 用户在位置 $k$ 需求满足的概率 $\text{PP}(k)=\prod_{i=1}^{k-1}(1-R(i))R(k)$
+<ul>
+<li>该文档满足需求的概率：$R(t)=\frac{2^{\text{rel(t)}}-1}{2^{l_{\max}}}$</li>
+</ul>
+</li>
+<li>ERR(Expected reciprocal rank): 用户需求满足时停止位置的倒数的期望 $\text{ERR}=\sum_{r=1}^n\frac{1}{r}\text{PP}_r$</li>
+</ul>
+<h2 id="多分类">多分类</h2>
+<ul>
+<li>OvO: 储存开销与测试时间偏大</li>
+<li>OvR: 训练时间偏大</li>
+<li>MvM:
+<ul>
+<li>Error Correcting Output Codes(ECOC)
+<ul>
+<li>编码：二元码，三元码</li>
+<li>解码：将距离最小的编码所对应的类别作为预测结果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>argmax: $y=\arg\max_{c=1}^Cf_c(x;\omega_c)$</li>
+</ul>
+<h2 id="类别不平衡">类别不平衡</h2>
+<ul>
+<li>欠采样</li>
+<li>过采样</li>
+<li>阈值移动：$\frac{y}{1-y}&gt;\frac{m^+}{m^-}$</li>
+</ul>
+<h2 id="假设检验">假设检验</h2>
+<ul>
+<li>二项检验
+<ul>
+<li>二项分布：$P(\hat \epsilon;\epsilon)=\binom{m}{\hat\epsilon m}\epsilon^{\hat \epsilon m}(1-\epsilon)^{m-\hat \epsilon m}$</li>
+<li>假设：$\epsilon\leq\epsilon_0$</li>
+<li>临界值 $\overline{\epsilon}=\max\epsilon$ s.t. $\sum_{i=\epsilon_0 m+1}^m\binom{m}{i}\epsilon^i(1-\epsilon)^{m-i}$</li>
+</ul>
+</li>
+<li>t 检验
+<ul>
+<li>检验值：$\tau_t=\frac{\sqrt{k}(\mu-\epsilon_0)}{\sigma}$</li>
+</ul>
+</li>
+<li>交叉验证 $t$ 检验
+<ul>
+<li>差值：$\Delta_i=\epsilon_i^A-\epsilon_i^B$</li>
+<li>$\tau_t=|\frac{\sqrt{k}\mu}{\sigma}|$</li>
+<li>假设检验前提：测试错误率为泛化错误率独立采样
+<ul>
+<li>$5\times 2$ 交叉验证</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>McNemar 检验
+<ul>
+<li>$e_{ij}$: $i$ 指示算法 $A$ 预测正确与否，$j$ 指示算法 $B$ 预测正确与否</li>
+<li>假设：$e_{01}=e_{10}$</li>
+<li>$|e_{01}-e_{10}|\sim N(1,e_{01}+e_{10})$</li>
+<li>统计检验量：$\tau=\frac{(|e_{01}-e_{10}|-1)^2}{e_{01}+e_{10}}\sim \chi^2(1)$</li>
+</ul>
+</li>
+<li>Friedman 检验：多个数据集对多个算法比较
+<ul>
+<li>根据测试性能赋予序值，求得平均序值</li>
+<li>假设：算法性能全部相同</li>
+<li>$\tau_\chi^2=\frac{12N}{k(k+1)}(\sum_{i=1}^kr_i^2-\frac{k(k+1)^2}{4})$，当 $k,N$ 较大时，服从 $\chi^2(k-1)$</li>
+<li>$\tau_F=\frac{(N-1)\tau_{\chi^2}}{N(k-1)-\tau_{\chi^2}}\sim F(k-1,(k-1)(N-1))$</li>
+</ul>
+</li>
+<li>Nemenyi 检验：算法性能全部相同假设被拒绝后进一步区分各算法
+<ul>
+<li>$\text{CD}=q_\alpha\sqrt{\frac{k(k+1)}{6N}},q_\alpha$ 为 Tukey 分布临界值</li>
+<li>若两个算法平均序值之差超出临界值域 $\text{CD}$，则以相应置信度拒绝两个算法性能相同</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

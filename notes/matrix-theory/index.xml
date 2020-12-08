@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>[M] 矩阵论 Matrix Theory on Zangwei</title>
+    <link>https://zhengzangw.com/notes/matrix-theory/</link>
+    <description>Recent content in [M] 矩阵论 Matrix Theory on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/matrix-theory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>矩阵论</title>
+      <link>https://zhengzangw.com/notes/matrix-theory/matrix-theory/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/matrix-theory/matrix-theory/</guid>
+      <description>&lt;h2 id=&#34;概念补充&#34;&gt;概念补充&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;同构算子：$\mathcal{A}:V\rightarrow V&#39;$
+&lt;ul&gt;
+&lt;li&gt;全映射&lt;/li&gt;
+&lt;li&gt;可逆映射&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;同构：$V$与$V&#39;$是同构的线性空间&lt;/li&gt;
+&lt;li&gt;数域$P$上两个有限线性空间同构$\iff$两空间维数相同&lt;/li&gt;
+&lt;li&gt;相似$A\sim B$:基 1 下矩阵为$A$，基 2 下矩阵为$B$，从基 1 到基 2 的过渡矩阵为$C$，则$B=C^{-1}AC$&lt;/li&gt;
+&lt;li&gt;相抵$A\simeq B$: A,B$为$m*n$阶矩阵，$m$阶方阵$D$和$n$阶方阵$C$满足$B=DAC$
+&lt;ul&gt;
+&lt;li&gt;不同维线性空间$V^n$和$V^m$下，同一个线性变换在不同基偶下所对应的矩阵$A$和$B$之间的关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;非奇异$\iff$非退化$\iff$满秩$\iff$可逆&lt;/li&gt;
+&lt;li&gt;当$A$有 n 个线性无关特征向量时，$A$有完备的特征向量系；否则$A$为亏损矩阵&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

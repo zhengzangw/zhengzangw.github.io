@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lamda-2 Seminar | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#审稿过程">审稿过程</a></li>
+    <li><a href="#essay-构成">Essay 构成</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#meta-learning-for-low-resource-natural-language-generation-in-task-oriented-dialogue-systems">Meta-Learning for Low-resource Natural Language Generation in Task-oriented Dialogue Systems</a></li>
+    <li><a href="#correct-and-memorize-learning-to-translate-from-interactive-revisions">Correct-and-Memorize: Learning to Translate from Interactive Revisions</a></li>
+    <li><a href="#advances-in-few-shot-learning">Advances in Few-shot Learning</a></li>
+    <li><a href="#mechanism-design-in-social-networks">Mechanism Design in Social Networks</a></li>
+    <li><a href="#semi-supervised-learning">Semi-supervised Learning</a></li>
+    <li><a href="#interpolation-consistency-training-for-semi-supervised-learning">Interpolation Consistency Training for semi-supervised learning</a></li>
+    <li><a href="#hybrid-item-item-recommendation-via-semi-parametric-embedding">Hybrid Item-Item Recommendation via Semi-Parametric Embedding</a></li>
+    <li><a href="#invited-talks">Invited Talks</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#deep-learning-with-customized-abstract-syntax-tree-for-bug-localization">Deep Learning With Customized Abstract Syntax Tree for Bug Localization</a></li>
+    <li><a href="#cross-language-clone-detection-by-learning-over-abstract-syntax-trees">Cross-language clone detection by learning over abstract syntax trees</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#enhanced-code-presentation">Enhanced code presentation</a></li>
+    <li><a href="#comments-aided-code-completion-with-coupling-gated-attention-neural-network">Comments Aided Code Completion with Coupling Gated Attention Neural Network</a></li>
+    <li><a href="#pu-classification">PU classification</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#class-prior-estimation-with-biased-positives-and-unlabeld-examples">Class Prior Estimation with Biased Positives and Unlabeld Examples</a></li>
+    <li><a href="#deep-cost-sensitive-kernel-machine-for-binary-software-vulnerbility-detection">Deep Cost-sensitive Kernel Machine for Binary Software Vulnerbility Detection</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#graph-emedding">graph emedding</a></li>
+    <li><a href="#a-survey-on-graph-embedding">A survey on graph embedding</a></li>
+    <li><a href="#graph-convolutional-gaussian-process">Graph Convolutional Gaussian Process</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#graph-convolutional-gaussian-processes">Graph Convolutional Gaussian Processes</a></li>
+    <li><a href="#robustfill-neural-program-learning-under-noisy-io-icml-2017">RobustFill: Neural Program Learning under Noisy I/O (ICML 2017)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#pythia-ai-assisted-code-completion-system-kdd19">Pythia: AI-assisted Code Completion System (KDD'19)</a></li>
+    <li><a href="#selecting-representative-examples-for-program-synthesis-icml18">Selecting Representative Examples for Program Synthesis (ICML'18)</a></li>
+    <li><a href="#open-vocaulary-learning-on-source-code-icml19">Open Vocaulary Learning on Source Code (ICML'19)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#literature-review-on-automatic-program-repairapr">Literature Review on Automatic Program Repair(APR)</a></li>
+    <li><a href="#gotcha---sly-malware-scorpion-a-metagraph2vec-based-malware-detection-system-kdd18">Gotcha - Sly Malware!: Scorpion A Metagraph2vec Based Malware Detection System (KDD'18)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#neural-guided-constraint-logic-programming-for-program-synthesis">Neural Guided Constraint Logic Programming for Program Synthesis</a></li>
+    <li><a href="#neural-synthesis-from-diverse-demonstration-videos">Neural Synthesis from Diverse Demonstration Videos</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#a-convolutional-attention-network-for-extreme-summarization-of-source-code-icml16">A convolutional attention network for extreme summarization of source code (ICML'16)</a></li>
+    <li><a href="#automatic-program-synthesis-of-long-programs-with-a-learned-garbage-collector-18">Automatic Program Synthesis of Long Programs with a Learned Garbage Collector (18)</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="summary">Summary</h1>
+<h2 id="审稿过程">审稿过程</h2>
+<ul>
+<li>Initial Check: 1~14 days
+<ul>
+<li>Editor Assistant 检查文章格式</li>
+</ul>
+</li>
+<li>With Editor：14~30 days
+<ul>
+<li>Associate Editor: 对文章进行初步审查</li>
+</ul>
+</li>
+<li>Under Review(Peer Review)：7~180 days
+<ul>
+<li>PC 3-5: Give Scores and Review/Comments</li>
+</ul>
+</li>
+<li>Required Review Completed：1~5 days
+<ul>
+<li>Senior PC(SPC): judge reviews</li>
+<li>Rebuttal</li>
+</ul>
+</li>
+<li>Editor Decision
+<ul>
+<li>Area Chairs(AC): decide</li>
+</ul>
+</li>
+<li>数学
+<ul>
+<li>数字信号处理</li>
+<li>随机过程</li>
+<li>矩阵论</li>
+</ul>
+</li>
+</ul>
+<h2 id="essay-构成">Essay 构成</h2>
+<ul>
+<li>Problem: What is the problem?
+<ul>
+<li>Related-work/Existing methods</li>
+<li>问题是否存在？</li>
+</ul>
+</li>
+<li>Challenge
+<ul>
+<li>Future Challenge</li>
+</ul>
+</li>
+<li>Contribution
+<ul>
+<li>非 trick</li>
+<li>需要 insight</li>
+</ul>
+</li>
+<li>Method/Main idea
+<ul>
+<li>需要 make senses</li>
+</ul>
+</li>
+<li>Experiment
+<ul>
+<li>Prove Method</li>
+<li>benchmark + baseline</li>
+</ul>
+</li>
+<li><em>Review</em>
+<ul>
+<li>对于不认可的地方，要求 show</li>
+</ul>
+</li>
+<li><em>Rebuttal</em></li>
+</ul>
+<h1 id="share-2019916">Share, 2019.9.16</h1>
+<p>IJCAI-19</p>
+<h2 id="meta-learning-for-low-resource-natural-language-generation-in-task-oriented-dialogue-systems">Meta-Learning for Low-resource Natural Language Generation in Task-oriented Dialogue Systems</h2>
+<ul>
+<li>Problem: Meta-Learning(Learn to Learn)
+<ul>
+<li>训练场景与训练场景不同</li>
+<li>f,L,D</li>
+<li>Tranditional: find $f^*\rightarrow \hat y$</li>
+<li>Meta: find $F(T)\rightarrow f^*$</li>
+<li>与 Transfer Learning 区别：不要求是相关任务</li>
+<li>与 AutoML 区别</li>
+</ul>
+</li>
+<li>Challenge: Task 需要有分布</li>
+<li>Method: 固定模型，只调参数
+<ul>
+<li>初始值</li>
+<li>更新方式</li>
+</ul>
+</li>
+<li><em>有些方向可以出一大把 paper，但是没法应用（会被骂，没有工业价值）</em>
+<ul>
+<li><em>没有 insight，没有 application，使用特殊 trick</em></li>
+</ul>
+</li>
+<li>$f_1(\theta^0)\rightarrow(D_{\text{train}}) f_1^*()\rightarrow(D_{\text{test}}) l_1$
+<ul>
+<li>Loss Function: $\sum_{n=1}^Nl_n$, 梯度下降</li>
+</ul>
+</li>
+</ul>
+<h2 id="correct-and-memorize-learning-to-translate-from-interactive-revisions">Correct-and-Memorize: Learning to Translate from Interactive Revisions</h2>
+<ul>
+<li>Existing method: 单向解码器</li>
+<li>Contribution：双向解码器</li>
+</ul>
+<h2 id="advances-in-few-shot-learning">Advances in Few-shot Learning</h2>
+<p>Tutorial</p>
+<ul>
+<li>One-shot learning: aim to learn information about object categories from one, or only a few, training images</li>
+<li>Three kinds Set</li>
+<li>delta-coder</li>
+</ul>
+<h2 id="mechanism-design-in-social-networks">Mechanism Design in Social Networks</h2>
+<ul>
+<li>Second Price Auction
+<ul>
+<li>Input: each buyer reports a price/bid to the seller</li>
+<li>Output:
+<ul>
+<li>allocation: highest price</li>
+<li>payment: second price</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The information Diffusion Mechanism</li>
+</ul>
+<h2 id="semi-supervised-learning">Semi-supervised Learning</h2>
+<ul>
+<li>Contribution: 输出滑动平均</li>
+<li>Method
+<ul>
+<li>Mean Teacher：参数滑动平均</li>
+<li>Mixup：有标记样本做插值</li>
+<li>Virtual Adversarial Training
+<ul>
+<li>要求模型对一个样本在施加对抗噪声前后给出尽可能相同的预测值，从而对模型施加各向异性的平滑</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Review
+<ul>
+<li>类似加冲量
+<ul>
+<li>训练速度不要太快</li>
+<li>较慢陷入局部极小值</li>
+<li><em>新瓶装老酒</em></li>
+</ul>
+</li>
+<li><em>绝大部分 unlabel data 的使用方式都被认知了</em>
+<ul>
+<li><em>IJCAI: 看传统 AI 和 Learning 的结合（的苗头）</em></li>
+<li><em>不要栽进 trick 流中</em></li>
+</ul>
+</li>
+<li><em>“三到五年将反过来（vision 过多）”</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="interpolation-consistency-training-for-semi-supervised-learning">Interpolation Consistency Training for semi-supervised learning</h2>
+<ul>
+<li>Contribution 对无监督样本进行插值</li>
+<li>Method
+<ul>
+<li>一个网络逼近另一个模型帮助训练</li>
+<li>各种各样的假设平滑</li>
+<li>数据变化/增广口预测标记一致（几乎只能用于图像数据）</li>
+</ul>
+</li>
+<li>Review: 但是无监督假设无监督样本很多</li>
+<li><em>重在工作，不在文章数量</em>
+<ul>
+<li>问题是什么，难点在哪</li>
+<li>未来可能有什么问题</li>
+<li>基本还是要保证</li>
+</ul>
+</li>
+</ul>
+<h2 id="hybrid-item-item-recommendation-via-semi-parametric-embedding">Hybrid Item-Item Recommendation via Semi-Parametric Embedding</h2>
+<ul>
+<li>$v=\delta z+(1-\delta)e$
+<ul>
+<li>$\delta=\sigma(w\cdot b)$</li>
+<li>$e=g(c)$</li>
+<li>$b$: the behavior info</li>
+<li>$c$ the content info</li>
+</ul>
+</li>
+</ul>
+<h2 id="invited-talks">Invited Talks</h2>
+<ul>
+<li>融入传统机器学习的有点
+<ul>
+<li>逻辑推理能力</li>
+<li>较好的解释性</li>
+<li>邻域专家知识</li>
+<li>For better performance and robustness</li>
+<li>利用概率模型融合 deep learning 和 logic learning</li>
+</ul>
+</li>
+<li>新的挑战：适应环境变化的能力</li>
+<li>对非神经网络深度学习的讨论</li>
+</ul>
+<h1 id="share-2019925">Share, 2019.9.25</h1>
+<h2 id="deep-learning-with-customized-abstract-syntax-tree-for-bug-localization">Deep Learning With Customized Abstract Syntax Tree for Bug Localization</h2>
+<p>IEEE ACCESS 2019</p>
+<ul>
+<li>Problem: Bug Localization</li>
+<li>Related-work
+<ul>
+<li>Information Retrieval</li>
+<li>Deep Learning: structure information</li>
+</ul>
+</li>
+<li>Contribution: 区分 System 和 User 函数：System 函数错误更小</li>
+<li><em>软件文章需要吹，一个芝麻可以写成西瓜</em></li>
+</ul>
+<h2 id="cross-language-clone-detection-by-learning-over-abstract-syntax-trees">Cross-language clone detection by learning over abstract syntax trees</h2>
+<ul>
+<li>Contribution
+<ul>
+<li>Present a cross-language clone detection method</li>
+<li>Create a cross-language code clones dataset containing around 45000 files written in Java an Python</li>
+</ul>
+</li>
+<li>Tree-based skip-gram</li>
+</ul>
+<h1 id="review-oct-9-2019">Review, Oct 9, 2019</h1>
+<h2 id="enhanced-code-presentation">Enhanced code presentation</h2>
+<ul>
+<li>Reveiw: Rejected
+<ul>
+<li>Motivation: 必要性
+<ul>
+<li>问题存在吗？</li>
+<li><em>问题值不值得解，小不小</em></li>
+</ul>
+</li>
+<li>Contribution 技术
+<ul>
+<li><em>无病呻吟？</em></li>
+<li>依赖的条件过强</li>
+</ul>
+</li>
+<li>Experiment
+<ul>
+<li>要求在另一个 benchmark 上汇报结果</li>
+<li>实验怎么做的
+<ul>
+<li>数据如何划分？</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>大量重复他人工作</li>
+</ul>
+</li>
+</ul>
+<h2 id="comments-aided-code-completion-with-coupling-gated-attention-neural-network">Comments Aided Code Completion with Coupling Gated Attention Neural Network</h2>
+<ul>
+<li>Problem: Code Completion</li>
+<li>Contribution: utilize comments infomation</li>
+<li>Review
+<ul>
+<li>程序员写完程序再写代码</li>
+<li><strong>comment quality</strong></li>
+<li>数据划分有问题</li>
+<li>where to predict and how to measure the performance</li>
+</ul>
+</li>
+<li>Rebuttal (10.25)
+<ul>
+<li>Assumptions (but Javadoc)
+<ul>
+<li>which comes first?
+<ul>
+<li>回复：人写的会更加 free，模拟实验和真实不同，<em>请展示 empirical evidence</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Similar continuous words may appear
+<ul>
+<li>请展示 empirical evidence/ 请做 experiment 来 verify</li>
+<li>设计实验 (journal)
+<ul>
+<li>design 实验时就要想好（博弈过程）</li>
+<li>找 3 个数据集，找十人投票质量，按分数算上中下，在三个数据集都好，show 极端情况</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>fair comparison
+<ul>
+<li>可能只在这种下有好效果，但在其它 fair comparison 下有可能不行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对于想要 Reject 的文章
+<ul>
+<li><em>不信，但是要找为什么实验还能做好</em></li>
+<li><em>看是否 make sense，而不是在 special setting 下 work</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="pu-classification">PU classification</h2>
+<ul>
+<li>半监督中标记都是正样本</li>
+<li>AUL: Area Under Lift Chart</li>
+</ul>
+<h1 id="tutorial-20191015">Tutorial, 2019.10.15</h1>
+<p>Domain Adaptation</p>
+<ul>
+<li>Source data $x\sim D_S,y\sim f_S$
+<ul>
+<li>$\epsilon_s(h,f)=\mathbb{E}_{x\sim D_S}(|h(x)-f(x)|)$</li>
+<li>$\hat\epsilon_S(h,f) = \epsilon_S(h)$</li>
+</ul>
+</li>
+<li>Target data $x\sim D_T,y\sim f_T$</li>
+<li>假设：$f_S=f_T$</li>
+<li>$d_1(D_S,D_T)=2\sup_{B\in\mathbb{B}}|Pr_{D_S}(B)-Pr_{D_T}(B)|$</li>
+<li>T1: $\epsilon_{T}(h,f_T)=\epsilon_S(h,f_S)+\mathbb{E}_{x\sim D_S}(|f_S(x)-f_T(x)|)+d_1(D_S,D_T)$
+<ul>
+<li>source error + labeling difference + $d_1(D_S,D_T)$</li>
+</ul>
+</li>
+<li>$\epsilon_T(h,f_S)\leq\epsilon_S(h,f_S)+\frac{1}{2}d_{H\Delta H}(D_S, D_T)$</li>
+<li>$d_H(D,D')=2\sup_{h\in H}|P_{r_D}[I(h)]-P_{r_{D'}}[I(h)]$</li>
+<li>T2: $\epsilon_T(h,f_T)\leq\epsilon(h^<em>,f_T)+\epsilon_T(h,h^</em>)\leq\epsilon_T(h^<em>,f_T)+\epsilon_S(h,h^</em>)+\frac{1}{2}d_{H\Delta H}(D_S,D_T)\leq (\epsilon_T(h^*,f_T)+\epsilon_S(h^*,f_s))+\epsilon_s(h,f_s)+\frac{1}{2}d_{H\Delta H}$</li>
+<li>$d_{H\Delta H}=2\sup_{h,h'\in H}|\epsilon_s(h,h')-\epsilon_T(h,h')|$</li>
+<li>$\epsilon_\alpha(h)=\alpha\epsilon_T(h)+(1-\alpha)\epsilon_S(h)$</li>
+<li>Conclusion: $\epsilon_T(\hat h)\leq e_T(h_T^*)+a\sqrt{ }\sqrt{}+2(1-\alpha)(\cdots)$</li>
+</ul>
+<p>$$
+\alpha^*=\begin{cases}
+1 &amp; m_T\geq D^2\newline
+\min{1,v} &amp; m_T\leq D^2
+\end{cases}
+$$</p>
+<ul>
+<li>$D=\frac{\sqrt{d}}{A}$</li>
+</ul>
+<h1 id="review-20191025">Review 2019.10.25</h1>
+<h2 id="class-prior-estimation-with-biased-positives-and-unlabeld-examples">Class Prior Estimation with Biased Positives and Unlabeld Examples</h2>
+<ul>
+<li>Problem: PU Class Prior Estimation</li>
+<li>Related-work
+<ul>
+<li>有假设: $D_u=\alpha D_p+(1-\alpha) D_N$
+<ul>
+<li>$f(x)=\alpha f_1(x)+(1-\alpha)f_0(x),f,f_1$ are known
+<ul>
+<li>$f_+,f_-,f_u,f_p$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无假设：找到代表样本，有偏</li>
+</ul>
+</li>
+<li>Challenge: 文章认为假设过于理想化
+<ul>
+<li>有标记的正样本无法代表正样本的分布</li>
+<li><em>是否是 Problem</em></li>
+</ul>
+</li>
+<li>Contribution: $P$ 中的部分与原始成比例</li>
+<li>Review:
+<ul>
+<li><em>需要一针见血:能否 prove</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="deep-cost-sensitive-kernel-machine-for-binary-software-vulnerbility-detection">Deep Cost-sensitive Kernel Machine for Binary Software Vulnerbility Detection</h2>
+<ul>
+<li>Problem: vulnerability (more likely a PU problem)</li>
+<li>Contribution
+<ul>
+<li>View as cost-sensitive</li>
+</ul>
+</li>
+<li>Method
+<ul>
+<li>Data Processing and Embedding (code to vector)</li>
+<li>Feature Representation</li>
+<li>Cost-sensitive Kernel Machine</li>
+</ul>
+</li>
+<li>Review: 如何 Reject
+<ol>
+<li><em>Why kernel machine, RNN, Fourier Transform?</em> 总体框架上的问题
+<ul>
+<li><em>不要看实验来理解方法。应该先看原理，实验只是用来证明</em></li>
+<li>ne class SVM</li>
+<li>文章没有把道理讲清楚，<em>意见中没讲清楚的可以装糊涂</em></li>
+</ul>
+</li>
+<li>baseline 没比全</li>
+</ol>
+</li>
+</ul>
+<h1 id="sharing-20191031">Sharing, 2019.10.31</h1>
+<h2 id="graph-emedding">graph emedding</h2>
+<ul>
+<li>flow chart naturally shows the program logic</li>
+<li>Embed the flow chart with graph embedding technologies to generate a structure information representation</li>
+<li>利用 graph embedding 技术提取结构信息</li>
+</ul>
+<h2 id="a-survey-on-graph-embedding">A survey on graph embedding</h2>
+<p>A Comprehensive Survey of Graph Embedding: Prolems, Techniques, and Applications</p>
+<ul>
+<li>了解解决问题的工具，每一个种类的工具的特点</li>
+<li>做 Survey 的方法</li>
+<li>先看为什么，再看怎么做的</li>
+<li>Problem Settings
+<ul>
+<li>Input
+<ul>
+<li>Homogeneous Graph</li>
+<li>Heterogeneous Graph</li>
+<li>Graph with Auxiliary Information</li>
+<li>Graph Constructed from Non-relational Data</li>
+</ul>
+</li>
+<li>Output
+<ul>
+<li>Node embedding</li>
+<li>Edge embedding</li>
+<li>Hybrid Embedding</li>
+<li>Whole-Graph Embedding</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Techniques
+<ul>
+<li>Matrix Factorization
+<ul>
+<li>图以邻接矩阵表示，补全邻接矩阵</li>
+</ul>
+</li>
+<li>Deep Learning
+<ul>
+<li>With random walk
+<ul>
+<li>DeepWalk</li>
+</ul>
+</li>
+<li>Without random walk
+<ul>
+<li>Whole-graph embedding</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Edge Reconstruction</li>
+<li>Graph Kernel
+<ul>
+<li>Graphlet</li>
+<li>Subtree patterns</li>
+<li>Random walks</li>
+</ul>
+</li>
+<li>Generative Model</li>
+</ul>
+</li>
+</ul>
+<p>GRU cell</p>
+<h2 id="graph-convolutional-gaussian-process">Graph Convolutional Gaussian Process</h2>
+<h1 id="share-118">Share 11.8</h1>
+<h2 id="graph-convolutional-gaussian-processes">Graph Convolutional Gaussian Processes</h2>
+<p>Ian Walker and Ben Glocker</p>
+<ul>
+<li>Mimic the convolution layer with Gaussian Processes
+<ul>
+<li>Expressibility</li>
+</ul>
+</li>
+<li>This paper extend to general graphs
+<ul>
+<li>Suppose: the number of vertices are same</li>
+<li>want to learn: $\mathbb{R}^{|V|\times d}\rightarrow\mathbb{R}$</li>
+</ul>
+</li>
+<li>$g(x)\sim\text{GP}(0,k())$
+<ul>
+<li>dimension curse</li>
+<li>no structure</li>
+</ul>
+</li>
+<li>$\Omega$: a set of subsets
+<ul>
+<li>$f(x)=\sum_{\omega\in\Omega}g_\omega(\omega),g_\omega\sim\text{GP}(0,k())$</li>
+</ul>
+</li>
+<li>一个工作看的角度不同，做出的效果不同</li>
+<li>出生在神经网络时代的人一直在刷 Performance</li>
+<li>培养出 taste/view，用 taste 选择问题</li>
+</ul>
+<h2 id="robustfill-neural-program-learning-under-noisy-io-icml-2017">RobustFill: Neural Program Learning under Noisy I/O (ICML 2017)</h2>
+<ul>
+<li>given a set of input-output strings $(I_1,O_1)&hellip;(I_n,O_n)$ and a set of unpaired input strings $I_i^Y$ and output strings $O_1^Y$</li>
+<li>Learn P: $O_i=P(I_i)$</li>
+<li>Challenges
+<ul>
+<li>Real world data is small (205 instances, each with 10 I/O examples, 4 as observed, 6 as assessment)</li>
+<li>Input is a variable-length set of paired I/O examples</li>
+</ul>
+</li>
+<li>Domain Specific Language(DSL)</li>
+<li>Deep Learning: 科学问题工程化近似实现</li>
+</ul>
+<h1 id="share-1114">Share 11.14</h1>
+<h2 id="pythia-ai-assisted-code-completion-system-kdd19">Pythia: AI-assisted Code Completion System (KDD'19)</h2>
+<p>Microsoft, Industrial Track</p>
+<ul>
+<li>Code Completion: List out all possible attributes or methods when a user types a &ldquo;.&rdquo;</li>
+<li>Previous Method
+<ul>
+<li>alphabetically</li>
+<li>Frequency based code completion</li>
+<li>Association rule</li>
+<li>KNN</li>
+<li>Bayesian Network</li>
+<li>n-grams</li>
+<li>RNN based: NLP</li>
+</ul>
+</li>
+<li>main contribution
+<ul>
+<li>python in IDE</li>
+<li>end-to-end LSTM</li>
+</ul>
+</li>
+</ul>
+<h2 id="selecting-representative-examples-for-program-synthesis-icml18">Selecting Representative Examples for Program Synthesis (ICML'18)</h2>
+<h2 id="open-vocaulary-learning-on-source-code-icml19">Open Vocaulary Learning on Source Code (ICML'19)</h2>
+<ul>
+<li>main contribution</li>
+</ul>
+<h1 id="share-1129">Share 11.29</h1>
+<h2 id="literature-review-on-automatic-program-repairapr">Literature Review on Automatic Program Repair(APR)</h2>
+<p>综述</p>
+<ul>
+<li>定义：automatic process that
+<ul>
+<li>localize whter a fix could bbe applied</li>
+<li>fix the fault</li>
+<li>verify</li>
+</ul>
+</li>
+<li>Generate-and-Validate
+<ul>
+<li>GneProg(ICSE'12)
+<ul>
+<li>Slecet a location randomly</li>
+<li>Apply atomic operators</li>
+<li>Apply single-point crossover</li>
+<li>Preserve that candidates with high fitness</li>
+</ul>
+</li>
+<li>CapGen(ICSE'18)</li>
+<li>SimGen(ISSTA'18)</li>
+</ul>
+</li>
+<li>Semantics-driven
+<ul>
+<li>SemFix(ICSE'13)
+<ul>
+<li>Constraints Generation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>End-to-End Program Repair
+<ul>
+<li>SequenceR(TSE'19)
+<ul>
+<li>Challenge
+<ul>
+<li>Noisy data</li>
+<li>Out of Vocabulary</li>
+<li>Long dependency</li>
+</ul>
+</li>
+<li>Methods
+<ul>
+<li>Foucus on one-line fixes</li>
+<li>Copy mechanism</li>
+<li>Abbstract buggy context</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="gotcha---sly-malware-scorpion-a-metagraph2vec-based-malware-detection-system-kdd18">Gotcha - Sly Malware!: Scorpion A Metagraph2vec Based Malware Detection System (KDD'18)</h2>
+<ul>
+<li>malware detection
+<ul>
+<li>signature-based(be easily evaded)</li>
+<li>monitoring behaviors from OS(expensive)</li>
+</ul>
+</li>
+<li>intelligent malware detection systems
+<ul>
+<li>content-bbased(lack of relations)
+<ul>
+<li>API used</li>
+</ul>
+</li>
+<li>relation-based(contains a few relations)</li>
+</ul>
+</li>
+<li>content- &amp; relation- based
+<ul>
+<li>HIN (structures)
+<ul>
+<li>PE file, API, DLL, Machine, Archive</li>
+</ul>
+</li>
+<li>meta-graphs(sementics)</li>
+<li>vectors(low-dimensional representations)</li>
+</ul>
+</li>
+<li>KDD 近 15 年内，每年都有 Graph</li>
+<li>难以干掉</li>
+</ul>
+<h1 id="share-1213">Share 12.13</h1>
+<h2 id="neural-guided-constraint-logic-programming-for-program-synthesis">Neural Guided Constraint Logic Programming for Program Synthesis</h2>
+<h2 id="neural-synthesis-from-diverse-demonstration-videos">Neural Synthesis from Diverse Demonstration Videos</h2>
+<ul>
+<li>program induction
+<ul>
+<li>lack of interprtability</li>
+</ul>
+</li>
+<li>program synthesis
+<ul>
+<li>lack of expressibility</li>
+</ul>
+</li>
+<li>imitation learning
+<ul>
+<li>acquire skills from expert demonstrations</li>
+</ul>
+</li>
+<li>demonstartions: $D={\tau_1,\cdots,\tau_K}$
+<ul>
+<li>$((s_1,a_1),\cdots,(s_T,a_T))$</li>
+</ul>
+</li>
+</ul>
+<h1 id="share-1220">Share 12.20</h1>
+<h2 id="a-convolutional-attention-network-for-extreme-summarization-of-source-code-icml16">A convolutional attention network for extreme summarization of source code (ICML'16)</h2>
+<ul>
+<li>code summarization: 生成注释</li>
+<li>extreme code summarization: 生成函数名</li>
+</ul>
+<h2 id="automatic-program-synthesis-of-long-programs-with-a-learned-garbage-collector-18">Automatic Program Synthesis of Long Programs with a Learned Garbage Collector (18)</h2>
+<ul>
+<li>Domain Specific Language</li>
+<li>搜索做不大</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

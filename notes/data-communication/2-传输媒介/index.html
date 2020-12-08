@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>传输媒介 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#导向传输媒介">导向传输媒介</a>
+      <ul>
+        <li><a href="#双绞线">双绞线</a></li>
+        <li><a href="#同轴电缆">同轴电缆</a></li>
+        <li><a href="#光纤-optical-fiber">光纤 Optical Fiber</a></li>
+      </ul>
+    </li>
+    <li><a href="#无导向媒介">无导向媒介</a>
+      <ul>
+        <li><a href="#天线">天线</a></li>
+        <li><a href="#无线传播">无线传播</a></li>
+      </ul>
+    </li>
+    <li><a href="#数据链路层设备">数据链路层设备</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>信道指标：数据率，传输距离</li>
+<li>电磁波频谱：($10^2$)ELF,VF,VLF,LF,MF,HF,VHF,UHF,SHF,EHF,$10^{12}$,$10^{13}$,$10^{14}$,可见光</li>
+</ul>
+<h2 id="导向传输媒介">导向传输媒介</h2>
+<ul>
+<li>guided media：电磁波在导线引导下沿某一物理路径前进</li>
+<li>点对点：导向媒体在两个设备之间提供了一条仅被这两个设备共享的直连链路</li>
+</ul>
+<h3 id="双绞线">双绞线</h3>
+<ul>
+<li>扭绞结构</li>
+<li>模拟传输
+<ul>
+<li>放大器：5km</li>
+<li>有限带宽：1MHz</li>
+</ul>
+</li>
+<li>数字传输
+<ul>
+<li>转发器：2km</li>
+<li>数据率：100Mbps
+<ul>
+<li>短距离：1Gbps</li>
+</ul>
+</li>
+<li>随频率增高迅速增加</li>
+<li>易受信号反射或回波损耗影响</li>
+</ul>
+</li>
+<li>UTP 非屏蔽双绞线</li>
+<li>STP 屏蔽双绞线
+<ul>
+<li>金属箔双绞线 FTP</li>
+<li>屏蔽的双绞线 F/UTP</li>
+<li>完全屏蔽的双绞线 S/FTP</li>
+</ul>
+</li>
+<li>568-C标准 与 ISO/IEC 11801标准
+<ul>
+<li>5e/D</li>
+<li>6/E</li>
+<li>6A/E$_{A}$</li>
+<li>7/F</li>
+<li>7A/F$_{A}$</li>
+</ul>
+</li>
+<li>插入损耗（insertion loss, 模拟）
+<ul>
+<li>从发送系统到接受系统链路上的衰减</li>
+<li>频率的递增函数</li>
+</ul>
+</li>
+<li>近端串扰（near end crosstalk, NEXT）
+<ul>
+<li>从一对导体到另一对导体上的信号耦合，越大越好</li>
+<li>端现象</li>
+</ul>
+</li>
+<li>衰耗串扰比： $\text{ACR}<em>{dB}=\text{NEXT}</em>{dB}-A_{dB}$
+<ul>
+<li>$\text{ACR}&gt;0\Rightarrow P_r&gt;P_c$</li>
+</ul>
+</li>
+</ul>
+<h3 id="同轴电缆">同轴电缆</h3>
+<h3 id="光纤-optical-fiber">光纤 Optical Fiber</h3>
+<ul>
+<li>优点
+<ul>
+<li>容量大：100M-100Gbps/km</li>
+<li>体积小</li>
+<li>衰减小</li>
+<li>电磁隔离</li>
+<li>转发器间隔更远</li>
+</ul>
+</li>
+<li>分类
+<ul>
+<li>多模突变：入射角平缓的光束被反射并沿着纤维向前转播，其他被周围的物质吸收</li>
+<li>多模渐变：中心较高的折射率使得光线沿轴线前进的速度比靠近覆层的慢，光束呈现螺旋状</li>
+<li>单模：仅有一个角度能够通过传输纤维</li>
+</ul>
+</li>
+<li>光纤模块
+<ul>
+<li>GBIC 接 LC光纤连接器</li>
+<li>SFP 接 SC光纤连接器</li>
+</ul>
+</li>
+</ul>
+<h2 id="无导向媒介">无导向媒介</h2>
+<ul>
+<li>unguided media</li>
+<li>真空、空气、海水</li>
+</ul>
+<h3 id="天线">天线</h3>
+<ul>
+<li>发射电磁能量和接受电磁能量的电导体</li>
+<li>双向通行中，同一个天线可以同时收发</li>
+<li>天线种类
+<ul>
+<li>各向同性天线</li>
+<li>抛物线反射天线</li>
+</ul>
+</li>
+<li>天线增益：$G_{dB}=10\lg(\frac{P_2}{P_1})$, $P_1$ 为定向天线发射功率，$P_2$ 为参考天线功率</li>
+<li>有效面积：$G=\frac{4\pi A_e}{\lambda^2}$
+<ul>
+<li>$A_e=0.56A$</li>
+</ul>
+</li>
+</ul>
+<h3 id="无线传播">无线传播</h3>
+<ul>
+<li>地波 ~2MHz</li>
+<li>天波 2MHz~30MHz</li>
+<li>视距传播 30MHz~
+<ul>
+<li>损伤
+<ul>
+<li>折射</li>
+<li>自由空间耗损</li>
+<li>大气吸收</li>
+<li>多径</li>
+</ul>
+</li>
+<li>视距：$d=3.57\sqrt{Kh}$</li>
+<li>最大距离：$3.57(\sqrt{Kh_1}+\sqrt{Kh_2})km$</li>
+</ul>
+</li>
+<li>射频区域 30MHz-1GHz</li>
+<li>微波区域 1GHz-40GHz
+<ul>
+<li>自由空间损耗模型：$L=10\lg(\frac{4\pi d}{\lambda})^2\text{dB}$
+<ul>
+<li>$d$: 天线间传播距离</li>
+<li>$\lambda$: 载波波长</li>
+<li>考虑天线增益：$L=10\lg(\frac{4\pi d}{\lambda})^2\frac{1}{G_1G_2}\text{ dBW}$</li>
+</ul>
+</li>
+<li>损耗公式：$L_{dB}=-20\lg(f)+20\lg(d)-10\lg(A_tA_r)+169.54\text{dB}$</li>
+</ul>
+</li>
+<li>红外线 $3<em>10^{11}$Hz-$2</em>10^{14}$Hz</li>
+</ul>
+<h2 id="数据链路层设备">数据链路层设备</h2>
+<ul>
+<li>物理层接口
+<ul>
+<li>串行接口标准
+<ul>
+<li>RS-232
+<ul>
+<li>DB-25</li>
+<li>DB-9</li>
+</ul>
+</li>
+<li>RS-422</li>
+<li>RS-485</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>网卡
+<ul>
+<li>有线网卡：以太网卡</li>
+<li>无限网卡：WLAN网卡</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

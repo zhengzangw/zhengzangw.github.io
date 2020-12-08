@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Introuction to TensorFlow 1 Picture Handle | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#亮度">亮度</a></li>
+    <li><a href="#对比度">对比度</a></li>
+    <li><a href="#色相与饱和度">色相与饱和度</a></li>
+    <li><a href="#tensorflow-调整函数">TensorFlow 调整函数</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#大小调整">大小调整</a>
+      <ul>
+        <li><a href="#0双线性插值法">0:双线性插值法</a></li>
+        <li><a href="#1最近邻居法">1:最近邻居法</a></li>
+        <li><a href="#2双三次插值法">2:双三次插值法</a></li>
+        <li><a href="#3面积插值法">3:面积插值法</a></li>
+      </ul>
+    </li>
+    <li><a href="#剪裁">剪裁</a></li>
+    <li><a href="#翻转">翻转</a></li>
+    <li><a href="#标注框">标注框</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="图片的基础知识">图片的基础知识</h1>
+<p>像素值只有 0，1： 二值图<br>
+0-255：256 级灰度图<br>
+图像位数通常是 8 位。简单可认为一张单通道 8 位彩色图有三通道 RGB<br>
+转换为灰度公式很多，如：
+$$Gray = R<em>30%+G</em>59%+B*11%$$</p>
+<h2 id="亮度">亮度</h2>
+<p>RGB 颜色空间本身就是源于物体发光，每个通道上的值表示的是该通道上的光强，调整光强即是调整亮度。可以有如下公式：
+$$亮度＝R<em>0.299+G</em>0.587+B*0.114$$
+$$l = (max(rgb) + min(rgb)) / 2$$</p>
+<h2 id="对比度">对比度</h2>
+<p>对比度反应了图片上亮区域和暗区域的层次感。而反应到图像编辑上，调整对比度就是在保证平均亮度不变的情况下，扩大或缩小亮的点和暗的点的差异</p>
+<p>$$Out = Average + (In – Average) * ( 1 + percent)$$</p>
+<p>其中 In 表示原始像素点亮度，Average 表示整张图片的平均亮度，Out 表示调整后的亮度，而 percent 即调整范围[-1,1]</p>
+<h2 id="色相与饱和度">色相与饱和度</h2>
+<ul>
+<li>HSB（HSV） 为 色相，饱和度，明度，</li>
+<li>HSL 为 色相，饱和度，亮度，</li>
+<li>Hue and Saturation</li>
+<li>S(saturation)分量，指的是色彩的饱和度，它用 0%至 100%的值描述了相同色相、明度下色彩纯度的变化。数值越大，颜色中的灰色越少，颜色越鲜艳，呈现一种从理性(灰度)到感性(纯色)的变化。</li>
+<li>L(lightness)分量，指的是色彩的明度，作用是控制色彩的明暗变化。它同样使用了 0%至 100%的取值范围。数值越小，色彩越暗，越接近于黑色；数值越大，色彩越亮，越接近于白色。</li>
+</ul>
+<h2 id="tensorflow-调整函数">TensorFlow 调整函数</h2>
+<ul>
+<li>img = (下同)tf.image.adjust_brightness(img_data,-0.5)</li>
+<li>tf.image.random_brigntness(img_data,max_delta) 在(-delta,delta)范围内调整亮度</li>
+<li>tf.image.adujust_contrast(img_data,0.5)</li>
+<li>tf.image.random_contrast(img_data,lower,upper)</li>
+<li>tf.image.image_adjust_hue(img_data,0.1)</li>
+<li>tf.image.image_random_hue(img_data,max_delta)</li>
+<li>tf.image.image_adjust_saturation(img_data,-5)</li>
+<li>tf.image.image_random_saturation(image,lower,upper)</li>
+<li>tf.image.per_image_standardization(img_data) 亮度均值为 0 方差为 1</li>
+</ul>
+<h1 id="tensorflow-调整图片">TensorFlow 调整图片</h1>
+<h2 id="大小调整">大小调整</h2>
+<p>tf.image.resize_images(img_data,[300,300],method=0)</p>
+<h3 id="0双线性插值法">0:双线性插值法</h3>
+<p>双线性插值，顾名思义就是两个方向的线性插值加起来。分别在 x 轴和 y 轴都做一遍，就是双线性插值了。</p>
+<h3 id="1最近邻居法">1:最近邻居法</h3>
+<p>找到原始图像中的 4 个像素点，取距离该像素点最近的一个原始像素值作为该点的值。</p>
+<h3 id="2双三次插值法">2:双三次插值法</h3>
+<p>选取的是最近的 16 个像素点作为计算目标图像，有点复杂
+<a href="https://blog.csdn.net/qq_29058565/article/details/52769497">参考</a></p>
+<h3 id="3面积插值法">3:面积插值法</h3>
+<p>没什么资料，不过效果不错</p>
+<h2 id="剪裁">剪裁</h2>
+<pre><code>tf.image.resize_image_with_crop_or_pad(img_data,1000,1000)
+tf.image.centrol_crop(img_data,0.5)
+</code></pre>
+<h2 id="翻转">翻转</h2>
+<pre><code>tf.image.flip_up_down
+tf.image.flip_left_right
+tf.image.transpose_image
+</code></pre>
+<p>加 random 则以 0.5 概率进行翻转</p>
+<h2 id="标注框">标注框</h2>
+<pre><code>tf.expand_dims(tf.image.convert_image_dtype(img_data,tf.float32),0)
+boxes = tf.constant([[[0.05,0.05,0.9,0.7]]])
+result = tf.image.draw_bounding_boxes(batch,boxes)
+</code></pre></main>
+        </div>
+
+    </div>
+</body></html>

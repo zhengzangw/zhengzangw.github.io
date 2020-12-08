@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Basics | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数字图像">数字图像</a></li>
+    <li><a href="#采样">采样</a></li>
+    <li><a href="#量化">量化</a></li>
+    <li><a href="#前沿学术期刊">前沿学术期刊</a></li>
+    <li><a href="#前沿学术会议">前沿学术会议</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="数字图像">数字图像</h2>
+<ul>
+<li>数字图像：$f(x,y),f$ 为灰度或强度，皆离散</li>
+<li>电磁波谱：伽马射线，X 射线，紫外线，可见光，红外线，微波，无线电波
+<ul>
+<li>单色光（无色光）
+<ul>
+<li>强度：灰度级</li>
+</ul>
+</li>
+<li>彩色光：430nm(紫)~790nm(红)
+<ul>
+<li>发光强度：能量总量 W</li>
+<li>光通量：观察者从光源感受到的能量 lm(流明数)</li>
+<li>亮度：光感知的主观描绘</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>图像增强：由人的主观感受评判
+<ul>
+<li>对比度拉伸</li>
+<li>增强</li>
+</ul>
+</li>
+<li>图像复原：以预先制定的目标改善图像
+<ul>
+<li>去模糊</li>
+<li>利用退化现象的先验知识恢复图像</li>
+</ul>
+</li>
+<li>图像分割：吧图像细分为它的区域或物体</li>
+</ul>
+<h2 id="采样">采样</h2>
+<p>用有限的样本数目去近似无限的现实物理信号（有限近似无限）</p>
+<ul>
+<li>空间分辨度</li>
+<li>像素数：每单位距离点数
+<ul>
+<li>1 inch = 2.54 cm</li>
+<li>dpi: 每英寸点数</li>
+</ul>
+</li>
+</ul>
+<h2 id="量化">量化</h2>
+<p>用离散计算机表示去近似连续的现实物理信号（离散近似连续）</p>
+<ul>
+<li>灰度分辨率
+<ul>
+<li>$Q=2^b$: $b$ bit量化，$Q$ 级灰度</li>
+</ul>
+</li>
+<li>伪轮廓</li>
+<li>最佳量化：量化误差最小（均方误差）</li>
+</ul>
+<p>$$\delta^2=\sum_{k=1}^K\int_{Z_k}^{Z_{k+1}}(Z-q_k)^2p(Z)dZ$$</p>
+<h2 id="前沿学术期刊">前沿学术期刊</h2>
+<ul>
+<li>TPAMI《IEEE Transactions on Pattern Analysis and Machine Intelligence》</li>
+<li>TIP《IEEE Transactions on Image Processing》</li>
+<li>CVIU《Computer Vision and Image Understanding
+》</li>
+<li>TSMCB《IEEE Transactions on Systems, Man and
+Cybernetics》</li>
+</ul>
+<h2 id="前沿学术会议">前沿学术会议</h2>
+<ul>
+<li>CVPR (IEEE Conference on Computer Vision and Pattern Recognition)</li>
+<li>ICCV (International Conference on Computer Vision)</li>
+<li>ECCV (European Conference on Computer Vision)</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lexical Analysis | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#词法分析器的作用">词法分析器的作用</a></li>
+    <li><a href="#词法单元的规约正则表达式">词法单元的规约（正则表达式）</a></li>
+    <li><a href="#词法分析的识别状态转换图">词法分析的识别（状态转换图）</a></li>
+    <li><a href="#词法分析器生成工具及设计">词法分析器生成工具及设计</a></li>
+    <li><a href="#有穷自动机">有穷自动机</a></li>
+    <li><a href="#正则表达式到-dfa">正则表达式到 DFA</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="词法分析器的作用">词法分析器的作用</h2>
+<ul>
+<li>读入字符流，组成词素，输出词法单元
+<ul>
+<li>过滤空白、换行、制表符、注释</li>
+<li>将词素添加到符号表</li>
+<li>逻辑上独立于语法分析，但通常和语法分析处于同一趟</li>
+</ul>
+</li>
+<li>独立词法分析
+<ul>
+<li>简化设计</li>
+<li>提高编译器效率</li>
+<li>增强编译器的可移植性</li>
+</ul>
+</li>
+<li>概念
+<ul>
+<li>词法单元 Token：<code>&lt;单元名，属性&gt;</code></li>
+<li>模式 Pattern：描述了一类 Token 可能具有的形式</li>
+<li>词素 Lexeme：源程序中的字符序列</li>
+</ul>
+</li>
+</ul>
+<h2 id="词法单元的规约正则表达式">词法单元的规约（正则表达式）</h2>
+<ul>
+<li>概念
+<ul>
+<li>字符表：一个有穷符号的集合</li>
+<li>串：符号的有穷序列</li>
+<li>语言：给定字母表上串的可数集合</li>
+<li>前缀，后缀，子串</li>
+<li>连接：$xy$</li>
+<li>指数运算：$x^n$</li>
+</ul>
+</li>
+<li>语言运算
+<ul>
+<li>$L\cup M$</li>
+<li>$LM$</li>
+<li>$L^*=\cup_{i=0}^\infty L^i$</li>
+<li>$L^+=\cup_{i=1}^\infty L^i$</li>
+</ul>
+</li>
+<li>正则表达式
+<ul>
+<li>基本部分
+<ul>
+<li>$L(\epsilon)={\epsilon}$</li>
+<li>$L(a)={a}$</li>
+</ul>
+</li>
+<li>归纳部分
+<ul>
+<li>$L((r)|(s))=L(r)\cup L(s)$</li>
+<li>$L((r)(s))=L(r)L(s)$</li>
+<li>$L((r)^<em>)=L(r)^</em>$</li>
+<li>$L((r))=L(r)$</li>
+</ul>
+</li>
+<li>运算优先级 $*$ 连接 $|$</li>
+<li>扩展
+<ul>
+<li>$r+$ = $rr^*$</li>
+<li>$r?$ = $\epsilon|r$</li>
+<li>$[a_1\cdots a_n]$ = $a_1|a_2\cdots|a_n$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>正则集合：可以用正则表达式定义的语言</li>
+<li>正则定义：$d_1\rightarrow r_1$
+<ul>
+<li>不能重复定义，不能与字母表重复</li>
+</ul>
+</li>
+</ul>
+<h2 id="词法分析的识别状态转换图">词法分析的识别（状态转换图）</h2>
+<ul>
+<li>Transition diagram
+<ul>
+<li>State: 识别词素时可能出现的情况
+<ul>
+<li>状态是已处理部分的总结</li>
+<li>开始状态</li>
+<li>终止状态（带星号表示回退一个符号）</li>
+</ul>
+</li>
+<li>Edge：一个符号或多个符号</li>
+</ul>
+</li>
+<li>保留字和标识符的处理
+<ul>
+<li>法一：在符号表中先填保留字</li>
+<li>法二：建立高优先级的保留字</li>
+</ul>
+</li>
+<li>构造词法分析器
+<ul>
+<li>State 记录当前状态</li>
+<li>switch 跳转状态</li>
+<li>if 对比边</li>
+<li>失败 fail()</li>
+<li>接受状态返回词法单元（*标记回退 forward 指针）</li>
+</ul>
+</li>
+</ul>
+<h2 id="词法分析器生成工具及设计">词法分析器生成工具及设计</h2>
+<ul>
+<li>Lex/Flex 编译器：lex.l (Lex compiler)-&gt; lex.yy.c (C compiler)-&gt; a.out</li>
+<li>声明部分
+<ul>
+<li>常量</li>
+<li>正则定义</li>
+</ul>
+</li>
+<li>转换规则
+<ul>
+<li>模式 { 动作 }</li>
+</ul>
+</li>
+<li>辅助函数
+<ul>
+<li>各个动作的函数</li>
+</ul>
+</li>
+<li>各部分用 <code>%%</code> 隔开</li>
+<li><code>%{</code> <code>%}</code> 之间直接拷贝</li>
+</ul>
+<pre><code class="language-lex" data-lang="lex">%{
+  //comment
+}%
+
+ws { \t\n}
+
+%%
+
+{ws} {/*no action*/}
+if {return(IF)}
+{id} {yylval = (int) installID(); return (ID);}
+
+%%
+
+int installID() {/* install lexeme */}
+int installNum() {}
+</code></pre><ul>
+<li>冲突解决
+<ul>
+<li>多个前缀匹配：选择最长的前缀</li>
+<li>多个模式匹配：选择前面的模式</li>
+</ul>
+</li>
+</ul>
+<h2 id="有穷自动机">有穷自动机</h2>
+<ul>
+<li>有穷自动机：只回答 Yes/No
+<ul>
+<li>状态有穷</li>
+<li>不确定有穷自动机 (NFA)：边上符号限制，一个符号可出现在离开同一个状态的多条边上，$\epsilon$ 可以做符号</li>
+<li>确定有穷自动机 (DFA)</li>
+</ul>
+</li>
+<li>每个可以用正则表达式描述的语言，均可以用 NFA 和 DFA 来识别，反之亦然</li>
+<li>NFA 定义
+<ul>
+<li>有穷状态集合 $S$</li>
+<li>输入符号集合 $\Sigma$</li>
+<li>转换函数：$\Sigma\cup{\epsilon}$</li>
+<li>开始状态：$s_0$</li>
+<li>接受状态：$F$</li>
+</ul>
+</li>
+<li>转换表表示法
+<ul>
+<li>行头：条件</li>
+<li>列头：状态</li>
+</ul>
+</li>
+</ul>
+<h2 id="正则表达式到-dfa">正则表达式到 DFA</h2>
+<ul>
+<li>NFA -&gt; DFA：子集构造法
+<ul>
+<li>构造得到的 DFA 每个状态和 NFA 的状态子集对应</li>
+<li>最坏情况：$2^n$</li>
+<li>基本操作
+<ul>
+<li>$\epsilon$-closure($s$)：从状态 $s$ 开始，只能通过 $\epsilon$ 转换到的状态</li>
+<li>$\epsilon$-closure($T$)</li>
+<li>move($T,a$)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>正则表达式 -&gt; NFA
+<ul>
+<li>基本规则部分
+<ul>
+<li>表达式 $\epsilon$</li>
+<li>表达式 $a$</li>
+</ul>
+</li>
+<li>归纳部分
+<ul>
+<li>$s|t$</li>
+<li>$st$</li>
+<li>$s^*$</li>
+</ul>
+</li>
+<li>NFA 合并：引入新的开始状态
+<ul>
+<li>转化为 DFA 中一个状态包含 NFA 中不同的结束状态：冲突</li>
+<li>关键字是其它模式的一个特例（优先选择特例）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DFA 状态数量最小化
+<ul>
+<li>状态的可区分：如果存在串 $x$ 使从 $s1$ 和 $s2$ 一个到达接受另一个到达非接受状态，则 $x$ 区分 $s1$ 和 $s2$</li>
+<li>最小化算法
+<ul>
+<li>基本步骤：接受和非接受状态</li>
+<li>归纳步骤：$s$ 和 $t$ 可区分，且 $s'$ 到 $s$，$t'$ 到 $t$ 有标号 $a$ 的边， $s'$ 和 $t'$ 可区分</li>
+<li>最终没有区分开的态等价</li>
+</ul>
+</li>
+<li>死状态：未定义时到达的状态</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

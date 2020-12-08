@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 5 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本概念">基本概念</a></li>
+    <li><a href="#单总线数据通路">单总线数据通路</a></li>
+    <li><a href="#三总线数据通路">三总线数据通路</a></li>
+    <li><a href="#单周期数据通路">单周期数据通路</a></li>
+    <li><a href="#流水线数据通路">流水线数据通路</a></li>
+    <li><a href="#高级流水线实现技术">高级流水线实现技术</a></li>
+    <li><a href="#super-pipelining">super-pipelining</a></li>
+    <li><a href="#multiple-issue-pipeling">multiple issue pipeling</a></li>
+    <li><a href="#指令集">指令集</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="基本概念">基本概念</h2>
+<ul>
+<li>指令周期：CPU取出并执行一条指令的时间</li>
+<li>PC: 程序计数器（IP）</li>
+<li>IR: 指令寄存器</li>
+<li>ID: 指令译码器</li>
+<li>地址线、数据线、控制线：不属于CPU</li>
+<li>启停控制逻辑：脉冲源（时钟脉冲）+启停控制线</li>
+<li>数据通路： 指令执行过程中数据所经过的路径（包括路径上的部件）</li>
+<li>execution/function unit: 数据运算的部件</li>
+<li>IAS计算机：储存程序计算机 1946 分散连接结构</li>
+<li>Clock-to-Q(Latch Prop): 触发沿开始到输出端改变</li>
+<li>Cycle Time = Clk-to-Q + Longest Delay + 建立时间 + clock skew</li>
+<li>数据通路的时序控制
+<ul>
+<li>早期：机器周期、节拍和脉冲三级时序</li>
+<li>现代：时钟信号，时钟周期=节拍</li>
+</ul>
+</li>
+</ul>
+<h2 id="单总线数据通路">单总线数据通路</h2>
+<ul>
+<li>内总线</li>
+<li>MDR: Memory Data Register</li>
+<li>MAR: Memory Address Register</li>
+<li>四种基本操作
+<ul>
+<li>通用寄存器间传递数据
+<ul>
+<li>$R0_{out}, Y_{in}$</li>
+</ul>
+</li>
+<li>算术逻辑运算
+<ul>
+<li>$R1_{out}, Y_{in}$</li>
+<li>$R2_{out}, add (Z_{in})$</li>
+<li>$Z_{out}, R3_{in}$</li>
+</ul>
+</li>
+<li>主存读取一个字
+<ul>
+<li>MFC信号: Memory Function Complete</li>
+<li>WMFC控制信号</li>
+<li>异步
+<ul>
+<li>$R1_{out}, MAR_{in}$</li>
+<li>$read, WMFC$</li>
+<li>$MDR_{out}, R2_{in}$</li>
+</ul>
+</li>
+<li>同步： SDRAM芯片</li>
+</ul>
+</li>
+<li>写入主存
+<ul>
+<li>$R1_{out}, MDR_{in}$</li>
+<li>$R2_{out}, MAR_{in}$</li>
+<li>$write, WMFC$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="三总线数据通路">三总线数据通路</h2>
+<ul>
+<li>dual-port register file</li>
+<li>三操作数指令执行可在一个时钟周期完成</li>
+</ul>
+<h2 id="单周期数据通路">单周期数据通路</h2>
+<ul>
+<li>单周期处理器：所以有指令的指令周期为一个时钟周期</li>
+<li>MIPS</li>
+<li>时钟周期以最复杂指令所用的指令周期为准</li>
+</ul>
+<h2 id="流水线数据通路">流水线数据通路</h2>
+<ul>
+<li>指令流水线
+<ul>
+<li>IF</li>
+<li>ID</li>
+<li>OF: 取操作数</li>
+<li>EX</li>
+<li>WB</li>
+</ul>
+</li>
+<li>CPI = 1</li>
+<li>组合逻辑+寄存器延时</li>
+<li>适合流水线的指令集特征
+<ul>
+<li>指令长度一致</li>
+<li>指令格式规整</li>
+<li>load/store型指令风格</li>
+</ul>
+</li>
+<li>流水线冒险(hazard) : 流水线阻塞(stall)
+<ul>
+<li>structural hazard (hardware resource conflict) 访存冲突。 解决方法： 哈佛结构（指令储存器和数据储存器分离）， cache</li>
+<li>data hazard (data dependency) 前面指令的结果还没产生。 解决方法
+<ul>
+<li>软件方法 nop</li>
+<li>数据转发 (forwarding) 通过bypass送到后续ALU</li>
+<li>硬件阻塞 （插入气泡） load-use数据冒险只能如此解决</li>
+<li>一个周期内特殊处理</li>
+<li>(MIPS实现中)
+<ul>
+<li>RAW</li>
+<li>WAR</li>
+<li>WAW</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>control hazard
+<ul>
+<li>延迟损失时间片 C</li>
+<li>branch hazard
+<ul>
+<li>插入气泡 或 插入nop， 数量为C</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="高级流水线实现技术">高级流水线实现技术</h2>
+<h2 id="super-pipelining">super-pipelining</h2>
+<ul>
+<li>增加流水线级数，CPI仍为1，减小时钟周期</li>
+</ul>
+<h2 id="multiple-issue-pipeling">multiple issue pipeling</h2>
+<ul>
+<li>同时启动多条命令, CPI &lt; 1。</li>
+<li>IPC: 4路多发射流水线理性IPC为4</li>
+<li>前提：数据通路中有多个执行部件</li>
+<li>任务一：冒险处理</li>
+<li>任务二：指令打包 ： 将能够并行处理的多条指令同时发送到发射槽中
+<ul>
+<li>speculation: 猜测指令执行结果调整执行顺序
+<ul>
+<li>软件推测： 编译器通过推测来静态重排指令，此种推测一定正确
+<ul>
+<li>静态多发射：主要通过静态推测，指令打包后多条指令合成VLIW(Very Long Instrution Word)。 VLIW处理器，Intel称为EPIC(Explicitly Parallel Instruction Computer)</li>
+</ul>
+</li>
+<li>硬件推测：处理器执行中通过推测动态调度指令
+<ul>
+<li>动态多发射：super-scalar processor (超标量处理器)
+<ul>
+<li>简单超标量处理器： 指令顺序发射，每次一条或多条</li>
+<li>out-of-order execution： 使用dynamic pipeline scheduling技术， 通过指令相关性检测和动态分支预测，投机选择执行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="指令集">指令集</h2>
+<ul>
+<li>CISC: 难以使用硬连线路控制器，只能用微程序控制器</li>
+<li>RISC</li>
+<li>控制器: 译码并产生控制信号</li>
+<li>硬连线路控制器：指令执行过程中每个时钟周期所包含的控制信号为一个状态</li>
+<li>微程序控制器
+<ul>
+<li>微程序：每条指令的执行过程的表示，由微指令组成</li>
+<li>控制存储器（CS, 控存）：存储每条指令对于微程序的ROM</li>
+<li>微程序定序器：计数器法/断定法（下址字段法）</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

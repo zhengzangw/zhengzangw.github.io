@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Camera | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#pinhole-camera">pinhole camera</a></li>
+    <li><a href="#thin-lens">thin lens</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="pinhole-camera">pinhole camera</h2>
+<ul>
+<li>near plane - far plane</li>
+<li>NDC: normalized device coordinate space
+<ul>
+<li>从 (0,0,0) 到 (1,1,1)</li>
+<li>设备无关</li>
+</ul>
+</li>
+<li>Raster space: NDC 乘以分辨率</li>
+<li>look-at Transformation</li>
+<li>Orthographic projection</li>
+<li>Perspective project</li>
+<li>坐标系汇总
+<ul>
+<li>World space：场景坐标系</li>
+<li>Object space：以物体为中心的坐标系</li>
+<li>Camera space：(orgin: camera position, z: viewing direction, y: updirection)</li>
+<li>Normalized device space</li>
+<li>Raster space: from (0,0,0) to (xRes, yRes, 1)</li>
+</ul>
+</li>
+</ul>
+<h2 id="thin-lens">thin lens</h2>
+<ul>
+<li>薄透镜：光线只折射一次</li>
+<li>光线
+<ul>
+<li>Parallel Ray</li>
+<li>Focal Ray</li>
+<li>Chief Ray</li>
+</ul>
+</li>
+<li>$\frac{1}{f}=\frac{1}{u}+\frac{1}{v}$</li>
+<li>Depth of Field:the range of distances from the lens at which objects appear in focus</li>
+<li>Circle of confusion(coc)</li>
+<li>五位空间采样
+<ul>
+<li>x,y 采样</li>
+<li>u,v 透镜采样</li>
+<li>时间采样</li>
+</ul>
+</li>
+<li>真实相机特有效果
+<ul>
+<li>Vignetting 渐晕：亮度不均匀；打到一个透镜后，能量无法全部打到第二个透镜</li>
+<li>Distortion 镜头畸变（鱼眼镜头）</li>
+<li>Chromatic Aberration：不同颜色的光的折射率不同</li>
+<li>Bokeh 散焦：高光由于镜头原因出现散斑</li>
+<li>Lens Flare：拍特别亮的光源出现多组亮光；透镜出现反射 Interflection</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cluster | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#性能度量">性能度量</a></li>
+    <li><a href="#原型聚类">原型聚类</a>
+      <ul>
+        <li><a href="#k-means">k-means</a></li>
+        <li><a href="#lvq">LVQ</a></li>
+        <li><a href="#高斯混合聚类">高斯混合聚类</a></li>
+      </ul>
+    </li>
+    <li><a href="#密度聚类">密度聚类</a>
+      <ul>
+        <li><a href="#dbscan">DBSCAN</a></li>
+        <li><a href="#diana">DIANA</a></li>
+      </ul>
+    </li>
+    <li><a href="#层次聚类">层次聚类</a>
+      <ul>
+        <li><a href="#agnes">AGNES</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="性能度量">性能度量</h2>
+<ul>
+<li>性能度量，有效性指标 validity index</li>
+<li>外部指标：与某个参考模型比较
+<ul>
+<li>簇划分：$\mathcal{C}={C_1,C_2,\cdots,C_k}$, 参考模型簇划分 $\mathcal{C}^<em>={C_1^</em>,C_2^<em>,\cdots,C_s^</em>}$,$\lambda,\lambda^*$ 为分别为两者簇标记向量，定义
+<ul>
+<li>$a=|\text{SS}|,\text{SS}={(x_i,x_j)|\lambda_i=\lambda_j,\lambda_i^<em>=\lambda_j^</em>,i&lt;j}$</li>
+<li>$b=|\text{SD}|,\text{SD}={(x_i,x_j)|\lambda_i=\lambda_j,\lambda_i^<em>\not=\lambda_j^</em>,i&lt;j}$</li>
+<li>$c=|\text{DS}|,\text{DS}={(x_i,x_j)|\lambda_i\not=\lambda_j,\lambda_i^<em>=\lambda_j^</em>,i&lt;j}$</li>
+<li>$d=|\text{DD}|,\text{DD}={(x_i,x_j)|\lambda_i\not=\lambda_j,\lambda_i^<em>\not=\lambda_j^</em>,i&lt;j}$</li>
+<li>$a+b+c+d=\frac{m(m-1)}{2}$</li>
+</ul>
+</li>
+<li>JC (Jaccard Coefficent)
+<ul>
+<li>$\text{JC}=\frac{a}{a+b+c}$</li>
+</ul>
+</li>
+<li>FMI (Fowlkes and Mallows Index)
+<ul>
+<li>$\text{FMI}=\sqrt{\frac{a}{a+b}\frac{a}{a+c}}$</li>
+</ul>
+</li>
+<li>RI (Rand Index)
+<ul>
+<li>$\text{RI}=\frac{2(a+d)}{m(m-1)}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内部指标
+<ul>
+<li>簇划分：$\mathcal{C}={C_1,C_2,\cdots,C_k}$
+<ul>
+<li>$\text{avg}(C)=\frac{2}{|C|(|C|-1)}\sum_{1\leq i&lt;j\leq|C|}\text{dist}(x_i,x_j)$ 簇内样本平均距离</li>
+<li>$\text{diam}(C)=\max_{1\leq i&lt;j\leq|C|}\text{dist}(x_i,x_j)$ 簇内样本间最远距离</li>
+<li>$d_{\min}(C_i,C_j)=\min_{x_i\in C_i,x_j\in C_j}\text{dist}(x_i,x_j)$</li>
+<li>$d_{\text{cen}}(C_i,C_j)=\text{dist}(\mu_i,\mu_j)$</li>
+</ul>
+</li>
+<li>DBI (Davies-Bouldin Index)
+<ul>
+<li>$\text{DBI}=\frac{1}{k}\sum_{i=1}^k\max_{j\not=i}(\frac{\text{avg}(C_i)+\text{avg}(C_j)}{d_{\text{cen}}(C_i,C_j)})$ 越小越好</li>
+</ul>
+</li>
+<li>DI (Dunn Index)
+<ul>
+<li>$\text{DI}=\min_{1\leq i\leq k}(\min_{j\not=i}(\frac{d_{\min}(C_i,C_j)}{\max_{1\leq l\leq k}\text{diam}(C_l)}))$ 越大越好</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="原型聚类">原型聚类</h2>
+<ul>
+<li>SOM: self-organizing maps</li>
+</ul>
+<h3 id="k-means">k-means</h3>
+<ul>
+<li>最小化平均误差 $E=\sum_{i=1}^k\sum_{x\in C_i}||x-\mu_i||_2^2$ ($\text{NP}$-hard)</li>
+<li>贪心策略：迭代优化</li>
+<li>k-medoids: represented by objects near center</li>
+</ul>
+<h3 id="lvq">LVQ</h3>
+<p>Learning Vector Quantization 学习向量量化</p>
+<ul>
+<li>利用样本监督信息</li>
+<li>每次迭代，每个样本对其最近的原型向量根据标记一致性做推动/吸引</li>
+<li>每个原型向量 $p_i$ 定义了与之相关的一个区域 $R_i$，形成了对样本空间的 Voronoi tessellation</li>
+</ul>
+<h3 id="高斯混合聚类">高斯混合聚类</h3>
+<ul>
+<li>高斯混合分布：$p_M(x)=\sum_{i=1}^k\alpha_ip(x|\mu_i,\Sigma_i),\sum_{i=1}^k\alpha_i=1$</li>
+<li>EM 算法求解
+<ul>
+<li>$\text{LL}(D)=\ln(\prod p_M)=\sum_{j=1}^m\ln(\sum_{j=1}^k\alpha_i p(x_j|\mu_i,\Sigma_i))$</li>
+<li>E: $\gamma_{ji}=p_M(z_j=i|x_j)$</li>
+<li>M
+<ul>
+<li>$\mu_i'=\frac{\sum{\gamma_{ji}x_j}}{\sum_{j=1}^m\gamma_{ji}}$</li>
+<li>$\Sigma_i'=\frac{\sum\gamma_{ji}(x_j-\mu_i')(x_j-\mu_i)^T}{\sum\gamma_{ji}}$</li>
+<li>$\alpha_i'=\frac{\sum\gamma_{ji}}{m}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="密度聚类">密度聚类</h2>
+<p>假设聚类结构能通过样本分布的紧密程度确定</p>
+<h3 id="dbscan">DBSCAN</h3>
+<ul>
+<li>$\epsilon$-邻域：$N_\epsilon(x_i)={x_i\in D|\text{dist}(x_i,x_j)\leq\epsilon}$</li>
+<li>核心对象: $x_j,|N_\epsilon(x_j)|\geq\text{MinPts}$</li>
+<li>directly denisty-reachable: $x_j\in N_\epsilon(x_i)$ 且 $x_i$ 为核心对象，则 $x_j$ 由 $x_i$ 密度可达（无对称性）</li>
+<li>density-reachable</li>
+<li>density-connected: $\exists x_k$, $x_i,x_j$ 均由 $x_k$ 密度可达</li>
+<li>簇 为满足下列性质最大集合
+<ul>
+<li>connectivity: $x_i\in C, x_j\in C$ 则 $x_i,x_j$ 密度相连</li>
+<li>maximality: $x_i\in C$, $x_j$ 由 $x_i$ 密度可达则 $x_j\in C$</li>
+</ul>
+</li>
+<li>算法:
+<ol>
+<li>找出所有核心对象</li>
+<li>对每个核心对象求 $X={x'\in D|x'$由$x$密度可达$}$</li>
+</ol>
+</li>
+</ul>
+<h3 id="diana">DIANA</h3>
+<p>top down</p>
+<h2 id="层次聚类">层次聚类</h2>
+<p>自底向上或自顶向下</p>
+<h3 id="agnes">AGNES</h3>
+<p>agglomerative nesting</p>
+<ul>
+<li>自底向上</li>
+<li>起初每个样本点为一个簇</li>
+<li>不断合并最近两个簇</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>d</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>single-linkage</td>
+<td>min</td>
+</tr>
+<tr>
+<td>complete-linkage</td>
+<td>max</td>
+</tr>
+<tr>
+<td>average-linkage</td>
+<td>avg</td>
+</tr>
+</tbody>
+</table>
+</main>
+        </div>
+
+    </div>
+</body></html>

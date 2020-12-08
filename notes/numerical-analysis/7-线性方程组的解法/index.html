@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7. 线性方程组解法 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#求解线性方程组">求解线性方程组</a>
+      <ul>
+        <li><a href="#向量范数">向量范数</a></li>
+        <li><a href="#矩阵范数">矩阵范数</a></li>
+        <li><a href="#扰动分析">扰动分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#直接解法">直接解法</a>
+      <ul>
+        <li><a href="#高斯消元法">高斯消元法</a></li>
+        <li><a href="#高斯主元素消元法">高斯主元素消元法</a></li>
+        <li><a href="#三角分解法">三角分解法</a></li>
+        <li><a href="#追赶法解三对角方程组">追赶法解三对角方程组</a></li>
+      </ul>
+    </li>
+    <li><a href="#迭代解法">迭代解法</a>
+      <ul>
+        <li><a href="#jacobi-迭代">Jacobi 迭代</a></li>
+        <li><a href="#gauss-seidel-迭代">Gauss-Seidel 迭代</a></li>
+        <li><a href="#收敛性">收敛性</a></li>
+        <li><a href="#超松弛迭代法">超松弛迭代法</a></li>
+        <li><a href="#共轭斜量法">共轭斜量法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="求解线性方程组">求解线性方程组</h2>
+<p>$$Ax=b,A\in R^{n\times n},b\in R^n$$</p>
+<p>假设 $A$ 非奇异，则方程有唯一解</p>
+<p>直接解法：不考虑舍入误差的情况下，在预定的运算次数内求得精确解。如 Gauss 消去法</p>
+<p>迭代解法：基于一定的递推格式，产生逼近精确解的近似序列。收敛性</p>
+<h3 id="向量范数">向量范数</h3>
+<ul>
+<li>向量范数
+<ul>
+<li>正定性：$|x|\geq 1$</li>
+<li>齐次性：$|\lambda x|=|\lambda||x|$</li>
+<li>三角不等式：$|x+y|\leq|x|+|y|$</li>
+</ul>
+</li>
+<li>常用向量范数
+<ul>
+<li>$|x|<em>2=(\sum</em>{i=1}^n|x_i|^2)^{\frac{1}{2}}$</li>
+<li>$|x|<em>1=\sum</em>{i=1}^n|x_i|$</li>
+<li>$|x|<em>\infty=\max</em>{1\leq i\leq n}|x_i|$</li>
+<li>$|x|<em>p=(\sum</em>{i=1}^n|x_i|^p)^{\frac{1}{p}}$</li>
+<li>对称正定矩阵 $A$, $|x|_A=\sqrt{(Ax,x)}=\sqrt{(x^TAx)}$</li>
+</ul>
+</li>
+<li>范数等价：任意两个范数，存在 $C_1,C_2$，$C_1|x|_B\leq |x|_A\leq C_2|x|_B$，则 $|x|_B$ 域 $|x|_A$ 等价</li>
+<li>定理：$R^n$ 上一切范数等价</li>
+<li>定理：向量序列 ${x^k}$ 收敛于 $x^*$ $\iff$ $\lim_{k\rightarrow\infty}|x^k-x^*|=0$</li>
+</ul>
+<h3 id="矩阵范数">矩阵范数</h3>
+<ul>
+<li>矩阵范数
+<ul>
+<li>非负性</li>
+<li>齐次性</li>
+<li>三角不等式</li>
+<li>相容性：$|AB|\leq|A||B|$</li>
+</ul>
+</li>
+<li>常用范数
+<ul>
+<li>矩阵算子范数：$|\cdot|$ 为向量范数，$|A|=\sum_{x\in R^n,x\neq 0}\frac{|Ax|}{|x|}=\max_{x\in R^n,|x|=1}|Ax|$</li>
+<li>列范数：$|A|<em>1=\max</em>{1\leq j\leq n}\sum_{i=1}^n|a_{ij}|$</li>
+<li>行范数：$|A|<em>{\infty}\max</em>{1\leq i\leq n}\sum_{j=1}^n|a_{ij}|$</li>
+<li>$|A|<em>2=\sqrt{\lambda</em>{\max(A^TA)}}=\sqrt{\rho(A^TA)}$，最大特征值</li>
+<li>Frobenius 范数：$|A|<em>F=\sqrt{\sum</em>{i=1}^n\sum_{j=1}^n|a_{ij}|^2}$</li>
+</ul>
+</li>
+<li>定理：任意算子范数范数等价</li>
+<li>谱半径：$\rho(A)=\max{|\lambda_1|,\cdots,|\lambda_n|}$</li>
+<li>定理：任意算子范数，$\rho(A)\leq|A|$</li>
+<li>定理：若 $A$ 对称，则 $|A|_2=\rho(A)$</li>
+<li>定理：算子范数，$|A|&lt;1$，则 $I+A$ 非奇异且$|(I+A)^{-1}|&lt;\frac{1}{1-|A|}$</li>
+</ul>
+<h3 id="扰动分析">扰动分析</h3>
+<ul>
+<li>方程右端扰动影响：$\frac{|\delta x|}{|x|}\leq \text{cond}(A)\frac{|\delta b|}{|b|}$</li>
+<li>$a_{ij}$ 扰动影响：$\frac{|\delta x|}{|x+\delta x|}\leq \text{cond}(A)\frac{|\delta A|}{|A|}$</li>
+<li>条件数：$\text{cond}(A)=|A||A^{-1}|$
+<ul>
+<li>$\text{cond}(A)<em>{\infty}=|A|</em>{\infty}|A^{-1}|_{\infty}$</li>
+<li>$\text{cond}(A)_2=|A|_2|A^{-1}|_2$</li>
+<li>$A$ 对称，$\text{cond}(A)_2=\frac{\max|\lambda|}{\min|\lambda|}$</li>
+</ul>
+</li>
+<li>病态：$\text{cond}(A)&raquo;1$</li>
+<li>良态：$\text{cond}(A)$ 较小</li>
+</ul>
+<h2 id="直接解法">直接解法</h2>
+<h3 id="高斯消元法">高斯消元法</h3>
+<ul>
+<li>记 $A^{(1)}=A=(a_{ij}^{(1)})_{n\times n},b^{(1)}=b=(b_1^{(1)},\cdots,b_n^{(1)})^T$</li>
+<li>消元：将 $A$ 化为上三角矩阵
+<ul>
+<li>Step 1: $a_{11}^{(1)}\neq 0,m_{i1}=\frac{a_{i1}^{(1)}}{a_{11}^{(1)}},i=2,\cdots,n$, 将增广矩阵第 $i$ 行减去 $m_{i1}\times$ 第一行</li>
+<li>Step k: $m_{ik}=\frac{a_{ik}^{(k)}}{a_{kk}^{(k)}},i=k+1,\cdots,n$</li>
+<li>共进行 $n-1$ 步</li>
+</ul>
+</li>
+<li>回代：逆次序逐一求出三角方程组的解
+<ul>
+<li>$x_i=\frac{b_i^{i}-\sum_{j=i+1}a_{ij}^{(i)}x_j}{a_{ii}^{(i)}}$</li>
+</ul>
+</li>
+<li>若 $A$ 的所有顺序主子式均不为 $0$，则高斯消元无需换行即可进行</li>
+</ul>
+<h3 id="高斯主元素消元法">高斯主元素消元法</h3>
+<ul>
+<li>当 $|a_{kk}^{(k)}|=0$ 或出现很小的数时，算法不稳定</li>
+<li>每次选一列中最大的元素为主元素</li>
+<li>消元过程
+<ul>
+<li>选主元：$|a_{i_kk}^{(k)}|=\max_{k\leq i\leq n}|a_{ik}^{(k)}$</li>
+<li>若为零则 $|A|=0$</li>
+<li>若 $i_k\neq k$，交换 $i$ 与 $k$</li>
+<li>消元</li>
+</ul>
+</li>
+</ul>
+<h3 id="三角分解法">三角分解法</h3>
+<ul>
+<li>$A=LU$ (高斯消元为因式分解)
+<ul>
+<li>$m_{ij}=\frac{a_{ij}}{a_{jj}}$</li>
+<li>$L_k$: 单位阵的第 $k$ 列 $1$ 下方元素分别为 $-m_{k+1,k},\cdots,-m_{n,k}$</li>
+<li>$L_k^{-1}$: 下方元素变为 $m_{k+1,k},\cdots,m_{n,k}$</li>
+<li>$L=\prod_{i=1}^{n-1}L_i^{-1}$</li>
+</ul>
+</li>
+<li>$A$ 的顺序主子式均不为 $0$ 则 $A$ 的 $LU$ 分解唯一（$L$ 为单位下三角阵）</li>
+<li>$AX=LUX=b\Rightarrow UX=Y,LY=b$
+<ul>
+<li>$y_i=b_i-\sum_{j=1}^{i-1}l_{ij}y_j,n=1,\cdots,n$</li>
+<li>$x_i=(y_i-\sum_{j=i+1}^nu_{ij}x_j)/u_{ii},i=n,n-1,\cdots,1$</li>
+</ul>
+</li>
+<li>Doolittle 分解：单位下三角
+<ul>
+<li>$A=LU$</li>
+<li>$u_{ri}=a_{ri}-\sum_{k=1}^{r-1}l_{rk}u_{ki},i=r,r+1,\cdots,n$</li>
+<li>$l_{ir}=(a_{ir}-\sum_{k=1}^{r-1}l_{ik}u_{kr})/u_{rr},i=r,r+1,\cdots,n$</li>
+</ul>
+</li>
+<li>Crout 分解：单位上三角
+<ul>
+<li>$A=\widetilde L\widetilde U$</li>
+</ul>
+</li>
+<li>LDU 分解</li>
+<li>Cholesky 分解：$A\in\mathbb{R}^{n\times n}$ 为对称正定矩阵，存在非奇异下三角矩阵 $L$ 使得 $A=LL^T$。当 $L$ 的主对角元为正时，分解存在且唯一
+<ul>
+<li>$A=L_1DL_1^T=(L_1D^{\frac{1}{2}})(L_1D^{\frac{1}{2}})^T=LL^T$</li>
+<li>$l_{ij}=(a_{ij}-\sum_{k=1}^{j-1}l_{ik}l_{jk})/l_{jj},i\geq j$</li>
+</ul>
+</li>
+</ul>
+<h3 id="追赶法解三对角方程组">追赶法解三对角方程组</h3>
+<ul>
+<li>对角占优条件
+<ul>
+<li>$|b_1|&gt;|c_1|&gt;0$</li>
+<li>$|b_i|\geq |a_i|+|c_i|$</li>
+<li>$|b_n|&gt;|a_n|&gt;0$</li>
+</ul>
+</li>
+<li>严格占优条件：$|b_i|&gt;|a_i|+|c_i|$</li>
+<li>满足（严格）对角占优条件的三对角矩阵 $A$ 可以分解为 $A=LU$，$L$ 主对角线上 $\alpha_i$，主对角线下方一条 $\gamma_i$，单位上三角矩阵 $U$ 主对角线上方一条 $\beta_i$
+<ul>
+<li>$\alpha_i=b_i-a_i\beta_{i-1}, \alpha_1=b_1$</li>
+<li>$\beta_i=\frac{c_i}{\alpha_i}$</li>
+<li>$\gamma_i=a_i$</li>
+</ul>
+</li>
+<li>追赶法求解 $Ax=f$
+<ul>
+<li>计算 $\beta$</li>
+<li>（追）解 $Ly=f$：$y_i=\frac{f_i-\alpha_iy_{i-1}}{b_i-a_i\beta_{i-1}},i=2,3,\cdots,n$</li>
+<li>（赶）解 $Ux=y$：$x_i=y_i-\beta_ix_{i+1},i=n-1,n-2,\cdots,2,1$</li>
+</ul>
+</li>
+<li>算法稳定</li>
+<li>时间复杂度 $O(6n)$</li>
+<li>应用：
+<ul>
+<li>计算 $|A|$</li>
+<li>计算 $A^{-1}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="迭代解法">迭代解法</h2>
+<ul>
+<li>针对大型稀疏矩阵</li>
+<li>迭代格式 $x=Bx+f$</li>
+</ul>
+<h3 id="jacobi-迭代">Jacobi 迭代</h3>
+<ul>
+<li>从第 $k$ 个方程中解出 $x_k$ 构造迭代格式</li>
+<li>$A=D-L-U$，严格上/下三角矩阵 $L,U$</li>
+<li>迭代格式：$x=D^{-1}(L+U)x+D^{-1}b$</li>
+</ul>
+<h3 id="gauss-seidel-迭代">Gauss-Seidel 迭代</h3>
+<ul>
+<li>计算第 $i$ 个分量时，带入第 $i-1$ 个分量的计算结果</li>
+<li>$x_i^{(k+1)}=\frac{1}{a_{ii}}(b_i-\sum_{j=1}^{i-1}a_{ij}x_j^{(k+1)}-\sum_{j=i+1}^na_{ij}x_j^{(k)})$</li>
+<li>$Dx^{(k+1)}=(Lx^{(k+1)}+Ux^{(k)})+b$</li>
+<li>$x^{(k+1)}=(D-L)^{-1}Ux^{(k)}+(D-L)^{-1}b$</li>
+</ul>
+<h3 id="收敛性">收敛性</h3>
+<ul>
+<li>
+<p>$\epsilon^{(k)}=x^{(k)}-x^*$</p>
+</li>
+<li>
+<p>$\epsilon^{(k)}=B\epsilon^{(k-1)}=B^k\epsilon^{(0)}$</p>
+<ul>
+<li>趋于 $0$：$B^k\rightarrow O$</li>
+</ul>
+</li>
+<li>
+<p>$\lim_{k\rightarrow\infty}B^k=O\iff\rho(B)&lt;1$</p>
+<ul>
+<li>推论：$\exists|B|&lt;1$ 是收敛的充分条件</li>
+</ul>
+</li>
+<li>
+<p>$\epsilon^{(k)}=\sum_{i=1}^nc_i\lambda_i^ku_i,u_i$ 为 $B$ 的线性无关特征向量</p>
+<ul>
+<li>$|\epsilon^{(k)}|\leq\rho^k(B)\sum_{i=1}^n|c_i||u_i|$</li>
+<li>$\rho(B)$ 可以衡量收敛速度</li>
+<li>$|x^{(k)}-x^*|_v\leq\frac{|B|_v}{1-|B|_v}|x^{(k)}-x^{(k-1)}|$</li>
+</ul>
+</li>
+<li>
+<p>严格对角占优：$|a_{ii}&gt;\sum_{j=1,j\neq i}|a_{ij}|$</p>
+</li>
+<li>
+<p>弱对角占优：$|a_{ii}\geq\sum_{j=1,j\neq i}|a_{ij}|$</p>
+</li>
+<li>
+<p>可约矩阵：$\exists$ 排列矩阵 $P$ 使 $P^TAP$ 为</p>
+<p>$$\begin{bmatrix} A_{11} &amp; A_{12} \newline  &amp; A_{22}\end{bmatrix}$$</p>
+<ul>
+<li>充要条件：$\exists J\subset{1,2,\cdots,n},a_kj=0,k\in J,j\notin J$</li>
+</ul>
+</li>
+<li>
+<p>若 $A$ 严格对角占优或不可约若对角占优矩阵，则 $A$ 是非奇异矩阵</p>
+</li>
+<li>
+<p>若 $A$ 严格对角占优或不可约若对角占优矩阵，则 Jacobi 迭代和 Gauss-Seidel 迭代收敛</p>
+</li>
+</ul>
+<h3 id="超松弛迭代法">超松弛迭代法</h3>
+<ul>
+<li>松弛因子
+<ul>
+<li>$\omega&lt;1$：低松弛迭代法</li>
+<li>$\omega&gt;1$：逐次超松弛迭代法（SOR 迭代方法）</li>
+<li>$\omega=1$：Gauss-Seidel 迭代</li>
+</ul>
+</li>
+<li>$x_i^{(k+1)}=x_i^{(k)}+\omega(y_i^{(k+1)}-x_i^{(k)})$</li>
+<li>迭代格式：$x^{(k+1)}=Bx^{(k)}+f$
+<ul>
+<li>$B=(D-\omega L)^{-1}[(1-\omega)D+\omega U]$</li>
+<li>$f=\omega(D-\omega L)^{-1}b$</li>
+</ul>
+</li>
+<li>收敛必要条件：$0&lt;\omega&lt;2$</li>
+<li>若 $A$ 对称正定，则收敛充要条件为 $0&lt;\omega&lt;2$</li>
+</ul>
+<h3 id="共轭斜量法">共轭斜量法</h3>
+<ul>
+<li>$A$ 为对称正定矩阵</li>
+<li>算法：
+<ul>
+<li>任选初值 $x_0\in\mathbb{R}^n$ 和阈值 $\epsilon&gt;0,r_0=d_0=b-Ax_0$</li>
+<li>$x_{k+1}=x_k+\alpha_kd_k$</li>
+<li>$\alpha_k=\frac{(r_k,r_k)}{d_k,Ad_k}$</li>
+<li>$r_{k+1}=r_k-\alpha_kAd_k$</li>
+<li>$d_{k+1}=r_{k+1}+\beta_kd_k$</li>
+<li>$\beta_k=\frac{(r_{k+1},r_{k+1})}{(r_k,r_k)}$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

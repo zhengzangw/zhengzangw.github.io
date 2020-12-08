@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spatial Domain | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#像素关系">像素关系</a></li>
+    <li><a href="#算术逻辑集合操作增强">算术/逻辑/集合操作增强</a></li>
+    <li><a href="#几何变换">几何变换</a>
+      <ul>
+        <li><a href="#空间变换算法">空间变换算法</a></li>
+        <li><a href="#灰度内插算法">灰度内插算法</a></li>
+      </ul>
+    </li>
+    <li><a href="#灰度变换">灰度变换</a>
+      <ul>
+        <li><a href="#直方图">直方图</a></li>
+      </ul>
+    </li>
+    <li><a href="#空间滤波">空间滤波</a>
+      <ul>
+        <li><a href="#edge-preserving-filters-保边滤波器">Edge Preserving Filters 保边滤波器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="像素关系">像素关系</h2>
+<ul>
+<li>相邻像素
+<ul>
+<li>四邻域</li>
+<li>四对角邻域</li>
+<li>八邻域</li>
+</ul>
+</li>
+<li>定义邻接性的灰度值集合：$V$
+<ul>
+<li>二值/非二值</li>
+<li>$V$ 可以把灰度级化成两个等价类</li>
+</ul>
+</li>
+<li>邻接性
+<ul>
+<li>4 邻接：$p\in N_4(p)$ 且 $p,q$ 的灰度值都属于 $V$</li>
+<li>8 邻接：$p\in N_8(p)$ 且 $p,q$ 的灰度值都属于 $V$</li>
+<li>$m$ 邻接（混合邻接）：$p,q$ 的灰度值都属于 $V$
+<ul>
+<li>$q\in N_4(p)$</li>
+<li>或 $N_4(p)\wedge N_(q)$ 内无灰度值属于 $V$</li>
+<li>消除二义性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>连通性：通路
+<ul>
+<li>起点终点相同：闭合通路</li>
+<li>连通集/连通分量</li>
+</ul>
+</li>
+<li>区域：连通的像素子集 $R$
+<ul>
+<li>邻接区域：两个连通的区域</li>
+<li>前景：$\bigcup R_k$</li>
+<li>背景：$(\bigcup R_k)^c$</li>
+</ul>
+</li>
+<li>边界：区域中与背景 8 连通的点的集合</li>
+<li>边缘：导数值超过阈值的像素
+<ul>
+<li>局部 概念</li>
+<li>二值图像：边界=边缘</li>
+</ul>
+</li>
+<li>距离
+<ul>
+<li>欧式 $D_r$</li>
+<li>曼哈顿距离 $D_4$</li>
+<li>棋盘距离 $D_8=\max(|x-s|,|y-t|)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="算术逻辑集合操作增强">算术/逻辑/集合操作增强</h2>
+<p>主要以像素对像素为基础在两幅或多幅图像间进行</p>
+<ul>
+<li>算术操作
+<ul>
+<li>加：$g(x,y)=f(x,y)+h(x,y)$
+<ul>
+<li>定理：对$M$幅加性噪声图像进行平均，可以使图像的平方信噪比提高$M$倍</li>
+</ul>
+</li>
+<li>减：$g(x,y)=f(x,y)-h(x,y)$
+<ul>
+<li>找不同</li>
+<li>指纹抽取</li>
+<li>掩膜式 X 光成像法</li>
+<li>负值：规范化 $y=\frac{x-\min}{\max-\min}\times 255$</li>
+</ul>
+</li>
+<li>乘：$g(x,y)=f(x,y)h(x,y)$
+<ul>
+<li>掩膜运算</li>
+</ul>
+</li>
+<li>除
+<ul>
+<li>归一化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>集合操作：灰度图像集合 $A$
+<ul>
+<li>元素：$(x,y,z)$
+<ul>
+<li>空间坐标，灰度</li>
+</ul>
+</li>
+<li>$A^c={(x,y,K-z)|(x,y,z)\in A}$
+<ul>
+<li>$K=2^k-1$ 为灰度级数</li>
+</ul>
+</li>
+<li>$A\cup B={\max\limits_z(a,b)|a\in A, b\in B}$</li>
+</ul>
+</li>
+<li>逻辑操作：二值图像（前景 1，背景 0）
+<ul>
+<li>OR, AND, NOT, XOR</li>
+</ul>
+</li>
+</ul>
+<h2 id="几何变换">几何变换</h2>
+<h3 id="空间变换算法">空间变换算法</h3>
+<p>像素空间位置的变换</p>
+<ul>
+<li>保持图像中曲线特征的连续性（相邻输入产生相邻输出）</li>
+<li>仿射变换(Affine Transformation)
+<ul>
+<li>$x=t_{11}v+t_{21}w+t_{31}$</li>
+<li>$y=t_{12}v+t_{22}w+t_{32}$
+<ul>
+<li>$t_{11},t_{22}$: 伸缩比例</li>
+<li>$t_{12},t_{21}$: 倾斜程度</li>
+<li>$t_{13},t_{31}$: 平移量</li>
+</ul>
+</li>
+<li>矩阵形式：$[x,y,1]=[v,w,1]T,T=[t_{11},t_{12},0;t_{21},t_{22},0;t_{31},t_{32},1]$
+<ul>
+<li>$[x,y,1]=[v,w,1]T_1T_2\cdots$</li>
+<li>基本变换矩阵都可逆</li>
+</ul>
+</li>
+<li>性质
+<ul>
+<li>保持共线性</li>
+<li>保持距离比例：线的中心变化后依然是线的中心</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>基本仿射变换</th>
+<th>$x$</th>
+<th>$y$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>恒等变换</td>
+<td>$v$</td>
+<td>$w$</td>
+</tr>
+<tr>
+<td>伸缩变换</td>
+<td>$c_xv$</td>
+<td>$c_yw$</td>
+</tr>
+<tr>
+<td>旋转变换</td>
+<td>$v\cos\theta-w\sin\theta$</td>
+<td>$v\sin\theta+w\cos\theta$</td>
+</tr>
+<tr>
+<td>平移变换</td>
+<td>$v+t_x$</td>
+<td>$w+t_y$</td>
+</tr>
+<tr>
+<td>(水平)倾斜变换</td>
+<td>$v$</td>
+<td>$s_hv+w$</td>
+</tr>
+<tr>
+<td>(垂直)倾斜变换</td>
+<td>$v+s_vw$</td>
+<td>$w$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>前向映射
+<ul>
+<li>输入图像变换后为非整数点坐标</li>
+<li>灰度值按一定权重分配给周围像素</li>
+<li>输出图像每点都需要遍历所有输入图像，效率较低</li>
+</ul>
+</li>
+<li>反向映射
+<ul>
+<li>对于输出图像每点，计算出其在输入图像的位置</li>
+<li>在输入图像中用插值计算出该点灰度值</li>
+<li>使用灰度内插算法，效果较好</li>
+</ul>
+</li>
+</ul>
+<h4 id="图像配准">图像配准</h4>
+<ul>
+<li>匹配点</li>
+</ul>
+<p>$$P=\begin{bmatrix}v_0&amp;w_0&amp;1\newline v_1&amp;w_1&amp;1\newline \vdots&amp;\vdots&amp;\vdots\newline v_{n-1}&amp;w_{n-1}&amp;1\end{bmatrix},Q=\begin{bmatrix}x_0&amp;y_0&amp;1\newline x_1&amp;y_1&amp;1\newline \vdots&amp;\vdots&amp;\vdots\newline x_{n-1}&amp;y_{n-1}&amp;1\end{bmatrix}$$</p>
+<ul>
+<li>最优仿射变换：$Q=PT$
+<ul>
+<li>最小二乘 $\min\limits_T\lVert Q-PT\rVert_F^2$</li>
+<li>$T=(P^TP)^{-1}P^TQ$</li>
+</ul>
+</li>
+<li>双线性近似
+<ul>
+<li>$x=c_1v+c_2w+c_3vw+c_4$</li>
+<li>$y=c_5v+c_6w+c_7vw+c_8$</li>
+<li>4 对约束点，求解方程</li>
+<li>增加约束点：将原图分成多个四边形</li>
+</ul>
+</li>
+<li>几何校正：测试靶</li>
+</ul>
+<h3 id="灰度内插算法">灰度内插算法</h3>
+<p>确定变换中图像的像素灰度级</p>
+<ul>
+<li>最近邻内插</li>
+<li>线性内插：$f(x)=\frac{x_2-x}{x_2-x_1}f(x_1)+\frac{x_1-x}{x_1-x_2}f(x_2)$</li>
+<li>双线性内插
+<ul>
+<li>$Q_{11}Q_{12}\rightarrow R_1,Q_{21}Q_{22}\rightarrow R_2,R_1R_2\rightarrow P$</li>
+<li>$4$ 个最近点求解方程组：$f(x,y)\approx a_0+a_1x+a_2y+a_3xy$</li>
+</ul>
+</li>
+<li>双三次内插
+<ul>
+<li>$4$ 个最邻近点求解方程组：$f,\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f^2}{\partial x\partial y}$ 每点建立四个方程求解</li>
+<li>$16$ 个最近点求解方程组：$f (x,y)=\sum_{i=0}^3\sum_{j=0}^3a_{ij}x^iy^j$</li>
+</ul>
+</li>
+</ul>
+<h2 id="灰度变换">灰度变换</h2>
+<p>单像素操作，邻域大小为 1 的空间滤波 $s=T(r)$</p>
+<ul>
+<li>变换效果
+<ul>
+<li>对比度：做 $y=x,x=\frac{L}{2}$，前半减小越多，后半增大越多，对比度越大</li>
+<li>拉伸与压缩：做 $y=t$，比较变换前后范围</li>
+<li>细节增加：图片主体偏暗，则拉伸低灰度值增加细节</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>表达式</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线性</td>
+<td>$s=kr+b$</td>
+<td></td>
+</tr>
+<tr>
+<td>反转</td>
+<td>$s=L-1-r,L=2^b$</td>
+<td>凸显白色灰色</td>
+</tr>
+<tr>
+<td>对数</td>
+<td>$s=c\log(1+r)$</td>
+<td>低灰度拉伸，高灰度压缩</td>
+</tr>
+<tr>
+<td>反对数</td>
+<td>$s=10^{cr}-1$</td>
+<td></td>
+</tr>
+<tr>
+<td>幂律</td>
+<td>$s=cr^\gamma$</td>
+<td>$\gamma&lt;1$：低灰度拉伸，高灰度压缩</td>
+</tr>
+<tr>
+<td>对比拉伸变换</td>
+<td>分段单调递增</td>
+<td></td>
+</tr>
+<tr>
+<td>阈值处理</td>
+<td>$s=[r&lt;T]$</td>
+<td></td>
+</tr>
+<tr>
+<td>灰度级分层</td>
+<td>$s=T[A&lt;r&lt;B]+b$</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>$s=T[A&lt;r&lt;B]+(kr+b)[o.w.]$</td>
+<td></td>
+</tr>
+<tr>
+<td>比特平面分层</td>
+<td>$s=r_Lr_{L-1}\cdots r_{L-i}$</td>
+<td>高阶比特平面包含视觉上重要的数据,低比特位贡献精细细节,图像压缩</td>
+</tr>
+<tr>
+<td>直方图均衡化</td>
+<td>$T(r_k)=\frac{L-1}{MN}\sum_{j=0}^kn_j$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="直方图">直方图</h3>
+<ul>
+<li>直方图描述
+<ul>
+<li>横坐标 $D$：灰度级</li>
+<li>纵坐标 $H(D)$：出现的频率</li>
+<li>阈值面积函数: $A(D)=\int_D^\infty H(d)\text{d}d$</li>
+<li>概率密度函数 PDF：$P(D)=\frac{1}{A_0}H(D)$</li>
+<li>累积分布函数 CDF: $F(D)=\int_0^Dp(u)du$</li>
+</ul>
+</li>
+<li>离散直方图
+<ul>
+<li>$p_r(r_k)=\frac{n_k}{MN}$</li>
+<li>$H(D)=A(D)-A(D+1)$</li>
+</ul>
+</li>
+<li>直方图应用
+<ul>
+<li>图像快速检测：灰度值运用是否合理</li>
+<li>分隔前景背景：双峰直方图</li>
+<li>面积计算：$\int_{D_1}^\infty H(D)dD$</li>
+</ul>
+</li>
+<li>灰度变换下的直方图变化
+<ul>
+<li>假设单调连续灰度变换函数 $s=T(r)$</li>
+<li>输入密度 $p_r(r)$</li>
+<li>输出密度 $p_s(s)=p_r(r)|\frac{dr}{ds}|=p_r(T^{-1}(s))\frac{1}{|T'(T^{-1}(s))|}$</li>
+</ul>
+</li>
+<li>直方图均衡化
+<ul>
+<li>变换函数要求
+<ul>
+<li>属于区间 $[0,L-1]$</li>
+<li>单调递增</li>
+<li>变换为均匀分布</li>
+</ul>
+</li>
+<li>$T(r)=(L-1)\int_0^rp_r(w)dw$</li>
+<li>$T(r_k)=(L-1)\sum_{j=0}^kp_r(r_j)=\frac{L-1}{MN}\sum_{j=0}^kn_j$</li>
+</ul>
+</li>
+<li>直方图匹配： A-&gt;B-&gt;C
+<ul>
+<li>输入：$p_r(r)$，直方图均衡化变换 $s=T(r)$</li>
+<li>指定：$p_z(z)$，直方图均衡化变换 $s=G(r)$</li>
+<li>$z=G^{-1}(s)=G^{-1}(T(r))$</li>
+</ul>
+</li>
+<li>局部直方图均衡化
+<ul>
+<li>定义邻域，不断平移中心位置，在每个中心处计算直方图，进行直方图均衡化或匹配</li>
+</ul>
+</li>
+<li>直方图统计量用于局部图像增强
+<ul>
+<li>$n$阶矩：$\mu_n(r)=\sum_{i=0}^{L-1}(r_i-m)^np(r_i)$
+<ul>
+<li>2 阶矩：方差 $\sigma^2$</li>
+</ul>
+</li>
+<li>全局均值：$m_G$</li>
+<li>全局方差：$\sigma_G$</li>
+<li>局部均值：$m_{S_{xy}}$</li>
+<li>局部方差：$\sigma^2_{S_{xy}}$</li>
+</ul>
+</li>
+</ul>
+<p>$$
+g(x,y)=\begin{cases}
+Ef(x,y) &amp; m_{S_{xy}}\leq k_0m_G,k_1\sigma_G\leq\sigma_{S_{xy}}\leq k_2\sigma_{G}\newline
+f(x,y) &amp; o.w.
+\end{cases}
+$$</p>
+<h2 id="空间滤波">空间滤波</h2>
+<ul>
+<li>滤波器：$g(x,y)=T(f(x,y))$，$T$为操作算子，定义在$(x,y)$的邻域上</li>
+<li>线性滤波器
+<ul>
+<li>$m\times n$ 的模板
+<ul>
+<li>最小 $3\times 3$，一般为奇数</li>
+<li>边界：忽略/填充</li>
+</ul>
+</li>
+<li>补零-&gt;计算-&gt;滑动-&gt;裁剪</li>
+<li>Correlation 相关：平移滤波器模板，计算每个位置乘积直和
+<ul>
+<li>应用到离散单位脉冲后产生模板的旋转 180 度后的结果</li>
+<li>$w(x,y)\star f(x,y)=\sum_{s=-a}^a\sum_{t=-b}^bw(s,t)f(x+s,y+t)$</li>
+<li>归一化后寻找匹配：$R=\vec w^T\vec z$</li>
+</ul>
+</li>
+<li>Convolution 卷积：相关中滤波器旋转 180 度
+<ul>
+<li>$w(x,y)\star f(x,y)=\sum_{s=-a}^a\sum_{t=-b}^bw(s,t)f(x-s,y-t)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>离散微分
+<ul>
+<li>$\frac{\partial f}{\partial x}=f(x+1) - f(x)$
+<ul>
+<li>恒定区域：零</li>
+<li>突变起点：非零</li>
+<li>突变终点：零</li>
+<li>斜坡：非零</li>
+</ul>
+</li>
+<li>$\frac{\partial^2 f}{\partial x^2}=f(x+1) + f(x-1) - 2f(x)$
+<ul>
+<li>恒定区域：零</li>
+<li>突变起点：非零</li>
+<li>突变终点：非零</li>
+<li>斜坡：零</li>
+</ul>
+</li>
+<li>各向同性滤波器：旋转不变性</li>
+<li>拉普拉斯算子：$\nabla^2f=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}$
+<ul>
+<li>离散拉普拉斯算子
+<ul>
+<li>$\frac{\partial^2 f}{\partial x^2}=f(x+1, y) + f(x-1, y) - 2f(x,y)$</li>
+<li>$\frac{\partial^2 f}{\partial y^2}=f(x, y+1) + f(x, y-1) - 2f(x,y)$</li>
+</ul>
+</li>
+<li>标准形式：$[0,1,0;1,-4,1;0,1,0]$</li>
+<li>对角形式：$[1,1,1;1,-8,1;1,1,1]$</li>
+</ul>
+</li>
+<li>梯度：$\nabla f$
+<ul>
+<li>$M(x,y)=|\nabla f|=\sqrt{g_x^2+g_y^2}\approx |g_x|+|g_y|$</li>
+<li>罗伯特交叉梯度算子
+<ul>
+<li>$$g_x=\begin{bmatrix}-1&amp;0\newline 0&amp;1\end{bmatrix}$$</li>
+<li>$$g_y=\begin{bmatrix}0&amp;-1\newline 1&amp;0\end{bmatrix}$$</li>
+</ul>
+</li>
+<li>Sobel 算子
+<ul>
+<li>$$g_x=\begin{bmatrix}-1&amp;-2&amp;-1\newline 0&amp;0&amp;0\newline 1&amp;2&amp;1\end{bmatrix}$$</li>
+<li>$$g_y=\begin{bmatrix}-1&amp;0&amp;1\newline -2&amp;0&amp;2\newline -1&amp;0&amp;1\end{bmatrix}$$</li>
+</ul>
+</li>
+<li>阈值检测边缘</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>滤波器</th>
+<th>模板</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平滑线性</td>
+<td>$\frac{1}{9}\sum_{i}z_i$，先求和，再归一化</td>
+<td>边缘模糊，小物体缺失，边界明显</td>
+</tr>
+<tr>
+<td>加权线性</td>
+<td>$h(x,y)=e^{-\frac{x^2+y^2}{2\sigma^2}}$ 或其它权重，除模板之和</td>
+<td>降低模糊</td>
+</tr>
+<tr>
+<td>非线性平滑</td>
+<td>排序，中值，最大值，最小值</td>
+<td></td>
+</tr>
+<tr>
+<td>锐化</td>
+<td>$g(x,y)=f(x,y)+c[\nabla^2f(x,y)]$ $c&gt;0$ 若模板中心为正</td>
+<td></td>
+</tr>
+<tr>
+<td>非锐化掩蔽</td>
+<td>$g_{\text{mask}(x,y)}=f(x,y)-\overline{f}(x,y)$ <!-- raw HTML omitted --> $g(x,y)=f(x,y)+k\star g_{\text{mask}}(x,y)]$ <!-- raw HTML omitted --> $k=1$</td>
+<td></td>
+</tr>
+<tr>
+<td>高提升滤波</td>
+<td>$k&gt;1$</td>
+<td></td>
+</tr>
+<tr>
+<td>梯度边缘检测</td>
+<td>$M(x,y)$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="edge-preserving-filters-保边滤波器">Edge Preserving Filters 保边滤波器</h3>
+<ul>
+<li>双边滤波器（Bilateral）
+<ul>
+<li>高斯平滑滤波：$g_1(i,j)=\frac{\sum_{k,l}f(k,l)*d(i,j,k,l)}{\sum_{k,l}d(i,j,k,l)}$
+<ul>
+<li>$d(i,j,k,l)= e^{-\frac{(i-k)^2+(j-l)^2}{2\sigma_d^2}}$</li>
+</ul>
+</li>
+<li>值域高斯滤波：$g_2(i,j)=\frac{\sum_{k,l}f(k,l)*r(i,j,k,l)}{\sum_{k,l}r(i,j,k,l)}$
+<ul>
+<li>$r(i,j,k,l)=e^{-\frac{\lVert f(i,j)-f(k,l)\rVert^2}{2\sigma_r^2}}$</li>
+<li>两个像素物理距离越大则权值越小，反之则权值越大</li>
+</ul>
+</li>
+<li>双边滤波器：$\frac{\sum_{k,l}f(k,l)*w(i,j,k,l)}{\sum_{k,l}w(i,j,k,l)}$
+<ul>
+<li>$w(i,j,k,l)=e^{-\frac{(i-k)^2+(j-l)^2}{2\sigma_d^2}-\frac{\lVert f(i,j)-f(k,l)\rVert^2}{2\sigma_r^2}}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>引导滤波器：快速双边滤波器</li>
+<li><a href="chenyuhui@lamda.nju.edu.cn">递归域变换滤波器</a></li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

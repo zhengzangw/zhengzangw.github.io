@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sampling &amp; Reconstruction | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#math">Math</a></li>
+    <li><a href="#reconstruction">Reconstruction</a></li>
+    <li><a href="#aliasing">Aliasing</a></li>
+    <li><a href="#source-of-high-frequencies">Source of High Frequencies</a></li>
+    <li><a href="#antialiasing-techiques">Antialiasing Techiques</a></li>
+    <li><a href="#evaluating">Evaluating</a></li>
+    <li><a href="#采样方法">采样方法</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="math">Math</h2>
+<ul>
+<li>Fourier Series: 任意周期为 $1$ 的函数可表示为 $\frac{a_0}{2}+\sum_{n=1}^N(a_n\cos(2\pi nt)+b_n\sin(2\pi nt))$</li>
+<li>$f(x)=\sum_{n=-N}^Nc_ne^{2\pi int},c_n=\int_0^1e^{-2\pi int}f(t)dt$</li>
+<li>$(f*g)(t)=\int_{-\infty}^{\infty} g(t-x)f(x)dx$</li>
+<li>$\Pi(x)=[|x|\leq 1]$</li>
+<li>$(\Pi*\Pi)(x)=\Lambda(x)$</li>
+<li>Radical Inverse
+<ul>
+<li>$n=a_k\cdots a_2a_1$</li>
+<li>$\Phi_b(n)=0.a_1a_2\cdots a_k$</li>
+</ul>
+</li>
+<li>Van der Corput Sequence: $x_i=\Phi_2(i)$</li>
+<li>Halton Sequence: $x_i=(\Phi_2(i),\Phi_3(i),\Phi_5(i),\dots,\Phi_{p_d}(i))$</li>
+<li>Hammersley Sequence: $x_i=(\frac{i-\frac{1}{2}}{N},\Phi_2(i),\Phi_3(i),\Phi_5(i),\dots,\Phi_{p_{d-1}}(i))$</li>
+</ul>
+<h2 id="reconstruction">Reconstruction</h2>
+<ul>
+<li>时间域
+<ul>
+<li>冲激串 $\delta_T$</li>
+<li>重建 $\widetilde f(x)=(\delta f)\otimes r$</li>
+<li>重构核 $r$
+<ul>
+<li>sinc</li>
+<li>高斯</li>
+<li>三角</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>频率域
+<ul>
+<li>$\widetilde F=(F(\omega)\otimes \delta_{1/T})\Pi_T(\omega)$</li>
+</ul>
+</li>
+<li>reconstruction filter
+<ul>
+<li>ideal ones not exist</li>
+<li>Box Filter</li>
+<li>Triangle Filter</li>
+<li>Gaussian Filter</li>
+<li>Mitchell Filter</li>
+<li>Windowed Sinc Filter</li>
+</ul>
+</li>
+<li>Denoising</li>
+</ul>
+<h2 id="aliasing">Aliasing</h2>
+<ul>
+<li>Small triangles</li>
+<li>Stairstepping(jaggies)</li>
+<li>Moire Patterns</li>
+<li>车轮倒转</li>
+</ul>
+<h2 id="source-of-high-frequencies">Source of High Frequencies</h2>
+<ul>
+<li>Geometry
+<ul>
+<li>Edges, Vertices, sharp boundaries</li>
+<li>silhouettes</li>
+</ul>
+</li>
+<li>Texture</li>
+<li>Illumination</li>
+</ul>
+<h2 id="antialiasing-techiques">Antialiasing Techiques</h2>
+<ul>
+<li>Nonuniform sampling: $\sum_{i=-\infty}^{\infty}\delta(x-(i+\frac{1}{2}-\xi)T)$
+<ul>
+<li>noise better than aliasing</li>
+</ul>
+</li>
+<li>Adaptive sampling: Taking more samples in high-frequency regions</li>
+<li>Prefiltering: mipmap</li>
+</ul>
+<h2 id="evaluating">Evaluating</h2>
+<ul>
+<li>Blue noise property
+<ul>
+<li>白噪：完全随机采样，处处有能量</li>
+<li>蓝噪：低频无能量，低频完美重构，高频转化为噪声</li>
+</ul>
+</li>
+<li>gittered grid</li>
+<li>Poisson Disk Sampling
+<ul>
+<li>Dart Throwing: keep throwing darts into a domain with minimum distance constrain</li>
+<li>Lloyd&rsquo;s Relaxation
+<ul>
+<li>construct voronoi</li>
+<li>move to centroid</li>
+</ul>
+</li>
+<li>Tiled</li>
+</ul>
+</li>
+<li>Discrepany: how &ldquo;uniform&rdquo; the sampling pattern is
+<ul>
+<li>$D_N(B,P)=|\sum_{b\in B}\frac{#{x_i\in b}}{N}-\text{Vol}(b)|$</li>
+</ul>
+</li>
+</ul>
+<h2 id="采样方法">采样方法</h2>
+<ul>
+<li>Uniform Sampling</li>
+<li>Random Sampling</li>
+<li>Blue noise Sampling</li>
+<li>Stratified Sampling
+<ul>
+<li>Uniform sample + random perturbation (jittering)</li>
+</ul>
+</li>
+<li>Low-Discrepancy Sampling(quasi-random sampling)
+<ul>
+<li>Sample with Van der Corput Sequence $D^*_N(P)=O(\frac{\log N}{N})$</li>
+<li>Sample with Halton Sequence: $D^*_N(P)=O(\frac{(\log N)^d}{N})$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

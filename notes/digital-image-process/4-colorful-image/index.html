@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colorful Image Processing | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#彩色基础">彩色基础</a></li>
+    <li><a href="#彩色模型">彩色模型</a></li>
+    <li><a href="#伪彩色图像处理">伪彩色图像处理</a></li>
+    <li><a href="#全彩色图像处理">全彩色图像处理</a></li>
+    <li><a href="#彩色图像分割">彩色图像分割</a></li>
+    <li><a href="#显示器">显示器</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="彩色基础">彩色基础</h2>
+<ul>
+<li>全彩色：用全彩色传感器获取的真实彩色</li>
+<li>伪彩色：为特定灰度或灰度范围赋予颜色</li>
+<li>物理特性
+<ul>
+<li>无色光：黑白
+<ul>
+<li>属性：强度</li>
+<li>灰度级：表示强度的数值</li>
+</ul>
+</li>
+<li>彩色光：400nm~700nm电磁波
+<ul>
+<li>辐射：能量（瓦特）</li>
+<li>光强：感知的能量（流明）</li>
+<li>亮度：主观描绘</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>生物特性
+<ul>
+<li>锥状细胞
+<ul>
+<li>600~700万个</li>
+<li>(1965) 红色(65%,575nm),绿色(33%,535nm),蓝色(2%,445nm)</li>
+<li>主颜色：RGB
+<ul>
+<li>国际照明委员会(1931)：700nm,546.1nm,435.8nm</li>
+</ul>
+</li>
+<li>次生色</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>颜料的主颜色（吸收）：Yellow, Magenta, Cyan</li>
+<li>属性
+<ul>
+<li>亮度 brightness：强度</li>
+<li>色调 hue：主波长</li>
+<li>饱和度 saturation：白光的比例</li>
+<li>色度 chromaticity：色调，饱和度</li>
+</ul>
+</li>
+<li>三色值：红色 X, 绿色 Y, 蓝色 Z
+<ul>
+<li>$x=\frac{X}{X+Y+Z}$</li>
+<li>$y=\frac{Y}{X+Y+Z}$</li>
+<li>$z=\frac{Z}{X+Y+Z}$</li>
+<li>$x+y+z=1$</li>
+<li>CIE 1931 XYZ色彩空间
+<ul>
+<li>两点连线：所有可能的加性组合</li>
+<li>任意三点无法覆盖全图</li>
+<li>色域</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank.svg/652px-CIE1931xy_blank.svg.png" alt="CIE"></p>
+<h2 id="彩色模型">彩色模型</h2>
+<ul>
+<li>RGB彩色模型（面向显示器）
+<ul>
+<li>笛卡尔坐标系，$[0,1]$，黑色原点，白色在最远的角，中间虚线是灰色</li>
+<li>三幅分量图像</li>
+<li>全彩色图像：24比特</li>
+<li>高端设备支持24比特 RGB 图像</li>
+<li>低端设备通常只能显示 256 种彩色
+<ul>
+<li>稳定 RGB 色（通常216颜色）：每个 RGB 只有六种取值 00,33,66,99,CC,FF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CYM彩色模型（面向打印机）
+<ul>
+<li>$(C,M,Y)=1-(R,G,B)$</li>
+<li>CYMK: 添加黑色(K)</li>
+</ul>
+</li>
+<li>HSI(Intensity)/HSL(Lightness)（面向人，柱坐标系）
+<ul>
+<li>hue, saturation, intensity</li>
+<li>将亮度和颜色信息解耦合</li>
+<li>intensity: 平行面与强度轴（灰色）的交点</li>
+<li>satuaration: 越小白光越大，与强度轴距离</li>
+<li>hue: 包含强度轴的面与强度轴的夹角，与红色轴夹角</li>
+</ul>
+</li>
+<li>HSB(brightness)/HSV(Value)</li>
+</ul>
+<h2 id="伪彩色图像处理">伪彩色图像处理</h2>
+<ul>
+<li>灰度分层</li>
+<li>独立变换3次</li>
+<li>多光谱图像处理</li>
+</ul>
+<h2 id="全彩色图像处理">全彩色图像处理</h2>
+<ul>
+<li>方法
+<ul>
+<li>分别处理分量图像</li>
+<li>直接处理彩色像素</li>
+</ul>
+</li>
+<li>彩色变换：$g(x,y)=T(f(x,y))$</li>
+<li>补色：合成为黑色的颜色</li>
+<li>彩色分层：将不感兴趣的颜色设置为中性</li>
+<li>色调和彩色校正
+<ul>
+<li>CIE $L^*a^<em>b^</em>$ 模型：设备无关的颜色模型</li>
+</ul>
+</li>
+<li>直方图处理</li>
+<li>平滑与锐化</li>
+</ul>
+<h2 id="彩色图像分割">彩色图像分割</h2>
+<ul>
+<li>HIS 颜色空间直观
+<ul>
+<li>利用 $H$ 指定颜色</li>
+<li>利用 $S$ 进一步限定区域</li>
+<li>$I$ 很少用来分割</li>
+</ul>
+</li>
+<li>RGB 空间分割效果更好
+<ul>
+<li>距离</li>
+<li>方形盒子：长度与标准差成比例</li>
+</ul>
+</li>
+<li>彩色边缘检测
+<ul>
+<li>$u=\frac{\partial R}{\partial x}r+\frac{\partial G}{\partial x}g+\frac{\partial B}{\partial x}b$</li>
+<li>$v=\frac{\partial R}{\partial y}r+\frac{\partial G}{\partial y}g+\frac{\partial B}{\partial y}b$</li>
+<li>$g_xx=u^Tu$</li>
+<li>$g_yy=v^Tv$</li>
+<li>$g_xy=u^Tv$</li>
+<li>$\theta(x,y)$</li>
+<li>$F_\theta(x,y)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="显示器">显示器</h2>
+<ul>
+<li>CRT 显示器：RGB叠加</li>
+<li>可视角度</li>
+<li>偏色程度 $\Delta E$: 平均（3以下难以分辨，1以内相当准确），最大</li>
+<li>亮度
+<ul>
+<li>黑暗下 $&gt;80cd/m^2$</li>
+<li>室外 $&gt;300cd/m^2$</li>
+</ul>
+</li>
+<li>像素密度: $&gt;150$ PPI</li>
+<li>色域覆盖
+<ul>
+<li>色域标准
+<ul>
+<li>sRGB (Microsoft): 35% CIE</li>
+<li>Adobe RGB: 50% CIE，改善青绿色覆盖</li>
+<li>NTSC(1953): CRT 标准，淘汰</li>
+<li>REC-709: sRGB 的影视行业名称</li>
+<li>DCI-P3: 美国数字电影(2017)</li>
+<li>REC-2020</li>
+</ul>
+</li>
+<li>色彩管理
+<ul>
+<li>操作系统仅支持 sRGB</li>
+<li>Chrome 仅支持 sRGB</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://pic2.zhimg.com/80/dd3aad2d8d08af43e4b3555728c29b65_hd.jpg" alt="色域标准"></p>
+</main>
+        </div>
+
+    </div>
+</body></html>

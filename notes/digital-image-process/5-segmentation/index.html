@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Segmentation | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基础知识">基础知识</a></li>
+    <li><a href="#边缘检测">边缘检测</a></li>
+    <li><a href="#边缘连接">边缘连接</a></li>
+    <li><a href="#边缘追踪">边缘追踪</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="基础知识">基础知识</h2>
+<ul>
+<li>$R$: 图像所占区域</li>
+<li>图像分割：$R=\cup_{i=1}^n R_i$
+<ul>
+<li>$R_i$ 连通</li>
+<li>$R_i\cap R_j=\emptyset$</li>
+<li>$Q$: 用于划分区域的函数
+<ul>
+<li>$Q(R_i)=\text{T}$</li>
+<li>$Q(R_i\cup R_j)=\text{F}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分割依据
+<ul>
+<li>灰度的不连续性</li>
+<li>灰度的相似性</li>
+</ul>
+</li>
+<li>边缘：连通的边缘像素的集合
+<ul>
+<li>边缘像素：灰度发生剧烈变化</li>
+</ul>
+</li>
+<li>线：特殊的边缘，两侧的灰度值都很大或小</li>
+<li>点：长宽只有一个像素的线</li>
+<li>孤立点检测
+<ul>
+<li>拉普拉斯算子</li>
+<li>判断响应幅度是否大于阈值</li>
+</ul>
+</li>
+<li>线检测
+<ul>
+<li>拉普拉斯算子</li>
+<li>双线效应</li>
+<li>检测特定方向的线</li>
+</ul>
+</li>
+<li>边缘模型
+<ul>
+<li>台阶边缘 Step Edge：1个像素距离上发生灰度级理想过渡，理想边缘</li>
+<li>斜坡边缘 Ramp Edge</li>
+<li>屋顶边缘 Roof Edge: 穿过区域的线</li>
+<li>存在噪声的边缘
+<ul>
+<li>视觉上噪声并不明显</li>
+<li>噪声对导数影响很大</li>
+<li>二阶导更敏感</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="边缘检测">边缘检测</h2>
+<ul>
+<li>基本边缘检测
+<ul>
+<li>梯度：最大变化率方向，边缘方向与梯度正交
+<ul>
+<li>大小：$M(x,y)=\sqrt{g_x^2+g_y^2}\approx|g_x|+|g_y|$ （边缘图）</li>
+<li>方向：$\alpha(x,y)=\tan^{-1}(\frac{g_y}{g_x})$</li>
+</ul>
+</li>
+<li>梯度算子
+<ul>
+<li>罗伯特交叉梯度算子</li>
+<li>Prewitt 算子</li>
+<li>Sobel 算子</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>高级边缘检测
+<ul>
+<li>Marr-Hildreth 边缘检测器
+<ul>
+<li>$\nabla^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}$</li>
+<li>$G(x,y)=e^{-\frac{x^2+y^2}{2\sigma^2}}$</li>
+<li>LoG(高斯的拉普拉斯)：$\nabla^2 G(x,y)=[\frac{x^2+y^2-2\sigma^2}{\sigma^4}]e^{-\frac{x^2+y^2}{2\sigma^2}}$</li>
+<li>零交叉：$x^2+y^2=2\sigma^2$</li>
+<li>生成不同尺寸的模板
+<ul>
+<li>对 $G(x,y)$ 进行采样，得到 $n\times n$ 的模板</li>
+<li>与拉普拉斯模板卷积</li>
+</ul>
+</li>
+<li>算法
+<ul>
+<li>用 $n\times n$ 的高斯低通滤波器平滑图像</li>
+<li>计算上图的拉普拉斯</li>
+<li>寻找零交叉：检查某像素两个相对邻域像素的符号，符号相反且差异大于某阈值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Canny 边缘检测器
+<ul>
+<li>高斯函数平滑输入图像</li>
+<li>计算图像梯度的大小与角度</li>
+<li>非最大抑制：把梯度生成的粗边变细
+<ul>
+<li>四种边缘：水平，垂直，+45，-45</li>
+<li>根据梯度方向确定边缘方向 $d_k$</li>
+<li>如果 $M(x,y)$ 的值比 $(x,y)$ 在 $d_k$ 方向任意邻居小则对其抑制</li>
+</ul>
+</li>
+<li>滞后阈值：减少伪边缘点
+<ul>
+<li>低阈值：$T_L,g_{\text{NL}}(x,y)=g(x,y)\geq T_H$</li>
+<li>高阈值：$T_H,g_{\text{NH}}(x,y)=g(x,y)\geq T_L$</li>
+<li>比值：2:1 或 3:1</li>
+<li>$g_{\text{NL}}(x,y)=g_{\text{NL}}(x,y)-g_{\text{NH}}(x,y)$</li>
+</ul>
+</li>
+<li>连通性分析
+<ul>
+<li>遍历 $g_{\text{NH}}$ 中每一个点 $p$，保留 $g_{\text{NL}}$ 中和 $p$ 连通的点</li>
+<li>去掉 $g_{\text{NL}}$ 剩余的点</li>
+<li>合并 $g_{\text{NH}}$ 和 $g_{\text{NL}}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="边缘连接">边缘连接</h2>
+<p>将边缘像素组合成有意义的边缘或区域边界</p>
+<ul>
+<li>局部处理
+<ul>
+<li>分析每个点 $(x,y)$ 邻域内像素的特点</li>
+<li>依据某准则将相似的点连接
+<ul>
+<li>梯度大小：$|M(s,t)-M(x,y)|\leq E$</li>
+<li>梯度方向：$|\alpha(s,t)-\alpha(x,y)|\leq A$</li>
+</ul>
+</li>
+<li>简化算法：$g(x,y)=[M(x,y)&gt;T_M,\alpha(x,y)=A+T_A]$</li>
+</ul>
+</li>
+<li>区域处理
+<ul>
+<li>函数近似：拟合一条二维曲线</li>
+<li>多边形近似
+<ul>
+<li>$P$：已排序，不重复的二值图像中的序列，起始点 $A,B$</li>
+<li>$T$: 阈值</li>
+<li>空堆栈：OPEN, CLOSED</li>
+<li>闭合曲线：将 $B$ 放入 OPEN,CLOSED 中，$A$ 放入 OPEN 中</li>
+<li>开放曲线：将 $B$ 放入 CLOSED 中，$A$ 放入 OPEN 中</li>
+<li>计算 CLOSED 中最后一个顶点到 OPEN 中最后一个顶点的线的参数</li>
+<li>寻找与上述直线距离最大的点，若 $D&gt;T$ 则将其放入 OPEN 中，重复上一步</li>
+<li>否则从 OPEN 中弹出顶点到 CLOSED 中，如开非空则重复</li>
+<li>否则 CLOSED 中的顶点就是多项式顶点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>全局处理
+<ul>
+<li>霍夫变换
+<ul>
+<li>直线方程：$y_i=ax_i+b$</li>
+<li>ab-平面：$b=-ax_i+y_i$</li>
+<li>xy-平面：$x\cos\theta+y\sin\theta=\rho$</li>
+<li>$\rho\theta$: $\rho=x\cos\theta+y\sin\theta$</li>
+<li>划分累加单元，统计每个单元内曲线的数目</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="边缘追踪">边缘追踪</h2>
+<ul>
+<li><a href="http://www.imageprocessingplace.com/downloads_V3/root_downloads/tutorials/contour_tracing_Abeer_George_Ghuneim/square.html">Square Tracing Algorithm</a></li>
+<li><a href="http://www.imageprocessingplace.com/downloads_V3/root_downloads/tutorials/contour_tracing_Abeer_George_Ghuneim/moore.html">Moore-Neighbor Tracing</a>
+<ul>
+<li>Same to Radial Sweep</li>
+</ul>
+</li>
+<li>Jacob&rsquo;s stopping criterion
+<ul>
+<li>Stop after visiting the start pixel n times, where n is at least 2, OR</li>
+<li>Stop after entering the start pixel a second time in the same manner you entered it initially.</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

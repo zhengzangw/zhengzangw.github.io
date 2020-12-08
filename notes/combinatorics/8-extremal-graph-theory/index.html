@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>8. Extremal Graph Theory | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#triangle-free-graph">Triangle-free graph</a></li>
+    <li><a href="#cliques-free-graph">Cliques-free graph</a></li>
+    <li><a href="#cycles-free-graph">Cycles-free graph</a></li>
+    <li><a href="#specific-substructure-free-graph">Specific-substructure-free graph</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><p>How many edges that a graph $G$ can have if $G$ has some property</p>
+<h2 id="triangle-free-graph">Triangle-free graph</h2>
+<p>contains no triangle as subgraph</p>
+<ul>
+<li>Mantel&rsquo;s Theorem (1907): if $G(V,E)$ has $|V|=n$ and is triangle-free, then $|E|\leq\frac{n^2}{4}$
+<ul>
+<li>for $n$ is even, extremal graph: $K_{\frac{n}{2},\frac{n}{2}}$</li>
+<li>First Proof: Induction</li>
+<li>Second Proof: $d_u+d_v\leq n$</li>
+<li>Third Proof</li>
+</ul>
+</li>
+</ul>
+<h2 id="cliques-free-graph">Cliques-free graph</h2>
+<ul>
+<li>Turán&rsquo;s Theorem (1941): If $G(V,E)$ has $|V|=n$ and is $K_r$-free, then $|E|\leq\frac{r-2}{2(r-1)}n^2$
+<ul>
+<li>First Proof: Induction</li>
+<li>Second Proof: weight shifting</li>
+<li>Third Proof: the probalilistic method</li>
+<li>Fourth Proof: Turán graph $T(n,r)=K_{n_1,\cdots,n_r},\sum_{i=1}^rn_i=n,n_i\in{\lfloor\frac{n}{r}\rfloor,\lceil\frac{n}{r}\rceil}$, $T(n,r-1)$ has no $K_r$</li>
+</ul>
+</li>
+<li>Turán&rsquo;s Theorem (independent set): $G(V,E)$ has $|V|=n$ and $|E|=m$ then $G$ has an independent set of size $\geq\frac{n^2}{2m+n}$</li>
+<li>Parallel Max: compute max of $n$ distinct numbers
+<ul>
+<li>1-round: ${n\choose 2}$</li>
+<li>2-round: $O(n^{\frac{4}{3}}),k=n^{\frac{2}{3}}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="cycles-free-graph">Cycles-free graph</h2>
+<ul>
+<li>$g(G)\geq 5,|E|\leq\frac{1}{2}n\sqrt{n-1}$</li>
+</ul>
+<h2 id="specific-substructure-free-graph">Specific-substructure-free graph</h2>
+<ul>
+<li>$\text{ex}(n,H)=\max_{G\not\supset H,|V(G)|=n}|E(G)|$
+<ul>
+<li>Turan&rsquo;s Theorem: $\text{ex}(n,K_r)=|T(n,r-1)|\leq\frac{r-2}{2(r-1)}n^2$</li>
+<li>$K_s^r=K_{s,s,\cdots,s}=T(rs,r)$: complete $r$-partite graph with $s$ vertices in each part</li>
+</ul>
+</li>
+<li>Fundamental theorem of extremal graph theory (Erdős–Stone 1946): $\text{ex}(n,K_s^r)=(\frac{r-2}{2(r-1)}+o(1))n^2$</li>
+<li>Corollary: For any nonempty graph $H$, $\lim_{n\rightarrow\infty}\frac{\text{ex}(n,H)}{n\choose 2}=\frac{\chi(H)-2}{\chi(H)-1}$
+<ul>
+<li>extremal density of subgraph $H$: $\frac{\text{ex}(n,H)}{n\choose 2}$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

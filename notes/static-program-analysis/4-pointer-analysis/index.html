@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pointer-Analysis | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#pointer-analysis">Pointer-Analysis</a></li>
+    <li><a href="#concerned-statements">Concerned Statements</a></li>
+    <li><a href="#rules">Rules</a></li>
+    <li><a href="#algorithms">Algorithms</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="pointer-analysis">Pointer-Analysis</h2>
+<ul>
+<li>Program -&gt; Points-to relations</li>
+<li>Pointer Analysis: which objects a pointer can point to</li>
+<li>Alias analysis: can two pointers point to the same object</li>
+<li>Pointer-Analysis Application
+<ul>
+<li>Fundamental information</li>
+<li>Compiler optimization</li>
+<li>Bug detection</li>
+<li>Security analysis</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Problem</th>
+<th>Choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heap abstraction</td>
+<td>How to model heap memory</td>
+<td>Allocation-site/storeless</td>
+</tr>
+<tr>
+<td>Context sensitivity</td>
+<td>How to model calling contexts</td>
+<td>Context-sensitive/insensitive</td>
+</tr>
+<tr>
+<td>Flow sensitivity</td>
+<td>How to model control flow</td>
+<td>Flow-sensitive/insensitive</td>
+</tr>
+<tr>
+<td>Analysis scope</td>
+<td>which parts of program should be analyzed</td>
+<td>whole-program/demand-driven</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>allocation-site abstraction: one abstract object per allocation site</li>
+</ul>
+<h2 id="concerned-statements">Concerned Statements</h2>
+<ul>
+<li>pointer-affecting statements
+<ul>
+<li>New: x = new T()</li>
+<li>Assign: x = y</li>
+<li>Store: x.f = y</li>
+<li>Load: y = x.f</li>
+<li>Call: r = x.k(a, &hellip;)
+<ul>
+<li>Static Call</li>
+<li>Special Call</li>
+<li>Virtual Call</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pointers in Java
+<ul>
+<li>Local variable: x</li>
+<li>static field: f</li>
+<li>Instance field: x.f</li>
+<li>Array element: array[i]
+<ul>
+<li>ignore indexes</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="rules">Rules</h2>
+<ul>
+<li>Notations
+<ul>
+<li>Variables: $x,y\in V$</li>
+<li>Fields: $f,g\in F$</li>
+<li>Objects: $o_i,o_j\in O$</li>
+<li>Instance fields: $o_i.f,o_j.f\in O\times F$</li>
+<li>Pointers: Pointer = $V\cup (O\times F)$</li>
+<li>Points-to relations: $pt$ = Pointer $\rightarrow \mathcal{P}(O)$（幂集）</li>
+</ul>
+</li>
+<li>Rules
+<ul>
+<li>x = new T(): $\frac{}{o_i \in pt(x)}$</li>
+<li>x = y: $\frac{o_i\in pt(y)}{o_i\in pt(x)}$</li>
+<li>x.f = y: $\frac{o_i\in pt(x), o_j\in pt(y)}{o_j\in pt(o_i.f)}$</li>
+<li>y = x.f: $\frac{o_i\in pt(x), o_j\in pt(o_i.f)}{o_j\in pt(y)}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="algorithms">Algorithms</h2>
+</main>
+        </div>
+
+    </div>
+</body></html>

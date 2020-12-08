@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4-随机变量的数字特征 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>期望
+<ul>
+<li>$E(X)=\sum_{i=1}^{+\infty}x_ip_i$</li>
+<li>若 $\int_{-\infty}^{+\infty}|x|p(x)dx&lt;\infty$, 则 $E(X)=\int_{-\infty}^{+\infty}xp(x)dx$；否则不存在
+<ul>
+<li>若 $X$ 不变号，可称无穷期望存在</li>
+</ul>
+</li>
+<li>$E(g(X))=\int_{-\infty}^{+\infty}g(x)p(x)dx$</li>
+<li>$E(g(X,Y))=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}g(x,y)p(x,y)dxdy$
+<ul>
+<li>$g$ 为连续函数，则作用后的量为随机函数</li>
+<li>$E(c_1X_1+c_2X_2+\cdots+c_nX_n)=c_1E(X_1)+c_2E(X_2)+\cdots+c_nE(X_n)$</li>
+<li>$X,Y$ 独立，$E(XY)=E(X)E(Y)$</li>
+<li>偶函数期望为0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>中位数：$m,P(X\geq m)\geq\frac{1}{2},P(X\leq m)\geq\frac{1}{2}$</li>
+<li>方差
+<ul>
+<li>$EX^2&lt;+\infty$, 则 $D(X)=\text{Var}(X)=E(X-EX)^2$ 为随机变量 $X$ 的方差
+<ul>
+<li>$\sigma(X)=\sqrt{D(X)}$ 为均方差（标准差）</li>
+</ul>
+</li>
+<li>$D(X)=EX^2-(EX)^2$</li>
+<li>$D(a)=0$</li>
+<li>$D(aX+b)=a^2D(X)$</li>
+<li>$D(X\pm Y)=D(X)+D(Y)+2E((X-EX)(Y-EY))$
+<ul>
+<li>独立：$D(\sum X)=\sum D(X)$</li>
+</ul>
+</li>
+<li>$D(\sum_{i=1}^nX_i)=\sum_{i=1}^nD(X_i)+2\sum_{1\leq i&lt;j\leq n}\text{cov}(x_i,x_j)$</li>
+</ul>
+</li>
+<li>不等式
+<ul>
+<li>马尔科夫不等式：$P(X\geq kEX)\leq\frac{1}{k}$</li>
+<li>切比雪夫不等式：$P(|X-EX|\geq\epsilon)\leq\frac{DX}{\epsilon^2}$
+<ul>
+<li>$D(X)=0\iff P{X=C}=1$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>样本
+<ul>
+<li>样本均值：$\overline{X}$
+<ul>
+<li>$D(\overline{X})=\frac{\sigma^2}{n}$</li>
+</ul>
+</li>
+<li>样本偏差：$X_i-\overline{X}$</li>
+<li>样本方差：$S^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2$
+<ul>
+<li>$E(S^2)=\sigma^2$</li>
+</ul>
+</li>
+<li>中心化随机变量：$\tilde X=X-EX$
+<ul>
+<li>$E(\tilde X)=0$</li>
+</ul>
+</li>
+<li>标准化随机变量：$X^*=\frac{X-EX}{\sqrt{D(X)}}$
+<ul>
+<li>$D(X^*)=1$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>矩
+<ul>
+<li>随机变量 $X$ 和非负整数 $k$，若 $E(|X|^k)&lt;\infty$ 则称 $EX^k$ 为 $X$ 的 $k$阶原点矩</li>
+<li>随机变量 $X$ 和非负整数 $k$，若 $E(X-EX)^k&lt;\infty$ 则称 $E(X-EX)^k$ 为 $X$ 的 $k$阶中心矩</li>
+<li>三阶中心矩：分布是否有偏</li>
+<li>四阶中心矩：衡量分布在均值附近的陡峭程度</li>
+</ul>
+</li>
+<li>协方差
+<ul>
+<li>若 $E|X|,E|Y|,E|(X-EX)(Y-EY)|$ 都有限，则 $X$ 和 $Y$ 的协方差为 $\text{cov}(X,Y)=E((X-EX)(Y-EY))$
+<ul>
+<li>$D(X\pm Y)=D(X)+D(Y)+2\text{cov}(X,Y)$</li>
+<li>$D(\sum X_i)=\sum D(X_i)+2\sum \text{cov}(X_i,X_j)$</li>
+<li>$\text{cov}(X,Y)=E(XY)-EX*EY$</li>
+<li>$\text{cov}(aX+c_1,bY+c_2)=ab\text{cov}(X,Y)$</li>
+<li>若 $X_1,X_2$ 和 $Y$ 的二阶矩有限，则 $\text{cov}(X_1+X_2,Y)=\text{cov}(X_1,Y)+\text{cov}(X_2,Y)$</li>
+</ul>
+</li>
+<li>Cauchy-Schwarz 不等式：$(\text{cov}(X,Y))^2\leq D(X)D(Y)$
+<ul>
+<li>取等：$P(a(X-EX)+b(Y-EY)=0)=1$, $a,b$ 不全零</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相关系数
+<ul>
+<li>$X,Y$二阶矩有限，$D(X),D(Y)&gt;0$，则 $X$ 和 $Y$ 的相关系数 $corr(X,Y)=\rho_{XY}=\frac{\text{cov}(X,Y)}{\sqrt{D(X)D(Y)}}$</li>
+<li>$\text{cov}(X^<em>,Y^</em>)=\rho_{XY}$</li>
+<li>$\rho_{XY}\leq 1$</li>
+<li>$|\rho_{XY}|=1\iff D(X)&gt;0,D(Y)&gt;0$ 且存在不全为零的 $a,b,c$ 使得 $P((cX+aY)=b)=1$.</li>
+<li>最小线性二乘估计
+<ul>
+<li>$X,Y$ 方差为 1,$EX=\mu_1,EY=\mu_2$, 求 $L(X)=a+bX$ 使 $E(Y-L(X))$ 最小</li>
+<li>$L(X)=\rho_{XY}*(X-\mu_1)+\mu_2$</li>
+</ul>
+</li>
+<li>（线性）不相关 $\rho_{X,Y}=0$</li>
+</ul>
+</li>
+<li>条件数学期望
+<ul>
+<li>$E(X|Y=y_j)=\sum_{i=1}^{+\infty}\frac{x_ip_{ij}}{p_{\cdot j}}$</li>
+<li>$E(X|Y=y)=\int_{-\infty}^{\infty}\frac{xp(x,y)}{p_Y(y)}$</li>
+<li>全期望公式：$E(E(X|Y))=E(X)$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

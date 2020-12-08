@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>transistor | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#半导体物理基础">半导体物理基础</a>
+      <ul>
+        <li><a href="#半导体材料">半导体材料</a></li>
+        <li><a href="#本征半导体">本征半导体</a></li>
+        <li><a href="#杂志半导体">杂志半导体</a></li>
+        <li><a href="#pn-结">PN 结</a></li>
+      </ul>
+    </li>
+    <li><a href="#二极管">二极管</a>
+      <ul>
+        <li><a href="#二极管分析方法">二极管分析方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#三极管bipolar-junction-transistor-bjt">三极管（Bipolar Junction Transistor, BJT）</a>
+      <ul>
+        <li><a href="#三极管的放大作用">三极管的放大作用</a></li>
+        <li><a href="#三极管放大电路">三极管放大电路</a></li>
+      </ul>
+    </li>
+    <li><a href="#场效应管">场效应管</a>
+      <ul>
+        <li><a href="#金属-氧化物-半导体场效应管mosfet">金属-氧化物-半导体场效应管(MOSFET)</a></li>
+        <li><a href="#结型-fet-jfet">结型 FET (JFET)</a></li>
+      </ul>
+    </li>
+    <li><a href="#放大电路">放大电路</a></li>
+    <li><a href="#运算放大电路">运算放大电路</a></li>
+    <li><a href="#逻辑门电路">逻辑门电路</a>
+      <ul>
+        <li><a href="#cmos">CMOS</a></li>
+        <li><a href="#ttl">TTL</a></li>
+      </ul>
+    </li>
+    <li><a href="#微电子学的新发展">微电子学的新发展</a>
+      <ul>
+        <li><a href="#忆阻器">忆阻器</a></li>
+        <li><a href="#石墨烯">石墨烯</a></li>
+        <li><a href="#自旋场效应晶体管">自旋场效应晶体管</a></li>
+        <li><a href="#柔性电子学">柔性电子学</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="半导体物理基础">半导体物理基础</h2>
+<h3 id="半导体材料">半导体材料</h3>
+<ul>
+<li>导体：$\rho&lt;10^{-4}\Omega\cdot$ cm</li>
+<li>绝缘体：$\rho&gt;10^9\Omega\cdot$ cm</li>
+<li>半导体导电能力与温度，光照，掺杂浓度相关</li>
+<li>典型半导体：硅 Si,锗 Ge,砷化镓 GaAs</li>
+<li>半导体共价键结构：一般为四价元素，最外层四个电子被称为价电子，和周围四个原子的价电子分别形成共价键</li>
+</ul>
+<h3 id="本征半导体">本征半导体</h3>
+<ul>
+<li>本征半导体：化学成分纯净的半导体，物理结构呈单晶体形态。纯度到要达到 9 个 9</li>
+<li>载流子：可以自由移动的带电粒子</li>
+<li>电导率：与材料单位体积中所含的载流子数量相关，载流子浓度越高，电导率越高</li>
+<li>本征激发：半导体受到光，热激发时，某些电子可以从外界获得挣脱共价键束缚的能量，从而离开原子成为自由电子，同时再共价键中留下相同数量的空穴</li>
+<li>电子空穴对：由热激发而产生的自由电子和空穴对</li>
+<li>空穴的移动是依靠相邻共价键中的价电子依次填充空穴来实现的</li>
+<li>复合：当自由电子遇到空穴后相互结合形成一个新的共价键</li>
+<li>在温度一定时，本征激发和复合会达到动态平衡</li>
+<li>本征半导体的缺点：载流子少，导电性差，温度稳定性差</li>
+</ul>
+<h3 id="杂志半导体">杂志半导体</h3>
+<ul>
+<li>定义：在本征半导体中掺入某些微量元素作为杂质，可以使半导体的导电性发生显著变化，主要掺入的是三价元素或五价元素</li>
+<li>P 型半导体：掺入三价杂质元素(如硼，镓，铟)等
+<ul>
+<li>因三价原子和硅原子形成共价键时，缺少一个价电子从而留下一个空穴</li>
+<li>多子：空穴</li>
+<li>受主杂质：$N_A$</li>
+<li>$N_A+n=p$</li>
+</ul>
+</li>
+<li>N 型半导体：掺入五价杂质元素(如磷)
+<ul>
+<li>多子：自由电子</li>
+<li>$N_D+p=n$</li>
+</ul>
+</li>
+<li>漂移电流：在电场作用下，载流子在电场中的漂移运动形成的电流
+<ul>
+<li>$v_n=-\mu_nE,v_p=\mu_pE$</li>
+<li>$\mu$: 载流子偏移率</li>
+<li>$I=-vWHnq$</li>
+</ul>
+</li>
+<li>扩散电流：因浓度差，载流子从高浓度向低浓度扩散而形成的电流</li>
+</ul>
+<h3 id="pn-结">PN 结</h3>
+<ul>
+<li>在一块本征半导体两侧扩散不同的杂质原子，使得一边为 P 型一边为 N 型，两边多子由于浓度差，向对方扩撒，从而内部的空间电荷区形成一个电场，内电场抑制多子扩散，同时促进少子漂移，最终达到平衡。P，N 型半导体接合面，离子薄层形成的 空间电荷区被称为 PN 结（空间电荷区，耗尽层，势垒区，非线性电阻）</li>
+<li>单向导电性
+<ul>
+<li>在 PN 结外部加上电压，当 P 区电位高于 N 区电位，称为加上了正向电压，简称为正偏，反之为反向电压，简称反偏</li>
+<li>正偏时，外部电压促进多子扩散，从而导致中间空间电荷区变窄，PN 结呈现的状态是低电阻状态，大的正向扩散电流</li>
+<li>反偏时，外部电压一直多子扩散，促进少子漂移，从而导致空间电荷区变宽，PN 结呈现的状态是高电压，小的反向漂移电流。在一定温度下，本征激发形成的少子数量一定，此时形成的漂移电流一定，和外部电压无关，称为反向饱和电流</li>
+<li>PN 结 $V$-$I$ 特性表达式：$i_D=I_S(e^{\frac{v_D}{V_T}-1})$</li>
+</ul>
+</li>
+<li>反向击穿
+<ul>
+<li>当反向电压达到一定数值时，反向电流突然快速增加的现象</li>
+<li>分为电击穿(雪崩击穿，齐纳击穿)此时可逆，热击穿此时不可逆</li>
+<li>雪崩击穿：空间电荷区的电子在电场中获得足够的动能撞击其他原子从而产生更多的自由电子-空穴对，新的电子又同样撞击其他原子，如此连锁反应，使得载流子数量雪崩式增加，从而导致电流急剧加大。具有正的温度系数</li>
+<li>齐纳击穿：反向电压足够大时，在电场的作用下，价电子之间的共价键被拉断，从而价电子变成自由电子，自由电子在电场的作用下移动到 N 区，空穴移动到 P 区，使得电流急剧增大。常发生在掺杂浓度较高的 PN 结中，具有负的温度系数(温度升高，共价键更容易被破坏)</li>
+</ul>
+</li>
+</ul>
+<h2 id="二极管">二极管</h2>
+<ul>
+<li>二极管：PN 结上加上引线和封装
+<ul>
+<li>单向导电性：整流,检波,开关</li>
+<li>PN 结压降：温度传感器，参考电压</li>
+<li>非线性电流-电压特性：调节电压，限制电压</li>
+</ul>
+</li>
+<li>结构分类
+<ul>
+<li>点接触型二极管</li>
+<li>面接触型二极管</li>
+<li>平面型二极管</li>
+</ul>
+</li>
+<li>硅二极管的死区电压$V_{th}=[0.5V,0.8V]$左右，锗二极管则在$[0.1V,0.3V]$左右</li>
+<li>二极管参数
+<ul>
+<li>最大整理电流 $I_F$：二极管连续工作时，允许流过的最大整流电流的平均值</li>
+<li>反向击穿电压 $V_{BR}$：二极管反向电流急剧增大时对应的反向电压值称为反向击穿电压</li>
+<li>最大反向工作电压 $V_{RM}$：为安全计，实际工作时，最大反向工作电压一般按照$V_{BR}$的一半计算</li>
+<li>极间电容：$C_d=C_B+C_D$
+<ul>
+<li>$C_D$：扩散电容，取决于少子</li>
+<li>$C_B$：石磊电容，取决于多子</li>
+<li>当 PN 结处于正向偏置时，结电容较大，主要取决于扩散电容</li>
+<li>当 PN 结处于反向偏置时，结电容较小，主要决定于势垒电容</li>
+</ul>
+</li>
+<li>反向恢复时间：二极管从正向偏置的导通状态，突然变为反向偏置时，需要一段时间才可以达到截止状态，这段时间就是反向恢复时间</li>
+<li>正向压降：在规定的正向电流下，二极管的正向电压降</li>
+</ul>
+</li>
+</ul>
+<h3 id="二极管分析方法">二极管分析方法</h3>
+<ul>
+<li>简单二极管电路图分析
+<ul>
+<li>连列欧姆定律和二极管模型 $i_D=I_s(e^{V_D/V_T}-1)$</li>
+</ul>
+</li>
+<li>简单模型分析方法
+<ul>
+<li>理想模型</li>
+<li>恒压降模型</li>
+<li>压降恒定</li>
+<li>折线模型</li>
+<li>小信号模型：二极管在持续导通情况下(直流电源保证)，对低频交流小信号特征体现为电阻</li>
+</ul>
+</li>
+</ul>
+<h2 id="三极管bipolar-junction-transistor-bjt">三极管（Bipolar Junction Transistor, BJT）</h2>
+<ul>
+<li>
+<p>类型</p>
+<ul>
+<li>
+<p>NPN 型</p>
+<p><img src="/images/content/P8.png" alt="NPN"></p>
+</li>
+<li>
+<p>PNP 型</p>
+<p><img src="/images/content/P7.png" alt="PNP"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>结构特点</p>
+<ul>
+<li>发射区掺杂浓度最高</li>
+<li>集电区掺杂浓度低于发射区，面积大</li>
+<li>基区很薄，掺杂浓度最低</li>
+</ul>
+</li>
+</ul>
+<h3 id="三极管的放大作用">三极管的放大作用</h3>
+<p><img src="/images/content/P9.png" alt="三极管"></p>
+<ul>
+<li>
+<p>外部条件：发射结正偏，集电结反偏</p>
+</li>
+<li>
+<p>内部调节：发射区杂质浓度远大于基区杂质浓度且基区很薄</p>
+</li>
+<li>
+<p>过程</p>
+<ul>
+<li>发射区向基区扩散载流子：$I_E=I_{IE}+I_{EP}\approx I_{EN}$</li>
+<li>载流子在基区扩散与复合：$I_B=I_{EP}+I_{BN}-I_{CBO}=I_{E}-I_{C}$</li>
+<li>集电区收集载流子：$I_C=I_{CN}+I_{CBO}$</li>
+</ul>
+</li>
+<li>
+<p>共基极直流放大系数：$\overline{\alpha}\approx\frac{I_C}{I_E}$，一般 0.9~0.99</p>
+</li>
+<li>
+<p>共射极直流放大系数：$\overline{beta}\approx\frac{I_C}{I_B}$，一般 $&raquo;1$</p>
+</li>
+<li>
+<p>三种组态</p>
+<ul>
+<li>共发射极接法：发射极作为公共电极，简称 CE，$i_C=\beta i_B$</li>
+<li>共基极接法：基极作为公共电极，简称 CB，$i_C=\alpha i_E$</li>
+<li>共集电极接法：集电极作为公共电极，简称 CC，$i_E=(1+\beta)i_B$</li>
+</ul>
+</li>
+<li>
+<p>共发射极 $I-V$ 特性曲线</p>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/P10.png" alt="实验线路"></p>
+<ul>
+<li>输入特性曲线：死区，非线性去，近似线性区</li>
+</ul>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/P11.png" alt="输入特性曲线"></p>
+<ul>
+<li>输出特性曲线：饱和区，截止区，放大区</li>
+</ul>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/P12.png" alt="输出特性曲线"></p>
+</li>
+</ul>
+<h3 id="三极管放大电路">三极管放大电路</h3>
+<ul>
+<li>
+<p>共射极放大电路</p>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/%E5%85%B1%E5%B0%84%E6%9E%81%E7%94%B5%E5%AE%B9%E9%9A%94%E7%9B%B4.png" alt="共射极放大电路"></p>
+<p>在输入为交流信号时，常常在输入输出处都加入一个电容用来阻隔直流信号，防止影响外部电路</p>
+</li>
+<li>
+<p>静态（直流工作态）</p>
+<ul>
+<li>输入信号为 $0$</li>
+</ul>
+</li>
+<li>
+<p>动态：输入信号加入交流信号后，整个电路的状态在静态电路的基础值上随交流信号变化</p>
+</li>
+</ul>
+<h2 id="场效应管">场效应管</h2>
+<p>场效应晶体管(FET)是一种电压控制的单极性半导体器件，利用 电场效应改变内部导电沟道，从而实现控制输出电流的目的</p>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/FET%E5%88%86%E7%B1%BB.png" alt="FET"></p>
+<h3 id="金属-氧化物-半导体场效应管mosfet">金属-氧化物-半导体场效应管(MOSFET)</h3>
+<ul>
+<li>又称表面场效应器件</li>
+<li>MOSFET 的栅极处于绝缘状态，输入电阻可高达 $10^{15}\Omega$</li>
+<li>增强型(E 型)：$v_{GS}=0$ 没有导电沟道</li>
+<li>耗尽型(D 型)：$v_{GS}=0$ 时有导电沟道</li>
+</ul>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/N-E-MOSFET.png" alt="N沟道增强型MOSFET"></p>
+<ul>
+<li>
+<p>工作原理</p>
+<ul>
+<li>$v_{GS}$ 对沟道的控制作用：
+<ul>
+<li>当 $v_{GS}≤0$ 时，源极和漏极之间没有沟道产生，故即使在两极之间加电压也无电流产生</li>
+<li>当 $0&lt;v_{GS}&lt;v_{TN}$ 时，在衬底和栅极之间产生电场，但是仍然没有导电沟道产生，没有电流。</li>
+<li>当 $v_{GS}≥v_{TN}$ 时，在衬底和栅极之间的电场作用下形成导电沟道，且 $v_{GS}$ 越大，沟道越厚，此时在 $d,s$ 两极之间加电压，产生电流，此时 $i_D$ 和 $v_{DS}$ 近似线性关系。</li>
+</ul>
+</li>
+<li>vDS 对沟道的控制作用：
+<ul>
+<li>当 $v_{GS}&gt;v_{TN}$ 且保持定值的时候，$v_{DS}$ 升高，导致靠近 $d$ 极的电位升高，导致该处电场强度变小，从而导致该处沟道变浅。</li>
+<li>当 $v_{GS}$ 升高使得 $v_{GD}=v_{TN}$ 的时候，靠近 $d$ 处的沟道厚度近乎为 0，出现预夹断</li>
+<li>预夹断后，随着 $v_{DS}$ 继续上升，夹断区延长，沟道电阻上升，$I_D$ 基本不变(实际上由于沟道调制效应会有上升)</li>
+</ul>
+</li>
+<li>沟道中只有一种类型的载流子参与导电，所以场效应管也称为单极型三极管</li>
+<li>由于 MOSFET 的栅极是绝缘的，所以输入电阻很大，是电压控制电流器件(VCCS)</li>
+</ul>
+</li>
+<li>
+<p>场效应管放大电路</p>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/FET%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF.png" alt="N沟道增强型MOSFET"></p>
+</li>
+</ul>
+<h3 id="结型-fet-jfet">结型 FET (JFET)</h3>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/JFET.png" alt="JFET"></p>
+<h2 id="放大电路">放大电路</h2>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF1.png" alt="放大电路"></p>
+<ul>
+<li>
+<p>增益</p>
+<ul>
+<li>电压增益：$A_v=\frac{v_o}{v_i}$</li>
+<li>电流增益：$A_i=\frac{i_o}{i_i}$</li>
+<li>互阻增益：$A_r=\frac{v_o}{i_i}$</li>
+<li>互导增益：$A_g=\frac{i_o}{v_i}$</li>
+</ul>
+</li>
+<li>
+<p>电压放大模型</p>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/%E7%94%B5%E5%8E%8B%E6%94%BE%E5%A4%A7%E6%A8%A1%E5%9E%8B.png" alt="电压放大模型"></p>
+</li>
+<li>
+<p>电流放大模型</p>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/%E7%94%B5%E6%B5%81%E6%94%BE%E5%A4%A7%E6%A8%A1%E5%9E%8B.png" alt="电流放大模型"></p>
+</li>
+</ul>
+<h2 id="运算放大电路">运算放大电路</h2>
+<ul>
+<li>
+<p>放大：在输入信号的控制下，将供电电源能量转换成输出信号能量</p>
+</li>
+<li>
+<p>内部结构</p>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/%E8%BF%90%E6%94%BE%E5%86%85%E9%83%A8.png" alt="运算放大器"></p>
+</li>
+<li>
+<p>电路模型</p>
+<ul>
+<li>开环电压增益：$A_{vo}\geq 10^5$</li>
+<li>输入电阻：$r_i\geq 10^6\Omega$</li>
+<li>输出电阻：$r_0\geq 100\Omega$</li>
+</ul>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/%E8%BF%90%E6%94%BE%E7%94%B5%E8%B7%AF.png" alt="运算放大器电路模型"></p>
+</li>
+<li>
+<p>理想运放</p>
+<ul>
+<li>$A_{vo}=\infty$</li>
+<li>差模输入电阻： $r_{id}=\infty$</li>
+<li>输出电阻：$r_o=0$</li>
+</ul>
+</li>
+<li>
+<p>反馈：将系统的输出量返回到输入端以改变输入量从而影响系统功能的过程</p>
+<ul>
+<li>深度负反馈</li>
+<li>在满足深度负反馈条件下(理想运放都满足)，由于$v_p≈v_n$,所以可以将两输入端之间看作短路，同时又因为输入电阻无穷大，所以通过两输入端的电流为 0，可以看作断路。即 $v_p=v_n,i_p=i_n=0$</li>
+</ul>
+</li>
+<li>
+<p>电路</p>
+<ul>
+<li>同相放大电路</li>
+<li>反相放大电路</li>
+<li>求差电路</li>
+<li>求和电路</li>
+</ul>
+</li>
+</ul>
+<h2 id="逻辑门电路">逻辑门电路</h2>
+<ul>
+<li>逻辑门电路分类
+<ul>
+<li>分立门电路
+<ul>
+<li>二极管门电路</li>
+<li>三极管门电路</li>
+</ul>
+</li>
+<li>集成门电路
+<ul>
+<li>MOS 门电路
+<ul>
+<li>NMOS Gate</li>
+<li>PMOS Gate</li>
+<li>CMOS Gate</li>
+</ul>
+</li>
+<li>TTL 门电路</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>逻辑门电路特性
+<ul>
+<li>输入和输出的高低电平</li>
+<li>噪声容限</li>
+<li>传输延迟时间</li>
+<li>功耗</li>
+<li>延时-功耗积</li>
+<li>扇入与扇出数</li>
+</ul>
+</li>
+</ul>
+<h3 id="cmos">CMOS</h3>
+<ul>
+<li>MOS 开关</li>
+</ul>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/MOS%E5%BC%80%E5%85%B3.png" alt="MOS"></p>
+<ul>
+<li>反相器</li>
+</ul>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/CMOS%E5%8F%8D%E7%9B%B8%E5%99%A8.png" alt="反相器"></p>
+<ul>
+<li>与非门</li>
+</ul>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/CMOS%E4%B8%8E%E9%9D%9E%E9%97%A8.png" alt="与非门"></p>
+<ul>
+<li>或非门</li>
+</ul>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/CMOS%E6%88%96%E9%9D%9E%E9%97%A8.png" alt="或非门"></p>
+<h3 id="ttl">TTL</h3>
+<p>BJT 模拟开关</p>
+<p><img src="https://jarviszl.github.io/2019/11/23/%E5%BE%AE%E7%94%B5%E5%AD%90%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E7%AB%A0/BJT%E6%A8%A1%E6%8B%9F%E5%BC%80%E5%85%B3.png" alt="BJT"></p>
+<p>$v_i=0$时，$i_b=0,i_c=0$，输出高电平，$ce$ 间近似开路<br>
+$v_i=1$ 时，输出低电平，ce 间近似短路</p>
+<h2 id="微电子学的新发展">微电子学的新发展</h2>
+<h3 id="忆阻器">忆阻器</h3>
+<p>描述电荷和磁通量之间的关系的电子元件</p>
+<h3 id="石墨烯">石墨烯</h3>
+<p>一种由碳原子构成的单层片状结构的新材料</p>
+<h3 id="自旋场效应晶体管">自旋场效应晶体管</h3>
+<p>极化电子有自旋向上和向下两种载流子</p>
+<h3 id="柔性电子学">柔性电子学</h3>
+<p>涵盖有机电子、塑料电子、生物电子、纳米电子、印刷电子等技术，是将有机/无机材料电子器件制作在柔性/可延性基板上的新兴电子技术</p>
+<p>材料：碳纳米管，金属纳米薄膜等</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

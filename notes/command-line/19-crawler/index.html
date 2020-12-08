@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>19. Crawler | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#python">Python</a></li>
+    <li><a href="#反爬虫">反爬虫</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="python">Python</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> urllib
+<span style="color:#75715e"># 1</span>
+response <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>urlopen(<span style="color:#e6db74">&#39;http://python.org/&#39;</span>)
+html <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>read()
+<span style="color:#66d9ef">print</span>(html<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))
+
+<span style="color:#75715e"># 2 POST &amp; GET</span>
+url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://www.baidu.com/&#39;</span>
+valuesPOST <span style="color:#f92672">=</span> {
+ <span style="color:#e6db74">&#39;user&#39;</span>: <span style="color:#e6db74">&#39;name&#39;</span>,
+ <span style="color:#e6db74">&#39;passwd&#39;</span>: <span style="color:#e6db74">&#39;*****&#39;</span>
+}
+data <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>parse<span style="color:#f92672">.</span>urlencode(valuesPOST)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)
+valuesGET <span style="color:#f92672">=</span> {
+ <span style="color:#e6db74">&#39;verbose&#39;</span>: <span style="color:#ae81ff">1</span>,
+ <span style="color:#e6db74">&#39;nothing&#39;</span>: <span style="color:#e6db74">&#34;&#34;</span>
+}
+url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;?&#34;</span> <span style="color:#f92672">+</span> urllib<span style="color:#f92672">.</span>parse<span style="color:#f92672">.</span>urlencode(valuesGET)
+req <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>urlopen(url, data)
+
+<span style="color:#75715e"># 3 Headers</span>
+headers <span style="color:#f92672">=</span> {
+ <span style="color:#e6db74">&#39;User-Agent&#39;</span> : <span style="color:#e6db74">&#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#39;</span>,
+ <span style="color:#e6db74">&#39;Referer&#39;</span> : <span style="color:#e6db74">&#39;http://www.zhihu.com/articles&#39;</span>
+}
+req <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>Request(url, data, headers, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;POST&#39;</span>)
+<span style="color:#75715e"># method = &#39;GET&#39;/&#39;POST&#39;/&#39;PUT&#39;/&#39;DELETE&#39;</span>
+
+<span style="color:#75715e"># 4 Proxy</span>
+proxies <span style="color:#f92672">=</span> [
+ {},
+ {<span style="color:#e6db74">&#39;http&#39;</span>: <span style="color:#e6db74">&#39;127.0.0.1:1188&#39;</span>}
+]
+proxy <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>choice(proxies) <span style="color:#75715e">#import random</span>
+proxyHandler <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>ProxyHandler(proxy)
+opener <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>build_opener(proxyHandler)
+<span style="color:#75715e"># Global</span>
+<span style="color:#75715e"># urllib.request.install_opener(opener1)</span>
+opener1<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;http://www.google.com&#34;</span>, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>read()
+
+<span style="color:#75715e"># 5 Debug</span>
+debugHandler <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>HTTPHandler(debuglevel<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+opener <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>build_opener(debugHandler, proxyHandler) <span style="color:#75715e"># Any number of handlers</span>
+opener<span style="color:#f92672">.</span>open(url)
+
+<span style="color:#75715e"># 6 Exception</span>
+req <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>Request(<span style="color:#e6db74">&#39;http://www.xNOTxEXISTxWEBx.com&#39;</span>)
+<span style="color:#66d9ef">try</span>:
+ urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>urlopen(req)
+<span style="color:#66d9ef">except</span> urllib<span style="color:#f92672">.</span>error<span style="color:#f92672">.</span>HTTPError <span style="color:#66d9ef">as</span> e:
+ <span style="color:#66d9ef">print</span>(e<span style="color:#f92672">.</span>code)
+<span style="color:#66d9ef">except</span> urllib<span style="color:#f92672">.</span>error<span style="color:#f92672">.</span>URLError  <span style="color:#66d9ef">as</span> e:
+ <span style="color:#66d9ef">if</span> hasattr(e, <span style="color:#e6db74">&#34;reason&#34;</span>):
+  <span style="color:#66d9ef">print</span>(e<span style="color:#f92672">.</span>reason)
+
+<span style="color:#75715e"># 7 Cookie</span>
+<span style="color:#f92672">from</span> http <span style="color:#f92672">import</span> cookiejar
+cookie <span style="color:#f92672">=</span> cookiejar<span style="color:#f92672">.</span>CookieJar()
+cookieHandler <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>HTTPCookieProcessor(cookie)
+opener <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>build_opener(cookieHandler)
+response <span style="color:#f92672">=</span> opener<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#39;http://www.baidu.com&#39;</span>)
+cookieInfo <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Name={}, Value={}&#39;</span><span style="color:#f92672">.</span>format(item<span style="color:#f92672">.</span>name, item<span style="color:#f92672">.</span>value) <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> cookie]
+<span style="color:#75715e"># save to file</span>
+cookie <span style="color:#f92672">=</span> cookiejar<span style="color:#f92672">.</span>MozillaCookieJar(<span style="color:#e6db74">&#39;cookies.txt&#39;</span>) <span style="color:#75715e"># LWPCookieJar</span>
+cookieHandler <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>HTTPCookieProcessor(cookie)
+opener <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>build_opener(cookieHandler)
+response <span style="color:#f92672">=</span> opener<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#39;http://www.baidu.com&#39;</span>)
+cookie<span style="color:#f92672">.</span>save(ignore_discard<span style="color:#f92672">=</span>True, ignore_expires<span style="color:#f92672">=</span>True)
+<span style="color:#75715e"># Load</span>
+cookie <span style="color:#f92672">=</span> cookiejar<span style="color:#f92672">.</span>MozillaCookieJar()
+cookie<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#39;cookies.txt&#39;</span>, ignore_expires<span style="color:#f92672">=</span>True, ignore_discard<span style="color:#f92672">=</span>True)
+
+<span style="color:#75715e"># 8 HTTP Auth</span>
+url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://www.pythonchallenge.com/pc/return/evil4.jpg&#34;</span>
+passwdmgr <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>HTTPPasswordMgrWithDefaultRealm()
+passwdmgr<span style="color:#f92672">.</span>add_password(None, <span style="color:#e6db74">&#34;http://www.pythonchallenge.com&#34;</span>, <span style="color:#e6db74">&#34;huge&#34;</span>, <span style="color:#e6db74">&#34;file&#34;</span>)
+httpauth_handler <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>HTTPBasicAuthHandler(passwdmgr)
+opener <span style="color:#f92672">=</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>build_opener(httpauth_handler)
+
+<span style="color:#75715e"># 9 Re</span>
+<span style="color:#f92672">import</span> re
+pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;(hello)&#39;</span>, re<span style="color:#f92672">.</span>I<span style="color:#f92672">|</span>re<span style="color:#f92672">.</span>U)
+result <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>match(pattern, <span style="color:#e6db74">&#39;Hello, world!&#39;</span>) <span style="color:#75715e"># 判断字符串开头是否匹配，失败返回 None</span>
+result <span style="color:#f92672">=</span> pattern<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#39;Hi, Hello, world!&#39;</span>) <span style="color:#75715e"># 扫描整个字符串</span>
+result <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(pattern, <span style="color:#e6db74">&#39;Hi, Hello, world!&#39;</span>) <span style="color:#75715e"># 扫描整个字符串,获得所有匹配，返回列表</span>
+
+result<span style="color:#f92672">.</span>group() <span style="color:#75715e"># result.group(0), 返回挣个匹配的字符串</span>
+result<span style="color:#f92672">.</span>group(n) <span style="color:#75715e"># 返回第 n 个捕获的字符串</span>
+result<span style="color:#f92672">.</span>groups() <span style="color:#75715e"># 返回所有捕获的字符串</span>
+result<span style="color:#f92672">.</span>span() <span style="color:#75715e"># 起止位置</span>
+
+pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;(\d+)(\d+)&#39;</span>)
+re<span style="color:#f92672">.</span>split(pattern,<span style="color:#e6db74">&#39;one11two22three33four44&#39;</span>) <span style="color:#75715e"># 分割字符串</span>
+re<span style="color:#f92672">.</span>sub(pattern,<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;\2 \1&#39;</span>, <span style="color:#e6db74">&#39;one11two22three33four44&#39;</span>) <span style="color:#75715e"># 替换</span>
+pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;\d+&#39;</span>)
+<span style="color:#66d9ef">for</span> m <span style="color:#f92672">in</span> re<span style="color:#f92672">.</span>finditer(pattern,<span style="color:#e6db74">&#39;one1two2three3four4&#39;</span>):
+    <span style="color:#66d9ef">print</span> m<span style="color:#f92672">.</span>group()
+
+<span style="color:#75715e"># 10 Input</span>
+a <span style="color:#f92672">=</span> raw_input(<span style="color:#e6db74">&#34;input:&#34;</span>)
+<span style="color:#75715e"># &gt;&gt;&gt;input: 123</span>
+<span style="color:#75715e"># type(a) is str</span>
+a <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;input:&#34;</span>)
+<span style="color:#75715e"># &gt;&gt;&gt;input: 123</span>
+<span style="color:#75715e"># type(a) is int</span>
+
+<span style="color:#75715e"># 11 Request GET</span>
+<span style="color:#f92672">import</span> requests
+params <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;key1&#39;</span>: <span style="color:#e6db74">&#39;value1&#39;</span>, <span style="color:#e6db74">&#39;key2&#39;</span>: <span style="color:#e6db74">&#39;value2&#39;</span>}
+response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;http://httpbin.org/get&#34;</span>, params<span style="color:#f92672">=</span>params, headers<span style="color:#f92672">=</span>headers, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.001</span>)
+<span style="color:#75715e"># response 属性</span>
+<span style="color:#75715e"># text, url, json()</span>
+<span style="color:#75715e"># raw (stream=True)</span>
+
+<span style="color:#75715e"># 12 Request Post</span>
+data <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;key1&#39;</span>: <span style="color:#e6db74">&#39;value1&#39;</span>, <span style="color:#e6db74">&#39;key2&#39;</span>: <span style="color:#e6db74">&#39;value2&#39;</span>}
+r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#34;http://httpbin.org/post&#34;</span>, data<span style="color:#f92672">=</span>data)
+<span style="color:#75715e"># JSON 格式数据</span>
+<span style="color:#75715e"># r = requests.post(&#34;http://httpbin.org/post&#34;, data=json.dump(data))</span>
+files <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;file&#39;</span>: open(<span style="color:#e6db74">&#39;test.txt&#39;</span>, <span style="color:#e6db74">&#39;rb&#39;</span>)}
+r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>post(url, files<span style="color:#f92672">=</span>files)
+
+<span style="color:#75715e"># 13 Request Cookie</span>
+<span style="color:#66d9ef">print</span>(r<span style="color:#f92672">.</span>cookies)
+cookies <span style="color:#f92672">=</span> dict(cookies<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;working&#34;</span>)
+r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, cookies<span style="color:#f92672">=</span>cookies)
+
+<span style="color:#75715e"># 14 Request Session</span>
+s <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>Session()
+s<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>update({<span style="color:#e6db74">&#39;x-test&#39;</span>: <span style="color:#e6db74">&#39;true&#39;</span>})
+s<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;http://httpbin.org/cookies/set/sessioncookie/123456789&#39;</span>, headers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;x-test2&#39;</span>: <span style="color:#e6db74">&#39;true&#39;</span>})
+r <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;http://httpbin.org/cookies&#34;</span>)
+
+<span style="color:#75715e"># 15 Request ssl &amp; proxy</span>
+r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;https://kyfw.12306.cn/otn/&#39;</span>, verify<span style="color:#f92672">=</span>True, proxies<span style="color:#f92672">=</span>proxies)
+
+<span style="color:#75715e"># 16 Beautiful Soup</span>
+<span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
+soup <span style="color:#f92672">=</span> BeautifulSoup(r<span style="color:#f92672">.</span>text)
+<span style="color:#66d9ef">print</span>(soup<span style="color:#f92672">.</span>prettify())
+<span style="color:#75715e"># Tag</span>
+soup<span style="color:#f92672">.</span>a, soup<span style="color:#f92672">.</span>title, soup<span style="color:#f92672">.</span>head <span style="color:#75715e"># 获得第一个</span>
+soup<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>name, soup<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>attrs
+<span style="color:#75715e"># NavigableString</span>
+soup<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>string
+<span style="color:#66d9ef">if</span> type(soup<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>string)<span style="color:#f92672">==</span>bs4<span style="color:#f92672">.</span>element<span style="color:#f92672">.</span>Comment:
+    <span style="color:#66d9ef">print</span> soup<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>string
+
+<span style="color:#75715e"># 17 Beatififul Soup Traverse</span>
+soup<span style="color:#f92672">.</span>head<span style="color:#f92672">.</span>contents <span style="color:#75715e"># tag 直接子节点列表</span>
+soup<span style="color:#f92672">.</span>head<span style="color:#f92672">.</span>children <span style="color:#75715e"># tag 直接子节点 iter</span>
+soup<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>descendants <span style="color:#75715e"># tag 子孙 iter</span>
+soup<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>parent, soup<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>parents
+soup<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>next_sibling, soup<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>previous_sibling
+
+<span style="color:#75715e"># 18 Beatiful Soup Find (html)</span>
+soup<span style="color:#f92672">.</span>find_all( name , attrs , recursive , text , <span style="color:#f92672">**</span>kwargs )
+<span style="color:#66d9ef">for</span> tag <span style="color:#f92672">in</span> soup<span style="color:#f92672">.</span>find_all([re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">&#34;^b&#34;</span>), <span style="color:#e6db74">&#39;a&#39;</span>], id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;link2&#39;</span>, class_<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sister&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;data-foo&#39;</span>: <span style="color:#e6db74">&#39;value&#39;</span>}, text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Elsie&#39;</span>, limit<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>):
+    <span style="color:#66d9ef">print</span>(tag<span style="color:#f92672">.</span>name)
+find
+find_parents, find_parent
+find_next_siblings, find_next_sibling
+find_previous_siblings, find_previous_sibling()
+
+<span style="color:#75715e"># 18 Beatiful Soup Search (CSS)</span>
+soup<span style="color:#f92672">.</span>select(<span style="color:#e6db74">&#39;title&#39;</span>)
+soup<span style="color:#f92672">.</span>select(<span style="color:#e6db74">&#39;.sister&#39;</span>)
+soup<span style="color:#f92672">.</span>select(<span style="color:#e6db74">&#39;#link1&#39;</span>)
+soup<span style="color:#f92672">.</span>select(<span style="color:#e6db74">&#39;head &gt; title .sister&#39;</span>)
+soup<span style="color:#f92672">.</span>select(<span style="color:#e6db74">&#39;p a[href=&#34;http://example.com/elsie&#34;]&#39;</span>)
+
+<span style="color:#75715e"># 19 pytesseract</span>
+<span style="color:#f92672">import</span> pytesseract <span style="color:#75715e">#pip install pytesseract</span>
+<span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+<span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> BytesIO
+
+s <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>session()
+r <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>get(imgurl, strem<span style="color:#f92672">=</span>True)
+img <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(BytesIO(r<span style="color:#f92672">.</span>content))
+img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>convert(<span style="color:#e6db74">&#39;L&#39;</span>) <span style="color:#75715e"># 灰度图</span>
+img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>point(<span style="color:#66d9ef">lambda</span> x: <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> x<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">140</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">255</span>, <span style="color:#e6db74">&#39;1&#39;</span>)
+code <span style="color:#f92672">=</span> pytesseract<span style="color:#f92672">.</span>image_to_string(img, lang<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;eng&#39;</span>, config<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--psm 12 --oem 3&#39;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39; &#39;</span>,<span style="color:#e6db74">&#39;&#39;</span>)
+code <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;Maybe {}, enter yours:&#34;</span><span style="color:#f92672">.</span>format(code))
+
+<span style="color:#75715e"># 20 lxml</span>
+<span style="color:#f92672">from</span> lxml <span style="color:#f92672">import</span> etree
+html <span style="color:#f92672">=</span> etree<span style="color:#f92672">.</span>HTML(r<span style="color:#f92672">.</span>text)
+<span style="color:#75715e"># or read from file</span>
+html <span style="color:#f92672">=</span> etree<span style="color:#f92672">.</span>parse(<span style="color:#e6db74">&#39;r.html&#39;</span>)
+result <span style="color:#f92672">=</span> etree<span style="color:#f92672">.</span>tostring(html, pretty_print<span style="color:#f92672">=</span>True)
+<span style="color:#66d9ef">print</span>(result<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf8&#39;</span>))
+result <span style="color:#f92672">=</span> html<span style="color:#f92672">.</span>xpath(<span style="color:#e6db74">&#39;//li&#39;</span>) <span style="color:#75715e"># Get list of &lt;li&gt;</span>
+<span style="color:#66d9ef">print</span>(result[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>text, result[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>tag)
+result <span style="color:#f92672">=</span> html<span style="color:#f92672">.</span>xpath(<span style="color:#e6db74">&#39;//li/@class&#39;</span>) <span style="color:#75715e"># Get All attribute of &lt;li&gt;</span>
+
+<span style="color:#75715e"># 21 XPath</span>
+<span style="color:#75715e"># see https://www.w3school.com.cn/xpath/xpath_intro.asp for a reference</span>
+</code></pre></div><ul>
+<li><code>nodename</code> 选取此节点的所有子节点</li>
+<li><code>/</code> 从根节点选取</li>
+<li><code>//</code> 从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置</li>
+<li><code>.</code> 选取当前节点</li>
+<li><code>..</code> 选取当前节点的父节点</li>
+<li><code>@</code> 选取属性</li>
+<li><code>/bookstore/book[last()-1]</code> 选取属于 bookstore 子元素的倒数第二个 book 元素</li>
+<li><code>/bookstore/book[price&gt;35.00]</code> 选取 bookstore 元素的所有 book 元素，且其中的 price 元素的值须大于 35.00</li>
+<li><code>//title[@*]</code> 选取所有带有属性的 title 元素</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 22 JS Render</span>
+<span style="color:#75715e"># Find JSON data in XHR</span>
+url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://www.toutiao.com/stream/widget/local_weather/city/&#34;</span>
+r_text <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)<span style="color:#f92672">.</span>text
+data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(r_text)
+
+<span style="color:#75715e"># 23 Selenium</span>
+<span style="color:#f92672">from</span> selenium <span style="color:#f92672">import</span> webdriver <span style="color:#75715e"># pip install selenium</span>
+<span style="color:#f92672">from</span> selenium.webdriver.common.keys <span style="color:#f92672">import</span> Keys
+<span style="color:#75715e"># brew cask install chromedriver</span>
+<span style="color:#75715e"># brew services start chromedriver</span>
+driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
+<span style="color:#75715e"># options = webdriver.ChromeOptions()</span>
+<span style="color:#75715e"># options.add_argument(&#39;headless&#39;)</span>
+driver<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;http://www.baidu.com&#39;</span>) <span style="color:#75715e"># Open URL</span>
+elem <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#34;wd&#34;</span>)
+elem<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#34;Test&#34;</span>)
+elem<span style="color:#f92672">.</span>send_keys(Keys<span style="color:#f92672">.</span>RETURN)
+<span style="color:#66d9ef">print</span>(driver<span style="color:#f92672">.</span>page_source)
+
+<span style="color:#75715e"># 24 Selenium Interaction</span>
+element <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#34;passwd-id&#34;</span>)
+element <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#34;passwd&#34;</span>)
+element <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_elements_by_tag_name(<span style="color:#e6db74">&#34;input&#34;</span>)
+element <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#34;//input[@id=&#39;passwd-id&#39;]&#34;</span>)
+element<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#34;and some&#34;</span>, Keys<span style="color:#f92672">.</span>ARROW_DOWN)
+element<span style="color:#f92672">.</span>clear()
+<span style="color:#f92672">from</span> selenium.webdriver.support.ui <span style="color:#f92672">import</span> Select
+select <span style="color:#f92672">=</span> Select(driver<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#39;name&#39;</span>))
+select<span style="color:#f92672">.</span>select_by_index(index)
+select<span style="color:#f92672">.</span>select_by_visible_text(<span style="color:#e6db74">&#34;text&#34;</span>)
+select<span style="color:#f92672">.</span>select_by_value(value)
+all_selected_options <span style="color:#f92672">=</span> select<span style="color:#f92672">.</span>all_selected_options
+options <span style="color:#f92672">=</span> select<span style="color:#f92672">.</span>options
+select<span style="color:#f92672">.</span>deselect_all()
+driver<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#34;submit&#34;</span>)<span style="color:#f92672">.</span>click()
+
+<span style="color:#75715e"># 25 js2py</span>
+context <span style="color:#f92672">=</span> js2py<span style="color:#f92672">.</span>EvalJs()
+<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;test.js&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f: <span style="color:#75715e"># JS function F in test.js</span>
+ context<span style="color:#f92672">.</span>execute(f<span style="color:#f92672">.</span>read())
+y <span style="color:#f92672">=</span> context<span style="color:#f92672">.</span>f(a)
+<span style="color:#75715e"># or execute immediately</span>
+js2py<span style="color:#f92672">.</span>eval_js(js_text)
+</code></pre></div><h2 id="反爬虫">反爬虫</h2>
+<ul>
+<li>防盗链：Referred</li>
+<li>淘宝 ua 算法：登录前发送 post 请求，携带 ua 信息</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

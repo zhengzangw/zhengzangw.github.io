@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3. Dimension Reduction | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#metric-embedding">Metric Embedding</a>
+      <ul>
+        <li><a href="#jlt-embedding">JLT Embedding</a></li>
+      </ul>
+    </li>
+    <li><a href="#nearest-neighbor-searchnns">Nearest Neighbor Search(NNS)</a>
+      <ul>
+        <li><a href="#problem">Problem</a></li>
+        <li><a href="#deterministic">Deterministic</a></li>
+        <li><a href="#dimension-reduction">Dimension Reduction</a></li>
+        <li><a href="#locality-sensitive-hashing">Locality Sensitive Hashing</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="metric-embedding">Metric Embedding</h2>
+<ul>
+<li>Metric Space: $(X,d),X$ is a set and $d$ is a distance on $X$</li>
+<li>Embedding: $\phi:X\rightarrow Y$ on two metric space $(X,d_X),(Y,d_Y)$
+<ul>
+<li>Distortion $\alpha\geq 1$: $\forall x,y\in X,\frac{1}{\alpha}d(x,y)\leq d(\phi(x),\phi(y))\leq\alpha d(x,y)$</li>
+<li>Dimension Reduction: $x_1,\cdots,x_n\in\mathbb{R}^d,y_1,\cdots,y_n\in\mathbb{R}^k$</li>
+</ul>
+</li>
+</ul>
+<h3 id="jlt-embedding">JLT Embedding</h3>
+<ul>
+<li>Johnson-Lindenstrauss Theorem(JLT, 1984): it is always possble to embed $n$ points in arbitrary dimension to $O(\log n)$ dimension with constant distortion in Euclidian Space
+<ul>
+<li>$\forall0&lt;\epsilon &lt;1,\forall S\subset \mathbb{R}^{d},|S|=n,\exists k=O(\epsilon ^{-2}\log n),\phi :\mathbb{R} ^{d}\rightarrow \mathbb{R}^{k}$ such that $\forall x,y\in S,(1-\epsilon )|x-y|^{2}\leq |\phi (x)-\phi (y)|^{2}\leq (1+\epsilon )|x-y|^{2}$</li>
+<li>(linear embedding): $\phi(x)=Ax$</li>
+<li>(2016) Lower Bound: $\Omega(\epsilon^{-2}\log n)$</li>
+</ul>
+</li>
+<li>Contruction
+<ul>
+<li>projection onto uniform random $k$-dimensional subspace of $\mathbb{R}^d$ (1999)</li>
+<li>random matrix with i.i.d. $\pm 1$ (2003)</li>
+<li>random matrix with i.i.d. Gaussian entries (1998): $A\in\mathbb{R}^{k\times d}$ is drawn from the Gaussian distribution $\mathcal{N}(0,\frac{1}{k})$
+<ul>
+<li>To prove: $P(|| Au|^2_2-1|&gt;\epsilon)&lt;\frac{1}{n^3}$</li>
+<li>$\lVert Au\rVert^2=\sum_{i=1}^kY_i^2,Y_i\sim\mathcal{N}(0,\frac{1}{k})$</li>
+<li>Chernoff bound for $\chi^2$-distribution</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="nearest-neighbor-searchnns">Nearest Neighbor Search(NNS)</h2>
+<h3 id="problem">Problem</h3>
+<ul>
+<li>NNS
+<ul>
+<li>Data: $y_1,\cdots,y_n\in X$</li>
+<li>Query: $x\in X$</li>
+<li>Answer: $y_i$ closest to $x$</li>
+</ul>
+</li>
+<li>$c$-ANN: Approximate Nearest Neighbor
+<ul>
+<li>Answer: Find a $y_i$ such that $\text{dist}(x,y_i)\leq c\min_{1\leq j\leq n}\text{dist}(x,y_j)$</li>
+</ul>
+</li>
+<li>$(c,r)$-ANN: Approximate Near Neighbor:</li>
+</ul>
+<p>$$\begin{cases}y_{i^*}\in S,\text{dist}(x,y_{i^*})\leq cr &amp; \exists y_i\in S,\text{dist}(x,y_i)\leq r\newline \perp &amp; \forall y_i\in S,\text{dist}(x,y_i)&gt; r\newline \text{arbitrary} &amp; o.w.\end{cases}$$</p>
+<ul>
+<li>From $(c,r)$-ANN to $c$-ANN
+<ul>
+<li>Definition
+<ul>
+<li>$D_{\min}=\min\text{dist}(y_i,y_j)$</li>
+<li>$D_{\max}=\max\text{dist}(y_i,y_j)$</li>
+<li>$R=\frac{D_{\max}}{D_{\min}}$</li>
+</ul>
+</li>
+<li>$\forall r,\exists$ data structure for $(c,r)$-ANN
+<ul>
+<li>space $s$</li>
+<li>answer time $t$</li>
+<li>probability $1-\delta$</li>
+</ul>
+</li>
+<li>$\exists$ data structure for $r$-ANN
+<ul>
+<li>space $O(s\log_c R)$</li>
+<li>answer time $O(t\log\log_c R)$</li>
+<li>probability $1-O(\delta\log\log_c R)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="deterministic">Deterministic</h3>
+<ul>
+<li>Dictionary data structure
+<ul>
+<li>k-d tree</li>
+<li>Voronoi diagram</li>
+</ul>
+</li>
+<li>Curse of dimensionality
+<ul>
+<li>conjecture: NNS in high dimension requires either super-polynomial space or super-polynomial time</li>
+</ul>
+</li>
+</ul>
+<h3 id="dimension-reduction">Dimension Reduction</h3>
+<ul>
+<li>Solve $(c,r)$-ANN in Hamming Space $x\in{0,1}^d,d&raquo;\log n$ w.h.p</li>
+<li>Data Structure
+<ul>
+<li>random Boolean matrix $A_{k\times d}$ with i.i.d. entries $\in$ Bernoulli($p$)
+<ul>
+<li>$z_i=Ay_i\in{0,1}^k$ on finite field GF(2)</li>
+</ul>
+</li>
+<li>$s$-balls: $B_s(u)={y_i|\text{dist}(u,z_i)\leq s}$ for all $u\in{0,1}^k$ (打表)</li>
+<li>space: $O(n2^k)$</li>
+</ul>
+</li>
+<li>Answer: any $y_i\in B_s(Ax)$ (no if none)
+<ul>
+<li>query time: $O(kd)+O(1)$</li>
+</ul>
+</li>
+<li>Decide $k,p,s$
+<ul>
+<li>$k=\frac{\ln n}{(\frac{1}{8}-2^{-(c+2)})^2}=O(\log n)$</li>
+<li>$p=\frac{1}{2}-2^{-1-1/r}$</li>
+<li>$s=(\frac{3}{8}-2^{-(c+2)})k$</li>
+<li>space: $n^{O(1)}$</li>
+<li>time: $O(d\log n)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="locality-sensitive-hashing">Locality Sensitive Hashing</h3>
+<ul>
+<li>$(r,cr,p,q)$-LSH: $h:X\rightarrow U$ satisfying $\forall x,y\in X$
+<ul>
+<li>$\text{dist}(x,y)\leq r\Rightarrow P(h(x)=h(y))\geq p$</li>
+<li>$\text{dist}(x,y)&gt;cr\Rightarrow P(h(x)=h(y))\leq q$</li>
+</ul>
+</li>
+<li>$\exists (r,cr,p,q)$-LSH $\Rightarrow\exists (r,cr,p^k,q^k)$-LSH
+<ul>
+<li>$g(x)=(h_1(x),\cdots,h_k(x))\in U^k$</li>
+<li>$k=\log_{\frac{1}{q}}n,p^k={n^{-\frac{\log p}{\log q}}},q=\frac{1}{n}$</li>
+</ul>
+</li>
+<li>with $(r,cr,p^*,\frac{1}{n})$-LSH $g$
+<ul>
+<li>Algorithm 1:
+<ul>
+<li>space: $O(n)$
+<ul>
+<li>store $y_1,\cdots,y_n$ in nondecreasing order $g(y_i)$</li>
+</ul>
+</li>
+<li>time: $O(\log n)+O(1)$ in expectation
+<ul>
+<li>find all $y_i$ that $g(x)=g(y_i)$ and check $\text{dist}(x,y_i)$</li>
+</ul>
+</li>
+<li>real answer &ldquo;no&rdquo;: always correct</li>
+<li>real answer not &ldquo;no&rdquo;: $\geq p^*$</li>
+</ul>
+</li>
+<li>Algorithm 2:
+<ul>
+<li>space: $O(\frac{n}{p^*})$
+<ul>
+<li>draw independent $g_1,\cdots,g_{\frac{1}{p^*}}$</li>
+<li>store $y_1,\cdots,y_n$ in table-$j$ in nondecreasing order of $g_j(y_i)$</li>
+</ul>
+</li>
+<li>time: $O(\frac{\log n}{p^*})$
+<ul>
+<li>find $\leq\frac{10}{p^*}$ number of $y_i,\exists j,g_j(x)=g_j(y_i)$</li>
+</ul>
+</li>
+<li>real answer &ldquo;no&rdquo;: always correct</li>
+<li>real answer not &ldquo;no&rdquo;: $&gt;\frac{1}{2}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Overall: solve $(c,r)$-ANN with space $O(n^{1+\frac{\log p}{\log q}})$, query time $O(n^{\frac{\log p}{\log q}}\log n)$ and one-sided error $&lt;0.5$</li>
+<li>Hamming space: $h(x)=x_i$ for uniform $i\in[d]$ is a $(r,cr,1-\frac{r}{d},1-\frac{cr}{d})$-LSH</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

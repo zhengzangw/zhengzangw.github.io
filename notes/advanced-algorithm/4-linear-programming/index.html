@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4. Linear Programs | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#definition">Definition</a>
+      <ul>
+        <li><a href="#standard-form">Standard Form</a></li>
+        <li><a href="#slack-form">Slack Form</a></li>
+      </ul>
+    </li>
+    <li><a href="#simplex-algorithm">Simplex Algorithm</a></li>
+    <li><a href="#formulating-problems">Formulating Problems</a></li>
+    <li><a href="#duality">Duality</a></li>
+    <li><a href="#primal-dual-schema">Primal-Dual Schema</a>
+      <ul>
+        <li><a href="#vertex-cover">Vertex Cover</a></li>
+        <li><a href="#facility-location">Facility Location</a></li>
+      </ul>
+    </li>
+    <li><a href="#lp-relaxation--rounding">LP Relaxation &amp; Rounding</a>
+      <ul>
+        <li><a href="#vertex-cover-1">Vertex Cover</a></li>
+        <li><a href="#max-sat">MAX-SAT</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="definition">Definition</h2>
+<ul>
+<li>Linear Programming Problem: the problem of either minimizing or maximizing a linear function subject to a finite set of linear constraints
+<ul>
+<li>feasible solution, feasible area, objective function, objective value, optimal solution, optimal objective value</li>
+</ul>
+</li>
+<li>unbounded: have a infinite objective value</li>
+<li>infeasible: no feasible value</li>
+<li>Equivalent: for each feasible solution $\overline{x}$ to $L$ with objective value $z$, there is a corresponding feasible solution $\overline{x}'$ to $L'$ with objective value $z'$, and for each feasible solution $\overline{x}'$ to $L'$ with objective value $z'$, there is a corresponding feasible solution $\overline{x}$ to $L$ with objective value ́.</li>
+</ul>
+<h3 id="standard-form">Standard Form</h3>
+<ul>
+<li>Maximize $\sum_{j=1}^nc_jx_j$</li>
+<li>subject to $\sum_{j=1}^na_{ij}x_j\leq b_i, x_{j}\geq 0$</li>
+<li>Converting to Stand Form
+<ul>
+<li>Turn Minimize to Maximize</li>
+<li>$x=x_1-x_2,x_1&gt;0,x_2&gt;0$</li>
+<li>Turn equation to inequation</li>
+<li>Turn $\geq$ to $\leq$</li>
+</ul>
+</li>
+<li>$(A,b,c)$
+<ul>
+<li>Maximize $c^Tx$</li>
+<li>subject to $Ax\leq b,x\geq 0$</li>
+</ul>
+</li>
+</ul>
+<h3 id="slack-form">Slack Form</h3>
+<ul>
+<li>Maximize $\sum_{j=1}^nc_jx_j$</li>
+<li>subject to
+<ul>
+<li>$x_{n+i}=\sum_{j=1}^nt_jx_j\geq0$</li>
+<li>$x_i\geq 0$</li>
+</ul>
+</li>
+<li>basic variable: Left side of equation</li>
+<li>nonbasic variable: Right side of equation</li>
+<li>$(N,B,A,b,c,v)$
+<ul>
+<li>Maximize $c^Tx+v$</li>
+<li>subject to
+<ul>
+<li>$x_i=b_i-\sum_{j\in N}a_{ij}x_j,i\in B$</li>
+<li>$x_i\geq 0,i\in N$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="simplex-algorithm">Simplex Algorithm</h2>
+<ul>
+<li>pivot: choose a nonbasic varible(entering variable) and a basic variable(leaving variable) and exchange their roles.
+<ul>
+<li>$(N,B,A,b,c,v)\rightarrow (\hat{N},\hat{B},\hat{A},\hat{b},\hat{c},\hat{v})$</li>
+</ul>
+</li>
+<li>at most $\binom{n+m}{m}$ iterations, otherwise cycles</li>
+<li>Bland&rsquo;s rule: choose smallest index then must terminate</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//n: number of variable
+</span><span style="color:#75715e">//m: number of restriction
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pivot</span>(<span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> e) {
+    <span style="color:#75715e">// Update leaving basic variable
+</span><span style="color:#75715e"></span>    b[l] <span style="color:#f92672">/=</span> a[l][e];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; j<span style="color:#f92672">++</span>)
+        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> e) a[l][j] <span style="color:#f92672">/=</span> a[l][e];
+    a[l][e] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> a[l][e];
+    <span style="color:#75715e">// Update other basic variable
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> m; i<span style="color:#f92672">++</span>)
+        <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> l <span style="color:#f92672">&amp;&amp;</span> fabs(a[i][e]) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+            b[i] <span style="color:#f92672">-=</span> a[i][e] <span style="color:#f92672">*</span> b[l];
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; j<span style="color:#f92672">++</span>)
+                <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> e) a[i][j] <span style="color:#f92672">-=</span> a[i][e] <span style="color:#f92672">*</span> a[l][j];
+            a[i][e] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>a[i][e] <span style="color:#f92672">*</span> a[l][e];
+        }
+    <span style="color:#75715e">// Update entering nonbasic variable
+</span><span style="color:#75715e"></span>    ans <span style="color:#f92672">+=</span> c[e] <span style="color:#f92672">*</span> b[l];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; j<span style="color:#f92672">++</span>)
+        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> e) c[j] <span style="color:#f92672">-=</span> c[e] <span style="color:#f92672">*</span> a[l][j];
+    c[e] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>c[e] <span style="color:#f92672">*</span> a[l][e];
+}
+
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">simplex</span>() {
+    <span style="color:#66d9ef">while</span> (true) {
+        <span style="color:#66d9ef">int</span> enter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, leave <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#75715e">// Select enter variable
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (enter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; enter <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>enter)
+            <span style="color:#66d9ef">if</span> (c[enter] <span style="color:#f92672">&gt;</span> eps) <span style="color:#66d9ef">break</span>;
+        <span style="color:#66d9ef">if</span> (enter <span style="color:#f92672">==</span> n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> ans;
+        <span style="color:#75715e">// Select leave variable
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">double</span> mn <span style="color:#f92672">=</span> INF;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> m; <span style="color:#f92672">++</span>i)
+            <span style="color:#66d9ef">if</span> (a[i][enter] <span style="color:#f92672">&gt;</span> eps <span style="color:#f92672">&amp;&amp;</span> mn <span style="color:#f92672">&gt;</span> b[i] <span style="color:#f92672">/</span> a[i][enter]) {
+                mn <span style="color:#f92672">=</span> b[i] <span style="color:#f92672">/</span> a[i][enter];
+                leave <span style="color:#f92672">=</span> i;
+            }
+        <span style="color:#66d9ef">if</span> (mn <span style="color:#f92672">==</span> INF) <span style="color:#66d9ef">return</span> INF;
+        pivot(leave, enter);
+    }
+}
+</code></pre></div><h2 id="formulating-problems">Formulating Problems</h2>
+<ul>
+<li>Shortest Path
+<ul>
+<li>Maximize $d_t$</li>
+<li>subject to $d_v\leq d_u+w(u,v),d_s=0$</li>
+</ul>
+</li>
+<li>Maximum Flow
+<ul>
+<li>Maximize $\sum_{v\in V}f_{sv}-\sum_{v\in V}f_{vs}$</li>
+<li>subject to $f_{uv}\leq c(u,v),\sum_{v\in V}f_{vu}=\sum_{v\in V}f_{uv},f_{uv}\geq 0$</li>
+</ul>
+</li>
+<li>Minimum-cost Flow
+<ul>
+<li>Minimize $\sum_{(u,v)\in E}a(u,v)f_{uv}$</li>
+<li>subject to $f_{uv}\leq c(u,v), \sum_{v\in V}f_{vu}-\sum_{v\in V}f_{uv}=0,f_{uv}\geq 0,\sum_{v \in V}f_{sv}-\sum_{v\in V}f_{vs}=d$</li>
+</ul>
+</li>
+<li>Multicommodity Flow
+<ul>
+<li>Minimize $0$</li>
+<li>subject to $\sum_{i=1}{k}f_{iuv}\leq c(u,v),\sum_{v\in V}f_{iuv}-\sum_{v\in V}f_{ivu} = 0,\sum_{v\in V}f_{is_iv}-\sum_{v\in V}f_{ivs_i}=d_i,f_{iuv}\geq 0$</li>
+</ul>
+</li>
+<li>vertex cover</li>
+</ul>
+<p>$$\min \sum_{v\in V}x_v\newline s.t. \sum_{v\in e}x_v\geq 1,e\in E\newline x_v\in {0,1},v\in V$$</p>
+<ul>
+<li>System of difference contraints
+<ul>
+<li>subject to: $x_i-x_j\leq c_k$ ($m$ pairs)</li>
+</ul>
+</li>
+</ul>
+<h2 id="duality">Duality</h2>
+<ul>
+<li>Prime</li>
+</ul>
+<p>$$\min c^Tx\newline s.t.\ Ax\geq b\newline x\geq 0$$</p>
+<ul>
+<li>Dual</li>
+</ul>
+<p>$$\max b^Ty\newline s.t.\ y^TA\leq c^T\newline y\geq 0$$</p>
+<table>
+<thead>
+<tr>
+<th>prime</th>
+<th>dual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\max c_1x_1+\cdots+c_nx_n$</td>
+<td>$\min b_1y_1+\cdots+b_my_m$</td>
+</tr>
+<tr>
+<td>$a^Tx\geq b$</td>
+<td>$y_i\leq 0$</td>
+</tr>
+<tr>
+<td>$a^Tx=b$</td>
+<td>-</td>
+</tr>
+<tr>
+<td>$a^Tx\leq b$</td>
+<td>$y_i\geq 0$</td>
+</tr>
+<tr>
+<td>-</td>
+<td>$y_i=0$</td>
+</tr>
+<tr>
+<td>$x_i\geq 0$</td>
+<td>$a^Ty\geq c$</td>
+</tr>
+<tr>
+<td>$x_i\leq 0$</td>
+<td>$a^Ty\leq c$</td>
+</tr>
+<tr>
+<td>-</td>
+<td>$a^Ty=c$</td>
+</tr>
+<tr>
+<td>$x_i=0$</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Weak Duality Theorem: $\forall$ feasible primal solution $x$ and dual solution $y$</li>
+</ul>
+<p>$$y^Tb\leq y^TAx\leq c^Tx$$</p>
+<ul>
+<li>Strong Duality Theorem: Primal LP has finite optimal solution $x^*$ iff dual LP has finite optimal solution $y^{<em>T}b=c^Tx^</em>$</li>
+<li>Complementary Slackness Condition: $\forall$ feasible primal solution $x$ and dual solution $y$, both $x$ and $y$ are optimal iff</li>
+</ul>
+<p>$$\forall i:A_{i\cdot}x=b_i\vee y_i=0\newline \forall j:y^TA_{\cdot j}=c_j\vee x_j=0$$</p>
+<ul>
+<li>Relaxed Complementary Slackness: $\forall$ feasible primal solution $x$ and dual solution $y$, for $\alpha,\beta\geq 1$</li>
+</ul>
+<p>$$\forall i:A_{i\cdot}x\leq \alpha b_i\vee y_i=0\newline \forall j:y^TA_{\cdot j}=\frac{c_j}{\beta}\vee x_j=0\newline \Rightarrow c^Tx\leq\alpha\beta b^Ty\leq\alpha\beta\text{OPT}_{\text{IP}}$$</p>
+<ul>
+<li>Fundamental theorem of linear programming: Any linear program L, given in standard form, either:
+<ul>
+<li>has an optimal solution with a finite objective value</li>
+<li>infeasible</li>
+<li>unbounded</li>
+</ul>
+</li>
+</ul>
+<h2 id="primal-dual-schema">Primal-Dual Schema</h2>
+<ul>
+<li>The Primal-Dual Schema
+<ul>
+<li>Write down an LP-relaxation and its dual</li>
+<li>Start with a primal infeasible solution $x$ and a dual feasible solution $y$ (usually $x=0,y=0$)</li>
+<li>Raise $x$ and $y$ until $x$ is feasible:
+<ul>
+<li>raise $y$ until some dual constrints gets tight $y^TA_{\cdot j}=c_j$</li>
+<li>raise $x_i$ (integrally) corresponding to the tight dual constraints</li>
+</ul>
+</li>
+<li>Show the complementary slackness conditions
+<ul>
+<li>$\forall i, A_{i\cdot}x\leq\alpha b_i$ or $y_i=0$</li>
+<li>$\forall j,y^TA_{\cdot j}=c_j$ or $x_j=0$</li>
+<li>$c^Tx\leq\alpha b^Ty\leq\alpha\text{OPT}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Integrality Gap: $\sup_I\frac{\text{OPT}(I)}{\text{OPT}_{\text{LP}}(I)}$</li>
+</ul>
+<h3 id="vertex-cover">Vertex Cover</h3>
+<ul>
+<li>Primal</li>
+</ul>
+<p>$$\min \sum_{v\in V}x_v\newline s.t.\ \sum_{v\in e}x_v\geq 1,\forall e\in E\newline  x_v\in{0,1},\forall v\in V$$</p>
+<ul>
+<li>Dual</li>
+</ul>
+<p>$$\max \sum_{e\in E}y_e\newline s.t.\ \sum_{e\owns v}y_e\leq 1,\forall v\in V\newline y_e\geq 0,\forall e\in E$$</p>
+<ul>
+<li>Initially $x=0,y=0$</li>
+<li>Raise $x$ and $y$ until $x$ is feasible
+<ul>
+<li>pick an $e\in E$ and raise $y_e$ to 1, set $x_v=1$ for $v\in e$ and delete all $e\owns v$ from $E$</li>
+<li>Find a maximal matching and return the set of matched vertices</li>
+</ul>
+</li>
+<li>Integrality Gap: $2$</li>
+</ul>
+<h3 id="facility-location">Facility Location</h3>
+<ul>
+<li>Facility location $\in\text{NPH}$
+<ul>
+<li>Instance
+<ul>
+<li>$F$: Facilities</li>
+<li>$C$: clients</li>
+<li>$f: F\rightarrow[0,\infty)$: Facility opening costs</li>
+<li>$c: F\times C\rightarrow [0,\infty)$: Facility connecting cost</li>
+</ul>
+</li>
+<li>total cost: $\sum_{j\in C}c_{\phi(j),j}+\sum_{i\in I}f_i$</li>
+<li>Find $I\subset F$ and $\phi:C\rightarrow I$ minimize total cost</li>
+</ul>
+</li>
+<li>Metric Facility Location: $c_{\phi(j),j}=d_{\phi(j)j}$
+<ul>
+<li>triangle inequality: $d_{i_1j_1}+d_{i_2j_1}+d_{i_2j_2}\geq d_{i_1j_2}$</li>
+</ul>
+</li>
+<li>Primal</li>
+</ul>
+<p>$$\min \sum_{i\in F,j\in C}d_{ij}x_{ij}+\sum_{i\in F}f_iy_i\newline s.t.\ y_i-x_{ij}\geq0,\forall i\in F,j\in C\newline \sum_{i\in F}x_{ij}\geq 1,\forall j\in C\newline x_{ij},y_i\in{0,1},\forall i\in F,j\in C$$</p>
+<ul>
+<li>Dual</li>
+</ul>
+<p>$$\max\sum_{j\in C}\alpha_j\newline s.t.\ \alpha_j-\beta_{ij}\leq d_{ij},\forall i\in F,j\in C\newline \sum_{j\in C}\beta_{ij}\leq f_i,\forall i\in F\newline \alpha_j,\beta_{ij}\geq 0,\forall i\in F,j\in C$$</p>
+<ul>
+<li>Initially $\alpha=0,\beta=0$</li>
+<li>raise $\alpha_j$ for all client $j$ simultaneously at a uniform continous rate
+<ul>
+<li>upon $\alpha_j=d_{ij}$ for a closed facility $i$: edge $(i,j)$ is paid, fix $\beta_{ij}=\alpha_j-d_{ij}$</li>
+<li>upon $\sum_{j\in C}\beta_{ij}=f_i$: tentatively open facility $i$; all unconnected clients $j$ with paid edge $(i,j)$ to facility $i$ are declared connected to facility $i$ and stop raising $\alpha_j$</li>
+<li>upon $\alpha_j=d_{ij}$ for an unconnected client $j$ and tentatively open facility $i$: client $j$ is declared connected to facility $i$ and stop raising $\alpha$</li>
+</ul>
+</li>
+<li>Integrality Gap: $3$</li>
+</ul>
+<h2 id="lp-relaxation--rounding">LP Relaxation &amp; Rounding</h2>
+<ul>
+<li>Represent problem as Integer Linear Program(ILP)</li>
+<li>Relaxation: relax ILP to LP</li>
+<li>Find the optimal fractional solution $x^*$ of LP
+<ul>
+<li>ellipsoid</li>
+<li>interior-point</li>
+</ul>
+</li>
+<li>Rounding: round the solution to a feasible integral solution $\hat x$</li>
+<li>Integrality Gap = $\sup_I\frac{\text{OPT}(I)}{\text{OPT}_{\text{LP}}(I)}$</li>
+</ul>
+<h3 id="vertex-cover-1">Vertex Cover</h3>
+<p>Rounding</p>
+<p>$$\hat x_v=\begin{cases}1&amp;x_v^*\geq 0.5\newline 0&amp;o.w.\end{cases}$$</p>
+<p>Integrality Gap: $2$</p>
+<h3 id="max-sat">MAX-SAT</h3>
+<h4 id="random-solution">Random solution</h4>
+<p>$$P(C_j\text{ is satisfied})\geq(1-2^{-k})y_j^*$$</p>
+<p>$\frac{1}{2}$-approximation</p>
+<h4 id="lp-relaxation-and-randomized-roudning">LP relaxation and randomized roudning</h4>
+<p>$$\max \sum_{j=1}^my_j\newline s.t. \sum_{i\in S_j^+}x_i+\sum_{i\in S_j^-}(1-x_i)\geq y_j\newline x_i\in{0,1},y_j\in{0,1}$$</p>
+<p>Random Rounding</p>
+<p>$$\hat x_i=\begin{cases}1&amp; w.p.\ x_i^<em>\newline 0&amp; w.p.\ 1-x_i^</em>\end{cases}$$</p>
+<p>Analysis</p>
+<p>$$P(C_j\text{ is satisfied})\geq(1-(1-\frac{1}{k})^k)y_j^<em>\geq(1-\frac{1}{e})y_j^</em>\newline E[\text{# of satisfied clauses}]\geq(1-\frac{1}{e})\text{OPT}$$</p>
+<p>$(1-\frac{1}{e})$-approximation</p>
+<h4 id="combination">Combination</h4>
+<p><img src="/images/content/AALProunding.png" alt="average"></p>
+<p>Sample random solution, satisfy $m_1$ clauses<br>
+Randomized rounding LP-relaxation, satisfy $m_2$ clauses</p>
+<p>$$E[\max(m_1,m_2)]\geq E[\frac{m_1+m_2}{2}]\geq\frac{3}{4}\text{OPT}$$</p>
+<p>Integrality gap: $\frac{3}{4}$<br>
+MAX-3SAT has a $\frac{7}{8}$-approximation algorithm by semidefinite programming and cannot have $&gt;\frac{7}{8}$-approx unless NP=P</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

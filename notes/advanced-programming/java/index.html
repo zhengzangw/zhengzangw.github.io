@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Java | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#示例代码">示例代码</a></li>
+    <li><a href="#java-12-语法基础">Java 1.2 语法基础</a></li>
+    <li><a href="#java-5">Java 5</a></li>
+    <li><a href="#集合类">集合类</a>
+      <ul>
+        <li><a href="#collection-方法">Collection 方法</a></li>
+        <li><a href="#list-方法">List 方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#io">IO</a></li>
+    <li><a href="#java-7">Java 7</a></li>
+    <li><a href="#lamdba-表达式-java-8">Lamdba 表达式 (Java 8)</a></li>
+    <li><a href="#clone">Clone</a></li>
+    <li><a href="#class">Class</a></li>
+    <li><a href="#注释文档">注释文档</a></li>
+    <li><a href="#命令行工具">命令行工具</a></li>
+    <li><a href="#thread">Thread</a></li>
+    <li><a href="#网络">网络</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="示例代码">示例代码</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// HelloWorld
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloWorld</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">){</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello World!&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// A+B
+</span><span style="color:#75715e"></span><span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.*<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#66d9ef">throws</span> Exception
+    <span style="color:#f92672">{</span>
+        Scanner cin<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> Scanner<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">int</span> a<span style="color:#f92672">=</span>cin<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">int</span> b<span style="color:#f92672">=</span>cin<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">();</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a<span style="color:#f92672">+</span>b<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="java-12-语法基础">Java 1.2 语法基础</h2>
+<ul>
+<li>基本类型&ndash;包装器
+<ul>
+<li>BigInteger, BigDecimal</li>
+<li>对象储存在堆中</li>
+<li>基本类型储存在栈中</li>
+<li>包装器对象无法改变</li>
+<li>(java5) 自动装包/拆包</li>
+</ul>
+</li>
+<li>array
+<ul>
+<li>可在运行中确定大小</li>
+</ul>
+</li>
+<li>.java 文件中的每个类，它们都有一个 .class 扩展名</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>100<span style="color:#f92672">];</span>
+<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> <span style="color:#f92672">{</span>1<span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> 5<span style="color:#f92672">,</span> 7<span style="color:#f92672">,</span> 9<span style="color:#f92672">};</span>
+<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>1<span style="color:#f92672">,</span> 3<span style="color:#f92672">,</span> 5<span style="color:#f92672">,</span> 7<span style="color:#f92672">,</span> 9<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">int</span><span style="color:#f92672">[][][]</span> a2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>2<span style="color:#f92672">][</span>2<span style="color:#f92672">][</span>4<span style="color:#f92672">];</span>
+</code></pre></div><ul>
+<li>构造函数
+<ul>
+<li>this()</li>
+<li>super()</li>
+</ul>
+</li>
+<li>finalize()</li>
+<li>基本数据初始化为0，对象引用初始化为 null</li>
+<li>类中可定义初始值
+<ul>
+<li>成员必须初始化</li>
+<li>先静态，再变量初始化，再构造函数</li>
+</ul>
+</li>
+<li>静态块与匿名内部类初始化</li>
+<li>protected 它本身是私有的，但可由从这个类继承的任何东西或者同一个包内的其他任何东西访问</li>
+<li>单个编译单元内的所有类相互间都是自动“友好”的
+<ul>
+<li>包访问权限</li>
+</ul>
+</li>
+<li>类只能 public 或 友好的
+<ul>
+<li>不愿他人访问：所有构造器设为 private, 用 static 初始化</li>
+</ul>
+</li>
+<li>组合与继承</li>
+<li>toString(): 非基本对象都有</li>
+<li>向上转换：子类引用转为父类引用</li>
+<li>final
+<ul>
+<li>基本数据类型：常数</li>
+<li>对象引用：不可更改</li>
+<li>final 函数：继承类不可修改</li>
+<li>final class: 不可继承</li>
+</ul>
+</li>
+<li>java 程序加载过程
+<ul>
+<li>递归找到基类</li>
+<li>从基类开始初始化 static</li>
+<li>创建对象
+<ul>
+<li>基本数据类型：默认值</li>
+<li>对象引用：null</li>
+</ul>
+</li>
+<li>从基类开始按序初始化实例对象</li>
+<li>执行构造器剩余主体部分</li>
+</ul>
+</li>
+<li>绑定
+<ul>
+<li>java 后期绑定</li>
+<li>final 前期绑定</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Shape s <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Circle<span style="color:#f92672">();</span>
+s<span style="color:#f92672">.</span><span style="color:#a6e22e">draw</span><span style="color:#f92672">()</span>  <span style="color:#75715e">//circle&#39;s draw
+</span></code></pre></div><ul>
+<li>覆盖与重载</li>
+<li>abstract 类</li>
+<li>interface
+<ul>
+<li>不规定方法主体</li>
+<li>可以 extends 其它接口</li>
+<li>自动拥有 final static
+<ul>
+<li>不能是空白 final，但可以初始化成非常数表达式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内部类</li>
+<li>向下转换
+<ul>
+<li>RTTI</li>
+</ul>
+</li>
+<li>switch: char,int,enum</li>
+</ul>
+<h2 id="java-5">Java 5</h2>
+<ul>
+<li>可变参数 <code>(type... name)</code>
+<ul>
+<li><code>int... data</code></li>
+</ul>
+</li>
+<li>foreach 循环：<code>for (int x:data)</code></li>
+<li>泛型：<code>Collection&lt;String&gt; c=new ArrayList&lt;String&gt;()</code>
+<ul>
+<li>Java中的泛型，只在编译阶段有效</li>
+<li>泛型类 <code>public class Name&lt;T&gt;</code></li>
+<li>泛型接口</li>
+<li>泛型通配符 <code>&lt;?&gt;</code></li>
+<li>泛型方法：public 与返回值之间的<code>&lt;T&gt;</code>必不可少，这表明这是一个泛型方法，并且声明了一个泛型T</li>
+<li><code>&lt;A extends Number&gt;</code></li>
+</ul>
+</li>
+<li>Enum
+<ul>
+<li>values()</li>
+<li>valueOf()</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#66d9ef">enum</span> Signal <span style="color:#f92672">{</span>  
+    GREEN<span style="color:#f92672">,</span> YELLOW<span style="color:#f92672">,</span> RED  
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> Color <span style="color:#f92672">{</span>  
+    RED<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;红色&#34;</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">),</span> GREEN<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;绿色&#34;</span><span style="color:#f92672">,</span> 2<span style="color:#f92672">),</span> BLANK<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;白色&#34;</span><span style="color:#f92672">,</span> 3<span style="color:#f92672">),</span> YELLO<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;黄色&#34;</span><span style="color:#f92672">,</span> 4<span style="color:#f92672">);</span>  
+    <span style="color:#75715e">// 成员变量
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 构造方法  
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 普通方法  
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// get set 方法  
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>注解：<code>@interface</code>
+<ul>
+<li>使用 <code>@name</code></li>
+<li>元注解
+<ul>
+<li><code>@Retention</code>
+<ul>
+<li><code>RetentionPolicy.SOURCE</code></li>
+<li><code>RetentionPolicy.CLASS</code></li>
+<li><code>RetentionPolicy.RUNTIME</code></li>
+</ul>
+</li>
+<li><code>@Documented</code></li>
+<li><code>@Target</code></li>
+<li><code>@Inherited</code></li>
+<li><code>@Repeatable</code></li>
+</ul>
+</li>
+<li>属性
+<ul>
+<li><code>int id();</code></li>
+<li><code>int id() default -1;</code></li>
+</ul>
+</li>
+<li>赋值方式：在括号内 <code>value=2</code></li>
+<li>使用
+<ul>
+<li><code>Name.class.isAnnotationPresent(Annotationclass.class)</code></li>
+<li><code>getAnnotation</code></li>
+</ul>
+</li>
+<li><code>import static</code></li>
+</ul>
+</li>
+<li>集合类
+<ul>
+<li>Arrays</li>
+<li>Queue
+<ul>
+<li><code>Queue q = new LinkList();</code></li>
+<li>offer, poll</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="集合类">集合类</h2>
+<ul>
+<li>Legacy
+<ul>
+<li>Vector
+<ul>
+<li>size()</li>
+<li>addElement()</li>
+<li>elementAt()</li>
+<li>elements(): 返回迭代器</li>
+</ul>
+</li>
+<li>Bitset</li>
+<li>Stack</li>
+<li>Hashtable</li>
+<li>迭代器
+<ul>
+<li>Enumeration
+<ul>
+<li>nextElement()</li>
+<li>hasMoreElements()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Collection
+<ul>
+<li>List 顺序
+<ul>
+<li>ArrayList</li>
+<li>LinkedList
+<ul>
+<li>addFirst()，addLast()，getFirst()，getLast()，removeFirst(),removeLast()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Set
+<ul>
+<li>内部对象必须定义 equals()</li>
+<li>HashSet</li>
+<li>TreeSet</li>
+<li>ArraySet</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Map
+<ul>
+<li>HashMap</li>
+<li>ArrayMap</li>
+<li>TreeMap</li>
+</ul>
+</li>
+<li>Comparable
+<ul>
+<li>Comparator</li>
+</ul>
+</li>
+</ul>
+<h3 id="collection-方法">Collection 方法</h3>
+<ul>
+<li>boolean add(Object) ＊保证集合内包含了参数。如果它没有添加参数，就返回false（假）</li>
+<li>boolean addAll(Collection) ＊添加参数内的所有元素。如果没有添加元素，则返回true（真）</li>
+<li>void clear() ＊删除集合内的所有元素</li>
+<li>boolean contains(Object) 若集合包含参数，就返回“真”</li>
+<li>boolean containsAll(Collection) 若集合包含了参数内的所有元素，就返回“真”</li>
+<li>boolean isEmpty() 若集合内没有元素，就返回“真”</li>
+<li>Iterator iterator() 返回一个迭代器，以用它遍历集合的各元素</li>
+<li>boolean remove(Object) ＊如参数在集合里，就删除那个元素的一个实例。如果已进行了删除，就返回“真”</li>
+<li>boolean removeAll(Collection) ＊删除参数里的所有元素。如果已进行了任何删除，就返回“真”</li>
+<li>boolean retainAll(Collection) ＊只保留包含在一个参数里的元素（一个理论的“交集”）。如果已进行了任何改变，就返回“真”</li>
+<li>int size() 返回集合内的元素数量</li>
+<li>Object[] toArray() 返回包含了集合内所有元素的一个数组</li>
+</ul>
+<h3 id="list-方法">List 方法</h3>
+<ul>
+<li>get()</li>
+<li>indexof()</li>
+<li>lastIndexOf()</li>
+<li>listIterator()</li>
+<li>set()</li>
+</ul>
+<h2 id="io">IO</h2>
+<ul>
+<li>InputStream (Reader:InputStreamReader)
+<ul>
+<li>ByteArrayInputStream (CharArrayReader)</li>
+<li>StringBufferInputStream (StringReader)
+<ul>
+<li>int read()</li>
+</ul>
+</li>
+<li>StringBuffer</li>
+<li>FileInputStream (FileReader)</li>
+<li>PipedInputStream (PipeReader)</li>
+<li>SequenceInputStream</li>
+<li>FilterInputStream (FilterReader)
+<ul>
+<li>DataInputStream
+<ul>
+<li>-readLine()</li>
+<li>available()</li>
+</ul>
+</li>
+<li>BufferedInputStream (BufferedReader:readLine())</li>
+<li>LineNumberInputStream (LineNumberInputReader)</li>
+<li>PushBackInputStream (PushBackReader)</li>
+</ul>
+</li>
+<li>InflaterInputStream
+<ul>
+<li>CheckedInputStream</li>
+<li>ZipInputStream</li>
+<li>GZIPInputStream</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>OutputStream (Writer:OutputStreamWriter)
+<ul>
+<li>ByteArrayOutputStream (CharArrayWriter)</li>
+<li>FileOutputStream (FileWriter)</li>
+<li>PipedOutputStream (PipeWriter)</li>
+<li>FilterOutputStream</li>
+<li>FilterInputStream (FilterWriter)
+<ul>
+<li>DataOutputStream
+<ul>
+<li>writeBytes()</li>
+<li>writeDouble()</li>
+</ul>
+</li>
+<li>BufferedOutputStream (BufferedWriter)</li>
+<li>OutputStream</li>
+<li>PrintStream (PrintWriter)</li>
+</ul>
+</li>
+<li>DeflaterOutputStream
+<ul>
+<li>CheckedOutputStream</li>
+<li>ZipOutputStream</li>
+<li>GZIPOutputStream</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RandomAccessFile</li>
+<li>StreamTokenizer
+<ul>
+<li>StringTokenizer</li>
+</ul>
+</li>
+<li>System
+<ul>
+<li>in: InputStream</li>
+<li>out: PrintStream</li>
+<li>err: PrintStream</li>
+<li>setIn/setOut/setErr</li>
+<li>(java5) Scanner
+<ul>
+<li>nextLine()</li>
+<li>hasNext()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="java-7">Java 7</h2>
+<ul>
+<li>多个异常： <code>catch (ExceptionA | ExceptionB a)</code></li>
+<li>try-with-resource</li>
+</ul>
+<h2 id="lamdba-表达式-java-8">Lamdba 表达式 (Java 8)</h2>
+<ul>
+<li>(parameters) -&gt; expression</li>
+<li>(parameters) -&gt;{ statements; }</li>
+</ul>
+<h2 id="clone">Clone</h2>
+<ul>
+<li>clone()</li>
+<li>clonable 接口</li>
+</ul>
+<h2 id="class">Class</h2>
+<ul>
+<li>instanceof</li>
+</ul>
+<h2 id="注释文档">注释文档</h2>
+<ul>
+<li>/** */</li>
+<li>支持 HTML</li>
+<li>@see</li>
+<li>class
+<ul>
+<li>@version</li>
+<li>@author</li>
+</ul>
+</li>
+<li>method
+<ul>
+<li>@param</li>
+<li>@return</li>
+<li>@exception</li>
+<li>@deprecated</li>
+</ul>
+</li>
+</ul>
+<h2 id="命令行工具">命令行工具</h2>
+<ul>
+<li>编译<code>javac name.java; java name</code></li>
+<li>命令行请求 public 类时，调用的是 main()</li>
+</ul>
+<h2 id="thread">Thread</h2>
+<ul>
+<li>synchronized</li>
+<li>wait()</li>
+<li>notify()</li>
+<li>Thread
+<ul>
+<li>run(): 需要重写</li>
+<li>start()</li>
+<li>yield()</li>
+<li>join()</li>
+</ul>
+</li>
+<li>Runnable</li>
+<li>(Java5) java.util.concurrent
+<ul>
+<li>ThreadLocal</li>
+<li>AtomicInteger</li>
+<li>Lock
+<ul>
+<li>ReentrantLock</li>
+<li>ReentrantReadWriteLock.ReadLock</li>
+<li>ReentrantReadWriteLock.WriteLock</li>
+</ul>
+</li>
+<li>BlockingQueue</li>
+<li>ConcurrentHashMap</li>
+<li>ThreadPoolExecutor
+<ul>
+<li>corePoolSize: 核心池的大小</li>
+<li>maximumPoolSize</li>
+<li>KeepAliveTime</li>
+<li>ExecutorService
+<ul>
+<li>Executors.newCachedThreadPool()</li>
+<li>Executors.newFixedThreadPool(3)</li>
+<li>Executors.newScheduledThreadPool(5);</li>
+<li>Executors.newSingleThreadExecutor();</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="网络">网络</h2>
+<ul>
+<li>InetAddress.getByName()
+<ul>
+<li>InetAddress.getByName(null); localhost</li>
+</ul>
+</li>
+<li>ServerSocket</li>
+<li>Socket</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

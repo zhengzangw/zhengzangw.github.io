@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Preprocessing | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#预处理流程">预处理流程</a></li>
+    <li><a href="#data-cleaning">Data cleaning</a></li>
+    <li><a href="#data-integration">Data Integration</a></li>
+    <li><a href="#data-transformation">Data Transformation</a></li>
+    <li><a href="#data-reduction">Data Reduction</a></li>
+    <li><a href="#data-visualization">Data Visualization</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="预处理流程">预处理流程</h2>
+<ul>
+<li>General
+<ul>
+<li>Data cleaning</li>
+<li>Data reduction</li>
+<li>Data Integration</li>
+<li>Data transformation</li>
+</ul>
+</li>
+</ul>
+<h2 id="data-cleaning">Data cleaning</h2>
+<ul>
+<li>incomplete: mainly from data collection
+<ul>
+<li>忽略属性</li>
+<li>手动填充</li>
+<li>使用全局量</li>
+<li>属性均值</li>
+<li>相同类属性均值</li>
+<li>最可能值</li>
+</ul>
+</li>
+<li>噪音：mainly from data collection，数据平滑技术（smooth）
+<ul>
+<li>分箱（binning）
+<ul>
+<li>partition: equi-depth, equi-width</li>
+<li>smoothing: means, median, boundaries</li>
+</ul>
+</li>
+<li>regression: fit into a mathematical function</li>
+<li>clustering: organize similar values into groups or clusters</li>
+<li>data editing
+<ul>
+<li>exploiting local smoothness</li>
+<li>exploiting global consistency with a noise tolerant model</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>不一致：mainly from data integreation
+<ul>
+<li>knowledge engineering tools</li>
+</ul>
+</li>
+</ul>
+<h2 id="data-integration">Data Integration</h2>
+<ul>
+<li>Schema Integration
+<ul>
+<li>entity identification problem: family name vs. surname</li>
+<li>semantic heterogeneity problem: 175cm vs. 1.75m</li>
+</ul>
+</li>
+<li>Redundancy
+<ul>
+<li>correlation analysis</li>
+</ul>
+</li>
+<li>数据值冲突的检测</li>
+</ul>
+<h2 id="data-transformation">Data Transformation</h2>
+<ul>
+<li>
+<p>Normalization</p>
+<ul>
+<li>
+<p>min-max</p>
+<p>$$ v'=\frac{v-\min_A}{\max_A-\min_A}(\text{new_max}_A-\text{new_min}_A)+\text{new_min}_A$$</p>
+</li>
+<li>
+<p>zero-mean</p>
+<p>$$ v'=\frac{v-\overline{A}}{\sigma_A} $$</p>
+</li>
+<li>
+<p>decimal scaling</p>
+<p>$$ v'=\frac{v}{10^j} $$</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Smoothing</p>
+</li>
+<li>
+<p>Aggregation</p>
+</li>
+<li>
+<p>Generalization</p>
+</li>
+<li>
+<p>Attribute construction</p>
+</li>
+</ul>
+<h2 id="data-reduction">Data Reduction</h2>
+<ul>
+<li>
+<p>Data cube aggregation</p>
+</li>
+<li>
+<p>Concept hierarchy generalization analytical results</p>
+</li>
+<li>
+<p>Dimensionality reduction</p>
+<ul>
+<li>PCA</li>
+<li>LDA</li>
+<li>NCA</li>
+<li>ISOMAP</li>
+<li>Wavelet transformation</li>
+</ul>
+</li>
+<li>
+<p>Feature selection(Attribute Subset selection)</p>
+<ul>
+<li>
+<p>Filter approach</p>
+<ul>
+<li>
+<p>Greedy:</p>
+<p>Step-wise forward selection</p>
+<p>Step-wise backwise selection</p>
+<p>Combine</p>
+</li>
+<li>
+<p>Genetic Algorithm</p>
+</li>
+<li>
+<p>Relevance measures: Information Gain</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Wrapper approach</p>
+<p>Decision tree induction</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Numerosity reduction</p>
+<ul>
+<li>
+<p>parametric</p>
+<ul>
+<li>
+<p>Regression models</p>
+<p>Linear regression</p>
+<p>Mutiple regression</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Non-parametric</p>
+<ul>
+<li>histogram: Equi-depth, equi-width, maxdiff(least variance), V-optimal</li>
+<li>clustering</li>
+<li>sampling: random sample, bootstrap, cluster sampling, stratified sampling</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Discretization</p>
+<ul>
+<li>Types of attributes
+<ul>
+<li>categorical or continuous</li>
+<li>unordered or ordered</li>
+</ul>
+</li>
+<li>entropy-based discretization</li>
+<li>natural partioning: 3-4-5 rule</li>
+</ul>
+</li>
+</ul>
+<h2 id="data-visualization">Data Visualization</h2>
+<ul>
+<li>Quantitive characteristic rule
+<ul>
+<li>central tendency: mean, median, mode, midrange</li>
+<li>dispersion: quartiles, variance, standard deviation</li>
+</ul>
+</li>
+<li>single
+<ul>
+<li>pie chart</li>
+<li>box plots</li>
+<li>histogram/bar chart</li>
+<li>quartile plot</li>
+</ul>
+</li>
+<li>pair
+<ul>
+<li>scatterplot</li>
+<li>Loess curve (local regression)</li>
+<li>Q-Q plot (Quantile-Quantile)</li>
+<li>contour plot</li>
+</ul>
+</li>
+<li>multiple
+<ul>
+<li>crosstab</li>
+<li>3D cube</li>
+<li>scatterplot matrix</li>
+<li>trellis plot</li>
+<li>icons plots</li>
+<li>parrallel coordinates plot</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

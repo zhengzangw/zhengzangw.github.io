@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数值积分与数值微分 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#机械求积方法">机械求积方法</a></li>
+    <li><a href="#newton-cotes-公式">Newton-Cotes 公式</a></li>
+    <li><a href="#复化求积公式">复化求积公式</a></li>
+    <li><a href="#变步长求积公式及其加速收敛技巧">变步长求积公式及其加速收敛技巧</a></li>
+    <li><a href="#gauss-型求积公式">Gauss 型求积公式</a></li>
+    <li><a href="#数值微分">数值微分</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="机械求积方法">机械求积方法</h2>
+<ul>
+<li>定积分计算：$\int_a^b f(x)dx=F(b)-F(a)$
+<ul>
+<li>被积函数由函数表格提供</li>
+<li>$f(x)$ 无法求出原函数</li>
+</ul>
+</li>
+<li>数值积分：$\int_a^bf(x)dx\approx\sum_{k=0}^n A_kf(x_k)$
+<ul>
+<li>积分结点 $x_k$</li>
+<li>求积系数 $A_k$</li>
+<li>机械求积公式：$A_k$ 与 $f(x)$ 无关</li>
+</ul>
+</li>
+<li>左矩公式：$\int_{x_0}^{x_1}f(x)dx\approx\int_{x_0}^{x_1}f(x_0)dx=f(x_0)(x_1-x_0)$
+<ul>
+<li>右矩公式</li>
+<li>中矩公式</li>
+<li>梯形公式：$f(x)\approx L_1(x)=\frac{x-x_1}{x_0-x_1}f(x_0)+\frac{x-x_0}{x_1-x_0}f(x_1)$ （0 次）</li>
+<li>Simpson 公式（三点公式，抛物线公式）：$x'=\frac{x_0+x_1}{2},\int_{x_0}^{x_1}f(x)dx\approx\frac{(x_1-x_0)}{6}(f(x_0)+4f(\frac{x_0+x_1}{2})+f(x_1))$ （3 次）</li>
+</ul>
+</li>
+<li>代数精度法
+<ul>
+<li>$m$ 次代数精确度：数值积分公式 $\int_a^bf(x)dx\approx\sum_{k=0}^nA_kf(x_k)$ 对任意的 $f(x)=x^i(i=0,1,\dots,m)$ 多项式都成立，对 $f(x)=x^{m+1}$ 不精确成立</li>
+</ul>
+</li>
+<li>插值求积法
+<ul>
+<li>利用插值多项式 $P_n(x)\approx f(x)$ 计算定积分</li>
+<li>$\int_a^bf(x)dx\approx\sum_{k=0}^nf(x_k)\int_a^bl_k(x)dx$</li>
+<li>$N+1$ 个节点的插值型求积公式至少有 $n$ 次代数精度</li>
+</ul>
+</li>
+</ul>
+<h2 id="newton-cotes-公式">Newton-Cotes 公式</h2>
+<ul>
+<li>等距节点下使用 Lagrange 插值多项式建立的数值求积公式</li>
+<li>函数 $f(x)\in C[a,b],x_k=a+kh,h=\frac{b-a}{n},k=0,1,\dots,n$</li>
+<li>Langrange 插值多项式 $L_n(x)=\sum_{k=0}^nf(x_k)l_k(x),R_n(x)=\frac{f^{n+1}(\xi)}{(n+1)!}\omega_{n+1}(x)$</li>
+<li>$l_k(x)=\prod_{0\leq j\leq n,j\neq k}\frac{x-x_j}{x_k-x_j},\xi\in[a,b],\omega_{n+1}=\prod_{i=0}^n(x-x_j)$</li>
+<li>$f(x)=L_n(x)+R_n(x),I(f)=\int_a^bf(x)dx=\sum_{k=0}^nA_k f(x_k)+\int_a^b R_n(x)dx, A_k=\int_a^b\prod_{0\leq j\leq n,j\neq k}\frac{x-x_j}{x_k-x_j}dx$</li>
+<li>$n$ 阶 Newton-Cotes 求积公式：$I_n(f)=\sum_{k=0}^nA_kf(x_k)=(b-a)\sum_{k=0}^nC_k^{(n)}f(x_k)$</li>
+<li>误差：$R(I_n)=\int_a^bR_n(x)dx$</li>
+<li>$A_k=(b-a)C_k^{(n)},C_k^{(n)}=\frac{(-1)^{n-k}}{nk!(n-k)!}\int_0^n\prod_{0\leq j\leq n,j\neq k}(t-j)dt$ 为 Cotes 系数</li>
+<li>至少 $n$ 次代数精度，$n$ 为偶数时至少有 $n+1$ 次代数精度</li>
+<li>低阶 Newton-Cotes 公式
+<ul>
+<li>$n=1$: 梯形公式（trapezoid）
+<ul>
+<li>$C_k^{(1)}=\frac{1}{2}$</li>
+<li>$T=\frac{b-a}{2}(f(a)+f(b))$</li>
+<li>$R(T)=-\frac{(b-a)^3}{12}f''(\eta)$</li>
+</ul>
+</li>
+<li>$n=2$: Simpson 公式
+<ul>
+<li>$R(S)=-\frac{b-a}{180}(\frac{b-a}{2})^4f^{(4)}(\eta)$</li>
+</ul>
+</li>
+<li>$n=4$: 五点公式, Cote 公式
+<ul>
+<li>$C_0^{(4)}=\frac{7}{90},C_1^{(4)}=\frac{32}{90},C_2^{(4)}=\frac{12}{90},C_4^{(4)}=\frac{32}{90},C_5^{(4)}=\frac{7}{90}$</li>
+<li>$I_4(f)=\frac{b-a}{90}(7f(x_0)+32f(x_1)+12f(x_2)+32f(x_3)+7f(x_4))$</li>
+<li>$R(C) =-\frac{2(b-a)}{945}(\frac{b-a}{4})^6f^{(6)}(\eta)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="复化求积公式">复化求积公式</h2>
+<ul>
+<li>分段低次合成的 Newton-Cotes 复化求积公式，避免 Runge 现象</li>
+<li>$h=\frac{b-a}{n}$</li>
+<li>$p$阶收敛 $f\sim O(h^p)$：$\lim_{h\rightarrow}\frac{I-I_n}{h^p}-C&lt;\infty,C\neq 0$</li>
+<li>复化梯形公式：$T_n=\int_a^bf(x)dx\approx\frac{h}{2}[f(a)+2\sum_{k=1}^{n-1}f(x_k)+f(b)]$
+<ul>
+<li>$R(f)=-\frac{h^2}{12}(b-a)f''(\xi)$</li>
+<li>$\lim_{h\rightarrow 0}$ 时，$R(f)=-\frac{1}{12}[f'(b)-f'(a)]$</li>
+<li>2 阶收敛</li>
+</ul>
+</li>
+<li>复化 Simpson 公式：$S_n=\int_a^b f(x)dx\approx \frac{h}{6}[f(a)+4\sum_{k=0}^{n-1}f(x_{k+\frac{1}{2}}+2\sum_{k=0}^{n-1}f(x_{k+1})+f(b))]$
+<ul>
+<li>$R(f)=-\frac{b-a}{180}(\frac{h}{2})^4f^{(4)}(\xi)$</li>
+<li>$\lim_{h\rightarrow 0}$ 时，$R(f)=-\frac{1}{180}(\frac{h}{2})^4[f^{(3)}(b)-f^{(3)}(a)]$</li>
+<li>4 阶收敛</li>
+</ul>
+</li>
+</ul>
+<h2 id="变步长求积公式及其加速收敛技巧">变步长求积公式及其加速收敛技巧</h2>
+<ul>
+<li>复化求积公式递推化
+<ul>
+<li>梯形公式：$T_{2n}=\frac{1}{2}T_n+\frac{h}{2}\sum_{k=0}^{n-1}f(x_{k+\frac{1}{2}})$</li>
+<li>$R_{2n}[f]\approx\frac{1}{4}R_n[f]$</li>
+<li>$I-T_{2n}\approx\frac{1}{3}{T_{2n}-T_n}$</li>
+</ul>
+</li>
+<li>龙贝格积分（Romberg Integration, 外推加速公式）
+<ul>
+<li>梯形公式：$\overline{T}=T_{2n}+\frac{1}{3}(T_{2n}-T_n)=\frac{4}{3}T_{2n}-\frac{1}{3}T_n=S_n$</li>
+<li>Simpson 公式：$I\approx \frac{16}{15}S_{2n}-\frac{1}{15}S_n=C_n$</li>
+<li>Cote 公式：$\frac{4^3C_{2n}-C_n}{4^3-1}=R_n$</li>
+</ul>
+</li>
+<li>Romberg Algorithm
+<ul>
+<li>利用梯形公式 $T_i$ 计算，判断精度</li>
+<li>$S_n=\frac{4T_{2n}-T_n}{4-1}$，判断精度</li>
+<li>$C_n=\frac{4^2S_{2n}-S_n}{4^2-1}=C_n$，判断精度</li>
+<li>$R_n=\frac{4^3S_{2n}-S_n}{4^3-1}=C_n$，判断精度</li>
+</ul>
+</li>
+<li>Richardson 逐次外推法加速法
+<ul>
+<li>$T_0^{(0)}=\frac{b-a}{2}[f(a)+f(b)]$</li>
+<li>$T_0^{(k)}=\frac{1}{2}[T_0^{(k-1)}+\frac{b-a}{2^{k-1}}\sum_{i=0}^{2^{k-1}}f(a+(2i-1)\frac{b-a}{2^k})],k=1,2,\dots$</li>
+<li>$T_m^{(k)}=\frac{4^mT_{m-1}^{k+1}-T_{m-1}^{(k)}}{4^m-1},m=1,2\dots,k$</li>
+<li>停止准则：$|T_m^{(0)}-T_{m-1}^{(0)}|&lt;\epsilon$</li>
+</ul>
+</li>
+</ul>
+<h2 id="gauss-型求积公式">Gauss 型求积公式</h2>
+<ul>
+<li>选取适当 n+1 个节点（高斯点）使求积公式具有 2n+1 次代数精度</li>
+<li>节点 $x_k$ 是高斯点充要条件是 $\omega(x)=\prod(x-x_k)$ 与一切次数小于 $n$ 的多项式正交 $\int_a^bP(x)\omega(x)dx=0$</li>
+<li>Legrendre 多项式的零点 $x_0,x_1,\dots, x_n$ 为高斯点</li>
+<li>Gauss-Legendre 求积公式
+<ul>
+<li>$\int_{-1}^1 f(x)dx\approx\sum_{k=0}^nA_kf(x_k),x_k$ 为 $P_{n+1}$ 零点</li>
+<li>$R(f)=\frac{2^{2n+3}[(n+1)!]^4}{(2n+3)[(2n+2)!]^3}f^{(2n+2)}(\xi),|\xi|&lt;1$</li>
+</ul>
+</li>
+<li>变化：$x=\frac{b-a}{2}t+\frac{b+a}{2},\int_a^b f(x)dx=\frac{b-a}{2}\int_{-1}^{1}f(\frac{b-a}{2}t+\frac{b+a}{2})dt$</li>
+<li>带权 Gauss 公式：$\int_a^b\rho(x)f(x)dx\approx \sum_{k=0}^nA_kf(x_k)$
+<ul>
+<li>Gauss-Chebyshev: $(a,b)=(-1,1),\rho(x)=\frac{1}{\sqrt{1-x^2}},\int_{-1}^1\frac{f(x)}{\sqrt{1-x^2}}dx$
+<ul>
+<li>Chebyshev 多项式零点 $x_k=\cos(\frac{2k+1}{2n+2}\pi),A_k=\frac{\pi}{n+1}$</li>
+</ul>
+</li>
+<li>Gauss-Laguerre: $(a,b)=(0,+\infty),\rho=e^{-x},\int_{0}^{\infty}e^{-x}f(x)dx$
+<ul>
+<li>Laguerre 多项式零点 $L_{n+1}(x)=e^x\frac{d^{n+1}}{dx^{n+1}}(x^{n+1}e^{-x})$</li>
+</ul>
+</li>
+<li>$(a,b)=(-\infty,\infty),\rho(x)=e^{-x^2},\int_{-\infty}^{\infty}e^{-x^2}f(x)dx$</li>
+</ul>
+</li>
+<li>构造含权积分公式</li>
+</ul>
+<h2 id="数值微分">数值微分</h2>
+<ul>
+<li>差商：向前，向后，中心差商</li>
+<li>插值型求导公式 $f'(x)\approx P_n'(x)$
+<ul>
+<li>$f'(x)$ 与 $P_n'(x)$ 相差可能很大</li>
+<li>$f'(x_k)$ 与 $P_n'(x)$ 相差一般较小</li>
+</ul>
+</li>
+<li>两点公式
+<ul>
+<li>$f'(x_0)=\frac{1}{h}(-f(x_0)+f(x_1))$ 向前差商</li>
+<li>$f'(x_1)=\frac{1}{h}(-f(x_0)+f(x_1))$ 向后差商</li>
+</ul>
+</li>
+<li>三点公式</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

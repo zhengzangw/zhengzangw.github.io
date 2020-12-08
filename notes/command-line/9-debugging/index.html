@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>9. Debugging | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#system">System</a></li>
+    <li><a href="#c">C</a>
+      <ul>
+        <li><a href="#time">time</a></li>
+        <li><a href="#gdb">gdb</a></li>
+        <li><a href="#profile">profile</a></li>
+      </ul>
+    </li>
+    <li><a href="#python">Python</a>
+      <ul>
+        <li><a href="#static-analysis">static analysis</a></li>
+        <li><a href="#pdb">pdb</a></li>
+        <li><a href="#profiles">profiles</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="system">System</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">stress -c <span style="color:#75715e"># brew install stress</span>
+<span style="color:#75715e"># Log</span>
+ls /var/log <span style="color:#75715e"># Log file</span>
+cat /var/log/system.log | lnav <span style="color:#75715e"># brew install lnav</span>
+log show <span style="color:#75715e"># macos</span>
+log show --last 1m
+logger <span style="color:#e6db74">&#34;Hello Logs&#34;</span>
+<span style="color:#75715e"># 查询系统调用</span>
+sudo strace ls -l &gt; /dev/null <span style="color:#75715e"># dtrace for macos</span>
+<span style="color:#75715e"># static analysis</span>
+writegood notes.md <span style="color:#75715e"># brew install write-good</span>
+<span style="color:#75715e"># time</span>
+time curl https://google.com
+<span style="color:#75715e"># perf</span>
+sudo perf stat stress -c <span style="color:#ae81ff">1</span>
+sudo perf record stress -c <span style="color:#ae81ff">1</span>
+sudo perf report
+<span style="color:#75715e"># computer status</span>
+top
+htop
+du <span style="color:#75715e"># disk usage</span>
+ncdu
+lsof <span style="color:#75715e"># list open files</span>
+<span style="color:#75715e"># benchmark</span>
+hyperfine --warmup <span style="color:#ae81ff">3</span> <span style="color:#e6db74">&#39;fd -e jpg&#39;</span> <span style="color:#960050;background-color:#1e0010">&#39;</span>find . -iname <span style="color:#e6db74">&#34;*.jpg&#34;</span>
+</code></pre></div><h2 id="c">C</h2>
+<h3 id="time">time</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>usleep(ms)
+</code></pre></div><h3 id="gdb">gdb</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">gdb --args sleep <span style="color:#ae81ff">20</span> <span style="color:#75715e"># gdb with binary</span>
+lldb -- sleep <span style="color:#ae81ff">20</span> <span style="color:#75715e"># lldb</span>
+</code></pre></div><h3 id="profile">profile</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">valgrind
+</code></pre></div><h2 id="python">Python</h2>
+<h3 id="static-analysis">static analysis</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pyflakes test.py
+mypy test.py
+</code></pre></div><h3 id="pdb">pdb</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">python -m ipdb test.py <span style="color:#75715e"># pip install ipdb</span>
+<span style="color:#75715e"># in ipdb</span>
+l <span style="color:#75715e">#list</span>
+s <span style="color:#75715e">#step</span>
+restart <span style="color:#75715e">#restrat</span>
+p value <span style="color:#75715e">#print</span>
+p locals<span style="color:#f92672">()</span>
+c <span style="color:#75715e">#continue</span>
+q <span style="color:#75715e">#quit debugger</span>
+b <span style="color:#ae81ff">6</span> <span style="color:#75715e">#breakpoint</span>
+</code></pre></div><h3 id="profiles">profiles</h3>
+<p>Trace profiles</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">python -m cProfile -s tottime test.py
+python -m memory_profiler test.py <span style="color:#75715e"># pip install memory_profiler</span>
+</code></pre></div><p>Line profiles: add <code>@profile</code> before function</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kernprof -l -v urls.py <span style="color:#75715e"># pip install line_profiler</span>
+</code></pre></div></main>
+        </div>
+
+    </div>
+</body></html>

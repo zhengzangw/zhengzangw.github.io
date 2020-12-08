@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gates | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#single-qubit-operator">Single qubit operator</a>
+      <ul>
+        <li><a href="#approximating-unitary-operators">Approximating unitary operators</a></li>
+      </ul>
+    </li>
+    <li><a href="#quantum-fourier-transform-f_n">Quantum Fourier Transform $F_N$</a></li>
+    <li><a href="#controlled-gates">Controlled gates</a></li>
+    <li><a href="#decomposition-of-arbitrary-unitary-gates">Decomposition of Arbitrary unitary gates</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><p>matrix = operator = gate</p>
+<h2 id="single-qubit-operator">Single qubit operator</h2>
+<ul>
+<li>Pauli operators
+<ul>
+<li>$I=(1,0;0,1)$</li>
+<li>$X=(0,1;1,0)$ (非门)
+<ul>
+<li>$X|0\rangle=|1\rangle,X|1\rangle=|0\rangle$</li>
+</ul>
+</li>
+<li>$Y=(0,-i;i,0)$
+<ul>
+<li>$Y=iXZ,XY=-YX,XZ=-ZX,YZ=-ZY$</li>
+</ul>
+</li>
+<li>$Z=(1,0;0,-1)$
+<ul>
+<li>$Z|0\rangle=|0\rangle,X|1\rangle=-|1\rangle$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Hadamard gate: $H=\frac{1}{\sqrt{2}}(1,1;1,-1)$
+<ul>
+<li>$H|0\rangle=|+\rangle=\frac{|0\rangle+|1\rangle}{\sqrt{2}},H|+\rangle=|0\rangle$</li>
+<li>$H|1\rangle=|-\rangle=\frac{|0\rangle-|1\rangle}{\sqrt{2}},H|-\rangle=|0\rangle$</li>
+<li>$H^{\otimes n}|0^n\rangle=\frac{1}{\sqrt{2^n}}\sum_{x\in{0,1}^n}|x\rangle$</li>
+<li>$H|x\rangle=\sum_z\frac{(-1)^{xz}}{\sqrt{2}}|z\rangle$</li>
+<li>$H^{\oplus n}|x\rangle=\frac{\sum_z(-1)^{x\cdot z}|z\rangle}{\sqrt{2^n}}$
+<ul>
+<li>$x\cdot z$: binary product mod 2</li>
+</ul>
+</li>
+<li>$HXH=Z,HZH=X,HYH=-Y$</li>
+</ul>
+</li>
+<li>Phase Gate: $S=(1,0;0,i)$</li>
+<li>T gate($\frac{\pi}{8}$ gate): $T=(1,0;0,e^{i\frac{\pi}{4}})=e^{i\frac{\pi}{8}}(e^{-i\frac{\pi}{8}}, 0;0,e^{i\frac{\pi}{8}})$</li>
+<li>Rotation
+<ul>
+<li>$R|0\rangle=\cos\theta|0\rangle-\sin\theta|1\rangle$</li>
+<li>$R|1\rangle=\sin\theta|0\rangle+\cos\theta|1\rangle$</li>
+</ul>
+</li>
+</ul>
+<h3 id="approximating-unitary-operators">Approximating unitary operators</h3>
+<ul>
+<li>Bloch sphere and rotation operators
+<ul>
+<li>二维复平面球同构与三维实平面球同构 $SU(2)\cong SO(3)$</li>
+<li>$|\varphi\rangle = \cos\frac{\theta}{2}|0\rangle+e^{i\varphi}\sin\frac{\theta}{2}|1\rangle$</li>
+<li>$A^2=I,e^{i\theta A}=\cos(\theta)I+i\sin(\theta)A$</li>
+<li>$R_{x}(\theta)=e^{\frac{-i\theta X/Y/Z}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}X$</li>
+<li>$R_{y}(\theta)=e^{\frac{-i\theta X/Y/Z}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}Y$</li>
+<li>$R_{z}(\theta)=e^{\frac{-i\theta X/Y/Z}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}Z$</li>
+<li>$R_{\hat n}=e^{-i\hat n\cdot\frac{\vec\sigma}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}(n_xX+n_yY+n_zZ)$
+<ul>
+<li>$\hat n=(n_x,n_y,n_z)$ real unit vector</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Z-Y decomposition: $U=e^{i\alpha}R_z(\beta)R_y(\gamma)R_z(\delta)$
+<ul>
+<li>$U=e^{i\alpha}(\beta)R_{\hat n}R_{\hat m}(\gamma)R_{\hat n}(\delta)$</li>
+</ul>
+</li>
+<li>$\lVert U-V\rVert=\max\limits_{|\psi\rangle}\lVert(U-V)|\psi\rangle\rVert$
+<ul>
+<li>$|\langle\psi|U^\dagger M_iU|\psi\rangle-\langle\psi|V^\dagger M_iV|\psi\rangle|\leq 2\lVert U-V\rVert$</li>
+<li>$\lVert U_tU_{t-1}\cdots U_1-V_tV_{t-1}\cdots V_1\rVert\leq\sum_i\lVert U_i-V_i\rVert$</li>
+</ul>
+</li>
+<li>$THTH=R_{\hat n}(\theta),\theta=2\arccos(\cos^2\frac{\pi}{8}),\hat n=(\cos\frac{\pi}{8},\sin\frac{\pi}{8},\sin\frac{\pi}{8})$ up to a normalization
+<ul>
+<li>$T=R_z(\frac{\pi}{4})$</li>
+<li>$HTH=R_x(\frac{\pi}{4})$</li>
+<li>$THTH=\cos^{\pi}{8}I-i(\cos\frac{\pi}{8}(X+Z)+\sin\frac{\pi}{8}Y)\sin\frac{\pi}{8}$</li>
+<li>Densely filled: $\forall\delta&gt;0,N=\lceil\frac{2\pi}{\delta}\rceil+1,\exists k!=j\in{1,\cdots,N}$ s.t. $\theta_{|k-j|}&lt;\delta$, then ${t\theta_{|k-j||t=1,2,3,\cdots}}$ fills up $[0,2\pi)$ with $\delta$ precision
+<ul>
+<li>$\theta_k=(k\theta)\bmod 2\pi$</li>
+<li>Implement $\forall \alpha,R_{\hat n}(\alpha)$ to an arbitrary small precisoin</li>
+</ul>
+</li>
+<li>$HR_{\hat n}H=R_{\hat m}(\alpha),\hat m=(\cos\frac{\pi}{8},-\sin\frac{\pi}{8},\cos\frac{\pi}{8})$ up to a normalization</li>
+</ul>
+</li>
+<li>$U=R_{\hat n}(\beta)R_{\hat m}(\lambda)R_{\hat n}(\delta)$ up to a global phase</li>
+</ul>
+<h2 id="quantum-fourier-transform-f_n">Quantum Fourier Transform $F_N$</h2>
+<p><img src="/images/general/quantumFT.png" alt="Quantum Fourier Tansform"></p>
+<ul>
+<li>$R_s=(1,0;0,e^{2\pi i/2^s})$</li>
+<li>gates: $O(n^2)$</li>
+<li>omit gates $R_k$ with $k=\Omega(\log n)$ and obtain a circuit with $O(n\log n)$ gates implementing QFT with precision $\frac{1}{\text{poly}(n)}$</li>
+</ul>
+<h2 id="controlled-gates">Controlled gates</h2>
+<ul>
+<li>Controlled-U
+<ul>
+<li>$C^1(U)|b\rangle\otimes|\psi\rangle=|b\rangle\otimes U^b|\psi\rangle$</li>
+<li>$C^n(U)$</li>
+</ul>
+</li>
+<li>Controlled-NOT (generalization of XOR): $\text{C-N}$</li>
+<li>Theorem: $U=e^{i\alpha}AXBXC,ABC=I$</li>
+<li>$C^1(U)|ab\rangle=(I\oplus C)\text{C-N}(I\oplus B)\text{C-N}(I\oplus A)([1,0;0,e^{i\alpha}]\oplus I)$</li>
+<li>$C^n(U)$ = multi C-N + C-U</li>
+<li>Toffoli gate ($C^2(U)$): $|abc\rangle\rightarrow|ab(c\oplus a\cdot b)\rangle$
+<ul>
+<li>generalization of NAND: classic universal gate</li>
+<li>Classic: $0\rightarrow|0\rangle,1\rightarrow|1\rangle$</li>
+<li>Decomposition to $H,S,T,\text{C-N}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="decomposition-of-arbitrary-unitary-gates">Decomposition of Arbitrary unitary gates</h2>
+<ul>
+<li>Two-level unitary gates are universal
+<ul>
+<li>$U$ acts on $d$-dimensial space, then $U=V_1\cdots V_k,k\leq \frac{d(d-1)}{2}$ two-level unitary matrices $V_1,\cdots,V_k$ （类似高斯消元）
+<ul>
+<li>$O(4^n)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Single qubit gates &amp; CNOT gates are universal
+<ul>
+<li>$\tilde{U}$ is the non-trival $2\times 2$ unitary submatrix of $U$</li>
+<li>$U$ acts on the space spanned by the computational basis states $|s\rangle,|t\rangle$</li>
+<li>Gray code: $|g_1\rangle\rightarrow|g_{m}|$</li>
+<li>$|g_1\rangle\rightarrow|g_{m-1}|, C^1(U), |g_{m-1}\rangle\rightarrow |g_1\rangle$
+<ul>
+<li>Controlled-U on different bit, controlled by other qubits are same</li>
+</ul>
+</li>
+<li>$O(n^2)$</li>
+</ul>
+</li>
+<li>Hadamard+T+Phase+CNOT are universal
+<ul>
+<li>$U\rightarrow R_{\hat n},R_{\hat m},S \rightarrow H,T,S$</li>
+<li>Convergent rate $\Theta(\frac{1}{\epsilon})$</li>
+<li>Solovay-Kitaev Theorem: Fix two universal gate sets that are closed under inverses. Then any $t$-gate circuit using one gate set can be implemented to precision $\epsilon$ using a circuit of $t\cdot\text{poly}(\log\frac{t}{\epsilon})$($\Theta(\log^c\frac{1}{\epsilon})$M &lt;&gt;?    ) gates from other set</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

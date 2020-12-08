@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5-强化学习 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#强化学习">强化学习</a>
+      <ul>
+        <li><a href="#markov-decision-process">Markov Decision Process</a></li>
+        <li><a href="#动态规划方法">动态规划方法</a></li>
+        <li><a href="#morte-carlo-method">Morte Carlo Method</a></li>
+        <li><a href="#时差方法-temporal-difference">时差方法 (Temporal Difference)</a></li>
+        <li><a href="#sarsa-algorithm">Sarsa Algorithm</a></li>
+        <li><a href="#q-algorithm">Q Algorithm</a></li>
+        <li><a href="#学习分类系统lcs">学习分类系统(LCS)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="强化学习">强化学习</h2>
+<ul>
+<li>交互学习：通过交互学习一个目标，Trial and Error
+<ul>
+<li>状态/奖励的分布式是策略依赖的</li>
+</ul>
+</li>
+<li>model-base: $V$ 根据已知数据计算，如动态规划</li>
+<li>model-free: 取样试验得到</li>
+<li>在线学习：如 Sarsa</li>
+<li>离线学习：如 Q Learning</li>
+</ul>
+<h3 id="markov-decision-process">Markov Decision Process</h3>
+<ul>
+<li>$S$: 状态集合</li>
+<li>$A$: 动作集合</li>
+<li>$R:S\times A\rightarrow\mathbb{R}$: 即时奖励函数</li>
+<li>$\delta:S\times A\times S\rightarrow \mathbb{R}$: 状态转移概率</li>
+<li>轨迹：经验/情节(episode)</li>
+<li>策略
+<ul>
+<li>$\pi:S\rightarrow A$</li>
+<li>$\pi:S\times A\rightarrow\mathbb{R}$</li>
+</ul>
+</li>
+<li>单状态学习，$\pi^*(s)=\argmin_\pi R(s,\pi(s))$</li>
+<li>多状态学习：$\pi^*(s)=\argmin_\pi V^\pi(s)$
+<ul>
+<li>有限状态：$R_t=\sum_{1\leq i\leq N}R(s_i,a_i)$</li>
+<li>无限状态
+<ul>
+<li>有折扣：$\sum_{i=0}^\infty\gamma^iR(s_i,a_i)$</li>
+<li>无折扣：$\lim_{N\rightarrow\infty}\frac{1}{N}\sum_{i=0}^{N-1}R(s_i,a_i)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>值函数
+<ul>
+<li>$V^\pi(s)=\mathbb{E}_\pi[R_t|s_t=s]$</li>
+<li>$Q^\pi(s,a)=\mathbb{E}_\pi[R_t|s_t=s,a_t=a]$</li>
+</ul>
+</li>
+<li>$\pi$ 为最优策略 $\iff\forall s,V^<em>(s)=V^{\pi^</em>}(s)=\max_\pi V^{\pi}(s)=\max_a Q^{\pi}(s,a)$</li>
+<li>Bellman 等式：$V^{\pi}(s)=\mathbb{E}<em>\pi[R_t+\gamma V^\pi(s</em>{t+1})|s_t=s]$
+<ul>
+<li>$V^\pi(s)=\sum_{a\in A}\pi(a|s)[R(s,a)+\gamma\sum_{s'}\delta(s,\pi(s),s')V^{\pi}(s')]$</li>
+<li>$Q^\pi(s,a)=R(s,a)+\gamma\sum_{s'}\delta(s,a,s')V^\pi(s')$</li>
+</ul>
+</li>
+</ul>
+<h3 id="动态规划方法">动态规划方法</h3>
+<ul>
+<li>策略评估（Policy Evaluation）：MDP 已知，给定一个策略 $\pi$，评估返回值
+<ul>
+<li>有限状态：求解方程组</li>
+<li>策略迭代：初始 $V^\pi(s)$ 后根据 Bellman 等式更新迭代</li>
+</ul>
+</li>
+<li>最优控制（Optiomal Control）：MDP 已知，寻找一个最优策略 $\pi^*$
+<ul>
+<li>策略迭代算法
+<ul>
+<li>值迭代：$V^{i+1}(s)\leftarrow\max_a Q^\pi(s,a)$</li>
+<li>策略迭代<br>
+贪心策略：$\pi(s)=\arg\max_a Q^{\pi}(s,a)$<br>
+$\epsilon$-贪心策略：以 $\epsilon$ 概率选择其它</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="morte-carlo-method">Morte Carlo Method</h3>
+<ul>
+<li>使用条件
+<ul>
+<li>环境可模拟</li>
+<li>有限步骤</li>
+</ul>
+</li>
+<li>策略评估迭代
+<ul>
+<li>探索：选择一个状态 $s$</li>
+<li>模拟：使用 $\pi$ 进行若干次模拟，从当前状态到结束，产生一段轨迹</li>
+<li>抽样：获得轨迹上的 $R(s,a)$, 获得集合 $T$</li>
+<li>估值： Learned value $R_t=\text{avg}(T)$</li>
+</ul>
+</li>
+<li>策略优化：$V(s_t)\leftarrow V(s_t)+\alpha(R_t-V(s_t))$, 优化 $\pi(s)$
+<ul>
+<li>Exploring Starts 假设：有探索起点的环境</li>
+<li>first-visit：只计算一个状态第一次的值</li>
+<li>every-visit: 计算每次访问的值</li>
+</ul>
+</li>
+</ul>
+<h3 id="时差方法-temporal-difference">时差方法 (Temporal Difference)</h3>
+<ul>
+<li>单步时差方法：$V(s_t)\leftarrow V(s_t)+\alpha(r_t+\gamma V(s_{t+1})-V(s_t))$
+<ul>
+<li>TD(0) 误差：$R_t^{(2)}=r_t+\gamma V(s_{t+1})$</li>
+</ul>
+</li>
+<li>$N$ 步时差方法: $R_t^{(n)}=\sum_{i=0}^{n-1}\gamma^ir_{t+i}+\gamma^nV(s_{t+n})$</li>
+<li>$N$ 步回退方法：$R_t=\frac{1}{2}R_t^{(2)}+\frac{1}{2}R_t^{(4)}$</li>
+<li>$\lambda$ 返回方法：$R^{(\lambda)}<em>t=(1-\lambda)\sum</em>{n=1}^\infty\lambda^{t-1}R_t^{(n)}$</li>
+<li>蒙特卡洛的方法可看做是最大步数的时序差分学习</li>
+</ul>
+<h3 id="sarsa-algorithm">Sarsa Algorithm</h3>
+<ul>
+<li>$Q(s_t,a_t)\leftarrow Q(s_t,a_t)+\alpha[R_{t+1}+\gamma Q(s_{t+1},a_{t+1})-Q(s_t,a_t)]$
+<ul>
+<li>choose $a_t$: $\epsilon$-Greedy</li>
+<li>choose $a_{t+1}$: $\epsilon$-Greedy</li>
+</ul>
+</li>
+<li>on-policy: 评估和优化的策略和模拟的策略是同一个</li>
+</ul>
+<h3 id="q-algorithm">Q Algorithm</h3>
+<ul>
+<li>$Q(s_t,a_t)\leftarrow Q(s_t,a_t)+\alpha[R_{t+1}+\gamma \max_aQ(s_{t+1},a)-Q(s_t,a_t)]$
+<ul>
+<li>choose $a_t$: $\epsilon$-Greedy</li>
+<li>choose $a_{t+1}$: Greedy</li>
+</ul>
+</li>
+<li>off-policy: 评估和优化的策略和模拟的策略是不同的两个</li>
+<li>储存 $Q$ 值：$s$-$a$ 矩阵</li>
+<li>维度灾难
+<ul>
+<li>Atari Game: 210*150 像素，每个像素 256，可能状态有 $256^{210\times 160}$</li>
+</ul>
+</li>
+</ul>
+<h4 id="deep-q-network">Deep Q Network</h4>
+<ul>
+<li>价值函数近似：$Q(s,a)=f(s,a)$
+<ul>
+<li>$Q(s,a)\approx f(s,a,w)$</li>
+<li>$Q(s)=[Q(s,a_1),Q(s,a_2),\cdots]\approx f(s,w)$</li>
+</ul>
+</li>
+<li>Q 网络训练目标损失：$L(w)=\mathbb{E}[(r+\gamma\max_{a'}Q(s',a',w)-Q(s,a,w))^2]$
+<ul>
+<li>以 $R_t$ 为目标值</li>
+</ul>
+</li>
+</ul>
+<h3 id="学习分类系统lcs">学习分类系统(LCS)</h3>
+<p>利用遗传算法实现强化学习</p>
+<ul>
+<li>历史发展
+<ul>
+<li>1971 Holland 首次提出分类系统</li>
+<li>1978 Holland 正式提出 Learning Classifer System</li>
+<li>1988 Holland 定义 LCS 标准框架，过于复杂</li>
+<li>1994 Wilson ZCS</li>
+<li>1999 Wilson XCS</li>
+</ul>
+</li>
+<li>Rule Representation：Use ternary alphabet ${0,1,\sharp}$ to represent rule conditions</li>
+<li>Credit assignment</li>
+<li>Rule discovery</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

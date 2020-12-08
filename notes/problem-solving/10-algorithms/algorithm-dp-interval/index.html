@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>区间动归 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#区间动归特征">区间动归特征</a></li>
+    <li><a href="#题目一览">题目一览</a></li>
+    <li><a href="#石子合并">石子合并</a>
+      <ul>
+        <li><a href="#question">Question:</a></li>
+        <li><a href="#analysis">Analysis</a></li>
+        <li><a href="#solution">Solution:</a></li>
+      </ul>
+    </li>
+    <li><a href="#能量项链">能量项链</a></li>
+    <li><a href="#solution-1">Solution</a></li>
+    <li><a href="#数字游戏">数字游戏</a>
+      <ul>
+        <li><a href="#solution-2">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#加分二叉树">加分二叉树</a>
+      <ul>
+        <li><a href="#solution-3">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#乘积最大">乘积最大</a></li>
+    <li><a href="#关路灯">关路灯</a>
+      <ul>
+        <li><a href="#analysis-1">Analysis</a></li>
+        <li><a href="#solution-4">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#gf弹钢琴httpcodevscnproblem2493"><a href="http://codevs.cn/problem/2493/">GF弹钢琴</a></a>
+      <ul>
+        <li><a href="#analysis-2">Analysis</a></li>
+        <li><a href="#solution-5">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#acting-cutehttpcodevscnproblem2497"><a href="http://codevs.cn/problem/2497/">Acting Cute</a></a></li>
+    <li><a href="#选择数字httpcodevscnproblem3327"><a href="http://codevs.cn/problem/3327/">选择数字</a></a></li>
+    <li><a href="#水果姐逛水果街httpcodevscnproblem3304"><a href="http://codevs.cn/problem/3304/">水果姐逛水果街Ⅰ</a></a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="interval-dp">Interval DP</h1>
+<h2 id="区间动归特征">区间动归特征</h2>
+<p>利用序作为状态</p>
+<h2 id="题目一览">题目一览</h2>
+<p>石子合并、能量项链、数字游戏、乘积最大、加分二叉树、关路灯、选择数字、Acting Cute、GF弹钢琴、水果姐逛水果街Ⅰ</p>
+<h2 id="石子合并">石子合并</h2>
+<h3 id="question">Question:</h3>
+<p>在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。
+试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.</p>
+<h3 id="analysis">Analysis</h3>
+<p>给定一个数列，长度为N
+定义变化f，取数列中相邻两项，删去后加入它们的和。记F1,F2,&hellip;,FN为变化n次后和的总和。求FN的最小可能值和最大可能值。</p>
+<p>以这种视角看待此问题无法为一次状态的变化找到好的对应方程。原因是F1,F2,&hellip;,FN-1无论取最大还是最小都无法成为FN的子问题。切换视角</p>
+<p>给定一个数列，长度为N。定义变化f，取数列中相邻两项，删去后加入它们的和。记F(i,j)为将从i到j的数合并花费最大（最小）值。求F(1,N)</p>
+<h3 id="solution">Solution:</h3>
+<p>最小值，边界条件：F(i,i)=0
+F(i,j) =min{F(i,j) , F(i,k) + F(k+1,j) + Sum(i,j) i&lt;=k&lt;j }</p>
+<blockquote>
+<p>Sum(i,j) = Sum(j)-Sum(i-1)</p>
+</blockquote>
+<p>变化是相邻变化，而数字游戏和乘积最大是组内无序变化，故多一维。</p>
+<h2 id="能量项链">能量项链</h2>
+<p>给定正整数组列，长度为N,每组有两个数。如果前一颗能量珠的头标记为m，尾标记为r，后一颗能量珠的头标记为r，尾标记为n，则聚合后释放的能量为m*r*n（Mars单位），新产生的珠子的头标记为m，尾标记为n。求能量最大值</p>
+<h2 id="solution-1">Solution</h2>
+<p>F(i,j) = max{F(i,j) , F(i,k)+F(k+1,j)+head(i)*tail(k)*tail(j) i&lt;=k&lt;=j}</p>
+<h2 id="数字游戏">数字游戏</h2>
+<p>在你面前有一圈整数（一共n个），你要按顺序将其分为m个部分，各部分内的数字相加，相加所得的m个结果对10取模后再相乘，最终得到一个数k。游戏的要求是使你所得的k最大或者最小。</p>
+<h3 id="solution-2">Solution</h3>
+<p>$F(i,j,k) = \max{F(i,j,k},F(i,w,k-1)*F(w+1,j,1)}$</p>
+<p>$F(i,j,1)=Sum(i,j) \bmod 10$</p>
+<p>看了乘积最大想到以下状态转移方程：
+$$F[i,k] = \max{F[j,k-1]*(S(j+1,k) mod 10)}$$
+然而这是环形的所以不行。故循环增加了维度。</p>
+<h2 id="加分二叉树">加分二叉树</h2>
+<p>设一个n个节点的二叉树tree的中序遍历为（l,2,3,…,n），其中数字1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第j个节点的分数为di，tree及它的每个子树都有一个加分，任一棵子树subtree（也包含tree本身）的加分计算方法如下：
+subtree的左子树的加分× subtree的右子树的加分＋subtree的根的分数
+若某个子树为主，规定其加分为1，叶子的加分就是叶节点本身的分数。不考虑它的空子树。
+试求一棵符合中序遍历为（1,2,3,…,n）且加分最高的二叉树tree。要求输出；
+（1）tree的最高加分
+（2）tree的前序遍历</p>
+<h3 id="solution-3">Solution</h3>
+<p>f[i,j] = max{f[i,k-1]*f[k+1,j]+a[k] | i&lt;=k&lt;=j, f[i,-1]=1}</p>
+<h2 id="乘积最大">乘积最大</h2>
+<p>F[i,j,k] = max{F[i,w,k-1]*F[w+1,1]}</p>
+<h2 id="关路灯">关路灯</h2>
+<p>多瑞卡得到了一份有趣而高薪的工作。每天早晨他必须关掉他所在村庄的街灯。所有的街灯都被设置在一条直路的同一侧。
+多瑞卡每晚到早晨5点钟都在晚会上，然后他开始关灯。开始时，他站在某一盏路灯的旁边。
+每盏灯都有一个给定功率的电灯泡，因为多端卡有着自觉的节能意识，他希望在耗能总数最少的情况下将所有的灯关掉。
+多端卡因为太累了，所以只能以1m/s的速度行走。关灯不需要花费额外的时间，因为当他通过时就能将灯关掉。
+编写程序，计算在给定路灯设置，灯泡功率以及多端卡的起始位置的情况下关掉所有的灯需耗费的最小能量。</p>
+<h3 id="analysis-1">Analysis</h3>
+<p>给定正整数列，长度为N. 给定标记初始位置。共两种策略：
+1、左移
+2、右移
+经过的数打上标记。每次决策耗费1单位时间，总耗费为时间与未打上标记的数的乘积累加。求其最少。</p>
+<p>评曰：最后的最后，他向左又向右，站在一盏灯下，从1到N的灯全灭。</p>
+<h3 id="solution-4">Solution</h3>
+<p>F[L,R,left] = min{F[L+1,R,left] + 1*cost[L,R] , F[L+1,R,right] | L&lt;=k&lt;=R}
+右边同</p>
+<h2 id="gf弹钢琴httpcodevscnproblem2493"><a href="http://codevs.cn/problem/2493/">GF弹钢琴</a></h2>
+<p>弹琴时，一只手上的5根手指不能交叉，并且两根手指不能放在同一个琴键上。同时，一只手的跨度不能超过9个白键（大拇指和小指之间最多间隔7个白键）。弹琴时，左右臂可以交叉，但是用（其中一只手的手指）去按（处于另一只手的两个手指之间）的按键是不允许的。
+　　现在有一架有52个白键和36个黑键的钢琴，并且他要弹奏的曲子只需要按白键。在同一时刻，他只用弹奏一个音符。如果这个音符不移动大拇指就可以按到，那么他不需要耗费体力；否则他需要花费sqrt(x)（下取整）的体力来移动手的位置（也就是移动大拇指的位置）。其中x代表移动前后大拇指的位置之差的绝对值。
+　　现在有一首由N个音符组成的乐曲，每个音符用0~51之间的一个整数表示，分别对应了52个白键。0是最左边的键，51是最右边的键。PianoEater想知道他弹完这首曲子最少需要耗费多少体力。</p>
+<h3 id="analysis-2">Analysis</h3>
+<p>最后的最后，他左手落某处，右手落某处，按下了最后一个音符.</p>
+<p>递推：
+F[i,j,k] -&gt; F[i+1,l,k] a[i+1]&lt;=l&lt;a[i+1]+8
+F[i,j,k] -&gt; F[i+1,j,l] a[i+1]-8&lt;=l&lt;=p</p>
+<h3 id="solution-5">Solution</h3>
+<p>F[i,j,k]=min{F[i-1,j,l]+sqrt(k-l)} a[i]&lt;=l&lt;=a[i]+8
+F[i,j,k]=min{F[i,j,k],F[i-1,l,k]+sqrt(j-l)} a[i]-8&lt;=l&lt;a[i]</p>
+<h2 id="acting-cutehttpcodevscnproblem2497"><a href="http://codevs.cn/problem/2497/">Acting Cute</a></h2>
+<p>环转线：以前所做的环形拆为线性，是把1~n-1再接到n的后边</p>
+<p>边界，f[1,0,0]=f[1,1,1]=0
+线性：F[i,j,0/1] 1:第i个时段醒
+F[i,j,0]=max{F[i-1,j,0],F[i-1,j,1]}
+F[i,j,1]=max{F[i-1,j-1,0],F[i-1,j-1,1]+U[i]}
+目标: max{F[n,m,0],F[n,m,1]}</p>
+<p>转线性：考虑n,1; 若n,1都0，无改变。若n,1都1，少一。其它，无影响。
+故考虑n,1都醒。
+边界:f[1,1,1]=u[1]
+目标:f[n,m,1]
+重新一次动归</p>
+<h2 id="选择数字httpcodevscnproblem3327"><a href="http://codevs.cn/problem/3327/">选择数字</a></h2>
+<p>一开始：
+F[i,k,p] -&gt; F[i+1,k,p]+cost
+F[i,k,p] -&gt; F[i+1,k,0]
+F[i,k,0] -&gt; F[i+1,k+1,i]</p>
+<p>其实类比乘积最大：
+F[i]=max{F[i],F[j-1]+Sum(j+1,i)}
+优化：http://codevs.cn/wiki/solution/?problem_id=3327</p>
+<h2 id="水果姐逛水果街httpcodevscnproblem3304"><a href="http://codevs.cn/problem/3304/">水果姐逛水果街Ⅰ</a></h2>
+<p>F[i,j]=max{F[i,j-1],a[i]}
+ans(i,j)=min{F[k,j]}</p>
+<p>二分优化
+F[i,j]=min{F[i,mid],F[mid+1,j],max[mid+1,j]-min[i,mid]}
+最值：rmq/线段树</p></main>
+        </div>
+
+    </div>
+</body></html>

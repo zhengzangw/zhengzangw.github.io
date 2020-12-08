@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Persistance | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#储存介质-non-volatile-memory">储存介质 (Non-Volatile Memory)</a>
+      <ul>
+        <li><a href="#hard-disk-time">Hard Disk Time</a></li>
+        <li><a href="#disk-scheduler">disk scheduler</a></li>
+      </ul>
+    </li>
+    <li><a href="#io设备与驱动">IO设备与驱动</a>
+      <ul>
+        <li><a href="#访问指令">访问指令</a></li>
+        <li><a href="#设备管理">设备管理</a></li>
+        <li><a href="#设备驱动程序">设备驱动程序</a></li>
+        <li><a href="#设备举例">设备举例</a></li>
+        <li><a href="#设备总线-io-bus">设备总线 (I/O bus)</a></li>
+      </ul>
+    </li>
+    <li><a href="#文件系统">文件系统</a>
+      <ul>
+        <li><a href="#文件系统实现">文件系统实现</a></li>
+        <li><a href="#api">API</a></li>
+        <li><a href="#filesystem-list">Filesystem List</a></li>
+        <li><a href="#filesystem-hierarchy-standardhttprefspecslinuxfoundationorgfhs_30fhsindexhtml"><a href="http://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html">Filesystem Hierarchy Standard</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#可靠性">可靠性</a>
+      <ul>
+        <li><a href="#raid-redundant-arrays-of-inexpensive-disks">RAID (Redundant Arrays of inexpensive disks)</a></li>
+        <li><a href="#完整性">完整性</a></li>
+        <li><a href="#一致性">一致性</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><blockquote>
+<p>Operating System: Three Easy Pieces
+<a href="http://ics.nju.edu.cn/~jyywiki">讲义</a>
+NJU: 操作系统 - 蒋炎岩&gt;</p>
+</blockquote>
+<h2 id="储存介质-non-volatile-memory">储存介质 (Non-Volatile Memory)</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Year</th>
+<th>原理</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Magnetic Tape</td>
+<td>1928</td>
+<td>磁比特数组</td>
+<td>无法进行高效的随机读写</td>
+</tr>
+<tr>
+<td>Magnetic Drum</td>
+<td>1932</td>
+<td>并行版磁带</td>
+<td></td>
+</tr>
+<tr>
+<td>Hard Disk</td>
+<td>1956</td>
+<td>二维并行版磁带</td>
+<td>柱面(platter)+磁道(track)+扇区(sector)</td>
+</tr>
+<tr>
+<td>Floppy Disk</td>
+<td>1971</td>
+<td>读写头与盘片分离</td>
+<td>floppy drive 每个电脑一份</td>
+</tr>
+<tr>
+<td>Compact Disk</td>
+<td>1980</td>
+<td>1bit = 挖坑/填坑</td>
+<td>CD-ReWritable: 激光改变反射率</td>
+</tr>
+<tr>
+<td>Solid State Drive</td>
+<td>1991</td>
+<td>NAND Flash</td>
+<td>NAND(x,y)=$!(x&amp;y)$</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FTL(Flash translation layer)</td>
+<td>运行操作系统和闪存管理程序</td>
+</tr>
+<tr>
+<td>USB Flash Disk</td>
+<td>1999</td>
+<td></td>
+<td>放电做不到100%干净</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hard-disk-time">Hard Disk Time</h3>
+<ul>
+<li>RPM: rotations per minute</li>
+<li>外部半径大
+<ul>
+<li>track skew</li>
+<li>multi-zoned</li>
+</ul>
+</li>
+<li>cache (track buffer)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>经典数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rotation delay</td>
+<td>rotate on track</td>
+<td>2ms</td>
+</tr>
+<tr>
+<td>seek time</td>
+<td>acceleration+coasting+deceleration+settling(most, 0.5-2ms)</td>
+<td>4ms</td>
+</tr>
+<tr>
+<td>transfer time</td>
+<td>read/write data</td>
+<td>30 ms</td>
+</tr>
+<tr>
+<td>tatol delay</td>
+<td>rotation delay + seek time(0.5-2ms) + transfer time</td>
+<td></td>
+</tr>
+<tr>
+<td>I/O rate Random</td>
+<td>Transfer size/total delay</td>
+<td>0.66MB/s(SCSI) 0.31MB/s(SATA)</td>
+</tr>
+<tr>
+<td>I/O rate Sequential</td>
+<td></td>
+<td>125MB/s(SCSI) 105MB/s(SATA)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="disk-scheduler">disk scheduler</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SJF</td>
+<td>length of each job is usually unknown</td>
+</tr>
+<tr>
+<td>SSTF(Shortest Seek Time First)</td>
+<td>Disk infomation may not be known to host</td>
+</tr>
+<tr>
+<td>NBF(nearest block first)</td>
+<td></td>
+</tr>
+<tr>
+<td>SCAN(elevator algorithm)</td>
+<td>moves back and forth across the disk servicing re- quests in order across the tracks</td>
+</tr>
+<tr>
+<td>SPTF(shortest positioning time first)</td>
+<td>seek time + rotation delay</td>
+</tr>
+</tbody>
+</table>
+<h2 id="io设备与驱动">IO设备与驱动</h2>
+<h3 id="访问指令">访问指令</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port IO (PIO)</td>
+<td>为I/O设备提供了一个单独的地址空间，通过读/写端口的方式实现设备控制(状态、控制、数据寄存器)</td>
+</tr>
+<tr>
+<td>Memory-Mapped I/O (MMIO)</td>
+<td>给特定的内存地址赋予特殊的含义，从而读/写内存地址就能实现设备的访问</td>
+</tr>
+</tbody>
+</table>
+<h3 id="设备管理">设备管理</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Polling</td>
+<td>polling and wait device read-&gt;send-&gt;polling and wait device finished</td>
+</tr>
+<tr>
+<td>interrupt</td>
+<td>send data-&gt;do sth else-&gt;receive ITR-&gt;run ISR</td>
+</tr>
+<tr>
+<td>DMA</td>
+<td>send info to DMA-&gt;do sth else-&gt;receive ITR-&gt;run ISR</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>coalescing: an interrupt-based optimzation
+<ul>
+<li>a device which needs to raise an interrupt first waits for a bit before deliv- ering the interrupt to the CPU</li>
+<li>multiple interrupts can be coalesced into a single interrupt delivery</li>
+</ul>
+</li>
+<li>ISR: interrupt service routine(interrupt handler)</li>
+</ul>
+<h3 id="设备驱动程序">设备驱动程序</h3>
+<p>为每一类设备统一接口访问</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>字符设备</td>
+<td>键盘、鼠标、终端、显卡</td>
+</tr>
+<tr>
+<td>块设备</td>
+<td>存储设备(磁盘、SSD)</td>
+</tr>
+<tr>
+<td>网络设备</td>
+<td>网卡</td>
+</tr>
+</tbody>
+</table>
+<h3 id="设备举例">设备举例</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>键盘控制器</td>
+<td>缓冲区</td>
+</tr>
+<tr>
+<td>磁盘控制器</td>
+<td>通过状态、控制、数据访问，可配置为中断模式</td>
+</tr>
+<tr>
+<td>显卡(GPU)</td>
+<td>协处理器；有专门的核心、指令等用于图像显示</td>
+</tr>
+<tr>
+<td>DMA</td>
+<td>实现 <code>memcpy()</code> 的I/O设备;通过总线占用内存宽带</td>
+</tr>
+<tr>
+<td>网卡</td>
+<td>网络设备：内存，DMA，中断</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>DMA(Direct Memery Access)
+<ul>
+<li>没有DMA时的运行顺序
+<ul>
+<li>CPU 给设备发送少量命令（快）</li>
+<li>CPU 传送数据（慢）</li>
+<li>CPU 等待设备完成（并行）</li>
+</ul>
+</li>
+<li>有DMA时的运行
+<ul>
+<li>给 DMA 发送命令（快）</li>
+<li>DMA 传送数据（DMA 与 CPU 并行）</li>
+<li>DMA 等待设备完成 (DMA 与设备并行)</li>
+<li>CPU 等待 DMA 完成（DMA 与 CPU 并行）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>网络设备驱动
+<ul>
+<li>send(): 发送包
+<ul>
+<li>TX：发送数据</li>
+<li>RX：接受数据</li>
+</ul>
+</li>
+<li>poll(): 询问是否收到包</li>
+<li>bufctl(): 设置 ring buffer</li>
+</ul>
+</li>
+<li>每当需要做一件耗费CPU太多时间的专有工作，就可以增加一个I/O设备
+<ul>
+<li>图形渲染-&gt;GPU</li>
+<li>大规模数据传送-&gt;DMA</li>
+</ul>
+</li>
+</ul>
+<h3 id="设备总线-io-bus">设备总线 (I/O bus)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>General I/O Bus</td>
+<td>PCI</td>
+<td></td>
+</tr>
+<tr>
+<td>Peripheral I/O Bus</td>
+<td>SCSI</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>SATA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>USB</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件系统">文件系统</h2>
+<p>文件系统是</p>
+<ul>
+<li>储存设备虚拟化(Virtualization)</li>
+<li>保存在持久储存上的数据结构</li>
+<li>管理操作系统内部对象的中间层
+<ul>
+<li>文件描述符 = 指向对象的指针</li>
+<li>read/write/ioctl系统调用 = 对象访问</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件系统实现">文件系统实现</h3>
+<ul>
+<li>文件系统的设计
+<ul>
+<li>balloc/bfree 的实现</li>
+<li>虚拟磁盘的数据结构</li>
+<li>inode 的表示和储存</li>
+<li>目录文件的数据结构</li>
+</ul>
+</li>
+<li>文件系统的实现 = 实现数据结构的查询/修改操作</li>
+<li>虚拟文件系统 VFS</li>
+<li>文件系统缓存
+<ul>
+<li>static partitioning: approx 10%</li>
+<li>dynamic partition</li>
+</ul>
+</li>
+</ul>
+<h3 id="api">API</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>管理文件</td>
+<td>inode number</td>
+<td>low-level name of a file</td>
+</tr>
+<tr>
+<td></td>
+<td><code>open()</code>/<code>openat()</code></td>
+<td><code>int fd=open(&quot;foo&quot;, O_CREAT|O_WRONLY|O_TRUNC,S_IRUSR|S_IWUSR);</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>fsync()</code></td>
+<td>fsync:所有数据；fdatasync:数据；mync</td>
+</tr>
+<tr>
+<td></td>
+<td><code>fstat()</code></td>
+<td></td>
+</tr>
+<tr>
+<td>管理目录</td>
+<td><code>isdir()</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>opendir</code>/<code>closedir()</code></td>
+<td><code>DIR *dp = opendir(&quot;.&quot;)</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>readdir()</code></td>
+<td><code>struct dirent *d = readdir(dp)</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>fchmod()</code>/<code>fchown()</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>rmdir() </code></td>
+<td></td>
+</tr>
+<tr>
+<td>Link</td>
+<td>hard link</td>
+<td>same inode</td>
+</tr>
+<tr>
+<td></td>
+<td>soft link</td>
+<td>symbolic link,dangling reference,<code>ln -s</code></td>
+</tr>
+<tr>
+<td>Filesystem</td>
+<td><code>mkfs</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>mount</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="filesystem-list">Filesystem List</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Name</th>
+<th>Intro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td>FAT</td>
+<td>File Allocation Table, FAT12,FAT16,FAT32</td>
+</tr>
+<tr>
+<td></td>
+<td>exFAT</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>NTFS</td>
+<td>New Technology File System</td>
+</tr>
+<tr>
+<td></td>
+<td>ReFS</td>
+<td>B+-tree, CoW(Copy-on-Write)</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>HFS+</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>APFS</td>
+<td>B-Tree</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>Ext4</td>
+<td>Ext2, Ext3</td>
+</tr>
+<tr>
+<td></td>
+<td>ReiserFS</td>
+<td>storing a huge number of small files</td>
+</tr>
+<tr>
+<td></td>
+<td>XFS</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>JFS</td>
+<td>JSF1, JSF2, also for clustered file systems</td>
+</tr>
+<tr>
+<td></td>
+<td>Btrfs</td>
+<td>B-tree</td>
+</tr>
+<tr>
+<td>Unix</td>
+<td>JFS</td>
+<td></td>
+</tr>
+<tr>
+<td>Solaris</td>
+<td>ZFS</td>
+<td>also for clusterd file systems, COW</td>
+</tr>
+<tr>
+<td>Clustered file systems</td>
+<td>GFS</td>
+<td>Gobal File System of Red Hat Linux</td>
+</tr>
+<tr>
+<td></td>
+<td>VMFS</td>
+<td>Virtual Machine File System of VMware</td>
+</tr>
+<tr>
+<td></td>
+<td>Apple Xsan</td>
+<td></td>
+</tr>
+<tr>
+<td>NetApp</td>
+<td>WAFL</td>
+<td>snapshots</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>LFS</td>
+<td>Log-structured File SYstems</td>
+</tr>
+</tbody>
+</table>
+<h3 id="filesystem-hierarchy-standardhttprefspecslinuxfoundationorgfhs_30fhsindexhtml"><a href="http://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html">Filesystem Hierarchy Standard</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/boot</td>
+<td>系统启动数据</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>设备文件</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>系统程序</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>配置文件</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>用户目录</td>
+</tr>
+<tr>
+<td>/lib</td>
+<td>库文件</td>
+</tr>
+<tr>
+<td>/media</td>
+<td>可移动设备</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>可变文件 (logs, snapshots)</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>临时文件</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>用户程序 (/usr/bin/, /usr/lib/, /usr/local/</td>
+</tr>
+</tbody>
+</table>
+<h2 id="可靠性">可靠性</h2>
+<ul>
+<li>硬件：a disk fails；a block fails</li>
+<li>软件：一致性</li>
+</ul>
+<h3 id="raid-redundant-arrays-of-inexpensive-disks">RAID (Redundant Arrays of inexpensive disks)</h3>
+<p>Fail-stop model: a disk can be working or failed</p>
+<table>
+<thead>
+<tr>
+<th>RAIN Level</th>
+<th>RAID-0</th>
+<th>RAIN-1</th>
+<th>RAID-4</th>
+<th>RAID-5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Realization</td>
+<td>striping</td>
+<td>mirroring</td>
+<td>parity-based</td>
+<td>rotate parity</td>
+</tr>
+<tr>
+<td>Remark</td>
+<td>chunk size</td>
+<td></td>
+<td>additive/subtractive</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Capacibility</strong></td>
+<td>$N*B$</td>
+<td>$(N*B)/2$</td>
+<td>$(N-1)*B$</td>
+<td>$(N-1)*B$</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Best case</td>
+<td></td>
+<td>$N/2$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Throught</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Sequential Read</td>
+<td>$N*S$</td>
+<td>$(N/2)*S$</td>
+<td>$(N-1)*S$</td>
+<td>$(N-1)*S$</td>
+</tr>
+<tr>
+<td>Sequential Write</td>
+<td>$N*S$</td>
+<td>$(N/2)*S$</td>
+<td>$(N-1)*S$</td>
+<td>$(N-1)*S$</td>
+</tr>
+<tr>
+<td>Random Read</td>
+<td>$N*R$</td>
+<td>$N*R$</td>
+<td>$(N-1)*S$</td>
+<td>$N*R$</td>
+</tr>
+<tr>
+<td>Random Write</td>
+<td>$N*R$</td>
+<td>$(N/2)*R$</td>
+<td>$\frac{1}{2}R$</td>
+<td>$\frac{N}{4}R$</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Read</td>
+<td>$T$</td>
+<td>$T$</td>
+<td>$T$</td>
+<td>$T$</td>
+</tr>
+<tr>
+<td>Write</td>
+<td>$T$</td>
+<td>$T$</td>
+<td>$2T$</td>
+<td>$2T$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="完整性">完整性</h3>
+<p>single-block failures</p>
+<table>
+<thead>
+<tr>
+<th>Errors</th>
+<th>Description</th>
+<th>Frequency(Cheap/Costly)</th>
+<th>Detection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LSEs(latent-sector errors)</td>
+<td>sector(s) damaged</td>
+<td>9.40%/1.40%</td>
+<td>error correcting code(ECC)</td>
+</tr>
+<tr>
+<td>Corruption</td>
+<td>silent faults like misdirected write</td>
+<td>0.50%/0.05%</td>
+<td>checksum (say a 4KB block)</td>
+</tr>
+<tr>
+<td>Lost Writes</td>
+<td></td>
+<td></td>
+<td>read-after-write/checksum elsewhere</td>
+</tr>
+</tbody>
+</table>
+<h3 id="一致性">一致性</h3>
+<ul>
+<li>持久化：原子性丧失
+<ul>
+<li>FAT: FAT[b]=EOF,data[b]=DATA,FAT[f]=b</li>
+<li>ext2: DMAP,inode,DATA 都需要更新</li>
+</ul>
+</li>
+<li>恢复文件系统一致性：FSCK(Filesystem Checking)</li>
+<li>崩溃一致性：Journaling
+<ul>
+<li>利用 sync() 保证顺序性：磁盘会优化写入顺序</li>
+<li>ext3 journaling (data journaling)
+<ul>
+<li>journal write: physical logging
+<ul>
+<li>TxB,I[v2],B[v2],Db-&gt;Journal</li>
+<li>sync()</li>
+</ul>
+</li>
+<li>journal commit
+<ul>
+<li>TxD-&gt;Journal</li>
+<li>sync()</li>
+</ul>
+</li>
+<li>Checkpoint
+<ul>
+<li>I[v2],B[v2],Db-&gt;Disk</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Metadata Journaling (ordered journaling)
+<ul>
+<li>Data write
+<ul>
+<li>Db-&gt;Disk</li>
+<li>sync()</li>
+</ul>
+</li>
+<li>Journal metadata write: logical logging
+<ul>
+<li>TxB,I[v2],B[v2]-&gt;Journal</li>
+<li>sync()</li>
+</ul>
+</li>
+<li>Journal commit
+<ul>
+<li>TxE-&gt;Journal</li>
+<li>sync()</li>
+</ul>
+</li>
+<li>Checkpoint metadata
+<ul>
+<li>I[v2],B[v2]-&gt;Disk</li>
+</ul>
+</li>
+<li>Free
+<ul>
+<li>mark the transaction free in journal superblock</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>崩溃恢复
+<ul>
+<li>用一个额外的指针维护journal完成的时刻</li>
+<li>从指针开始，向后重做journal中记录的操作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>其它方法
+<ul>
+<li>Soft Updates: orders all writes to the file sys- tem to ensure that the on-disk structures are never left in an inconsis- tent state</li>
+<li>copy on write(COW): never overwrites files or directories in place</li>
+</ul>
+</li>
+<li>LFS: writing to disk sequentially
+<ul>
+<li>write buffering</li>
+<li>$D=\frac{F}{1-F}*R_{peak}*T_{position}$</li>
+<li>Checkpoint Region-&gt;Inode Map-&gt;Inode-&gt;[SS,D]</li>
+<li>recursive update problem</li>
+<li>garbage collection problem</li>
+</ul>
+</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

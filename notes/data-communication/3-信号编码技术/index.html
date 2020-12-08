@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>信号编码技术 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数字基带信号数数">数字基带信号（数数）</a>
+      <ul>
+        <li><a href="#不归零码-nrz">不归零码 NRZ</a></li>
+        <li><a href="#多电平二进制">多电平二进制</a></li>
+        <li><a href="#扰码技术">扰码技术</a></li>
+        <li><a href="#双相位">双相位</a></li>
+      </ul>
+    </li>
+    <li><a href="#数模转换调制技术">数模转换（调制技术）</a>
+      <ul>
+        <li><a href="#ask-振幅键控">ASK: 振幅键控</a></li>
+        <li><a href="#fsk-频移键控">FSK: 频移键控</a></li>
+        <li><a href="#psk-相移键控">PSK: 相移键控</a></li>
+        <li><a href="#qam-正交调幅">QAM 正交调幅</a></li>
+      </ul>
+    </li>
+    <li><a href="#模数转换">模数转换</a>
+      <ul>
+        <li><a href="#pcm-脉码调制">PCM 脉码调制</a></li>
+        <li><a href="#dm-增量调制">DM 增量调制</a></li>
+      </ul>
+    </li>
+    <li><a href="#模模转换模拟调制">模模转换（模拟调制）</a>
+      <ul>
+        <li><a href="#am-调幅">AM 调幅</a></li>
+        <li><a href="#pmfm-角度调制">PM/FM 角度调制</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>基带信号：信源发出的没有经过调制，低频信号</li>
+<li>载波信号：调制到高频的信号</li>
+</ul>
+<h2 id="数字基带信号数数">数字基带信号（数数）</h2>
+<table>
+<thead>
+<tr>
+<th>Data Element</th>
+<th>Signal Element</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data rate $R$</td>
+<td>Signal rate $D=\frac{R}{L}=\frac{R}{\log_2M}$</td>
+</tr>
+<tr>
+<td>$T_b=\frac{1}{R}$</td>
+<td>调制速率</td>
+</tr>
+<tr>
+<td>比特差错率 BER</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>接受端需求
+<ul>
+<li>每比特定时关系</li>
+<li>每比特信号电平</li>
+</ul>
+</li>
+<li>BER 影响
+<ul>
+<li>信噪比</li>
+<li>数据率</li>
+<li>带宽</li>
+<li>编码机制</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>编码术语</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单极性</td>
+<td>正、零电平</td>
+</tr>
+<tr>
+<td>双极性</td>
+<td>正、负电平</td>
+</tr>
+<tr>
+<td>归零</td>
+<td>信号电压在码元终止前回到零电平</td>
+</tr>
+<tr>
+<td>双相位</td>
+<td>单码用多相位表示</td>
+</tr>
+<tr>
+<td>差分波形</td>
+<td>利用相邻码元的电平跳变和不变来表示消息代码</td>
+</tr>
+<tr>
+<td>多电平波形</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>码型选择
+<ul>
+<li>信号谱频：
+<ul>
+<li><strong>传输功率集中在带宽中心位置</strong></li>
+<li>减少高频</li>
+<li>去掉直流：0，1 等概率则无直流分量</li>
+</ul>
+</li>
+<li>时钟同步
+<ul>
+<li>定时信息</li>
+</ul>
+</li>
+<li>差错检测</li>
+<li>信号干扰</li>
+<li>降低通信延迟和成本</li>
+</ul>
+</li>
+</ul>
+<h3 id="不归零码-nrz">不归零码 NRZ</h3>
+<ul>
+<li>NRZ-L：双极性不归零</li>
+<li>NRZI: 双极性不归零差分</li>
+<li>缺点
+<ul>
+<li>包含直流成分</li>
+<li>缺乏同步能力</li>
+</ul>
+</li>
+</ul>
+<h3 id="多电平二进制">多电平二进制</h3>
+<ul>
+<li>双极性 AMI: 没有信号为 0，1 为正负脉冲交替</li>
+<li>伪三进制码：没有信号为 1，0 为正负脉冲交替</li>
+<li>nBmB 码：低速情况解决同步问题</li>
+<li>$B_T=0.5(1+r)D$</li>
+</ul>
+<h3 id="扰码技术">扰码技术</h3>
+<ul>
+<li>HDB3: 高密度双极性 3 零
+<ul>
+<li>AMI 为基础</li>
+<li>连续的 0 超过 3 个时，每四个变为一组为 B00V,V 为破坏脉冲，B 为调节脉冲</li>
+<li><strong>V 与前一个相邻的非零脉冲极性相同，V 码之间极性必须交替，B 任意取值以满足 V 的要求</strong></li>
+</ul>
+</li>
+<li>B8ZA: 双极性 8 零替换
+<ul>
+<li>AMI 为基础</li>
+<li>全零八位组之前最后一个脉冲电压为正：000+-0-+</li>
+<li>全零八位组之前最后一个脉冲电压为负：000-+0+-</li>
+</ul>
+</li>
+</ul>
+<h3 id="双相位">双相位</h3>
+<ul>
+<li>曼切斯特编码：低到高为 1，高到低为 0</li>
+<li>差分曼切斯特</li>
+</ul>
+<h2 id="数模转换调制技术">数模转换（调制技术）</h2>
+<ul>
+<li>载波频率 $f_c$：一种连续的频率，能够被调制或者用来承载另一个信号</li>
+<li>带宽 $B_T$
+<ul>
+<li>(ASK) $B_T=(1+r)R,0&lt;r&lt;1$</li>
+<li>(FSK) $B_T=2\Delta+(1+r)R$</li>
+<li>(MFSK) $B_T=\frac{(1+r)M}{\log_2M}R$</li>
+<li>(MPSK) $B_T=\frac{1+r}{L}R=\frac{1+r}{\log_2M}R$</li>
+</ul>
+</li>
+<li>信噪比：$M$ 越大
+<ul>
+<li>MASK,MPSK 越大</li>
+<li>MFSK 越小</li>
+</ul>
+</li>
+</ul>
+<h3 id="ask-振幅键控">ASK: 振幅键控</h3>
+<p>$$S(t)=\begin{cases}A\cos(2\pi f_ct),&amp;1\newline 0,&amp;0\end{cases}$$</p>
+<ul>
+<li>非相干解调：全波整流器</li>
+<li>相干解调：带通滤波器$\rightarrow$相乘器$\rightarrow$低通滤波器$\rightarrow$抽样判决器
+<ul>
+<li>$A\cos(\omega t)\cos(\omega t)=A-Acos(2\omega t)$</li>
+<li>$\cos(2\alpha)=cos^2\alpha-sin^2\alpha$</li>
+</ul>
+</li>
+<li>缺点：受噪声影响大</li>
+<li>MASK: 多进制振幅键控/多电平调制</li>
+</ul>
+<h3 id="fsk-频移键控">FSK: 频移键控</h3>
+<ul>
+<li>BFSK</li>
+</ul>
+<p>$$S(t)=\begin{cases}A\cos(2\pi f_1t),&amp;1\newline A\cos(2\pi f_2t),&amp;0\end{cases}$$</p>
+<ul>
+<li>MFSK
+<ul>
+<li>$T_s=LT$</li>
+</ul>
+</li>
+</ul>
+<h3 id="psk-相移键控">PSK: 相移键控</h3>
+<p>$$S(t)=\begin{cases}A\cos(2\pi f_ct),&amp;1\newline A\cos(2\pi  f_ct+\pi),&amp;0\end{cases}$$</p>
+<ul>
+<li>BPSK</li>
+<li>DPSK</li>
+<li>QPSK
+<ul>
+<li>$s(t)=\frac{1}{\sqrt{2}}I(t)\cos(2\pi f_ct)-\frac{1}{\sqrt{2}}Q(t)\sin(2\pi f_ct)$</li>
+<li>$R=\frac{R_{in}}{2}$</li>
+</ul>
+</li>
+<li>OQPSK
+<ul>
+<li>$s(t)=\frac{1}{\sqrt{2}}I(t)\cos(2\pi f_ct)-\frac{1}{\sqrt{2}}Q(t-T_b)\sin(2\pi f_ct)$</li>
+<li>叠加后信号相位变化不超过 90 度</li>
+</ul>
+</li>
+</ul>
+<h3 id="qam-正交调幅">QAM 正交调幅</h3>
+<ul>
+<li>调幅+调相：$s(t)=d_1(t)\cos2\pi f_ct+d_2(t)\sin 2\pi f_ct$</li>
+</ul>
+<h2 id="模数转换">模数转换</h2>
+<h3 id="pcm-脉码调制">PCM 脉码调制</h3>
+<ul>
+<li>PAM 采样器：时值离散，振幅连续</li>
+<li>量化器：时值离散，振幅离散</li>
+<li>量化误差：6.02n+1.76 dB</li>
+<li>扩压函数：防止振幅较低的地方失真较严重</li>
+</ul>
+<h3 id="dm-增量调制">DM 增量调制</h3>
+<ul>
+<li>在每个采样周期上升或下降一个步长值</li>
+</ul>
+<h2 id="模模转换模拟调制">模模转换（模拟调制）</h2>
+<h3 id="am-调幅">AM 调幅</h3>
+<ul>
+<li>载波信号 $S_{AM}(t)=(A_0+m(t)) cos(w_ct)$
+<ul>
+<li>$m(t)$ 调制信号</li>
+</ul>
+</li>
+<li>DSB 双边带</li>
+<li>SSB 单边带</li>
+</ul>
+<h3 id="pmfm-角度调制">PM/FM 角度调制</h3>
+<ul>
+<li>PM： $S_{PM}(t)=A\cos(w_ct+n_pm(t))$</li>
+<li>FM: $S_{FM}(t)=A\cos(w_ct+n_f\int m(\tau)d\tau)$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

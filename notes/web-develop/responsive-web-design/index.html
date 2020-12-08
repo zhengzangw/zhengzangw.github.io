@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Responsive Web Design | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#text">Text</a></li>
+    <li><a href="#list">List</a></li>
+    <li><a href="#figure">Figure</a></li>
+    <li><a href="#form">Form</a></li>
+    <li><a href="#others">Others</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#unit">unit</a></li>
+    <li><a href="#variable">variable</a></li>
+    <li><a href="#selectors">selectors</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#flexbox-container">Flexbox-Container</a></li>
+    <li><a href="#flexbox-item">Flexbox-Item</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#grid-container">Grid-Container</a></li>
+    <li><a href="#grid-item">Grid-Item</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="basic-html-and-html5">Basic HTML and HTML5</h1>
+<p>HTML5 tags: header, footer, nav, video, article, section, main</p>
+<h2 id="text">Text</h2>
+<p>h1-h6,p,s,u,em,strong,a,time</p>
+<h2 id="list">List</h2>
+<p>ul,ol,li<br>
+table: <code>&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;</code></p>
+<h2 id="figure">Figure</h2>
+<p>figure,figcaption,img<br>
+i</p>
+<h2 id="form">Form</h2>
+<ul>
+<li>form: <code>&lt;form action=&quot;&quot;&gt; &lt;/form&gt;</code></li>
+<li>text field: <code>&lt;input type=&quot;text&quot; placeholder=&quot;&quot; required&gt;</code></li>
+<li>fieldset, legend</li>
+<li>radio/checkbox: <code>&lt;label for=&quot;name&quot;&gt; &lt;input type=&quot;radio&quot; name=&quot;name&quot; checked&gt; Name &lt;/label&gt;</code></li>
+<li>button: <code>&lt;button type=&quot;submit&quot;&gt; &lt;/button&gt;</code></li>
+</ul>
+<h2 id="others">Others</h2>
+<ul>
+<li>audio: <code>&lt;audio id=&quot;meowClip&quot; controls&gt;&lt;source src=&quot;audio/meow.mp3&quot; type=&quot;audio/mpeg&quot; /&gt;&lt;source src=&quot;audio/meow.ogg&quot; type=&quot;audio/ogg&quot; /&gt;&lt;/audio&gt;</code></li>
+<li>accesskey</li>
+<li>tabindex</li>
+</ul>
+<h1 id="basic-css">Basic CSS</h1>
+<ul>
+<li>color:
+<ul>
+<li>#FFA500</li>
+<li>rgb(218,112,214)</li>
+<li>hsl(0,100%,50%)</li>
+<li><code>linear-gradient(gradient_direction, color 1, color 2, color 3, ...)</code></li>
+<li>opacity</li>
+</ul>
+</li>
+<li>complementary color
+<ul>
+<li>red-cyan</li>
+<li>green-magenta</li>
+<li>blue-yellow</li>
+<li>opacity</li>
+</ul>
+</li>
+<li>font
+<ul>
+<li>font-size</li>
+<li>font-weight</li>
+<li>font-style</li>
+<li>font-family
+<ul>
+<li>sans-serif</li>
+<li>monospace</li>
+<li>Lobster with <code>&lt;link href=&quot;https://fonts.googleapis.com/css?family=Lobster&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;</code></li>
+<li>degrade: Lobster, Helvetica</li>
+</ul>
+</li>
+<li>text-align: justify/center/right/left</li>
+<li>text-transform
+<ul>
+<li>lowercase,uppercase,capitalize,initial,inherit,none</li>
+</ul>
+</li>
+<li>line-height</li>
+</ul>
+</li>
+<li>border
+<ul>
+<li>border-color</li>
+<li>border-width</li>
+<li>border-style</li>
+<li>border-radius</li>
+</ul>
+</li>
+<li>box-shadow: <code>0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)</code></li>
+<li>padding
+<ul>
+<li>padding-top/right/bottom/left</li>
+</ul>
+</li>
+<li>margin
+<ul>
+<li>auto: set to center</li>
+</ul>
+</li>
+<li>伪类
+<ul>
+<li>p:hover</li>
+<li>:root</li>
+</ul>
+</li>
+<li>伪元素
+<ul>
+<li>::before</li>
+<li>::after</li>
+</ul>
+</li>
+<li>div
+<ul>
+<li>width</li>
+<li>height</li>
+<li>background-color</li>
+<li>display: none; = visibility: hidden;</li>
+</ul>
+</li>
+<li>transform
+<ul>
+<li>scale(2)</li>
+<li>skewX/skewY(-32deg)</li>
+</ul>
+</li>
+<li>animation
+<ul>
+<li>animation-name: myname</li>
+<li>animation-duration</li>
+<li>animation-fill-mode: forwards</li>
+<li>animation-iteration-count: infinite</li>
+<li>animation-timing-function: ease/ease-in/ease-out/linear/cubic-bezier</li>
+<li><code>@keyframes myname {0%{} 100%{}}</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="unit">unit</h2>
+<ul>
+<li>absolute: in,mm;px</li>
+<li>relative: em,rem</li>
+<li>vw,vh,vmin,vmax: 1vw = 1% width of browser window</li>
+</ul>
+<h2 id="variable">variable</h2>
+<ul>
+<li><code>--myvar: gray</code></li>
+<li><code>background: var(--myvar,black);</code></li>
+</ul>
+<h2 id="selectors">selectors</h2>
+<ul>
+<li>!important&gt;inline&gt;id&gt;class</li>
+<li>attribute selectors: <code>[type='radio']</code></li>
+<li>:root</li>
+<li>@meida(max-width: 500px)</li>
+</ul>
+<h1 id="css-box-model">CSS Box Model</h1>
+<ul>
+<li>display: block/inline;</li>
+<li>position
+<ul>
+<li>relative: still in normal flow</li>
+<li>absolute: remove, locked relative to its closest positioned ancestor</li>
+<li>fixed: relative to broswer</li>
+</ul>
+</li>
+<li>float: left/right
+<ul>
+<li>remove</li>
+</ul>
+</li>
+<li>z-index</li>
+</ul>
+<h1 id="css-flex">CSS Flex</h1>
+<ul>
+<li>display: flex</li>
+</ul>
+<h2 id="flexbox-container">Flexbox-Container</h2>
+<ul>
+<li>flex-direction: row/column</li>
+<li>justify-content: center/flex-start/flex-end/space-between/space-around (align the main-axis)</li>
+<li>align-items: flex-start/flex-end/center/stretch/baseline (align the cross-axis)</li>
+<li>flex-wrap: wrap</li>
+</ul>
+<h2 id="flexbox-item">Flexbox-Item</h2>
+<ul>
+<li>flex-shrink: 1/3</li>
+<li>flex-grow</li>
+<li>flex-basis</li>
+<li>flex: shrink grow basis</li>
+<li>order</li>
+<li>align-self</li>
+</ul>
+<h1 id="css-grid">CSS Grid</h1>
+<h2 id="grid-container">Grid-Container</h2>
+<ul>
+<li>display: grid</li>
+<li>grid-template-columns: 50px 50px 50px</li>
+<li>grid-template-rows:
+<ul>
+<li>both can use Gird Units: <code>fr,auto,%</code></li>
+<li>repeat(3,50px)</li>
+<li>minmax(50px,200px)</li>
+<li>auto-fill</li>
+<li>auto-fit:only difference is that when the container&rsquo;s size exceeds the size of all the items combined, auto-fill keeps inserting empty rows or columns and pushes your items to the side, while auto-fit collapses those empty rows or columns and stretches your items to fit the size of the container.</li>
+</ul>
+</li>
+<li>grid-column-gap:</li>
+<li>grid-gap: row column</li>
+<li>justify-items</li>
+<li>align-items</li>
+<li>grid-template-ares:</li>
+</ul>
+<h2 id="grid-item">Grid-Item</h2>
+<ul>
+<li>grid-column: from/to</li>
+<li>grid-row: from/to</li>
+<li>justify-self: start/center/end</li>
+<li>align-self</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>9-Deep-Relief-Network | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#玻尔兹曼机">玻尔兹曼机</a></li>
+    <li><a href="#受限玻尔兹曼机">受限玻尔兹曼机</a></li>
+    <li><a href="#深度信念网络">深度信念网络</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="玻尔兹曼机">玻尔兹曼机</h2>
+<ul>
+<li>动力系统：描述一个空间中所有点随时间变化情况</li>
+<li>Boltzmann Machine: a Stochastic Dynamical System
+<ul>
+<li>每个随机变量二值：$X\in{0,1}^K$，可观察变量 $V$，隐变量 $H$</li>
+<li>所有结点全连接</li>
+<li>每两个变量间影响对称</li>
+</ul>
+</li>
+<li>玻尔兹曼分布：$p(x)=\frac{1}{Z}\exp(\frac{-E(x)}{T})$
+<ul>
+<li>$E(x)=E(X=x)=-(\sum_{i&lt;j}\omega_{ij}x_ix_j+\sum_ib_ix_i)$</li>
+<li>$\frac{p_\alpha}{p_\beta}=\exp(\frac{E_\beta-E_\alpha}{kT})$</li>
+</ul>
+</li>
+<li>全条件概率：$p(x_i=1|x_{\backslash i})=\sigma(\frac{\sum_j\omega_{ij}x_j+b_i}{T})$</li>
+<li>生成模型：吉布斯采样生成服从 $p(x)$ 的函数
+<ul>
+<li>随机选择变量 $X_i$，根据 $p(x_i|x_{\backslash i})$ 设置状态，运行到热平衡</li>
+<li>$T$ 越高越容易达到热平衡</li>
+<li>$T\rightarrow+\infty$: 每个状态一样</li>
+<li>$T\rightarrow 0$：退化为 Hopfield 网络</li>
+</ul>
+</li>
+<li>模拟退火寻找全局最优解：以概率 $\sigma(\frac{\Delta E_i(x_{\backslash i})}{T})$ 将变量设置为 1</li>
+<li>参数学习
+<ul>
+<li>可观测变量 $v\in{0,1}^{K_v}$</li>
+<li>隐变量：$h\in{0,1}^{K_h}$</li>
+<li>对数似然：$L(D;W,b)=\frac{1}{N}\sum_{n=1}^N\log p(\hat v^{(n)};W,b)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="受限玻尔兹曼机">受限玻尔兹曼机</h2>
+<ul>
+<li>隐变量与可观察变量全连接</li>
+<li>$E(v,h)=-a^\top v-b^\top h-v^\top Wh$</li>
+<li>$p(v,h)=\frac{1}{Z}\exp(-E(v,h))$</li>
+<li>生成模型
+<ul>
+<li>$p(v_i|v_{\backslash i,h})=p(v_i|h)$</li>
+<li>$p(v_i=1|h)=\sigma(a_i+\sum_j\omega_{ij}h_j)$</li>
+<li>吉布斯采样：并行对所有隐变量/可观测变量采样，快速达到热平衡</li>
+</ul>
+</li>
+<li>参数学习</li>
+<li>对比散度算法</li>
+<li>受限玻尔兹曼机类型
+<ul>
+<li>伯努利-伯努利 BB-RBM</li>
+<li>高斯-伯努利 GB-RBM</li>
+<li>伯努利-高斯 BG-RBM</li>
+</ul>
+</li>
+</ul>
+<h2 id="深度信念网络">深度信念网络</h2>
+<ul>
+<li>每层变量依赖于上一层变量，最底层为可观测变量</li>
+<li>逐层训练：每层看做玻尔兹曼机</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

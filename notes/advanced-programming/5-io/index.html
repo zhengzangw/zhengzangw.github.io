@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>I/O | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#io">I/O</a></li>
+    <li><a href="#面向控制台-io">面向控制台 I/O</a></li>
+    <li><a href="#面向文件-io">面向文件 I/O</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="io">I/O</h2>
+<ul>
+<li>输入输出基于字节流</li>
+<li>过程式：printf, scanf
+<ul>
+<li>不是强类型，不利于类型检查，会导致类型相关的运行错误</li>
+<li>当格式串描述与数据不一致时会导致运行时刻的错误</li>
+</ul>
+</li>
+<li>面向对象：cout, cin, &laquo;, &raquo;</li>
+<li>ios
+<ul>
+<li>istream 控制台输入
+<ul>
+<li>ifstream 文件输入</li>
+<li>istrstream 字符串输入</li>
+</ul>
+</li>
+<li>ostream
+<ul>
+<li>ofstream</li>
+<li>ostrstream</li>
+</ul>
+</li>
+<li>iostream
+<ul>
+<li>fstream</li>
+<li>strstream</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="面向控制台-io">面向控制台 I/O</h2>
+<ul>
+<li>预定义 I/O 对象
+<ul>
+<li>cin(istream)</li>
+<li>cout(ostream)</li>
+<li>cerr(ostream) 不带缓冲</li>
+<li>clog(ostream) 带缓冲</li>
+</ul>
+</li>
+<li>操纵符 <code>&lt;iomanip&gt;</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>操纵符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>endl</td>
+<td>输出换行符并 flush</td>
+</tr>
+<tr>
+<td>flush</td>
+<td>输出缓存立刻输出</td>
+</tr>
+<tr>
+<td>dec</td>
+<td>10</td>
+</tr>
+<tr>
+<td>oct</td>
+<td>8</td>
+</tr>
+<tr>
+<td>hex</td>
+<td>16</td>
+</tr>
+<tr>
+<td>setprecision(int n)</td>
+<td>设置浮点数的精度</td>
+</tr>
+<tr>
+<td>setiosflags(long flags)</td>
+<td>设置输出格式，ios::scientific, ios::fixed</td>
+</tr>
+<tr>
+<td>resetiosflags(long flags)</td>
+<td>取消输出格式</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>浮点数输出格式为 ios::scientific 或 ios::fixed 时，setprecision 设置浮点数小数点后面的位数</li>
+<li>输出格式为自动或两者都有时，setprecision 设置有效数字个数</li>
+<li>字节流输出</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>put(<span style="color:#66d9ef">char</span> ch);
+cout.put(<span style="color:#e6db74">&#39;A&#39;</span>);
+ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>write(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p, <span style="color:#66d9ef">int</span> count);
+cout.write(a, n);
+</code></pre></div><ul>
+<li>
+<p>控制台输入</p>
+<ul>
+<li>在输入的各个数据之间用空白符（空格、\t、\n）分开
+<ul>
+<li>输入前先跳过空白符</li>
+<li>输入时碰到空白符或当前数据类型不允许的字符结束</li>
+</ul>
+</li>
+<li>操纵符
+<ul>
+<li>setw(int n): 把输入的字符串和'\0&rsquo;放入 str 中，最多输入 n-1 个字符</li>
+</ul>
+</li>
+<li>字节流</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">  istream<span style="color:#f92672">::</span>get(<span style="color:#66d9ef">char</span> <span style="color:#f92672">&amp;</span>ch);
+  istream<span style="color:#f92672">::</span>getline(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p, <span style="color:#66d9ef">int</span> count, <span style="color:#66d9ef">char</span> delim<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\n&#39;</span>);<span style="color:#75715e">//输入一个字符串直到输入了count-1个字符或遇到delim指定的字符为止，并自动加上一个&#39;\0&#39;字符
+</span><span style="color:#75715e"></span>  istream<span style="color:#f92672">::</span>read(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p, <span style="color:#66d9ef">int</span> count);
+</code></pre></div></li>
+<li>
+<p>重载输入输出操作符</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ostream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">&lt;&lt;</span> (ostream<span style="color:#f92672">&amp;</span> out, <span style="color:#66d9ef">const</span> A <span style="color:#f92672">&amp;</span>a){
+    out <span style="color:#f92672">&lt;&lt;</span> a.x;
+    <span style="color:#66d9ef">return</span> out;
+}
+</code></pre></div><h2 id="面向文件-io">面向文件 I/O</h2>
+<ul>
+<li>
+<p>在 C++中，把文件看成是由一系列字节所构成的字节串，对文件中数据的操作（输入/输出）通常是逐个字节顺序进行，因此称为流式文件</p>
+</li>
+<li>
+<p>位置指针：每个打开的文件都有一个，指出文件当前读写位置</p>
+</li>
+<li>
+<p>进行读/写操作时，每读入/写出一个字节，文件位置指针会自动往后移动一个字节的位置</p>
+</li>
+<li>
+<p>文件储存方式</p>
+<ul>
+<li>文本方式：只包含可显示的字符和有限控制符的编码，一般用于存储具有“行”结构的文本数据</li>
+<li>二进制方式：包含任意二进制字节，一般用于存储具有“行”结构的文本数据</li>
+</ul>
+</li>
+<li>
+<p>文件输出</p>
+<ul>
+<li>
+<p>创建 ofstream 类对象</p>
+<ul>
+<li>直接方式：<code>ofstream out_file(&lt;文件名&gt;,&lt;打开方式&gt;);</code></li>
+<li>间接方式</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ofstream out_file;
+out_file.open(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">文件名</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">打开方式</span><span style="color:#f92672">&gt;</span>);
+</code></pre></div></li>
+<li>
+<p>打开方式</p>
+<ul>
+<li>
+<p>ios::out</p>
+<p>打开一个外部文件用于写操作，如果外部文件已存在，则首先把它的内容清除；否则，先创建该外部文件，默认方式</p>
+</li>
+<li>
+<p>ios::app</p>
+<p>打开一个外部文件用于添加（文件位置指针在末尾）操作，如果外部文件不存在，则先创建该外部文件</p>
+</li>
+<li>
+<p>ios::out | ios::binary / ios::app | ios::binary</p>
+<p>按二进制打开，对以文本方式打开的文件，当输出的字符为'\n&rsquo;时，在某些平台上（如：DOS 和 Windows 平台）将自动转换成'\r&rsquo;和'\n&rsquo;两个字符写入外部文件</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">out_file.write((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>s1, <span style="color:#66d9ef">sizeof</span>(s1));
+</code></pre></div></li>
+<li>
+<p>判断打开操作是否成功</p>
+<ul>
+<li>!out_file</li>
+<li>out_file.fail()</li>
+<li>!out_file.is_open()</li>
+</ul>
+</li>
+<li>
+<p>关闭文件：把文件内存缓冲区的内容写到磁盘文件中</p>
+</li>
+</ul>
+</li>
+<li>
+<p>文件输入</p>
+<ul>
+<li>
+<p>创建 ifstream 类对象</p>
+<ul>
+<li>直接方式：<code>ifstream in_file(&lt;文件名&gt;,&lt;打开方式&gt;);</code></li>
+<li>间接方式</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ifstream in_file;
+in_file.open(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">文件名</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">打开方式</span><span style="color:#f92672">&gt;</span>);
+</code></pre></div></li>
+<li>
+<p>打开方式</p>
+<ul>
+<li>
+<p>ios::in</p>
+</li>
+<li>
+<p>ios::in | ios::binary</p>
+<p>对以文本方式打开的文件，当文件中的字符为连续的'\r&rsquo;和'\n&rsquo;时，在某些平台上（如：DOS 和 Windows 平台）将自动转换成一个字符'\n&rsquo;输入</p>
+</li>
+</ul>
+</li>
+<li>
+<p>判断文件是否结束</p>
+<ul>
+<li><code>int ios::eof()</code>：0 当且仅当文件位置指针在文件末尾，并且继续去读文件内容</li>
+<li><code>int ios::fail()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>文件输入输出</p>
+<ul>
+<li>创建 fstream 类对象</li>
+</ul>
+</li>
+<li>
+<p>文件随机存储</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">istream<span style="color:#f92672">&amp;</span> istream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//绝对位置
+</span><span style="color:#75715e"></span>istream<span style="color:#f92672">&amp;</span> istream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">偏移量</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">参照位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//指定相对位置
+</span><span style="color:#75715e"></span>streampos istream<span style="color:#f92672">::</span>tellg(); <span style="color:#75715e">//获取指针位置
+</span><span style="color:#75715e"></span>ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//绝对位置
+</span><span style="color:#75715e"></span>ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">偏移量</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">参照位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//指定相对位置
+</span><span style="color:#75715e"></span>streampos ostream<span style="color:#f92672">::</span>tellg(); <span style="color:#75715e">//获取指针位置
+</span><span style="color:#75715e">//参照位置
+</span><span style="color:#75715e"></span>ios<span style="color:#f92672">::</span>beg <span style="color:#75715e">//文件头
+</span><span style="color:#75715e"></span>ios<span style="color:#f92672">::</span>cur <span style="color:#75715e">//当前位置
+</span><span style="color:#75715e"></span>ios<span style="color:#f92672">::</span>end <span style="color:#75715e">//文件尾
+</span></code></pre></div></main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Operation Overloading | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#操作符重载">操作符重载</a></li>
+    <li><a href="#特殊操作符的重载">特殊操作符的重载</a>
+      <ul>
+        <li><a href="#---">++ &ndash;</a></li>
+        <li><a href="#heading">=</a></li>
+        <li><a href="#heading-1">[]</a></li>
+        <li><a href="#new--delete">new &amp; delete</a></li>
+        <li><a href="#heading-2">()</a></li>
+        <li><a href="#间接类成员访问操作符--">间接类成员访问操作符 -&gt;</a></li>
+        <li><a href="#类型转换操作符">类型转换操作符</a></li>
+      </ul>
+    </li>
+    <li><a href="#表达式">表达式</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="操作符重载">操作符重载</h2>
+<ul>
+<li>
+<p>只能重载 C++语言中已有的操作符</p>
+<ul>
+<li>不可臆造新的操作符</li>
+<li>不能改变操作数个数</li>
+<li>不改变原操作符的优先级和结合性</li>
+</ul>
+</li>
+<li>
+<p>可以重载 C++中除下列操作符外的所有操作符：<code>. .* ?: :: sizeof</code></p>
+</li>
+<li>
+<p>重载方法</p>
+<ul>
+<li>类的非静态成员函数</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span>
+{
+    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+      Complex <span style="color:#66d9ef">operator</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">const</span> Complex <span style="color:#f92672">&amp;</span>x) <span style="color:#66d9ef">const</span>{
+          Complex temp;
+          temp.real <span style="color:#f92672">=</span> real <span style="color:#f92672">+</span> x.real;
+          temp.imag <span style="color:#f92672">=</span> imag <span style="color:#f92672">+</span> x.imag;
+          <span style="color:#66d9ef">return</span> temp;
+      }
+};
+</code></pre></div><ul>
+<li>全局函数</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span>
+{
+  <span style="color:#66d9ef">friend</span> Complex <span style="color:#66d9ef">operator</span> <span style="color:#f92672">+</span>(<span style="color:#66d9ef">const</span> Complex <span style="color:#f92672">&amp;</span>c1, <span style="color:#66d9ef">const</span> Complex <span style="color:#f92672">&amp;</span>c2);
+};
+Complex <span style="color:#66d9ef">operator</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">const</span> Complex <span style="color:#f92672">&amp;</span>c1, <span style="color:#66d9ef">const</span> Complex <span style="color:#f92672">&amp;</span>c2){
+  Complex temp;
+  temp.real <span style="color:#f92672">=</span> real <span style="color:#f92672">+</span> x.real;
+  temp.imag <span style="color:#f92672">=</span> imag <span style="color:#f92672">+</span> x.imag;
+  <span style="color:#66d9ef">return</span> temp;
+};
+</code></pre></div></li>
+</ul>
+<h2 id="特殊操作符的重载">特殊操作符的重载</h2>
+<h3 id="---">++ &ndash;</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Counter</span>
+{
+    <span style="color:#66d9ef">int</span> value;
+    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    Counter() { value <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; }
+    Counter<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">++</span>() <span style="color:#75715e">//前置++
+</span><span style="color:#75715e"></span>    {
+        value<span style="color:#f92672">++</span>;
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>;
+    }
+    <span style="color:#66d9ef">const</span> Counter <span style="color:#66d9ef">operator</span> <span style="color:#f92672">++</span>(<span style="color:#66d9ef">int</span>)<span style="color:#75715e">//后置++
+</span><span style="color:#75715e"></span>    {
+        Counter temp <span style="color:#f92672">=</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>;
+        <span style="color:#f92672">++</span>(<span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>);
+        <span style="color:#66d9ef">return</span> temp;
+    }
+};
+</code></pre></div><h3 id="heading">=</h3>
+<ul>
+<li>隐式赋值操作符重载函数：逐个成员进行赋值操作
+<ul>
+<li>普通成员：赋值</li>
+<li>成员对象：调用成员对象赋值操作重载函数进行赋值</li>
+<li>基类对象：调用基类的赋值操作符重载函数进行赋值</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+{
+    A<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">const</span> A<span style="color:#f92672">&amp;</span> a){
+        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">&amp;</span>a <span style="color:#f92672">==</span> <span style="color:#66d9ef">this</span>) <span style="color:#66d9ef">return</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>;
+        <span style="color:#66d9ef">delete</span> []p;
+        p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[strlen(a.p)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>];
+        strcpy(p, a.p);
+        x <span style="color:#f92672">=</span> a.x; y <span style="color:#f92672">=</span> a.y;
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>;
+    }
+};
+</code></pre></div><ul>
+<li>赋值操作符只能作为非静态的成员函数来重载，不能被继承</li>
+<li>一般来讲，需要自定义拷贝构造函数的类通常也需要自定义赋值操作符重载函数</li>
+</ul>
+<h3 id="heading-1">[]</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Vector <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">operator</span>[] (<span style="color:#66d9ef">int</span> i){ <span style="color:#66d9ef">return</span> p_data[i]; } <span style="color:#75715e">//左值
+</span><span style="color:#75715e"></span>Vector <span style="color:#66d9ef">operator</span>[] (<span style="color:#66d9ef">int</span> i) <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> p_data[i]; } <span style="color:#75715e">//右值
+</span></code></pre></div><h3 id="new--delete">new &amp; delete</h3>
+<ul>
+<li>new
+<ul>
+<li>为动态对象分配空间</li>
+<li>调用对象类的构造函数</li>
+<li>操作符 new 必须作为静态的成员函数来重载（static 可以省略）</li>
+</ul>
+</li>
+<li>delete
+<ul>
+<li>调用对象类的析构函数</li>
+<li>释放动态对象的空间</li>
+<li>操作符 delete 必须作为静态的成员函数来重载（static 可以省略）</li>
+</ul>
+</li>
+<li>new[] 函数的参数 size 的实际值比对象数组需要的空间多 4 个字节，用于系统管理</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">operator</span> <span style="color:#a6e22e">new</span>(size_t size){ <span style="color:#75715e">//size_t = unsigned int
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> malloc(size);
+    memset(p, <span style="color:#ae81ff">0</span>, size);
+    <span style="color:#66d9ef">return</span> p;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">operator</span> <span style="color:#a6e22e">new</span>(size_t size, ...); <span style="color:#75715e">//... 为其它参数
+</span><span style="color:#75715e"></span>p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> (...) A(...); <span style="color:#75715e">//带其它参数的 new 构造方法
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#66d9ef">operator</span> <span style="color:#a6e22e">delete</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>p, size_t size); <span style="color:#75715e">//第二个参数可选
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">operator</span> <span style="color:#66d9ef">new</span>[](size_t size);
+<span style="color:#66d9ef">void</span> <span style="color:#66d9ef">operator</span> <span style="color:#66d9ef">delete</span>[](<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>p);
+</code></pre></div><h3 id="heading-2">()</h3>
+<ul>
+<li>函数调用也作为一种操作符来看待：操作数为函数名以及各个实参</li>
+<li>函数调用操作符重载主要用于只有一个操作的对象（函数对象，functor），该对象除了具有一般函数的行为外，它还可以拥有状态</li>
+<li>λ 表达式通过函数对象来实现</li>
+</ul>
+<h3 id="间接类成员访问操作符--">间接类成员访问操作符 -&gt;</h3>
+<ul>
+<li>双目操作符，第一个操作数为一个指向类或结构的指针，第二个操作数为第一个操作数所指向的类或结构的成员</li>
+<li>以单目操作符形式定义</li>
+<li>实现智能指针</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span>  <span style="color:#75715e">//智能指针类
+</span><span style="color:#75715e"></span>{
+    A <span style="color:#f92672">*</span>p_a;
+    <span style="color:#66d9ef">int</span> count;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    B(A <span style="color:#f92672">*</span>p) {
+        p_a <span style="color:#f92672">=</span> p; count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    }
+    A <span style="color:#f92672">*</span><span style="color:#66d9ef">operator</span> <span style="color:#f92672">-&gt;</span>()  <span style="color:#75715e">//操作符“-&gt;”的重载函数
+</span><span style="color:#75715e"></span>    {
+        count<span style="color:#f92672">++</span>;  <span style="color:#66d9ef">return</span> p_a;
+    }
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">num_of_a_access</span>() <span style="color:#66d9ef">const</span>{
+        <span style="color:#66d9ef">return</span> count;
+    }
+};
+</code></pre></div><h3 id="类型转换操作符">类型转换操作符</h3>
+<ul>
+<li>类中带一个参数的构造函数可以用作从其它类型到该类的转换
+<ul>
+<li>通过给 A 类的构造函数 A(int i) 加上一个修饰符 explicit，禁止把它当作隐式类型转换符来用</li>
+</ul>
+</li>
+<li>自定义类型转换，从一个类转换成其它类型</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+{
+    <span style="color:#66d9ef">int</span> x,y;
+    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+        <span style="color:#66d9ef">operator</span> <span style="color:#66d9ef">int</span>() { <span style="color:#66d9ef">return</span> x<span style="color:#f92672">+</span>y; }
+};
+</code></pre></div><h2 id="表达式">表达式</h2>
+<ul>
+<li>常量表达式（表达式中不含变量）在编译期间可确定其值；</li>
+<li>算术表达式的值通常是一个整数或小数，具体类型由表达式中操作数的类型决定，一般存储在内存的- 临时空间里（前缀自增/自减操作的结果存储在操作数中）；</li>
+<li>关系或逻辑表达式的值一般也是存储在内存的临时空间里，要么为“真”（true，计算机中用1存储），要么为“假”（false，计算机中用0存储）；</li>
+<li>赋值表达式的值一般存储在左边的操作数中；</li>
+<li>条件表达式的值是第二个或第三个子表达式的值，一般存储在内存的临时空间里；</li>
+<li>整个逗号表达式的值是最后一个子表达式的值，一般存储在内存的临时空间里（比如 a=3*5, a*4 这个逗号表达式的值为60，a为15）</li>
+<li>操作符的副作用：左边必须是左值表达式
+<ul>
+<li>赋值操作符</li>
+<li>自增/自减操作符</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

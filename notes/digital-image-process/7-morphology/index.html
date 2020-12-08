@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Morphology | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#形态学基本概念">形态学基本概念</a></li>
+    <li><a href="#形态学基本算法">形态学基本算法</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="形态学基本概念">形态学基本概念</h2>
+<ul>
+<li>形态学(morphology)：生物学的分支，研究动植物形态和结构</li>
+<li>数学形态学：提取表示区域形状的图像成分
+<ul>
+<li>数学语言：集合论</li>
+</ul>
+</li>
+<li>集合的反射：$\hat B={w|w=-b,\forall b\in B}$</li>
+<li>集合的平移：$(B)_z={c|c=b+z,\forall b\in B}$</li>
+<li>结构元：研究图像性质的小集合（子图像），黑点表示结构元的原点
+<ul>
+<li>矩形填充：背景，使可以容纳结构元</li>
+</ul>
+</li>
+<li>腐蚀(erosion)：$A\ominus B={z|(B)_z\subset A}={z|(B)_z\cap A^c=\emptyset}$ $B$对$A$的腐蚀
+<ul>
+<li>形态学滤波</li>
+</ul>
+</li>
+<li>膨胀(dilation)：$A\oplus B={z|(\hat B)<em>z\cap A\neq\emptyset}=\bigcup</em>{b\in B}(A)_b$</li>
+<li>$(A\ominus B)^c=A^c\oplus\hat B$</li>
+<li>$(A\oplus B)^c=A^c\ominus\hat B$</li>
+<li>开操作(opening)
+<ul>
+<li>平滑轮廓，断开窄连接，消除细突出</li>
+<li>$A\circ B=(A\ominus B)\oplus B=\cup{(B)_z\subseteq A}$</li>
+</ul>
+</li>
+<li>闭操作(closing)
+<ul>
+<li>平滑轮廓，熔合窄间断，消除缝隙和孔洞</li>
+<li>$A\cdot B=(A\oplus B)\ominus B={z|(B)_z\cap A\neq\emptyset}$</li>
+</ul>
+</li>
+<li>hit-or-miss 变换：检测图像中的形状
+<ul>
+<li>$A\star B=(A\ominus D)\cap[A^c\ominus(W-D)]$</li>
+<li>$B$ 为集合$D$及其背景</li>
+</ul>
+</li>
+</ul>
+<h2 id="形态学基本算法">形态学基本算法</h2>
+<p>提取图像成分，预处理与后处理</p>
+<ul>
+<li>边界提取：集合$A$的边界$\beta(A)=A-(A\ominus B)$</li>
+<li>孔洞填充
+<ul>
+<li>孔洞：由前景像素连成的边界包围的背景区域</li>
+<li>填充算法：$X_k=(X_{k-1}\oplus B)\cap A^c$ 直到 $X_k=X_{k-1}$
+<ul>
+<li>$X_0$：孔洞内的初始点设为 $1$，其余为 $0$</li>
+<li>$B$：十字</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>连通分量提取
+<ul>
+<li>$X_k=(X_{k-1}\oplus B)\cap A$ 直到 $X_k=X_{k-1}$
+<ul>
+<li>$X_0$：连通分量的初始点设为 $1$，其余为 $0$</li>
+<li>$B$ 八连通</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>凸包计算
+<ul>
+<li>凸包 $H$：包含原集合的最小凸集合</li>
+<li>凸缺 $H-S$</li>
+<li>凸包算法
+<ul>
+<li>四个结构元</li>
+<li>$X_k^i=(X_{k-1}^i\star B^i)\cup A,i=1,2,3,4,k=1,2,3,4$</li>
+<li>加额外约束</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>细化：$A\otimes B=A-(A\star B)$</li>
+<li>粗化：$A\odot B=A\cup(A\star B)$</li>
+<li>骨架 $S(A)$：$\forall z\in S(A),(D)_z$ 为以 $z\in A$ 为中心的最大圆盘，则不存在包含 $(D)_z$ 且位于 $A$ 内的更大圆盘
+<ul>
+<li>骨架搜索算法
+<ul>
+<li>$S_k(A)=(A\ominus^k B)-(A\ominus^k B)\circ B$</li>
+<li>$K=\max{k|(A\ominus^k B)\neq\emptyset}$</li>
+<li>$S(A)=\bigcup_{k=1}^K S_k(A)$</li>
+</ul>
+</li>
+<li>重构集合：$A=\bigcup_{k=0}^K(S_k(A)\oplus^k B)$</li>
+</ul>
+</li>
+<li>裁剪(pruning)：去除骨架中的寄生分量（毛刺）
+<ul>
+<li>假设寄生分量短</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

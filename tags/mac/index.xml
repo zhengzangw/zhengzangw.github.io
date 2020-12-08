@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mac on Zangwei</title>
+    <link>https://zhengzangw.com/tags/mac/</link>
+    <description>Recent content in mac on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Sun, 18 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Write Verilog on Macos via icarus-verilog</title>
+      <link>https://zhengzangw.com/posts/icarus-verilog/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/icarus-verilog/</guid>
+      <description>&lt;h2 id=&#34;mac&#34;&gt;Mac&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;brew install icarus-verilog&lt;/li&gt;
+&lt;li&gt;download software Scansion&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Macos Shortcut</title>
+      <link>https://zhengzangw.com/posts/mac-shortcut/</link>
+      <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/mac-shortcut/</guid>
+      <description>&lt;h1 id=&#34;快捷键&#34;&gt;快捷键&lt;/h1&gt;
+&lt;h2 id=&#34;iterm2&#34;&gt;Iterm2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;⌘; 历史命令&lt;/li&gt;
+&lt;li&gt;⌘⇧h 剪贴板历史&lt;/li&gt;
+&lt;li&gt;⌃u 清行&lt;/li&gt;
+&lt;li&gt;⌃a 行首&lt;/li&gt;
+&lt;li&gt;⌃e 行尾&lt;/li&gt;
+&lt;li&gt;⌃f 前进&lt;/li&gt;
+&lt;li&gt;⌃b 后退&lt;/li&gt;
+&lt;li&gt;⌃p 上一条命令&lt;/li&gt;
+&lt;li&gt;⌃r 搜索历史&lt;/li&gt;
+&lt;li&gt;⌃d 删除当前字符&lt;/li&gt;
+&lt;li&gt;⌃h 删除光标前字符&lt;/li&gt;
+&lt;li&gt;⌃w 删除光标前单次&lt;/li&gt;
+&lt;li&gt;⌃k 删除到文末&lt;/li&gt;
+&lt;li&gt;⌃t 交换光标出文本&lt;/li&gt;
+&lt;li&gt;⌘r 清屏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;vim&#34;&gt;Vim&lt;/h2&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

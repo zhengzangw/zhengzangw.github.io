@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Abstraction | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#面向对象程序设计">面向对象程序设计</a></li>
+    <li><a href="#类和对象">类和对象</a></li>
+    <li><a href="#构造函数与析构函数">构造函数与析构函数</a>
+      <ul>
+        <li><a href="#构造函数">构造函数</a></li>
+        <li><a href="#拷贝构造函数">拷贝构造函数</a></li>
+        <li><a href="#析构函数">析构函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#成员修饰符">成员修饰符</a>
+      <ul>
+        <li><a href="#对常量对象的访问const">对常量对象的访问：const</a></li>
+        <li><a href="#同类对象间的数据共享static">同类对象间的数据共享：static</a></li>
+        <li><a href="#提高对对象私有数据的访问效率friend">提高对对象私有数据的访问效率：friend</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="面向对象程序设计">面向对象程序设计</h2>
+<ul>
+<li>面向对象的观点：自然界是由一组彼此相关并能相互通信的实体（对象）所组成</li>
+<li>面向对象的程序设计方法：使用面向对象的观点来描述现实问题，然后用计算机语言来模仿并处理该问题
+<ul>
+<li>消息：调用对象的操作</li>
+<li>类：对象的特征</li>
+</ul>
+</li>
+<li>基本的程序设计手段
+<ul>
+<li>抽象：复杂度控制
+<ul>
+<li>过程抽象</li>
+<li>数据抽象：使用者只需知道对数据所能实施的操作以及这些操作之间的关系，而不必知道数据的具体表示</li>
+</ul>
+</li>
+<li>封装：信息隐蔽
+<ul>
+<li>过程封装</li>
+<li>数据封装：把数据和操作作为整体描述，数据的访问只能通过封装体的对外接口来完成</li>
+</ul>
+</li>
+<li>模块化：组织大型程序
+<ul>
+<li>过程式：模糊</li>
+<li>对象式：对象类</li>
+</ul>
+</li>
+<li>软件复用：缩短开发周期
+<ul>
+<li>过程式：子程序库</li>
+<li>对象式：类库</li>
+</ul>
+</li>
+<li>可维护性：延长软件寿命
+<ul>
+<li>过程式：以功能为中心，强调过程抽象，数据与操作分离</li>
+<li>对象式：以数据为中心，强调数据抽象，操作依附数据</li>
+</ul>
+</li>
+<li>软件模型的自然度：缩小解题空间与问题空间之间的语义间隙</li>
+</ul>
+</li>
+<li>面向对象程序设计基本内容
+<ul>
+<li>对象/类</li>
+<li>继承：在定义一个新类（派生类、子类）时，可以利用已有类（基类、父类）的一些特征描述</li>
+<li>多态：某一论域中的一个元素存在多种解释
+<ul>
+<li>一名多用：函数名重载，操作重载</li>
+<li>类属性：类属函数，类属类型</li>
+</ul>
+</li>
+<li>绑定：确定对多态元素的某个使用是多态元素的那一种形式
+<ul>
+<li>静态绑定：编译时刻确定</li>
+<li>动态绑定：运行时刻确定</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>面向对象语言
+<ul>
+<li>面向对象是一种程序设计思想，用任何语言都可以实现</li>
+<li>采用面向对象语言会使得面向对象程序设计更加容易，语言也能提供更多的面向对象保障</li>
+</ul>
+</li>
+</ul>
+<h2 id="类和对象">类和对象</h2>
+<ul>
+<li>数据成员
+<ul>
+<li>类定义时，声明数据成员</li>
+<li>如果未见到相应的类型定义或相应的类型未定义完，则该数据成员的类型只能是这些类型的指针或引用类型</li>
+</ul>
+</li>
+<li>成员函数
+<ul>
+<li>类定义放在头文件（.h）中，类外定义的成员函数则放在实现文件（.cpp）中</li>
+<li>可以重载</li>
+</ul>
+</li>
+<li>成员对象</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">class_name</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span><span style="color:#75715e">//访问不受限制
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> do_nothing(){}<span style="color:#75715e">//定义,建议编译器按内联函数处理
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">declare</span>();<span style="color:#75715e">//声明
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span><span style="color:#75715e">//只能在本类和友元的代码中访问
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> num_1, num_2;
+<span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span><span style="color:#75715e">//只能在奔雷，友元和派生类的代码中访问
+</span><span style="color:#75715e"></span>};
+<span style="color:#66d9ef">void</span> class_name<span style="color:#f92672">::</span>declare(){}<span style="color:#75715e">//定义
+</span></code></pre></div><ul>
+<li>
+<p>类：程序实体，一般存在域静态的程序汇总</p>
+</li>
+<li>
+<p>对象：</p>
+<ul>
+<li>程序运行时创建</li>
+<li>执行是通过对象间相互发送消息实现</li>
+<li>接收到一条消息后，调用对象类中定义的某个成员函数处理</li>
+</ul>
+</li>
+<li>
+<p>对象的创建和标识</p>
+<ul>
+<li>直接方式：与普通变量定义相同，对象在进入相应变量的生存期时创建，通过变量名来标识和访问。相应变量的生存期结束时，对象消亡</li>
+<li>间接方式：
+<ul>
+<li>使用 new 创建，动态对象，内存空间在程序堆区</li>
+<li>使用 delete 撤销</li>
+<li>使用指针标识</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>new 对比 malloc 的优点</p>
+<ul>
+<li>
+<p>自动分配</p>
+</li>
+<li>
+<p>自动返回指定类型指针</p>
+</li>
+<li>
+<p>可以重载</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//动态对象
+</span><span style="color:#75715e"></span>Data <span style="color:#f92672">*</span>p;
+p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date;
+deleta p;
+<span style="color:#75715e">//动态对象数组
+</span><span style="color:#75715e"></span>Data <span style="color:#f92672">*</span>p
+p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> A[<span style="color:#ae81ff">100</span>];<span style="color:#75715e">//new 创建的动态对象数组只能用默认的构造函数进行初始化
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">delete</span> []p;
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>对象的操作</p>
+<ul>
+<li>发送消息：. -&gt;</li>
+<li>同类赋值：= 数据成员递归赋值</li>
+<li>取地址：&amp;</li>
+</ul>
+</li>
+<li>
+<p>this 指针</p>
+<ul>
+<li>
+<p>隐藏形参：<code>class_name *const this;</code></p>
+</li>
+<li>
+<p>类定义中说明的数据成员对该类的每个对象都有一个拷贝</p>
+</li>
+<li>
+<p>类中的成员函数对该类的每个对象只有一个拷贝</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//成员函数的实际形式
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">g</span>(A <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">this</span>, <span style="color:#66d9ef">int</span> i){
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>x<span style="color:#f92672">=</span>i;
+}
+<span style="color:#75715e">//成员函数调用
+</span><span style="color:#75715e"></span>a.g(<span style="color:#ae81ff">1</span>);
+<span style="color:#75715e">//编译程序编译
+</span><span style="color:#75715e"></span>g(<span style="color:#f92672">&amp;</span>a,<span style="color:#ae81ff">1</span>)
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>预编译宏</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">  <span style="color:#75715e">#ifndef _HEADERNAME_H
+</span><span style="color:#75715e">#define _HEADERNAME_H
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e">#pragma once
+</span></code></pre></div></li>
+<li>
+<p>Law of Demeter：良好的面向对象程序风格</p>
+<ul>
+<li>降低模块之间的耦合度：仅与你的直接朋友交谈
+<ul>
+<li>一个类的成员函数除了能访问自身类结构的直接子结构（本类的数据成员）外，不能以任何方式依赖于任何其它类的结构</li>
+<li>并且每个成员函数只应对某个有限类集合中的对象发送消息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="构造函数与析构函数">构造函数与析构函数</h2>
+<h3 id="构造函数">构造函数</h3>
+<ul>
+<li>可重载</li>
+<li>默认构造函数：不带参数的构造函数</li>
+<li>对象创建后不能再调用构造函数</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">A a1; <span style="color:#75715e">//also A a1=A(); can&#39;t write A a1();
+</span><span style="color:#75715e"></span>A <span style="color:#a6e22e">a2</span>(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">//also A a2 = A(1); or A a2 = 1;
+</span><span style="color:#75715e"></span>A <span style="color:#a6e22e">a3</span>(<span style="color:#e6db74">&#34;abcd&#34;</span>); <span style="color:#75715e">//also A a3(&#34;abcd&#34;) or a3 = &#34;abcd&#34;;
+</span><span style="color:#75715e"></span>A a[<span style="color:#ae81ff">4</span>]; <span style="color:#75715e">//调用 a[0]~a[3] 默认构造函数
+</span><span style="color:#75715e"></span>A b[<span style="color:#ae81ff">5</span>]<span style="color:#f92672">=</span>{A(),A(<span style="color:#ae81ff">1</span>),A(<span style="color:#e6db74">&#34;abcd&#34;</span>),<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;xyz&#34;</span>};
+A <span style="color:#f92672">*</span>p1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> A;
+A <span style="color:#f92672">*</span>p2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> A(<span style="color:#ae81ff">2</span>);
+A <span style="color:#f92672">*</span>p3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> A(<span style="color:#e6db74">&#34;xyz&#34;</span>);
+</code></pre></div><ul>
+<li>
+<p>成员初始化表</p>
+<ul>
+<li>成员初始化表中成员初始化次序由它们在类定义中的说明次序来决定</li>
+<li>如果类中定义了构造函数，则一定要在定义的所有构造函数的成员初始化表中对常量数据成员或引用数据成员进行初始化
+<ul>
+<li>否则不会生成默认构造函数，无法创建对象</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>{
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> y;
+    <span style="color:#66d9ef">int</span> x;
+    <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>z;
+    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+        A()<span style="color:#f92672">:</span> z(x),y(<span style="color:#ae81ff">1</span>);{
+            x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        }
+}
+</code></pre></div></li>
+<li>
+<p>成员对象初始化</p>
+<ul>
+<li>隐式默认构造函数会调用成员对象的默认构造函数对成员对象进行构造</li>
+<li>创建包含成员对象的类的对象时，先执行成员对象类的构造函数，再执行本身类的构造函数</li>
+<li>一个类若包含多个成员对象，这些对象的初始化次序按它们在类中的说明次序（而不是成员初始化表的次序）进行</li>
+<li>析构函数的执行次序与构造函数的执行次序正好相反</li>
+<li>可使用成员初始化表</li>
+</ul>
+</li>
+</ul>
+<h3 id="拷贝构造函数">拷贝构造函数</h3>
+<ul>
+<li><code>A(const A&amp; a);</code></li>
+<li>隐式拷贝构造函数
+<ul>
+<li>对于普通成员：它采用通常的初始化操作</li>
+<li>对于成员对象：则递归调用成员对象类的拷贝构造函数来实现成员对象的初始化</li>
+</ul>
+</li>
+<li>调用
+<ul>
+<li>使用同类定义对象时</li>
+<li>把对象作为值参数传给函数时</li>
+<li>把对象作为函数返回值时</li>
+</ul>
+</li>
+<li>自定义拷贝构造函数</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+{
+    <span style="color:#66d9ef">int</span> x,y
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p
+    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    A(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>str){
+        x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[strlen(str)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>];
+        strcpy(p,str);
+    }
+    <span style="color:#f92672">~</span>A() { <span style="color:#66d9ef">delete</span> [] p; p<span style="color:#f92672">=</span>NULL; }
+};
+A <span style="color:#a6e22e">a1</span>(<span style="color:#960050;background-color:#1e0010">“</span>abcd<span style="color:#960050;background-color:#1e0010">”</span>);
+A <span style="color:#a6e22e">a2</span>(a1);<span style="color:#75715e">//a1和a2的成员指针p指向同一块内存区域
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">//应显示定义一个拷贝构造函数
+</span><span style="color:#75715e"></span>A<span style="color:#f92672">::</span>A(<span style="color:#66d9ef">const</span> A<span style="color:#f92672">&amp;</span>a)
+{
+    x<span style="color:#f92672">=</span>a.x;
+    y<span style="color:#f92672">=</span>a.y;
+    p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[strlen(a.p)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>];
+    strcpy(p, a.p);
+}
+</code></pre></div><h3 id="析构函数">析构函数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+{
+    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+     A(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>s){
+         len <span style="color:#f92672">=</span> strlen(s);
+         str <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[len<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>];
+         strcpy(str, s);
+     }
+     <span style="color:#f92672">~</span>()A{
+         <span style="color:#66d9ef">delete</span>[] str;
+         str <span style="color:#f92672">=</span> NULL; <span style="color:#75715e">//无必要
+</span><span style="color:#75715e"></span>     }
+}
+</code></pre></div><ul>
+<li>析构函数的调用
+<ul>
+<li>显示调用：<code>a.~A();</code> 只归还资源，对象未消亡</li>
+<li>变量销毁前自动调用</li>
+</ul>
+</li>
+</ul>
+<h2 id="成员修饰符">成员修饰符</h2>
+<h3 id="对常量对象的访问const">对常量对象的访问：const</h3>
+<ul>
+<li>If a const and/or volatile keyword is next to a type specifier, it applies to the type specifier. Otherwise the const and/or volatile keyword applies to the pointer asterisk on its immediate left.</li>
+<li>成员函数声明为 const 则不允许修改类的数据成员</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//also int const a = 1;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> c; <span style="color:#75715e">//also int const* c;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> c;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> r[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>};
+<span style="color:#66d9ef">const</span> Time <span style="color:#a6e22e">noon</span>(<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">void</span> A<span style="color:#f92672">::</span>do_nonthing() <span style="color:#66d9ef">const</span> {}
+</code></pre></div><h3 id="同类对象间的数据共享static">同类对象间的数据共享：static</h3>
+<ul>
+<li>类的静态数据成员对该类的所有对象只有一个拷贝</li>
+<li>静态成员函数只能访问类的静态成员</li>
+<li>作用
+<ul>
+<li>扩展生存期</li>
+<li>限制作用域</li>
+<li>唯一性</li>
+</ul>
+</li>
+</ul>
+<h3 id="提高对对象私有数据的访问效率friend">提高对对象私有数据的访问效率：friend</h3>
+<ul>
+<li>友元无对称性和传递性</li>
+<li>在类A中使用 friend，则可以访问A中私有变量
+<ul>
+<li>友元函数</li>
+<li>友元类</li>
+<li>友元类成员函数</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

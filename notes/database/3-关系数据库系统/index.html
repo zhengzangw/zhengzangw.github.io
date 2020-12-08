@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3-关系数据库系统 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#衡量准则">衡量准则</a></li>
+    <li><a href="#关系模型">关系模型</a>
+      <ul>
+        <li><a href="#关系数据结构">关系数据结构</a></li>
+        <li><a href="#关系操纵">关系操纵</a></li>
+        <li><a href="#数据约束">数据约束</a></li>
+      </ul>
+    </li>
+    <li><a href="#关系代数">关系代数</a>
+      <ul>
+        <li><a href="#例">例</a></li>
+      </ul>
+    </li>
+    <li><a href="#关系演算">关系演算</a></li>
+    <li><a href="#sql92">SQL'92</a>
+      <ul>
+        <li><a href="#数据定义功能">数据定义功能</a></li>
+        <li><a href="#数据操纵功能">数据操纵功能</a></li>
+        <li><a href="#更新功能">更新功能</a></li>
+        <li><a href="#视图导出表虚表">视图（导出表，虚表）</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="衡量准则">衡量准则</h2>
+<p>完全关系型，基本关系型，半关系型</p>
+<ol>
+<li>信息准则：信息能在逻辑一级唯一地用“表”中的值显示表示</li>
+<li>确保访问准则：逻辑方式依靠表名、关键字名与列名的组合来访问数据库汇总的每一个原子数据</li>
+<li>空值的关系处理准则：处理空值的能力</li>
+<li>基于资源管理的动态联机目录：数据字典与用户数据具有相同的表示形式与操作方式</li>
+<li>统一易用的数据子语言：至少有一种数据子语言支持：数据定义，视图定义，数据操控空，完整性约束，授权机制，事务处理能力</li>
+<li>视图更新准则：通过视图不仅可以查询，还可以执行对数据的增、删、改等操作</li>
+<li>高级的插入、删除及修改操作：一条命令可以操作多个元组</li>
+<li>物理数据独立性</li>
+<li>逻辑数据独立性</li>
+<li>数据完整性准则</li>
+<li>分布独立性：数据分布的改变不影响原有的应用程序</li>
+<li>无损害原则：对提供低级数据子语言的要求</li>
+</ol>
+<h2 id="关系模型">关系模型</h2>
+<p>由关系构建的模型</p>
+<h3 id="关系数据结构">关系数据结构</h3>
+<ul>
+<li>二维表
+<ul>
+<li>Frame：表框架有 $n$ 个 Attribute 组成
+<ul>
+<li>表的元数：$n$</li>
+<li>Domain：属性的取值范围</li>
+</ul>
+</li>
+<li>Tuple：由 $n$ 个元组分量组成
+<ul>
+<li>表的基数：$m$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>关系：满足以下性质的的二维表
+<ul>
+<li>First Normal Form Rule
+<ul>
+<li>元组分量原子性</li>
+</ul>
+</li>
+<li>Access Rows by Content Only Rule
+<ul>
+<li>元组次序无关</li>
+<li>属性次序无关</li>
+</ul>
+</li>
+<li>The Unique Row Rule
+<ul>
+<li>元组唯一</li>
+</ul>
+</li>
+<li>元组个数有限</li>
+<li>属性名唯一性</li>
+<li>分量值域同一性</li>
+</ul>
+</li>
+<li>关系框架：关系名+所有属性名 $R(A_1,A_2,\cdots,A_n)$</li>
+<li>键
+<ul>
+<li>Superkey: a set of columns that has the uniqueness property</li>
+<li>Key: a minimal superkey</li>
+<li>Foreign Key: 表 A 中的属性集 F 是表 B 的键，则 F 为表 A 的外键
+<ul>
+<li>A 可以等于 B</li>
+<li>A：引用表，B：被应用表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>关系模型</th>
+<th>二维表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relation</td>
+<td>Table</td>
+</tr>
+<tr>
+<td>Attribute</td>
+<td>Column</td>
+</tr>
+<tr>
+<td>Tuple</td>
+<td>Row</td>
+</tr>
+<tr>
+<td>Schema</td>
+<td>Table Heading</td>
+</tr>
+</tbody>
+</table>
+<h3 id="关系操纵">关系操纵</h3>
+<ul>
+<li>数据操纵功能
+<ul>
+<li>数据查询
+<ul>
+<li>单张表：纵向定位+横向定位</li>
+<li>两张表：先将两张表合一</li>
+<li>多张表：逐步合一</li>
+</ul>
+</li>
+<li>数据插入</li>
+<li>数据删除</li>
+<li>数据修改</li>
+</ul>
+</li>
+<li>基本操作模型
+<ul>
+<li>元组选择</li>
+<li>属性指定</li>
+<li>关系合并</li>
+<li>元组插入</li>
+<li>元组删除</li>
+</ul>
+</li>
+<li>空值处理
+<ul>
+<li>算术运算中有空值，结果为空</li>
+<li>逻辑运算中有空值，结果为假</li>
+<li>统计计算中，定义对空集和空值的处理方法
+<ul>
+<li>空值可以不统计 SUM AVG MAX MIN COUNT</li>
+<li>空集结果为空 SUM AVG MAX MIN</li>
+<li>空集结果为 0 COUNT</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据约束">数据约束</h3>
+<ul>
+<li>实体完整性约束：关系的主键中不允许有空值</li>
+<li>参照完整性约束：外键要么取空值，要么是被引用表中当前存在的某元组上的主键值</li>
+<li>用户定义的完整性</li>
+</ul>
+<h2 id="关系代数">关系代数</h2>
+<p>集合在 $(\pi,\sigma,\times,\cup,-)$ 下的代数系统</p>
+<ul>
+<li>元组：元组分量的集合，n 元有序组</li>
+<li>关系：元组的集合，n 元有序组的集合，$R\subseteq D_1\times D_2\times\cdots D_n$</li>
+<li>基本操作：关系上的基本运算</li>
+<li>Compatible Tables: Head(R)=Head(S), attributes chosen from the same domains with the same meanings</li>
+<li>$\pi_A(\sigma_F(R))=\pi_A\sigma_F(R)$</li>
+<li>$R\times S$ 有 $(n+m)$ 个属性，$pq$ 个元组
+<ul>
+<li>$R\times S=S\times R$</li>
+<li>$(R\times S)\times T=R\times(S\times T)$</li>
+<li>$T=R\times S,R=T÷S$</li>
+<li>$R=T÷S,R\times S\subseteq T$</li>
+</ul>
+</li>
+<li>$R÷S$, Head(T)=Head(R)-Head(S)，关系$S$所有元组在$R$中对应的相同值
+<ul>
+<li>条件对象集中的所有元组都能使得查询条件成立</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>基本操作</th>
+<th>运算</th>
+<th>条件</th>
+<th>结果</th>
+<th>关系演算表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元组选择</td>
+<td>选择运算</td>
+<td>$F$为条件</td>
+<td>$\sigma_F(R)$</td>
+<td>${t\vert R(t)\wedge F}$</td>
+</tr>
+<tr>
+<td>属性选择</td>
+<td>投影运算</td>
+<td>$B_i\in{A_n}$</td>
+<td>$\pi_{B_1,B_2,\cdots,B_m}(R)$(消除结果关系中重复元组)</td>
+<td>$\pi_{A_{i_1},\cdots,A_{i_k}}(R)={\langle u_1,\cdots,u_k\rangle\vert\exists t(R(t)\wedge u_1=t_{i_1}\wedge\cdots\wedge u_k=t_{i_k})}$</td>
+</tr>
+<tr>
+<td>关系合并</td>
+<td>笛卡尔乘积</td>
+<td>相同属性名需要换名</td>
+<td>$R\times S$</td>
+<td>${t^{(m+n)}\vert \exists u^{(m)}\exists v^{(n)}(R(u)\wedge S(v)\wedge t_1=u_1\cdots\wedge t_{m+n}=v_n}$</td>
+</tr>
+<tr>
+<td>元组插入</td>
+<td>并运算</td>
+<td>相容表</td>
+<td>$R\cup S$</td>
+<td>${t\vert R(t)\vee S(t)}$</td>
+</tr>
+<tr>
+<td>元组删除</td>
+<td>差运算</td>
+<td>相容表</td>
+<td>$R-S$</td>
+<td>${t\vert R(t)\wedge \neg S(t)}$</td>
+</tr>
+<tr>
+<td></td>
+<td>交运算</td>
+<td>相容表</td>
+<td>$R\cap S=R-(R-S)$</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>除运算</td>
+<td>Head(S)$\subset$Head(R)</td>
+<td>$R÷S=\pi_{A_1\cdots A_n}(R)-\pi_{A_1\cdots A_n}(\pi_{A_1\cdots A_n}(R)\times S-R))$</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>join</td>
+<td>连接条件$F$</td>
+<td>$R\Join_FS=\sigma_F(R\times S)$，同名属性换名</td>
+<td>$R(p)\wedge S(q)\wedge F$</td>
+</tr>
+<tr>
+<td></td>
+<td>natural join</td>
+<td>Head(R)$\cap$Head(S)$\not=\emptyset$</td>
+<td>$R\Join S=\pi_{A_1,A_2,\cdots,A_n,B_{j+1},\cdots,B_m}(\sigma_{A_1=B_1\wedge A_2=B_2\cdots A_j=B_j}(R\times S))$</td>
+<td>$R(x,y,z)\wedge S(y,u,v)$</td>
+</tr>
+<tr>
+<td></td>
+<td>outer join</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>left outer join</td>
+<td>左全保留</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>right outer join</td>
+<td>右全保留</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="例">例</h3>
+<ul>
+<li>求解过程：确定目标，确定条件，确定对象，关系合并，元组选择，属性指定</li>
+<li>查询折扣最高的客户：$\pi_{C.cid}(C)-\pi_{C.cid}(\sigma_{C.discnt&lt;S.discnt}(C\times S))$</li>
+<li>选修过所有课程的学生：$\pi_{s,c}(SC)÷S$</li>
+</ul>
+<h2 id="关系演算">关系演算</h2>
+<ul>
+<li>以数理逻辑中的谓词演算为基础的关系模型理论
+<ul>
+<li>非过程性数据子语言理论基础</li>
+<li>关系：谓词</li>
+<li>关系上的操作：关系演算公式</li>
+</ul>
+</li>
+<li>一阶谓词术语表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>数据库</th>
+<th>数理逻辑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>个体常元</td>
+<td>常元集合 $\mathscr{L}_c$</td>
+</tr>
+<tr>
+<td>个体变元</td>
+<td>变元集 $V$</td>
+</tr>
+<tr>
+<td>个体词</td>
+<td>个体常量+个体谓元</td>
+</tr>
+<tr>
+<td>个体域</td>
+<td>论域</td>
+</tr>
+<tr>
+<td>全总个体域</td>
+<td></td>
+</tr>
+<tr>
+<td>成真指派/成假指派</td>
+<td>谓词为真/假的指派</td>
+</tr>
+<tr>
+<td>原子公式</td>
+<td>个体词在比较运算谓词下的<em>公式</em></td>
+</tr>
+<tr>
+<td>关系演算公式</td>
+<td>公式</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>关系演算（一阶逻辑）
+<ul>
+<li>变元集 $V$：属性
+<ul>
+<li>元组关系演算: 元组$t$, $t(i)$ 为 $t$ 的第 $i$ 个属性</li>
+<li>域关系演算: 属性变量 $x_i$</li>
+</ul>
+</li>
+<li>函数集合 $\mathscr{L}_f$：比较运算符</li>
+<li>谓词集合 $\mathscr{L}_P$：关系 $P$
+<ul>
+<li>$P_{\mathbb{M}}=I(P)\subseteq M^n$: 关系中的每个元组为成真指派，其它元组为成假指派</li>
+<li>特性刻画法：$R={t|P(t)}=P_{\mathbb{M}}$</li>
+</ul>
+</li>
+<li>关系演算公式：$\varphi(t)$
+<ul>
+<li>自由变量：目标属性</li>
+<li>约束变量：其它属性</li>
+</ul>
+</li>
+<li><strong>关系演算表达式</strong>: ${t|\varphi(t)}\dot=\varphi(t),$</li>
+</ul>
+</li>
+<li>安全公式：没有无限性问题的公式
+<ul>
+<li>无限关系：$|R|=\infty$
+<ul>
+<li>${t|\neg R(t)}$</li>
+</ul>
+</li>
+<li>无穷验证：因使用存在量词或全称量词而导致的无穷验证现象
+<ul>
+<li>$\forall t(W(t))$</li>
+<li>$\exists t(W(t))$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>约束集 $\text{DOM}(\varphi)$: 有限符号集合
+<ul>
+<li>如果以公式 $\varphi$ 做特征可以构造出一个元组集合，其中的每个元组只能由出现在 $\text{DOM}(\varphi)$ 中的符号构成，则这样的公式 $\varphi$ 是安全的</li>
+</ul>
+</li>
+<li>关系代数等价于安全的关系运算</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>公式的表示</th>
+<th>关系代数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\varphi_1\wedge\varphi_2$(有公共变元)</td>
+<td>$R_1\Join R_2$</td>
+</tr>
+<tr>
+<td>$\varphi_1\wedge\varphi_2$(无公共变元)</td>
+<td>$R_1\times R_2$</td>
+</tr>
+<tr>
+<td>$\varphi_1\vee\varphi_2$</td>
+<td>$R_1\cup R_2$</td>
+</tr>
+<tr>
+<td>$\forall a(\varphi_1(a)\rightarrow\varphi_2(a,b))$</td>
+<td>$R_2(a,b)\div R_1(a)$</td>
+</tr>
+<tr>
+<td>$\neg\varphi$</td>
+<td>$(D_1\times D_2\times\cdots\times D_n)-R,D_i$ 为第 $i$ 个自由变元的值域</td>
+</tr>
+<tr>
+<td>$\exists r(\varphi)$</td>
+<td>$\pi_{A_1,A_2,\cdots,A_k}(R), A_i$ 为自由变元</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sql92">SQL'92</h2>
+<p>Structured Query Language, SQL2</p>
+<table>
+<thead>
+<tr>
+<th>关系模型</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关系</td>
+<td>base table</td>
+</tr>
+<tr>
+<td>关系子模式</td>
+<td>view/virtual table</td>
+</tr>
+<tr>
+<td>属性</td>
+<td>column</td>
+</tr>
+<tr>
+<td>元组</td>
+<td>row</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>表：基表和视图</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>SQL 数据类型</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INT</td>
+<td>整数</td>
+<td>10 位</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>短整数</td>
+<td>5 位</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>巨整数</td>
+<td>19位</td>
+</tr>
+<tr>
+<td>DEC(p,s),NUM(p,s)</td>
+<td>十进制数</td>
+<td>精度 p，小数位 s</td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td>浮点数</td>
+<td></td>
+</tr>
+<tr>
+<td>CHAR(n)</td>
+<td>定长字符串</td>
+<td></td>
+</tr>
+<tr>
+<td>VARCHAR(n)</td>
+<td>变长字符串</td>
+<td></td>
+</tr>
+<tr>
+<td>CLOB$(n[K\vert M\vert G])$</td>
+<td>字符大对象字符串</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAPHIC(n)</td>
+<td>图形字符串</td>
+<td>双字节</td>
+</tr>
+<tr>
+<td>BIT(n)</td>
+<td>定长位串</td>
+<td></td>
+</tr>
+<tr>
+<td>BIT VARYING(n)</td>
+<td>变长位串</td>
+<td></td>
+</tr>
+<tr>
+<td>BLOB(n)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DATA</td>
+<td>日期</td>
+<td></td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>时间</td>
+<td></td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>时间戳</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>[]: 仅允许出现一次</li>
+<li>{}: 出现0次或若干次</li>
+<li>&ndash;: 单行注释</li>
+<li>/**/: 多行注释</li>
+</ul>
+<h3 id="数据定义功能">数据定义功能</h3>
+<ul>
+<li>表的创建删除</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> tablename(
+    colname datatype [<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">属性级约束</span><span style="color:#f92672">&gt;</span>]
+    <span style="color:#960050;background-color:#1e0010">{</span>, colname datatype [<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">属性级约束</span><span style="color:#f92672">&gt;</span>]<span style="color:#960050;background-color:#1e0010">}</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表级约束</span><span style="color:#f92672">&gt;</span>
+)
+<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">table</span> name<span style="color:#f92672">&gt;</span>;
+</code></pre></div><ul>
+<li>属性的增加删除</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">table</span> name<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">ADD</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">column</span> name<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">type</span><span style="color:#f92672">&gt;</span>;
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">table</span> name<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">DROP</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">column</span> name<span style="color:#f92672">&gt;</span>;
+</code></pre></div><h3 id="数据操纵功能">数据操纵功能</h3>
+<ul>
+<li>查询 $\pi_{A_1,\cdots,A_m}(\sigma_F(R_1\times\cdots\times R_n))$</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> A1,A2,...,Am
+<span style="color:#66d9ef">FROM</span> R1,R2,...,Rn
+<span style="color:#66d9ef">WHERE</span> F
+</code></pre></div><ul>
+<li>查询 $\pi_{A_1,A_2,\cdots,A_m}(\sigma_F(R\Join S))$</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> A1,A2,...,Am
+<span style="color:#66d9ef">FROM</span> R1,R2,...,Rn
+<span style="color:#66d9ef">WHERE</span> F <span style="color:#66d9ef">and</span> R.B1<span style="color:#f92672">=</span>S.B1 <span style="color:#66d9ef">and</span> ... <span style="color:#66d9ef">and</span> R.Bk<span style="color:#f92672">=</span>S.Bk
+</code></pre></div><ul>
+<li>映像语句
+<ul>
+<li>目标子句: <code>SELECT *| colname {, colname ...}</code>
+<ul>
+<li><code>*</code>: 所有属性</li>
+<li><code>dinstinct</code>: 消除结果中重复元组</li>
+<li><code>&lt;colunm_expression&gt; AS &lt;colname&gt;</code></li>
+</ul>
+</li>
+<li>范围子句: <code>FROM tablename, {, tablename ...}</code>
+<ul>
+<li><code>&lt;table_name&gt; &lt;alias_name&gt;</code></li>
+</ul>
+</li>
+<li>条件子句: <code>[WHERE search_condition]</code>
+<ul>
+<li>比较谓词
+<ul>
+<li><code>[NOT] BETWEEN...AND...</code></li>
+<li><code>[NOT] LIKE</code>: <code>column [NOT] LIKE val1 [ESCAPE val2]</code>
+<ul>
+<li>模板 val1: 下划线匹配任一字符，百分号匹配任一字符串</li>
+<li>转义指示符：紧跟在转义指示字符val2之后的‘_’或‘%’（包括转义字符自身）不再是通配符，而是其自身</li>
+</ul>
+</li>
+<li><code>IS [NOT] NULL</code></li>
+</ul>
+</li>
+<li>逻辑运算：<code>NOT</code>, <code>AND</code>, <code>OR</code></li>
+<li>嵌套查询
+<ul>
+<li>集合谓词：
+<ul>
+<li><code>expr [NOT] IN (subquery)</code>
+<ul>
+<li>自然连接</li>
+<li><code>[NOT]</code> 减法运算</li>
+</ul>
+</li>
+<li><code>expr &gt;|&lt;|= SOME|ANY|ALL (subquery)</code></li>
+<li><code>[NOT] EXISTS (subquery)</code></li>
+<li><code>CONTAINS</code>：标准 SQL 没有提供</li>
+</ul>
+</li>
+<li>处理顺序
+<ul>
+<li>独立子查询：内到外</li>
+<li>相关子查询：外到内</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分组子句: <code>[GROUP BY colname {, colname ...}]</code>
+<ul>
+<li>每个小组进行单独统计，一个小组产生一条结果元组</li>
+<li>在分组统计查询中，目标属性必须包含所有的分组属性</li>
+</ul>
+</li>
+<li>分组查询子句: <code>[HAVING group_condition]</code>
+<ul>
+<li>满足 group_condition 的元组集合才会被保留</li>
+</ul>
+</li>
+<li>排序输出子句: <code>[ORDER BY colname [ASC|DESC] {,colname [ASC|DESC] ...}]</code></li>
+</ul>
+</li>
+<li>映像语句间的运算
+<ul>
+<li><code>UNION [ALL]</code></li>
+<li><code>INTERSECT [ALL]</code></li>
+<li><code>EXCEPT [ALL]</code></li>
+</ul>
+</li>
+<li>统计计算
+<ul>
+<li><code>COUNT</code>
+<ul>
+<li>count(*): 返回元组个数</li>
+<li>count(colname): colname 属性上取值非空的元组个数</li>
+<li>count(distinct colname)</li>
+</ul>
+</li>
+<li><code>SUM</code></li>
+<li><code>AVG</code></li>
+<li><code>MAX</code></li>
+<li><code>MIN</code></li>
+</ul>
+</li>
+<li>SQL 语句多样性
+<ul>
+<li>表的连接查询</li>
+<li>IN + 独立子查询</li>
+<li>IN + 相关子查询</li>
+<li>=SOME + 子查询</li>
+<li>EXISTS + 相关子查询</li>
+</ul>
+</li>
+</ul>
+<h3 id="更新功能">更新功能</h3>
+<ul>
+<li>元组删除语句</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
+[<span style="color:#66d9ef">WHERE</span> search_condition];
+</code></pre></div><ul>
+<li>元组插入语句</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> tabname [(colname <span style="color:#960050;background-color:#1e0010">{</span>, colname ...<span style="color:#960050;background-color:#1e0010">}</span>)]
+<span style="color:#66d9ef">VALUES</span> (expr <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span> <span style="color:#960050;background-color:#1e0010">{</span>,expr<span style="color:#f92672">|</span><span style="color:#66d9ef">NULL</span> ...<span style="color:#960050;background-color:#1e0010">}</span>)
+<span style="color:#f92672">|</span> subquery;
+</code></pre></div><ul>
+<li>元组修改语句</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">table_name</span>
+<span style="color:#66d9ef">SET</span> colname<span style="color:#f92672">=</span>expr<span style="color:#f92672">|</span><span style="color:#66d9ef">NULL</span><span style="color:#f92672">|</span>subquery, ...
+[<span style="color:#66d9ef">WHERE</span> search_condition];
+</code></pre></div><h3 id="视图导出表虚表">视图（导出表，虚表）</h3>
+<ul>
+<li>由若干张表经映像语句构筑而成的表</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">VIEW</span> <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span> [(<span style="color:#f92672">&lt;</span>col_name<span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">{</span>, <span style="color:#f92672">&lt;</span>col_name<span style="color:#f92672">&gt;</span> ...<span style="color:#960050;background-color:#1e0010">}</span>)] <span style="color:#66d9ef">AS</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">statement</span><span style="color:#f92672">&gt;</span> [<span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">CHECK</span> <span style="color:#66d9ef">OPTION</span>]
+<span style="color:#75715e">--cannot use ORDER BY
+</span></code></pre></div><ul>
+<li>视图的删除：连带删除定义在该视图上的其它视图</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">VIEW</span> <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span>
+</code></pre></div><ul>
+<li>可更新视图：视图的每一行对应基表唯一一行，每一列对应基表的唯一一列</li>
+<li>优点
+<ul>
+<li>提高数据独立性</li>
+<li>简化用户观点</li>
+<li>提供自动安全保护功能</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

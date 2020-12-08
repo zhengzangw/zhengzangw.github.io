@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>13. VM and Docker | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#docker">Docker</a>
+      <ul>
+        <li><a href="#container-c">Container (C)</a></li>
+        <li><a href="#image-i">Image (I)</a></li>
+        <li><a href="#volume-v">Volume (V)</a></li>
+        <li><a href="#network-n">Network (N)</a></li>
+        <li><a href="#system-y">System (Y)</a></li>
+        <li><a href="#stack-k">Stack (K)</a></li>
+        <li><a href="#swarm-w">Swarm (W)</a></li>
+      </ul>
+    </li>
+    <li><a href="#docker-machine-m">Docker Machine (m)</a></li>
+    <li><a href="#docker-compose-c">Docker Compose (c)</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="docker">Docker</h2>
+<p>alias dk=&lsquo;docker&rsquo;
+alias dka=&lsquo;docker attach&rsquo;
+alias dkb=&lsquo;docker build&rsquo;
+alias dkd=&lsquo;docker diff&rsquo;
+alias dkdf=&lsquo;docker system df&rsquo;
+alias dke=&lsquo;docker exec&rsquo;
+alias dkE=&lsquo;docker exec -it&rsquo;
+alias dkh=&lsquo;docker history&rsquo;
+alias dki=&lsquo;docker images&rsquo;
+alias dkin=&lsquo;docker inspect&rsquo;
+alias dkim=&lsquo;docker import&rsquo;
+alias dkk=&lsquo;docker kill&rsquo;
+alias dkl=&lsquo;docker logs&rsquo;
+alias dkli=&lsquo;docker login&rsquo;
+alias dklo=&lsquo;docker logout&rsquo;
+alias dkls=&lsquo;docker ps&rsquo;
+alias dkp=&lsquo;docker pause&rsquo;
+alias dkP=&lsquo;docker unpause&rsquo;
+alias dkpl=&lsquo;docker pull&rsquo;
+alias dkph=&lsquo;docker push&rsquo;
+alias dkps=&lsquo;docker ps&rsquo;
+alias dkpsa=&lsquo;docker ps -a&rsquo;
+alias dkr=&lsquo;docker run&rsquo;
+alias dkR=&lsquo;docker run -it &ndash;rm&rsquo;
+alias dkRe=&lsquo;docker run -it &ndash;rm &ndash;entrypoint /bin/bash&rsquo;
+alias dkRM=&lsquo;docker system prune&rsquo;
+alias dkrm=&lsquo;docker rm&rsquo;
+alias dkrmi=&lsquo;docker rmi&rsquo;
+alias dkrn=&lsquo;docker rename&rsquo;
+alias dks=&lsquo;docker start&rsquo;
+alias dkS=&lsquo;docker restart&rsquo;
+alias dkss=&lsquo;docker stats&rsquo;
+alias dksv=&lsquo;docker save&rsquo;
+alias dkt=&lsquo;docker tag&rsquo;
+alias dktop=&lsquo;docker top&rsquo;
+alias dkup=&lsquo;docker update&rsquo;
+alias dkV=&lsquo;docker volume&rsquo;
+alias dkv=&lsquo;docker version&rsquo;
+alias dkw=&lsquo;docker wait&rsquo;
+alias dkx=&lsquo;docker stop&rsquo;</p>
+<h3 id="container-c">Container (C)</h3>
+<p>alias dkC=&lsquo;docker container&rsquo;
+alias dkCa=&lsquo;docker container attach&rsquo;
+alias dkCcp=&lsquo;docker container cp&rsquo;
+alias dkCd=&lsquo;docker container diff&rsquo;
+alias dkCe=&lsquo;docker container exec&rsquo;
+alias dkCin=&lsquo;docker container inspect&rsquo;
+alias dkCk=&lsquo;docker container kill&rsquo;
+alias dkCl=&lsquo;docker container logs&rsquo;
+alias dkCls=&lsquo;docker container ls&rsquo;
+alias dkCp=&lsquo;docker container pause&rsquo;
+alias dkCpr=&lsquo;docker container prune&rsquo;
+alias dkCrn=&lsquo;docker container rename&rsquo;
+alias dkCS=&lsquo;docker container restart&rsquo;
+alias dkCrm=&lsquo;docker container rm&rsquo;
+alias dkCr=&lsquo;docker container run&rsquo;
+alias dkCR=&lsquo;docker container run -it &ndash;rm&rsquo;
+alias dkCRe=&lsquo;docker container run -it &ndash;rm &ndash;entrypoint /bin/bash&rsquo;
+alias dkCs=&lsquo;docker container start&rsquo;
+alias dkCss=&lsquo;docker container stats&rsquo;
+alias dkCx=&lsquo;docker container stop&rsquo;
+alias dkCtop=&lsquo;docker container top&rsquo;
+alias dkCP=&lsquo;docker container unpause&rsquo;
+alias dkCup=&lsquo;docker container update&rsquo;
+alias dkCw=&lsquo;docker container wait&rsquo;</p>
+<h3 id="image-i">Image (I)</h3>
+<p>alias dkI=&lsquo;docker image&rsquo;
+alias dkIb=&lsquo;docker image build&rsquo;
+alias dkIh=&lsquo;docker image history&rsquo;
+alias dkIim=&lsquo;docker image import&rsquo;
+alias dkIin=&lsquo;docker image inspect&rsquo;
+alias dkIls=&lsquo;docker image ls&rsquo;
+alias dkIpr=&lsquo;docker image prune&rsquo;
+alias dkIpl=&lsquo;docker image pull&rsquo;
+alias dkIph=&lsquo;docker image push&rsquo;
+alias dkIrm=&lsquo;docker image rm&rsquo;
+alias dkIsv=&lsquo;docker image save&rsquo;
+alias dkIt=&lsquo;docker image tag&rsquo;</p>
+<h3 id="volume-v">Volume (V)</h3>
+<p>alias dkV=&lsquo;docker volume&rsquo;
+alias dkVin=&lsquo;docker volume inspect&rsquo;
+alias dkVls=&lsquo;docker volume ls&rsquo;
+alias dkVpr=&lsquo;docker volume prune&rsquo;
+alias dkVrm=&lsquo;docker volume rm&rsquo;</p>
+<h3 id="network-n">Network (N)</h3>
+<p>alias dkN=&lsquo;docker network&rsquo;
+alias dkNs=&lsquo;docker network connect&rsquo;
+alias dkNx=&lsquo;docker network disconnect&rsquo;
+alias dkNin=&lsquo;docker network inspect&rsquo;
+alias dkNls=&lsquo;docker network ls&rsquo;
+alias dkNpr=&lsquo;docker network prune&rsquo;
+alias dkNrm=&lsquo;docker network rm&rsquo;</p>
+<h3 id="system-y">System (Y)</h3>
+<p>alias dkY=&lsquo;docker system&rsquo;
+alias dkYdf=&lsquo;docker system df&rsquo;
+alias dkYpr=&lsquo;docker system prune&rsquo;</p>
+<h3 id="stack-k">Stack (K)</h3>
+<p>alias dkK=&lsquo;docker stack&rsquo;
+alias dkKls=&lsquo;docker stack ls&rsquo;
+alias dkKps=&lsquo;docker stack ps&rsquo;
+alias dkKrm=&lsquo;docker stack rm&rsquo;</p>
+<h3 id="swarm-w">Swarm (W)</h3>
+<p>alias dkW=&lsquo;docker swarm&rsquo;</p>
+<h2 id="docker-machine-m">Docker Machine (m)</h2>
+<p>alias dkm=&lsquo;docker-machine&rsquo;
+alias dkma=&lsquo;docker-machine active&rsquo;
+alias dkmcp=&lsquo;docker-machine scp&rsquo;
+alias dkmin=&lsquo;docker-machine inspect&rsquo;
+alias dkmip=&lsquo;docker-machine ip&rsquo;
+alias dkmk=&lsquo;docker-machine kill&rsquo;
+alias dkmls=&lsquo;docker-machine ls&rsquo;
+alias dkmpr=&lsquo;docker-machine provision&rsquo;
+alias dkmps=&lsquo;docker-machine ps&rsquo;
+alias dkmrg=&lsquo;docker-machine regenerate-certs&rsquo;
+alias dkmrm=&lsquo;docker-machine rm&rsquo;
+alias dkms=&lsquo;docker-machine start&rsquo;
+alias dkmsh=&lsquo;docker-machine ssh&rsquo;
+alias dkmst=&lsquo;docker-machine status&rsquo;
+alias dkmS=&lsquo;docker-machine restart&rsquo;
+alias dkmu=&lsquo;docker-machine url&rsquo;
+alias dkmup=&lsquo;docker-machine upgrade&rsquo;
+alias dkmv=&lsquo;docker-machine version&rsquo;
+alias dkmx=&lsquo;docker-machine stop&rsquo;</p>
+<h2 id="docker-compose-c">Docker Compose (c)</h2>
+<p>alias dkc=&lsquo;docker-compose&rsquo;
+alias dkcb=&lsquo;docker-compose build&rsquo;
+alias dkcB=&lsquo;docker-compose build &ndash;no-cache&rsquo;
+alias dkcd=&lsquo;docker-compose down&rsquo;
+alias dkce=&lsquo;docker-compose exec&rsquo;
+alias dkck=&lsquo;docker-compose kill&rsquo;
+alias dkcl=&lsquo;docker-compose logs&rsquo;
+alias dkcls=&lsquo;docker-compose ps&rsquo;
+alias dkcp=&lsquo;docker-compose pause&rsquo;
+alias dkcP=&lsquo;docker-compose unpause&rsquo;
+alias dkcpl=&lsquo;docker-compose pull&rsquo;
+alias dkcph=&lsquo;docker-compose push&rsquo;
+alias dkcps=&lsquo;docker-compose ps&rsquo;
+alias dkcr=&lsquo;docker-compose run&rsquo;
+alias dkcR=&lsquo;docker-compose run &ndash;rm&rsquo;
+alias dkcrm=&lsquo;docker-compose rm&rsquo;
+alias dkcs=&lsquo;docker-compose start&rsquo;
+alias dkcsc=&lsquo;docker-compose scale&rsquo;
+alias dkcS=&lsquo;docker-compose restart&rsquo;
+alias dkcu=&lsquo;docker-compose up&rsquo;
+alias dkcU=&lsquo;docker-compose up -d&rsquo;
+alias dkcv=&lsquo;docker-compose version&rsquo;
+alias dkcx=&lsquo;docker-compose stop&rsquo;</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

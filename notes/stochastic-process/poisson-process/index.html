@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Poisson Process | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#poisson-process">Poisson Process</a>
+      <ul>
+        <li><a href="#counting-process">Counting Process</a></li>
+        <li><a href="#definition-1-of-poisson-process">Definition 1 of Poisson Process</a></li>
+        <li><a href="#definition-2-of-poisson-process">Definition 2 of Poisson Process</a></li>
+        <li><a href="#sequence-of-interarrival-times">Sequence of interarrival times</a></li>
+        <li><a href="#arrival-time-of-nth-event">Arrival time of $n$th event</a></li>
+        <li><a href="#two-type-poisson-random-variables">Two Type Poisson random variables</a></li>
+        <li><a href="#mg1-busy-period">M/G/1 Busy Period</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="poisson-process">Poisson Process</h2>
+<h3 id="counting-process">Counting Process</h3>
+<ol>
+<li>$N(t)\geq 0$</li>
+<li>$N(t)\in\mathbb{N}$</li>
+<li>$s&lt;t,N(s)\leq N(t)$</li>
+<li>$s&lt;t,N(t)-N(s)$ equals the number of events that have occurred in the interval $(s,t]$</li>
+</ol>
+<h3 id="definition-1-of-poisson-process">Definition 1 of Poisson Process</h3>
+<ol>
+<li>
+<p>$N(0)=0$</p>
+</li>
+<li>
+<p>independent increments</p>
+</li>
+<li>
+<p>$\forall s,t\geq 0$</p>
+<p>$$P(N(t+s)-N(s)=n)=e^{-\lambda t}\frac{(\lambda t)^n}{n!},n=0,1$$</p>
+</li>
+</ol>
+<h3 id="definition-2-of-poisson-process">Definition 2 of Poisson Process</h3>
+<ol>
+<li>$N(0)=0$</li>
+<li>The process has stationary and independent increments</li>
+<li>$P(N(t+h)-N(t)=1)=\lambda h+o(h)$</li>
+<li>$P(N(t+h)-N(t)\geq 2)=o(h)$</li>
+</ol>
+<h3 id="sequence-of-interarrival-times">Sequence of interarrival times</h3>
+<ul>
+<li>
+<p>${X_n,n\geq 1}$: $X_n$ denotes the time of the $n$th event</p>
+<p>$$P(X_1&gt;t)=P(N(t)=0)=e^{-\lambda t}$$</p>
+</li>
+<li>
+<p>$X_n$ are independent identically distributed exponential random variables having mean $\frac{1}{\lambda}$</p>
+</li>
+</ul>
+<h3 id="arrival-time-of-nth-event">Arrival time of $n$th event</h3>
+<ul>
+<li>
+<p>$S_n=\sum_{i=1}^nX_i,n\geq 1$: Gamma Distribution</p>
+</li>
+<li>
+<p>order statistics $Y_{(i)}$ corresponding to $Y_i$: $Y_{(i)}$ is the $k$th minimum of $Y_{i}$</p>
+<p>$$ f(y_1,y_2,\cdots,y_n)=n!\prod_{i=1}^nf(y_i) $$</p>
+</li>
+<li>
+<p>$Y_i$ are uniformly distributed over $(0,t)$, then the joint density funciton of order statistics is</p>
+<p>$$ f(y_1,y_2,\cdots,y_n)=\frac{n!}{t^n} $$</p>
+</li>
+<li>
+<p>Given that $N(t)=n$, the $n$ arrival times $S_1,\cdots,S_n$ have the same distribution as the order statistics corresponding to $n$ independent random variables uniformly distributed on the interval $(0,t)$</p>
+</li>
+</ul>
+<h3 id="two-type-poisson-random-variables">Two Type Poisson random variables</h3>
+<ul>
+<li>event occurs at time $s$, then, indepentently of all else, it is classified as being a type-I event with probability $P(s)$ and a type-II event with probability $1-P(s)$</li>
+<li>$N_1(t)$ and $N_2(t)$ are independent Poisson random variables having respective means $\lambda tp$ and $\lambda t(1-p)$</li>
+</ul>
+<p>$$ p=\frac{1}{t}\int^t_0P(s)ds $$</p>
+<h3 id="mg1-busy-period">M/G/1 Busy Period</h3>
+<ul>
+<li>M/G/1 queueing system
+<ul>
+<li>customers arrive in accordance with a Poisson process with rate $\lambda$</li>
+<li>upon arrival, either enter service if the server is free or else join the queue</li>
+<li>successive service times are independent and identically distributed according to $G$: $Y_i$ denotes the sequence of service times</li>
+<li>busy period begins: an arrival finds the server free</li>
+<li>busy period ends: no longer any customers in the system</li>
+</ul>
+</li>
+<li>busy period last a time $t$ and consits of $n$ services (Probability $B(t,n)$) iff
+<ul>
+<li>$S_k\leq Y_1+\cdots Y_k$</li>
+<li>$Y_1+\cdots Y_n=t$</li>
+<li>There are $n-1$ arrivals in $(0,t)$</li>
+</ul>
+</li>
+</ul>
+<p>$$B(t,n)=\int_0^te^{-\lambda t}\frac{(\lambda t)^{n-1}}{n!}dG_n(t)$$</p>
+<p>$$B(t)=\sum_{n=1}^\infty B(t,n)$$</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

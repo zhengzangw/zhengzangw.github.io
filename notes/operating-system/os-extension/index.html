@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Extension | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#labs">Labs</a></li>
+    <li><a href="#操作系统安全">操作系统安全</a>
+      <ul>
+        <li><a href="#微内核操作系统">微内核操作系统</a></li>
+        <li><a href="#多用户">多用户</a></li>
+        <li><a href="#访问控制">访问控制</a></li>
+      </ul>
+    </li>
+    <li><a href="#分布式系统">分布式系统</a></li>
+    <li><a href="#容器与虚拟机">容器与虚拟机</a></li>
+    <li><a href="#debug">Debug</a>
+      <ul>
+        <li><a href="#gdb">gdb</a></li>
+      </ul>
+    </li>
+    <li><a href="#名人名言">名人名言</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><blockquote>
+<p>Operating System: Three Easy Pieces
+<a href="http://ics.nju.edu.cn/~jyywiki">讲义</a>
+NJU: 操作系统 - 蒋炎岩</p>
+</blockquote>
+<h2 id="labs">Labs</h2>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Name</th>
+<th>Description</th>
+<th>Knowledge Point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>pstree</td>
+<td>打印进程之间的树状的父子关系</td>
+<td>命令行参数；分析/proc</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>libco</td>
+<td>实现轻量级的用户态协程库</td>
+<td>协程概念；内联汇编更换栈</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>sperf</td>
+<td>统计它执行的每个系统调用所占的时间</td>
+<td>系统 API 使用；shell UI</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>crepl</td>
+<td>C交互式shell</td>
+<td>系统 API 使用；动态加载</td>
+</tr>
+<tr>
+<td>M5</td>
+<td>frecov</td>
+<td>FAT32文件系统镜像 bmp 文件还原</td>
+<td>FAT32文件系统分析；数据还原</td>
+</tr>
+<tr>
+<td>M6</td>
+<td>libkvdb</td>
+<td>实现持久、崩溃一致的key-value数据库API</td>
+<td>多线程、进程、崩溃一致性程序</td>
+</tr>
+<tr>
+<td>L0</td>
+<td>amgame</td>
+<td>编写直接运行在AbstractMachine上游戏</td>
+<td>类 Flappy Bird</td>
+</tr>
+<tr>
+<td>L1</td>
+<td>kalloc</td>
+<td>pmm模块</td>
+<td></td>
+</tr>
+<tr>
+<td>L2</td>
+<td>kthreads</td>
+<td>os,kmt模块</td>
+<td></td>
+</tr>
+<tr>
+<td>L3</td>
+<td>vfs</td>
+<td>vfs模块, shell</td>
+<td></td>
+</tr>
+<tr>
+<td>L4</td>
+<td>uproc</td>
+<td>uproc模块（未完成）</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="操作系统安全">操作系统安全</h2>
+<ul>
+<li>Confidentiality, Integrity, Availability</li>
+<li>安全漏洞
+<ul>
+<li>错误设置访问控制策略</li>
+<li>未正确处理用户输入
+<ul>
+<li>注入攻击</li>
+<li>libpng 漏洞</li>
+</ul>
+</li>
+<li>有缺陷的访问控制机制
+<ul>
+<li>Meltdown</li>
+</ul>
+</li>
+<li>UB
+<ul>
+<li>buffer overflow</li>
+<li>use after free/dangling pointer</li>
+<li>data race
+<ul>
+<li>TOCTTOU: Time of Check To Time of Use</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>侧信道攻击 Side-Channel
+<ul>
+<li>时间
+<ul>
+<li>Meltdown
+<ul>
+<li>修复：用户态不映射内核</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>能源消耗</li>
+<li>电磁信号
+<ul>
+<li>Visual Microphone</li>
+</ul>
+</li>
+<li>(一切以非算法形式泄露的信息)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Availability
+<ul>
+<li>DoS 攻击 (Denial of Sevice)
+<ul>
+<li>DDoS 分布式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="微内核操作系统">微内核操作系统</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Monolithic Kernel based OS</th>
+<th>Microkernel OS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Mode</td>
+<td></td>
+<td>Application IPC</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>UNIX Sever</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Device Driver</td>
+</tr>
+<tr>
+<td></td>
+<td>Application</td>
+<td>File Server</td>
+</tr>
+<tr>
+<td>Kernel Mode</td>
+<td>VFS</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Device Driver, Dispatcher</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Schedular, Virtual Memory</td>
+<td>Schedular, Virtual Memory</td>
+</tr>
+<tr>
+<td></td>
+<td>IPC, File System</td>
+<td>Basic IPC</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>System Call</td>
+<td>IPC</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>IPC(Inter-Process Communication)
+<ul>
+<li><code>send/receive(end_point, data)</code>: 同步通信
+<ul>
+<li>无法高效实现 select(): 必须为每一个文件描述符创建一个线程</li>
+<li>长消息
+<ul>
+<li><code>grant</code>: 把一个页面 grant 给另一个进程，直到另一个进程 unmap 后才能继续执行</li>
+<li><code>buf_alloc</code>: 共享缓冲区</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Exokernel
+<ul>
+<li>Programs can communicate with the hardware much more directly</li>
+<li>操作系统 API 实现为库函数</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Microkernel</th>
+<th>Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seL4</td>
+<td>完成形式化验证</td>
+</tr>
+<tr>
+<td>Zircon</td>
+<td>Handles,Tasks,IPC,VMO</td>
+</tr>
+<tr>
+<td></td>
+<td>Fuchsia OS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="多用户">多用户</h3>
+<ul>
+<li>/etc/passwd: Username:UID:GID:userinfo:homedir:shell</li>
+<li>/etc/shadow: 加密密码</li>
+<li>uid/gid: 进程身份</li>
+<li>su : substitue user identity</li>
+<li>sudo : execute a command as another user
+<ul>
+<li>可用 VFS 实现: /dev/auth</li>
+<li>pluggabble authentication modules: pam_authenticate</li>
+</ul>
+</li>
+</ul>
+<h3 id="访问控制">访问控制</h3>
+<ul>
+<li>drwxrwxrwx: filetype User Group Other</li>
+<li>setuid 权限</li>
+<li>Access Control List (ACL)
+<ul>
+<li>setfacl</li>
+<li>getfacl</li>
+</ul>
+</li>
+</ul>
+<h2 id="分布式系统">分布式系统</h2>
+<ul>
+<li>多台物理上独立的计算机进行虚拟化(Virtualization)
+<ul>
+<li>增加储存容量、运算力</li>
+<li>多地多副本</li>
+<li>就近服务</li>
+</ul>
+</li>
+<li>分布式系统中的机器可看做 Process</li>
+<li>CAP Theorem: 无法同时满足
+<ul>
+<li>Consistency: 看起来就像一个没有cache的共享内存</li>
+<li>Availability: 能始终提供服务</li>
+<li>Partition fault tolerance: 允许机器/网络发生故障 (几乎不能避免)</li>
+</ul>
+</li>
+<li>在不可靠的计算机上实现分布式系统
+<ul>
+<li>Hadoop Ecosystem: 多个层级抽象，提供多种服务</li>
+</ul>
+</li>
+<li>分布式系统栈
+<ul>
+<li>底层：进程&amp;消息
+<ul>
+<li>分布式系统管理多个(分布)的进程(运行同一份代码)
+<ul>
+<li>进程可以访问本机资源</li>
+<li>进程间可以互相发送消息(例如通过ssh)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>系统层：机器管理
+<ul>
+<li>系统部署：Docker</li>
+<li>系统管理：Mesos, Kubernetes</li>
+</ul>
+</li>
+<li>存储：文件系统
+<ul>
+<li>全局可见 namespace</li>
+<li>HDFS</li>
+</ul>
+</li>
+<li>存储：数据库
+<ul>
+<li>NoSQL</li>
+<li>SQL</li>
+</ul>
+</li>
+<li>计算</li>
+</ul>
+</li>
+</ul>
+<h2 id="容器与虚拟机">容器与虚拟机</h2>
+<ul>
+<li>操作系统虚拟化
+<ul>
+<li>可控的操作系统运行环境</li>
+<li>Legacy Code</li>
+<li>复用硬件资源</li>
+</ul>
+</li>
+<li><strong>虚拟机</strong>：重量级
+<ul>
+<li>虚拟完整的计算机硬件，可在虚拟机上运行任意操作系统，emulator/hypervisor</li>
+<li>虚拟机是解析指令的程序
+<ul>
+<li>NEMU, LiteNES, QEMU, VMWare</li>
+</ul>
+</li>
+<li>解释执行：性能损失(100X)</li>
+<li>DBT(Dynamic binary translation)： 把指令序列在 gcc 中编译优化
+<ul>
+<li>瓶颈
+<ul>
+<li>SoftMMU：地址映射
+<ul>
+<li>内存是性能瓶颈</li>
+</ul>
+</li>
+<li>I/O 设备
+<ul>
+<li>经过 SoftMMU 实现</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>tcg: Tiny Code Generator</li>
+</ul>
+</li>
+<li>硬件虚拟化
+<ul>
+<li>VT-x
+<ul>
+<li>Ring 3: 直接执行</li>
+<li>Ring 0: 解释执行</li>
+<li>Ring -1: Root Mode</li>
+<li>VM-Exit</li>
+</ul>
+</li>
+<li>KVM
+<ul>
+<li>/dev/kvm</li>
+<li>实现一组无法硬件虚拟化的指令集</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>容器</strong>：轻量级
+<ul>
+<li>虚拟化操作系统 API</li>
+<li>LXC C</li>
+<li>Docker</li>
+<li>核心组件
+<ul>
+<li>namespaces</li>
+<li>cgroups</li>
+<li>capabilities/apparmor</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="debug">Debug</h2>
+<ul>
+<li>Failure-&gt;Error
+<ul>
+<li>系统测试</li>
+<li>单元测试</li>
+<li>回归测试</li>
+</ul>
+</li>
+<li>Error-&gt;Fault
+<ul>
+<li>assertion</li>
+</ul>
+</li>
+<li>Failure-&gt;Fault
+<ul>
+<li>log</li>
+<li>backtrace</li>
+<li>lock trace</li>
+<li>AM API call trace</li>
+</ul>
+</li>
+</ul>
+<h3 id="gdb">gdb</h3>
+<h2 id="名人名言">名人名言</h2>
+<ul>
+<li>抛开 workload 谈 performance 就是耍流氓</li>
+<li>KISS: KEEP IT SIMPLE AND STUPID</li>
+<li>Knuth: premature optimization is the root of all evils</li>
+<li>HILL&rsquo;s law: simple and dump can be better</li>
+<li>Lampson: Don&rsquo;t generalize; generalizations are generally wrong</li>
+<li>TOM WEST&rsquo;s LAW: Not everything worth doing is worth doing well</li>
+<li>LIVNY’S LAW: IT ALWAYS DEPENDS</li>
+<li>David Wheeler: All problems in computer science can be solved by another level of indirection.</li>
+<li>IF 1000 SOLUTIONS EXIST, NO GREAT ONE DOES</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>函数逼近与曲线拟合 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#预备知识">预备知识</a>
+      <ul>
+        <li><a href="#内积与范数">内积与范数</a></li>
+        <li><a href="#函数系">函数系</a></li>
+        <li><a href="#函数逼近">函数逼近</a></li>
+      </ul>
+    </li>
+    <li><a href="#正交多项式为基的最佳平方逼近">正交多项式为基的最佳平方逼近</a>
+      <ul>
+        <li><a href="#勒让德多项式-legendre">勒让德多项式 (Legendre)</a></li>
+        <li><a href="#切比雪夫多项式">切比雪夫多项式</a></li>
+        <li><a href="#区间变换">区间变换</a></li>
+        <li><a href="#广义-fourier-级数">广义 Fourier 级数</a></li>
+        <li><a href="#fourier-级数">Fourier 级数</a></li>
+      </ul>
+    </li>
+    <li><a href="#最小二乘法作曲线拟合">最小二乘法作曲线拟合</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="预备知识">预备知识</h2>
+<h3 id="内积与范数">内积与范数</h3>
+<ul>
+<li>内积：$f(x),g(x)\in C[a,b],\rho$ 是 $[a,b]$ 上的权函数，$(f,g)=\int_a^b\rho(x)f(x)g(x)dx$
+<ul>
+<li>非负函数 $\rho$ 为权函数需满足
+<ul>
+<li>$\int_a^b|x|^n\rho(x)dx$ 存在（总质量）</li>
+<li>$\forall g(x)$ 非负，$\int_a^bg(x)\rho(x)dx=0$ 则在 $(a,b)$ 上 $g(x)\equiv0$</li>
+</ul>
+</li>
+<li>物理上表示密度函数</li>
+<li>内积公理
+<ul>
+<li>$(f,g)=(g,f)$</li>
+<li>$(cf,g)=c(f,g)$</li>
+<li>$(f_1+f_2,g)=(f_1,g)+(f_2,g)$</li>
+<li>$(f,f)\geq 0$ 且 $f=0\iff(f,f)=0$</li>
+</ul>
+</li>
+<li>内积空间：$C[a,b]$ 在上述内积下形成内积空间</li>
+<li>欧式长度：$|f|_2=\sqrt{(f,f)}$</li>
+</ul>
+</li>
+<li>函数范数
+<ul>
+<li>$|f|<em>\infty=\max</em>{a\leq x\leq b}|f(x)|$</li>
+<li>$|f|_2=\sqrt{\int_a^bf^2(x)dx}$</li>
+</ul>
+</li>
+<li>范数性质
+<ul>
+<li>$|(f,g)|_2\leq|f|_2|g|_g$ Cauchy-Schwarz Inequality</li>
+<li>$|f+g|_2\leq|f|_2+|g|_2$ 三角不等式</li>
+<li>$|f+g|_2^2+|f-g|_2^2=2(|f|_2^2+|g|_2^2)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="函数系">函数系</h3>
+<ul>
+<li>线性无关函数系（基函数系）：$\sum_{i}a_i\phi_i(x)=0\iff a_0=\cdots=a_{n-1}=0$ 时才成立</li>
+<li>$f,g$ 在 $[a,b]$ 上带权 $\rho(x)$ 正交：$(f,g)=\int_a^b\rho(x)f(x)g(x)dx=0$</li>
+<li>正交函数系：函数系 $\varphi_0,\cdots,\varphi_n(x),(\varphi_j,\varphi_k)=\int_a^b\rho(x)\varphi_j(x)\varphi_k(x)dx=A_k[j=k]$</li>
+<li>标准正交函数系：$A_k=1$</li>
+<li>三角函数系：$1,\cos x,\sin x,\cos 2x,\sin 2x,\cdots$ 是 $[0,2\pi]$ 上关于权函数 $1$ 的正交函数系</li>
+<li>$H_n=\text{span}{1,x,\cdots,x^n},[0,1],\rho(x)=1$</li>
+</ul>
+<h3 id="函数逼近">函数逼近</h3>
+<ul>
+<li>
+<p>Weierstrass 定理</p>
+<ul>
+<li>$f(x)\in C[a,b]$，则 $\forall \epsilon&gt;0$，$\exists$ 代数多项式 $p(x)$ 有 $|f(x)-p(x)|_{\infty}&lt;\epsilon$ 在 $[a,b]$ 上一致成立</li>
+</ul>
+</li>
+<li>
+<p>函数逼近：在满足一定条件的函数类中确定形式相对简单的函数 $p(x)$ 作为 $f(x)$ 的近似计算</p>
+<ul>
+<li>一致均匀逼近：$|f(x)-p(x)|<em>{\infty}=\max</em>{a\leq x\leq b}|f(x)-p(x)|$</li>
+<li>均方平方逼近：$|f(x)-p(x)|<em>2=\sqrt{\int</em>{a}^b[f(x)-p(x)]^2dx}$</li>
+</ul>
+</li>
+<li>
+<p>最佳平方逼近：用均方误差最小最为度量标准寻找逼近多项式</p>
+<ul>
+<li>
+<p>$|f(x)-P^<em>(x)|_2=|f^</em>-S^*|<em>2^2=\min</em>{P}|f(x)-P(x)|<em>2=\min</em>{S\in\Phi}\int^b_a\rho[f(x)-S(x)]^2dx$</p>
+</li>
+<li>
+<p>最佳平方逼近函数 $S^*(x)\in\Phi=\text{span}{\phi_0,\cdots}\subset C[a,b]$</p>
+</li>
+<li>
+<p>$I(a_0,\cdots,a_n)=|S(x)-f(x)|<em>2^2=\int_a^b[\sum</em>{j=0}^n\phi_j(x)-f(x)]^2dx$ 最小值</p>
+<ul>
+<li>
+<p>偏导为零得：$\sum_{j=0}^n(\phi_k,\phi_j)a_j=(f,\phi_k),k=0,1,\cdots,n$</p>
+</li>
+<li>
+<p>法方程
+$$\begin{bmatrix}(\varphi_0,\varphi_0) &amp; (\varphi_0,\varphi_1) &amp; \cdots &amp; (\varphi_0,\varphi_n)\newline  (\varphi_1,\varphi_0) &amp; (\varphi_1,\varphi_1) &amp; \cdots &amp; (\varphi_1,\varphi_n) \newline  \cdots &amp; \cdots &amp; \cdots &amp; \cdots\newline (\varphi_n,\varphi_0) &amp; (\varphi_n,\varphi_1) &amp; \cdots &amp; (\varphi_n,\varphi_n)\end{bmatrix}\begin{bmatrix}a_0\newline  a_1\newline \vdots\newline a_n \end{bmatrix}=\begin{bmatrix} (f,\varphi_0) \newline  (f,\varphi_1) \newline  \vdots \newline  (f,\varphi_n) \end{bmatrix}$$</p>
+</li>
+<li>
+<p>线性无关（解唯一）$\iff$ Grammer 行列式 $G_{n-1}\neq 0$，其中 $G_{n-1}(i,j)=(\phi_{i-1},\phi_{j-1})$</p>
+</li>
+<li>
+<p>误差：$|f|<em>2^2-\sum</em>{k=0}^na_k^*(\phi_k,f)$</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>最佳平方逼近多项式 $p_n^<em>(x)\in H_n$：$|f-p_n^</em>|<em>2=\sqrt{\int_a^b[f(x)-p_n^*(x)]^2dx}=\inf</em>{p\in H_n}|f-p|_2$</p>
+</li>
+<li>
+<p>Hilbert 矩阵：$H_{n+1}$ 为 $G_n=G(1,x,\cdots,x^n)$ 对应矩阵，$H_{n+1,i,j}=\frac{1}{i+j+1}$</p>
+</li>
+</ul>
+<h2 id="正交多项式为基的最佳平方逼近">正交多项式为基的最佳平方逼近</h2>
+<ul>
+<li>$a_k^*=\frac{(f,\varphi_k)}{(\varphi_k,\varphi_k)},(k=0,1,\cdots,n)$</li>
+<li>$s^*(x)=\sum_{i=0}^na_i^*f(x)$</li>
+</ul>
+<h3 id="勒让德多项式-legendre">勒让德多项式 (Legendre)</h3>
+<ul>
+<li>$[-1,1],\rho(x)=1,P_0(x)=1$</li>
+<li>$P_n(x)=\frac{1}{2^nn!}\frac{d^n}{dx^n}(x^2-1)^n$</li>
+<li>正交性 $\int_{-1}^1P_m(x)P_n(x)dx=\frac{2}{2n+1}[m=n]$</li>
+<li>$P_{k+1}(x)=\frac{2k+1}{k+1}x\cdot P_k(x)-\frac{k}{k+1}\cdot P_{k-1}(x),P_0(x)=1,P_1(x)=x$</li>
+<li>$P_2(x)=\frac{3x^2-1}{2},P_3(x)=\frac{5x^3-3x}{2},P_4(x)=\frac{35x^4-30x^2+3}{8}$</li>
+</ul>
+<h3 id="切比雪夫多项式">切比雪夫多项式</h3>
+<ul>
+<li>$[-1,1],\rho(x)=\frac{1}{\sqrt{1-x^2}}$</li>
+<li>$T_n(x)=\cos(n\cdot\arccos x),|x|\leq 1$</li>
+<li>$T_{n+1}(x)=2xT_n(x)-T_{n-1}(x),T_0(x)=1,T_1(x)=x$</li>
+<li>$T_2(x)=2x^2-1, T_3(x)=4x^3-3x, T_4(x)=8x^4-8x^2+1, T_5(x)=16x^5-20x^3+5x$</li>
+<li>$(T_n,T_m)=\frac{\pi}{2}[n=m]+\frac{\pi}{2}[n=m=0]$</li>
+</ul>
+<h3 id="区间变换">区间变换</h3>
+<ol>
+<li>$[a,b],x=\frac{b-a}{2}t+\frac{b+a}{2},g(t)=f(\frac{b-a}{2}t+\frac{b+a}{2})=f(x)$</li>
+<li>求 $g(t)$ 正交最佳平方逼近 $G(t)$</li>
+<li>$S(x)=G(\frac{2}{b-a}(x-\frac{b+a}{2}))$</li>
+</ol>
+<h3 id="广义-fourier-级数">广义 Fourier 级数</h3>
+<ul>
+<li>$S(x)=\sum_{k=0}^\infty a_kg_k(x),f(x)\sim\sum_{k=0}^\infty a_k g_k(x)$</li>
+<li>基函数为 ${g_k(x)}_{k=0}^\infty$</li>
+</ul>
+<h3 id="fourier-级数">Fourier 级数</h3>
+<ul>
+<li>正交函数系 ${1,\cos x,\sin x,\cos 2x,\sin 2x,\cdots,\cos nx,\sin nx}$</li>
+<li>$S_n(x)=\frac{a_0}{2}+\sum_{k=1}^n(a_k\cos kx+b_k\sin kx)$</li>
+</ul>
+<h2 id="最小二乘法作曲线拟合">最小二乘法作曲线拟合</h2>
+<ul>
+<li>通过数据 $(x_k,y_k),k=0,1,\cdots,m$ 求 $y=S(x)$</li>
+<li>$\Phi={\sum_{i=0}^na_i\varphi_i}$，求 $S^*(x)\in\Phi$ 使与 $y_i$ 误差平方和最小</li>
+<li>$|\delta|<em>2^2=\sum</em>{i=0}^m\omega(x_i)[S^*(x_i)-y_i]^2$</li>
+<li>$S(x)=\sum_{i=0}^na_0\varphi_0(x)$</li>
+<li>$(\phi_j,\phi_k)=\sum_{i=0}^m\omega(x_i)\varphi_j(x_i)\varphi_k(x_i)$</li>
+<li>法方程 $\sum_{j=0}^na_j(\varphi_j,\varphi_k)=(y,\varphi_k),k=0,\cdots,n$
+<ul>
+<li>唯一解</li>
+<li>$Ga=d$</li>
+</ul>
+</li>
+<li>曲线拟合的一般步骤
+<ul>
+<li>根据数据点描图，根据图形分布，选择模型，确定基函数</li>
+<li>建立法方程组，并求解</li>
+<li>得到数学模型，计算误差</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

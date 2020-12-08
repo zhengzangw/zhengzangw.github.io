@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5-极限理论 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>大数定律
+<ul>
+<li>$X_n\overset{P}{\rightarrow}X$: 随机变量序列${X_n}$ 依概率收敛于随机变量 $X$, 即 $\lim_{n\rightarrow\infty}P(|X_n-X|\geq\epsilon)=0$</li>
+<li>${X_n}$ 服从大数定律：$\frac{1}{n}\sum_{k=1}^n(X_k-EX_k)\overset{P}{\rightarrow}0$</li>
+<li>马尔科夫大数定律：${X_n}$ 满足 $\frac{1}{n^2}D(\sum_{k=1}^nX_k)\rightarrow0$ （马尔科夫条件）则 ${X_n}$ 服从大数定律</li>
+<li>切比雪夫大数定律：${X_n}$ 为两两互不相关的随机变量序列，又存在 $C&gt;0$, 使 $D(X_k)\leq C,k=1,2,&hellip;$, 则 ${X_n}$ 服从大数定律</li>
+<li>独立同分布大数定律： ${X_n}$ 为独立同分布的随机变量，$EX_n=\mu$ ($D(X_n)=\sigma^2&lt;\infty$)，则 $\frac{1}{n}\sum_{k=1}^nX_k\overset{P}{\rightarrow}\mu$</li>
+<li>Bernoulli 大数定理：$\mu_n$ 为 $n$ 重 伯努利试验中 $A$ 发生的次数，$p$ 为 $A$ 在每次实验中发生的概率，则任意的 $\epsilon$ 有 $\lim_{n\rightarrow\infty}P(|\frac{\mu_n}{n}-p|\geq\epsilon)=0$</li>
+</ul>
+</li>
+<li>中心极限定理
+<ul>
+<li>${X_n}$ 服从中心极限定理：${X_n}$ 为一列相互独立的随机变量序列，$EX_k=\mu_k,D(X_k)=\sigma^2,k=1,2,&hellip;$ 均存在，对于标准化变量列 $Y_n^*=\frac{\sum_{k=1}^nX_k-\sum_{k=1}^n\mu_k}{\sqrt{\sum_{k=1}^n\sigma_k^2}}$ 有 $\lim_{n\rightarrow\infty}P(Y_n^*\leq x)=\Phi(x)$
+<ul>
+<li>$\sum_{k=1}^nX_k$ 的渐进分布为 $N(E(\sum_{k=1}^nX_k),D(\sum_{k=1}^nX_k))$</li>
+</ul>
+</li>
+<li>列维-林德伯格中心极限定理：${X_n}$ 为独立同分布的随机变量序列，$EX_n=\mu,D(X_n)=\sigma^2$ 都存在，则 ${X_n}$ 服从中心极限定理</li>
+<li>拉普拉斯中心极限定理：$\lim_{n\rightarrow\infty}P(\frac{\mu_n-np}{\sqrt{npq}}\leq x)=\Phi(x)$
+<ul>
+<li>$X\sim B(n,p), X\sim N(np,npq)$</li>
+<li>$X\sim P(n), X\sim N(n,n)$</li>
+</ul>
+</li>
+<li>频率估计概率：$P(|\frac{\mu_n}{n}-p|&lt;\epsilon)=2\Phi(\epsilon\sqrt{\frac{n}{pq}})-1$</li>
+<li>林德伯格-费勒定理：${X_n}$ 是独立随机变量列，$\mu_n=E(X_n),\sigma_n^2=D(X_n),B_n^2=\sum_{i=1}^n\sigma_i^2$。若对任何 $\tau&gt;0$, 有 $\lim_{n\rightarrow\infty}\frac{1}{B_n^2}\sum_{k=1}^n\sum_{k=1}^nE((X_k-\mu_k)^2[\vert X_k-\mu_k\vert&gt;\tau B_n])=0$, 则随机变量 $X_n^*=\sum_{k=1}^n\frac{X_k-\mu_k}{B_n}$ 服从中心极限定理</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

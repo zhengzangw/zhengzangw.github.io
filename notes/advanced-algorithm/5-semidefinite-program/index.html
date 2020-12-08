@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5. Semidefinite Programs | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-wishlist-for-optimization-algorithms">A Wishlist for Optimization Algorithms</a></li>
+    <li><a href="#quadratic-programming">Quadratic programming</a></li>
+    <li><a href="#semidefinite-program">Semidefinite Program</a></li>
+    <li><a href="#max-cut">Max-Cut</a></li>
+    <li><a href="#sos">SoS</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="a-wishlist-for-optimization-algorithms">A Wishlist for Optimization Algorithms</h2>
+<ul>
+<li>Nonlinear, non-convex objectives</li>
+<li>Powerful enough to tackle hard problems in a systematic way, and meanwhile is still practical</li>
+<li>Becoming more accurate as we&rsquo;re paying more</li>
+<li>A generic framework that can be applied obviously to various problems.</li>
+<li>Methods
+<ul>
+<li>sum-of-squares (SoS) SDP</li>
+<li>Lasserre hierarchy</li>
+<li>Lovász-Schrijver hierarchy</li>
+</ul>
+</li>
+</ul>
+<h2 id="quadratic-programming">Quadratic programming</h2>
+<p>$$\min \frac{1}{2}x^TQx+c^Tx$$</p>
+<h2 id="semidefinite-program">Semidefinite Program</h2>
+<ul>
+<li>$A≽0$: symmetric matrix $A\in\mathbb{R}^{n\times n}$ is positive semidefinite ($\forall x\in\mathbb{R}^n,x^TAx\geq0$)</li>
+<li>$A≽0\iff\forall\lambda(A)\geq 0\iff\exists B\in\mathbb{R}^{n\times n},A=B^TB$</li>
+<li>Semidefinite Programing(SDP): $C,A_1,\cdots,A_k\in\mathbb{R}^{n\times n},b_1,b_2,\cdots,b_k\in\mathbb{R}$</li>
+</ul>
+<p>$$
+\begin{aligned}
+\max\ &amp; \text{tr}(C^TY)=\sum_{i=1}^n\sum_{i=1}^nc_{ij}y_{ij}\newline
+\text{s.t. } &amp; \text{tr}(A^T_rY)\leq b_r &amp; \forall 1\leq r\leq k\newline
+&amp;Y≽0\newline
+&amp;Y=Y^T\in\mathbb{R}^{n\times n}
+\end{aligned}
+$$</p>
+<ul>
+<li>SDP (vector program form, LP for inner products)</li>
+</ul>
+<p>$$
+\begin{aligned}
+\max &amp; \sum_{i=1}^n\sum_{i=1}^nc_{ij}\langle v_i,v_j\rangle\newline
+\text{s.t.} &amp; \sum_{i=1}^n\sum_{j=1}^na_{ij}^{(r)}\langle v_i,v_j\rangle\leq b_r &amp; \forall 1\leq r\leq k\newline
+&amp;v_1,\cdots,v_n\in\mathbb{R}^n
+\end{aligned}
+$$</p>
+<ul>
+<li>LP $\subset$ SDP $\subset$ convex programs</li>
+<li>ellipsoid method: find $\text{OPT}\pm\epsilon$ in time $\text{poly}(n,\frac{1}{\epsilon})$</li>
+<li>SDP-Relaxation
+<ul>
+<li>Present the original quadratic program</li>
+<li>SDP relaxation: $x_ux_v\rightarrow\langle \mathbf{x}_v,\mathbf{x}_u\rangle$</li>
+<li>Solve SDP relaxtion</li>
+<li>Round optimal solution $x^*_v$ to $\hat x_v$</li>
+</ul>
+</li>
+</ul>
+<h2 id="max-cut">Max-Cut</h2>
+<ul>
+<li>Some Algorithm
+<ul>
+<li>Greedy: $\frac{1}{2}$-approximate</li>
+<li>Random: $\frac{1}{2}$-approximate</li>
+<li>Local Search: $\frac{1}{2}$-approximate</li>
+</ul>
+</li>
+<li>LP for Max-Cut</li>
+</ul>
+<p>$$
+\begin{aligned}
+\max &amp; \sum_{uv\in E}y_{uv}\newline
+\text{s.t. } &amp; y_{uv}\leq |x_u-x_v| &amp;\forall uv\in E\newline
+&amp; x_v\in{0,1} &amp; \forall v\in V
+\end{aligned}
+$$</p>
+<ul>
+<li>Linearization: Integrality gap $&gt;2$</li>
+</ul>
+<p>$$
+\begin{aligned}
+\max &amp; \sum_{uv\in E}y_{uv}\newline
+\text{s.t. } &amp; y_{uv}\leq y_{uw}+y_{wv} &amp;\forall u,v,w\in V\newline
+&amp; y_{uv}+y_{uw}+y_{wv}\leq 2 &amp;\forall u,v,w\in V\newline
+&amp; y_{uv}\in{0,1},\forall u,v\in V
+\end{aligned}
+$$</p>
+<ul>
+<li>Quadratic Program</li>
+</ul>
+<p>$$
+\begin{aligned}
+\max &amp; \sum_{uv\in E}y_{uv}\newline
+\text{s.t. } &amp; y_{uv}\leq \frac{1}{2}(1-x_ux_v) &amp;\forall uv\in E\newline
+&amp; x_v\in{-1,1} &amp;\forall v\in V
+\end{aligned}
+$$</p>
+<ul>
+<li>Strictly Quadratic Program (nonlinear,non-convex)</li>
+</ul>
+<p>$$
+\begin{aligned}
+\max &amp; \sum_{uv\in E}\frac{1}{2}(1-x_ux_v)\newline
+\text{s.t. } &amp; x_v^2=1 &amp;\forall v\in V
+\end{aligned}
+$$</p>
+<ul>
+<li>Relax to vector program</li>
+</ul>
+<p>$$
+\begin{aligned}
+\max &amp; \sum_{uv\in E}\frac{1}{2}(1-\langle x_u,x_v\rangle)\newline
+\text{s.t. } &amp; |x_v|^2=1 &amp;\forall v\in V\newline
+&amp; x_v\in\mathbb{R}^{|V|}
+\end{aligned}
+$$</p>
+<ul>
+<li>Rounding: $\hat x_v=\text{sgn}(\langle x_v^*,u\rangle),u\in\mathbb{R}^n,|u|_2=1$ is uniform random unit vector
+<ul>
+<li>Generate $u$: $u=\frac{r}{|r|_2},r=(r_1,\cdots,r_n)\in\mathbb{R}^n,r_i\sim N(0,1)$ i.i.d</li>
+<li>$E(\text{cut})=\sum_{uv\in E}{\frac{\theta_{uv}}{\pi}}=\sum_{uv\in E}\frac{\arccos\langle x_u^*,x_v^*\rangle}{\pi}\geq\alpha\sum_{uv\in E}\frac{1}{2}(1-\langle x_u^*,x_v^*\rangle),\geq\alpha\text{OPT}_{\text{IP}}\geq\alpha\text{OPT}$</li>
+<li>Assuming the unique games conjecture: no poly-time algorithm with approx. ratio $&lt;\alpha=\inf_{x\in[-1,1]}\frac{2\arccos(x)}{\pi(1-x)}=0.87856\cdots$</li>
+</ul>
+</li>
+</ul>
+<h2 id="sos">SoS</h2>
+<ul>
+<li>Given a $n$-variate polynomial $f$, determine whether $f(x)\geq 0$ for all $x\in{0,1}^n$
+<ul>
+<li>NP-hard</li>
+</ul>
+</li>
+<li>multilinear: $f(x)=\sum_{d=(d_1,\cdots,d_n)\in{0,1}^n}x_1^{d_1}\cdots x_n^{d_n}$</li>
+<li>Given a $n$-variate polynomial $f$, find
+<ul>
+<li>either an $x\in{0,1}^n$ such that $f(x)&lt;0$</li>
+<li>or a &ldquo;proof&rdquo; of $f(x)\geq 0$ over all $x\in{0,1}^n$
+<ul>
+<li>SoS proof: $f(x)=\sum_{i=1}^rg_1(x)^2$</li>
+<li>For nonnegatvie polynomial
+<ul>
+<li>$f:{0,1}^n\rightarrow\mathbb{R}$, degree-$2n$ SoS proof always exists</li>
+<li>degree-$d$ SoS proof needs at most $r=n^{O(d)}$ length</li>
+<li>if $f$ has degree=$d$ SoS proff, then it can be found in $n^{O(d)}$ time (by SDP)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compressing | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#冗余">冗余</a>
+      <ul>
+        <li><a href="#编码冗余">编码冗余</a></li>
+        <li><a href="#空间和时间冗余">空间和时间冗余</a></li>
+        <li><a href="#不相关的信息">不相关的信息</a></li>
+      </ul>
+    </li>
+    <li><a href="#度量">度量</a></li>
+    <li><a href="#图像压缩">图像压缩</a></li>
+    <li><a href="#水印">水印</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="冗余">冗余</h2>
+<ul>
+<li>压缩比： $C=\frac{b}{b'}$</li>
+<li>相对冗余： $R=1-\frac{1}{C}$</li>
+</ul>
+<h3 id="编码冗余">编码冗余</h3>
+<ul>
+<li>$r_k$: $M\times N$ 大小图像的灰度数值
+<ul>
+<li>$p(r_k)=\frac{n_k}{MN}$</li>
+<li>平均比特数：$L_{\text{avg}}=\sum_{k=0}^{L-1}l(r_k)p_r(r_k)$</li>
+<li>固定比特数：$l(r_k)=m,L_{\text{avg}}=m$</li>
+</ul>
+</li>
+</ul>
+<h3 id="空间和时间冗余">空间和时间冗余</h3>
+<ul>
+<li>行程对（run-length pairs）
+<ul>
+<li>灰度值：某灰度连续出现的次数</li>
+</ul>
+</li>
+<li>相邻像素的灰度差</li>
+<li>映射
+<ul>
+<li>可逆映射</li>
+<li>不可逆映射</li>
+</ul>
+</li>
+</ul>
+<h3 id="不相关的信息">不相关的信息</h3>
+<ul>
+<li>有损压缩
+<ul>
+<li>被视觉系统忽略的信息</li>
+<li>与图像用途无关的信息</li>
+</ul>
+</li>
+<li>量化</li>
+</ul>
+<h2 id="度量">度量</h2>
+<ul>
+<li>信息：$I(E)=\log\frac{1}{P(E)}=-\log P(E)$
+<ul>
+<li>$m$ 为底：$m$元单位</li>
+<li>$2$：比特</li>
+</ul>
+</li>
+<li>熵：$H=-\sum_{j=1}^JP(a_j)\log P(a_j)$
+<ul>
+<li>信源符号：$a_j$</li>
+<li>零记忆信源：独立</li>
+</ul>
+</li>
+<li>灰度信源的熵：$H=-\sum_{k=0}^{L-1}p_r(r_k)\log_2p_r(r_k)$ (bits/pixel)</li>
+<li>香农第一定理：$\lim_{n\rightarrow\infty}\frac{L_{avg,n}}{n}=H$
+<ul>
+<li>图像像素有相关性：马尔科夫信源，有限记忆信源</li>
+</ul>
+</li>
+<li>保真度
+<ul>
+<li>$e(x,y)=\hat f(x,y)-f(x,y)$</li>
+<li>总误差：$\sum\sum |e(x,y)|$</li>
+<li>均方根误差：$e=(\frac{1}{MN}\sum\sum e(x,y)^2)^{\frac{1}{2}}$</li>
+<li>$\text{SNR}_{\text{ms}}=\frac{\sum\sum \hat f(x,y)^2}{\sum\sum e(x,y)^2}$</li>
+<li>主观误差</li>
+</ul>
+</li>
+</ul>
+<h2 id="图像压缩">图像压缩</h2>
+<ul>
+<li>(Mapper -&gt; Quantizer -&gt; Symbol coder)[encoder] -&gt; (Symbol decoder -&gt; Inverse mapper)[decoder]
+<ul>
+<li>Mapper: 转换为便于去掉空间和时间冗余，可逆</li>
+<li>Quantizer: 根据保真度准则降低精度，不可逆</li>
+<li>Symbol decoder: 生成定长/变长编码</li>
+</ul>
+</li>
+<li>霍夫曼编码：对符号概率排序，合并低概率符号</li>
+<li>行程编码(run-length pairs)</li>
+<li>符号编码：将图像表示为符号的集合
+<ul>
+<li>符号：图像中频繁出现的子图像</li>
+<li>三元组集合：${(x_1,y_1,t_1),\cdots}$</li>
+</ul>
+</li>
+</ul>
+<p>二值图像压缩方法</p>
+<table>
+<thead>
+<tr>
+<th>二值图像压缩方法</th>
+<th>组织</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CCITT 3</td>
+<td>ITU-T</td>
+<td>行程，霍夫曼编码</td>
+</tr>
+<tr>
+<td>CCITT 4</td>
+<td>ITU-T</td>
+<td>二维行程</td>
+</tr>
+<tr>
+<td>JBIG(JBIGI)</td>
+<td>ISO/IEC/ITU-T</td>
+<td>算术编码</td>
+</tr>
+<tr>
+<td>JBIG2</td>
+<td>ISO/IEC/ITU-T</td>
+<td></td>
+</tr>
+<tr>
+<td>TIFF</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>图像压缩方法</p>
+<table>
+<thead>
+<tr>
+<th>连续色调图像</th>
+<th>组织</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JPEG</td>
+<td>ISO/IEC/ITU-T</td>
+<td>DCT,霍夫曼编码，行程编码</td>
+</tr>
+<tr>
+<td>JPEG-LS</td>
+<td>ISO/IEC/ITU-T</td>
+<td></td>
+</tr>
+<tr>
+<td>JPEG-2000</td>
+<td>ISO/IEC/ITU-T</td>
+<td>DWT</td>
+</tr>
+<tr>
+<td>BMP</td>
+<td>Microsoft</td>
+<td>未压缩</td>
+</tr>
+<tr>
+<td>GIF</td>
+<td>CompuServe</td>
+<td>LZW编码</td>
+</tr>
+<tr>
+<td>PDF</td>
+<td>Adobe Systems</td>
+<td></td>
+</tr>
+<tr>
+<td>PNG</td>
+<td>W3C</td>
+<td></td>
+</tr>
+<tr>
+<td>TIFF</td>
+<td>Aldus</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>视频压缩方法</p>
+<table>
+<thead>
+<tr>
+<th>视频</th>
+<th>组织</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DV</td>
+<td>IEC</td>
+<td>DCT</td>
+</tr>
+<tr>
+<td>H.261</td>
+<td>ITU-T</td>
+<td>DCT,预测差分</td>
+</tr>
+<tr>
+<td>H.262</td>
+<td>ITU-T</td>
+<td>MPEG-2</td>
+</tr>
+<tr>
+<td>H.263</td>
+<td>ITU-T</td>
+<td></td>
+</tr>
+<tr>
+<td>H.264</td>
+<td>ITU-T</td>
+<td></td>
+</tr>
+<tr>
+<td>MPEG-1</td>
+<td>ISO/IEC</td>
+<td></td>
+</tr>
+<tr>
+<td>MPEG-2</td>
+<td>ISO/IEC</td>
+<td></td>
+</tr>
+<tr>
+<td>MPEG-4</td>
+<td>ISO/IET</td>
+<td></td>
+</tr>
+<tr>
+<td>AVS</td>
+<td>MII</td>
+<td>Golomb编码，中国标准</td>
+</tr>
+<tr>
+<td>HDV</td>
+<td>公司联盟</td>
+<td></td>
+</tr>
+<tr>
+<td>M-JPEG</td>
+<td>多家公司</td>
+<td></td>
+</tr>
+<tr>
+<td>Quick-Time</td>
+<td>Apple</td>
+<td>媒体容器</td>
+</tr>
+<tr>
+<td>VC-1</td>
+<td>SMPTE</td>
+<td></td>
+</tr>
+<tr>
+<td>WMV9</td>
+<td>Microsoft</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="水印">水印</h2>
+<ul>
+<li>特点
+<ul>
+<li>增加信息
+<ul>
+<li>可见水印</li>
+<li>不可见水印</li>
+</ul>
+</li>
+<li>不能分离</li>
+</ul>
+</li>
+<li>用途
+<ul>
+<li>版权，用户识别</li>
+<li>证明真实性</li>
+<li>自动监控</li>
+<li>复制保护</li>
+</ul>
+</li>
+<li>简单的可见水印：$f_w=(1-\alpha)f+\alpha w$</li>
+<li>简单的不可见水印：$f_w=4(\frac{f}{4})+\frac{w}{64}$</li>
+<li>基于 DCT(离散余弦变换) 的不可见水印</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

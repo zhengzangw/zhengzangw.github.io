@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4. NLP | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#text">Text</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="text">Text</h2>
+<ul>
+<li>NLP 预处理
+<ul>
+<li>（网页）确定 main block</li>
+<li>去除标点与特殊符号</li>
+<li>（网页）去除标签</li>
+<li>（中文）分词</li>
+<li>（英文）小写化</li>
+<li>去除停用词</li>
+<li>（英文）stemming + lemmatization</li>
+</ul>
+</li>
+<li>Representation
+<ul>
+<li>bag of words
+<ul>
+<li>Binary</li>
+<li>Frequency</li>
+<li>TF-IDF = $\text{tf}(t,d)\log\frac{|C|}{n_t}$</li>
+</ul>
+</li>
+<li>N-gram
+<ul>
+<li>第 $N$ 个词的出现只与前 $N-1$ 个词相关，整句概率为各词出现概率乘积</li>
+</ul>
+</li>
+<li>Distributed representation: 将词语用多个维度表示</li>
+<li>word2vec
+<ul>
+<li>只有一个隐层的神经元网络，输入 one-hot 编码词汇表向量，输出 one-hot 编码词汇表向量</li>
+<li>词向量：输入层到隐藏层权重第 $i$ 行</li>
+<li>CBOW: 上下文预测单词</li>
+<li>Skip-gram: 单词预测上下文</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Document Clustering
+<ul>
+<li>partition-based
+<ul>
+<li>distance: cosine similarity</li>
+<li>centroid: topical words</li>
+</ul>
+</li>
+<li>Probabilistic
+<ul>
+<li>$p(\omega_j|G_m)=\frac{\sum_{\overline{X}}P(G_m|\overline{X})I(\overline{X},\omega_j)}{\sum_{\overline{X}}P(G_m|\overline{X})}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Document and words co-clustering
+<ul>
+<li>Bipartite graph partioning</li>
+</ul>
+</li>
+<li>Topic Model
+<ul>
+<li>LSA</li>
+<li>Probalistic LSA</li>
+</ul>
+</li>
+<li>Classification
+<ul>
+<li>Instance-based
+<ul>
+<li>Cosine similarity</li>
+<li>LSA + Cosine similarity</li>
+<li>Centroid-based classification (clustering + cosine similarity)</li>
+</ul>
+</li>
+<li>Naive Bayes
+<ul>
+<li>Bernoulli NB</li>
+<li>Multinomial NB</li>
+</ul>
+</li>
+<li>Linear SVM</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

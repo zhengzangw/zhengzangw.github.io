@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>config on Zangwei</title>
+    <link>https://zhengzangw.com/tags/config/</link>
+    <description>Recent content in config on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Sat, 04 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/config/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>18. File Hierarchy Standard</title>
+      <link>https://zhengzangw.com/notes/command-line/18-file-hierarchy/</link>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/command-line/18-file-hierarchy/</guid>
+      <description>&lt;h1 id=&#34;file-hierarchy&#34;&gt;File Hierarchy&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.freedesktop.org/software/systemd/man/file-hierarchy.html&#34;&gt;Link to File Hierarchy&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;notawesome-user-file-hierarchy-standard&#34;&gt;NotAwesome User File Hierarchy Standard&lt;/h1&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;NotAwesome User File Hierarchy Standard aims to help user better manage their resources and files in user space. The standard takes account of all storage at hand or online. It follows tree principles:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Accessibility: Anytime you want to locate a resource, you know where it resides and can be accessed&lt;/li&gt;
+&lt;li&gt;Convinience: Frequent used resource should be accessed fast&lt;/li&gt;
+&lt;li&gt;Safe: data not lost&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Setup: PHP</title>
+      <link>https://zhengzangw.com/notes/command-line/php-setup/</link>
+      <pubDate>Sun, 30 Dec 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/command-line/php-setup/</guid>
+      <description>&lt;h1 id=&#34;set-up-vm&#34;&gt;Set up VM&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update
+adduser newuser
+usermod -aG sudo newuser
+sudo nano /etc/ssh/sshd_config
+&lt;span style=&#34;color:#75715e&#34;&gt;# change PasswordAuthentication from no to yes (Afterwards you can change it back)&lt;/span&gt;
+sudo systemctl restart sshd
+ssh-keygen -f .ssh/id_rsa_new &lt;span style=&#34;color:#75715e&#34;&gt;# local&lt;/span&gt;
+ssh-copy-id newuser@server &lt;span style=&#34;color:#75715e&#34;&gt;#local, and edit .ssh/config&lt;/span&gt;
+sudo apt install curl git unzip build-essential
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Write Verilog on Macos via icarus-verilog</title>
+      <link>https://zhengzangw.com/posts/icarus-verilog/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/icarus-verilog/</guid>
+      <description>&lt;h2 id=&#34;mac&#34;&gt;Mac&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;brew install icarus-verilog&lt;/li&gt;
+&lt;li&gt;download software Scansion&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Macos Shortcut</title>
+      <link>https://zhengzangw.com/posts/mac-shortcut/</link>
+      <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/mac-shortcut/</guid>
+      <description>&lt;h1 id=&#34;快捷键&#34;&gt;快捷键&lt;/h1&gt;
+&lt;h2 id=&#34;iterm2&#34;&gt;Iterm2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;⌘; 历史命令&lt;/li&gt;
+&lt;li&gt;⌘⇧h 剪贴板历史&lt;/li&gt;
+&lt;li&gt;⌃u 清行&lt;/li&gt;
+&lt;li&gt;⌃a 行首&lt;/li&gt;
+&lt;li&gt;⌃e 行尾&lt;/li&gt;
+&lt;li&gt;⌃f 前进&lt;/li&gt;
+&lt;li&gt;⌃b 后退&lt;/li&gt;
+&lt;li&gt;⌃p 上一条命令&lt;/li&gt;
+&lt;li&gt;⌃r 搜索历史&lt;/li&gt;
+&lt;li&gt;⌃d 删除当前字符&lt;/li&gt;
+&lt;li&gt;⌃h 删除光标前字符&lt;/li&gt;
+&lt;li&gt;⌃w 删除光标前单次&lt;/li&gt;
+&lt;li&gt;⌃k 删除到文末&lt;/li&gt;
+&lt;li&gt;⌃t 交换光标出文本&lt;/li&gt;
+&lt;li&gt;⌘r 清屏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;vim&#34;&gt;Vim&lt;/h2&gt;</description>
+    </item>
+    
+    <item>
+      <title>Build your blogs by Hexo</title>
+      <link>https://zhengzangw.com/posts/hexo/</link>
+      <pubDate>Sat, 20 Jan 2018 14:50:22 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/hexo/</guid>
+      <description>&lt;h2 id=&#34;hexo&#34;&gt;Hexo&lt;/h2&gt;
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jianshu.com/p/465830080ea9&#34;&gt;HEXO+Github,搭建属于自己的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;主题&#34;&gt;主题&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/theme-next/hexo-theme-next&#34;&gt;next 7&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;tags 启用&lt;/li&gt;
+&lt;li&gt;math 启用，且 per page: false
+&lt;ul&gt;
+&lt;li&gt;修改 kramed 部分内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用双栏 scheme&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/litten/hexo-theme-yilia&#34;&gt;yilia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

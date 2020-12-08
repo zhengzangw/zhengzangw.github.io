@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KM algorithm | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概念推导">概念推导</a></li>
+    <li><a href="#算法流程">算法流程</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="km-算法">KM 算法</h1>
+<h2 id="概念推导">概念推导</h2>
+<ul>
+<li>可行顶标：每个节点有一个顶标值 $L(u)$，二分图两边的顶标分别记为 $Lx(u),Ly(v)$</li>
+<li>可行顶标性质：$lx(x)+ly(y)\geq w(x,y)$</li>
+<li>可行边：边 $w(x,y)$ 满足 $lx(x)+ly(y)=w(x,y)$</li>
+<li>相等子图：原图中只包含可行边的生成子图</li>
+<li>完备匹配：匹配中每个顶点与某条边相关</li>
+<li>最大权重匹配定理：若某个相等子图中有完备匹配，则该匹配为原图最佳匹配</li>
+<li>松弛函数：二分图一边的节点保存 $slack(x)=\min(lx(i)+ly(j)-w(i,j))$</li>
+<li>顶标修改：减少不在交错路中最小的松弛值</li>
+</ul>
+<h2 id="算法流程">算法流程</h2>
+<ol>
+<li>初始化可行顶标值</li>
+<li>用匈牙利算法寻找相等子图的完备匹配</li>
+<li>无增广路则修改顶标</li>
+<li>重复2,3至找到完备匹配</li>
+</ol></main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1. Basics | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#因特网">因特网</a></li>
+    <li><a href="#网络边缘">网络边缘</a>
+      <ul>
+        <li><a href="#接入网">接入网</a></li>
+      </ul>
+    </li>
+    <li><a href="#网络核心">网络核心</a>
+      <ul>
+        <li><a href="#分组交换">分组交换</a></li>
+        <li><a href="#集线器-hub">集线器 (hub)</a></li>
+        <li><a href="#网桥">网桥</a></li>
+        <li><a href="#交换机-link-layer-switch">交换机 (link-layer switch)</a></li>
+        <li><a href="#路由器-router">路由器 (router)</a></li>
+      </ul>
+    </li>
+    <li><a href="#history">History</a>
+      <ul>
+        <li><a href="#19611972-分组交换">1961~1972 分组交换</a></li>
+        <li><a href="#19721980-专用网络和网络互联">1972~1980 专用网络和网络互联</a></li>
+        <li><a href="#19801990-网络激增">1980~1990 网络激增</a></li>
+        <li><a href="#20世纪90年代-因特网爆炸">20世纪90年代 因特网爆炸</a></li>
+      </ul>
+    </li>
+    <li><a href="#组织机构">组织机构</a>
+      <ul>
+        <li><a href="#媒体">媒体</a></li>
+        <li><a href="#物理层">物理层</a></li>
+      </ul>
+    </li>
+    <li><a href="#协议层次">协议层次</a>
+      <ul>
+        <li><a href="#媒体接入控制mac">媒体接入控制(MAC)</a></li>
+        <li><a href="#逻辑链路控制llc">逻辑链路控制(LLC)</a></li>
+      </ul>
+    </li>
+    <li><a href="#历史产物">历史产物</a></li>
+    <li><a href="#kernel-bypass">kernel bypass</a></li>
+    <li><a href="#其它">其它</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="因特网">因特网</h2>
+<ul>
+<li>根据硬件和软件组件描述
+<ul>
+<li>communication link: 通信链路</li>
+<li>packet switch: 分组交换机</li>
+<li>packet: 分组，数据分段并加上头部</li>
+<li>ISP: Internet Service Provider
+<ul>
+<li>PoP(Point of Presence)</li>
+<li>多宿(multi-home)</li>
+<li>对等(peer): IXP(Internet Exchange Point)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/content/isp.png" alt="ISP"></p>
+<ul>
+<li>根据基础设施向分布式应用程序提供的服务描述
+<ul>
+<li>分布式应用程序</li>
+<li>套接字接口</li>
+</ul>
+</li>
+<li>协议：定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文发送和/或接受一条报文或其他时间所采取的动作</li>
+</ul>
+<h2 id="网络边缘">网络边缘</h2>
+<ul>
+<li>host/end system: 主机/端系统
+<ul>
+<li>客户端：client</li>
+<li>服务器：server
+<ul>
+<li>数据中心: data center</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="接入网">接入网</h3>
+<ul>
+<li>家庭接入
+<ul>
+<li>DSL(Digital Subscriber Line, 数字用户线)：本地电话公司(CO)为 ISP
+<ul>
+<li>DSLAM</li>
+<li>高速下行 50kHz - 1MHz</li>
+<li>中速上行 4kHz - 50kHz</li>
+<li>普通的双向电话信道 0 - 4kHz</li>
+</ul>
+</li>
+<li>电缆(cable Internet access)：利用有线电视公司现有的有线电视基础设施
+<ul>
+<li>CMTS(Cable Modem Termination System)</li>
+<li>HFS</li>
+</ul>
+</li>
+<li>FTTH(Fiber To The Home)
+<ul>
+<li>AON(Active Optical Network)</li>
+<li>PON(Passive Optical Network)</li>
+</ul>
+</li>
+<li>卫星链路</li>
+<li>拨号接入</li>
+</ul>
+</li>
+<li>企业接入
+<ul>
+<li>以太网</li>
+<li>WiFi</li>
+</ul>
+</li>
+<li>广域无线接入
+<ul>
+<li>蜂窝网络</li>
+</ul>
+</li>
+</ul>
+<h2 id="网络核心">网络核心</h2>
+<h3 id="分组交换">分组交换</h3>
+<ul>
+<li>储存转发传输：交换机能够输出第一个比特前，必须接受整个分组</li>
+<li>节点时延
+<ul>
+<li>节点处理时延</li>
+<li>排队时延
+<ul>
+<li>流量强度：$\frac{La}{R}$</li>
+<li>丢包</li>
+</ul>
+</li>
+<li>传输时延</li>
+<li>传播时延</li>
+</ul>
+</li>
+<li>端到端时延 = $N$ (处理时延+ 传输时延 + 传播时延 )</li>
+<li>吞吐量：$\frac{F}{T}$ bps，瓶颈链路的传输速率</li>
+<li>最大聚合带宽：设备所有接口的速率之和</li>
+</ul>
+<h3 id="集线器-hub">集线器 (hub)</h3>
+<p>工作在物理层，多接口中继器</p>
+<ul>
+<li>用星型拓扑实现逻辑上的总线形</li>
+<li>每个端口相当于一个中继器，只对物理电信号放大中继</li>
+<li>首位集线器(HHUB)-&gt;中间集线器(IHUB)</li>
+</ul>
+<h3 id="网桥">网桥</h3>
+<p>工作在 MAC 层</p>
+<ul>
+<li>连接使用相同 MAC 协议的局域网
+<ul>
+<li>不改变帧的内容与格式</li>
+<li>需要足够缓存空间</li>
+<li>具有寻址能力和路由选择功能</li>
+<li>一个网桥可以连接多个局域网</li>
+</ul>
+</li>
+<li>路由选择
+<ul>
+<li>固定路由选择</li>
+<li>生成树算法 (IEEE 802.1)
+<ul>
+<li>帧转发：为每个端口维护转发数据库</li>
+<li>地址探索</li>
+<li>生成树算法</li>
+</ul>
+</li>
+<li>源站路由 (IEEE 802.5)</li>
+</ul>
+</li>
+</ul>
+<h3 id="交换机-link-layer-switch">交换机 (link-layer switch)</h3>
+<p>工作在 MAC 层</p>
+<ul>
+<li>集线器的全双工版本</li>
+<li>与网桥的区别
+<ul>
+<li>网桥软件处理，交换机硬件处理</li>
+<li>网桥一次一帧，交换机并行处理</li>
+<li>除了缓存（存储转发交换机），还有直通式交换机</li>
+</ul>
+</li>
+<li>过滤：决定一个帧应该转发还是丢弃</li>
+<li>转发：帧导向哪个接口</li>
+<li>交换机表：从交换机口 $x$ 到达
+<ul>
+<li>没有地址：广播</li>
+<li>与 $x$ 联系：过滤</li>
+<li>与 $y\neq x$ 联系：转发到 $y$</li>
+</ul>
+</li>
+<li>自学习
+<ul>
+<li>初始为空</li>
+<li>入帧：记录(MAC,到达接口,时间)</li>
+<li>老化期后没有接到该地址为源地址的帧，删除该地址</li>
+<li>即插即用</li>
+</ul>
+</li>
+</ul>
+<h3 id="路由器-router">路由器 (router)</h3>
+<p>工作在 IP 层</p>
+<ul>
+<li>输入端口：线路端接 -&gt; 数据链路处理 -&gt; 查找，转发，排队
+<ul>
+<li>最长前缀匹配规则</li>
+<li>线路前部阻塞 HOL：输入排队</li>
+</ul>
+</li>
+<li>交换结构
+<ul>
+<li>内存交换</li>
+<li>总线交换</li>
+<li>互联网络交换</li>
+</ul>
+</li>
+<li>输出端口：排队 -&gt; 数据链路处理 -&gt; 线路端接
+<ul>
+<li>输出排队</li>
+<li>分组调度
+<ul>
+<li>先进先出</li>
+<li>优先权排队</li>
+<li>循环排队</li>
+<li>加权公平排队</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>路由选择处理器</li>
+</ul>
+<h2 id="history">History</h2>
+<h3 id="19611972-分组交换">1961~1972 分组交换</h3>
+<ul>
+<li>电话网占统治地位：电路交换</li>
+<li>分组交换
+<ul>
+<li>MIT -&gt; ARPA
+<ul>
+<li>1969 四个结点</li>
+<li>1972 15个结点，第一个电子邮件程序</li>
+</ul>
+</li>
+<li>兰德公司</li>
+<li>NPL实验室</li>
+</ul>
+</li>
+</ul>
+<h3 id="19721980-专用网络和网络互联">1972~1980 专用网络和网络互联</h3>
+<ul>
+<li>20世纪70年代早期中期
+<ul>
+<li>ALOHnet 微波网络</li>
+<li>Telenet BBN商用网络</li>
+<li>Cyclades 法国分组交换网络</li>
+</ul>
+</li>
+<li>网络互联（网络的网络）
+<ul>
+<li>TCP的早期实验</li>
+<li>TCP,UDP,IP 概念的产生</li>
+</ul>
+</li>
+</ul>
+<h3 id="19801990-网络激增">1980~1990 网络激增</h3>
+<ul>
+<li>100000台主机与 ARPAnet 相连</li>
+<li>1983.1.1 TCP/IP 作为 ARPAnet 新的标准主机协议，代替了 NCP 协议</li>
+<li>法国 Minitel 项目</li>
+</ul>
+<h3 id="20世纪90年代-因特网爆炸">20世纪90年代 因特网爆炸</h3>
+<ul>
+<li>万维网应用程序的出现：搜索、商务、社交</li>
+<li>2000年末：电子邮件，Web，即时讯息，MP3的对等文件共享</li>
+</ul>
+<h2 id="组织机构">组织机构</h2>
+<ul>
+<li>ITU (International Telecommunication Union)
+<ul>
+<li>分支字母.数字</li>
+</ul>
+</li>
+<li>IEEE (Institute of Electrical and Electronics Engineers)
+<ul>
+<li>IEEE Computer Society 学会 -&gt; LMSC Committee 802委员会 -&gt; 802.11 工作组-&gt; 802.11a 任务组</li>
+</ul>
+</li>
+<li>IETF (Internet Engineering Task Force)
+<ul>
+<li>Internet standard</li>
+<li>RFC(Request For Comments)</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>国家</th>
+<th>物理设备架设公司</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中</td>
+<td>移动，电信</td>
+</tr>
+<tr>
+<td>日</td>
+<td>NTT</td>
+</tr>
+<tr>
+<td>美</td>
+<td>AT&amp;T</td>
+</tr>
+</tbody>
+</table>
+<h3 id="媒体">媒体</h3>
+<ul>
+<li>传输媒介</li>
+<li>拓扑结构</li>
+</ul>
+<h3 id="物理层">物理层</h3>
+<ul>
+<li>信号编码/解码</li>
+<li>前同步序列生成/去除</li>
+<li>比特传输/接受</li>
+</ul>
+<h2 id="协议层次">协议层次</h2>
+<table>
+<thead>
+<tr>
+<th>OSI</th>
+<th>TCP/IP</th>
+<th>IEEE 802 协议层</th>
+<th>信息名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>表示层</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>对话层</td>
+<td>应用层</td>
+<td></td>
+<td>报文(message)</td>
+<td>提供应用程序交换信息</td>
+</tr>
+<tr>
+<td>运输层</td>
+<td>传输层(TCP)</td>
+<td></td>
+<td>报文段(segment)</td>
+<td>应用程序端点间传送，逻辑通信</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>网际互联层(IP)</td>
+<td>高层协议</td>
+<td>数据报(datagram)</td>
+<td>主机到主机</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>数据链路层</td>
+<td>逻辑链路控制(LLC)</td>
+<td>帧(frame)</td>
+<td>节点到节点</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>媒体接入控制(MAC)</td>
+<td></td>
+<td>比特传输</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>物理层</td>
+<td>物理层</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>媒体</td>
+<td>媒体</td>
+<td>媒体</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>封装：附加信息<br>
+分组字段：首部字段 + 有效载荷字段</p>
+<h3 id="媒体接入控制mac">媒体接入控制(MAC)</h3>
+<ul>
+<li>传输时将数据、地址、差错检测字段组帧</li>
+<li>接受时，分解帧并执行地址识别和差错检测</li>
+<li>监管局域网传输媒体的接入</li>
+<li>控制方式
+<ul>
+<li>集中式</li>
+<li>分布式</li>
+</ul>
+</li>
+<li>处理方法
+<ul>
+<li>同步</li>
+<li>异步
+<ul>
+<li>循环</li>
+<li>预约</li>
+<li>争用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>MAC 控制</th>
+<th>目的 MAC 地址</th>
+<th>源 MAC 地址</th>
+<th>LLC PDU</th>
+<th>CRC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>变长</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="逻辑链路控制llc">逻辑链路控制(LLC)</h3>
+<ul>
+<li>向高层提供接口并执行流量控制和差错检测</li>
+<li>LLC 寻址
+<ul>
+<li>LLC 用户：通常为一个高层协议</li>
+<li>服务访问点 (SAP)：用户地址</li>
+</ul>
+</li>
+<li>LLC 服务
+<ul>
+<li>不确认的无连接服务</li>
+<li>连接模式服务</li>
+<li>确认的无连接服务</li>
+</ul>
+</li>
+<li>LLC 协议</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>DSAP</th>
+<th>SSAP</th>
+<th>LLC 控制</th>
+<th>信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1+7</td>
+<td>1+7</td>
+<td>8/16</td>
+<td>变长</td>
+</tr>
+</tbody>
+</table>
+<h2 id="历史产物">历史产物</h2>
+<ul>
+<li>X.25
+第三层协议，面向连接，被淘汰</li>
+<li>帧中继 (Frame Relay)
+<ul>
+<li>X.25 去掉校验就是帧中继</li>
+<li>使用光纤作为传输介质</li>
+<li>帧长度可变，允许最大帧长度在1600B以上</li>
+</ul>
+</li>
+</ul>
+<h2 id="kernel-bypass">kernel bypass</h2>
+<ul>
+<li>DPDK (Intel)</li>
+<li>RDMA</li>
+</ul>
+<h2 id="其它">其它</h2>
+<ul>
+<li>优化：Probability(Workload)+HW+SW(Schedule)</li>
+<li>cross layer: App-System-Storage+Network</li>
+<li>三大小强
+<ul>
+<li>PCIe</li>
+<li>Ethernet</li>
+<li>TCP/IP</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

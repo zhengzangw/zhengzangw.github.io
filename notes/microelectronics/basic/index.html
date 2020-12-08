@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>微电子基础 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#计算机发展历史">计算机发展历史</a></li>
+    <li><a href="#摩尔定律">摩尔定律</a></li>
+    <li><a href="#集成电路规模">集成电路规模</a></li>
+    <li><a href="#微电子学定义">微电子学定义</a></li>
+    <li><a href="#集成电路">集成电路</a>
+      <ul>
+        <li><a href="#按器件构造模型分类">按器件构造模型分类</a></li>
+        <li><a href="#按制作工艺分类">按制作工艺分类</a></li>
+        <li><a href="#应用领域">应用领域</a></li>
+      </ul>
+    </li>
+    <li><a href="#微电子学器件">微电子学器件</a></li>
+    <li><a href="#集成电路产业">集成电路产业</a></li>
+    <li><a href="#集成电路芯片制作过程">集成电路芯片制作过程</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="计算机发展历史">计算机发展历史</h2>
+<ul>
+<li>电子管时代：
+<ul>
+<li>1940s-1950s</li>
+<li>ENIAC(1946,ABC公司)，电子数字积分计算器。</li>
+</ul>
+</li>
+<li>晶体管时代：
+<ul>
+<li>1950s-1960s</li>
+<li>晶体管：一种用以代替真空管的电子信号放大元件。</li>
+<li>1947年贝尔实验室制造成功了第一个半导体晶体管</li>
+<li>1949年贝尔实验室做出了第一个锗PNP型晶体管。</li>
+<li>1956年bardeen,Shockley,Brattain获得诺贝尔物理学奖。</li>
+<li>TRADIC(1954):世界上第一台全晶体管计算机。</li>
+</ul>
+</li>
+<li>集成电路时代：
+<ul>
+<li>1960s-</li>
+<li>1958年，Jack Kilby发明了第一块锗集成电路振荡器。（2000诺贝尔物理学奖）</li>
+<li>1970年，Intel推出第一个商用 动态随机存储器(DRAM)1103,容量1 Kbits,标志着大规模集成电路(LSI)出现。</li>
+<li>1978年，64kbDRAM出现标志这进入了超大规模集成电路时代。</li>
+</ul>
+</li>
+</ul>
+<h2 id="摩尔定律">摩尔定律</h2>
+<ul>
+<li>定义：IC集成度每一年提高一倍，即技术每两年提升一代，1975年修正：进入80年代后，技术每3年提升一代。</li>
+<li>技术基础：不断缩小的晶体管尺寸。</li>
+</ul>
+<h2 id="集成电路规模">集成电路规模</h2>
+<ul>
+<li>SSI: &lt;102</li>
+<li>MSI: 102~103</li>
+<li>LSI: 103~105</li>
+<li>VLSI: 105~107</li>
+<li>ULSI: 107~109</li>
+<li>GLSI: &gt;109</li>
+</ul>
+<h2 id="微电子学定义">微电子学定义</h2>
+<p>研究在固体（主要是半导体材料）上构成的微小化电路及系统的电子学分支，主要是研究电子或离子在固体材料中的运动规律及其应用，并利用它实现电磁信号和信息处理功能的电子科学。它以实现电路和系统的集成为目的。微电子学中实现的电路和系统又称为集成电路和集成系统，是微小化的；在微电子学中的空间尺寸通常是以微米（μm，1μm=10 − 6m）和纳米（nm，1nm=10 − 9 m）为单位的。</p>
+<p>微电子技术是随着集成电路尤其是超大规模集成电路发展起来的技术。主要包括了电路系统设计，器件物理，工艺技术，材料制备，测试和封装的专门的技术，是微电子学中各项工艺技术的总和。</p>
+<h2 id="集成电路">集成电路</h2>
+<ul>
+<li>通过一系列加工工艺，将晶体管按照一定的电路互连在一块半导体单晶片上并封装在外壳中来执行特定的电路或系统功能的电路</li>
+<li>最基本的单位：晶体管</li>
+</ul>
+<h3 id="按器件构造模型分类">按器件构造模型分类</h3>
+<ul>
+<li>双极集成电路：由双极晶体管构成，如PNP型、NPN型，优点是速度快，驱动力强，缺点是集成度不高，功耗大</li>
+<li>金属-氧化物-半导体(MOS)集成电路：如NMOS,PMOS,CMOS，优点是集成高，功耗小，随着特征尺寸缩小，速度也快</li>
+<li>双极-MOS集成电路：综合上面，有上面的优点，但制作工艺复杂</li>
+</ul>
+<h3 id="按制作工艺分类">按制作工艺分类</h3>
+<ul>
+<li>单片集成电路：电路中所有的元器件都集成在同一块半导体基片上的集成电路。</li>
+<li>混合集成电路： 薄膜集成电路，厚膜集成电路</li>
+</ul>
+<h3 id="应用领域">应用领域</h3>
+<ul>
+<li>数字集成电路：处理数字信号的集成电路，即采用二进制方式进行数字计算和逻辑函数运算的集成电路</li>
+<li>模拟集成电路：处理模拟信号的集成电路(连续变化的信号)，分线性集成(运算放大器)和非线性集成(振荡器)</li>
+<li>数模混合集成电路：如数模转化器</li>
+</ul>
+<h2 id="微电子学器件">微电子学器件</h2>
+<ul>
+<li>定义：可以构成集成电路的最小单元</li>
+<li>最具代表性器件：场效应晶体管</li>
+<li>微电子学核心研究内容之一就是怎么实现更小尺寸的晶体管</li>
+<li>特征尺寸缩小带来的优势
+<ul>
+<li>集成电路速度更快。</li>
+<li>芯片上集成器件数增大。</li>
+<li>集成电路功能提高</li>
+<li>晶体管成本降低</li>
+</ul>
+</li>
+</ul>
+<h2 id="集成电路产业">集成电路产业</h2>
+<ul>
+<li>IC 设计 (Design House)
+<ul>
+<li>ARM, 高通，NVIDIA，联发科，华为海思</li>
+</ul>
+</li>
+<li>硅片制造，IC制造 (Foundry)
+<ul>
+<li>台积电，格罗方德，联华电子，三星，中芯国际</li>
+</ul>
+</li>
+<li>封装，测试
+<ul>
+<li>日月光，安靠，长电科技</li>
+</ul>
+</li>
+</ul>
+<h2 id="集成电路芯片制作过程">集成电路芯片制作过程</h2>
+<ul>
+<li>硅锭 切成硅片</li>
+<li>硅片 晶圆制造</li>
+<li>晶圆 硅片测试</li>
+<li>芯片 切割</li>
+<li>成品</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

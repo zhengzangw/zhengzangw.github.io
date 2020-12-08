@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7-Number Theory | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景知识">背景知识</a></li>
+    <li><a href="#数论基础">数论基础</a>
+      <ul>
+        <li><a href="#modular-linear-equations">Modular linear equations</a></li>
+        <li><a href="#crt-the-chinese-remainder-theorem">CRT (The Chinese remainder theorem)</a></li>
+      </ul>
+    </li>
+    <li><a href="#数论算法">数论算法</a>
+      <ul>
+        <li><a href="#euclid-algorithm">Euclid Algorithm</a></li>
+        <li><a href="#modular-exponentiation">Modular Exponentiation</a></li>
+        <li><a href="#primality-testing">Primality Testing</a></li>
+        <li><a href="#integer-factorization">Integer factorization</a></li>
+      </ul>
+    </li>
+    <li><a href="#crypotography">Crypotography</a>
+      <ul>
+        <li><a href="#private-key-crypotography">Private Key Crypotography</a></li>
+        <li><a href="#public-key-crypotography">Public Key Crypotography</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="背景知识">背景知识</h2>
+<ul>
+<li>自然数的集合论定义：
+<ul>
+<li>$a^+:=a\cup{a}$</li>
+<li>归纳集
+<ul>
+<li>$\emptyset\in A$</li>
+<li>$\forall a(a\in A\rightarrow a^+\in A)$</li>
+</ul>
+</li>
+<li>$\mathbb{N}$ 为所有归纳集之交</li>
+</ul>
+</li>
+<li>Peano 结构
+<ul>
+<li>$e\in S$</li>
+<li>$\forall a\in S,f(a)\in S$</li>
+<li>$\forall b\in S,\forall c\in S,f(b)=f(c)\rightarrow b=c$</li>
+<li>$\forall a\in S,f(a)\not= e$</li>
+<li>$\forall A\subseteq S, (e\in A\wedge(\forall a\in A)(f(a)\in A))\rightarrow A=S$</li>
+</ul>
+</li>
+<li>良序公理与数学归纳法原理等价</li>
+</ul>
+<h2 id="数论基础">数论基础</h2>
+<ul>
+<li>带余除法: $a=bq+r,b&gt;0,0\leq r&lt;b$
+<ul>
+<li><strong>存在性证明</strong>：良序公理</li>
+<li><strong>唯一性证明</strong></li>
+</ul>
+</li>
+<li>整除及其性质
+<ul>
+<li>$a|b,a|c\Rightarrow a|nb+mc$</li>
+</ul>
+</li>
+<li>最大公因子 (hcf/gcd)
+<ul>
+<li>裴蜀定理：$\gcd(a,b)=ar+bs$
+<ul>
+<li><strong>证明</strong>：良序公理+带余除法</li>
+</ul>
+</li>
+<li>Strong Duality for GCD: $\max{d_i:d\in\mathbb{Z},d|a,d|b}=\min{ax+by:x\in\mathbb{Z},y\in\mathbb{Z},ax+by&gt;0}$
+<ul>
+<li><strong>证明</strong>
+<ol>
+<li>$d|s,s|d$</li>
+<li>Weak Duality + $\exists$</li>
+</ol>
+</li>
+<li><strong>唯一性证明</strong></li>
+</ul>
+</li>
+<li>$\text{lcm}(a,b)\gcd(a,b)=ab$
+<ul>
+<li><strong>证明</strong>
+<ol>
+<li>Isomorphism Theorem</li>
+<li>Unique Factorization</li>
+<li>$d|(a,b)\Leftrightarrow d|\frac{ab}{[a,b]}$</li>
+</ol>
+</li>
+<li>$(a,b,c)[a,b,c]=\frac{abc}{[(a,b),(b,c),(c,a)]}$</li>
+<li>$[a,b,c]=\frac{abc(a,b,c)}{(a,b)(a,c)(b,c)}$</li>
+</ul>
+</li>
+<li>$\gcd(a,b,c)=\gcd(\gcd(a,b),c)$</li>
+</ul>
+</li>
+<li>质数
+<ul>
+<li>$\pi(x)\sim\frac{x}{\ln{x}}$</li>
+<li><strong>无限质数证明</strong>
+<ol>
+<li>$P=p_1p_2\cdots p_n+1$</li>
+<li>Fermat Numer $F_n=2^{2^n}+1$ 两两互素
+<ul>
+<li>$F_n-2=\prod_{k=1}^{n-1}F_k$</li>
+</ul>
+</li>
+<li>Mersenne Number $2^p-1$
+<ul>
+<li>$2^p\equiv 1\pmod{q}\Rightarrow p|q-1$</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Dirichlet&rsquo;s Theorem: $\gcd(a,m)=1$ then there are infinitely many primes $p,p\equiv a\pmod{m}$</li>
+</ul>
+</li>
+<li>筛法求素数</li>
+<li>算术基本定理
+<ul>
+<li><strong>存在性证明</strong>：良序公理（找不满足中最小的）</li>
+<li><strong>唯一性证明</strong>：$1\rightarrow n$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$\varphi(n)=n\prod_{p|n}(1-\frac{1}{p}),p$ is prime
+<ul>
+<li>$\varphi(p)=p-1$</li>
+<li>$\varphi(n)&gt;\frac{n}{e^\gamma\ln\ln n+\frac{3}{\ln\ln n}},\gamma=0.577$</li>
+</ul>
+</li>
+<li>Additivie group module n: $(\mathbb{Z}_n,+_n)$
+<ul>
+<li>$\langle a\rangle=\langle (a,n)\rangle$
+<ul>
+<li>$|\langle a\rangle|=\frac{n}{(a,n)}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Multiplicative group module n: $(\mathbb{Z}_n^*,\cdot_n)$
+<ul>
+<li>$\text{ord}(a)$: the smallest possible integer that $a^{(t)}=e$
+<ul>
+<li>$\text{ord}(a)=|\langle a\rangle|$</li>
+<li>Primitive root: $a,\text{ord}_m(a)=\varphi(m)$
+<ul>
+<li>Number: if exists, $\varphi(\varphi(m))$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Euler&rsquo;s Theorem: $a^\varphi(n)\equiv 1\pmod{n}$
+<ul>
+<li>Fermat&rsquo;s Theorem: $a^{p-1}\equiv1\pmod{p}$</li>
+</ul>
+</li>
+<li>Wilson Theorem: $(p-1)!\equiv -1\pmod{p}\iff p$ is prime</li>
+</ul>
+</li>
+<li>quadratic residue
+<ul>
+<li>$a$ is quadratic residue $x^2=a\pmod{p}$ has a solution for $x$</li>
+<li>$\frac{p-1}{2}$ quadratic residues for $p$</li>
+<li>Legendre symbol $(\frac{a}{p})=1$ if $a$ is a quadratic residue otherwise $-1$</li>
+<li>$(\frac{a}{p})\equiv a^{(p-1)/2}\pmod{p}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="modular-linear-equations">Modular linear equations</h3>
+<ul>
+<li>$ax\equiv b\pmod{n}$
+<ul>
+<li>有解：$d=\gcd(a,n)|b$</li>
+<li>求解：
+<ul>
+<li>$ax+bn=d$</li>
+<li>$x_0=\frac{xb}{d}$</li>
+<li>$x_1=x_0+i\frac{n}{d},i=0,\cdots,n-1$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="crt-the-chinese-remainder-theorem">CRT (The Chinese remainder theorem)</h3>
+<ul>
+<li>$n=n_1n_2\cdots n_k$, where $n_i$ are pairwise relatively prime, then we have mapping $a\leftrightarrow(a_1,a_2,\cdots,a_k)$, for $\cdot=+/-/*$, we have $(a\cdot b)\pmod{n}\leftrightarrow ((a_1\cdot b\pmod{n_1},\cdots,(a_k\cdot b_k)\pmod{n_k}))$
+<ul>
+<li>$\rightarrow$: direct</li>
+<li>$\leftarrow$
+<ul>
+<li>$m_i=\frac{n}{n_i}$</li>
+<li>$a\equiv(\sum_{i=1}^ka_im_i(m_i^{-1}\pmod{n_i}))\pmod{n}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一般同余方程
+<ul>
+<li>法一：
+<ul>
+<li>有解：$a_i\equiv a_j \pmod{(n_i,n_j)}$</li>
+<li>先拆后合（相同或倍数）</li>
+<li>$x\equiv a\pmod{n_i}\iff x\equiv C\pmod{[n_1,\cdots,n_k]}$</li>
+</ul>
+</li>
+<li>法二：
+<ul>
+<li>两两合并</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>简化计算：
+<ul>
+<li>$2^{300}\bmod 319$</li>
+<li>$319=11*29$ + CRT</li>
+</ul>
+</li>
+</ul>
+<h2 id="数论算法">数论算法</h2>
+<ul>
+<li>model: multplying two $\beta$-bit integers take $\Theta(\beta^2)$ bit operations</li>
+</ul>
+<h3 id="euclid-algorithm">Euclid Algorithm</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">ext_gcd</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b, <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>x, <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>y){
+    <span style="color:#66d9ef">if</span> (b<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>) {
+        x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">return</span> a;
+    } <span style="color:#66d9ef">else</span> {
+        <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> ext_gcd(b,a<span style="color:#f92672">%</span>b,y,x);
+        y <span style="color:#f92672">-=</span> x<span style="color:#f92672">*</span>(a<span style="color:#f92672">/</span>b);
+        <span style="color:#66d9ef">return</span> ret;
+    }
+}
+</code></pre></div><ul>
+<li>$a&gt;b\geq 1$ and Euclid(a,b) performs $k\geq 1$ recursive calls, then $a\geq F_{k+2},b\geq F_{k+1}$
+<ul>
+<li><strong>证明</strong>：$a\geq b+(a\bmod b)$</li>
+<li>Lame&rsquo;s Theorem: $k\geq 1,a&gt;b\geq 1,b&lt;F_{k+1}$ then Euclid makes fewer than $k$ recursive calls</li>
+<li>$F_k\sim\frac{\phi^k}{\sqrt{5}},\phi=\frac{1+\sqrt{5}}{2}$</li>
+<li>$O(\lg b)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="modular-exponentiation">Modular Exponentiation</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fp</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b, <span style="color:#66d9ef">int</span> mod){
+    <span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">for</span> (;b;b<span style="color:#f92672">&gt;&gt;=</span><span style="color:#ae81ff">1</span>,a<span style="color:#f92672">=</span><span style="color:#ae81ff">1ll</span><span style="color:#f92672">*</span>a<span style="color:#f92672">*</span>a<span style="color:#f92672">%</span>mod)
+        <span style="color:#66d9ef">if</span> (b<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span>) c<span style="color:#f92672">=</span><span style="color:#ae81ff">1ll</span><span style="color:#f92672">*</span>c<span style="color:#f92672">*</span>a<span style="color:#f92672">%</span>mod;
+    <span style="color:#66d9ef">return</span> c<span style="color:#f92672">%</span>mod;
+}
+</code></pre></div><h3 id="primality-testing">Primality Testing</h3>
+<ul>
+<li>trial division: $\Theta{\sqrt{n}}$</li>
+<li>Pseudoprimality testing:
+<ul>
+<li>base-$a$ pseudoprime: $a^{n-1}\equiv 1\pmod{n}$</li>
+<li>Carmichael numbers: $\forall a\in\mathbb{Z}_n^*,a^{n-1}\equiv 1\pmod{n}$</li>
+<li>Algorithm: return MODULAR-EXPONENTIATION(2,n-1,n)$\equiv 1\pmod{n}$</li>
+</ul>
+</li>
+<li>Miller-Rabin randomized primality test
+<ul>
+<li>$x^2\equiv 1\pmod{p^e}$</li>
+<li>$O(s\beta^3)$</li>
+<li>$n$ is an odd composite number, then the number of witnesses to the compositeness of n is at least $\frac{n-1}{2}$</li>
+<li>$P(\text{MILLER-RABIN errs})&lt;2^{-s}$</li>
+<li>$P(\text{prime}|\text{RETURN prime})&gt;0.5$ if $s&gt;\lg(\ln n-1)$
+<ul>
+<li>applicable: $s=50$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">LL <span style="color:#a6e22e">multimod</span>(LL a, LL b, LL mod) {
+    a <span style="color:#f92672">%=</span> mod;
+    b <span style="color:#f92672">%=</span> mod;
+    LL res <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">while</span> (b) {
+        <span style="color:#66d9ef">if</span> (b <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) {
+            res <span style="color:#f92672">+=</span> a;
+            <span style="color:#66d9ef">if</span> (res <span style="color:#f92672">&gt;=</span> mod) res <span style="color:#f92672">-=</span> mod;
+        }
+        b <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>;
+        a <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">if</span> (a <span style="color:#f92672">&gt;=</span> mod) a <span style="color:#f92672">-=</span> mod;
+    }
+    <span style="color:#66d9ef">return</span> res;
+}
+
+<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">witness</span>(LL s, LL n) {
+    LL u <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">while</span> ((u <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> u <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) u <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>, t<span style="color:#f92672">++</span>;
+    LL x <span style="color:#f92672">=</span> fp(s, u, n), tmp;
+    <span style="color:#66d9ef">while</span> (t<span style="color:#f92672">--</span>) {
+        tmp <span style="color:#f92672">=</span> x;
+        x <span style="color:#f92672">=</span> multimod(x, x, n);
+        <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">!=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> true;
+    }
+
+    <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>)
+        <span style="color:#66d9ef">return</span> true;
+    <span style="color:#66d9ef">else</span>
+        <span style="color:#66d9ef">return</span> false;
+}
+
+<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">millerrabin</span>(LL n, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> times <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>) {
+    <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">return</span> true;
+    <span style="color:#66d9ef">if</span> ((n <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">return</span> false;
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> times;
+    <span style="color:#66d9ef">while</span> (i<span style="color:#f92672">--</span>) {
+        LL x <span style="color:#f92672">=</span> random(<span style="color:#ae81ff">2</span>, n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+        <span style="color:#66d9ef">if</span> (witness(x, n)) <span style="color:#66d9ef">return</span> false;
+    }
+    <span style="color:#66d9ef">return</span> true;
+}
+</code></pre></div><h3 id="integer-factorization">Integer factorization</h3>
+<ul>
+<li>Trial division $R\rightarrow R^2$</li>
+<li>Pollard&rsquo;s rho heuristic $R\rightarrow R^4$
+<ul>
+<li>initial: $x_1=\text{random}(0,n-1),y=x_1,k=2$</li>
+<li>Loop
+<ul>
+<li>$x_i=x_{i-1}^2\pmod{n}$</li>
+<li>if $\gcd(y-x_i,n)\not=1/n$ finded</li>
+<li>if $i==k$
+<ul>
+<li>$y=x_i$</li>
+<li>$k=2k$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="crypotography">Crypotography</h2>
+<h3 id="private-key-crypotography">Private Key Crypotography</h3>
+<ul>
+<li>affine cryptosystem: $f(p)=ap+b\pmod{n}$</li>
+<li>polyalphabetic crypotosystem
+<ul>
+<li>German ADFGVX Field Cipher</li>
+</ul>
+</li>
+<li>Kerckhoffs&rsquo;s principle</li>
+</ul>
+<h3 id="public-key-crypotography">Public Key Crypotography</h3>
+<ul>
+<li>$f^{-1}$ must be difficult to compute</li>
+<li>PKC
+<ul>
+<li>Self $P,D$</li>
+<li>Others $P',D'$</li>
+<li>Message $M$</li>
+<li>公钥加密
+<ul>
+<li>encoding with $P'$: $P'(M)$ -&gt; send</li>
+<li>receive -&gt; decoding with $D'(P'(M))$</li>
+</ul>
+</li>
+<li>数字签名
+<ul>
+<li>signing with $D$: $M'=M+D(M)$</li>
+<li>(encrypt and) send -&gt; receive (and decode)</li>
+<li>verifying $M=P(D(M))$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RSA
+<ul>
+<li>$n=pq$</li>
+<li>$(E,\varphi(n))=1$</li>
+<li>$DE\equiv 1\pmod{\varphi(n)}$</li>
+<li>public: $(n,E)$</li>
+<li>secret: $(n,D)$</li>
+<li>encoding: $y=x^E\bmod n$</li>
+<li>decoding: $x=y^D\bmod n$</li>
+</ul>
+</li>
+<li>DH(Deffie-Hellman)
+<ul>
+<li>$a$: small prime</li>
+<li>$p$: large prime</li>
+<li>Agent a: $(X_a,Y_a=a^{X_a}\bmod p)$</li>
+<li>Agent b: $(X_b,Y_b=a^{X_b}\bmod p)$</li>
+<li>secret key: $K=Y_b^{X_a}\bmod p= Y_a^{X_b}\bmod p$</li>
+</ul>
+</li>
+<li>Attack
+<ul>
+<li>Small $e$ Attack: $e=3,d$ obtained
+<ul>
+<li>Result: $p,q$ leaks</li>
+<li>$ed=1+k\varphi(n),k\in\mathbb{Z},k&lt;\min{e,d}$</li>
+</ul>
+</li>
+<li>Common Modulus Attack: $(e_i,e_j)=1$
+<ul>
+<li>Result: if message decoded both sent, original message can be recovered</li>
+<li>$M=E^xF^y\pmod{n},e_1x+e_2y=1$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

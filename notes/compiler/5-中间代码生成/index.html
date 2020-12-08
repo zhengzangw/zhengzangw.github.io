@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中间代码生成 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#三地址代码">三地址代码</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="三地址代码">三地址代码</h2>
+<ul>
+<li>指令集合
+<ul>
+<li>运算/赋值：x=y op z, x=op z</li>
+<li>复制：x=y</li>
+<li>无条件转移指令：goto L</li>
+<li>条件转移指令：if x goto L, if False x goto L</li>
+<li>条件转移指令：if x relop y goto L</li>
+<li>过程调用/返回：param $x_i$, call p,n</li>
+<li>带下标的复制：x=y[i], x[i]=y</li>
+<li>地址/指针赋值指令：x=&amp;y, x=*y, *x=y</li>
+</ul>
+</li>
+<li>四元式：op arg1 arg2 result
+<ul>
+<li>单目运算符：no arg2</li>
+<li>param 运算不使用 arg2, result</li>
+<li>转移目标：result</li>
+</ul>
+</li>
+<li>三元式：使用三元式的位置来引用三元式的运算结果</li>
+<li>简接三元式：包含一个指向三元式的指针的列表</li>
+<li>静态单赋值（SSA）：所有赋值都是针对不同名的变量</li>
+<li>回填</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

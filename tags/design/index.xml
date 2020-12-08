@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>design on Zangwei</title>
+    <link>https://zhengzangw.com/tags/design/</link>
+    <description>Recent content in design on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Mon, 13 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/design/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Recommandation of Fonts</title>
+      <link>https://zhengzangw.com/posts/info-fonts/</link>
+      <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/info-fonts/</guid>
+      <description>&lt;h1 id=&#34;字体&#34;&gt;字体&lt;/h1&gt;
+&lt;h2 id=&#34;正文中文&#34;&gt;正文中文&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Source Han Sans CN: 思源黑体&lt;/li&gt;
+&lt;li&gt;Source Han Serif CN: 思源宋体&lt;/li&gt;
+&lt;li&gt;Gen Jyuu Gothic: 思源柔黑&lt;/li&gt;
+&lt;li&gt;FZShuSong-Z01: 方正书宋&lt;/li&gt;
+&lt;li&gt;FZKai-Z03: 方正楷体&lt;/li&gt;
+&lt;li&gt;PangMenZhengDao: 旁门正道标题体&lt;/li&gt;
+&lt;li&gt;huxiaobo-gdh: 站酷高端黑&lt;/li&gt;
+&lt;li&gt;huxiaobo-kuhei: 站酷酷黑&lt;/li&gt;
+&lt;li&gt;happyzcool-2016: 站酷快乐体&lt;/li&gt;
+&lt;li&gt;PmingLiU-TW: 臺灣新細明體&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

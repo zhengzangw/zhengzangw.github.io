@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3-线性空间 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#线性空间">线性空间</a></li>
+    <li><a href="#子空间">子空间</a></li>
+    <li><a href="#线性映射">线性映射</a></li>
+    <li><a href="#欧式空间">欧式空间</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="线性空间">线性空间</h2>
+<ul>
+<li>线性空间
+<ul>
+<li>加法
+<ul>
+<li>交换律</li>
+<li>结合律</li>
+<li>零元素</li>
+<li>负元素</li>
+</ul>
+</li>
+<li>乘法
+<ul>
+<li>单位元素</li>
+<li>结合律</li>
+<li>分配率 1</li>
+<li>分配率 2</li>
+</ul>
+</li>
+<li>注：
+<ul>
+<li>检验加法、数乘是否封闭</li>
+<li>检验 0 元素存在</li>
+<li>检验负元素存在</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>极大线性无关组
+<ul>
+<li>线性无关</li>
+<li>加入任意其余向量，均线性相关</li>
+<li>求极大线性无关组
+<ul>
+<li>$[a_i]-&gt;[b_i]$</li>
+<li>$[b_j]$线性无关$\Rightarrow [a_j]$线性无关</li>
+<li>$b_t=\sum{k_jb_j}\Rightarrow a_t=\sum{k_ja_j}$</li>
+</ul>
+</li>
+<li>两个线性无关组$\alpha,\beta$正交($\alpha^T\beta=0$)则$\alpha,\beta$为线性无关组。</li>
+</ul>
+</li>
+<li>坐标：
+<ul>
+<li>$\alpha = \sum_{i=1}^nx_ie_i$记为$\alpha=(e_1,\cdots,e_n)(x_1,\cdots,x_n)^T$</li>
+</ul>
+</li>
+<li>过渡矩阵
+<ul>
+<li>从$\beta_1,\cdots,\beta_m$到$\alpha_1,\cdots,\alpha_m$的过渡矩阵 A: $(\alpha_1,\cdots,\alpha_m) =(\beta_1,\cdots,\beta_m)A$</li>
+<li>坐标变换: $X=A^{-1}Y$</li>
+<li><strong>求过渡矩阵</strong>
+<ul>
+<li>$[B|C]\rightarrow[I|A]$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="子空间">子空间</h2>
+<ul>
+<li>判别条件
+<ul>
+<li>非空</li>
+<li>加法封闭</li>
+<li>数乘封闭</li>
+</ul>
+</li>
+<li>子空间交$W_1\cap W_2$也是子空间</li>
+<li>子空间并不一定是子空间</li>
+<li>子空间和$W_1+W_2={\alpha_1+\alpha_2|\alpha_1\in W_1,\alpha_2 \in W_2}$也是子空间</li>
+<li>直和：$V=W_1+W_2$,若$\forall \alpha\in V$有唯一分解$\alpha=\beta_1+\beta_2$, 则$V=W_1\oplus W_2$
+<ul>
+<li>以下三命题等价：
+<ul>
+<li>$V=W_1\oplus W_2$</li>
+<li>$W_1\cap W_2={0}$</li>
+<li>$0\in V$ 有唯一分解</li>
+<li>$\dim(V) = \dim(W_1) + \dim(W_2)$</li>
+</ul>
+</li>
+<li>$V=W_1\oplus W_2$ 则$W_1$的基和$W_2$的基合并为$V$的基</li>
+</ul>
+</li>
+<li>维数公式：$\dim(W_1\cap W_2)+\dim(W_1+W_2)=\dim(W_1)+\dim(W_2)$</li>
+</ul>
+<h2 id="线性映射">线性映射</h2>
+<ul>
+<li>线性映射$\mathbb{A}:V_1\rightarrow V_2$:
+<ul>
+<li>$\mathbb{A}(\alpha+\beta)=\mathbb{A}(\alpha)+\mathbb{A}(\beta)$</li>
+<li>$\mathbb{A}(k\alpha) = k\mathbb{A}(\alpha)$</li>
+</ul>
+</li>
+<li>$\mathbb{A}\circ\mathbb{B}$ 亦为线性映射</li>
+<li>线性映射$\mathbb{A}$关于基$e_1,\dots,e_n$与$\epsilon_1,\dots,\epsilon_n$的表示矩阵 A: $\epsilon_1,\dots,\epsilon_n$ 到$\mathbb{A}(e_1,\dots,e_n)$ 的过渡矩阵</li>
+<li>线性算子在$\epsilon_1,\dots,\epsilon_n$下的表示矩阵为$\epsilon_1,\dots,\epsilon_n$到$\mathbb{A}(\epsilon_1,\dots,\epsilon_n)$下的表示矩阵</li>
+<li>$\alpha\in V_1$ 关于$e_1,\dots,e_n$的坐标为$X$,则$\mathbb{A}(\alpha)$关于$\epsilon_1,\dots,\epsilon_n$的坐标为$AX$</li>
+<li>线性算子（线性变换）$\mathbb{A}: V\rightarrow V$</li>
+</ul>
+<h2 id="欧式空间">欧式空间</h2>
+<ul>
+<li>内积
+<ul>
+<li>$&lt;a,b&gt;=&lt;b,a&gt;$</li>
+<li>$&lt;a_1+a_2,b&gt;=&lt;a_1,b&gt;+&lt;a_2,b&gt;$</li>
+<li>$&lt;ka,b&gt;=k&lt;a,b&gt;$</li>
+<li>$&lt;a,a&gt;\geq0$</li>
+</ul>
+</li>
+<li>范数: $||\alpha||=\sqrt{&lt;\alpha,\alpha&gt;}$
+<ul>
+<li>$||k\alpha||=k||\alpha||$</li>
+</ul>
+</li>
+<li>Cauchy-Sohwarz Inequality: $|&lt;\alpha, \beta&gt;|\leq||\alpha||||\beta||$
+<ul>
+<li>等号成立：$\alpha,\beta$线性相关</li>
+<li>三角不等式： $||\alpha+\beta||\leq||\alpha||+||\beta||$</li>
+<li>等号成立当且仅当同向</li>
+</ul>
+</li>
+<li>余弦定理：$||X-Y||^2=||X||^2+||Y||^2-2||X||||Y||\cos\theta$
+<ul>
+<li>$&lt;X,Y&gt;=||X||||Y||\cos\theta$</li>
+<li>$\cos\theta=\frac{&lt;\alpha,\beta&gt;}{||\alpha||||\beta||}\in(0,\pi)$</li>
+</ul>
+</li>
+<li>正交：$\alpha\in V,\beta\in V, &lt;\alpha, \beta&gt;=0$</li>
+<li>勾股定理：$||\sum_{i=1}^k\alpha_i||^2=\sum_{i=1}^k||\alpha_i||^2$</li>
+<li>度量矩阵：$A=(&lt;e_i, e_j&gt;)\in M_{n*n}$ 关于$e_1,\dots,e_n$的度量矩阵, 对称正定</li>
+<li>$&lt;\alpha, \beta&gt;=X^TAY$</li>
+<li>正交向量组线性无关</li>
+<li>向量$\alpha$的单位化：$\frac{\alpha}{||\alpha||}$</li>
+<li>正规基：正交基$e_1,\dots,e_n$有$||e_i||=1$</li>
+<li>正交基度量矩阵为对角阵，对角元为正</li>
+<li>正规基度量矩阵为 I</li>
+<li>Schmidt 正交化
+<ul>
+<li>$\beta_k=\alpha_k-\sum_{i=1}^{k-1}\frac{\langle\alpha_k,\beta_i\rangle}{\langle\beta_i,\beta_i\rangle}\beta_i$</li>
+<li>$e_k=\frac{\beta_k}{||\beta_k||}$</li>
+</ul>
+</li>
+<li>正交算子（正交变化、保距变换）： 线性算子$\mathbb{A}$, $\langle\mathbb{A}\alpha,\mathbb{A}\beta\rangle=\langle\alpha,\beta\rangle$</li>
+<li>正交$\iff$ $||\mathbb{A}\alpha||=||\alpha||$ $\iff$ 正规基在$\mathbb{A}$下仍是正规基</li>
+<li>正交阵：$A^T=A^{-1}$</li>
+<li>$\mathbb{A}$在正规基下的表示矩阵为$A$，则$\mathbb{A}$为正交算子$\iff$正交阵</li>
+<li>正交阵$A,B$，$A^T(A+B)B^T=(A+B)^T$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

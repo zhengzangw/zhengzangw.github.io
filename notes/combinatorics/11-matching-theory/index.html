@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>11. Matching Theory | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#hall-theorem">Hall Theorem</a></li>
+    <li><a href="#min-max-theorems">Min-Max Theorems</a></li>
+    <li><a href="#flow">Flow</a></li>
+    <li><a href="#linear-programming">Linear Programming</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="hall-theorem">Hall Theorem</h2>
+<ul>
+<li>SDR: system of Distinct Representives
+<ul>
+<li>distinct $x_1,x_2,\cdots,x_m,x_i\in S_i,i=1,2,\cdots,m$</li>
+</ul>
+</li>
+<li>Hall&rsquo;s Theorem (marriage theorem): $S_1,S_2,\cdots,S_m$ have a SDR $\iff \forall I\subseteq{1,2,\cdots,m},|\bigcup_{i\in I}S_i|\geq|I|$</li>
+<li>Hall&rsquo;s Theorem (graph theory form): A bipartite graph $G(U,V,E)$ has a matching of $U$ $\iff\forall S\subseteq U,|N(S)|\geq|S|$
+<ul>
+<li>$N(S)={v|\exists u\in S,uv\in E}$</li>
+<li>proof: induction, divide into two cases according to critical family ($|\bigcup_{i=1}^kS_i|=k$)</li>
+</ul>
+</li>
+</ul>
+<h2 id="min-max-theorems">Min-Max Theorems</h2>
+<ul>
+<li>König-Egerváry theorem: in bipartite graph, $\min$ vertex cover = $\max$ matching
+<ul>
+<li>matchign: $M\subseteq E,\neg\exists e_1,e_2\in M$ share a vertex</li>
+<li>vertex cover: $C\subseteq V,\forall e\in E$ adjacent to some $v\in C$</li>
+</ul>
+</li>
+<li>König-Egerváry theorem (matrix form): For any 0-1 matrix, the maximum number of independent 1&rsquo;s $s$ equals the minimum number of rows and columns required to cover all the 1&rsquo;s $t$
+<ul>
+<li>$r\leq s$</li>
+<li>$r\geq s$: Hall Thoerem</li>
+</ul>
+</li>
+<li>Dilworth&rsquo;s theorem: $\max$ size of antichain $r$ in poset $P$ $=$ $\min$ size $s$ of smallest partition of $P$ into chains
+<ul>
+<li>chain: totally ordered set, all pairs of elements are comparable</li>
+<li>antichain: all pairs of elements are incomparable</li>
+<li>$r\leq s$</li>
+<li>$r\geq s$:</li>
+</ul>
+</li>
+<li>Erdős-Szekeres Theorem: A sequence of more than $mn$ different real numbers must contain either an increasing subsequence of length {\displaystyle m+1}{\displaystyle m+1}, or a decreasing subsequence of length $(m+1)(n+1)$.</li>
+</ul>
+<h2 id="flow">Flow</h2>
+<ul>
+<li>Flow
+<ul>
+<li>digraph: $D(V,E)$, source $s$, sink $t$</li>
+<li>capacity: $c:E\rightarrow\mathbb{R}^+$</li>
+<li>flow: $f:E\rightarrow\mathbb{R}^+$</li>
+<li>constrain
+<ul>
+<li>capacity: $\forall(u,v)\in E,f_{uv}\leq c_{uv}$</li>
+<li>conservation: $\forall u\in V\backslash{s,t},\sum_{(w,u)\in E}f_{wu}=\sum_{(u,v)\in E}f_{uv}$</li>
+</ul>
+</li>
+<li>value of flow: $\sum_{(s,u)\in E}f_{su}=\sum_{(v,t)\in E}f_{vt}$</li>
+</ul>
+</li>
+<li>Cut
+<ul>
+<li>same input</li>
+<li>$s$-$t$cut: $S\subset V,s\in S,t\notin S,\sum_{u\in S,v\notin S,(u,v)\in E}c_{uv}$</li>
+</ul>
+</li>
+<li>Flow Integrality Theorem: max integral flow = max-flow if capcities are integers</li>
+<li>Max-Flow Min-Cut Theorem: max-flow = min-cut (Ford-Fulkerson 1956, Kotzig 1956)</li>
+<li>Augmenting Path: $s=u_0u_1\cdots u_k=t$
+<ul>
+<li>$f(u_iu_{i+1})&lt;c(u_iu_{i+1})$ if $u_i\rightarrow u_{i+1}$</li>
+<li>$f(u_{i+1}u_i)&gt;0$ if $u_i\leftarrow u_{i+1}$</li>
+<li>maximum flow $\iff$ no augmenting path</li>
+</ul>
+</li>
+<li>Proof that max-flow = min-cut iff no augmenting path
+<ul>
+<li>Weak duality
+<ul>
+<li>$\sum_{u:(s,u)\in E}f_{su}=\sum_{u\in S,v\notin S,(u,v)\in E}f_{uv}-\sum_{u\in S,v\notin S,(u,v)\in E}f_{vu}$</li>
+<li>flow $\leq \sum_{u\in S,v\notin S,(u,v)\in E}f_{uv}\leq$ cut</li>
+</ul>
+</li>
+<li>no augmenting path
+<ul>
+<li>$S={u|\exists \text{augmenting path from } s \text{ to} u}$</li>
+<li>$s\in S,t\notin S$</li>
+<li>$\forall u\in S,v\notin S,(u,v)\in E,f_{uv}=c_{uv},f_{vu}=0$</li>
+<li>flow = cut</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Menger&rsquo;s Theorem: undirected graph, $s$-$t$ cut $C\subset E$ that removing $C$ disconnects $s,t$
+<ul>
+<li>min $s$-$t$ cut = max # of disjoint $s$-$t$ path</li>
+</ul>
+</li>
+</ul>
+<h2 id="linear-programming">Linear Programming</h2>
+</main>
+        </div>
+
+    </div>
+</body></html>

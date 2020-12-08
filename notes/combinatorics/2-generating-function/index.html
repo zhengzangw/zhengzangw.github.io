@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2. Generating Functions | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>ordinary generating function(OGF) define by $a_n$: $G(x)=\sum_{n\geq0}a_nx^n$</li>
+<li>coefficient: $[x^k]G(x)$</li>
+<li>$\mathbb{C}[<input checked="" disabled="" type="checkbox"> ]$: ring of formal power series with complex coefficient</li>
+<li>Combination: 3 red, 4 blue, and 5 green
+<ul>
+<li>$(1+x+x^2+x^3)(1+x+x^2+x^3+x^4)(1+x+x^2+x^3+x^4+x^5)$</li>
+<li>coefficient $x^k$ gives the number of way to select $k$ balls</li>
+</ul>
+</li>
+<li>Fibonacci number
+<ul>
+<li>$F_n=\frac{1}{\sqrt{5}}(\phi^n-\hat\phi^n),\phi=\frac{1+\sqrt{5}}{2},\hat\phi=\frac{1-\sqrt{5}}{2}$</li>
+<li>$G(x)=\frac{x}{1-x-x^2}=\frac{x}{(1-\phi x)(1-\hat\phi x)}=\frac{\alpha}{1-\phi x}+\frac{\beta}{1-\hat\phi x}$</li>
+</ul>
+</li>
+<li>General Methodology
+<ul>
+<li>Give a recursion that computes $a_n$</li>
+<li>Give the generating function and manipulate the right hand side of equation so that it becomes some other expression involving $G(x)$
+<ul>
+<li>shift: $x^kG(x)=\sum_{n\geq k}g_{n-k}x^n$</li>
+<li>addition: $F(x)+G(x)=\sum_{n\geq 0}(f_n+g_n)x^n$</li>
+<li>convolution: $F(x)G(X)=\sum_{n\geq 0}\sum_{k=0}^nf_kg_{n-k}x^n$</li>
+<li>differentiation: $G'(x)=\sum_{n\geq0}(n+1)g_{n+1}x^n$</li>
+</ul>
+</li>
+<li>Solve the resulting equation to derive an explicit formula for $G(x)$</li>
+<li>Expand $G(x)$ into a power series and read off the coefficient of $x^n$
+<ul>
+<li>Taylor expansion: $G(x)=\sum_{n\geq 0}\frac{G^{(n)}(0)}{n!}x^n$</li>
+<li>Geometric sequence: $\frac{1}{1-x}=\sum_{n\geq0}x^n$
+<ul>
+<li>$G(x)=\sum_{i=1}^{k}\frac{a_i}{1-b_ix}$, $[x^n]G(x)=\sum_{i=1}^ka_ib_i^n$</li>
+</ul>
+</li>
+<li>Newton&rsquo;s formular: $(1+x)^\alpha=\sum_{n\geq0}{\alpha\choose n}x^n$
+<ul>
+<li>${\alpha\choose n}=\frac{\alpha(\alpha-1)\cdots(\alpha-(n-1))}{n!}$</li>
+<li>${-n\choose m}=(-1)^m{n+m-1\choose m}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Catalan Number: $C_n=\sum_{k=0}^{n-1}C_kC_{n-1-k},C_0=1$
+<ul>
+<li>Interpretation
+<ul>
+<li>出入栈：the number of expressions containing n pairs of parentheses which are correctly matched：以最后一个左括号的对应右括号的位置为 choice，划分成两个部分</li>
+<li>Dyck words of length $2n$(A Dyck word is a string consisting of n X&rsquo;s and n Y&rsquo;s such that no initial segment of the string has more Y&rsquo;s than X&rsquo;s)</li>
+<li>the number of different ways $n + 1$ factors can be completely parenthesized</li>
+<li>the number of full binary trees with $n + 1$ leaves</li>
+<li>单调路径：the number of monotonic lattice paths along the edges of a grid with $n × n$ square cells, which do not pass above the diagonal</li>
+<li>三角形剖分：triangulations of a convex $(n+2)$-gon</li>
+<li>二叉树种类</li>
+</ul>
+</li>
+<li>$C_n=\frac{1}{n+1}{2n\choose n}$
+<ul>
+<li>Generating function
+<ul>
+<li>$G(x)^2=\sum_{n\geq0}\sum_{k=0}^nC_kC_{n-k}x^n$</li>
+<li>$G(x)=1+xG(x)^2\Rightarrow G(x)=\frac{1-(1-4x)^{\frac{1}{2}}}{2x}$
+<ul>
+<li>二次方程只有一解：$\lim_{x\rightarrow0}G(x)=C_0$</li>
+</ul>
+</li>
+<li>$G(x)=2\sum_{n\geq0}{\frac{1}{2}\choose n+1}(-4x)^n$</li>
+</ul>
+</li>
+<li>Andre&rsquo;s reflection method: $C_n={2n\choose n}-{2n\choose n+1}$</li>
+<li>bijective proof: split up the set of all monotonic paths into $n + 1$ equally sized classes</li>
+</ul>
+</li>
+<li>$\Omega(\frac{4^n}{n^{3/2}})$</li>
+</ul>
+</li>
+<li>Quicksort
+<ul>
+<li>Quicksort recursion: $T_n=\frac{1}{n}\sum_{k=1}^n(n-1+T_{k-1}+T_{n-k})$</li>
+<li>$\sum_{n\geq0}nT_nx^n=\sum_{n\geq 0}n(n-1)x^n + 2\sum_{n\geq0}(\sum_{k=0}^{n-1}T_k)x^n$</li>
+<li>$xG'(x)=\frac{2x^2}{(1-x)^3}+\frac{2x}{1-x}G(x)$</li>
+<li>$G(x)=\frac{2}{(1-x)^2}\ln\frac{1}{1-x}$</li>
+<li>$T_n=2(n+1)H(n)-2n$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

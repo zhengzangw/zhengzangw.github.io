@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ds on Zangwei</title>
+    <link>https://zhengzangw.com/tags/ds/</link>
+    <description>Recent content in ds on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Sat, 25 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/ds/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Segment Tree</title>
+      <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/segment-tree/</link>
+      <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/segment-tree/</guid>
+      <description>&lt;h1 id=&#34;prepare&#34;&gt;Prepare&lt;/h1&gt;
+&lt;h2 id=&#34;离散化&#34;&gt;离散化&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;m &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a.y
+sort(m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+len &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; unique(m,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; m
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt;n;&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;i) a[i].y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lower_bound(m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;len&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,a[i].y) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; m;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Skip list</title>
+      <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/skip-list/</link>
+      <pubDate>Mon, 12 Mar 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/skip-list/</guid>
+      <description>&lt;h1 id=&#34;skip-list&#34;&gt;Skip List&lt;/h1&gt;
+&lt;h2 id=&#34;构造&#34;&gt;构造&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;给定一个有序的链表。&lt;/li&gt;
+&lt;li&gt;选择连表中最大和最小的元素，然后从其他元素中按照一定算法（随机）随即选出一些元素，将这些元素组成有序链表。&lt;/li&gt;
+&lt;li&gt;为刚选出的每个元素添加指针指向下一层中值同自己相等的元素。Top指针指向该层首元素&lt;/li&gt;
+&lt;li&gt;重复2、3步，直到不再能选择出除最大最小元素以外的元素。&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

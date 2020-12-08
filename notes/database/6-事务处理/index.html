@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>6-事务处理 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#事务">事务</a>
+      <ul>
+        <li><a href="#事务控制">事务控制</a></li>
+        <li><a href="#事务的语句组成">事务的语句组成</a></li>
+      </ul>
+    </li>
+    <li><a href="#并发控制">并发控制</a>
+      <ul>
+        <li><a href="#调度定义">调度定义</a></li>
+        <li><a href="#锁">锁</a></li>
+      </ul>
+    </li>
+    <li><a href="#数据库恢复">数据库恢复</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="事务">事务</h2>
+<ul>
+<li>事务：由某个用户执行的一个不能够被打断的对数据库的操作序列</li>
+<li>影响因素
+<ul>
+<li>concurrency 并发控制</li>
+<li>abort</li>
+<li>crash 故障恢复</li>
+</ul>
+</li>
+<li>事务的四个性质：ACID
+<ul>
+<li>Atomicity：要么全部发生，要么都不发生</li>
+<li>Consistency：满足数据约束</li>
+<li>Isolation：并发事务的可串行化</li>
+<li>Durability：数据不丢失</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/content/DB-transaction.png" alt="事务活动图"></p>
+<h3 id="事务控制">事务控制</h3>
+<ul>
+<li>
+<p>事务控制语句</p>
+<ul>
+<li>
+<p>begin transaction</p>
+<p>数据定义命令(DDL)：每条数据定义命令为一个单独的事务</p>
+<p>自动提交方式(<code>set autocommit on|off</code>)：每条访问命令为单独的事务</p>
+<p>数据操纵命令(DML)</p>
+</li>
+<li>
+<p>commit transaction</p>
+</li>
+<li>
+<p>rollback transaction</p>
+<p>savepoint</p>
+</li>
+</ul>
+</li>
+<li>
+<p>事务控制命令(DCL)</p>
+<ul>
+<li><code>set autocommit on|off</code></li>
+<li><code>set transaction readonly|readwrite</code></li>
+<li><code>set transaction isolation level readuncomitted|readcomitted|readrepeatable|serializable</code></li>
+</ul>
+</li>
+<li>
+<p>并发错误</p>
+<ul>
+<li>更新丢失：对多个事务并发修改同一个数据对象的情况未加控制</li>
+<li>脏读：一个事务读取到了另外一个事务没有提交的数据</li>
+<li>不可重复读：在两次连续的读操作间插入了另一个事务的写操作</li>
+<li>幻象读：在两次连续的查询操作间插入了另一个事务的插入操作</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>Dirty Read</th>
+<th>Non-repeatable Read</th>
+<th>Phantom Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read uncommited</td>
+<td>Possible</td>
+<td>Possible</td>
+<td>Possible</td>
+</tr>
+<tr>
+<td>Read commited</td>
+<td></td>
+<td>Possible</td>
+<td>Possible</td>
+</tr>
+<tr>
+<td>Repeatable read</td>
+<td></td>
+<td></td>
+<td>Possible</td>
+</tr>
+<tr>
+<td>Serializable</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="事务的语句组成">事务的语句组成</h3>
+<ul>
+<li>事务控制操纵
+<ul>
+<li>事务开始：START T0</li>
+<li>提交事务：COMMIT T0</li>
+<li>回退事务：ABORT T0</li>
+</ul>
+</li>
+<li>数据访问操纵
+<ul>
+<li>INPUT(A)</li>
+<li>OUTPUT(A)</li>
+<li>READ(A,t)</li>
+<li>WRITE(A,t)</li>
+</ul>
+</li>
+</ul>
+<h2 id="并发控制">并发控制</h2>
+<p>实现并发事务的可串行化调度</p>
+<h3 id="调度定义">调度定义</h3>
+<ul>
+<li>串行执行：多个事务依次执行</li>
+<li>并发执行：交替执行来自不同事务的操作</li>
+<li>调度（Schedule, History）：DBMS 中实际执行序列</li>
+<li>可串行化调度：对数据库状态的影响和某个串行调度相同</li>
+<li>事务与调度表示方法
+<ul>
+<li>事务： $T_i$</li>
+<li>事务 $T_i$ 读写数据库对象 $X$：$r_i(X)$</li>
+</ul>
+</li>
+<li>冲突：一对相邻操作，交换顺序改变结果
+<ul>
+<li>同一事务相同操作是冲突</li>
+<li>不同事务对同一数据对象的读-写冲突</li>
+<li>不同事务对同一对象的写冲突</li>
+</ul>
+</li>
+<li>冲突可串行化调度：通过非冲突操作交换可变为串行调度
+<ul>
+<li>充分条件</li>
+<li>冲突等价</li>
+<li>优先图无环</li>
+</ul>
+</li>
+<li>视图等价：对每个数据项
+<ul>
+<li>一方能读到初始值，另一方也能读到初始值</li>
+<li>如果在调度S中事务Tk执行了rk(D)，并且读到的是由事务Tj写入的D的值，则在调度H中事务Tk的rk(D)读到的也必须是由事务Tj所写入的D的值</li>
+<li>如果在调度S中是由事务Tk来执行最后一条关于D的写操作wk(D)，则在调度H中也一定是事务Tk执行最后一条关于D的写操作wk(D)</li>
+<li>视图等价是冲突等价的必要非充分条件</li>
+</ul>
+</li>
+</ul>
+<h3 id="锁">锁</h3>
+<ul>
+<li>锁
+<ul>
+<li>排它锁(X-lock)</li>
+<li>共享锁(S-lock)</li>
+</ul>
+</li>
+<li>锁协议
+<ul>
+<li>一级锁协议：写前必须申请X锁并维持到事务执行结束（丢失修改）</li>
+<li>二级锁协议：一级+读之前申请S锁并维持到读操作完成后（丢失修改，脏读）</li>
+<li>三级锁协议：一级+读之前申请S锁并维持到事务执行结束（丢失修改，脏读，不可重复读）</li>
+<li>两阶段锁协议(2PL)
+<ul>
+<li>申请并获得锁</li>
+<li>释放所有申请的锁</li>
+<li>两阶段锁事务：所有锁请求先于解锁请求</li>
+<li>由2PL事务所构成的任意合法调度S都是冲突可串行化的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>锁粒度：一把锁可以封锁的数据对象大小
+<ul>
+<li>锁粒度大，系统并发度低，并发控制开销小</li>
+<li>多粒度封锁：同时支持多种封锁粒度
+<ul>
+<li>多粒度树</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>意向锁
+<ul>
+<li>意向共享锁(IS锁)</li>
+<li>意向排它锁(IX锁)</li>
+<li>共享意向排它锁(SIX锁)</li>
+</ul>
+</li>
+<li>意向锁加锁算法
+<ul>
+<li>如果对一个结点加‘意向锁’，则说明该结点的下层结点正在被加锁</li>
+<li>对任一结点加锁时，必须先对它的上层结点加‘意向锁’</li>
+<li>申请封锁：自上而下</li>
+<li>释放封锁：自下而上</li>
+</ul>
+</li>
+<li>锁相容矩阵</li>
+</ul>
+<p><img src="/images/content/lock.png" alt="锁相容矩阵"></p>
+<ul>
+<li>死锁：循环等待现象
+<ul>
+<li>预防法
+<ul>
+<li>顺序申请法</li>
+<li>一次申请法</li>
+</ul>
+</li>
+<li>解除法
+<ul>
+<li>超时死锁算法
+<ul>
+<li>事务执行超时</li>
+<li>锁申请超时</li>
+</ul>
+</li>
+<li>等待图法</li>
+<li>时间戳死锁检测法
+<ul>
+<li>等待-死亡方案</li>
+<li>伤害-等待方案</li>
+<li>牺牲年轻事务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>活锁：部分事务因封锁申请无法满足长期等待
+<ul>
+<li>先来先服务</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库恢复">数据库恢复</h2>
+<p>数据库遭到破坏后及时恢复的功能</p>
+<ul>
+<li>故障分类
+<ul>
+<li>小型故障
+<ul>
+<li>事务内故障</li>
+</ul>
+</li>
+<li>中型故障
+<ul>
+<li>系统故障</li>
+<li>外部影响</li>
+</ul>
+</li>
+<li>大型故障
+<ul>
+<li>磁盘故障</li>
+<li>计算机病毒</li>
+<li>黑客入侵</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据转储(dump)：定期将数据库内容复制到其它储存设备
+<ul>
+<li>静态转储/动态转储</li>
+<li>海量转储/增量转储</li>
+<li>结合数据库日志：转储的开始与结束点，事务更新操作</li>
+</ul>
+</li>
+<li>数据库镜像</li>
+<li>日志：自动记载修改型操作的数据更新情况文件
+<ul>
+<li>undo日志：用于被放弃事务的撤销工作
+<ul>
+<li>记录格式
+<ul>
+<li>开始：Start T</li>
+<li>提交：Commit T（须在事务所有操作写入磁盘后写入）</li>
+<li>放弃：Abort T</li>
+<li>更新：T,X,V (V是原来的值，须在新值写入磁盘前写入)</li>
+<li>Flush Log: 内存中的日志记录写到磁盘</li>
+</ul>
+</li>
+<li>恢复过程：从尾部开始扫描整个日志，对未提交事务恢复数值，加入 Abort T</li>
+</ul>
+</li>
+<li>检查点
+<ul>
+<li>处理过程
+<ul>
+<li>系统停止接受 Start T</li>
+<li>等待当前活跃事务被提交或中止</li>
+<li>写入所有日志</li>
+<li>写入 CKPT</li>
+</ul>
+</li>
+<li>非静止检查点</li>
+</ul>
+</li>
+<li>redo日志：用于已提交事务的重做工作
+<ul>
+<li>V是更新的值</li>
+<li>Commit 写入后修改</li>
+<li>冗余修改</li>
+</ul>
+</li>
+<li>undo/redo日志
+<ul>
+<li>T,X,v,w</li>
+<li>事务提交和写数据库磁盘的顺序是随机的</li>
+<li>故障恢复
+<ul>
+<li>undo 未提交事务</li>
+<li>redo 已提交事务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

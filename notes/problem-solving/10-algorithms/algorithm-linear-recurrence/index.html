@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linear Recurrence | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#幻想三步走">幻想三步走</a>
+      <ul>
+        <li><a href="#异想天开之空降序列">异想天开之空降序列</a></li>
+        <li><a href="#奥秘重重之多项式取模">奥秘重重之多项式取模</a></li>
+        <li><a href="#伪实在太烦之记住结论">伪·实在太烦之记住结论</a></li>
+        <li><a href="#昏睡数学之cayley-hamilton定理">昏睡数学之Cayley-Hamilton定理</a></li>
+      </ul>
+    </li>
+    <li><a href="#算法实现">算法实现</a></li>
+    <li><a href="#code">Code</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="常系数齐次线性递推式">常系数齐次线性递推式</h1>
+<p>快速幂: $O(k^3logn)$
+黑科技：$O(klogklogn+k)$
+虽然过了洛谷的数据，但是常数还没压下来，N=10^9,K=32000要3.5s。标程可以进1s。以后再压常数。</p>
+<h2 id="幻想三步走">幻想三步走</h2>
+<p>设转移矩阵为A，初始值向量为v</p>
+<h3 id="异想天开之空降序列">异想天开之空降序列</h3>
+<p>倘若我们捡到了一个序列c使得
+$$A^n = \sum_{i=0}^{k-1}c_iA^i $$
+你会发现两边都不同次。所以才叫“捡到的”。有了c，我们有：
+$$v*A^n = v*\sum_{i=0}^{k-1}c_iA^i = \sum_{i=0}^{k-1}c_i*v_i$$
+同时取向量的第一项：
+$$Ans = \sum_{i=0}^{k-1}c_ia_i$$
+其中$a_i$是第i项。
+如此可O(k)求出Ans</p>
+<h3 id="奥秘重重之多项式取模">奥秘重重之多项式取模</h3>
+<p>我们希望能够看到c的影子。先用多项式取模给$A^n$降降次：
+$$A^n = Q(A)G(A) + R(A) = Q(A)G(A) + \sum_{i=0}^{k-1}A^i$$
+这里，G是k次多项式。
+倘若我们的运气足够好，选到了一个G使得G(A)=0，那么“空降序列”就可以通过多项式除法算出。于是目标变换为寻找序列g，使得
+$$\sum_{i=0}^{k}g_iA^i = 0$$</p>
+<h3 id="伪实在太烦之记住结论">伪·实在太烦之记住结论</h3>
+<p>前面的推导对所有矩阵都成立。但是序列g难找。对于本问题，有如下结论：</p>
+<blockquote>
+<p>递推系数是$a_1,&hellip;,a_k$，则$g_k=1,g_{k-i}=-a_i$</p>
+</blockquote>
+<h3 id="昏睡数学之cayley-hamilton定理">昏睡数学之Cayley-Hamilton定理</h3>
+<p>记矩阵A的特征多项式为$g(\lambda)$则g(A)=0。<br>
+故我们考察g的系数。<br>
+结论：
+$$g(\lambda)=(-1)^n(\lambda^n-\sum_{i=1}^{n}a_i\lambda^{n-i})$$</p>
+<h2 id="算法实现">算法实现</h2>
+<p>需计算 $A^n mod G(x)$<br>
+直接用多项式取模 $O(n\log n)$<br>
+快速幂 $O(k\log k\log n)$</p>
+<h2 id="code">Code</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">LL TG[MAXN],TR[MAXN];
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">poly_mult_mod</span>(<span style="color:#66d9ef">int</span> m, LL <span style="color:#f92672">*</span>A, LL <span style="color:#f92672">*</span>B,LL <span style="color:#f92672">*</span>MOD,<span style="color:#66d9ef">int</span> opt)
+{
+    opt <span style="color:#f92672">=</span> min(opt,m<span style="color:#f92672">&lt;&lt;</span><span style="color:#ae81ff">1</span>);
+    memset(TG,<span style="color:#ae81ff">0</span>,<span style="color:#66d9ef">sizeof</span>(TG)); memset(TR,<span style="color:#ae81ff">0</span>,<span style="color:#66d9ef">sizeof</span>(TR));
+    poly_mult(m,m,A,B,A);
+    <span style="color:#66d9ef">if</span> (opt<span style="color:#f92672">&gt;</span>m){
+        poly_div(opt,m,mod,A,MOD,TG,TR);
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>m;i<span style="color:#f92672">&lt;=</span>m<span style="color:#f92672">&lt;&lt;</span><span style="color:#ae81ff">1</span>;<span style="color:#f92672">++</span>i) A[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>m;<span style="color:#f92672">++</span>i) A[i] <span style="color:#f92672">=</span> TR[i];
+    }
+}
+
+<span style="color:#75715e">//A^n % MOD
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">poly_FM</span>(LL <span style="color:#f92672">*</span>A,<span style="color:#66d9ef">int</span> n,LL <span style="color:#f92672">*</span>ans,LL <span style="color:#f92672">*</span>MOD,<span style="color:#66d9ef">int</span> m){
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;n;n<span style="color:#f92672">&gt;&gt;=</span><span style="color:#ae81ff">1</span>,poly_mult_mod(m,A,A,MOD,<span style="color:#ae81ff">2</span><span style="color:#f92672">&lt;&lt;</span>i),<span style="color:#f92672">++</span>i){
+        <span style="color:#66d9ef">if</span> (n<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span>) poly_mult_mod(m,ans,A,MOD,m<span style="color:#f92672">&lt;&lt;</span><span style="color:#ae81ff">1</span>);
+        <span style="color:#66d9ef">if</span>((<span style="color:#ae81ff">1</span><span style="color:#f92672">&lt;&lt;</span>(i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))<span style="color:#f92672">&gt;=</span>(m<span style="color:#f92672">&lt;&lt;</span><span style="color:#ae81ff">1</span>))<span style="color:#f92672">--</span>i;
+    }
+}
+</code></pre></div></main>
+        </div>
+
+    </div>
+</body></html>

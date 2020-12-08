@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 3 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>汇编格式
+<ul>
+<li>AT&amp;T: op src, dst</li>
+<li>Intel: op dst, src</li>
+</ul>
+</li>
+<li>Intel处理器
+<ul>
+<li>8086(16)-80286-i386(32)-i486(FPU)-Pentium-PentiumPro(P6)-Pentium/MMX-PentinumIII(SSE)-Pentium4E(x86-64)-Core2(多核)-Core i7</li>
+</ul>
+</li>
+<li>i386寄存器组织
+<ul>
+<li>定点寄存器
+<ul>
+<li>EAX,EBX,ECX,EDX,ESP,EIP,ESI,EDI</li>
+<li>EIP,EFLAGS</li>
+<li>CS,SS,DS,ES,FS,GS</li>
+</ul>
+</li>
+<li>寻址模式
+<ul>
+<li>立即寻址，寄存器寻址</li>
+<li>基址加比例变址加位移寻址：$LA=(SR)+(B)+(I)*S+A$</li>
+<li>相对寻址</li>
+</ul>
+</li>
+<li>浮点处理架构
+<ul>
+<li>x87 FPU: ST(0)-ST(7),80位。控制寄存器、状态寄存器、标记寄存器各一个。组织为浮点寄存器栈。64位尾数。</li>
+<li>MMX指令: MM0-MM7，通常借用ST(0)-ST(7)，使用64位</li>
+<li>SSE指令集（兼容MMX，采用SIMD（单指令多数据）技术）: 增加8个128位SSE专用多媒体扩展通用寄存器XMM0-XMM7</li>
+<li>AVX指令集：矢量扩展指令集</li>
+<li>FMA指令集：fused multiply-accumulate</li>
+</ul>
+</li>
+<li>过程调用
+<ul>
+<li>储存传递参数</li>
+<li>保存返回地址，转移控制权</li>
+<li>被调用者保存现场，并分配空间</li>
+<li>执行函数体</li>
+<li>恢复现场，释放空间</li>
+<li>取出返回地址，转移到调用者函数</li>
+</ul>
+</li>
+<li>非静态局部变量的储存分配方式属于未定义行为；不同变量的地址除(!=和==)外为未定义行为</li>
+<li>缓冲区溢出防范
+<ul>
+<li>ASLR(Address Space Layout Randomization)</li>
+<li>栈破坏检测</li>
+<li>可执行代码区域限制</li>
+</ul>
+</li>
+<li>char可为signed char，也可为unsigned char，为不确定类型</li>
+<li>union的存放顺序是所有成员从低地址开始，利用该特性可测试CPU的大/小端方式</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

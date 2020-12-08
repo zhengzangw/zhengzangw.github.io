@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>字符编码 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#现代字符编码模型">现代字符编码模型</a></li>
+    <li><a href="#编码方案">编码方案</a>
+      <ul>
+        <li><a href="#ascii">ASCII</a></li>
+        <li><a href="#isoiec-8859">ISO/IEC 8859</a></li>
+        <li><a href="#isoiec-2202-ecma-35">ISO/IEC 2202 (ECMA-35)</a></li>
+        <li><a href="#euc-extended-unix-code">EUC (Extended Unix Code)</a></li>
+        <li><a href="#汉字编码">汉字编码</a></li>
+        <li><a href="#代码页">代码页</a></li>
+        <li><a href="#unicodeucs">Unicode/UCS</a></li>
+        <li><a href="#utf-8-编码">UTF-8 编码</a></li>
+        <li><a href="#utf-16-编码">UTF-16 编码</a></li>
+      </ul>
+    </li>
+    <li><a href="#兼容关系">兼容关系</a></li>
+    <li><a href="#问题">问题</a></li>
+    <li><a href="#终端">终端</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="现代字符编码模型">现代字符编码模型</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>工作</th>
+<th>元素</th>
+<th>集合</th>
+<th>Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>抽象字符表(ACR)</td>
+<td></td>
+<td>字符</td>
+<td>字符集</td>
+<td>封闭(ASCII,ISO/IEC 8859) 开放(Unicode)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>编号字符集(CCS)</td>
+<td>逻辑编号</td>
+<td>Code Point(码点)</td>
+<td>Code Space(码点空间)</td>
+<td>Unicode Scalar Value; 可能一对多，可能使用多个码点组成的码点</td>
+</tr>
+<tr>
+<td>3</td>
+<td>字符编码方式(CEF)</td>
+<td>逻辑编码（储存格式）</td>
+<td>Code Unit Sequence(码元序列)</td>
+<td>编码空间</td>
+<td>定长编码空间大小固定，变长编码可增大</td>
+</tr>
+<tr>
+<td>4</td>
+<td>字符编码模式(CES)</td>
+<td>物理编码（序列化格式）</td>
+<td>字节序列</td>
+<td></td>
+<td>储存时的编码；考虑大小端序</td>
+</tr>
+<tr>
+<td>5</td>
+<td>传输编码语法(TES)</td>
+<td>适应性编码处理</td>
+<td></td>
+<td></td>
+<td>映射到受限值域/压缩字节序列；传输时的编码</td>
+</tr>
+</tbody>
+</table>
+<h2 id="编码方案">编码方案</h2>
+<table>
+<thead>
+<tr>
+<th>编码模型</th>
+<th>类型</th>
+<th>年份</th>
+<th>ACR</th>
+<th>CCS</th>
+<th>CEF</th>
+<th>CES</th>
+<th>TES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EBCDIC</strong></td>
+<td>单</td>
+<td>1964</td>
+<td></td>
+<td>字母不连续</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ASCII</strong>(ISO/IEC 646)</td>
+<td>单</td>
+<td>1968</td>
+<td>控制字符+英文符号字符</td>
+<td>$2^7$</td>
+<td>单字节编码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EASCII</td>
+<td>单</td>
+<td></td>
+<td>扩展表格符号、计算符号、希腊字母、拉丁符号</td>
+<td>$2^8$</td>
+<td>高位1为扩展编码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ISO/IEC 8859</strong></td>
+<td>单</td>
+<td></td>
+<td>ISO/IEC 8859-n (n=1..16 无12)</td>
+<td>扩展：0xA0-0xFF</td>
+<td>高位1为扩展编码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ISO/IEC 2022</strong></td>
+<td>单/双</td>
+<td></td>
+<td>编码东亚语言（包括 GB2312）</td>
+<td></td>
+<td>C0,C1;G0,G1,G2,G3+区位码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GB</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>区位码</td>
+<td>国标码</td>
+<td>机内码</td>
+<td></td>
+</tr>
+<tr>
+<td>GB2312(EUC-CN)</td>
+<td>变</td>
+<td>1981</td>
+<td>3755(一级汉字)+3008(二级汉字)+其它(682)</td>
+<td>$94\times94$</td>
+<td>(+20H,+20H)</td>
+<td>(+80H,+80H)</td>
+<td></td>
+</tr>
+<tr>
+<td>GBK</td>
+<td>变</td>
+<td>1995</td>
+<td>根据 GB13000.1-1993 对 GB2312-1980 的扩展</td>
+<td>汉字21003个，符号883个，1894个造字位</td>
+<td>高位0x81-0xFE,低位0x40-0xFE</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GB18030(-2000/-2005)</td>
+<td>变</td>
+<td>2000</td>
+<td>完全支持Unicode</td>
+<td>最多可定义161万个字符</td>
+<td>生僻字4字节</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Shift-JIS</td>
+<td></td>
+<td></td>
+<td>日文</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Big5</td>
+<td></td>
+<td>1983</td>
+<td></td>
+<td></td>
+<td>高位0x81-0xFE，低位0x40-0x7E</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CJK(CKJ Unified Ideographs)</td>
+<td></td>
+<td>1993</td>
+<td>将起源相同，本义相同，形状一样或稍异的汉字给予同码点值</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ANSI</strong></td>
+<td></td>
+<td></td>
+<td>兼容ASCII又互相不兼容的字符编码，微软统称为ANSI编码</td>
+<td>需要规定语言</td>
+<td>Windows系统中指系统默认编码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ISO/IEC 10646</strong>(UCS,GB13000)</td>
+<td></td>
+<td>1993</td>
+<td>与 Unicode 标准在 BMP 上保持一致</td>
+<td>$2^31$;码点名称 U+</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Unicode</strong></td>
+<td></td>
+<td>1991/1993</td>
+<td>17平面，每个平面$2^{16}$</td>
+<td>1,112,064个码位;U+0000到U+10FFFF</td>
+<td>UTF(Unicode/UCS Transformation Format)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>UTF-8</td>
+<td>变</td>
+<td></td>
+<td></td>
+<td></td>
+<td>码元8bit，每个字3码元</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>UTF-16(UCS-2+代理)</td>
+<td>变</td>
+<td></td>
+<td></td>
+<td></td>
+<td>码元16bit，每个字1码元;LE/BE</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>UTF-32(UCS-4)</td>
+<td>定</td>
+<td></td>
+<td></td>
+<td></td>
+<td>码元32bit，每个字1码元;LE/BE</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ascii">ASCII</h3>
+<ul>
+<li>0x00-0x1F保留给控制字符
+<ul>
+<li>10 0x0A 0101b LF/nl 换行</li>
+</ul>
+</li>
+<li>0x20-0x7F用来表示图形字符
+<ul>
+<li>0x30 0</li>
+<li>0x41 A</li>
+<li>0x61 a</li>
+</ul>
+</li>
+</ul>
+<h3 id="isoiec-8859">ISO/IEC 8859</h3>
+<ul>
+<li>ISO/IEC 8859-1/2/3/4/9/10/13/14/15/16 (Latin1/2/3/4/5/6/7/8/9(0)/10)：收录了西欧/东欧/南欧/北欧/土耳其/&hellip;常用字母</li>
+</ul>
+<h3 id="isoiec-2202-ecma-35">ISO/IEC 2202 (ECMA-35)</h3>
+<ul>
+<li>实例
+<ul>
+<li>中国国标GB 2312</li>
+<li>日本工业规格JIS X 0202（旧称JIS C 6228）</li>
+<li>韩国工业规格KS X 1004（旧称KS C 5620）</li>
+</ul>
+</li>
+<li>转义符串（Escape sequence）
+<ul>
+<li>1个“ESC”字符（0x1B），再由两至三个字串组成。此标记代表它后面的字符，属于下表字符集的文字</li>
+</ul>
+</li>
+<li>字符集的控制字符可分为两块：C0，C1</li>
+<li>打印（图形）字符分为四块：G0，G1，G2，G3</li>
+<li>单字节的编码空间为94</li>
+<li>双字节的编码空间（区位码）为94x94</li>
+</ul>
+<h3 id="euc-extended-unix-code">EUC (Extended Unix Code)</h3>
+<ul>
+<li>实现 ISO/IEC 2202</li>
+<li>四个码集
+<ul>
+<li>0: C0 + G0</li>
+<li>1,2,3: G1
+<ul>
+<li>1: 0xA1-0xFE 0xA1-0xFE</li>
+<li>2: 0x8E 开头</li>
+<li>3: 0x8F 开头</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="汉字编码">汉字编码</h3>
+<ul>
+<li>全角与半角：双字节中文的 Legacy Problem
+<ul>
+<li>双字节西文字符使排版美观</li>
+</ul>
+</li>
+<li>外码（输入码，输入法编码）
+<ul>
+<li>数字编码：区位码</li>
+<li>拼音编码：全拼、双拼、自然码</li>
+<li>字形编码：五笔、表形码、郑码</li>
+</ul>
+</li>
+<li>字形码
+<ul>
+<li>字模点阵码
+<ul>
+<li>Adobe Type1</li>
+<li>True Type</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="gb2312">GB2312</h4>
+<ul>
+<li>区位码
+<ul>
+<li>94个区，每个区94位，每个区位上有一个字符
+<ul>
+<li>94 $\times$ 94二维表：区$\times$位</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>国标码（交换码）
+<ul>
+<li>汉字范围为 (0x21,0x21)-(0x7E,0x7E)</li>
+<li>将区码和位码分别加上0x20可得国标码</li>
+</ul>
+</li>
+<li>内码（机内码）
+<ul>
+<li>0xA1-0xFE 0xA1-0xFE</li>
+<li>国标码中最高位从0变1（加0x80）</li>
+</ul>
+</li>
+</ul>
+<h4 id="gbk">GBK</h4>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/GBK_encoding_zh.svg/1024px-GBK_encoding_zh.svg.png" alt="gbk"></p>
+<h4 id="gb18030">GB18030</h4>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/GB18030_encoding.svg/645px-GB18030_encoding.svg.png" alt="gb18030"></p>
+<p>通过一张“位置偏移表”记录GB 18030四字节区中连续的几块碎片，以便高效处理转换Unicode</p>
+<h3 id="代码页">代码页</h3>
+<ul>
+<li>代码页是字符集的具体实现，可以将其理解为一张“字符-字节”映射表，通过查表实现“字符-字节”的翻译</li>
+<li>.874 泰文</li>
+<li>.932 日文 Shift-JIS</li>
+<li>.936 简体中文 GBK</li>
+<li>.949 韩文</li>
+<li>.950 繁体中文 Big5</li>
+<li>.54936 GB18030</li>
+</ul>
+<h3 id="unicodeucs">Unicode/UCS</h3>
+<ul>
+<li>保证了与其他字符集的双向兼容</li>
+<li>Unicode 平面
+<ul>
+<li>Plane 0: BMP
+<ul>
+<li>Private Use Zone: 0xE000-0xF8FF</li>
+<li>Surrogate Zone: 0xD800-0xDFFF</li>
+</ul>
+</li>
+<li>SP</li>
+</ul>
+</li>
+<li>BOM(Byte-Order Mark)
+<ul>
+<li>U+FEFF
+<ul>
+<li>字节流开头：标记字节序</li>
+<li>中间：零宽度不中断空格（3.2后U+2060）</li>
+<li>大端 0xFE 0xFF</li>
+<li>小端 0xFF 0xFE</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="utf-8-编码">UTF-8 编码</h3>
+<ul>
+<li>变长编码
+<ul>
+<li>除了单字节编码外，由多个单字节码元所组成的多字节编码其首字节以外的后续字节均以10开头</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>首字节</th>
+<th>编码</th>
+<th>码点范围</th>
+<th>有效位数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>单字节</td>
+<td>0x0000 ~ 0x007F(0 ~ 127)</td>
+<td>7</td>
+</tr>
+<tr>
+<td>110</td>
+<td>双字节</td>
+<td>0x0080 ~ 0x07FF(128 ~ 2047)</td>
+<td>11</td>
+</tr>
+<tr>
+<td>1110</td>
+<td>三字节</td>
+<td>0x0800 ~ 0xFFFF(2048 ~ 65535)</td>
+<td>16</td>
+</tr>
+<tr>
+<td>11110</td>
+<td>四字节</td>
+<td>0x10000 ~ 0x1FFFFF(65536 ~ 2097151)</td>
+<td>21</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utf-16-编码">UTF-16 编码</h3>
+<table>
+<thead>
+<tr>
+<th>码点范围</th>
+<th>表示方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0000 ~ 0xD7FF, 0xE000 ~ 0xFFFF</td>
+<td>单码元直接表示</td>
+</tr>
+<tr>
+<td>0x10000 ~ 0x1FFFFF(65536 ~ 2097151)</td>
+<td>代理对</td>
+</tr>
+<tr>
+<td>0xD800 ~ 0xDFFF</td>
+<td>代理区，无Unicode对应字符</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>代理对
+<ul>
+<li>码位减去0x100000: 0 ~ 0xFFFFF</li>
+<li>前导代理: 高位的10比特的值+0xD800: 0xD800 ~ 0xDBFF</li>
+<li>后尾代理: 低位的10比特的值+0xDC00: 0xDC00 ~ 0xDFFF</li>
+</ul>
+</li>
+</ul>
+<h2 id="兼容关系">兼容关系</h2>
+<ul>
+<li>ASCII
+<ul>
+<li>EASCII</li>
+<li>ISO/IEC 8859</li>
+<li>GB13000</li>
+<li>GB2312
+<ul>
+<li>GBK
+<ul>
+<li>GB18030</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Big5</li>
+<li>Unicode
+<ul>
+<li>U+0000-U+00FF 与 Latin1 一致</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="问题">问题</h2>
+<ul>
+<li>联通：gbk 错误判断为 Unicode</li>
+<li>U+FFFD: replacement character used to replace an unknown or unrepresentable character
+<ul>
+<li>utf-8: 0xEF 0xBF 0xBD</li>
+<li>gbk: 0xEF 0xBF 锟 0xBD 0xEF 斤 0xBF 0xBD 拷</li>
+</ul>
+</li>
+<li>调试模式下VS会给栈内存加上额外的保护段并且用0xCC填充
+<ul>
+<li>x86 INT 3</li>
+<li>gbk: 0xCC 0xCC 烫</li>
+</ul>
+</li>
+<li>堆当中则会用0xCD来填充
+<ul>
+<li>gbk: 0xCD 0xCD 屯屯屯</li>
+<li>UTF-16: 韩文 쳌쳌쳌쳌</li>
+<li>BIG-5: 昍昍昍</li>
+<li>Shift-JIS: ﾌﾌﾌﾌﾌﾌ</li>
+</ul>
+</li>
+<li>gbk 0xEFBB 锘</li>
+</ul>
+<h2 id="终端">终端</h2>
+<ul>
+<li>iconv -f UTF-8 -t GB2312 -o FILE FILE
+<ul>
+<li>不兼容编码间转换不可逆</li>
+</ul>
+</li>
+<li>vim
+<ul>
+<li>改变文件编码 set fileencoding=utf-8</li>
+<li>以某种编码打开 vim file -c &ldquo;e ++enc=GB2312&rdquo;</li>
+</ul>
+</li>
+<li>enca -L chinese|none FILE</li>
+<li>man
+<ul>
+<li>man ascii</li>
+<li>man 5 utf8</li>
+<li>man gb2312</li>
+</ul>
+</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

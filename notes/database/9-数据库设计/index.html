@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>9-数据库设计 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据库设计概述">数据库设计概述</a></li>
+    <li><a href="#需求分析">需求分析</a></li>
+    <li><a href="#概念设计">概念设计</a></li>
+    <li><a href="#逻辑设计">逻辑设计</a></li>
+    <li><a href="#物理设计">物理设计</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="数据库设计概述">数据库设计概述</h2>
+<ul>
+<li>数据库设计：根据用户需求(数据需求，处理需求)和平台约束(硬件，操作系统和DBMS)设计数据模式</li>
+<li>数据库设计的生命周期
+<ul>
+<li>需求分析（需求分析说明书）</li>
+<li>概念设计（概念数据模型）</li>
+<li>逻辑设计（逻辑数据模型）</li>
+<li>物理设计（数据库内模式）</li>
+<li>编码测试运行，迭代</li>
+</ul>
+</li>
+</ul>
+<h2 id="需求分析">需求分析</h2>
+<ul>
+<li>Things</li>
+<li>Attributes of Things</li>
+<li>Relationship among Things</li>
+</ul>
+<h2 id="概念设计">概念设计</h2>
+<ul>
+<li>工具：E-R模型，EE-R模型，面向对象模型</li>
+<li>设计过程
+<ul>
+<li>用户分解：将用户分为功能相对独立的若干组</li>
+<li>视图设计：针对每个用户设计其数据视图</li>
+<li>视图集成
+<ul>
+<li>等同：多个数据对象具有相同语义</li>
+<li>聚合：数据对象间的一种组成关系</li>
+<li>抽取：不同实体中的相同属性提取成一个新的实体，并构成具有继承关系的结构</li>
+</ul>
+</li>
+<li>视图修改
+<ul>
+<li>命名冲突</li>
+<li>概念冲突</li>
+<li>域冲突</li>
+<li>约束冲突</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="逻辑设计">逻辑设计</h2>
+<p>将 EE-R 转换为 DBMS 支持的逻辑数据模型（转换为关系数据库模式）</p>
+<ul>
+<li>命名与属性域的处理
+<ul>
+<li>在同一个数据库模式中，关系名具有唯一性</li>
+<li>在同一个关系模式中，属性名具有唯一性</li>
+<li>根据DBMS的选型进行必要的数据类型转换</li>
+</ul>
+</li>
+<li>非原子属性处理
+<ul>
+<li>集合属性：原有关系的一个元组将被纵向展开成多个元组</li>
+<li>元组属性：将一个元组属性横向展开成多个属性</li>
+</ul>
+</li>
+<li>联系的特殊转换
+<ul>
+<li>一个联系可以被转换成一个关系</li>
+<li>联系也可被归并到相关联的实体所对应的关系模式中去</li>
+<li>根据 1:1,1:n,m:n 转换为 1/2/3 个关系</li>
+</ul>
+</li>
+<li>继承的转换
+<ul>
+<li>每个实体集都转换为一个关系</li>
+<li>只有最底层的叶子结点才会被转换为关系，并从其所有超实体集中继承属性</li>
+<li>被转换为单个关系，其中含有所有实体集中的属性。</li>
+</ul>
+</li>
+<li>规范化：至少满足 3NF</li>
+<li>RDBMS 性能调整
+<ul>
+<li>逆规范化：减少连接运算次数</li>
+<li>关系的分割
+<ul>
+<li>水平分割：将一个关系的元组集合划分为若干个不相交的子集，每个子集对应一个子关系模式</li>
+<li>将一个关系模式纵向分解成若干个子关系模式</li>
+</ul>
+</li>
+<li>尽量使用快照</li>
+</ul>
+</li>
+<li>约束条件设置</li>
+</ul>
+<h2 id="物理设计">物理设计</h2>
+<ul>
+<li>存储方式的设计
+<ul>
+<li>索引
+<ul>
+<li>在主关键字和外关键字上建立索引</li>
+<li>以读为主的关系应尽可能多地建立索引</li>
+</ul>
+</li>
+<li>集簇
+<ul>
+<li>将有关的数据元组集中存放于一个或相邻的物理块内或同一柱面内以提高查询效率</li>
+</ul>
+</li>
+<li>HASH</li>
+</ul>
+</li>
+<li>存储结构的设计
+<ul>
+<li>分区设计：数据存放位置的设计
+<ul>
+<li>减少访盘冲突，提高 I/O 并行性</li>
+<li>分散热点数据，均衡 I/O 负担</li>
+</ul>
+</li>
+<li>系统参数配置</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

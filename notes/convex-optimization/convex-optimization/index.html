@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Convex Optimization | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#凸优化">凸优化</a></li>
+    <li><a href="#牛顿法">牛顿法</a></li>
+    <li><a href="#梯度下降">梯度下降</a></li>
+    <li><a href="#其它">其它</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="凸优化">凸优化</h2>
+<ul>
+<li>拉格朗日乘子法
+<ul>
+<li>约束曲面上任意点 $x$, $\nabla g(x)$ 正交于约束曲面</li>
+<li>最优点 $x^<em>$, $\nabla f(x^</em>)$ 正交与约束曲面</li>
+<li>拉格朗日乘子 $\lambda\not=0$</li>
+<li>拉格朗日函数 $L(x,\lambda) = f(x)+\lambda g(x)$
+<ul>
+<li>优化 $f(x)$ -&gt; 优化 $L(x,\lambda)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>主问题，最优解 $p^*$</li>
+</ul>
+<p>$$
+\begin{aligned}
+\min_x &amp; f(x) \newline
+s.t. &amp; h_i(x)=0 &amp; (i=1,&hellip;,m) \newline
+&amp; g_j(x)\leq 0 &amp; (j=1,&hellip;,n)
+\end{aligned}
+$$</p>
+<ul>
+<li>引入拉格朗日乘子和 KKT 条件 (Karush-Kuhn-Tucker)</li>
+</ul>
+<p>$$
+\begin{aligned}
+\min L(x,\lambda,\mu)=f(x)+\sum_{i=1}^m\lambda_ih_i(x)+\sum_{j=1}^n\mu_jg_j(x)\newline
+g_j(x)\leq 0\newline
+\mu_j\geq0\newline
+\mu_jg_j(x)=0
+\end{aligned}
+$$</p>
+<ul>
+<li>$\sup$ 上限函数， $\inf$ 下限函数</li>
+<li>拉格朗日对偶函数：$\Gamma(\lambda,\mu)=\inf_{x\in D}L(x,\lambda,\mu)$
+<ul>
+<li>$\Gamma(\lambda,\mu)\leq L(x,\lambda,mu)\leq f(x)\leq p^*,x\in D$</li>
+<li>$L$ 对 $x$ 求导后令之为 0，带入得对偶问题</li>
+</ul>
+</li>
+<li>对偶问题 （凸优化问题），最优解 $d^*$</li>
+</ul>
+<p>$$
+\begin{aligned}
+&amp; \max_{\lambda,\mu}\Gamma(\lambda,\mu)\newline
+s.t. &amp; \mu \succeq 0
+\end{aligned}
+$$</p>
+<ul>
+<li>弱对偶性成立：$d^<em>\leq p^</em>$</li>
+<li>强对偶性：$d^<em>=p^</em>$
+<ul>
+<li>主问题为凸优化问题，则其可行域中至少有一点使不等式约束严格成立</li>
+<li>强对偶性成立时，将 $L$ 对原变量和对偶变量求导并另其为零，即得到原变量和对偶变量的数值关系</li>
+</ul>
+</li>
+</ul>
+<h2 id="牛顿法">牛顿法</h2>
+<ul>
+<li>求函数 $f(x)$ 零点：$x_{n+1}=x_n-\frac{f(x)}{f'(x)}$</li>
+<li>最小化：$\beta^{t+1}=\beta^t-(\frac{\partial^2 l(\beta)}{\partial\beta\partial\beta^T})^{-1}\frac{\partial l(\beta)}{\partial\beta}$</li>
+<li>缺点
+<ul>
+<li>每一步开销大</li>
+<li>依赖初始值</li>
+</ul>
+</li>
+</ul>
+<h2 id="梯度下降">梯度下降</h2>
+<ul>
+<li>$f(x+\Delta x)\simeq f(x)+\Delta x^T\nabla f(x)$</li>
+<li>$\Delta x=-\gamma\nabla f(x)$</li>
+</ul>
+<h2 id="其它">其它</h2>
+<ul>
+<li>$\lim_{x\rightarrow\infty}(1+\frac{1}{x})^x=e$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

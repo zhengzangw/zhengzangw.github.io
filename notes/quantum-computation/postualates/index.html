@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Postulates of Quantum Mechanics | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#postulates">Postulates</a></li>
+    <li><a href="#ensembles-of-quantum-states">Ensembles of quantum states</a></li>
+    <li><a href="#others">Others</a></li>
+    <li><a href="#chsh-game">CHSH game</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="postulates">Postulates</h2>
+<ol>
+<li>Associated to any isolated physical system is a complex vector space with inner product known as <strong>state space</strong> of the system. The system is completely describled by its <strong>state vector</strong>/<strong>density operator</strong>, which is a unit vector in the systems state
+<ul>
+<li>state vector: $|\psi_i\rangle$</li>
+<li>density operator: $\rho=\sum_ip_i|\psi_i\rangle\langle\psi_i|$</li>
+</ul>
+</li>
+<li>The evolution of a <strong>closed</strong> quantum system is described by a <strong>unitary transformation</strong>
+<ul>
+<li>$|\psi'\rangle=U|\psi\rangle$</li>
+<li>$\rho'=U\rho U^\dagger$</li>
+</ul>
+</li>
+<li>Quantum measuerments are described by a collection ${M_m}$ of <strong>measurement operator</strong> ($m$ is number of possible outcome).
+<ul>
+<li>measurement operator: $\sum_mM_m^\dagger M_m=I$
+<ul>
+<li>$M_0=|0\rangle\langle 0|,M_1=|1\rangle\langle 1|$</li>
+<li>not unitary</li>
+</ul>
+</li>
+<li>Original
+<ul>
+<li>$P(m)=\langle\psi|M_m^\dagger M_m|\psi\rangle$</li>
+<li>state after the measurement: $\frac{M_m|\psi\rangle}{\sqrt{\langle\psi|M_m^\dagger M|\psi\rangle}}$</li>
+</ul>
+</li>
+<li>Reformed
+<ul>
+<li>$P(m)=\text{Tr}(M_m^+M_m\rho)$</li>
+<li>state after the measurement: $\frac{M_m\rho M_m^\dagger}{\text{Tr}(M_m^\dagger M_m\rho)}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The state space of a composite physical system is the tensor prorduct of the state spaces of the component physical systems.
+<ul>
+<li>$|\psi_1\rangle\otimes\cdots\otimes |\psi_n\rangle$</li>
+<li>$\rho_1\otimes\cdots\otimes\rho_n$</li>
+<li>前提：两个系统独立</li>
+</ul>
+</li>
+</ol>
+<h2 id="ensembles-of-quantum-states">Ensembles of quantum states</h2>
+<ul>
+<li>Use a set of quantum states ${|\psi_1\rangle,\cdots,|\psi_m\rangle}$ and probability distribution ${p_1,\cdots,p_m}$
+<ul>
+<li>Ensemble of pure state: ${p_i,|\psi_i\rangle}$</li>
+<li>Density operator (mixed state): $\rho=\sum_ip_i|\psi_i\rangle\langle\psi_i|$
+<ul>
+<li>$\text{Tr}(\rho)=1$</li>
+<li>positive semidefinite</li>
+<li>$|0\rangle\rightarrow |0\rangle\langle0|,|1\rangle\rightarrow |1\rangle\langle1|$</li>
+</ul>
+</li>
+<li>Ensemble of mixed state: ${p_i,\rho_i}$: $\rho=\sum_ip_i\rho_i$</li>
+</ul>
+</li>
+<li>POVM(Positive operator-valued measure): $E_m=M_m^\dagger M_m$
+<ul>
+<li>positive semidefinite and $\sum_mE_m=I$</li>
+<li>$P(m)=\text{Tr}(E_m\rho)$</li>
+</ul>
+</li>
+<li>Projective measurement: $p(m)=\text{Tr} (P_m\rho)$
+<ul>
+<li>post-measurement state: $\rho_m=\frac{P_m\rho P_m}{\text{Tr} (P_m\rho)}$</li>
+<li>所有测量可以转化为投影测量</li>
+</ul>
+</li>
+<li>Partial trace: $tr_B\rho^{AB}=\sum_{i=0}^{d_B-1}(I\otimes\langle i|)\rho^{AB}(I\otimes|i\rangle)$
+<ul>
+<li>$tr_B(|a_1\rangle\langle a_2|\otimes|b_1\rangle\langle b_2|)=tr(|b_1\rangle\langle b_2|)|a_1\rangle\langle a_2|$</li>
+</ul>
+</li>
+<li>reduced density operator: $\rho^A=tr_B\rho^{AB}$
+<ul>
+<li>state of system $A$: $\rho^A$</li>
+</ul>
+</li>
+</ul>
+<h2 id="others">Others</h2>
+<ul>
+<li>Bell States(EPR States): $|\beta_{xy}\rangle=\frac{|0y\rangle+(-1)^x|1,1-y\rangle}{\sqrt{2}}$</li>
+<li>$|\psi\rangle=\alpha|0\rangle+\beta|1\rangle=\frac{\alpha+\beta}{\sqrt{2}}|+\rangle+\frac{\alpha-\beta}{\sqrt{2}}|-\rangle$</li>
+<li>state vector coefficient $e^{i\theta}|\psi\rangle$: global phase, nonsense in physics
+<ul>
+<li>relative phase: meaningful</li>
+</ul>
+</li>
+<li>Theroem(Distinguishing Quantum States): there is measurement distinguishing two states perfectly iif $|\psi_1\rangle$ and $|\psi_2\rangle$ are orthogonal</li>
+<li>Principle of deferred measurement: Measurement can always be moved from an intermediate state of a quantum circuit to the end of the circuit</li>
+<li>Principle of implicit measurement: Without loss of generality, any unterminated quantum wires (qubits which are not measured) at the end of a quantum circuit may be assumed to be measured</li>
+</ul>
+<h2 id="chsh-game">CHSH game</h2>
+<ul>
+<li>$V(s,t,a,b)=1$ if $s\cdot t=a\oplus b$</li>
+<li>Classic: $P=\frac{3}{4}$</li>
+<li>Quantum: $P\geq 0.8$
+<ul>
+<li>share an EPR state</li>
+<li>if $x=1$, Alice rotate $\frac{\pi}{8}$</li>
+<li>if $y=1$, Bob rotate $-\frac{\pi}{8}$</li>
+<li>both measure qubits and output $a,b$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

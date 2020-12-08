@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>10. Git | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#规范化-commit">规范化 Commit</a></li>
+    <li><a href="#github">Github</a></li>
+    <li><a href="#commit-message">commit message</a>
+      <ul>
+        <li><a href="#commitizen">commitizen</a></li>
+      </ul>
+    </li>
+    <li><a href="#github-1">Github</a></li>
+    <li><a href="#git-command-line">Git command line</a>
+      <ul>
+        <li><a href="#git">Git</a></li>
+        <li><a href="#branch">Branch</a></li>
+        <li><a href="#commit">Commit</a></li>
+        <li><a href="#conflict">Conflict</a></li>
+        <li><a href="#data">Data</a></li>
+        <li><a href="#fetch">Fetch</a></li>
+        <li><a href="#flow">Flow</a></li>
+        <li><a href="#grep">Grep</a></li>
+        <li><a href="#index">Index</a></li>
+        <li><a href="#log">Log</a></li>
+        <li><a href="#merge">Merge</a></li>
+        <li><a href="#push">Push</a></li>
+        <li><a href="#rebase">Rebase</a></li>
+        <li><a href="#remote">Remote</a></li>
+        <li><a href="#stash">Stash</a></li>
+        <li><a href="#submodule">Submodule</a></li>
+        <li><a href="#tag">Tag</a></li>
+        <li><a href="#working-directory">Working directory</a></li>
+        <li><a href="#shadows">Shadows</a></li>
+      </ul>
+    </li>
+    <li><a href="#functions">Functions</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="规范化-commit">规范化 Commit</h2>
+<ul>
+<li>
+<p>commitizen</p>
+</li>
+<li>
+<p>cz-conventional-changelog</p>
+<pre><code>```bash
+echo &quot;{\&quot;path\&quot;: \&quot;cz-conventional-changelog\&quot;}&quot; &gt; .czrc
+```
+</code></pre>
+</li>
+<li>
+<p>conventional-changelog-cli</p>
+</li>
+<li>
+<p>conventional-changelog</p>
+<pre><code>```bash
+conventional-changelog -p angular -i CHANGELOG.md -s -r 0 # 重新生成
+conventional-changelog -p angular -i CHANGELOG.md -s # 叠加生成
+```
+</code></pre>
+</li>
+<li>
+<p>standard-version</p>
+<pre><code>```bash
+standard-version
+```
+</code></pre>
+</li>
+</ul>
+<h2 id="github">Github</h2>
+<ul>
+<li>hub</li>
+</ul>
+<h2 id="commit-message">commit message</h2>
+<p>Angular Git Commit Guidelines</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+&lt;br&gt;
+&lt;body&gt;
+&lt;br&gt;
+&lt;footer&gt;
+</code></pre></div><h3 id="commitizen">commitizen</h3>
+<p>使用 commitizen 规范信息，需要 nodejs</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>using namespace std;
+
+<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, q <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+string s;
+
+vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> d[<span style="color:#ae81ff">4</span>];
+<span style="color:#66d9ef">int</span> nex[<span style="color:#ae81ff">100005</span>][<span style="color:#ae81ff">26</span>] <span style="color:#f92672">=</span> {};
+<span style="color:#66d9ef">int</span> dp[<span style="color:#ae81ff">255</span>][<span style="color:#ae81ff">255</span>][<span style="color:#ae81ff">255</span>] <span style="color:#f92672">=</span> {};
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">prepare</span>() {
+  memset(dp, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">sizeof</span>(dp));
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; c <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; <span style="color:#f92672">++</span>c) {
+    nex[n][c] <span style="color:#f92672">=</span> nex[n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][c] <span style="color:#f92672">=</span> n;
+  }
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; c <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; <span style="color:#f92672">++</span>c) {
+      nex[i][c] <span style="color:#f92672">=</span> nex[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][c];
+    }
+    nex[i][s[i] <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span>] <span style="color:#f92672">=</span> i;
+  }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yarn global add commitizen
+npm init --yes
+ln -s /Users/username/node_modules ./node_modules
+commitizen init cz-conventional-changelog --save --save-exact
+git cz
+</code></pre></div><p>配置后只需</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ln -s /Users/username/node_modules ./node_modules
+git cz
+</code></pre></div><h2 id="github-1">Github</h2>
+<ul>
+<li>push: <code>git push -u origin my_branch:remote_branch</code></li>
+<li>Pull Request</li>
+<li>gitignore</li>
+</ul>
+<h2 id="git-command-line">Git command line</h2>
+<h3 id="git">Git</h3>
+<ul>
+<li><code>g</code> is short for <code>git</code>.</li>
+</ul>
+<h3 id="branch">Branch</h3>
+<ul>
+<li><code>gb</code> lists, creates, renames, and deletes branches.</li>
+<li><code>gbc</code> creates a new branch.</li>
+<li><code>gbl</code> lists branches and their commits. (also <code>gbv</code>)</li>
+<li><code>gbL</code> lists all local and remote branches and their commits.</li>
+<li><code>gbr</code> renames a branch. (also <code>gbm</code>)</li>
+<li><code>gbR</code> renames a branch even if the new branch name already exists. (also
+<code>gbM</code>)</li>
+<li><code>gbs</code> lists branches and their commits with ancestry graphs.</li>
+<li><code>gbS</code> lists local and remote branches and their commits with ancestry
+graphs.</li>
+<li><code>gbV</code> lists branches with more verbose information about their commits.</li>
+<li><code>gbx</code> deletes a branch. (also <code>gbd</code>)</li>
+<li><code>gbX</code> deletes a branch irrespective of its merged status. (also <code>gbD</code>)</li>
+</ul>
+<h3 id="commit">Commit</h3>
+<ul>
+<li><code>gc</code> records changes to the repository.</li>
+<li><code>gca</code> stages all modified and deleted files.</li>
+<li><code>gcm</code> records changes to the repository with the given message.</li>
+<li><code>gcS</code> records changes to the repository. (Signed)</li>
+<li><code>gcSa</code> stages all modified and deleted files. (Signed)</li>
+<li><code>gcSm</code> records changes to the repository with the given message. (Signed)</li>
+<li><code>gcam</code> stages all modified and deleted files, and records changes to the repository with the given message.</li>
+<li><code>gco</code> checks out a branch or paths to work tree.</li>
+<li><code>gcO</code> checks out hunks from the index or the tree interactively.</li>
+<li><code>gcf</code> amends the tip of the current branch using the same log message as <em>HEAD</em>.</li>
+<li><code>gcSf</code> amends the tip of the current branch using the same log message as <em>HEAD</em>. (Signed)</li>
+<li><code>gcF</code> amends the tip of the current branch.</li>
+<li><code>gcSF</code> amends the tip of the current branch. (Signed)</li>
+<li><code>gcp</code> applies changes introduced by existing commits.</li>
+<li><code>gcP</code> applies changes introduced by existing commits without committing.</li>
+<li><code>gcr</code> reverts existing commits by reverting patches and recording new
+commits.</li>
+<li><code>gcR</code> removes the <em>HEAD</em> commit.</li>
+<li><code>gcs</code> displays various types of objects.</li>
+<li><code>gcsS</code> displays commits with GPG signature.</li>
+<li><code>gcl</code> lists lost commits.</li>
+<li><code>gcy</code> displays commits yet to be applied to upstream in the short format.</li>
+<li><code>gcY</code> displays commits yet to be applied to upstream.</li>
+</ul>
+<h3 id="conflict">Conflict</h3>
+<ul>
+<li><code>gCl</code> lists unmerged files.</li>
+<li><code>gCa</code> adds unmerged file contents to the index.</li>
+<li><code>gCe</code> executes merge-tool on all unmerged file.</li>
+<li><code>gCo</code> checks out our changes for unmerged paths.</li>
+<li><code>gCO</code> checks out our changes for all unmerged paths.</li>
+<li><code>gCt</code> checks out their changes for unmerged paths.</li>
+<li><code>gCT</code> checks out their changes for all unmerged paths.</li>
+</ul>
+<h3 id="data">Data</h3>
+<ul>
+<li><code>gd</code> displays information about files in the index and the work tree.</li>
+<li><code>gdc</code> lists cached files.</li>
+<li><code>gdx</code> lists deleted files.</li>
+<li><code>gdm</code> lists modified files.</li>
+<li><code>gdu</code> lists untracked files.</li>
+<li><code>gdk</code> lists killed files.</li>
+<li><code>gdi</code> lists ignored files.</li>
+</ul>
+<h3 id="fetch">Fetch</h3>
+<ul>
+<li><code>gf</code> downloads objects and references from another repository.</li>
+<li><code>gfa</code> downloads objects and references from all remote repositories.</li>
+<li><code>gfc</code> clones a repository into a new directory.</li>
+<li><code>gfcr</code> clones a repository into a new directory including all submodules.</li>
+<li><code>gfm</code> fetches from and merges with another repository or local branch.</li>
+<li><code>gfr</code> fetches from and rebases on another repository or local branch.</li>
+</ul>
+<h3 id="flow">Flow</h3>
+<ul>
+<li><code>gFi</code> is short for <code>git flow init</code></li>
+</ul>
+<h4 id="feature">Feature</h4>
+<ul>
+<li><code>gFf</code> is short for <code>git flow feature</code></li>
+<li><code>gFfl</code> is short for <code>git flow feature list</code></li>
+<li><code>gFfs</code> is short for <code>git flow feature start</code></li>
+<li><code>gFff</code> is short for <code>git flow feature finish</code></li>
+<li><code>gFfp</code> is short for <code>git flow feature publish</code></li>
+<li><code>gFft</code> is short for <code>git flow feature track</code></li>
+<li><code>gFfd</code> is short for <code>git flow feature diff</code></li>
+<li><code>gFfr</code> is short for <code>git flow feature rebase</code></li>
+<li><code>gFfc</code> is short for <code>git flow feature checkout</code></li>
+<li><code>gFfm</code> is short for <code>git flow feature pull</code></li>
+<li><code>gFfx</code> is short for <code>git flow feature delete</code></li>
+</ul>
+<h4 id="bugfix">Bugfix</h4>
+<ul>
+<li><code>gFb</code> is short for <code>git flow bugfix</code></li>
+<li><code>gFbl</code> is short for <code>git flow bugfix list</code></li>
+<li><code>gFbs</code> is short for <code>git flow bugfix start</code></li>
+<li><code>gFbf</code> is short for <code>git flow bugfix finish</code></li>
+<li><code>gFbp</code> is short for <code>git flow bugfix publish</code></li>
+<li><code>gFbt</code> is short for <code>git flow bugfix track</code></li>
+<li><code>gFbd</code> is short for <code>git flow bugfix diff</code></li>
+<li><code>gFbr</code> is short for <code>git flow bugfix rebase</code></li>
+<li><code>gFbc</code> is short for <code>git flow bugfix checkout</code></li>
+<li><code>gFbm</code> is short for <code>git flow bugfix pull</code></li>
+<li><code>gFbx</code> is short for <code>git flow bugfix delete</code></li>
+</ul>
+<h4 id="release">Release</h4>
+<ul>
+<li><code>gFl</code> is short for <code>git flow release</code></li>
+<li><code>gFll</code> is short for <code>git flow release list</code></li>
+<li><code>gFls</code> is short for <code>git flow release start</code></li>
+<li><code>gFlf</code> is short for <code>git flow release finish</code></li>
+<li><code>gFlp</code> is short for <code>git flow release publish</code></li>
+<li><code>gFlt</code> is short for <code>git flow release track</code></li>
+<li><code>gFld</code> is short for <code>git flow release diff</code></li>
+<li><code>gFlr</code> is short for <code>git flow release rebase</code></li>
+<li><code>gFlc</code> is short for <code>git flow release checkout</code></li>
+<li><code>gFlm</code> is short for <code>git flow release pull</code></li>
+<li><code>gFlx</code> is short for <code>git flow release delete</code></li>
+</ul>
+<h4 id="hotfix">Hotfix</h4>
+<ul>
+<li><code>gFh</code> is short for <code>git flow hotfix</code></li>
+<li><code>gFhl</code> is short for <code>git flow hotfix list</code></li>
+<li><code>gFhs</code> is short for <code>git flow hotfix start</code></li>
+<li><code>gFhf</code> is short for <code>git flow hotfix finish</code></li>
+<li><code>gFhp</code> is short for <code>git flow hotfix publish</code></li>
+<li><code>gFht</code> is short for <code>git flow hotfix track</code></li>
+<li><code>gFhd</code> is short for <code>git flow hotfix diff</code></li>
+<li><code>gFhr</code> is short for <code>git flow hotfix rebase</code></li>
+<li><code>gFhc</code> is short for <code>git flow hotfix checkout</code></li>
+<li><code>gFhm</code> is short for <code>git flow hotfix pull</code></li>
+<li><code>gFhx</code> is short for <code>git flow hotfix delete</code></li>
+</ul>
+<h4 id="support">Support</h4>
+<ul>
+<li><code>gFs</code> is short for <code>git flow support</code></li>
+<li><code>gFsl</code> is short for <code>git flow support list</code></li>
+<li><code>gFss</code> is short for <code>git flow support start</code></li>
+<li><code>gFsf</code> is short for <code>git flow support finish</code></li>
+<li><code>gFsp</code> is short for <code>git flow support publish</code></li>
+<li><code>gFst</code> is short for <code>git flow support track</code></li>
+<li><code>gFsd</code> is short for <code>git flow support diff</code></li>
+<li><code>gFsr</code> is short for <code>git flow support rebase</code></li>
+<li><code>gFsc</code> is short for <code>git flow support checkout</code></li>
+<li><code>gFsm</code> is short for <code>git flow support pull</code></li>
+<li><code>gFsx</code> is short for <code>git flow support delete</code></li>
+</ul>
+<h3 id="grep">Grep</h3>
+<ul>
+<li><code>gg</code> displays lines matching a pattern.</li>
+<li><code>ggi</code> displays lines matching a pattern ignoring case.</li>
+<li><code>ggl</code> lists files matching a pattern.</li>
+<li><code>ggL</code> lists files that are not matching a pattern.</li>
+<li><code>ggv</code> displays lines not matching a pattern.</li>
+<li><code>ggw</code> displays lines matching a pattern at word boundary.</li>
+</ul>
+<h3 id="index">Index</h3>
+<ul>
+<li><code>gia</code> adds file contents to the index.</li>
+<li><code>giA</code> adds file contents to the index interactively.</li>
+<li><code>giu</code> adds file contents to the index (updates only known files).</li>
+<li><code>gid</code> displays changes between the index and a named commit (diff).</li>
+<li><code>giD</code> displays changes between the index and a named commit (word diff).</li>
+<li><code>gii</code> temporarily ignore differences in a given file.</li>
+<li><code>giI</code> unignore differences in a given file.</li>
+<li><code>gir</code> resets the current HEAD to the specified state.</li>
+<li><code>giR</code> resets the current index interactively.</li>
+<li><code>gix</code> removes files/directories from the index (recursively).</li>
+<li><code>giX</code> removes files/directories from the index (recursively and forced).</li>
+</ul>
+<h3 id="log">Log</h3>
+<ul>
+<li><code>gl</code> displays the log.</li>
+<li><code>gls</code> displays the stats log.</li>
+<li><code>gld</code> displays the diff log.</li>
+<li><code>glo</code> displays the one line log.</li>
+<li><code>glg</code> displays the graph log.</li>
+<li><code>glb</code> displays the brief commit log.</li>
+<li><code>glc</code> displays the commit count for each contributor in descending order.</li>
+<li><code>glS</code> displays the log and checks the validity of signed commits.</li>
+</ul>
+<h3 id="merge">Merge</h3>
+<ul>
+<li><code>gm</code> joins two or more development histories together.</li>
+<li><code>gmC</code> joins two or more development histories together but does not commit.</li>
+<li><code>gmF</code> joins two or more development histories together but does not commit
+generating a merge commit even if the merge resolved as a fast-forward.</li>
+<li><code>gma</code> aborts the conflict resolution, and reconstructs the pre-merge state.</li>
+<li><code>gmt</code> runs the merge conflict resolution tools to resolve conflicts.</li>
+</ul>
+<h3 id="push">Push</h3>
+<ul>
+<li><code>gp</code> updates remote refs along with associated objects.</li>
+<li><code>gpf</code> forcefully updates remote refs along with associated objects using the safer <code>--force-with-lease</code> option.</li>
+<li><code>gpF</code> forcefully updates remote refs along with associated objects using the riskier <code>--force</code> option.</li>
+<li><code>gpa</code> updates remote branches along with associated objects.</li>
+<li><code>gpA</code> updates remote branches and tags along with associated objects.</li>
+<li><code>gpt</code> updates remote tags along with associated objects.</li>
+<li><code>gpc</code> updates remote refs along with associated objects and adds <em>origin</em>
+as an upstream reference for the current branch.</li>
+<li><code>gpp</code> pulls and pushes from origin to origin.</li>
+</ul>
+<h3 id="rebase">Rebase</h3>
+<ul>
+<li><code>gr</code> forward-ports local commits to the updated upstream head.</li>
+<li><code>gra</code> aborts the rebase.</li>
+<li><code>grc</code> continues the rebase after merge conflicts are resolved.</li>
+<li><code>gri</code> makes a list of commits to be rebased and opens the editor.</li>
+<li><code>grs</code> skips the current patch.</li>
+</ul>
+<h3 id="remote">Remote</h3>
+<ul>
+<li><code>gR</code> manages tracked repositories.</li>
+<li><code>gRl</code> lists remote names and their URLs.</li>
+<li><code>gRa</code> adds a new remote.</li>
+<li><code>gRx</code> removes a remote.</li>
+<li><code>gRm</code> renames a remote.</li>
+<li><code>gRu</code> fetches remotes updates.</li>
+<li><code>gRp</code> prunes all stale remote tracking branches.</li>
+<li><code>gRs</code> displays information about a given remote.</li>
+<li><code>gRb</code> opens a remote on [GitHub][3] in the default browser.</li>
+</ul>
+<h3 id="stash">Stash</h3>
+<ul>
+<li><code>gs</code> stashes the changes of the dirty working directory.</li>
+<li><code>gsa</code> applies the changes recorded in a stash to the working directory.</li>
+<li><code>gsx</code> drops a stashed state.</li>
+<li><code>gsX</code> drops all the stashed states.</li>
+<li><code>gsl</code> lists stashed states.</li>
+<li><code>gsL</code> lists dropped stashed states.</li>
+<li><code>gsd</code> displays changes between the stash and its original parent.</li>
+<li><code>gsp</code> removes and applies a single stashed state from the stash list.</li>
+<li><code>gsr</code> recovers a given stashed state.</li>
+<li><code>gss</code> stashes the changes of the dirty working directory, including untracked.</li>
+<li><code>gsS</code> stashes the changes of the dirty working directory interactively.</li>
+<li><code>gsw</code> stashes the changes of the dirty working directory retaining the index.</li>
+</ul>
+<h3 id="submodule">Submodule</h3>
+<ul>
+<li><code>gS</code> initializes, updates, or inspects submodules.</li>
+<li><code>gSa</code> adds given a repository as a submodule.</li>
+<li><code>gSf</code> evaluates a shell command in each of checked out submodules.</li>
+<li><code>gSi</code> initializes submodules.</li>
+<li><code>gSI</code> initializes and clones submodules recursively.</li>
+<li><code>gSl</code> lists the commits of all submodules.</li>
+<li><code>gSm</code> moves a submodule.</li>
+<li><code>gSs</code> synchronizes submodules' remote URL to the value specified in
+.gitmodules.</li>
+<li><code>gSu</code> fetches and merges the latest changes for all submodule.</li>
+<li><code>gSx</code> removes a submodule.</li>
+</ul>
+<h3 id="tag">Tag</h3>
+<ul>
+<li><code>gt</code> lists tags or creates tag.</li>
+<li><code>gtl</code> lists tags matching pattern.</li>
+<li><code>gts</code> creates a signed tag.</li>
+<li><code>gtv</code> validate a signed tag.</li>
+</ul>
+<h3 id="working-directory">Working directory</h3>
+<ul>
+<li><code>gws</code> displays working-tree status in the short format.</li>
+<li><code>gwS</code> displays working-tree status.</li>
+<li><code>gwd</code> displays changes between the working tree and the index (diff).</li>
+<li><code>gwD</code> displays changes between the working tree and the index (word diff).</li>
+<li><code>gwr</code> resets the current HEAD to the specified state, does not touch the
+index nor the working tree.</li>
+<li><code>gwR</code> resets the current HEAD, index and working tree to the specified state.</li>
+<li><code>gwc</code> removes untracked files from the working tree (dry-run).</li>
+<li><code>gwC</code> removes untracked files from the working tree.</li>
+<li><code>gwx</code> removes files from the working tree and from the index recursively.</li>
+<li><code>gwX</code> removes files from the working tree and from the index recursively and
+forcefully.</li>
+</ul>
+<h3 id="shadows">Shadows</h3>
+<p>The following aliases may shadow system commands:</p>
+<ul>
+<li><code>gb</code> shadows the [GB][9].</li>
+<li><code>gm</code> shadows the [Graphics Magick image processor][11].</li>
+<li><code>gpt</code> shadows the [GUID partition table maintenance utility][4].</li>
+<li><code>gs</code> shadows the [Ghostscript interpreter and previewer][5].</li>
+</ul>
+<p>If you frequently use the above commands, you may wish to remove said aliases
+from this module or to disable them at the bottom of the zshrc with <code>unalias</code>.</p>
+<p>You can temporarily bypass an alias by prefixing it with a backward slash:
+<code>\gpt</code>.</p>
+<h2 id="functions">Functions</h2>
+<ul>
+<li><code>git-branch-current</code> displays the current branch.</li>
+<li><code>git-commit-lost</code> lists lost commits.</li>
+<li><code>git-dir</code> displays the path to the Git directory.</li>
+<li><code>git-hub-browse</code> opens the [GitHub][3] repository in the default browser.</li>
+<li><code>git-hub-shorten-url</code> shortens [GitHub URLs][10].</li>
+<li><code>git-info</code> exposes repository information via the <code>$git_info</code> associative
+array.</li>
+<li><code>git-root</code> displays the path to the working tree root.</li>
+<li><code>git-stash-clear-interactive</code> asks for confirmation before clearing the stash.</li>
+<li><code>git-stash-dropped</code> lists dropped stashed states.</li>
+<li><code>git-stash-recover</code> recovers given dropped stashed states.</li>
+<li><code>git-submodule-move</code> moves a submodule.</li>
+<li><code>git-submodule-remove</code> removes a submodule.</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

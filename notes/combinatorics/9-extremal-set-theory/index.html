@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>9. Extremal set theory | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#sunflower">Sunflower</a></li>
+    <li><a href="#mutually-intersecting">Mutually Intersecting</a></li>
+    <li><a href="#sperner-system">Sperner System</a></li>
+    <li><a href="#vc-dimension">VC-dimension</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><p>How large or how small a collection of finite objects can be, if it has to satisfy certain restrictions</p>
+<h2 id="sunflower">Sunflower</h2>
+<ul>
+<li>set system $\mathcal{F}\subset 2^{[n]}$ with ground set $[n]$</li>
+<li>a sunflower of size $r$ with center $C$
+<ul>
+<li>$|\mathcal{F}|=r$</li>
+<li>$\forall S,T\in\mathcal{F},S\cap T=C$</li>
+</ul>
+</li>
+<li>Sunflower Lemma (Erdős-Rado 1960)
+<ul>
+<li>$\mathcal{F}\subset{[n]\choose k},|\mathcal{F}|&gt;k!(r-1)^k\Rightarrow\exists$ a sunflower $\mathcal{G}\subset\mathcal{F}$ such that $|\mathcal{G}|=r$</li>
+</ul>
+</li>
+<li>Sunflower Conjecture: $|\mathcal{F}|&gt;c(r)^k$</li>
+</ul>
+<h2 id="mutually-intersecting">Mutually Intersecting</h2>
+<ul>
+<li>Erdős-Ko-Rado Theorem: $\mathcal{F}\subset{[n]\choose k},n\geq 2k,\forall S,T\in\mathcal{F},S\cap T\neq\emptyset\Rightarrow|\mathcal{F}|\leq{n-1\choose k-1}$
+<ul>
+<li>Katona&rsquo;s proof: double counting</li>
+<li>Erdős' proof: shifting</li>
+</ul>
+</li>
+<li>Shifting(Compression)
+<ul>
+<li>Define a shift operator
+<ul>
+<li>perserve desired property</li>
+<li>original problem is easy on shifted elements</li>
+</ul>
+</li>
+<li>e.g. Isoperimetric problem: Steiner symmetrization</li>
+</ul>
+</li>
+</ul>
+<h2 id="sperner-system">Sperner System</h2>
+<ul>
+<li>Antichains: $\forall A,B\in\mathcal{F},A\not\subseteq B,{[n]\choose k}$ is an antichain</li>
+<li>Sperner&rsquo;s Theorem(1928): $\mathcal{F}\subseteq 2^{[n]}$ is an antichain, $|\mathcal{F}|\leq {n\choose\lfloor n/2\rfloor}$
+<ul>
+<li>Sperner&rsquo;s proof(shadows)</li>
+<li>LYM inequality: $\mathcal{F}\subseteq 2^{[n]}$ is an antichain, $\sum_{S\in\mathcal{F}}\frac{1}{n\choose|S|}\leq 1$
+<ul>
+<li>Lubell&rsquo;s proof(counting)</li>
+<li>Alon&rsquo;s proof(probabilistic)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="vc-dimension">VC-dimension</h2>
+<ul>
+<li>trace: $\mathcal{F}\subseteq 2^X,R\subseteq X$, the trace of $\mathcal{F}$ on $R$ is $\mathcal{F}|_R={S\cap R|S\in \mathcal{F}}$</li>
+<li>$\mathcal{F}$ shatters $R$ if $\mathcal{F}|_R=2^R$
+<ul>
+<li>$\forall T\subseteq R,\exists S\in\mathcal{F},T=S\cap R$</li>
+</ul>
+</li>
+<li>VC-dimesion(Vapnik–Chervonenkis dimension) of a set family $\mathcal{F}\subseteq 2^{[n]}$: $\text{VC-dim}(\mathcal{F})=\max{|R||R\subseteq [n],\mathcal{F}|_R=2^R}$</li>
+<li>Sauer&rsquo;s Lemma: Let $\mathcal{F}\subseteq 2^X,|X|=n$. If $|\mathcal{F}|&gt;\sum_{1\leq i&lt;k}{n\choose i}$ then $\exists R\in{X\choose k}$, $F$ shatters $R$
+<ul>
+<li>$|\mathcal{F}|&gt;\sum_{1\leq i&lt;k}{n\choose i}$ then $\text{VC-dim}(\mathcal{F})\geq k$</li>
+</ul>
+</li>
+<li>hereditary(ideal, abstract simplicial): $S\subseteq T\in\mathcal{F}\Rightarrow S\in\mathcal{F}$
+<ul>
+<li>$R\in\mathcal{F},\mathcal{F}$ shatters $R$</li>
+</ul>
+</li>
+<li>down-shift $S_i$: $S_i(T)=T\backslash{i}$ if $i\in T$ and $T\backslash{i}\not\in\mathcal{F}$, $T$ otherwise</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

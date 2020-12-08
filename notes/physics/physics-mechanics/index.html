@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mechanics | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><blockquote>
+<p>《大学物理》卢德鑫
+NJU: University Physics I - 卢德鑫</p>
+</blockquote>
+<h1 id="kinematics">Kinematics</h1>
+<ul>
+<li>diplacement: $\Delta\vec r=\vec r(t+\Delta t)-(\vec t)$</li>
+<li>velocity: $\overline{\vec v}=\frac{\Delta\vec r}{\Delta t}$</li>
+<li>speed: $\overline{v}=\frac{\Delta s}{\Delta t}$</li>
+<li>acceleration: $\vec a=\frac{d\vec v}{dt}$</li>
+<li>angular velocity vector: $\vec \omega =\frac{d\vec\theta}{dt} = \dot{\varphi}\vec k$</li>
+<li>velocity in circular motion: $\dot{\vec \rho}=\vec \omega\times\vec\rho$</li>
+<li>Oscillation: temporal periodicity and spatial repetitiveness</li>
+</ul>
+<ul>
+<li>SHM: simple harmonic oscillation:
+<ul>
+<li>$x = A\sin\omega t+B\cos\omega t$</li>
+<li>$x = A\cos(\omega t+\varphi)$</li>
+<li>$x = Ae^{i\omega t}+Be^{-i\omega t}$</li>
+<li>amplitude: A</li>
+<li>phase: $\omega t+\varphi =\Phi$</li>
+<li>initial phase: $\varphi$</li>
+</ul>
+</li>
+<li>sum up waves of same frequency: $A^2=A_1^2+A_2^2+2A_1A_2cos(\varphi_2-\varphi_1)$
+<ul>
+<li>constructive : $0,A=A_1+A_2$</li>
+<li>destructive: $\pi,A=|A_1-A_2|$</li>
+<li>quadrature: $\frac{\pi}{2},A=\sqrt{A_1^2+A_2^2}$</li>
+</ul>
+</li>
+<li>sum up waves of no initial phase
+<ul>
+<li>$A^2=A_1^2+A_2^2+2A_1A_2\cos(\omega_1-\omega_2)t$</li>
+<li>waves of same amplitude: $2A\cos(\frac{\omega_1-\omega_2}{2}t)\cos(\frac{\omega_1+\omega_2}{2}t)$
+<ul>
+<li>modulating factor: $cos(\frac{\omega_1-\omega_2}{2}t)$</li>
+<li>beat</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>phase diagram: trajectories of phase space(or in state space)
+<ul>
+<li>center, node, asddle, spiral</li>
+</ul>
+</li>
+<li>Galilean transformation: $\dot{\vec r}'=\dot{\vec r} - \vec u$</li>
+<li>Coriolis acceleration: $2\vec\omega\times\frac{d\vec r}{dt'}$
+<ul>
+<li>$\frac{d}{dt}=\frac{d}{dt'}+\vec\omega\times$</li>
+<li>$\frac{d\dot{\vec r}}{dt} = \frac{\dot{d\vec r}}{dt'} + \omega\times\dot{r}=\frac{d^2\vec r}{dt'^2} + 2\vec\omega\times\frac{d\vec r}{dt'}+\vec\omega\times(\vec\omega\times\vec r)$</li>
+</ul>
+</li>
+</ul>
+<h1 id="particle-dynamics">Particle Dynamics</h1>
+<ul>
+<li>Newtow&rsquo;s second law: $\vec F=m\vec a=\frac{d\vec p}{dt}$</li>
+<li>$\vec F_{AB}=\vec F_{BA}$</li>
+<li>Gravitation: $\vec F_{21}=-G\frac{m_1m_2}{r_{12}^3}\vec r_{12}$</li>
+<li>Elastic (restoring) force: $\vec F=-k\vec x$</li>
+<li>Intermolecular force: $\vec F\sim 2(\frac{\sigma}{r})^{13}-(\frac{\sigma}{r})^7$</li>
+<li>static friction: $F_f\leq\mu_s F_N$</li>
+<li>sliding friction: $F_f=\mu_k F_N$ (Amonton-Coulomb law)</li>
+<li>Frictional drag: $F_d=\frac{1}{2}C_dA\rho v^2$</li>
+<li>viscosity force: $F_\eta=6\pi\eta rv$ (Stoke&rsquo;s law)</li>
+<li>Reynolds number: $Re=\frac{\rho vd}{\eta}$, Stoke&rsquo;s law holds when Re=0~10</li>
+<li>noninertial frame:
+<ul>
+<li>inertial force: $\vec F_{in}=-m\ddot{\vec r}$</li>
+<li>$(\vec F+\vec F_{in})=m\vec{a}'$</li>
+</ul>
+</li>
+<li>inertial centrifugal force:
+<ul>
+<li>$\vec F=-mr\dot{\varphi}\vec e_\rho$</li>
+</ul>
+</li>
+<li>Linear momentum: $\vec p=m\vec v$</li>
+<li>angular momentum: $\vec L=\vec r\times\vec p$</li>
+<li>torque: $\vec M=\vec r\times\vec F=\frac{d\vec L}{dt}$</li>
+<li>Work: $dW=d\vec F\cdot d\vec r$</li>
+<li>power: $P=\frac{dW}{dt}=\vec F\cdot\vec v$</li>
+<li>kinetic energy: $T=\frac{1}{2}mv^2$</li>
+<li>work-energy relation: $W=T_f-T_i$</li>
+<li>Conservation of mechanical energy</li>
+<li>equilibrium: stable, unstable, neutral</li>
+</ul>
+<h1 id="gravitation">Gravitation</h1>
+<ul>
+<li>Kepler&rsquo;s Law:
+<ul>
+<li>The orbit of each planet is an ellipse with the Sun at one focus</li>
+<li>The line joining any planet and the Sun sweeps out areas in equal ties</li>
+<li>The square of the period of revolution of a planet is proportional to the cube of the planet&rsquo;s mean distance of the Sun</li>
+</ul>
+</li>
+<li>Gravitation: $\vec F_{21}=-G\frac{m_1m_2}{r_{12}^3}\vec r_{12}$</li>
+<li>potential energy: $U=-G\frac{mm'}{r}+U_0$</li>
+<li>accretion: $\Delta E=G\frac{m&rsquo;m}{R}$</li>
+</ul>
+<h1 id="dynamics-of-many-partical-system">Dynamics of Many-Partical System</h1>
+<ul>
+<li>COM(center of mass): $\vec r_C=\frac{1}{m_C}\sum_{i}m_ir_i$</li>
+<li>C-frame:
+<ul>
+<li>$\vec p'=0$</li>
+<li>$\frac{d}{dt}\vec L=\vec M_{ext}$</li>
+</ul>
+</li>
+<li>system of variable mass: $m\frac{d\vec v}{dt}=\vec F_{ext}+(\vec u+\vec v)\frac{dm}{dt}$</li>
+<li>collisions
+<ul>
+<li>head-on</li>
+</ul>
+</li>
+<li>equation of continuity: $\rho Av=Constant$</li>
+<li>Bernoulli&rsquo;s equation: $p+\frac{1}{2}\rho v^2+\rho gz=Constant$</li>
+</ul>
+<h1 id="dynamics-of-a-rigid-body">Dynamics of a Rigid Body</h1>
+<ul>
+<li>principal axis of inertia: $\vec L=\vec I\omega$</li>
+<li>rotational inertial: $I=\int\rho^2dm$</li>
+<li>parrallel axis theorem: $I=I_C+md^2$</li>
+<li>perpendicular axis theorem: $I_z=I_x+I_y$</li>
+<li>kinetics: $T=\frac{1}{2}I\omega^2$</li>
+<li>power: $P=\vec M\cdot \vec \omega$</li>
+<li>precession: $\Omega=\lim_{\Delta t\rightarrow0}\frac{\Delta\phi}{\Delta t}=\frac{mgr}{I\omega}$</li>
+</ul>
+<h1 id="oscillation">Oscillation</h1>
+<ul>
+<li>Hooke&rsquo;s law: $F=-kx$</li>
+<li>Equation of motion: $\ddot{x}+\omega_0^2x=0$, $\omega_0=\frac{k}{m}$</li>
+<li>Energy: $E=\frac{1}{2}m\dot{x}_0^2+\frac{1}m\omega_0^2x_0^2$</li>
+<li>Damped oscillation
+<ul>
+<li>$\ddot{x}+\frac{\eta}{m}\dot{x}+\omega_0^2x=0$</li>
+<li>$x=Ae^{-\gamma t}cos(\omega t+\varphi)$</li>
+<li>$\gamma=\frac{\eta}{2m},\omega^2=\omega_0^2-\gamma^2$</li>
+<li>critical damping: $\eta=2m\omega_0$</li>
+<li>$\langle E\rangle=\frac{1}{2}mA^2\omega_0^2e^{-2\gamma t}$</li>
+<li>quality factor: $Q=\frac{m\omega}{\eta}$</li>
+</ul>
+</li>
+<li>Nonlinear oscillation:
+<ul>
+<li>hard-spring
+<ul>
+<li>$F=-(1+Bx^2)kx$</li>
+<li>$\ddot{x}+\alpha x+\beta x^3=0$</li>
+</ul>
+</li>
+<li>soft-spring
+<ul>
+<li>$F=-(1+Bx)kx$</li>
+</ul>
+</li>
+<li>attractor
+<ul>
+<li>equilibrium point</li>
+<li>periodic otionor a limit cycle $\Gamma$</li>
+<li>quasi-periodic motion</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Forced osillation friction
+<ul>
+<li>$\ddot{x}+2\gamma\dot{x}+\omega_0^2x=\frac{F_0}{m}cos\omega t$</li>
+</ul>
+</li>
+</ul>
+<h1 id="waves">Waves</h1>
+<ul>
+<li>Wave function: $\frac{\partial^2u}{\partial x^2}-\frac{1}{v^2}\frac{\partial^2u}{\partial t^2}=0$</li>
+<li>solution form:
+<ul>
+<li>$u(x,t)=Acos(kx\mp\omega t-\varphi)$</li>
+<li>$u(x,t)=Re(Ae^{i(kx-\omega t)})$</li>
+<li>$\frac{\omega}{k}=v$</li>
+<li>Amplitude: $A$</li>
+<li>frequency: $f=\frac{\omega}{2\pi}$</li>
+<li>phase: $\Phi=kx-\omega t-\varphi$</li>
+<li>wave vector: $\vec k$</li>
+<li>wave vector: $k$</li>
+<li>phase speed: $v_p=\frac{\omega}{k}$</li>
+<li>wavelength: $\lambda=\frac{2\pi}{k}=Tv_p$</li>
+<li>wavefront: a surface with constant phase</li>
+</ul>
+</li>
+<li>AM wave(amplitude-modulated wave)
+<ul>
+<li>$u_1=Acos((k+\Delta k)x-(\omega+\Delta\omega)t)$</li>
+<li>$u_2=Acos((k-\Delta k)x-(\omega -\Delta\omega)t)$</li>
+<li>$u_1+u_2=2Acos(\Delta kx-\Delta\omega t)cos(kx-\omega t)$</li>
+<li>group velocity: $v_g=\frac{d\omega}{dk}$</li>
+</ul>
+</li>
+<li>standing wave
+<ul>
+<li>$u_1=Acos(kx-\omega t-\phi)$</li>
+<li>$u_2=Acos(kx+\omegat)$</li>
+<li>$u_1+u_2=2Acos(kx-\frac{\phi}{2})cos(\omega t+\frac{\phi}{2})$</li>
+<li>half-wavelength loss</li>
+<li>fundamental: $f_1=frac{v}{2L}$</li>
+<li>harmonics:$f_n=nf_1$</li>
+</ul>
+</li>
+<li>interference
+<ul>
+<li>$u_1=cos(kx-\omega t-\phi)$</li>
+<li>$u_2=cos(kx-\omega t)$</li>
+<li>$u_1+u_2=2Acos\frac{\phi}{2}cos(kx-\omega t-\frac{\phi}{2})$</li>
+<li>$cos^2\frac{\phi}{2} = 1,\phi=m\pi,\Delta m\lambda$</li>
+<li>$cos^2\frac{\phi}{2} = 0,\phi=(2m+1)\pi,\Delta (m+\frac{1}{2})\lambda$</li>
+</ul>
+</li>
+<li>Huygen&rsquo;s principle</li>
+<li>diffraction</li>
+<li>Doppler effect</li>
+</ul>
+<h1 id="relativistic-mechanics">Relativistic Mechanics</h1>
+<ul>
+<li>Sepcial theory of relativity
+<ul>
+<li>The principle of relativity</li>
+<li>The principle of the constancy of the speed of light</li>
+</ul>
+</li>
+<li>Lorentz transformation:</li>
+</ul>
+<p>$$
+\left[\begin{matrix} x'\newline y'\newline z'\newline ict'
+\end{matrix}\right] = \left[\begin{matrix}
+\lambda &amp; 0 &amp; 0 &amp;i\beta\gamma\newline  0 &amp; 1 &amp; 0 &amp; 0\newline  0 &amp; 0 &amp; 1 &amp; 0\newline  -i\beta\gamma &amp; 0 &amp; 0 &amp; \gamma
+\end{matrix}\right]\left[\begin{matrix}
+x\newline y\newline z\newline ict\end {matrix}\right]
+$$</p>
+<ul>
+<li>$\gamma=\frac{1}{\sqrt{1-\beta^2}},\beta=\frac{u}{c}$</li>
+<li>spacetime interval of event pair: $(\Delta s)^2=(c\Delta t)^2-(\Delta x)^2-(\Delta y)^2-(\Delta z)^2$
+<ul>
+<li>timelike: $(c\Delta)^2&gt;(\Delta x)^2$, $\Delta\tau=\sqrt{(\Delta t)^2-(\frac{\Delta x}{c})^2}$</li>
+<li>spacelike: $\Delta\sigma=\sqrt{(\Delta x)^2-(c\Delta t)^2}$</li>
+<li>lightlike: $(c\Delta)^2=(\Delta x)^2$</li>
+</ul>
+</li>
+<li>time dilation: $\Delta t=\gamma\Delta t'$</li>
+<li>Lorentz contraction</li>
+<li>velocity transformation</li>
+<li>$E^2=c^2p^2+m_0^2c^4$</li>
+<li>$E=mc^2$</li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

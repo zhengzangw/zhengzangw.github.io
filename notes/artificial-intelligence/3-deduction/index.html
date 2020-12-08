@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3-推理（演算） | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#推理">推理</a>
+      <ul>
+        <li><a href="#规约消解归结resolution">规约（消解，归结，resolution）</a></li>
+        <li><a href="#合一unification">合一（Unification）</a></li>
+        <li><a href="#前向链接">前向链接</a></li>
+        <li><a href="#反向链接">反向链接</a></li>
+      </ul>
+    </li>
+    <li><a href="#不确定性推理">不确定性推理</a>
+      <ul>
+        <li><a href="#反绎推理">反绎推理</a></li>
+        <li><a href="#确信度理论">确信度理论</a></li>
+        <li><a href="#d-s-证据理论">D-S 证据理论</a></li>
+        <li><a href="#模糊集">模糊集</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="推理">推理</h2>
+<ul>
+<li>推理规则
+<ul>
+<li>完备性 completeness</li>
+<li>可靠性 soundness</li>
+</ul>
+</li>
+<li>推理算法 = 推理规则 + 搜索算法
+<ul>
+<li>完备的推理算法 = 完备推理规则 + 完备搜索算法</li>
+</ul>
+</li>
+<li>反证法：证明 $a\vDash b$，只需证 $a\wedge\neg b$ 不可满足</li>
+<li>单元归结：$\frac{l_1\vee\cdots\vee l_k, m}{l_1\vee\cdots\vee l_{i-1}\vee l_{j+1}\vee\cdots\vee l_k}$
+<ul>
+<li>$l_k$ 与 $m$ 为互补文字</li>
+</ul>
+</li>
+<li>全归结：$\frac{l_1\vee\cdots\vee l_k, m_1\vee\cdots\vee m_k}{l_1\vee\cdots\vee l_{i-1}\vee l_{j+1}\vee\cdots\vee l_k\vee m_1\cdots}$
+<ul>
+<li>归并：去除文字的多余副本</li>
+</ul>
+</li>
+<li>归结推理：$\frac{l_1\vee\cdots\vee l_k, m_1\vee\cdots\vee m_k}{l_1\vee\cdots\vee l_{i-1}\vee l_{j+1}\vee\cdots\vee l_k\vee m_1\cdots[x/\theta]},\text{UNIFY}(l_i,\neg m_j)=\theta$</li>
+<li>基本归结定理：如果子句集是不可满足的，那么这些子句的归纳闭包包含空子句</li>
+<li>Horn 子句：至多只有一个正文字的子句
+<ul>
+<li>限定子句：恰有一个正文字的子句
+<ul>
+<li>每个限定子句可以写成蕴含式</li>
+</ul>
+</li>
+<li>目标子句：没有正文字的子句</li>
+<li>Horn 子句在归结下封闭</li>
+</ul>
+</li>
+<li>转为和取反式(CNF)
+<ul>
+<li>命题逻辑处理
+<ul>
+<li>消去 $\Leftrightarrow,\Rightarrow$</li>
+<li>否定内移</li>
+</ul>
+</li>
+<li>变量标准化，量词左移</li>
+<li>Skolem 化：消除存在量词 $(\exists x)(A(x))$ 置换为 $A(c)$</li>
+<li>删除全称量词</li>
+<li>将$\wedge$分配到$\vee$中</li>
+</ul>
+</li>
+<li>一阶逻辑的命题化技术 (1960s)
+<ul>
+<li>$\forall$ 消除 + Skolem 化（$\exists$ 消除）
+<ul>
+<li>有限：可满足时等价</li>
+<li>无限：Jacques Herbrand 存在最大嵌套深度</li>
+</ul>
+</li>
+<li>一阶逻辑的蕴含问题是半可判定的
+<ul>
+<li>不存在算法否定蕴含不成立的语句</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>置换：$\theta={t_1/x_1,t_2/x_2,\cdots,t_n/x_n}$
+<ul>
+<li>置换的复合：$\theta\circ\lambda$</li>
+</ul>
+</li>
+<li>数据库语义：没提到的为假</li>
+<li>画面问题：作为动作的结果，什么变什么不变</li>
+</ul>
+<h3 id="规约消解归结resolution">规约（消解，归结，resolution）</h3>
+<p>使用最少的合一次数在一个子句数据库中发现矛盾</p>
+<ul>
+<li>归结算法：
+<ul>
+<li>将 $\text{KB}\wedge\neg \alpha$ 转换为 CNF</li>
+<li>对含有互补文字的子句进行归结产生新子句</li>
+<li>归结出空子句则蕴含，否则不蕴含</li>
+</ul>
+</li>
+<li>用 Horn 子句判定蕴含需要的时间与知识库大小呈线性关系
+<ul>
+<li>前向链接 $O(nm)$</li>
+<li>反向链接</li>
+</ul>
+</li>
+<li>搜索策略
+<ul>
+<li>宽度优先：时空开销大，保证能发现最短的解路径</li>
+<li>成组支持策略
+<ul>
+<li>对于输入的子句集$S$，定义一个$S$的子集$T$，称为成组支持。本策略要求每次归结的归结式之一有一个祖先在成组支持中</li>
+<li>可以证明，如果$S$是不可满足的并且$S-T$是可满足 的，那么成组支持策略是反驳完备的</li>
+</ul>
+</li>
+<li>单个优先策略
+<ul>
+<li>只要存在个体子句就用其归结</li>
+<li>可以与成组支持策略一起使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="合一unification">合一（Unification）</h3>
+<p>找到使不同的逻辑表示变得相同的置换</p>
+<ul>
+<li>一般化假言推理规则：$\forall i,p_i[x/\theta]=p_i'[x/\theta],\frac{p_1',\cdots,p_n',(\bigvee_{i=1}^n p_i\Rightarrow q)}{q[x/\theta]}$</li>
+<li>$\text{UNIFY}(p,q)=\theta,p[x/\theta]=q[x/\theta]$
+<ul>
+<li>${E_1,\cdots,E_n}$ 可合一：存在置换 $\theta$ 使 $E_1\theta=\cdots=E_n\theta$</li>
+<li>unifier: 使合一的置换</li>
+<li>most general unifier(MGU): 最一般的合一</li>
+</ul>
+</li>
+<li>标准化分离：重命名解决冲突</li>
+<li>Skolem 范式化
+<ul>
+<li>去掉所有的存在量词</li>
+<li>如果谓词中含有多个参数，而$\exists$约束变元在$\forall$约束变元的约束 范围内，则$\exists$约束变元必须是那些其他变元的函数</li>
+</ul>
+</li>
+<li>合一算法</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unify</span>(E1,E2):
+  <span style="color:#66d9ef">if</span> E1,E2 <span style="color:#f92672">is</span> all constant <span style="color:#f92672">or</span> all empty:
+    <span style="color:#66d9ef">if</span> E1 <span style="color:#f92672">=</span> E2: <span style="color:#66d9ef">return</span> {}
+    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> FAIL
+  <span style="color:#66d9ef">elif</span> E1 <span style="color:#f92672">is</span> variable:
+    <span style="color:#66d9ef">if</span> E1 <span style="color:#f92672">in</span> E2: <span style="color:#66d9ef">return</span> FAIL
+    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> {E2<span style="color:#f92672">/</span>E1}
+  <span style="color:#66d9ef">elif</span> E2 <span style="color:#f92672">is</span> variable:
+    <span style="color:#66d9ef">if</span> E2 <span style="color:#f92672">in</span> E1: <span style="color:#66d9ef">return</span> FAIL
+    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> {E1<span style="color:#f92672">/</span>E2}
+  <span style="color:#66d9ef">else</span>:
+    ret <span style="color:#f92672">=</span> unify(E1[<span style="color:#ae81ff">0</span>], E2[<span style="color:#ae81ff">0</span>])
+    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">==</span> FAIL): <span style="color:#66d9ef">return</span> FAIL
+    E1 <span style="color:#f92672">=</span> apply(ret, E1[<span style="color:#ae81ff">1</span>:])
+    E2 <span style="color:#f92672">=</span> apply(ret, E2[<span style="color:#ae81ff">1</span>:])
+    ret2 <span style="color:#f92672">=</span> unify(E1, E2)
+    <span style="color:#66d9ef">if</span> (ret2 <span style="color:#f92672">==</span> FAIL): <span style="color:#66d9ef">return</span> FAIL
+    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> ret<span style="color:#f92672">+</span>ret2
+</code></pre></div><h3 id="前向链接">前向链接</h3>
+<ul>
+<li>一阶确定子句：文字析取且恰有一个正文字</li>
+<li>数据日志类知识库：无函词
+<ul>
+<li>有函词的子句蕴含半可判定</li>
+</ul>
+</li>
+<li>For-FC-Ask：对每个规则 $p_1,\cdots,p_n\Rightarrow q$，遍历所有可能的替换使其 $p_i$ 都成立
+<ul>
+<li>模式匹配：将规则的前提与知识库中的合式过程进行合一</li>
+<li>每次迭代对所有规则重新检查</li>
+<li>算法可能生成与目标无关的事实</li>
+</ul>
+</li>
+<li>合取排序：对规则前提的合取项进行排序，使总成本最小
+<ul>
+<li>NP-hard</li>
+</ul>
+</li>
+</ul>
+<h3 id="反向链接">反向链接</h3>
+<ul>
+<li>Fol-BC-Ask: 与或搜索树，深度搜索</li>
+<li>Prolog: 深度优先反向链接</li>
+</ul>
+<h2 id="不确定性推理">不确定性推理</h2>
+<ul>
+<li>限制
+<ul>
+<li>惰性</li>
+<li>理论的无知</li>
+<li>实践的无知</li>
+</ul>
+</li>
+<li>决策理论 = 概率理论+效用理论</li>
+</ul>
+<h3 id="反绎推理">反绎推理</h3>
+<p>溯因推理：$P\rightarrow Q,Q$ 可能推出 $P$</p>
+<h4 id="非单调推理逻辑">非单调推理逻辑</h4>
+<ul>
+<li>模态操作符
+<ul>
+<li>unless：缺省推理
+<ul>
+<li>$p(x)$ unless $q(x) \rightarrow r(x)$: $p(W)$ 成立且 $q(W)$ 未知则 $r(W)$；若 $q(W)$ 为真，则 $r(W)$ 需撤回</li>
+<li>默认规则：$p(x)$ unless ab $p(x)\rightarrow r(x)$ 除非 $p$ 有反常实例</li>
+</ul>
+</li>
+<li>is consistent with
+<ul>
+<li>$A(x)\wedge \text{M} B(x)\rightarrow C(x)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>默认逻辑
+<ul>
+<li>$A(x)\wedge : B(x)\rightarrow C(x)$: $A$ 可被证实，且它与对 $B$ 的假设相一致，则 &hellip;</li>
+</ul>
+</li>
+</ul>
+<h4 id="真值维护系统tms">真值维护系统（TMS）</h4>
+<ul>
+<li>目标：维持推理系统的逻辑完整性</li>
+<li>原理：通过存储每条推理的理由，再重新推断根据新的信念所得出的结论的支持情况</li>
+<li>方法
+<ul>
+<li>时序回溯：从死状态或者末状态返回，系统的遍历所有可能路径</li>
+<li>相关性指导回溯：直接回溯到出问题的点，并在那个状态对解进行修正</li>
+</ul>
+</li>
+<li>实现
+<ul>
+<li>关联机制：每条结论和理由联系在一起</li>
+<li>定位机制：当给定矛盾和理由时，直接定位错误假设</li>
+<li>回收机制：收回错误的假设</li>
+<li>追溯机制：收回错误的假设的结论</li>
+</ul>
+</li>
+<li>理由网络 JTMS
+<ul>
+<li>结点：知识库中的信念</li>
+<li>理由：知识结点结点上的信念</li>
+<li>联系
+<ul>
+<li>IN: 支持结点成立的信念集合</li>
+<li>OUT: 不支持结点成立的信念集合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="基于最小模型">基于最小模型</h4>
+<ul>
+<li>模型：对所有变量赋值均满足谓词表达式集合 $S$ 的解释</li>
+<li>最小模型：对所有变量赋值满足谓词表达式 $S$ 的模型中，最小的那个模型</li>
+<li>封闭世界假设：求解所需的谓词会被创建，不知道则为假</li>
+</ul>
+<h4 id="集合覆盖">集合覆盖</h4>
+<ul>
+<li>寻找现象的最小集合覆盖</li>
+</ul>
+<h3 id="确信度理论">确信度理论</h3>
+<ul>
+<li>Stanford 确信度理论
+<ul>
+<li>$\text{MB}(H|E)$ 给定 $E$ 时，$H$ 的可信度量
+<ul>
+<li>$=1$ if $P(H)=1$</li>
+<li>$=\frac{\max{P(H|E),P(H)}-P(H)}{1-P(H)}$ o.w.</li>
+<li>$\text{MB}(H|E)&gt;0,P(H|E)&gt;P(H)$</li>
+</ul>
+</li>
+<li>$\text{MD}(H|E)$ 给定 $E$ 时，$H$ 的不可信度量
+<ul>
+<li>$=1$ if $P(H)=0$</li>
+<li>$=\frac{\min{P(H|E),P(H)}-P(H)}{-P(H)}$ o.w.</li>
+<li>$\text{MD}(H|E)&lt;0,P(H|E)&lt;P(H)$</li>
+</ul>
+</li>
+<li>互斥性：$\text{MB}(H|E),\text{MD}(H|E)$ 间有一个为 $0$</li>
+</ul>
+</li>
+<li>知识的确信度：$\text{CF}(H|E)=\text{MB}(H|E)-\text{MD}(H|E)$
+<ul>
+<li>不确定性知识的产生式规则表达：IF E THEN H (CF(H|E))</li>
+<li>实际由专家给出</li>
+</ul>
+</li>
+<li>证据不确定性：$\text{CF}(E)$
+<ul>
+<li>$\text{CF}(\neg E)=-\text{CF}(E)$</li>
+<li>$\text{CF}(E_1\wedge\cdots\wedge E_n)=\min{\text{CF}(E_1),\cdots,\text{CF}(E_n)}$</li>
+<li>$\text{CF}(E_1\vee\cdots\vee E_n)=\max{\text{CF}(E_1),\cdots,\text{CF}(E_n)}$</li>
+</ul>
+</li>
+<li>不确定性的更新：$\text{CF}(H)=\text{CF}(H|E)\times\max{0,\text{CF}(E)}$</li>
+<li>结论不确定性的合成</li>
+</ul>
+<p>$$
+\begin{cases}
+\text{CF}_1(H)+\text{CF}_2(H)-\text{CF}_1(H)\text{CF}_2(H) &amp; \text{CF}_1(H)\geq 0,\text{CF}_2(H)\geq0\newline
+\text{CF}_1(H)+\text{CF}_2(H)+\text{CF}_1(H)\text{CF}_2(H) &amp; \text{CF}_1(H)&lt;0,\text{CF}_2(H)&lt;0\newline
+\frac{\text{CF}_1(H)+\text{CF}_2(H)}{1-\min{|\text{CF}_1(H)|,|\text{CF}_2(H)|}}
+\end{cases}
+$$</p>
+<h3 id="d-s-证据理论">D-S 证据理论</h3>
+<p>Dempster-Shafer 理论</p>
+<ul>
+<li>概率密度函数 $m:2^\Omega\rightarrow[0,1],m(\emptyset)=0,\sum_{A\subseteq\Omega}m(A)=1$</li>
+<li>信任函数：$\text{Bel}:2^\Omega\rightarrow[0,1],\text{Bel}(A)=\sum_{B\subseteq A}m(B)$
+<ul>
+<li>对 $A$ 的总信任度</li>
+</ul>
+</li>
+<li>似然函数：$\text{Pl}:2^\Omega\rightarrow[0,1],\text{Pl}(A)=1-\text{Bel}(\neg A)$
+<ul>
+<li>对 $A$ 非假的信任度</li>
+</ul>
+</li>
+<li>$A$ 信任程度的上下限：$A[\text{Bel}(A),\text{Pl}(A)]$
+<ul>
+<li>$\text{Pl}(A)-\text{Bel}(A)$: 描述不知道的情况</li>
+</ul>
+</li>
+<li>不信任：识别框架</li>
+<li>Dempster 证据合并规则
+<ul>
+<li>$m_1\oplus m_2(A)=\frac{\sum_{B\cap C=A}m_1(B)m_2(C)}{\sum_{B\cap C\not=\emptyset}m_1(B)m_2(C)}$</li>
+<li>证据相互独立</li>
+</ul>
+</li>
+</ul>
+<h3 id="模糊集">模糊集</h3>
+<ul>
+<li>模糊谓词：$T(x)\in[0,1]$</li>
+<li>模糊逻辑
+<ul>
+<li>$T(A\wedge B)=\min(T(A),T(B))$</li>
+<li>$T(A\vee B)=\max(T(A),T(B))$</li>
+<li>$T(\neg A)=1-T(A)$</li>
+</ul>
+</li>
+<li>问题：$T(A\wedge\neg A)$</li>
+<li>模糊控制</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

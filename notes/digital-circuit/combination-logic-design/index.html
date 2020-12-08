@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Combination Logic Design | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#竞争与冒险">竞争与冒险</a></li>
+    <li><a href="#combinational-plds">Combinational PLDs</a></li>
+    <li><a href="#编码器">编码器</a></li>
+    <li><a href="#译码器">译码器</a></li>
+    <li><a href="#数据选择器mux-multiplexer">数据选择器(MUX, multiplexer)</a></li>
+    <li><a href="#数据分配器demux-demultiplexer">数据分配器(DEMUX, demultiplexer)</a></li>
+    <li><a href="#计算">计算</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="竞争与冒险">竞争与冒险</h2>
+<ul>
+<li>竞争：某一输入量经不同路径传输后，到达电路某一汇合点的时间有先有后</li>
+<li>冒险：由于竞争是电路输出发生瞬间错误</li>
+<li>通过卡诺图消除竞争：增加冗余项</li>
+</ul>
+<h2 id="combinational-plds">Combinational PLDs</h2>
+<ul>
+<li>PLD: Programmable Logic Arrays, two-level AND-OR device that can be programmed to realize any sum-of-products logic expression</li>
+<li>PAL: Programmable Array Logic, a special case of PLA, fixed OR array</li>
+</ul>
+<h2 id="编码器">编码器</h2>
+<p>二进制电平转换为二进制编码</p>
+<p>优先编码器</p>
+<h2 id="译码器">译码器</h2>
+<p>二进制代码转换为对应高低电平</p>
+<h2 id="数据选择器mux-multiplexer">数据选择器(MUX, multiplexer)</h2>
+<p>$2^n$ 位地址输入、$2^n$ 位数据输入、1位输出，每次在地址输入的控制下，从多路输入数据中选择一路输出</p>
+<h2 id="数据分配器demux-demultiplexer">数据分配器(DEMUX, demultiplexer)</h2>
+<p>将输入数据按地址送到输出端上</p>
+<h2 id="计算">计算</h2>
+<ul>
+<li>数据比较器</li>
+<li>加法器</li>
+<li>ALU(arithmetic and logic unit)</li>
+<li>Combinational Multipliers</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

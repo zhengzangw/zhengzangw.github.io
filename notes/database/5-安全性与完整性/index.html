@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5-安全性与完整性 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安全性保护-security">安全性保护 (security)</a></li>
+    <li><a href="#完整性保护-integrity">完整性保护 (integrity)</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="安全性保护-security">安全性保护 (security)</h2>
+<ul>
+<li>防止非法使用数据库
+<ul>
+<li>要求用户通过规定的访问途径</li>
+<li>要求按照规定的访问规则</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安全数据库（可信数据库）</td>
+<td>适应网络环境下安全要求级别的数据库</td>
+</tr>
+<tr>
+<td>可信计算基（TCB）</td>
+<td>为实现数据库安全所采用的所有实施策略与机制的集合</td>
+</tr>
+<tr>
+<td>主体</td>
+<td>数据的访问者</td>
+</tr>
+<tr>
+<td>客体</td>
+<td>数据库中的数据</td>
+</tr>
+<tr>
+<td>身份标识与鉴别</td>
+<td>每个主体标识自己的标识符和访问口令</td>
+</tr>
+<tr>
+<td>自主访问控制（DAC）</td>
+<td>基于存取矩阵(HRU)的安全控制模型</td>
+</tr>
+<tr>
+<td>存取权限</td>
+<td></td>
+</tr>
+<tr>
+<td>强制访问控制（MAC）</td>
+<td>通过无法回避的存取限制来防止各种攻击</td>
+</tr>
+<tr>
+<td>数据完整性</td>
+<td>防止非法插入，删除，修改等影响数据完整性的操作</td>
+</tr>
+<tr>
+<td>隐蔽通道</td>
+<td>非正规的，不受 TCB 控制的访问通道</td>
+</tr>
+<tr>
+<td>审计</td>
+<td>跟踪用户对数据的访问操作</td>
+</tr>
+<tr>
+<td>访问监控器</td>
+<td>独立的机构，TCB 在网络中的实现</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>安全标准
+<ul>
+<li>1985 TCSEC</li>
+<li>国际标准(ISO 15408) CC V2.1</li>
+<li>国标：GB 17859-1999 计算机系统安全保护等级划分
+<ul>
+<li>第一级：用户自主保护级 (C1)
+<ul>
+<li>自主访问控制 + 身份鉴别 + 数据完整性</li>
+</ul>
+</li>
+<li>第二级：系统审计保护级 (C2)
+<ul>
+<li>+ 客体重用 + 审计</li>
+</ul>
+</li>
+<li>第三级：安全标记保护级 (B1)
+<ul>
+<li>+ 强制访问控制 + 标记</li>
+</ul>
+</li>
+<li>第四级：结构化保护级 (B2)
+<ul>
+<li>+ 隐蔽信道分析 + 可信路径</li>
+</ul>
+</li>
+<li>第五级：访问验证保护级 (B3)
+<ul>
+<li>+ 可信恢复</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SQL'92 C1
+<ul>
+<li>自主访问控制：（用户，操作对象，操作权限）
+<ul>
+<li>操作权限：SELECT, INSERT, DELETE, UPDATE, REFERENCE, EXECUTE, USAGE</li>
+<li>操作对象：表，属性，域，函数</li>
+<li>授权语句 <code>GRANT &lt;操作权限列表&gt; ON &lt;操作对象&gt; TO &lt;用户名列表&gt; [OPTION]</code></li>
+<li>回收语句 <code>REVOKE &lt;操作权限列表&gt; ON &lt;操作对象&gt; FROM &lt;用户名列表&gt; [RESTRICT|CASCADE]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="完整性保护-integrity">完整性保护 (integrity)</h2>
+<ul>
+<li>数据的正确性和一致性
+<ul>
+<li>正确性：数据的有效性，有意义</li>
+<li>一致性：在多用户并发访问数据库的情况下，保证对数据的更新不会出现与实际不一致的情况</li>
+</ul>
+</li>
+<li>完整性规则
+<ul>
+<li>实体完整性规则：在一个基表的主关键字中，属性取值不能为空</li>
+<li>参照完整性
+<ul>
+<li>引用：$R$ 中有属性集与另一个关系的主关键字对应，则 $R$ 引用 $S$ 中的元组</li>
+<li>$R$ 中每个元组在外关键字上不能引用不存在的实体</li>
+</ul>
+</li>
+<li>用户自定义的完整性</li>
+</ul>
+</li>
+<li>完整性约束规则
+<ul>
+<li>设置 <code>CONSTRAINT &lt;约束名&gt; &lt;完整性约束子句&gt;</code></li>
+<li>检查</li>
+<li>处理</li>
+</ul>
+</li>
+<li>外键约束
+<ul>
+<li>Cascade: 同步做连带删除/更新</li>
+<li>Restrict: 拒绝对被引用表的删除/更新操作</li>
+<li>Set Null: 自动设为空</li>
+</ul>
+</li>
+<li>属性级约束（域约束）</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> 
+<span style="color:#f92672">|</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#960050;background-color:#1e0010">{</span>default_constant<span style="color:#f92672">|</span><span style="color:#66d9ef">NULL</span><span style="color:#960050;background-color:#1e0010">}</span>
+<span style="color:#f92672">|</span> [ <span style="color:#66d9ef">CONSTRAINT</span> <span style="color:#66d9ef">constraint_name</span> ]
+      <span style="color:#66d9ef">UNIQUE</span>
+    <span style="color:#f92672">|</span> <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>
+    <span style="color:#f92672">|</span> <span style="color:#66d9ef">CHECK</span> ( search_condition )
+    <span style="color:#f92672">|</span> <span style="color:#66d9ef">REFERENCES</span> <span style="color:#66d9ef">table_name</span> [(<span style="color:#66d9ef">column_name</span>)]
+    [ <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">RESTRICT</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">NULL</span> ]
+    [ <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CASCADE</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">RESTRICT</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">NULL</span> ] <span style="color:#960050;background-color:#1e0010">}</span>
+</code></pre></div><ul>
+<li>元组级约束（表约束）</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL">[ <span style="color:#66d9ef">CONSTRAINT</span> <span style="color:#66d9ef">constraint_name</span> ]
+<span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">UNIQUE</span> ( colname <span style="color:#960050;background-color:#1e0010">{</span> , colname ... <span style="color:#960050;background-color:#1e0010">}</span> )
+<span style="color:#f92672">|</span> <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> ( colname <span style="color:#960050;background-color:#1e0010">{</span> , colname ... <span style="color:#960050;background-color:#1e0010">}</span> )
+<span style="color:#f92672">|</span> <span style="color:#66d9ef">CHECK</span> ( search_condition )
+<span style="color:#f92672">|</span> <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> ( colname <span style="color:#960050;background-color:#1e0010">{</span> , colname ... <span style="color:#960050;background-color:#1e0010">}</span> )
+  <span style="color:#66d9ef">REFERENCES</span> <span style="color:#66d9ef">table_name</span> [ ( colname <span style="color:#960050;background-color:#1e0010">{</span> ,colname... <span style="color:#960050;background-color:#1e0010">}</span> ) ]
+[ <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">RESTRICT</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">NULL</span> ]
+[ <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CASCADE</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">RESTRICT</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">NULL</span> ] <span style="color:#960050;background-color:#1e0010">}</span>
+</code></pre></div><ul>
+<li>全局约束（assertion）</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">ASSERTION</span>  <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span>  <span style="color:#66d9ef">CHECK</span>( <span style="color:#f92672">&lt;</span>condition<span style="color:#f92672">&gt;</span> )
+<span style="color:#66d9ef">DROP</span>   <span style="color:#66d9ef">ASSERTION</span>  <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">assertion</span><span style="color:#f92672">-</span>name<span style="color:#f92672">-</span>list<span style="color:#f92672">&gt;</span>
+</code></pre></div><ul>
+<li>触发器
+<ul>
+<li>触发事件（自定义）</li>
+<li>结果事件（自定义）</li>
+<li>触发过程</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TRIGGER</span> <span style="color:#66d9ef">trigger_name</span> <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">BEFORE</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">AFTER</span> <span style="color:#960050;background-color:#1e0010">}</span>
+    <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">INSERT</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">UPDATE</span> [ <span style="color:#66d9ef">OF</span> colname <span style="color:#960050;background-color:#1e0010">{</span>, colname ... <span style="color:#960050;background-color:#1e0010">}</span>]<span style="color:#960050;background-color:#1e0010">}</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">table_name</span> 
+    [ <span style="color:#66d9ef">REFERENCING</span> <span style="color:#960050;background-color:#1e0010">{</span>
+        <span style="color:#66d9ef">OLD</span> [ <span style="color:#66d9ef">ROW</span> ] [ <span style="color:#66d9ef">AS</span> ] old_row_corr_name
+      <span style="color:#f92672">|</span> <span style="color:#66d9ef">NEW</span> [ <span style="color:#66d9ef">ROW</span> ] [ <span style="color:#66d9ef">AS</span> ] new_row_corr_name
+      <span style="color:#f92672">|</span> <span style="color:#66d9ef">OLD</span> <span style="color:#66d9ef">TABLE</span> [ <span style="color:#66d9ef">AS</span> ] old_table_corr_name
+      <span style="color:#f92672">|</span> <span style="color:#66d9ef">NEW</span> <span style="color:#66d9ef">TABLE</span> [ <span style="color:#66d9ef">AS</span> ] new_table_corr_name
+      <span style="color:#960050;background-color:#1e0010">}</span> ]
+    
+    [ <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">EACH</span> <span style="color:#66d9ef">ROW</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">EACH</span> <span style="color:#66d9ef">STATEMENT</span> ]
+    [ <span style="color:#66d9ef">WHEN</span> ( search_condition ) ]
+    <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">statement</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">BEGIN</span> <span style="color:#66d9ef">ATOMIC</span> <span style="color:#66d9ef">statement</span>; <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">statement</span>; ... <span style="color:#960050;background-color:#1e0010">}</span> <span style="color:#66d9ef">END</span> <span style="color:#960050;background-color:#1e0010">}</span>
+
+<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TRIGGER</span> <span style="color:#66d9ef">trigger_name</span>
+</code></pre></div></main>
+        </div>
+
+    </div>
+</body></html>

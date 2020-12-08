@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ray-Tracing | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#求交">求交</a></li>
+    <li><a href="#acceleration">Acceleration</a></li>
+    <li><a href="#shading">Shading</a></li>
+    <li><a href="#parallelization">Parallelization</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="introduction">Introduction</h2>
+<ul>
+<li>Good at simulating specular effects</li>
+<li>Rays are reflected, refracted or absorbed</li>
+<li>三角形法向：$N=\frac{(P_1-P_0)\times(P_2-P_0)}{|(P_1-P_0)\times(P_2-P_0)|}$</li>
+<li>计算每个顶点法向：$N_v=\frac{\sum_{i=1}^k}{|\sum_{i=1}^k|}$</li>
+<li>Tangent Space:
+<ul>
+<li>normal vecotr $N$</li>
+<li>tangent vector $T$</li>
+<li>bitangent vector $B$</li>
+</ul>
+</li>
+</ul>
+<h2 id="求交">求交</h2>
+<ul>
+<li>Shpere
+<ul>
+<li>Definition: $x^2+y^2+z^2-r^2=0$</li>
+<li>Definition: $x=r\sin\theta\cos\phi,y=r\sin\theta\sin\phi,z=r\cos\theta$</li>
+</ul>
+</li>
+<li>Cylinder
+<ul>
+<li>Definition: $\phi=u\phi_{\max},x=r\cos\phi,y=r\sin\phi,z=z_{\min}+v(z_{\max}-z_{\min})$</li>
+</ul>
+</li>
+<li>Disk
+<ul>
+<li>Definition: $\phi=u\phi_{\max},x=((1-v)r_i+vr)\cos\phi,y=((1-v)r_i+vr)\sin\phi,z=h$</li>
+</ul>
+</li>
+<li>Triangle Mesh</li>
+</ul>
+<h2 id="acceleration">Acceleration</h2>
+<ul>
+<li>Testing each object for each ray is slow</li>
+<li>Fewer Rays
+<ul>
+<li>Adaptive sampling: 减少采样，内插</li>
+<li>depth control</li>
+</ul>
+</li>
+<li>Generalized Rays
+<ul>
+<li>beam tracing</li>
+<li>cone tracing</li>
+<li>pencil tracing</li>
+</ul>
+</li>
+<li>Faster Intersection
+<ul>
+<li>Object subdivision approaches
+<ul>
+<li>BVH (Bounding Volumne boxes)：recursively finding bounding box of objects and split objects into two groups</li>
+</ul>
+</li>
+<li>Space subdivision approaches
+<ul>
+<li>
+<p>Uniform Grid</p>
+<p>Find bounding box - Determine grid resolution - Place object in cell if its bounding box overlaps the cell- Check that object overlaps cell(expensive!)</p>
+<p>Teapot in a stadium Problem: Not adaptive to distribution of primitives</p>
+</li>
+<li>
+<p>kd-Tree</p>
+<p>SAH(Surface Area Heuristic): 分割平面代价评估函数</p>
+</li>
+</ul>
+</li>
+<li>Building Time: BVH &lt; KD-Tree</li>
+<li>Ray intersection test: BVH &gt; KD-Tree</li>
+</ul>
+</li>
+</ul>
+<h2 id="shading">Shading</h2>
+<ul>
+<li>计算交点的能量：the sading of each intersection point is the sum of contributions from all light sources</li>
+<li>Material properties: diffusion, specular, shininess, emission</li>
+<li>Light types: Ambient light, point light, &hellip;</li>
+<li>Classic Ray Tracing
+<ul>
+<li>Perfect focus</li>
+<li>Perfect reflections</li>
+<li>Sharp shadow</li>
+</ul>
+</li>
+<li>Distributed Ray Tracing: randomly oversampling to reduce aliasing artifacts in rendered images
+<ul>
+<li>antialiasing: super-sampling and averaging down
+<ul>
+<li>Jittering: randomly generate a ray within each grid</li>
+</ul>
+</li>
+<li>soft shadows: sample area light</li>
+<li>depth-of-field: sample on Lens</li>
+<li>motion blur: sample on time</li>
+<li>glossy reflections: 介于漫反射与镜面反射</li>
+</ul>
+</li>
+</ul>
+<h2 id="parallelization">Parallelization</h2>
+<ul>
+<li>Threading(Pthread, OpenMP) distributes rays across cores</li>
+<li>MPI distributes rays across processors on different machiens (Message Passing Interface)</li>
+<li>OptiX/CUDA distributes rays on the GPU</li>
+<li>Memory coherency</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

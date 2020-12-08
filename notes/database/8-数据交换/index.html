@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>8-数据交换 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据交换的管理">数据交换的管理</a></li>
+    <li><a href="#数据交换的方式">数据交换的方式</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>初级阶段：交换方式（命令执行方式）</li>
+<li>中级阶段：嵌入式方式，自含方式（可编程SQL），调用层方式</li>
+<li>近期方式：Web方式</li>
+</ul>
+<h2 id="数据交换的管理">数据交换的管理</h2>
+<ul>
+<li>会话管理
+<ul>
+<li>数据客体模式设定（网络环境，目录层，模式层）</li>
+<li>语言模式设定（字符集）</li>
+<li>时间模式设定（时区）</li>
+<li>标识符设定</li>
+</ul>
+</li>
+<li>连接管理
+<ul>
+<li>连接语句 <code>connect to &lt;连接目标&gt;</code></li>
+<li>断开连接 <code>disconnect &lt;断开对象&gt;</code></li>
+</ul>
+</li>
+<li>游标管理</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--declare
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">EXEC</span> <span style="color:#66d9ef">SQL</span> <span style="color:#66d9ef">DECLARE</span> agent_dollars <span style="color:#66d9ef">CURSOR</span> <span style="color:#66d9ef">FOR</span>
+    <span style="color:#66d9ef">select</span>  aid, <span style="color:#66d9ef">sum</span>(dollars)
+    <span style="color:#66d9ef">from</span>    orders
+    <span style="color:#66d9ef">where</span>  cid <span style="color:#f92672">=</span> :cust_id <span style="color:#75715e">--:cust_id is stored in host variable
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span>  aid 
+<span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">ONLY</span>;
+<span style="color:#75715e">--open
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">open</span> agent_dollars
+<span style="color:#75715e">--fetch
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">whenever</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">found</span> <span style="color:#66d9ef">goto</span> finish;
+while (<span style="color:#66d9ef">TRUE</span>)<span style="color:#960050;background-color:#1e0010">{</span>
+    <span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">fetch</span> agent_dollars <span style="color:#66d9ef">into</span> :agent_id, :dollar_sum;
+    printf(<span style="color:#e6db74">&#34;%s %11.2f\n&#34;</span>, agent_id, dollar_sum);
+<span style="color:#960050;background-color:#1e0010">}</span>
+finish: <span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">close</span> agent_dollars;
+<span style="color:#75715e">--mysql
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">declare</span> <span style="color:#66d9ef">continue</span> <span style="color:#66d9ef">HANDLER</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">found</span> <span style="color:#66d9ef">set</span> done <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+<span style="color:#66d9ef">open</span> cur;
+<span style="color:#66d9ef">fetch</span> cur <span style="color:#66d9ef">into</span> n,<span style="color:#66d9ef">c</span>;
+while(<span style="color:#66d9ef">not</span> done) <span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">fetch</span> cur <span style="color:#66d9ef">into</span> n,<span style="color:#66d9ef">c</span>;
+<span style="color:#66d9ef">end</span> while;
+<span style="color:#66d9ef">close</span> cur;
+<span style="color:#75715e">--mysql
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">open</span> cur;
+read_loop:loop
+<span style="color:#66d9ef">fetch</span> cur <span style="color:#66d9ef">into</span> n,<span style="color:#66d9ef">c</span>;
+    <span style="color:#66d9ef">if</span> done <span style="color:#66d9ef">then</span>
+        leave read_loop;
+    <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>;
+<span style="color:#66d9ef">end</span> loop;
+<span style="color:#66d9ef">close</span> cur;
+<span style="color:#75715e">--Scrollable Cursors
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">EXEC</span> <span style="color:#66d9ef">SQL</span> <span style="color:#66d9ef">FETCH</span> [<span style="color:#960050;background-color:#1e0010">{</span><span style="color:#66d9ef">NEXT</span><span style="color:#f92672">|</span><span style="color:#66d9ef">PRIOR</span><span style="color:#f92672">|</span><span style="color:#66d9ef">FIRST</span><span style="color:#f92672">|</span><span style="color:#66d9ef">LAST</span><span style="color:#960050;background-color:#1e0010">}</span> value] <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">cursor_name</span> <span style="color:#66d9ef">INTO</span> :agent_id
+</code></pre></div><ul>
+<li>诊断管理
+<ul>
+<li>返回状态码</li>
+</ul>
+</li>
+<li>动态 SQL：根据实际情况调用 SQL 语句
+<ul>
+<li>prepare: 为执行对数据库的访问操作而准备一个存储在主变量中的SQL语句</li>
+<li>describe: 获得一个已准备好的SQL语句的结果集的描述信息</li>
+<li>execute: 执行一个已准备好的 SQL 语句</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据交换的方式">数据交换的方式</h2>
+<ul>
+<li>嵌入式 SQL: precompiler - compiler - link - exec
+<ul>
+<li>语句区分：前后缀（EXEC SQL, END_EXEC）</li>
+<li>通讯：EXEC SQL INCLUDE SQLCA</li>
+<li>变量区分
+<ul>
+<li>主变量：标量</li>
+<li>SQL变量：集合变量</li>
+</ul>
+</li>
+<li>数据交换：游标</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#75715e">--Declare Section
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">begin</span> <span style="color:#66d9ef">declare</span> section;
+    char cust_id[<span style="color:#ae81ff">5</span>];
+    char cust_name[<span style="color:#ae81ff">14</span>];
+    float cust_discnt;
+    char user_name[<span style="color:#ae81ff">20</span>], user_pwd[<span style="color:#ae81ff">20</span>];
+<span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">declare</span> section;
+<span style="color:#75715e">--Condition Handling
+</span><span style="color:#75715e">----Condition: SQLERROR, NOT FOUND, SQLWARNING
+</span><span style="color:#75715e">----Action: CONTINUE, GOTO label, STOP, DO function| BREAK | CONTINUE
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">whenever</span> <span style="color:#66d9ef">sqlerror</span> <span style="color:#66d9ef">goto</span> report_error;
+<span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">whenever</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">found</span> <span style="color:#66d9ef">goto</span> notfound;
+<span style="color:#66d9ef">set</span>  discnt <span style="color:#f92672">=</span> :cust_discnt INDICATOR :cd_ind <span style="color:#66d9ef">where</span>  cid <span style="color:#f92672">=</span> :cust_id;
+<span style="color:#75715e">--Connect
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">connect</span> <span style="color:#66d9ef">to</span> target<span style="color:#f92672">-</span>server
+<span style="color:#75715e">--main
+</span><span style="color:#75715e">--Disconnect
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">commit</span> <span style="color:#66d9ef">work</span>;
+<span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">rollback</span> <span style="color:#66d9ef">work</span>;
+<span style="color:#66d9ef">exec</span> <span style="color:#66d9ef">sql</span> <span style="color:#66d9ef">disconnect</span> <span style="color:#66d9ef">current</span>;
+</code></pre></div><ul>
+<li>自含式 SQL: PL/SQL, T-SQL
+<ul>
+<li>块：DECLARE + BEGIN + EXCEPTION + END</li>
+<li>PL/SQL 中的游标属性
+<ul>
+<li>%ISOPEN</li>
+<li>%FOUND</li>
+<li>%NOTFOUND</li>
+<li>%ROWCOUNT</li>
+</ul>
+</li>
+<li>T-SQL 全局变量
+<ul>
+<li>@@ERROR</li>
+<li>@@ROWCOUNT</li>
+<li>@@CURSOR_ROWS</li>
+<li>@@FETCH_STATUS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>调用层接口
+<ul>
+<li>C/S方式下访问接口
+<ul>
+<li>ISO接口：SQL/CLI</li>
+<li>微软：ODBC</li>
+<li>SUN：JDBC</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Web 方式
+<ul>
+<li>ASP(Active Server Page)</li>
+<li>JSP(Java Server Page)</li>
+<li>XML</li>
+<li>数据库连接池</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

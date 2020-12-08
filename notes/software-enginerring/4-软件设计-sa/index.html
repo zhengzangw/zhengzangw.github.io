@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4-软件设计-SA | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#结构化分析方法-sa">结构化分析方法 SA</a></li>
+    <li><a href="#结构化设计方法">结构化设计方法</a>
+      <ul>
+        <li><a href="#概要设计">概要设计</a></li>
+        <li><a href="#详细设计">详细设计</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="结构化分析方法-sa">结构化分析方法 SA</h2>
+<ul>
+<li>分析：从问题域向求解域迈进的第一步</li>
+<li>分析活动的产生制品是应用域专家和计算机专家都可以看得懂的规格说明</li>
+<li>基本思想：:  “自顶向下，逐步求精” ,“抽象和分解”</li>
+<li>结构化方法=结构化分析+结构化设计+结构化程序设计</li>
+<li>分解：把系统的复杂性降低到可以掌握的程度，把大问题分解成若干小问题，然后分别解决</li>
+<li>抽象：即先考虑问题最本质的属性，暂把细节略去，以后再逐层添加细节，直至涉及到最详细的内容</li>
+<li>分析结果
+<ul>
+<li>数据字典：定义数据，描述了所有的在目标系统中使用的和生成的数据对象</li>
+<li>数据流程图：表达信息系统中数据的流向方式（功能建模）
+<ul>
+<li>功能 = 功能 + {子功能} + 功能接口</li>
+<li>数据流法 = 数据流 + 数据处理 + 数据存储 + 端点 + 处理说明 + 数据字典</li>
+</ul>
+</li>
+<li>实体&mdash;关系图 ERD：描述数据对象及数据对象之间的关系（数据建模）</li>
+<li>状态&mdash;迁移图 STD：描述系统对外部事件如何响应，如何动作（行为建模）</li>
+<li>系统关系图：系统与外界相关系统的输入与输出
+<ul>
+<li>系统 = 实体 + 属性 + 关系</li>
+</ul>
+</li>
+<li>信息结构图：表达系统的顶层架构、体现分解的过程</li>
+<li>加工规格说明：定义数据的处理</li>
+</ul>
+</li>
+</ul>
+<h2 id="结构化设计方法">结构化设计方法</h2>
+<ul>
+<li>结构化程序设计（Dijkstra）：概要设计+详细设计</li>
+</ul>
+<h3 id="概要设计">概要设计</h3>
+<h4 id="概念">概念</h4>
+<ul>
+<li>模块化：软件被划分成独立命名和可独立访问的被称作模块的构件，每个模块完成一个子功能，它们集成到一起满足问题需求</li>
+<li>实现模块化的手段
+<ul>
+<li>抽象：抽出事物的本质特性而暂时不考虑它们的细节</li>
+<li>信息隐蔽：应该这样设计和确定模块，使得一个模块内包含的信息（过程和数据）对于不需要这些信息的模块来说，是不可访问的</li>
+</ul>
+</li>
+<li>模块独立性：开发具有独立功能而且和其它模块之间没有过多的相互作用的模块</li>
+<li>独立性衡量
+<ul>
+<li>耦合性：开发具有独立功能而且和其它模块之间没有过多的相互作用的模块</li>
+<li>内聚性：标志一个模块内各个处理元素彼此结合的紧密程度，理想的内聚模块只做一件事情</li>
+</ul>
+</li>
+<li>耦合分类
+<ul>
+<li>无任何连接（最低耦合）</li>
+<li>数据耦合（低耦合）：两个模块彼此通过参数交换信息，且交换的仅仅是数据</li>
+<li>控制耦合（中耦合）：两个模块之间传递的信息有控制成分</li>
+<li>公共环境耦合：两个或多个模块通过一个公共环境相互作用
+<ul>
+<li>一个存一个取：低耦合</li>
+<li>都存取数据：低&mdash;中耦合</li>
+</ul>
+</li>
+<li>内容耦合
+<ul>
+<li>一个模块访问另一个模块的内部数据</li>
+<li>两个模块有一部分程序代码重叠</li>
+<li>一个模块不通过正常入口而转移的另一个的内部</li>
+<li>一个模块有多个入口</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内聚分类
+<ul>
+<li>偶然内聚（低）：一组任务关系松散</li>
+<li>逻辑内聚（低）：一组任务在逻辑上同属一类，例如均为输出</li>
+<li>时间内聚（低）：一组任务必须在同一段时间内执行</li>
+<li>信息内聚（中）：模块内所有元素都引用相同的输入或输出数据集合</li>
+<li>顺序内聚（高）：模块中的每个元素都是与同一功能紧密相关，一个元素的输出是下一个元素的输入</li>
+<li>功能内聚（高）：一个模块完成一个且仅完成一个功能</li>
+</ul>
+</li>
+<li>扇出数：由一模块直接控制的其他模块的数目</li>
+<li>扇入数：有多少个模块直接控制一个给定的模块</li>
+</ul>
+<h4 id="设计方法">设计方法</h4>
+<ul>
+<li>面向数据流的设计
+<ul>
+<li>信息流
+<ul>
+<li>变换流：信息沿输入通路进入系统，同时由外部形式变换成内部形式。进入系统的信息通过变换中心，经过加工处理以后再沿着输出通路变换成外部形式离开系统。</li>
+<li>事务流：事务流的特点是数据沿着接收通路把外部世界的信息转换成一个事务项，然后，计算该事务项的值，根据它的值激励起多条活动通路中的一条数据流。发出多条通路的信息流中枢被称为“事务中心”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>面向数据结构的设计：Jackson 方法</li>
+</ul>
+<h3 id="详细设计">详细设计</h3>
+<ul>
+<li>详细设计是给出软件结构中各模块的内部过程描述</li>
+<li>图形工具
+<ul>
+<li>流程图</li>
+<li>方块图（N-S）</li>
+<li>PAD 图</li>
+</ul>
+</li>
+<li>语言工具：PDL(Program Design Language)</li>
+<li>软件设计说明书
+<ul>
+<li>系统的目标和作为系统元素的软件的作用</li>
+<li>硬件、软件与人机接口</li>
+<li>主要的软件功能</li>
+<li>外部定义的数据库</li>
+<li>主要的设计约束与限制</li>
+<li>设计说明：数据说明、导出的软件结构、结构内接口</li>
+<li>模块说明
+<ul>
+<li>处理说明</li>
+<li>接口说明</li>
+<li>设计语言说明</li>
+<li>使用模块</li>
+<li>数据组织</li>
+<li>注解</li>
+</ul>
+</li>
+<li>文件结构和全程数据</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

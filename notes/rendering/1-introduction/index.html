@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Introduction | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rendering">Rendering</a>
+      <ul>
+        <li><a href="#ray-casting-appel-1968">Ray Casting (Appel, 1968)</a></li>
+      </ul>
+    </li>
+    <li><a href="#前沿进展">前沿进展</a>
+      <ul>
+        <li><a href="#gradnet-2019-siggraph">GradNet (2019 SIGGRAPH)</a></li>
+        <li><a href="#deep-shading-egst-2007">Deep Shading (EGST 2007)</a></li>
+        <li><a href="#deep-illumination-arxiv">Deep Illumination (arXiv)</a></li>
+        <li><a href="#2019-年图灵奖">2019 年图灵奖</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="rendering">Rendering</h2>
+<ul>
+<li>
+<p>Rendering: The process of generating an image from a model, by means of a computer program</p>
+<p>Model -&gt; Rendering -&gt; Image -&gt; Display</p>
+<ul>
+<li>image + model - comp = painting, photography</li>
+<li>model + comp - image = 3D printing, hydrographic printing, sound rendering</li>
+<li>image + comp - model = abstract graphics</li>
+</ul>
+</li>
+<li>
+<p>Realism</p>
+<ul>
+<li>Shadows</li>
+<li>Reflections</li>
+<li>Transparency</li>
+<li>Translucency</li>
+<li>Textures</li>
+<li>Complex illumination</li>
+<li>Realistic Materials</li>
+</ul>
+</li>
+<li>
+<p>Components</p>
+<ul>
+<li>Scene geometry</li>
+<li>Camera</li>
+<li>Light sources</li>
+<li>Materials</li>
+<li>Light propagation</li>
+</ul>
+</li>
+<li>
+<p>Application</p>
+<ul>
+<li>影视特效</li>
+<li>动画</li>
+<li>三维游戏（Performance，速度要快）</li>
+<li>工业设计</li>
+<li>文化遗产保护</li>
+<li>虚拟现实（Performance）</li>
+</ul>
+</li>
+</ul>
+<h3 id="ray-casting-appel-1968">Ray Casting (Appel, 1968)</h3>
+<ul>
+<li>a simple version version of ray tracing</li>
+<li>发射光线 -&gt; 获得交点 -&gt; 计算光源贡献</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ray <span style="color:#f92672">=</span> rayThruPixel(cam, i, j)
+hit <span style="color:#f92672">=</span> Intersect(ray, scene) <span style="color:#75715e">//瓶颈
+</span><span style="color:#75715e"></span>image[i][j] <span style="color:#f92672">=</span> findColor(hit)
+</code></pre></div><ul>
+<li>不考虑阴影，反射</li>
+<li>只考虑 direct illumination</li>
+</ul>
+<h2 id="前沿进展">前沿进展</h2>
+<h3 id="gradnet-2019-siggraph">GradNet (2019 SIGGRAPH)</h3>
+<ul>
+<li>去噪</li>
+<li>Gradient-domain Rendering: Off-path 计算梯度</li>
+<li>主图+两张梯度图去噪：优化方程</li>
+<li>增加约束项：速度慢 -&gt; 用网络模拟过程</li>
+<li>Deep learning based, unsupervised, fast to reconstruct high-quality image</li>
+</ul>
+<h3 id="deep-shading-egst-2007">Deep Shading (EGST 2007)</h3>
+<ul>
+<li>Convolutional Neural Networks</li>
+<li>U-net</li>
+</ul>
+<h3 id="deep-illumination-arxiv">Deep Illumination (arXiv)</h3>
+<ul>
+<li>GAN</li>
+</ul>
+<h3 id="2019-年图灵奖">2019 年图灵奖</h3>
+<ul>
+<li>Edwin Catmull
+<ul>
+<li>Z-buffering</li>
+<li>Texture mapping</li>
+<li>Catmull-Clark subdivision</li>
+</ul>
+</li>
+<li>Patrick Hanrahan
+<ul>
+<li>Volume rendering</li>
+<li>Subsurface scattering</li>
+<li>Light Field rendering</li>
+<li>Tableau</li>
+</ul>
+</li>
+<li>1995 玩具总动员</li>
+<li>RenderMan</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

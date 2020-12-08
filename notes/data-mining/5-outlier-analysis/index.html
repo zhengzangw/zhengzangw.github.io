@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5. Outlier Analysis | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#outlier-analysis">Outlier analysis</a>
+      <ul>
+        <li><a href="#statistical">Statistical</a></li>
+        <li><a href="#proximity-based-approaches">Proximity-based approaches</a></li>
+        <li><a href="#clustering-based">Clustering-based</a></li>
+        <li><a href="#classification-based">Classification-based</a></li>
+        <li><a href="#isoation-based">Isoation-based</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="outlier-analysis">Outlier analysis</h2>
+<ul>
+<li>Outliers
+<ul>
+<li>Global: deviates from the rest of the data set</li>
+<li>Contextual: deviates significantly with respect to a specific context of the object</li>
+<li>Collective: objects as a whole deviate significantly from the entire data set</li>
+</ul>
+</li>
+<li>Categorization based on supervision
+<ul>
+<li>Supervised</li>
+<li>Unsupervised</li>
+<li>Semi-supervised</li>
+</ul>
+</li>
+<li>Mining contextual outliers
+<ul>
+<li>transforming contextual to conventional</li>
+<li>Modeling normal behavior</li>
+</ul>
+</li>
+<li>Mining collective outliers
+<ul>
+<li>Exploring the structure of the data</li>
+</ul>
+</li>
+<li>high dimensional data
+<ul>
+<li>dimensionality reduction</li>
+<li>partiion the original feature space into small region</li>
+</ul>
+</li>
+</ul>
+<h3 id="statistical">Statistical</h3>
+<ul>
+<li>Parametric approaches
+<ul>
+<li>Univariate
+<ul>
+<li>mean + standard deviation: $\mu\pm3\sigma$</li>
+<li>median $\pm$ 1.5 * IQR (inter-quatile range)</li>
+<li>Brubb&rsquo;s test: Z score + t-distribution</li>
+</ul>
+</li>
+<li>Multivariate
+<ul>
+<li>Trainsform to univariate: univarate set ${d(o,\overline{o})|o\in D}$</li>
+<li>卡方分析</li>
+<li>modeling the data with multiple parametric distribution</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Non-parametric
+<ul>
+<li>histogram</li>
+<li>kernel density estimation</li>
+</ul>
+</li>
+</ul>
+<h3 id="proximity-based-approaches">Proximity-based approaches</h3>
+<p>the proximity of an outlier object to its nearest neighbors significantly deviates from the proximity of the object to most of the other objects in the data set</p>
+<ul>
+<li>Distance-based: global view
+<ul>
+<li>$\text{DB}(r,\pi)$-outlier: $\frac{|{o'|\text{dist}(o,o')\leq r}|}{|D|}\leq\pi$</li>
+<li>CELL (Grid-base)</li>
+</ul>
+</li>
+<li>Density-based
+<ul>
+<li>LOF
+<ul>
+<li>K-distance neighborhood: $N_k(o)={o'|o'\in D,d(o,o')\leq d_k(o)}$</li>
+</ul>
+</li>
+<li>Reachability distance: $\text{reachdist}_k(o\leftarrow o')=\max{d_k(o),d(o,o')}$</li>
+<li>Local reachability density: $\text{lrd}<em>k(o)=\frac{|N_k(o)|}{\sum</em>{o'\in N_k(o)}\text{reachdist}_k(o'\leftarrow o)}$</li>
+<li>Local outlier factor(the larger, the more abnormal): $\text{LOF}<em>k(o)=\sum</em>{o'\in N_k(o)}\sum_{o'\in N_k(o)}\text{reachdist}_k(o'\leftarrow o)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="clustering-based">Clustering-based</h3>
+<ul>
+<li>basic ideas
+<ul>
+<li>outlier does not belong to any clusters</li>
+<li>the distance between an outlier and the cluster to which it is closest to is large</li>
+<li>all objects in a small and sparse cluster can be considered as outliers</li>
+</ul>
+</li>
+<li>CBLOF
+<ul>
+<li>Find clusters and sort according to decreasing size</li>
+<li>Identify “large” cluster using a preset percentage of the entire data</li>
+<li>for points in large cluster: CBLOF= size of the cluster $\times$ similarity between the point and the cluster</li>
+<li>for points in small cluster: CBLOF= size of the cluster $\times$ similarity between the point and the closest large cluster</li>
+</ul>
+</li>
+</ul>
+<h3 id="classification-based">Classification-based</h3>
+<ul>
+<li>outlier v.s. normal: severely imbalanced distribution</li>
+<li>One-class SVM
+<ul>
+<li>v-SVM: Separating the “normal” data from the origin with a margin in
+a feature space</li>
+<li>SVDD: Constraining ”normal” data in a ball with relative small radius</li>
+</ul>
+</li>
+</ul>
+<h3 id="isoation-based">Isoation-based</h3>
+<ul>
+<li>iForest: Outliers are few and different. Thus, when randomly split the space into small region, an outlier is more likely to be ISOLATED</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

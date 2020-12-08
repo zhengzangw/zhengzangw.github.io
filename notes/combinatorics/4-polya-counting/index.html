@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4. Pólya&#39;s Theory of Counting | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#群作用的基本概念">群作用的基本概念</a></li>
+    <li><a href="#pólya-theory-of-counting">Pólya Theory of Counting</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>Graph Isomorphism (GI)
+<ul>
+<li>Input: two undirected graphs $G$ and $H$</li>
+<li>Output: $[G\cong H]$</li>
+</ul>
+</li>
+<li>String Isomorphism (SI)
+<ul>
+<li>Input: two strings $x,y$: $[n]\rightarrow[m]$ and a permutation group $G\subseteq S_n$</li>
+<li>Output: $[x\cong_G y]$</li>
+</ul>
+</li>
+</ul>
+<h2 id="群作用的基本概念">群作用的基本概念</h2>
+<ul>
+<li>群 $G$ 在非空集合 $X$上的左作用 $\circ:G\times X\rightarrow X$ 满足
+<ul>
+<li>$\forall x\in X(e\circ x=x)$</li>
+<li>$g_1\circ(g_2\circ x) = (g_1g_2) \circ x$</li>
+</ul>
+</li>
+<li>轨道：$O_x=Gx={g\circ x:g\in G}$
+<ul>
+<li>Let $X/G={O_x|x\in G}$</li>
+<li>$X=\bigsqcup O_x$</li>
+</ul>
+</li>
+<li>$g$-不动点(invariant set)：$X_g=\text{fix}(g)={x\in X:g\circ x=x}$</li>
+<li>稳定化子(stabilizers)：$G_x=\text{stab}(x)={g\in G: g\circ x=x}\leqslant G$
+<ul>
+<li>$[G:G_x]=|O_x|$</li>
+</ul>
+</li>
+<li><strong>Burnside引理</strong>: $|X/G|=\frac{1}{|G|}\sum_{g\in G}|X_g|$</li>
+</ul>
+<h2 id="pólya-theory-of-counting">Pólya Theory of Counting</h2>
+<ul>
+<li>$M_\pi(x_1,x_2,\cdots,x_n)=\prod_{i=1}^k x_{l_i},i$th cycle has length $i$</li>
+<li>cycle index of $G$: $P_G(x_1,x_2,\cdots,x_n) = \frac{1}{|G|}\sum_{\pi\in G}M_\pi(x_1,x_2,\cdots,x_n)$</li>
+<li>nonequivalent $m$-colorings of $n$ objects under the action of $G$ pattern inventory
+<ul>
+<li>$F_G(y_1,y_2,\cdots,y_m)=\sum_{v}a_vy_1^{n_1}y_2^{n_2}\cdots y_m^{n_m}$</li>
+<li>$v=(n_1,n_2,\cdots,n_m),\sum_{i=1}^mn_i = n$</li>
+</ul>
+</li>
+<li>Pólya&rsquo;s enumeration formula: $F_G(y_1,y_2,\cdots,y_m)=P_G(\sum_{i=1}^my_i,\sum_{i=1}^my_i^2,\cdots,\sum_{i=1}^my_i^n)$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

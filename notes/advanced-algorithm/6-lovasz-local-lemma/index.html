@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>11. Lovász Local Lemma | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#unique-games-conjecture">Unique Games Conjecture</a></li>
+    <li><a href="#constraint-satisfaction-problem">Constraint Satisfaction Problem</a></li>
+    <li><a href="#lovász-local-lemma">Lovász Local Lemma</a></li>
+    <li><a href="#algorithmic-lll">Algorithmic LLL</a>
+      <ul>
+        <li><a href="#mosers-algorithm">Moser&rsquo;s Algorithm</a></li>
+        <li><a href="#moser-tardos-algorithm">Moser-Tardos Algorithm</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="unique-games-conjecture">Unique Games Conjecture</h2>
+<ul>
+<li>Unique Label Cover(ULC): An undirected graph $G(V,E)$, $q$ colors, each dege $e$ associated with a bijection $\phi_e:[q]\rightarrow[q]$. A coloring $\sigma\in[q]^V$ satisfies the constraint of the edge $e=(u,v)\in E$ if $\phi_{e}(\sigma_u)=\phi_e(\sigma_v)$</li>
+<li>UGC(2002 Khot): $\forall e,\exists q$ such that this is $\text{NP}$-hard to ditinguish between ULC instances:
+<ul>
+<li>$&gt;1-\epsilon$ fraction of edges satisfied by a coloring;</li>
+<li>no more than $\epsilon$ fraction of edges satisfied by any coloring</li>
+</ul>
+</li>
+</ul>
+<h2 id="constraint-satisfaction-problem">Constraint Satisfaction Problem</h2>
+<ul>
+<li>CSP Definition
+<ul>
+<li>variables: $V={v_1,v_2,\cdots,v_n},v_i\in\Omega$</li>
+<li>constraints: $C_1,C_2,\cdots,C_m,C_i:\Omega^{S_i}\rightarrow{T,F},S_i\subset X$</li>
+<li>assignment: $\sigma\in[q]^V$</li>
+<li>$\mu(\sigma)=\prod_{i=1}^mC_i(\sigma_{S_i})/Z$</li>
+</ul>
+</li>
+<li>CSP
+<ul>
+<li>satisfiability: determine whether $\exists$ an assignment satisfying all constraints
+<ul>
+<li>search: find an assignment</li>
+</ul>
+</li>
+<li>optimization: find an assignment satisfying as may constraints as possible
+<ul>
+<li>refutation: find a proof of no assignment can satisfy $&gt;m^<em>$ constraints for $m^</em>$ as small as possible</li>
+</ul>
+</li>
+<li>counting: estimate the number of satisfying assignments
+<ul>
+<li>sampling: random sample a satisfying assignments</li>
+<li>inference: calculate the possibility of a variable being assigned certain value</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>CSP</th>
+<th>Satisfiability</th>
+<th>Optimization</th>
+<th>Counting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2SAT</td>
+<td>P</td>
+<td>NP-hard</td>
+<td>#P-complete</td>
+</tr>
+<tr>
+<td>3SAT</td>
+<td>NP-complete</td>
+<td>NP-hard</td>
+<td>#P-complete</td>
+</tr>
+<tr>
+<td>matching</td>
+<td>P</td>
+<td>P</td>
+<td>#P</td>
+</tr>
+<tr>
+<td>2-coloring(cut)</td>
+<td>P</td>
+<td>NP-hard</td>
+<td>FP</td>
+</tr>
+<tr>
+<td>3-coloring</td>
+<td>NP-complete</td>
+<td>NP-hard</td>
+<td>#P-complete</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Poly-time inter-reducible
+<ul>
+<li>appox. counting</li>
+<li>sampling</li>
+<li>approx. inference</li>
+</ul>
+</li>
+<li>Random Sampling
+<ul>
+<li>Uniform independent set in graphs of max-degree $\Delta$: (poly-time when $\Delta$≤5, NP-hard when $\Delta$≥6 or higher</li>
+<li>Uniform matching in any graph (always poly-time)</li>
+<li>Uniform proper$q$-coloring of graphs of max-dgree $\Delta$: NP-hard when $q&lt;\Delta$</li>
+</ul>
+</li>
+<li>$k$-SAT
+<ul>
+<li>$\Omega={T,F}$, constraints are clauses</li>
+<li>$k$-CNF: each clause contains $k$ variables</li>
+<li>Determine satisfiability</li>
+<li>degree $d$: each clause intersects with $\leq d$ other clauses</li>
+</ul>
+</li>
+</ul>
+<h2 id="lovász-local-lemma">Lovász Local Lemma</h2>
+<ul>
+<li>Goal: $P(\bigwedge_{i=1}^m\overline{A}_i)&gt;0$, $m$ bad event $A_1,\cdots,A_m$
+<ul>
+<li>union bound: $\sum_{i=1}^mP(A_i)&lt;1$</li>
+<li>PIE: $\sum_{I\subseteq{m},|I|&gt;0}(-1)^{|I|-1}P(\bigwedge_{i\in S}A_i)&lt;1$</li>
+<li>LLL: $\forall i,P(A_i)\leq\frac{1}{4d}$ and $A_i$ is independent of all but $\leq d$ other bad events</li>
+</ul>
+</li>
+<li>LLL for $k$-SAT: $d\leq 2^{k-2}\Rightarrow\phi$ is always satisfiable</li>
+<li>LLL (asymmetric version): $\exists \alpha_1,\alpha_2,\cdots,\alpha_m\in[0,1)$</li>
+</ul>
+<p>$$\forall i:P(A_i)\leq\alpha_i\prod_{j\sim i}(1-\alpha_j)\Rightarrow P(\wedge_{i=1}^m\overline{A}_i)&gt;\prod_{i=1}^m(1-\alpha_i)$$</p>
+<h2 id="algorithmic-lll">Algorithmic LLL</h2>
+<h3 id="mosers-algorithm">Moser&rsquo;s Algorithm</h3>
+<ul>
+<li>Algorithmic LLL for $k$-SAT(Moser 2009): $d\leq 2^{k-c}\Rightarrow$ satisfying assignment can be found in time $O(n+km)$ w.h.p.</li>
+<li>Algorithm
+<ul>
+<li>Solve($\phi$)
+<ul>
+<li>sample a uniform random assignment</li>
+<li>while $\exists$ unsatisfied clause $C$: Fix($C$)</li>
+</ul>
+</li>
+<li>Fix($C$)
+<ul>
+<li>resample variables in $C$ uniformly at random</li>
+<li>while $\exists$ unsatisfied clause $D$ intersecting $C$: Fix($D$)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Analysis
+<ul>
+<li>$T$: total # of calls to Fix($C$)</li>
+<li># of random bits: $n+kT$
+<ul>
+<li>$n$: intial bits</li>
+<li>$kT$: each calls resampling uses $k$ bits</li>
+</ul>
+</li>
+<li>transcript($\leq m+T(\log_2 d+O(1))$ bits) + $n$ bits
+<ul>
+<li>$n$: final bits</li>
+<li>$m$: Fix calls order in Solve</li>
+<li>$T(\log_2 d+O(1))$: recursive calls order</li>
+</ul>
+</li>
+<li>1-1 mapping between above: $n+kT-\log_2 n\leq m+T(\log_2d+O(1))+n\Rightarrow T\leq m+\log_2n$</li>
+<li>$O(n+k(m+\log n))=O(n+km)$</li>
+</ul>
+</li>
+<li>Incompressibility Theorem(Kolmogorov): $N$ uniform random bits cannot be encoded to less than $N-l$ bits with probability at least $1-O(2^{-l})$</li>
+</ul>
+<h3 id="moser-tardos-algorithm">Moser-Tardos Algorithm</h3>
+<ul>
+<li>Suppose $A_1,\cdots,A_m$ are determined by mutually independent random variables $X_1,\cdots,X_n$, then LLL conditions $\Rightarrow\exists$ an assignment of $X_1,\cdots,X_n$ avoiding all bad events $A_1,\cdots,A_m$
+<ul>
+<li>$\text{vbl}(A_i)$: set of variables on which $A_i$ is defined</li>
+<li>$\Gamma(A_i)={A_j|j\neq i\wedge\text{vbl}(A_i)\cap\text{vbl}(A_j)\neq\emptyset}$</li>
+</ul>
+</li>
+<li>Assumption: followings can be done efficiently
+<ul>
+<li>draw an independent sample on a random variable $X_j$</li>
+<li>check whether a bad event $A_i$ occurs on current $X_1,\cdots,X_n$</li>
+</ul>
+</li>
+<li>Moser-Tardos Algorithm
+<ul>
+<li>sample all $X_1,\cdots,X_n$</li>
+<li>while $\exists$ an occurring bad event $A_i$
+<ul>
+<li>resample all $X_j\in\text{vbl}(A_i)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Algorithmic LLL(Moser-Tardos 2010): $\exists\alpha_1,\alpha_2,\cdots,\alpha_m\in[0,1)$</li>
+</ul>
+<p>$$\forall i,P(A_i)\leq\alpha_i\prod_{j\sim i}(1-\alpha_j)\Rightarrow E[\text{resamples until a satisfying assignment is returned}]\leq \sum_{i=1}^m\frac{\alpha_i}{1-\alpha}$$</p>
+<p>$$\forall i,P(A_i)\leq\frac{1}{e(d+1)}\Rightarrow E[\text{resamples until a satisfying assignment is returned}]\leq \frac{m}{d}$$</p>
+<p>$$\forall i,P(A_i)\leq\frac{1}{4d}\Rightarrow E[\text{resamples until a satisfying assignment is returned}]\leq \frac{m}{2d-1}$$</p>
+<ul>
+<li>Ananlysis
+<ul>
+<li>execution log $\Lambda$: $\Lambda_i\in\mathcal{A}$</li>
+<li>total # of times $A$ is resampled: $N_A=|{i|\Gamma_i=A}|$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

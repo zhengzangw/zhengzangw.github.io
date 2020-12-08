@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2-FNN | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fnn">FNN</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="fnn">FNN</h2>
+<ul>
+<li>前向神经网络/全连接神经网络/多层感知机</li>
+<li>前向传播
+<ul>
+<li>$z^{(l)}=W^{(l)}a^{(l-1)}+b^{(l)}$</li>
+<li>$a^{(l)}=f_l(z^{(l)})$</li>
+</ul>
+</li>
+<li>通用近似定理（Universal Approximation Theorem,1989)
+<ul>
+<li>$\phi(\cdot)$ 是一个非常数、有界、单调递增的连续函数，$J_D$ 是一个 $D$ 维的单位超立方体 $[0,1]^D$，$C(J_D)$ 是定义在 $J_D$ 上的连续函数集合</li>
+<li>$\forall f\in C(J_D),\exists M\in\mathbb{Z},v_m,b_m\in\mathbb{R},\omega_m\in\mathbb{R}^D$, 有函数 $F(x)=\sum_{m=1}^Mv_m\phi(\omega_m^\top x+b_m)$</li>
+<li>$|F(x)-f(x)|&lt;\epsilon,\forall x\in J_D,\epsilon$ 为很小正数</li>
+<li>在 $\mathbb{R}^D$ 有界闭集上依然成立</li>
+</ul>
+</li>
+<li>$𝕀_i(t)$: 第 $i$ 个元素为 $t$ 其余为 $0$ 的行向量</li>
+<li>反向传播算法
+<ul>
+<li>$\delta_i^{(l)}=\frac{\partial L}{\partial z^{(l)}}=\frac{\partial L}{\partial z^{(l+1)}}\frac{\partial z^{(l+1)}}{\partial a^{(l)}}\frac{\partial a^{(l)}}{\partial z^{(l)}}=\delta_{i+1}(W^{l+1})^\top\text{diag}(f'(z^{(l)}))\in\mathbb{R}^{M_l}$</li>
+<li>$dL=\text{tr}(\frac{\partial L}{\partial z^{(l)}}dz^{(l)})=\text{tr}((a^{(l-1)})^\top\delta^{(l)}dW)\Rightarrow\frac{L(y,\hat y)}{\partial W^{(l)}}=\delta^{(l)}(a^{(l-1)})^\top$</li>
+</ul>
+</li>
+<li>自动梯度计算
+<ul>
+<li>数值微分</li>
+<li>符号微分</li>
+<li>自动微分：$f:\mathbb{R}^N\rightarrow\mathbb{R}^M$
+<ul>
+<li>前向模式：$N$</li>
+<li>反向模式：$M$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>优化
+<ul>
+<li>非凸优化问题</li>
+<li>梯度消失问题</li>
+<li>梯度弥散问题</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

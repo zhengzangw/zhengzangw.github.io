@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exception | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#异常概述">异常概述</a></li>
+    <li><a href="#c-异常处理机制">C++ 异常处理机制</a></li>
+    <li><a href="#程序调试">程序调试</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="异常概述">异常概述</h2>
+<ul>
+<li>语法错误：程序书写不符合语法规则，编译程序发现</li>
+<li>逻辑错误：程序设计不当造成程序没有完成预期的功能，静态分析和同态测试发现</li>
+<li>运行异常：程序设计对程序运行环境考虑不周而造成的程序运行错误</li>
+<li>异常处理
+<ul>
+<li>就地处理
+<ul>
+<li>abort: 立即终止程序的执行，不作任何的善后处理工作</li>
+<li>exit: 关闭被程序打开的文件、调用全局对象和 static 存储类的局部对象的析构函数（不要在这些对象类的析构函数中调用 exit）</li>
+</ul>
+</li>
+<li>异地处理
+<ul>
+<li>通过函数的返回值，或指针/引用类型的参数，或全局变量把异常情况通知函数的调用者，由调用者处理</li>
+<li>通过语言提供的结构化异常处理机制进行处理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="c-异常处理机制">C++ 异常处理机制</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">try</span> {
+    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">语句序列</span><span style="color:#f92672">&gt;</span>;
+    <span style="color:#66d9ef">throw</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表达式</span><span style="color:#f92672">&gt;</span>;
+}
+<span style="color:#66d9ef">catch</span> (<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">类型</span><span style="color:#f92672">&gt;</span> [<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">变量</span><span style="color:#f92672">&gt;</span>]){
+    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">语句序列</span><span style="color:#f92672">&gt;</span>
+}
+</code></pre></div><ul>
+<li>一个 try 语句块的后面可以跟多个 catch 语句块，用于捕获不同类型的异常对象并进行处理</li>
+<li>try 语句块 throw 了异常对象，如果该 try 语句块之后
+<ul>
+<li>有能够捕获该异常对象的 catch 语句，则执行这个 catch 语句中的&lt;语句序列&gt;，然后继续执行这个 catch 语句之后的非 catch 语句</li>
+<li>没有能够捕获该异常对象的 catch 语句，则由函数调用链上的上一层函数中的 try 语句的相应 catch 来捕获</li>
+</ul>
+</li>
+<li>try 语句嵌套
+<ul>
+<li>当在内层的 try 语句的执行中产生了异常，则首先在内层 try 语句块之后的 catch 语句序列中查找与之匹配的处理，如果内层不存在能捕获相应异常的 catch，则逐步向外层进行查找</li>
+<li>如果抛掷的异常对象在程序的调用链上没有给出捕获，则调用系统的 terminate 函数进行标准的异常处理。默认情况下，terminate 函数将会去调用 abort 函数</li>
+</ul>
+</li>
+<li>异常处理实现机制
+<ul>
+<li>每个函数拥有一个 catch 表</li>
+<li>每进入一个 try，都会把其后的所有 catch 入口地址记录在相应函数的 catch 表中</li>
+<li>执行 throw 时，顺着调用链去搜索 catch 入口，并进行栈的处理</li>
+<li>系统的异常处理为 terminate</li>
+</ul>
+</li>
+</ul>
+<h2 id="程序调试">程序调试</h2>
+<ul>
+<li>assertion</li>
+<li>宏 assert: 在宏名 NDEBUG 没有定义时才有效
+<ul>
+<li>assert.h</li>
+<li>cassert</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

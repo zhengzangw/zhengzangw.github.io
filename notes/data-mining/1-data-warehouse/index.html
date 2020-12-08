@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1. Data Warehouse | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#big-data">Big Data</a></li>
+    <li><a href="#数据仓库概念">数据仓库概念</a></li>
+    <li><a href="#olap">OLAP</a>
+      <ul>
+        <li><a href="#分块技术">分块技术</a></li>
+        <li><a href="#数据仓库使用">数据仓库使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#attribute-oriented-induction">Attribute-oriented induction</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="big-data">Big Data</h2>
+<ul>
+<li>GB: $2^{30}$ B</li>
+<li>TB, PB, EB, ZB</li>
+<li>data newly generated globally
+<ul>
+<li>2006: 180 EB</li>
+<li>2001: 1.8 ZB</li>
+<li>2020: 35 ZB</li>
+</ul>
+</li>
+<li>Data Mining Examples:
+<ul>
+<li>supermarket transactions</li>
+<li>valuable customers</li>
+<li>network instrusion</li>
+<li>gene data</li>
+<li>medical data</li>
+<li>web</li>
+<li>financial data</li>
+<li>software data</li>
+<li>usage data</li>
+<li>data from sensors</li>
+<li>data of arts</li>
+<li>audio generation</li>
+</ul>
+</li>
+<li>Data mining: non-trivial process of identifying <strong>valid, novel, potentially useful, and ultimately understandable</strong> patterns from huge volume of data</li>
+<li>KDD: Knowledge Discovery in Data
+<ul>
+<li>狭义：Data mining is a core step of KDD</li>
+<li>广义：KDD = DM</li>
+</ul>
+</li>
+<li>data mining tasks: descriptive or predictive
+<ul>
+<li>characterization</li>
+<li>discrimination</li>
+<li>association</li>
+<li>clustering</li>
+<li>classification</li>
+<li>regression</li>
+<li>outlier analysis</li>
+<li>trend and evolution analysis</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据仓库概念">数据仓库概念</h2>
+<ul>
+<li>Property
+<ul>
+<li>Subject-Oriented</li>
+<li>Integrated</li>
+<li>Time-variant</li>
+<li>Nonvolatile</li>
+</ul>
+</li>
+<li>Data Cube: lattice of cuboids (not a paradigm of actual physical storage)</li>
+<li>Multidimensional Data Model
+<ul>
+<li>fact table: contains the facts as well as keys to each of the related dimension tables</li>
+<li>schema
+<ul>
+<li>star schema: 事实表+维表</li>
+<li>snowflake schema</li>
+<li>fact constalleation schema</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>concept hierarchy
+<ul>
+<li>schema hierarchy: Total or partial order</li>
+<li>set-grouping hierarchy</li>
+</ul>
+</li>
+</ul>
+<h2 id="olap">OLAP</h2>
+<p>OnLine Analysis Process</p>
+<ul>
+<li>OLAM architecture
+<ul>
+<li>Layer 4: User Interface</li>
+<li>Layer 3: OLAP</li>
+<li>Layer 2: Data Cube</li>
+<li>Layer 1: Databases or Data Warehouse</li>
+</ul>
+</li>
+<li>OLAP
+<ul>
+<li>roll-up: climbing up a concept hierarchy</li>
+<li>drill-down: step down hierarchy</li>
+<li>slice: selection on one dimension</li>
+<li>dice: select on multiple dimension</li>
+<li>pivot: rotate the data axes in view</li>
+</ul>
+</li>
+<li>Measure (度量)
+<ul>
+<li>分布的：设数据被划分为 n 个集合，函数在每一部分上的计算得到一个聚集值。如果将函数用于 n 个聚集值得到的结果，与将函数用于所有数据得到的结果一样</li>
+<li>代数的：具有 $M$ 个分布聚集函数的代数函数</li>
+<li>整体的</li>
+</ul>
+</li>
+<li>OLAP server
+<ul>
+<li>ROLAP 关系型
+<ul>
+<li>Optimization technique</li>
+<li>Operational DBMS</li>
+</ul>
+</li>
+<li>MOLAP 多维</li>
+<li>HOLAP 混合</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/content/OLTPOLAP.png" alt="OLTP"></p>
+<h3 id="分块技术">分块技术</h3>
+<ul>
+<li>
+<p>$n$ 维数据立方体，每维有 $L_i$ 概念分层</p>
+<p>$$T=\prod_{i=1}^n(L_i+1)$$</p>
+</li>
+<li>
+<p>多路数组聚集: dimensions should be sorted according to their sizes in ascending order</p>
+</li>
+</ul>
+<h3 id="数据仓库使用">数据仓库使用</h3>
+<ul>
+<li>信息处理：支持查询和基本的统计分析，并使用交叉表、表、图表或图进行报告。数据仓库信息处理的当前趋势是构造低代价的基于网络的存取工具，然后与网络浏览器集成在一起</li>
+<li>分析处理：支持基本的 OLAP 操作，包括切片与切块、下钻、上卷和转轴。一般地，它在汇总的 和细节的历史数据上操作。与信息处理相比，联机分析处理的主要优势是它支持数据仓库的多维数据分析</li>
+<li>数据挖掘：支持知识发现，包括找出隐藏的模式和关联，构造分析模型，进行分类和预测，并用可视化工具提供挖掘结果</li>
+</ul>
+<h2 id="attribute-oriented-induction">Attribute-oriented induction</h2>
+<ul>
+<li>Data generalization: a process which abstracts a large set of task- relevant data in a database from a relatively low conceptual level to higher conceptual levels</li>
+<li>control generalization: how high an attribute should be generalized</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

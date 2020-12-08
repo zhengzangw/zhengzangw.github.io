@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 2 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>进制转换</li>
+<li>定点表示
+<ul>
+<li>机器数：编码后的表示</li>
+<li>真值</li>
+<li>原码表示</li>
+<li>补码表示：$X_c=(M+X)\pmod M$
+<ul>
+<li>-：取反加一（与数据类型无关）
+<ul>
+<li>-2147483648 : 0x80000000</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>反码表示</li>
+<li>移码：表示浮点数</li>
+</ul>
+</li>
+<li>浮点表示
+<ul>
+<li>$X=(-1)^SMR^E$
+<ul>
+<li>$M$: mantissa</li>
+<li>$E$: exponent</li>
+<li>$R$: radix</li>
+</ul>
+</li>
+<li>IEEE 754
+<ul>
+<li>FLOAT: 1+8+23</li>
+<li>DOUBLE: 1+11+52</li>
+<li>Intel FPU: 1+15+(1)+63</li>
+<li>偏置常数 B: $2^{n-1}-1$</li>
+<li>分类
+<ul>
+<li>0: -0/+0</li>
+<li>非规格化数：$(-1)^s * 0.f *(1-B)$</li>
+<li>全1阶码全0尾数：$\infty$</li>
+<li>全1阶码非全0尾数：NaN（分静止的和通知的）
+<ul>
+<li>最高有效位为1：静止的</li>
+</ul>
+</li>
+<li>规格化数：$(-1)^s<em>1.f</em>2^{e-B}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浮点运算的舍入
+<ul>
+<li>右规时，直接截断</li>
+<li>IEEE754 至少两位附加位（guard,round,sticky）</li>
+<li>就近舍入到偶数</li>
+</ul>
+</li>
+<li>整数表示
+<ul>
+<li>有符号: $-2^{n-1}\sim(2^{n-1}-1)$</li>
+<li>整数常量（无后缀）
+<ul>
+<li>C90 : int - $*$ - unsigned long int</li>
+<li>C99 : int - $*$ - long long int</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BCD码</li>
+<li>数据宽度
+<ul>
+<li>字长 word size：指明指针数据的标称大小（决定虚拟地址空间最大大小）</li>
+<li>KMGTPEZY</li>
+<li>小端：MSB在大地址中</li>
+<li><code>#pragma pack(n)</code> 设置对齐方式</li>
+<li><code>__attribute__((n))</code> 设置单独的对齐方式，大于n的数据结构按n对齐</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

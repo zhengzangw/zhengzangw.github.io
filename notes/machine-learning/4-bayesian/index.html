@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bayesian Classifier | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#bayesian-decision-theory">Bayesian decision theory</a>
+      <ul>
+        <li><a href="#贝叶斯定理">贝叶斯定理</a></li>
+      </ul>
+    </li>
+    <li><a href="#k-近邻学习">k 近邻学习</a></li>
+    <li><a href="#朴素贝叶斯分类器">朴素贝叶斯分类器</a></li>
+    <li><a href="#半朴素贝叶斯分类器">半朴素贝叶斯分类器</a>
+      <ul>
+        <li><a href="#独依赖估计-one-dependent-estimator-ode">独依赖估计 (One-Dependent Estimator ODE)</a></li>
+        <li><a href="#kde-k-dependent-estimator">kDE (k-Dependent Estimator)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="bayesian-decision-theory">Bayesian decision theory</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>定义</th>
+<th>最小化分类错误率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loss</td>
+<td>$\lambda_{ij}$</td>
+<td>$[i=j]$</td>
+</tr>
+<tr>
+<td>Expected loss</td>
+<td>$R(c_i\vert x)=\sum_{j=1}^N\lambda_{ij}P(c_j\vert x)$</td>
+<td>$1-P(c\vert x)$</td>
+</tr>
+<tr>
+<td>Bayes optimal classifier</td>
+<td>$h^*(x)=\arg\min_{c\in Y}R(c\vert x)$</td>
+<td>$\arg\max_{c\in Y}P(c\vert x)$</td>
+</tr>
+<tr>
+<td>decison loss</td>
+<td>$R(h)=E_x(R(h(x)\vert x))$</td>
+<td>$P(h^*(x)\vert x)$</td>
+</tr>
+<tr>
+<td>Bayes risk</td>
+<td>$1-R(h^*)$</td>
+<td>$1-P(h^*(x)\vert x)$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="贝叶斯定理">贝叶斯定理</h3>
+<p>$$ P(c|x)=\frac{P(x,c)}{P(x)}=\frac{P(c)P(x|c)}{\int p(c)P(x|c)dc}$$</p>
+<ul>
+<li>prior: $P(c)$</li>
+<li>evidence: $P(x)$</li>
+<li>class-conditional probability/likelihood: $P(x|c)$
+<ul>
+<li>class-conditional probability: $x$</li>
+<li>likelihood: $\theta, P(x|c)(\theta)$
+<ul>
+<li>$P(D_c|\theta_c)=\prod_{x\in D_c}P(x|\theta_c)$</li>
+<li>$\text{LL}(\theta_c)=\log P(D_c|\theta_c)=\sum_{x\in D_c}\log P(x|\theta_c)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="k-近邻学习">k 近邻学习</h2>
+<ul>
+<li>lazy learning</li>
+<li>最邻近分离器的泛化错误率不会超过贝叶斯最优分类器错误率的两倍</li>
+</ul>
+<h2 id="朴素贝叶斯分类器">朴素贝叶斯分类器</h2>
+<ul>
+<li>属性条件独立性假设: $P(x|c)=\prod_{i=1}^{d}P(x_i|c)$</li>
+<li>$h_{nb}=\arg\max_{c\in Y}P(c)\prod_{i=1}^dP(x_i|c)$
+<ul>
+<li>$P(c)=\frac{|D_c|}{|D|}$</li>
+<li>$P(x_i|c)=\frac{|D_{c,x_i}|}{|D_c|}$</li>
+</ul>
+</li>
+<li>拉普拉斯修正
+<ul>
+<li>$\hat P(c)=\frac{|D_c|+1}{|D|+N}$
+<ul>
+<li>$N$ 为 $D$ 中可能的类别</li>
+</ul>
+</li>
+<li>$\hat P(x_i|c)=\frac{|D_{c,x_i}|+1}{|D_c|+N_i}$
+<ul>
+<li>$N_i$ 为第 $i$ 个属性可能取值数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>连续属性
+<ul>
+<li>$p(x_i|c)\sim N(\mu_{c,i},\sigma_{c,i}^2)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="半朴素贝叶斯分类器">半朴素贝叶斯分类器</h2>
+<h3 id="独依赖估计-one-dependent-estimator-ode">独依赖估计 (One-Dependent Estimator ODE)</h3>
+<ul>
+<li>$P(c|x) \propto P(c)\prod_{i=1}^dP(x_i|c,p(a_i))$</li>
+</ul>
+<h4 id="spode-super-parent-ode">SPODE (super-parent ODE)</h4>
+<ul>
+<li>假设所有属性都依赖于同一个属性: $p(a_i)=x_t$</li>
+</ul>
+<h4 id="aode-averaged-one-dependent-estimator">AODE (Averaged One-Dependent Estimator)</h4>
+<ul>
+<li>SPODE 的集成</li>
+<li>$P(c|x)\propto \sum_{i=1,|D_{x_i}|\geq m'}^dP(c,x_i)\prod_{j=1}^dP(x_j|c,x_i)$</li>
+</ul>
+<h4 id="tan-tree-augmented-naive-bayes">TAN (Tree Augmented naive Bayes)</h4>
+<ul>
+<li>仅保留了强相关属性间的依赖性</li>
+<li>基于最大带权生成树</li>
+<li>算法
+<ul>
+<li>conditional mutual information: $I(x_i,x_j|y)=\sum_{x_i,x_j,c}P(x_i,x_j|c)\log\frac{P(x_i,x_j|c)}{P(x_i|c)P(x_j|c)}$
+<ul>
+<li>在已知类别情况下的相关性</li>
+</ul>
+</li>
+<li>在以属性为节点，互信息为边建完全图上构造最大带权生成树，挑选根节点，边置为有向</li>
+<li>加入类别节点 y，增加 y 到每个属性的边</li>
+</ul>
+</li>
+</ul>
+<h3 id="kde-k-dependent-estimator">kDE (k-Dependent Estimator)</h3>
+<ul>
+<li>样本不足：高阶联合概率估计困难，需要的样本数指数级增加</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

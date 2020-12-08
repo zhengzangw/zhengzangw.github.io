@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5-符号学习 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#符号学习">符号学习</a>
+      <ul>
+        <li><a href="#有偏学习">有偏学习</a></li>
+        <li><a href="#无偏学习">无偏学习</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="符号学习">符号学习</h2>
+<p>又称样例学习，概念学习，归纳推理</p>
+<ul>
+<li>实例集合：$X$</li>
+<li>目标概念：$c:X\rightarrow{0,1}$</li>
+<li>假设空间 $H$: $h:X\rightarrow{0,1}$</li>
+<li>概念学习：寻找假设 $h$，使得 $\forall x\in X,h(x)=c(x)$</li>
+<li>归纳学习假设：任一假设如果在足够大的训练样例集合中能很好的逼近目标概念函数，它也能在未见实例中很好的逼近目标概念</li>
+<li>$h_j\geq h_k\iff (\forall x\in X)(h_k(x)=1\rightarrow h_j(x)=1)$</li>
+<li>一致：$\text{consistent}(h,D)=(\forall\langle x,c(x)\rangle\in D)h(x)=c(x)$</li>
+<li>变型空间（版本空间 version space）：$\text{VS}_{H,D}={h\in H|\text{consistent}(h,D)}$</li>
+<li>极大泛化：$G={g\in H|\text{consistent}(g,D)\wedge(\neg\exists g'\in H)(g'&gt;g\wedge \text{consistent}(g',D))}$</li>
+<li>极大特化：$S={s\in H|\text{consistent}(s,D)\wedge(\neg\exists s'\in H)(s'&gt;s\wedge \text{consistent}(s',D))}$</li>
+<li>表示定理：$\text{VS}_{H,D}={h\in H|(\exists s\in S)(\exists g\in G)(g\geq h\geq s)}$</li>
+<li>归纳推理/机器学习的根本问题
+<ul>
+<li>目标概念假设不在假设空间怎么办?</li>
+<li>能设计包含所有假设的空间吗?</li>
+<li>假设空间大小对未见实例的泛化能力有什么影响?</li>
+<li>假设空间大小对所需训练样例数量有什么影响?</li>
+</ul>
+</li>
+</ul>
+<h3 id="有偏学习">有偏学习</h3>
+<p>作为搜索的概念学习，假设空间为合取式表示</p>
+<ul>
+<li>Find-S 算法（寻找极大特殊假设）
+<ul>
+<li>$h(a_1,\cdots,a_n)=$最特殊的假设</li>
+<li>for $x\in X,c(x)=1$
+<ul>
+<li>for $a_i$
+<ul>
+<li>if $x$ 不满足 $a_i$ 则将 $h$ 中的 $a_i$ 替换为 $x$ 满足的另一个最一般的约束</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>列表消除算法
+<ul>
+<li>for $\langle x,c(x)\rangle\in D$
+<ul>
+<li>$H=H\backslash{h\in H|h(x)\not=c(x)}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>候选消除算法：正例搜索 $S$，反例缩小 $G$
+<ul>
+<li>如果 $d$ 是一正例
+<ul>
+<li>从 $G$ 中移去所有与 $d$ 不一致的假设</li>
+<li>对 $S$ 中每个与 $d$ 不一致的假设 $s$
+<ul>
+<li>从 $S$ 中移去 $s$</li>
+<li>把 $s$ 的所有的极小泛化式 $h$ 加入到 $S$ 中，其中 $h$ 满足 $h$ 与 $d$ 一致，而且 $G$ 的某个成员比 $h$ 更一般</li>
+</ul>
+</li>
+<li>从 $S$ 中移去所有这样的假设：它比 $S$ 中另一假设更一般</li>
+</ul>
+</li>
+<li>如果 $d$ 是一个反例
+<ul>
+<li>从 $S$ 中移去所有与 $d$ 不一致的假设</li>
+<li>对 $G$ 中每个与 $d$ 不一致的假设 $g$
+<ul>
+<li>从 $G$ 中移去 $g$</li>
+<li>把 $g$ 的所有的极小特化式 $h$ 加入到 $G$ 中，其中 $h$ 满足 $h$ 与 $d$ 一致，而且 $S$ 的某个成员比 $h$ 更特殊</li>
+</ul>
+</li>
+<li>从 $G$ 中移去所有这样的假设：它比 $G$ 中另一假设更特殊</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="无偏学习">无偏学习</h3>
+<p>析取表示，幂集</p>
+<ul>
+<li>无偏学习的无用性：$S:{\bigvee_{c(x_i)=1}x_i},G:{\neg(\bigvee_{c(x_i)=0}x_i)}$
+<ul>
+<li>必须给定 $X$ 中的所有实例作为训练样例</li>
+<li>故必须给定某种形式的预先假设（归纳偏置）</li>
+</ul>
+</li>
+<li>inductive bias: 学习器从训练样例中泛化并推断新实例分类过程中所采用的策略
+<ul>
+<li>$(B\wedge D_c\wedge x')\vdash L(x',D_c)$</li>
+<li>优先偏置</li>
+<li>限定偏置</li>
+</ul>
+</li>
+<li>有偏性越强，学习器的归纳能力越强</li>
+<li>学习析取表达式：决策树</li>
+<li>奥卡姆剃刀(1324)
+<ul>
+<li>如果对于同一现象有两种不同的假说，应该采取比较简单的那一种</li>
+<li>优先选择拟合数据的最简单假设</li>
+<li>简单：可证伪的假设的数目更少，而非最简化的假设</li>
+</ul>
+</li>
+<li>决策树学习中的归纳偏置
+<ul>
+<li>优先选择信息增益高的属性更接近根结点的树</li>
+<li>较短的树比较长的树优先</li>
+<li>不回溯的搜索，假设空间中局部最优</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

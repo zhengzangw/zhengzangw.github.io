@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2-数据模型 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据模型的定义">数据模型的定义</a></li>
+    <li><a href="#概念模型">概念模型</a>
+      <ul>
+        <li><a href="#实体联系模型e-r">实体联系模型(E-R)</a></li>
+        <li><a href="#ee-r">EE-R</a></li>
+        <li><a href="#面向对象模型oo">面向对象模型(OO)</a></li>
+        <li><a href="#谓词模式">谓词模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#逻辑模型">逻辑模型</a>
+      <ul>
+        <li><a href="#关系模型">关系模型</a></li>
+      </ul>
+    </li>
+    <li><a href="#物理模型">物理模型</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="数据模型的定义">数据模型的定义</h2>
+<ul>
+<li>数据模型：数据特征的抽象
+<ul>
+<li>数据结构（数据模式）</li>
+<li>数据操作</li>
+<li>数据约束</li>
+</ul>
+</li>
+<li>四个世界
+<ul>
+<li>现实世界</li>
+<li>概念世界</li>
+<li>信息世界</li>
+<li>计算机世界</li>
+</ul>
+</li>
+</ul>
+<h2 id="概念模型">概念模型</h2>
+<h3 id="实体联系模型e-r">实体联系模型(E-R)</h3>
+<ul>
+<li>实体(Entity)：实体名+实体型
+<ul>
+<li>实体集：具有共性的实体所构成的集合，实体集名+实体型+关键字</li>
+<li>关键字：可用于区分同一个实体集中不同实体的 ‘最小属性集合’</li>
+</ul>
+</li>
+<li>属性(Attribute)：属性名+域
+<ul>
+<li>域：某一属性可取的值的集合</li>
+<li>实体型：所有属性的属性名</li>
+<li>实体值：所有属性上的取值所构成的属性值的集合</li>
+<li>具有共性的实体：实体型相同的实体</li>
+</ul>
+</li>
+<li>联系：联系名+属性+函数对应关系
+<ul>
+<li>1:1, 1:m, m:n</li>
+<li>二元联系，多元联系，单个实体集内部联系</li>
+</ul>
+</li>
+<li>E-R 图
+<ul>
+<li>实体集：长方形</li>
+<li>属性：椭圆</li>
+<li>联系：菱形</li>
+<li>连接：无向线段
+<ul>
+<li>实体集与属性</li>
+<li>联系与属性</li>
+<li>实体集与联系</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>E-R 模型设计
+<ul>
+<li>实体 or 属性</li>
+<li>实体 or 联系</li>
+<li>二元 or 三元</li>
+<li>Event 可抽象为实体</li>
+</ul>
+</li>
+</ul>
+<h3 id="ee-r">EE-R</h3>
+<ul>
+<li>IS-A 联系：超集-子集关系，单向箭头
+<ul>
+<li>继承性，传递性</li>
+<li>覆盖约束
+<ul>
+<li>所有子实体集的并集等价于超实体集</li>
+<li>一个实体至少隶属于某一个子实体集</li>
+</ul>
+</li>
+<li>不相交约束
+<ul>
+<li>任意两个子实体集都是互不相交的</li>
+<li>一个实体至多隶属于某一个子实体集</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Weak Entity：需要依赖其它实体而存在的实体
+<ul>
+<li>多对一关系：弱实体到联系有向箭头</li>
+</ul>
+</li>
+<li>属性划分
+<ul>
+<li>Identifier/key/candidate key</li>
+<li>Descriptor</li>
+<li>composite attribute：属性到属性无向线段</li>
+<li>multi-value attribute：双实线</li>
+</ul>
+</li>
+<li>属性基数 $(x,y)$
+<ul>
+<li>$x$: 是否必选 1/0</li>
+<li>$y$: 是否单值 1/N</li>
+</ul>
+</li>
+<li>实体在联系中的参与基数 card=(min-card, max-card)
+<ul>
+<li>min-card 1/0: 1 if all dots in the entity E have AT LEAST one line coming out
+<ul>
+<li>1: mandatory participation</li>
+<li>0: optional participation</li>
+</ul>
+</li>
+<li>max-card 1/N: 1 if all dots in the entity E have AT MOST one line coming out
+<ul>
+<li>1: single-valued</li>
+<li>N: multi-valued</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="面向对象模型oo">面向对象模型(OO)</h3>
+<ul>
+<li>对象(Object)
+<ul>
+<li>OID 对象标识符</li>
+<li>静态特性/属性
+<ul>
+<li>多值</li>
+</ul>
+</li>
+<li>动态特性/方法/操作</li>
+</ul>
+</li>
+<li>类
+<ul>
+<li>具有相同属性方法的对象集合</li>
+<li>类对象</li>
+<li>元类：所有类对象的集合</li>
+<li>实例：类中的对象</li>
+<li>IS-A, IS-PART-OF</li>
+</ul>
+</li>
+<li>消息：Type A.Op(O1, &hellip;, On)</li>
+</ul>
+<h3 id="谓词模式">谓词模式</h3>
+<ul>
+<li>谓词：$P(x_1,\cdots,x_n)$
+<ul>
+<li>实体集：$n$ 个属性，$P(x_1,\cdots,x_n)=T$ if $(x_1,\cdots,x_n)\in R$</li>
+<li>属性：约束变元 $C(x)$</li>
+<li>联系：变元为实体</li>
+<li>操作：$Op(x_1,\cdots, x_n, X)$</li>
+<li>完整性约束</li>
+</ul>
+</li>
+</ul>
+<h2 id="逻辑模型">逻辑模型</h2>
+<h3 id="关系模型">关系模型</h3>
+<ul>
+<li>二维表 Table
+<ul>
+<li>表框架：若干属性组成</li>
+<li>Tuple/Row：一行数据</li>
+</ul>
+</li>
+<li>关系：行列组成的二维表格</li>
+<li>主关键字，外关键字</li>
+<li>关系模式：关系的关系名及其属性名的集合构成该关系的关系模式</li>
+</ul>
+<h2 id="物理模型">物理模型</h2>
+<ul>
+<li>提高文件读写效率的方法
+<ul>
+<li>Index</li>
+<li>Cluster</li>
+<li>hash</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

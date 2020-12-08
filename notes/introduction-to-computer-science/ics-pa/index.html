@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ICS PA | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#article">Article</a></li>
+    <li><a href="#顺时针法则">顺时针法则</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#step-1-opcode">Step 1: Opcode</a>
+      <ul>
+        <li><a href="#指令名">指令名</a></li>
+        <li><a href="#指令类型解码">指令类型（解码）</a></li>
+      </ul>
+    </li>
+    <li><a href="#step-2-解码">Step 2: 解码</a></li>
+    <li><a href="#step-3-执行">Step 3: 执行</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h1 id="pa0">PA0</h1>
+<h2 id="article">Article</h2>
+<ul>
+<li><a href="https://www.docker.com/why-docker">Why Docker</a></li>
+<li><a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md">How To Ask Questions The Smart Way</a></li>
+<li>vimtutor</li>
+<li><a href="https://blog.csdn.net/gdutxiaoxu/article/details/53573426">ssh</a></li>
+<li>正则表达式
+<ul>
+<li><a href="http://linux.vbird.org/linux_basic/0330regularex.php">鸟哥的 Linux 私房菜</a></li>
+<li><a href="https://coolshell.cn/articles/2704.html">检查素数</a></li>
+</ul>
+</li>
+<li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">git</a></li>
+<li>GDB
+<ul>
+<li><a href="https://sourceware.org/gdb/current/onlinedocs/gdb/">Debugging with GDB</a></li>
+<li><a href="https://www.cprogramming.com/gdb.html">A GDB Tutorial with Examples</a></li>
+</ul>
+</li>
+<li><a href="https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340">tmux</a></li>
+<li><a href="http://cn.linux.vbird.org/linux_basic/linux_basic.php">linux</a></li>
+<li>GPG <a href="http://www.ruanyifeng.com/blog/2013/07/gpg.html">GPG</a></li>
+</ul>
+<h2 id="顺时针法则">顺时针法则</h2>
+<ul>
+<li>
+<p><a href="https://blog.csdn.net/mal327/article/details/6728438">顺时针法则</a></p>
+</li>
+<li>
+<p>[10]: an array 10 of &hellip;</p>
+</li>
+<li>
+<p>(): Once you meet one of brace, then a pair of them are omitted</p>
+</li>
+<li>
+<p>*: pointer to &hellip;</p>
+</li>
+<li>
+<p>(params): a function which receives params and returning &hellip;</p>
+</li>
+<li>
+<p>const(at the begining): const</p>
+</li>
+<li>
+<p>const: constant &hellip;</p>
+</li>
+</ul>
+<h1 id="pa2">PA2</h1>
+<h2 id="step-1-opcode">Step 1: Opcode</h2>
+<h3 id="指令名">指令名</h3>
+<p>首先查阅i386 Appendix A（利用反汇编作为辅助），找到对应的编码
+<strong>opcode_entry opcode_table 中添加</strong></p>
+<ul>
+<li>opcode_entry类型： 函数指针decode encode 宽度width *</li>
+</ul>
+<p>0x0F: Two-byte
+Group: 根据R/M code opcode 确定</p>
+<h3 id="指令类型解码">指令类型（解码）</h3>
+<p>实现的Codes for Addressing Method：
+I, SI, r(XX,eXX), RM(E,G,C,M,R,S), O</p>
+<p>根据配置解码，分类如下：</p>
+<ul>
+<li>unary: I, r, E</li>
+<li>G2E, E2G, I2E, I2r, SI2E</li>
+<li>无解码 EX()</li>
+</ul>
+<p>Codes for Operant Type:</p>
+<ul>
+<li>v: IDEX, EX</li>
+</ul>
+<h2 id="step-2-解码">Step 2: 解码</h2>
+<p>decode.h 中增加声明
+decode.c 中实现</p>
+<h2 id="step-3-执行">Step 3: 执行</h2>
+<p>all-instr.h 中增加声明</p>
+<p>在i386中相应地方查看具体实现说明</p>
+<p>在相应c文件中利用rtl语句实现</p>
+<p>实现没有实现的rtl语句</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

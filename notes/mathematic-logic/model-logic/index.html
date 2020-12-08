@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Model Logic | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#模态语言">模态语言</a></li>
+    <li><a href="#基本模态逻辑">基本模态逻辑</a>
+      <ul>
+        <li><a href="#语言">语言</a></li>
+        <li><a href="#语义">语义</a></li>
+      </ul>
+    </li>
+    <li><a href="#线性时间时态逻辑-ltl">线性时间时态逻辑 (LTL)</a>
+      <ul>
+        <li><a href="#语言-1">语言</a></li>
+        <li><a href="#语义-1">语义</a></li>
+      </ul>
+    </li>
+    <li><a href="#分支时间时态逻辑">分支时间时态逻辑</a>
+      <ul>
+        <li><a href="#语言-2">语言</a></li>
+        <li><a href="#语义-computation-tree-logic">语义 Computation Tree Logic</a></li>
+      </ul>
+    </li>
+    <li><a href="#语法">语法</a>
+      <ul>
+        <li><a href="#正规模态逻辑-lambda">正规模态逻辑 $\Lambda$</a></li>
+        <li><a href="#k">$K$</a></li>
+        <li><a href="#kgamma">$K\Gamma$</a></li>
+      </ul>
+    </li>
+    <li><a href="#其它">其它</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="模态语言">模态语言</h2>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>分支</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可能与必然</td>
+<td>基本模态逻辑</td>
+<td></td>
+</tr>
+<tr>
+<td>过去与将来</td>
+<td>时态逻辑(temporal)</td>
+<td>软硬件系统形式化验证</td>
+</tr>
+<tr>
+<td>知道与相信</td>
+<td>认知逻辑(epistemic)</td>
+<td>知识表示</td>
+</tr>
+<tr>
+<td>义务与允许</td>
+<td>道义逻辑(deontic)</td>
+<td>分布式智能系统进行协同与控制的规范系统</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>模态逻辑特征
+<ul>
+<li>模态逻辑是用于描述关系结构的简单而富于表达力的语言</li>
+<li>模态语言为关系结构提供了一种内部和局部的视角</li>
+<li>模态逻辑并不是孤立的形式化系统</li>
+</ul>
+</li>
+<li>关系结构 $\mathfrak{F}=(W,R_1,\cdots,R_n)$, $W$ 为 domain/universe, $R_i$ 为 $\mathfrak{F}$ 上的关系
+<ul>
+<li>$W$ 中的元素可以为不同名称如点、状态、世界、时间、状况等。关系结构通常可以表示为简单图形</li>
+<li>严格偏序
+<ul>
+<li>全序</li>
+</ul>
+</li>
+<li>标注转换系统（LTS）$(W,{R_a|a\in A}),a\in A,R_a\subseteq W\times W$</li>
+<li>时间的内在结构为全序集 $(S,&lt;)$
+<ul>
+<li>假设：1.时间离散 2.有一个没有前驱的时刻 3.有无穷后续时刻进入未来</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="基本模态逻辑">基本模态逻辑</h2>
+<h3 id="语言">语言</h3>
+<ul>
+<li>命题符集合 $\Phi$</li>
+<li>一元模态算子 $\diamondsuit$
+<ul>
+<li>读作 &ldquo;可能&rdquo;</li>
+<li>对偶算子 $\square\varphi:=\neg\diamondsuit\neg\varphi$
+<ul>
+<li>读作 &ldquo;不可能不/必然&rdquo;</li>
+</ul>
+</li>
+<li>$\varphi\wedge\psi:=\neg(\neg\varphi\vee\neg\psi)$</li>
+<li>$\top:=\neg\perp$</li>
+</ul>
+</li>
+<li>合式公式(well-formed formula) $\varphi::=p|\perp|\neg\varphi|\varphi\vee\phi|\diamondsuit\varphi$</li>
+<li>部分合式公式
+<ul>
+<li>$K:\square(\varphi\rightarrow\phi)\rightarrow(\square\varphi\rightarrow\square\phi)$</li>
+<li>$T:\square\varphi\rightarrow\phi$</li>
+<li>$4:\square\phi\rightarrow\square\square\phi$</li>
+<li>$B:\varphi\rightarrow\square\diamondsuit\varphi$</li>
+<li>$D:\square\varphi\rightarrow\diamondsuit\varphi$</li>
+<li>$5:\diamondsuit\varphi\rightarrow\square\diamondsuit\phi$</li>
+</ul>
+</li>
+</ul>
+<h4 id="标准翻译">标准翻译</h4>
+<ul>
+<li>$\mathcal{L}^1(\Phi)$ 为一阶语言
+<ul>
+<li>具有一元谓词 $P_0,P_1,\cdots$ 对应 $\Phi$ 中命题符 $p_0,p_1,\cdots$</li>
+<li>具有二元关系 $R$ 对应 $\diamondsuit$</li>
+</ul>
+</li>
+<li>标准翻译 $\text{ST}_x$:
+<ul>
+<li>$\text{ST}_x(p)=P_x$</li>
+<li>$\text{ST}_x(\perp)=x\not=x$</li>
+<li>$\text{ST}_x(\neg\phi)=\neg\text{ST}_x(\phi)$</li>
+<li>$\text{ST}_x(\phi\vee\psi)=\text{ST}_x(\phi)\vee\text{ST}_x(\psi)$</li>
+<li>$\text{ST}_x(\diamondsuit\phi)=\exists y(Rxy\wedge\text{ST}_y(\phi))$, <strong>y 为新变元</strong></li>
+</ul>
+</li>
+<li>$\mathfrak{M},\omega\Vdash\varphi\iff\mathfrak{M}\vDash\text{ST}_x(\varphi)[\omega]$
+<ul>
+<li>$\text{ST}_x(\varphi)[\omega]$: $\omega$ 被赋给自由变元 $y$</li>
+</ul>
+</li>
+<li>$\forall\mathfrak{M},\omega\Vdash\varphi\iff\mathfrak{M}\vDash\forall x\text{ST}_x(\varphi)$</li>
+</ul>
+<h3 id="语义">语义</h3>
+<ul>
+<li>Kripke 模型：$\mathfrak{M}=(W,R,L)=(\mathfrak{F},L)$
+<ul>
+<li>状态 $\omega\in W$</li>
+<li>$R$ 为 $W$ 上的关系</li>
+<li>$L:W\rightarrow 2^\Phi$ 为标记函数，把 $W$ 每个点标记上再该点为真的命题符</li>
+</ul>
+</li>
+<li>$\mathfrak{M},\omega\Vdash\varphi$ 基本模态公式 $\varphi$ 在状态 $\omega$ 被满足
+<ul>
+<li>$\mathfrak{M},\omega\Vdash p,p\in\Phi\iff p\in L(\omega)$</li>
+<li>$\mathfrak{M},\omega\Vdash \perp$ 从不成立</li>
+<li>$\mathfrak{M},\omega\Vdash\neg\varphi\iff \mathfrak{M},\omega\Vdash\varphi$ 不成立</li>
+<li>$\mathfrak{M},\omega\Vdash\varphi\vee\psi\iff\mathfrak{M},\omega\Vdash\varphi$ 或 $\mathfrak{M},\omega\Vdash\psi$</li>
+<li>$\mathfrak{M},\omega\Vdash\diamondsuit\varphi\iff$ 存在 $v\in W,Rwv,\mathfrak{M},\omega\Vdash\varphi$
+<ul>
+<li>$\mathfrak{M},\omega\Vdash\square\varphi\iff$ 对于任意的 $v\in W,Rw v,\mathfrak{M},\omega\Vdash\varphi$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>盲状态：不能到达任意后续状态的状态，$\square\varphi$ 空真</li>
+<li>$\mathfrak{F},\omega\Vdash\varphi$：任意的 $L$, $\mathfrak{M},\omega\Vdash\varphi$</li>
+<li>$\mathfrak{F}\Vdash\varphi$: 任意的 $\omega$, $\mathfrak{F},\omega\Vdash\varphi$</li>
+<li>$\mathbb{F}\Vdash\varphi$: 任意的 $\mathfrak{F}\in\mathbb{F},\mathfrak{F}\Vdash\varphi$
+<ul>
+<li>$\Lambda_\mathbb{F}$: $\mathbb{F}$ 的逻辑，对 $\mathbb{F}$ 有效的所有公式的集合</li>
+</ul>
+</li>
+<li>$\Vdash\varphi$: 任意的 $\mathbb{F}$, $\mathbb{F}\Vdash\varphi$</li>
+</ul>
+<h2 id="线性时间时态逻辑-ltl">线性时间时态逻辑 (LTL)</h2>
+<h3 id="语言-1">语言</h3>
+<ul>
+<li>线性时间时态算子
+<ul>
+<li>$\mathcal{U}$: until</li>
+<li>$\bigcirc$: next-time</li>
+</ul>
+</li>
+<li>常用时态算子
+<ul>
+<li>$\diamondsuit\phi:=\top\mathcal{U}\phi$: Finally</li>
+<li>$\square\phi:=\neg\diamondsuit\neg\phi$: Globally</li>
+<li>$\overset{\infty}{\diamondsuit}\phi:=\square\diamondsuit\phi$: Infinitely Often</li>
+<li>$\overset{\infty}{\square}\phi:=\diamondsuit\square\phi$: Almost Everywhere</li>
+<li>$\phi_1\mathcal{R}\phi_2:=\neg(\neg\phi_1\mathcal{U}\neg\phi_2)$: Release</li>
+</ul>
+</li>
+<li>$\psi::=p|\perp|\neg\psi|\psi_1\vee\psi_2|\bigcirc\psi|\psi_1\mathcal{U}\psi_2,p\in\Phi$</li>
+</ul>
+<h3 id="语义-1">语义</h3>
+<ul>
+<li>模型 $\mathfrak{M}=(S,x,L)$
+<ul>
+<li>$S$: 非空状态集</li>
+<li>$x:N\rightarrow S$：状态的无穷序列</li>
+<li>$L:W\rightarrow2^\Phi$</li>
+</ul>
+</li>
+<li>$\mathfrak{M},x\vDash\psi$: 在模型 $\mathfrak{M}$ 的时间线 $x$ 上，公式 $\psi$ 为真
+<ul>
+<li>$\mathfrak{M},x\vDash p,p\in\Psi\iff p\in L(s_0)$</li>
+<li>$\mathfrak{M},x\vDash\perp$ 从不成立</li>
+<li>$\mathfrak{M},x\vDash \neg\psi\iff\mathfrak{M},x\vDash \psi$ 不成立</li>
+<li>$\mathfrak{M},x\vDash \psi_1\vee\psi_2\iff\mathfrak{M},x\vDash \psi_1$ 或 $\mathfrak{M},x\vDash \psi_2$</li>
+<li>$\mathfrak{M},x\vDash \psi_1\mathcal{U}\psi_2\iff\exists j(\mathfrak{M},x^j\vDash \psi_2$ 且 $\forall k&lt;j(\mathfrak{M},x^k\vDash \psi_1))$</li>
+<li>$\mathfrak{M},x\vDash\bigcirc\psi\iff\mathfrak{M},x^1\vDash\psi$
+<ul>
+<li>$x^i$ 表示 $s$ 的后缀 $s_i,s_{i+1},\cdots$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="分支时间时态逻辑">分支时间时态逻辑</h2>
+<h3 id="语言-2">语言</h3>
+<h4 id="btl">BTL</h4>
+<ul>
+<li>命题符 $\Psi$</li>
+<li>线性时态算子</li>
+<li>路径选择算子 $\exists$: for some futures
+<ul>
+<li>$\forall\psi:=\neg\exists\neg\psi$: for all futures</li>
+</ul>
+</li>
+<li>路径公式：$\psi::=\phi|\psi_1\vee\psi_2|\neg\psi|\bigcirc\psi|\psi_1\mathcal{U}\psi_2$</li>
+<li>状态公式：$\varphi::=p|\perp|\varphi_1\vee\varphi_2|\neg\varphi|\exists\psi$</li>
+</ul>
+<h4 id="sublanguage">Sublanguage</h4>
+<ul>
+<li>路径公式：$\psi::=\bigcirc\varphi|\varphi_1\mathcal{U}\varphi_2$
+<ul>
+<li>不允许线性时态算子的布尔组合和嵌套</li>
+<li>状态公式不变</li>
+</ul>
+</li>
+<li>等价于：
+<ul>
+<li>基本时态算子：$\exists\bigcirc,\exists\square,\exists\mathcal{U}$
+<ul>
+<li>$\forall\bigcirc\varphi:=\neg\exists\bigcirc\neg\varphi$</li>
+<li>$\forall\square\varphi:=\neg\exists\diamondsuit\neg\varphi$</li>
+<li>$\forall\diamondsuit\varphi:=\neg\exists\square\neg\varphi$</li>
+<li>$\exists\diamondsuit\varphi:=\exists(\perp\mathcal{U}\varphi)$</li>
+<li>$\forall(\varphi_1\mathcal{U}\varphi_2):=\neg\exists(\neg\varphi_2\mathcal{U}\neg\varphi_2)\wedge\neg\exists\square\neg\varphi_2$</li>
+</ul>
+</li>
+<li>$\varphi::=p|\perp|\neg\varphi|\varphi_1\vee\varphi_2|\exists\bigcirc\varphi|\exists\square\varphi|\exists(\varphi_1\mathcal{U}\varphi_2)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="语义-computation-tree-logic">语义 Computation Tree Logic</h3>
+<h4 id="ctl">CTL$^*$</h4>
+<ul>
+<li>Kripke 模型：$\mathfrak{M}=(S,R,L)$
+<ul>
+<li>$S$：非空状态集</li>
+<li>$R\subset S\times S$ 是一个完全的二元关系
+<ul>
+<li>完全：$\forall s\in S\exists t\in S:(s,t)\in R$</li>
+</ul>
+</li>
+<li>$L:S\rightarrow2^\Phi$</li>
+</ul>
+</li>
+<li>全路径(full path) $x=(s_0,s_1,\cdots)$：$\forall i\in\mathbb{N}:(s_i,s_{i+1})\in R$</li>
+<li>$\mathfrak{M},s_0\vDash\varphi$: 在 $\mathfrak{M}$ 的状态 $s_0$ 为真
+<ul>
+<li>(S1)
+<ul>
+<li>$\mathfrak{M},s_0\vDash p\iff p\in L(s_0)$</li>
+<li>$\mathfrak{M},s_0\vDash\perp$ 从不成立</li>
+</ul>
+</li>
+<li>(S2)
+<ul>
+<li>$\mathfrak{M},s_0\vDash\varphi_1\vee\varphi_2\iff\mathfrak{M},s_0\vDash\varphi_1$ 或 $\mathfrak{M},s_0\vDash\varphi_2$</li>
+<li>$\mathfrak{M},s_0\vDash\neg\varphi\iff\mathfrak{M},s_0\vDash\varphi$ 不成立</li>
+</ul>
+</li>
+<li>(S3) $\mathfrak{M},s_0\vDash\exists\psi\iff\mathfrak{M}$ 中存在全路径 $x,\mathfrak{M},x\vDash\psi$</li>
+</ul>
+</li>
+<li>$\mathfrak{M},x\vDash\psi$: 在 $\mathfrak{M}$ 中的全路径 $x$ 为真
+<ul>
+<li>(P1) $\mathfrak{M},x\vDash\varphi\iff\mathfrak{M},s_0\vDash\varphi$</li>
+<li>(P2)
+<ul>
+<li>$\mathfrak{M},x\vDash\psi_1\vee\psi_2\iff\mathfrak{M},x\vDash\psi_1$ 或 $\mathfrak{M},x\vDash\psi_2$</li>
+<li>$\mathfrak{M},x\vDash\neg\psi\iff\mathfrak{M},x\vDash\psi$ 不成立</li>
+</ul>
+</li>
+<li>(P3)
+<ul>
+<li>$\mathfrak{M},x\vDash\psi_1\mathcal{U}\psi_2\iff\exists j(\mathfrak{M},x^j\vDash\psi_2$且$\forall k&lt;j(\mathfrak{M},x^k\vDash\psi_1))$</li>
+<li>$\mathfrak{M},x\vDash\bigcirc\varphi\iff\mathfrak{M},x^1\vDash\psi$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="ctl-1">CTL</h4>
+<ul>
+<li>S1,S2,S3</li>
+<li>S4
+<ul>
+<li>$\mathfrak{M},s_0\vDash\exists\bigcirc\varphi\iff\exists s_1,Rs_0s_1,\mathfrak{M},s_1\vDash\varphi$</li>
+<li>$\mathfrak{M},s_0\vDash\exists\square x,\forall i\in\mathbb{N},\mathfrak{M},s_i\vDash\psi$</li>
+<li>$\mathfrak{M},s_0\vDash\exists(\varphi_1\mathcal{U}\varphi_2)\iff\exists x,\exists j(\mathfrak{M},s_j\vDash\psi_2$且$\forall k&lt;j(\mathfrak{M},s_k\vDash\psi_1))$</li>
+</ul>
+</li>
+</ul>
+<h2 id="语法">语法</h2>
+<h3 id="正规模态逻辑-lambda">正规模态逻辑 $\Lambda$</h3>
+<ul>
+<li>包含 TAUT,K,Dual</li>
+<li>对规则 MP,US,N 封闭</li>
+</ul>
+<h3 id="k">$K$</h3>
+<ul>
+<li>公理
+<ul>
+<li>TAUT: 所有重言式</li>
+<li>K: $\square(p\rightarrow q)\rightarrow(\square p\rightarrow \square q)$</li>
+<li>Dual: $\diamondsuit p\leftrightarrow\neg\square\neg p$</li>
+</ul>
+</li>
+<li>规则
+<ul>
+<li>MP (Modus Ponens): $\frac{\varphi\rightarrow\psi,\varphi}{\psi}$</li>
+<li>US (Uniform Substitutious): $\frac{\varphi}{\theta}$
+<ul>
+<li>$\theta$ 为将 $\varphi$ 中命题符一致地替换为任意的公式而得到的公式</li>
+</ul>
+</li>
+<li>N (Generalization): $\frac{\varphi}{\square\varphi}$</li>
+</ul>
+</li>
+<li>$K$-系统对应基本模态逻辑
+<ul>
+<li>soundness</li>
+<li>completeness</li>
+</ul>
+</li>
+<li>最小的正规模态逻辑为 $K$</li>
+</ul>
+<h3 id="kgamma">$K\Gamma$</h3>
+<ul>
+<li>$K4$
+<ul>
+<li>增加公理 $\diamondsuit\diamondsuit p\rightarrow\diamondsuit p$</li>
+<li>对应传递框架</li>
+</ul>
+</li>
+</ul>
+<h2 id="其它">其它</h2>
+<ul>
+<li>定理等级
+<ul>
+<li>Fundamental Thm</li>
+<li>Main Thm</li>
+<li>Theorem</li>
+<li>Lemma</li>
+<li>Proposition</li>
+<li>Law</li>
+<li>Thesis</li>
+</ul>
+</li>
+<li>三次数学危机
+<ul>
+<li>小数$\rightarrow$无理数
+<ul>
+<li>希伯索斯</li>
+</ul>
+</li>
+<li>$\infty$ (牛顿-莱布尼茨)
+<ul>
+<li>柯西</li>
+</ul>
+</li>
+<li>罗素悖论 (集合论)
+<ul>
+<li>公理逻辑论</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

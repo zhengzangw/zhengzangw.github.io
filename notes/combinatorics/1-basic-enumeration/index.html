@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1. Basic Enumeration | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>Product Rule: finite set $|S\times T|=|S||T|$</li>
+<li>Sum Rule: finite disjoint set $|S\cup T|=|S|+|T|$</li>
+<li>Bijection Rule: finite set $\exists\phi:S\rightarrow T$ onto and 1-1 then $|S|=|T|$
+<ul>
+<li>1-1: $\leq$</li>
+<li>onto: $\geq$</li>
+</ul>
+</li>
+<li>$[m] = {0,1,2,\cdots,m-1}$</li>
+<li>$2^{[m]}={S|S\subseteq [n]}$: Power set</li>
+<li>${n\choose k}=|{[n]\choose k}|$
+<ul>
+<li>${S\choose k}={T\subseteq S||T|=k}$</li>
+</ul>
+</li>
+<li>${n\choose m_1,\cdots,m_k}=\frac{n!}{m_1!\cdots m_k!}$
+<ul>
+<li>number of assignments such that $i$-th bin has $m_i$ balls in it</li>
+<li>number of permutations of a multiset $M$ with $|M|=n$ such that $M$ has $k$ distinct elements whose multiplicities are given by $m_1,m_2,\cdots,m_k$</li>
+</ul>
+</li>
+<li>$(m)_n= {m\choose m-n}$: $m$ lower factorial $n$</li>
+<li>Binominal theorem: $(1+x)^n=\sum_{k=0}^n{n\choose k}x^k$</li>
+<li>Multinominal theorem: $(x_1+\cdots+x_k)^n=\sum_{m_1+\cdots+m_k=n}{n\choose m_1,\cdots,m_k}x_1^{m_1}\cdots x_k^{m_k}$</li>
+<li>$k$-composition of $n$: ${n-1\choose k-1}$
+<ul>
+<li>ordered sum of positive integers</li>
+</ul>
+</li>
+<li>week $k$-composition of $n$: ${n+k-1\choose k-1}$
+<ul>
+<li>number of nonnegative solutions to $x_1+x_2+\cdots+x_k\leq n$: ${n+k \choose k}$</li>
+</ul>
+</li>
+<li>$k$-multisets on $S$: $({n\choose k})={n+k-1\choose n-1}={n+k-1\choose k}$</li>
+<li>${n\brace k}$: $k$-partitions of an $n$-set, Stirling number of the second kind
+<ul>
+<li>${n\brace k}=k{n-1\brace k}+{n-1 \brace k-1}$</li>
+<li>$\left{{n \atop m}\right}={\frac {1}{m!}}\sum _{k=1}^{m}(-1)^{m-k}{m \choose k}k^{n}$</li>
+</ul>
+</li>
+<li>$B(n)=\sum_{k=1}^n{n\brace k}$: partitions of an $n$-set, Bell number</li>
+<li>$p_k(n)$: Partitions of a number, a multiset ${x_1,\cdots,x_k}$ with $x_i\geq 1$ and $\sum_{i=1}^kx_i=n$
+<ul>
+<li>$p_k(n)=p_{k-1}(n-1)+p_k(n-k)$</li>
+<li>$p_k(n)\sim\frac{n^{k-1}}{k!(k-1)!},n\rightarrow\infty$
+<ul>
+<li>${n-1\choose k-1}\leq k!p_k(n)\leq {n+\frac{k(k-1)}{2}-1\choose k-1}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$p(n)=\sum_{k=1}^np_k(n)$: partition number</li>
+<li>Ferrers diagram(Young diagram)
+<ul>
+<li>Conjugate partition</li>
+<li>The number of partitions of $n$ which have largest summand $k$ is $p_k(n)$</li>
+<li>$p_k(n)=\sum_{j=1}^kp_j(n-k)$</li>
+</ul>
+</li>
+</ul>
+<p>Function $f:N\rightarrow M$</p>
+<table>
+<thead>
+<tr>
+<th>elements of $N$</th>
+<th>elements of $M$</th>
+<th>any $f$</th>
+<th>1-1($\leq 1$)</th>
+<th>on-to($\geq 1$)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>distinct</td>
+<td>distinct</td>
+<td>$m^n$<!-- raw HTML omitted -->$n$-tuples of $m$ things</td>
+<td>$(m)_n$<!-- raw HTML omitted -->$n$-permutations of $m$ things</td>
+<td>$m!{n\brace m}$<!-- raw HTML omitted -->partition $[n]$ into $m$ ordered parts</td>
+</tr>
+<tr>
+<td>identical</td>
+<td>distinct</td>
+<td>$({m\choose n})$<!-- raw HTML omitted -->$n$-combinations of $[m]$ with repitation</td>
+<td>$m\choose n$<!-- raw HTML omitted -->$n$-combinations of $[m]$ without repetitions</td>
+<td>${n-1\choose m-1}$<!-- raw HTML omitted -->$m$-compositions of $n$</td>
+</tr>
+<tr>
+<td>distinct</td>
+<td>identical</td>
+<td>$\sum_{k=1}^m{n\brace k}$<!-- raw HTML omitted -->partitions of $[n]$ into $\leq m$ parts</td>
+<td>$[n\leq m]$<!-- raw HTML omitted -->$n$ pigeons into $m$ holes</td>
+<td>${n \brace m}$<!-- raw HTML omitted -->partitions of $[n]$ into $m$ parts</td>
+</tr>
+<tr>
+<td>identical</td>
+<td>identical</td>
+<td>$\sum_{k=1}^mp_k(n)=p_m(n+m)$<!-- raw HTML omitted -->partitions of $n$ into $\leq m$ parts</td>
+<td>$[n\leq m]$<!-- raw HTML omitted -->$n$ pigeons into $m$ holes</td>
+<td>$p_m(n)$<!-- raw HTML omitted -->partitions of $n$ into $m$ parts</td>
+</tr>
+</tbody>
+</table>
+</main>
+        </div>
+
+    </div>
+</body></html>

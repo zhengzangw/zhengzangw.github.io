@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 8 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#io子系统">I/O子系统</a></li>
+    <li><a href="#io硬件与软件接口">I/O硬件与软件接口</a></li>
+    <li><a href="#io控制方式">I/O控制方式</a></li>
+    <li><a href="#io内核空间软件">I/O内核空间软件</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="io子系统">I/O子系统</h2>
+<ul>
+<li>runtime system(runtime environment/runtime)</li>
+<li>I/O子系统
+<ul>
+<li>用户空间I/O软件（用户I/O软件）
+<ul>
+<li>I/O请求</li>
+<li>运行时系统</li>
+</ul>
+</li>
+<li>内核空间I/O软件（系统I/O软件）
+<ul>
+<li>与设备无关的I/O软件</li>
+<li>设备驱动程序</li>
+<li>中断服务程序</li>
+</ul>
+</li>
+<li>I/O硬件
+<ul>
+<li>I/O总线结构</li>
+<li>I/O接口（设备管理器，I/O端口）</li>
+<li>I/O设备</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>用户程序中I/O函数
+<ul>
+<li>C标准I/O库函数
+<ul>
+<li>文件I/O函数</li>
+<li>控制台I/O函数</li>
+<li>缓冲
+<ul>
+<li>_IOFBF: fully buffered</li>
+<li>_IOLBF: line buffered</li>
+<li>_IO_NBF: no buffering</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>系统调用封装函数
+<ul>
+<li>头文件unistd.h</li>
+<li>int creat(char *name, mode_t perms);
+<ul>
+<li>perms:访问权限：文件拥有者+拥有者所在组成员+其它用户的读、写、执行权限</li>
+</ul>
+</li>
+<li>int open(char *name, int flags, mode_t perms);
+<ul>
+<li>perms = 0: 非创建方式</li>
+<li>flags: 定义在 fcntl.h(System V UNIX)或sys/file.h(BSD) 中
+<ul>
+<li>O_RDONLY</li>
+<li>O_WRONLY</li>
+<li>O_RDWR</li>
+<li>O_WRONLY | O_APPEND</li>
+<li>O_RDWR | O_CREAT</li>
+<li>O_WRONLY | O_CREAT | O_TRUNC</li>
+<li>返回值：成功为文件描述符，失败为-1</li>
+</ul>
+</li>
+<li>ssize_t read(int fd, void *buf, size_t n);</li>
+<li>ssize_t write(int fd, const void*buf, size_t n);</li>
+<li>long lseek(int fd, long offset, int origin)
+<ul>
+<li>origin 0头1当前2末</li>
+</ul>
+</li>
+<li>int stat(const *name, struct stat *buf); 获得metadata</li>
+<li>int fstat(int fd, struct stat *buf);
+<ul>
+<li>stat 结构
+<ul>
+<li>st_dev 设备ID</li>
+<li>st_ino 节点编号</li>
+<li>st_mode 文件访问权限和类型</li>
+<li>st_nlink 连接链的数目</li>
+<li>st_uid 文件拥有者ID</li>
+<li>st_gid 文件拥有者组ID</li>
+<li>st_rdev</li>
+<li>st_size 文件大小</li>
+<li>st_blksize 块大小</li>
+<li>st_blocks 块数</li>
+<li>st_atime 最近一次访问时间</li>
+<li>st_mtime 最近一次修改时间</li>
+<li>st_ctime 最近一次修改文件状态的时间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>void close(int fd)</li>
+<li>int unlink(const char* pathname)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>terminal: 键盘+显示器</li>
+<li>文本文件(ASCII文件)：每行以'\n&rsquo;结束</li>
+</ul>
+<h2 id="io硬件与软件接口">I/O硬件与软件接口</h2>
+<ul>
+<li>机械部分
+<ul>
+<li>I/O设备本身（外围设备）
+<ul>
+<li>字符设备</li>
+<li>机-机通信设备部</li>
+</ul>
+</li>
+<li>块设备
+<ul>
+<li>外部存储器</li>
+</ul>
+</li>
+<li>电子部分
+<ul>
+<li>设备控制器（I/O配适器）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>北桥芯片：MCH, Memory Controller Hubb, 主存控制器集线器，本质是DMA控制器</li>
+<li>南桥芯片：ICH, I/O Controller Hub</li>
+<li>FSB: Front Side Bus, 前端总线，处理器总线，处理器和北桥芯片信息交换
+<ul>
+<li>传输速率单位：MT/s(MHz)</li>
+</ul>
+</li>
+<li>QPI: Quick Path Inter-connect</li>
+<li>储存器总线</li>
+<li>I/O总线
+<ul>
+<li>PCI-Express</li>
+</ul>
+</li>
+<li>I/O接口</li>
+<li>I/O编址
+<ul>
+<li>统一编址方式（储存器映射方式）</li>
+<li>独立编址方式</li>
+</ul>
+</li>
+</ul>
+<h2 id="io控制方式">I/O控制方式</h2>
+<ul>
+<li>程序之间控制I/O方式(polling)</li>
+<li>中断控制I/O方式
+<ul>
+<li>处理器调度程序
+<ul>
+<li>进程三状态：运行态、就绪态（就绪队列）、阻塞态（被挂起）</li>
+</ul>
+</li>
+<li>PIC: Programmable Interrupt Controller</li>
+<li>IRQ线连到PIC的IRQ引脚</li>
+<li>中断响应优先级&ndash;中断查询程序/硬件判优电路</li>
+<li>中断处理优先级</li>
+</ul>
+</li>
+<li>DMA控制I/O方式</li>
+</ul>
+<h2 id="io内核空间软件">I/O内核空间软件</h2>
+<ul>
+<li>与设备无关的I/O软件
+<ul>
+<li>设备驱动程序统一接口
+<ul>
+<li>设备文件名（e.g. i节点）</li>
+</ul>
+</li>
+<li>缓冲区处理</li>
+<li>错误处理</li>
+<li>打开关闭文件</li>
+<li>逻辑块大小处理</li>
+</ul>
+</li>
+<li>设备驱动程序</li>
+<li>中断服务程序</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

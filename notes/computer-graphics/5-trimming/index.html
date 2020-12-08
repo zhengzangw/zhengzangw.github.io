@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5.剪裁 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#点剪裁">点剪裁</a></li>
+    <li><a href="#线段剪裁">线段剪裁</a>
+      <ul>
+        <li><a href="#cohen-sutherland-剪裁算法">Cohen-Sutherland 剪裁算法</a></li>
+        <li><a href="#梁友栋-barsky-参数剪裁算法">梁友栋-Barsky 参数剪裁算法</a></li>
+        <li><a href="#nicholl-lee-nicholl-剪裁算法">Nicholl-Lee-Nicholl 剪裁算法</a></li>
+        <li><a href="#非矩形剪裁窗口剪裁处理">非矩形剪裁窗口剪裁处理</a></li>
+      </ul>
+    </li>
+    <li><a href="#多边形剪裁">多边形剪裁</a>
+      <ul>
+        <li><a href="#sutherland-hodgman-算法">Sutherland-Hodgman 算法</a></li>
+        <li><a href="#weilerr-atherton-算法">Weilerr-Atherton 算法</a></li>
+        <li><a href="#多边形裁剪的相关问题">多边形裁剪的相关问题</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="点剪裁">点剪裁</h2>
+<p>$P=(x,y)$ 满足 $x_{w\min}\leq x\leq xw_{\max},y_{w\min}\leq y\leq yw_{\max}$ 则保存</p>
+<h2 id="线段剪裁">线段剪裁</h2>
+<h3 id="cohen-sutherland-剪裁算法">Cohen-Sutherland 剪裁算法</h3>
+<ul>
+<li>使用编码测试减少要计算交点的次数</li>
+<li>区域码
+<ul>
+<li>位一：左边界，$x&lt;x_{w\min}$</li>
+<li>位二：右边界，$x&gt;x_{w\max}$</li>
+<li>位三：下边界，$y&lt;y_{w\min}$</li>
+<li>位四：上边界，$y&gt;y_{w\max}$</li>
+</ul>
+</li>
+<li>两端点区域码均为 0000：完全区域内</li>
+<li>两端点与运算结果不为 0000：完全区域外</li>
+<li>其它：求交后按左右上下顺序检测线段端点</li>
+</ul>
+<h3 id="梁友栋-barsky-参数剪裁算法">梁友栋-Barsky 参数剪裁算法</h3>
+<ul>
+<li>诱导窗口：线段所在直线与裁剪窗口的交点线段</li>
+<li>一维参数表示
+<ul>
+<li>$P_1P_2$: $P=P_1+u(P_2-P_1)$</li>
+<li>$Q_1:u_1$</li>
+<li>$Q_2:u_2$</li>
+</ul>
+</li>
+<li>判断参数
+<ul>
+<li>$\Delta x=x_2-x_1,\Delta y = y_2-y_1$</li>
+<li>$p_1=-\Delta x,q_1=x_1-x_{w\min}$</li>
+<li>$p_2=\Delta x,q_2=x_{w\max}-x_1$</li>
+<li>$p_3=-\Delta y,q_3=y_1-y_{w\min}$</li>
+<li>$p_4=\Delta y,q_4=y_{w\max}-y_1$</li>
+<li>$r_i=\frac{q_i}{p_i}$</li>
+</ul>
+</li>
+<li>$p_k$：
+<ul>
+<li>$0$: 平行</li>
+<li>$&lt;0$: 从外到内，更新 $u_1=\max(0,r_k)$</li>
+<li>$&gt;0$: 从内到外，更新 $u_2=\min(1,r_k)$</li>
+</ul>
+</li>
+<li>若 $u_1&gt;u_2$，舍弃线段；否则根据 $u$ 求出交点</li>
+</ul>
+<h3 id="nicholl-lee-nicholl-剪裁算法">Nicholl-Lee-Nicholl 剪裁算法</h3>
+<ul>
+<li>仅适用于二维直线剪裁</li>
+<li>确定 $P_1$ 与窗口相对位置（9宫格）</li>
+<li>确定 $P_2$ 所在区域（$P_1$对窗口四个顶点做射线）</li>
+<li>确定交点</li>
+<li>比较和除法次数较少，减少了求交运算</li>
+</ul>
+<h3 id="非矩形剪裁窗口剪裁处理">非矩形剪裁窗口剪裁处理</h3>
+<ul>
+<li>凸多边形：参数化线段裁剪算法可以扩充</li>
+<li>圆等曲线边界：涉及非线性方程
+<ul>
+<li>圆：先舍弃外接矩形之外，再通过如到圆心距离判断</li>
+</ul>
+</li>
+<li>凹多边形：分解为一组凸多边形
+<ul>
+<li>凹多边形判别：绕多边形叉乘出现异号</li>
+<li>向量法分解：沿出现异号的叉乘矢量对中第一条边延长线分解多边形</li>
+<li>旋转法分解：绕逆时针处理顶点，将某顶点平移到原点，顺时针顺转多边形使下一顶点落在 $x$ 轴上，若再下一点落在 $x$ 下，则多边形为凹多边形，沿 $x$ 轴分解</li>
+</ul>
+</li>
+</ul>
+<h2 id="多边形剪裁">多边形剪裁</h2>
+<h3 id="sutherland-hodgman-算法">Sutherland-Hodgman 算法</h3>
+<ul>
+<li>按序逆时针遍历个顶点
+<ul>
+<li>起始点和终止点都在窗口边界外侧：不增加</li>
+<li>都在内测：输出终止点</li>
+<li>外到内，增加交点和终止点</li>
+<li>内到外，增加交点</li>
+</ul>
+</li>
+<li>改进：增加点剪裁</li>
+<li>缺点：凹多边形剪裁出现多余的线</li>
+</ul>
+<h3 id="weilerr-atherton-算法">Weilerr-Atherton 算法</h3>
+<ul>
+<li>预处理
+<ul>
+<li>建立多边形顶点表和裁剪窗口顶点表</li>
+<li>求出所有交点</li>
+<li>两顶点表中相同交点间建立双向指针</li>
+</ul>
+</li>
+<li>裁剪过程：任选一交点为起点
+<ul>
+<li>若为进点，跟踪多边形边界</li>
+<li>若为出点，跟踪窗口边界</li>
+</ul>
+</li>
+</ul>
+<h3 id="多边形裁剪的相关问题">多边形裁剪的相关问题</h3>
+<ul>
+<li>多边形窗口
+<ul>
+<li>Liang-Barskey 线段裁剪</li>
+<li>Weiler 算法</li>
+</ul>
+</li>
+<li>曲线边界区域</li>
+<li>文字裁剪
+<ul>
+<li>字符串裁剪策略</li>
+<li>字符取舍策略</li>
+<li>单字符裁剪</li>
+</ul>
+</li>
+<li>外部裁剪</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

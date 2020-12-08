@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3. 图元生成算法 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#线画图元生成算法">线画图元生成算法</a>
+      <ul>
+        <li><a href="#数值差分析算法-dda">数值差分析算法 DDA</a></li>
+        <li><a href="#直线图元生成算法-bresenham">直线图元生成算法 Bresenham</a></li>
+        <li><a href="#曲线图元生成算法">曲线图元生成算法</a></li>
+        <li><a href="#线画图元生成的帧缓冲器地址计算">线画图元生成的帧缓冲器地址计算</a></li>
+        <li><a href="#线画图元生成的并行处理算法">线画图元生成的并行处理算法</a></li>
+        <li><a href="#线画图元生成的反走样技术">线画图元生成的反走样技术</a></li>
+      </ul>
+    </li>
+    <li><a href="#填充图元生成算法">填充图元生成算法</a>
+      <ul>
+        <li><a href="#扫描转换算法">扫描转换算法</a></li>
+        <li><a href="#区域填充算法">区域填充算法</a></li>
+        <li><a href="#图像填充算法">图像填充算法</a></li>
+      </ul>
+    </li>
+    <li><a href="#字符的表示与生成">字符的表示与生成</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="线画图元生成算法">线画图元生成算法</h2>
+<ul>
+<li>输出图元 (Output Primitive)
+<ul>
+<li>线画图元：矢量表示</li>
+<li>填充图元：点阵表示</li>
+</ul>
+</li>
+<li>输出图元生成：图像的设备级算法</li>
+<li>点
+<ul>
+<li>随机扫描：电子束定位于指定位置</li>
+<li>光栅扫描：根据帧缓冲器设置电子脉冲强度</li>
+</ul>
+</li>
+<li>线
+<ul>
+<li>随机扫描：按 $x$ 和 $y$ 方向线性增量改变水平和垂直偏转电压</li>
+<li>光栅扫描：绘制两端点间的离散点</li>
+</ul>
+</li>
+<li>线画图元生成：线段通过像素绘制</li>
+<li>扫描转换：按光栅扫描显示原理对数学表示的线段离散取样的方法</li>
+<li>像素网格坐标：对象与像素中心对准，像素点区域坐标在像素点中心</li>
+<li>屏幕网格坐标：物体边界与像素边界对准，像素点坐标有像素区域左下角整数网格坐标指定</li>
+</ul>
+<h3 id="数值差分析算法-dda">数值差分析算法 DDA</h3>
+<ul>
+<li>$y=kx+b$</li>
+<li>$|k|\leq 1$：取 $\Delta x=1$，$y_{i+1}=y_i+k$，坐标取整</li>
+<li>$|k|&gt;1$: 取 $\Delta y=1$，$x_{i+1}=x_i+\frac{1}{k}$</li>
+<li>优点：加法计算速度快</li>
+<li>缺点：像素位置需取整
+<ul>
+<li>累积误差</li>
+<li>取整操作和浮点预算耗时</li>
+</ul>
+</li>
+</ul>
+<h3 id="直线图元生成算法-bresenham">直线图元生成算法 Bresenham</h3>
+<ul>
+<li>$y=mx+b$
+<ul>
+<li>屏幕坐标：$x_{k+1}=x_k+1,y_{k+1}=y_k+1$</li>
+<li>像素位置 $x_{k+1}$ 处线段的数学点坐标：$y=m(x_k+1)+b$</li>
+<li>垂直偏移
+<ul>
+<li>$d_1=y-y_k=m(x_k+1)+b-y_k$</li>
+<li>$d_2=y_{k+1}-y=y_{k+1}-m(x_k+1)-b$</li>
+</ul>
+</li>
+<li>距离差：$d_1-d_2=2m(x_k+1)-2y_k+2b-1$</li>
+<li>$\Delta x(d_1-d_2)=2\Delta yx_k-2\Delta xy_k+c$</li>
+</ul>
+</li>
+<li>决策参数：$p_k=\Delta x(d_1-d_2)=2\Delta yx_k-2\Delta xy_k+c$
+<ul>
+<li>$p_k&gt;0,d_2&lt;d_1$，选择 $(x_{k+1},y_{k+1})$</li>
+<li>$p_k&lt;0,d_2&gt;d_1$，选择 $(x_{k+1},y_{k})$</li>
+</ul>
+</li>
+<li>增量计算：$p_{k+1}=p_k+2\Delta y-2\Delta x(y_{k+1}-y_k)$</li>
+<li>增量选择
+<ul>
+<li>$|m|&lt;1$：沿 $x$ 方向</li>
+<li>$|m|&gt;1$：沿 $y$ 方向</li>
+<li>直线生成方向与坐标轴同：坐标增量为正</li>
+<li>直线生成方向与坐标轴反：坐标增量为负</li>
+<li>水平线和垂直线直接装载</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Bresenham</span>(<span style="color:#66d9ef">int</span> x_0, <span style="color:#66d9ef">int</span> y_0, <span style="color:#66d9ef">int</span> delta_x, <span style="color:#66d9ef">int</span> delta_y){
+    <span style="color:#75715e">//|m|&lt;1,直线生成方向与坐标轴同
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> p <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_y<span style="color:#f92672">-</span>delta_x;
+    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> x_0, y <span style="color:#f92672">=</span> y_0;
+    Draw(x, y);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;k<span style="color:#f92672">&lt;=</span>delta_x;<span style="color:#f92672">++</span>k){
+        x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">if</span> (p<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>){
+            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_y;
+        } <span style="color:#66d9ef">else</span> {
+            y <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_y<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_x;
+        }
+        Draw(x,y);
+    }
+}
+</code></pre></div><h3 id="曲线图元生成算法">曲线图元生成算法</h3>
+<h4 id="中点圆算法">中点圆算法</h4>
+<ul>
+<li>$f(x,y)=x^2+y^2-r^2$
+<ul>
+<li>$y_{k+1}=y_k-1$</li>
+<li>平移：圆心 $(x_c,y_c)$</li>
+<li>对称：$x=0$ 到 $x=y$ 八分之一</li>
+</ul>
+</li>
+<li>决策参数：$p_k=f(x_{k+1},\frac{y_k+y_{k+1}}{2})=f(x_{k+1},y_k-\frac{1}{2})$
+<ul>
+<li>$p_k&gt;=$：圆周外/上，$y_{k-1}$</li>
+<li>$p_k&lt;0$：圆周内，$y_k$</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">drawCircle</span>(<span style="color:#66d9ef">int</span> x_c, <span style="color:#66d9ef">int</span> y_c, <span style="color:#66d9ef">int</span> r){
+    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, y <span style="color:#f92672">=</span> r;
+    <span style="color:#66d9ef">int</span> p <span style="color:#f92672">=</span><span style="color:#ae81ff">5</span><span style="color:#f92672">/</span><span style="color:#ae81ff">4</span><span style="color:#f92672">-</span>r;
+    <span style="color:#66d9ef">while</span> (x<span style="color:#f92672">&gt;=</span>y){
+        x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">if</span> (p<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>) {
+            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+        } <span style="color:#66d9ef">else</span> {
+            y <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>;
+            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>y;
+        }
+        P <span style="color:#f92672">=</span> getSymmetryPoints(x,y);
+        moveToCenter(P, x_c, y_c);
+        drawSet(P);
+    }
+}
+</code></pre></div><h4 id="椭圆生成算法">椭圆生成算法</h4>
+<ul>
+<li>$f(x,y)=r_y^2x^2+r_x^2y^2-r_x^2r_y^2$</li>
+<li>斜率：$\frac{dy}{dx}=-\frac{2r_y^2x}{2r_x^2y}$
+<ul>
+<li>第一象限分为斜率&lt;-1 和&gt;-1 两个区域，分别为区域 1 和区域 2</li>
+</ul>
+</li>
+<li>$p1=f(x_{k+1},y_k-\frac{1}{2})=r_y^2(x_k+1)^2+r_x^2(y_k-\frac{1}{2})^2-r_x^2r_y^2$
+<ul>
+<li>$p1&lt;0,y_{k+1}=y_k$</li>
+<li>$p\geq 0,y_{k+1}=y_k-1$</li>
+</ul>
+</li>
+<li>$p2=f(x+\frac{1}{2},y_k-1)=r_y^2(x_k+\frac{1}{2})^2+r_x^2(y_k-1)^2-r_x^2r_y^2$
+<ul>
+<li>$p2&gt;0,x_{k+1}=x_k$</li>
+<li>$p2\leq0,x_{k+1}=x_k+1$</li>
+</ul>
+</li>
+</ul>
+<h4 id="其它曲线">其它曲线</h4>
+<ul>
+<li>圆锥曲线，三角和指数函数，概率分布，多项式核样条函数</li>
+<li>直接逼近法</li>
+<li>直线拟合法</li>
+<li>中点法</li>
+<li>利用对称性</li>
+</ul>
+<h3 id="线画图元生成的帧缓冲器地址计算">线画图元生成的帧缓冲器地址计算</h3>
+<ul>
+<li>单色系统
+<ul>
+<li>$\text{addr}(x,y)=\text{addr}(0,0)=y(x_{\max}+1)+x$</li>
+<li>$\text{addr}(x+1,y)=\text{addr}(x,y)+1$</li>
+<li>$\text{addr}(x+1,y+1)=\text{addr}(x,y)+x_{\max}+2$</li>
+</ul>
+</li>
+<li>彩色系统：乘以像素位数 $n$</li>
+</ul>
+<h3 id="线画图元生成的并行处理算法">线画图元生成的并行处理算法</h3>
+<ul>
+<li>将直线分割成多个子段，每个子段用 Bresenham 算法，同时生成线段
+<ul>
+<li>子段分割分配：按处理器数目分段；宽度可能不同</li>
+<li>扫描线/像素列像素分配：顺序算法可能较慢</li>
+<li>区域像素分配</li>
+</ul>
+</li>
+</ul>
+<h3 id="线画图元生成的反走样技术">线画图元生成的反走样技术</h3>
+<ul>
+<li>走样：低频取样不充分造成信息失真</li>
+<li>将直线段看做具有一定长度的矩形，根据与像素的相交区域确定像素亮度级</li>
+<li>直线段过取样
+<ul>
+<li>像素亮度等级 = 像素区域内子像素总数</li>
+</ul>
+</li>
+<li>区域取样：像素亮度正比于像素与有限宽线的重迭区域（线宽被覆盖的像素数目）</li>
+<li>线亮度差矫正
+<ul>
+<li>水平和垂直线：最低亮度</li>
+<li>45 度线：最高亮度</li>
+</ul>
+</li>
+<li>加权区域采样
+<ul>
+<li>像素亮度对直线段的贡献程度正比于相交区域与像素中心的距离</li>
+</ul>
+</li>
+<li>加权掩膜：指定子像素相对重要性值的数组</li>
+<li>过滤技术：连续加权曲面或过滤函数覆盖像素</li>
+<li>硬件反走样（像素位移）：移动像素区域的显示位置</li>
+</ul>
+<h2 id="填充图元生成算法">填充图元生成算法</h2>
+<ul>
+<li>顶点表示
+<ul>
+<li>扫描填充：求出位于内部的各个像素</li>
+<li>扫描线求交：多边形边界转换为像素</li>
+<li>区域连通性：多边形内部转换为有效连通区域</li>
+</ul>
+</li>
+<li>点阵表示
+<ul>
+<li>区域填充：从区域的一个内点出发，将颜色扩展到整个区域</li>
+<li>区域连通性：区域内部像素有效连通</li>
+<li>内外点测试：起始种子为内点</li>
+</ul>
+</li>
+<li>填充格式
+<ul>
+<li>颜色边界空心区域</li>
+<li>实心区域</li>
+<li>图案区域</li>
+</ul>
+</li>
+</ul>
+<h3 id="扫描转换算法">扫描转换算法</h3>
+<ul>
+<li>
+<p>顶点表示 -&gt; 点阵表示</p>
+</li>
+<li>
+<p>扫描线与区域边界求交</p>
+<ul>
+<li>
+<p>求交增量：$x_k=x_0+\frac{k}{m}$</p>
+</li>
+<li>
+<p>整数增量求交</p>
+<ul>
+<li>$m=\frac{\Delta y}{\Delta x}$</li>
+<li>直接舍入取整法</li>
+</ul>
+<p>设定计数器，每移动一条扫描线，计数器增加 $\Delta$，若大于 $\Delta y$ 则得到一个新交点（$x$增加 1，计数器减去 $\Delta$ ）</p>
+<ul>
+<li>细化取整法：增加 $2\Delta x$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>区域边界顶点求交</p>
+<ul>
+<li>
+<p>异侧：顺序连接边的端点 $y$ 值单调，交点数记为 1</p>
+<ul>
+<li>顶点分离</li>
+</ul>
+<p>顺/逆时针方向处理多边形边界中的非水平边，对任一条边，检测该边与下一条非水平边共享顶点时是否有单调递增或递减的端点 $y$ 值</p>
+<p>若有，则将较低的一条边缩短一个单位值</p>
+</li>
+<li>
+<p>同侧：否则交点数记为 2</p>
+</li>
+</ul>
+</li>
+<li>
+<p>扫描转换填充的数据结构</p>
+<ul>
+<li>$Y$ 桶：储存每条扫描线</li>
+<li>有序边表：按下端点 $y$ 坐标值放入桶中
+<ul>
+<li>链表：同类边按 $x$ 递增排列，每个节点包括最大 $y$ 值，下端点 $x$ 值，边斜率倒数</li>
+</ul>
+</li>
+<li>活化边表：记录多边形沿扫描线的交点序列
+<ul>
+<li>将有序边表中当前扫描线以下的边加入，删除 $y_{\max}&lt;y_k$ 的边，其它边确定交点</li>
+<li>每个节点：最大 $y$ 值，交点坐标 $x$，边斜率倒数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="区域填充算法">区域填充算法</h3>
+<ul>
+<li>16 连通：马字步</li>
+<li>像素4连通区域边界只需8连通</li>
+<li>像素8连通区域必须4连通</li>
+<li>区域内外点测试
+<ul>
+<li>奇偶规则：射线与区域多边形边界交点，奇内偶外</li>
+<li>非零环绕数桂策：区域内部点环绕数非零
+<ul>
+<li>$e=V_B-V_A$, $u$ 为 $P$ 点出发的穿越$AB$的射线向量，$v$ 为垂直与 $u$ 的向量</li>
+<li>叉乘法 $u\times e&gt;0$ 环绕数加一</li>
+<li>点积法 $v\times e&gt;0$ 环绕数加一</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边界填充算法：边界以单一颜色指定
+<ul>
+<li>递归边界填充：从区域种子点开始，根据连通性检测相邻位置与边界颜色不同的像素，用填充颜色涂色
+<ul>
+<li>需要较大的栈空间</li>
+<li>内部像素颜色与填充颜色相同会导致递归分支终止</li>
+</ul>
+</li>
+<li>扫描边界填充：填充种子点像素所在扫描行的连续像素段，再将相邻扫描线上起始点入栈</li>
+</ul>
+</li>
+<li>泛滥填充算法：区域内部单一颜色填充
+<ul>
+<li>递归填充：种子点开始，按像素颜色及连通性，递归检测和扩展内部区域</li>
+<li>扫描转换填充：每个水平区间第一个位置开始，按扫描线逐步将区域内扫描线上像素颜色替换为填充颜色</li>
+</ul>
+</li>
+</ul>
+<h3 id="图像填充算法">图像填充算法</h3>
+<ul>
+<li>均匀着色区域：像素的颜色由用户指定
+<ul>
+<li>扫描填充图元</li>
+<li>区域谭崇图元</li>
+</ul>
+</li>
+<li>图像填充区域：像素的颜色从图像中获得
+<ul>
+<li>位图不透明方式</li>
+<li>位图透明方式</li>
+<li>像素图填充方式</li>
+</ul>
+</li>
+</ul>
+<h2 id="字符的表示与生成">字符的表示与生成</h2>
+<ul>
+<li>点阵字符：由像素图表示和保存
+<ul>
+<li>字型：像素图的尺寸</li>
+</ul>
+</li>
+<li>矢量字符：记录字符的笔画信息</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

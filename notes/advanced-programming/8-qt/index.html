@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Qt | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#桌面应用开发框架">桌面应用开发框架</a></li>
+    <li><a href="#macdeployqt-错误">macdeployqt 错误</a>
+      <ul>
+        <li><a href="#解决方法">解决方法</a></li>
+        <li><a href="#生成app">生成APP</a></li>
+        <li><a href="#生成dmg">生成dmg</a></li>
+        <li><a href="#知识点">知识点</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="桌面应用开发框架">桌面应用开发框架</h2>
+<ul>
+<li>Windows
+<ul>
+<li>C++: Qt, MFC, WTL, wxWidgets, DirectUI, Htmlayout</li>
+<li>C#: WinForm, WPF</li>
+<li>Java: AWT, Swing</li>
+<li>Python: Tkinter, wxpython, PyQt, PythonWin</li>
+<li>Pascal: Delphi</li>
+<li>aardio</li>
+<li>Visual Basic</li>
+</ul>
+</li>
+<li>Linux
+<ul>
+<li>C++: Qt, GTK+, wxWidgets</li>
+<li>Java: AWT, Swing</li>
+<li>Python: Tkinter, wxpython, PyQt, PyGTK</li>
+</ul>
+</li>
+<li>Mac
+<ul>
+<li>Objective-C: Cocoa</li>
+<li>swift: Cocoa</li>
+<li>C++: Qt</li>
+<li>Python: Tkinter, wxpython, PyQt</li>
+</ul>
+</li>
+<li>基于 Web 技术桌面开发
+<ul>
+<li>浏览器内核（渲染引擎）
+<ul>
+<li>Trident: IE</li>
+<li>Gecko: Firefox</li>
+<li>WebKit: Safari</li>
+<li>Chromium: 基于 WebKit, Chrome</li>
+<li>Blink: WebKit 精简版</li>
+<li>Presto: Opera (已放弃，转为Webkit)</li>
+</ul>
+</li>
+<li>JS引擎
+<ul>
+<li>Mozilla: SpiderMonkey, TraceMonkey, JagerMonkey</li>
+<li>Google: V8 (nodejs 基于 V8)</li>
+<li>Microsoft: Chakra, JScript</li>
+</ul>
+</li>
+<li>NW.js (node-webkit): 基于 Chromium, node.js, 通过 HTML 和 JavaScript 编写应用程序</li>
+<li>heX</li>
+<li>Electron</li>
+</ul>
+</li>
+</ul>
+<h2 id="macdeployqt-错误">macdeployqt 错误</h2>
+<p>ERROR: Unexpected prefix &ldquo;@loader_path&rdquo;</p>
+<h3 id="解决方法">解决方法</h3>
+<p>which macdeployqt 确认位置<br>
+添加 qt.conf<br>
+内容：</p>
+<pre><code>[Path]
+Plugins = PlugIns
+</code></pre>
+<h3 id="生成app">生成APP</h3>
+<pre><code>macdeployqt new.app
+</code></pre>
+<h3 id="生成dmg">生成dmg</h3>
+<pre><code>macdeployqt new.app -verbose=1 -dmg
+</code></pre>
+<h3 id="知识点">知识点</h3>
+<p>Mac中的GUI应用必须以Bundle的形式运行，所谓Bundle,是一个以&quot;.app&quot;结尾命名的文件夹，系统自动识别它为一个应用包，应用所有的东西(执行文件、链接的动态库、资源文件等等)都在里面了</p></main>
+        </div>
+
+    </div>
+</body></html>

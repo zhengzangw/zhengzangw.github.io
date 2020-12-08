@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4.变换 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本几何变换">基本几何变换</a></li>
+    <li><a href="#二维观察变换">二维观察变换</a></li>
+    <li><a href="#三维观察变换">三维观察变换</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="基本几何变换">基本几何变换</h2>
+<ul>
+<li>二维齐次坐标 $(x,y,h)$</li>
+<li>二维变换</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>变换</th>
+<th>变换矩阵</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平移</td>
+<td>$\begin{bmatrix} 1 &amp; 0 &amp; t_x\newline 0 &amp; 1 &amp; t_y\newline 0 &amp; 0 &amp; 1\newline \end{bmatrix}$</td>
+</tr>
+<tr>
+<td>旋转</td>
+<td>$\begin{bmatrix} \cos\theta &amp; -\sin\theta &amp; 0\newline \sin\theta &amp; \cos\theta &amp; 0\newline 0 &amp; 0 &amp; 1\newline \end{bmatrix}$</td>
+</tr>
+<tr>
+<td>缩放</td>
+<td>$\begin{bmatrix} s_x &amp; 0 &amp; 1 \newline 0 &amp; s_y &amp; 1\newline 0 &amp; 0 &amp; 1\newline \end{bmatrix}$</td>
+</tr>
+<tr>
+<td>错切</td>
+<td>$\begin{bmatrix} 1 &amp; sh_x &amp; -sh_xy_{ref}\newline 0 &amp; 1 &amp; 0\newline 0 &amp; 0 &amp; 1\newline \end{bmatrix}$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>三维齐次坐标 $(x,y,z,h)$</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>变换</th>
+<th>变换矩阵</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平移</td>
+<td>$\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; t_x\newline 0 &amp; 1 &amp; 0 &amp; t_y\newline 0 &amp; 0 &amp; 1 &amp; t_z\newline 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>缩放</td>
+<td>$\begin{bmatrix} s_x &amp; 0 &amp; 0 &amp; 0\newline 0 &amp; s_y &amp; 0 &amp; 0\newline 0 &amp; 0 &amp; s_z &amp; 0\newline 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>旋转 Z 轴</td>
+<td>$\begin{bmatrix} \cos\theta &amp; -\sin\theta &amp; 0 &amp; 0\newline \sin\theta &amp; \cos\theta &amp; 0 &amp; 0\newline 0 &amp; 0 &amp; 1 &amp; 0\newline 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>旋转 X 轴</td>
+<td>$\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0\newline 0 &amp; \cos\theta &amp; -\sin\theta &amp; 0\newline 0 &amp; \sin\theta &amp; \cos\theta &amp; 0\newline 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>旋转 Y 轴</td>
+<td>$\begin{bmatrix} \cos\theta &amp; 0 &amp; \sin\theta &amp; 0\newline 0 &amp; 1 &amp; 0 &amp; 0\newline -\sin\theta &amp; 0 &amp; \cos\theta &amp; 0\newline 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>$xy$ 平面反射</td>
+<td>$\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0\newline 0 &amp; 1 &amp; 0 &amp; 0\newline 0 &amp; 0 &amp; -1 &amp; 0\newline 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>$yz$ 平面反射</td>
+<td>$\begin{bmatrix} -1 &amp; 0 &amp; 0 &amp; 0\newline 0 &amp; 1 &amp; 0 &amp; 0\newline 0 &amp; 0 &amp; 1 &amp; 0\newline 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>$xz$ 平面反射</td>
+<td>$\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0\newline 0 &amp; -1 &amp; 0 &amp; 0\newline 0 &amp; 0 &amp; 1 &amp; 0\newline 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>$z$ 轴错切</td>
+<td>$\begin{bmatrix} 1 &amp; 0 &amp; sh_x &amp; 0\newline 0 &amp; 1 &amp; sh_y &amp; 0\newline 0 &amp; 0 &amp; 1 &amp; 0\newline 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>任意轴旋转和旋转角旋转变换
+<ul>
+<li>$R(\theta)=T^{-1}R^{-1}R_z(\theta)RT$</li>
+<li>$R=R_y(\beta)R_x(\alpha)$ 将旋转轴与 $z$ 轴重合</li>
+</ul>
+</li>
+</ul>
+<h2 id="二维观察变换">二维观察变换</h2>
+<ul>
+<li>窗口：指定图形要显示部分的区域</li>
+<li>视区：窗口指定区域映射到输出设备上的区域</li>
+<li>窗口到视区变换
+<ul>
+<li>$x_v=x_{v\min}+(x_w-x_{w\min})s_x,s_x=\frac{x_{v\max}-x_{v\min}}{x_{w\max}-x_{w\min}}$</li>
+<li>$y_v=y_{v\min}+(y_w-y_{w\min})s_y,s_y=\frac{y_{v\max}-y_{v\min}}{y_{w\max}-y_{w\min}}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="三维观察变换">三维观察变换</h2>
+<ul>
+<li>
+<p>观察/参考坐标系：指定观察位置和投影平面位置</p>
+<ul>
+<li>世界坐标中的景物先转换到观察坐标</li>
+<li>观察点 $P$：观察坐标原点</li>
+<li>观察坐标中的景物投影到观察/投影平面上</li>
+<li>观察轴 $z_v$ 垂直与观察平面</li>
+<li>观察向上向量 $V$：建立 $y_v$ 轴正方向</li>
+<li>观察系统即单位轴向量 $uvn$ 系统</li>
+</ul>
+</li>
+<li>
+<p>观察坐标变换</p>
+<ul>
+<li>世界坐标到观察坐标的变化等价于运用基本几何平移选择运算将观察坐标系叠加到世界坐标系上的变化：$M=RT$</li>
+</ul>
+</li>
+<li>
+<p>平行投影</p>
+<ul>
+<li>
+<p>正投影：投影向量垂直与观察平面</p>
+<ul>
+<li>三视图：投影平面与坐标轴垂直</li>
+<li>正轴侧图：不垂直 $(x,y)$</li>
+</ul>
+</li>
+<li>
+<p>斜投影：不垂直</p>
+<ul>
+<li>$\alpha$: $(x,y,z)$到$(x_p,y_p)$斜投影线与投影平面中的点$(x_p,y_p)$和$(x,y)$连线夹角</li>
+<li>$\beta$: $(x_p,y_p)$和$(x,y)$连线与$x$轴夹角</li>
+</ul>
+<p>变换矩阵 $\begin{bmatrix}1&amp;0&amp;\frac{\cos\beta}{\tan\alpha}&amp;0\newline 0&amp;1&amp;\frac{\cos\beta}{\tan\alpha}&amp;0\newline 0&amp;0&amp;0&amp;0\newline 0&amp;0&amp;0&amp;1\end{bmatrix}$</p>
+<p>$\tan\alpha=1$ 斜等测投影，$\tan\alpha=2$ 斜二测投影</p>
+</li>
+</ul>
+</li>
+<li>
+<p>透视投影</p>
+<ul>
+<li>
+<p>将点沿会聚到投影参考点的投影线变换</p>
+</li>
+<li>
+<p>灭点：物体中不与观察平面平行的任一族平行线收敛于一点</p>
+</li>
+<li>
+<p>主灭点：平行与某一坐标轴的平行线的灭点称为主灭点</p>
+</li>
+<li>
+<p>当投影点在 $z_r$ 轴 $z_{prp}$，观察平面在 $z_{vp}$ 处时</p>
+<ul>
+<li>$d_p=z_{prp}-z_{vp}$</li>
+<li>$x_p=x\lfloor \frac{d_p}{z_{prp}-z}\rfloor$</li>
+<li>$y_p=y\lfloor \frac{d_p}{z_{prp}-z}\rfloor$</li>
+</ul>
+</li>
+<li>
+<p>投影参考点 $(x_{prp},y_{prp},z_{prp})$</p>
+<ul>
+<li>齐次因子：$h=\frac{z_{prp}-z}{d_p}$</li>
+<li>投影矩阵</li>
+</ul>
+<p>$$\begin{bmatrix}x_h\newline y_h\newline z_h\newline h\end{bmatrix}=\begin{bmatrix}1 &amp; 0 &amp; 0 &amp; 0\newline 0 &amp; 1 &amp; 0 &amp; 0\newline 0 &amp; 0 &amp; -\frac{z_{vp}}{d_p} &amp; z_{vp}\frac{z_{prp}}{d_p}\newline 0 &amp; 0 &amp; -\frac{1}{d} &amp; \frac{z_{prp}}{d_p}\end{bmatrix}\begin{bmatrix}x\newline y\newline z\newline 1\end{bmatrix}$$</p>
+<ul>
+<li>投影坐标系：$x_p=\frac{x_h}{h},y_p=\frac{y_h}{h}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>观察体（观察空间）：只有在观察体内的物体才显示</p>
+<ul>
+<li>观察窗口</li>
+<li>前平面，后平面</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

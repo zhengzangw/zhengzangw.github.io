@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2-一元微积分 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#积分">积分</a></li>
+    <li><a href="#导数">导数</a></li>
+    <li><a href="#微分">微分</a></li>
+    <li><a href="#微积分基本定理">微积分基本定理</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="积分">积分</h2>
+<ul>
+<li>Riemann 和
+<ul>
+<li>$P:a=x_0&lt;\cdots&lt;x_n=b$ 为 $[a,b]$ 的分隔</li>
+<li>特殊点选取 $\xi$： $\xi_i\in[x_{i-1},x_i]$，定义域${1,2,\cdots,n}$，自变量 $i$，函数值 $\xi_i$</li>
+<li>$\Delta x_i= x_i-x_{i-1}$</li>
+<li>$S(f,P,\xi)=\sum_{i=1}^nf(\xi_i)\Delta x_i,\lVert P\rVert=\max{|\Delta x_i||1\leq i\leq n}$</li>
+</ul>
+</li>
+<li>Riemann 可积：$\forall\epsilon&gt;0,\exists\delta&gt;0,\forall P,\lVert P\rVert&lt;\delta,\forall\xi,|S(f,P,\xi)-I|&lt;\epsilon$
+<ul>
+<li>$I=\int_a^b f(x)dx$</li>
+<li>有界性：$f$ Riemann 可积则 $f$ 在 $[a,b]$ 上有界</li>
+<li>唯一性</li>
+<li>线性</li>
+<li>单调性</li>
+<li>非负性</li>
+<li>三角不等式：$|\int_a^b fdx|\leq\int_a^b|f|dx$</li>
+<li>$f$ 在 $[a,b]$ 上有界且至多有有限个间断点，则 $f$ 在 $[a,b]$ 上可积</li>
+</ul>
+</li>
+<li>积分计算
+<ul>
+<li>换元积分法
+<ul>
+<li>$\int f(\varphi(x))\varphi'(x)dx=\int f(u)du$</li>
+<li>$\int_a^b f(\varphi(x))\varphi'(x)dx=\int_a^bf(\varphi(x))d\varphi(x)=\int_{\varphi(a)}^{\varphi(b)}f(u)du$
+<ol>
+<li>$f(u)$ 在 $I$ 上连续，$\varphi(x)$ 在 $[a,b]$ 上连续可微</li>
+<li>$f(u)$ 在 $I$ 上可积，$\varphi(x)$ 在 $[a,b]$ 上可微且单调，$\varphi'(x)$ 在 $[a,b]$ 上可积</li>
+</ol>
+</li>
+<li>第二换元积分法：$u=\varphi(x),\alpha=\varphi(a),\beta=\varphi(b),\int_\alpha^\beta f(u)du=\int_a^bf(\varphi(x))\varphi'(x)dx$</li>
+</ul>
+</li>
+<li>分布积分法
+<ul>
+<li>$\int f(x)dg(x)=f(x)g(x)-\int g(x)df(x)$</li>
+<li>$\int_a^b f(x)g'(x)dx = f(x)g(x)|_a^b-\int_a^b f'(x)g(x)dx$</li>
+</ul>
+</li>
+<li>公式
+<ul>
+<li>$\int x^{-1}=\ln |x|+C$</li>
+<li>$\int a^x=\frac{a^x}{\ln a}+C$</li>
+<li>$\int \frac{dx}{\sqrt{x^2+a}}=\ln|x+\sqrt{x^2+a}|+C$</li>
+</ul>
+</li>
+<li>有理积分
+<ul>
+<li>有理函数：$R(x)=\frac{P(x)}{Q(x)}$，$P,Q$ 为实系数多项式</li>
+<li>部分分式分解：待定系数法</li>
+<li>有理指数函数：$R(a^x)$</li>
+<li>有理三角积分：$R(\cos x,\sin x)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无穷积分
+<ul>
+<li>$f$ 定义在 $[a,+\infty]$ 上，$\forall c\in[a,+\infty]$，$f$ 在 $[a,c]$ 上 Riemann 可积，若 $\lim_{c\rightarrow+\infty}\int_a^c f(x)dx=A$ 则 $\int_a^{+\infty} f(x)dx=A$
+<ul>
+<li>收敛：$A\not=\pm\infty$</li>
+<li>发散：$A=\pm\infty$ 或极限不存在</li>
+</ul>
+</li>
+<li>$\exists d\in\mathbb{R},\int_{-\infty}^df(x)dx,\int_d^{+\infty}f(x)dx$ 皆收敛，$\int_{-\infty}^{+\infty}f(x)dx = \int_{-\infty}^df(x)dx+\int_d^{+\infty}f(x)dx$</li>
+</ul>
+</li>
+<li>瑕积分
+<ul>
+<li>瑕点：$\forall c\in (a,b),f$ 在 $[a,c]$ 上可积，在 $b$ 附近无界</li>
+<li>$f$ 定义在 $[a,b)$ 上，$\lim_{c\rightarrow b^-}\int_a^cf(x)dx=A$ 则 $f$ 在 $[a,b]$ 上的瑕积分为 $A$, $\int_a^bf(x)dx=A$</li>
+</ul>
+</li>
+<li>非负的积分: $f$ 在 $[a,+\infty]$ 上非负，$\forall c&gt;a,f$ 在 $[a,c]$ 上可积
+<ul>
+<li>$\int_a^{+\infty}f(x)dx$ 有值且非负</li>
+<li>$\int_a^{+\infty}f(x)dx$ 收敛当且仅当 $\int_a^{+\infty}f(x)dx&lt;+\infty$</li>
+<li>比较判别法 I：$f\geq g$
+<ul>
+<li>$\int_a^{+\infty}f(x)dx$ 收敛，则 $\infty_a^{+\infty}g(x)dx$ 收敛</li>
+<li>$\int_a^{+\infty}g(x)dx$ 发散，则 $\infty_a^{+\infty}f(x)dx$ 发散</li>
+</ul>
+</li>
+<li>比较判别法 II
+<ul>
+<li>$\lim_{x\rightarrow+\infty}\frac{f(x)}{g(x)}=c&lt;+\infty,\int_a^{+\infty}g(x)dx$ 收敛，则 $\int_a^{+\infty}$ 收敛</li>
+<li>$\lim_{x\rightarrow+\infty}\frac{f(x)}{g(x)}=c&gt;0,\int_a^{+\infty}g(x)dx$ 发散，则 $\int_a^{+\infty}$ 发散</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>绝对收敛：$\int_a^{+\infty}|f(x)|dx$ 收敛
+<ul>
+<li>绝对收敛则收敛</li>
+</ul>
+</li>
+</ul>
+<h2 id="导数">导数</h2>
+<ul>
+<li>$f$ 在 $x=x_0$ 处可导（可微）：$\lim_{x\rightarrow x_0}\frac{f(x)-f(x_0)}{x-x_0}=A$
+<ul>
+<li>唯一性，局部性</li>
+<li>可导$\Rightarrow$连续</li>
+<li>线性</li>
+<li>Leibniz 法则：$(fg)'(x_0)=f'(x_0)g(x_0)+f(x_0)g'(x_0)$</li>
+<li>链法则：$(f\circ g)'(x_0)=f'(g(x_0))g'(x_0)$</li>
+<li>参数求导法：$\frac{dy}{dx}|<em>{x=x(t_0)}=\frac{\frac{dy}{dx}|</em>{t=t_0}}{\frac{dx}{dt}|_{t=t_0}}$</li>
+<li>$(a^x)'=a^x\ln a$</li>
+<li>$(\log_a|x|)'=(x\ln a)^{-1}$</li>
+<li>单侧导数</li>
+<li>初等函数导函数是初等函数</li>
+</ul>
+</li>
+<li>$f^{(m)}(x_0)$：$m$阶导数
+<ul>
+<li>光滑：任意阶可微</li>
+<li>任意阶 Leibniz 法则：$(fg)^{(m)}(x_0)=\sum_{i=0}^mC_m^if^{(m-i)}(x_0)g^{(i)}(x_0)$</li>
+</ul>
+</li>
+<li>$f$ 在 $x=x_0$ 处可导 $\iff x\rightarrow x_0,f(x)-f(x_0)=A(x-x_0)+o(|x-x_0|)$
+<ul>
+<li>$A=f'(x_0)$</li>
+<li>$R(x)$ 为余项</li>
+</ul>
+</li>
+</ul>
+<h2 id="微分">微分</h2>
+<ul>
+<li>线性函数 $f:\mathbb{R}\rightarrow\mathbb{R}$
+<ul>
+<li>$f(\omega_1+\omega_2)=f(\omega_1)+f(\omega_2)$</li>
+<li>$\forall k\in\mathbb{R},f(k\omega)=kf(\omega)$</li>
+</ul>
+</li>
+<li>$dx$: 恒等函数 $dx(\omega)=\omega$</li>
+<li>$df(x_0)$：$f(x)$ 在 $x=x_0$ 处可导，函数 $df(x_0):\mathbb{R}\rightarrow\mathbb{R}$
+<ul>
+<li>$df(x_0)=f'(x_0)dx$</li>
+<li>$df(x,\omega)=df(x)(\omega)=f'(x)\omega$</li>
+<li>线性</li>
+<li>Leibniz 法则</li>
+<li>链法则</li>
+</ul>
+</li>
+</ul>
+<h2 id="微积分基本定理">微积分基本定理</h2>
+<ul>
+<li>微积分基本定理:
+<ul>
+<li>$f$ 在 $[a,b]$ 上连续则 $F(x)=\int_a^xf(t)dt$ 在 $[a,b]$ 上可微，且$F'=f$
+<ul>
+<li>$\frac{d}{dx}\int_a^xf(t)dt=f(x)$</li>
+<li>$F$ 为 $f$ 的原函数</li>
+<li>$\int f(x)dx=F(x)+C$</li>
+</ul>
+</li>
+<li>$f$ 在 $[a,b]$ 上可积，则 $F$ 在 $[a,b]$ 上连续，且若 $f(x)$ 在 $x_0$ 处连续，$F'(x_0)=f(x_0)$</li>
+</ul>
+</li>
+<li>Newton-Leibniz 公式：$F$ 在 $[a,b]$ 上连续可微，则 $\int_a^b\frac{d}{dx}F(x)dx=F(b)-F(a)=F|^b_a$</li>
+<li>Rolle 中值定理：$f$ 在 $[a,b]$ 上连续，在$(a,b)$上可导，$f(a)=f(b)$ 则 $\exists\xi\in[a,b],f'(\xi)=0$</li>
+<li>Lagrange 中值定理：$F$ 在 $[a,b]$ 上连续，在$(a,b)$上可微，则$\exists\xi\in(a,b),F(b)-F(a)=F'(\xi)(b-a)$</li>
+<li>L&rsquo;Hospital 法则：
+<ul>
+<li>$\frac{0}{0}:\lim_{x\rightarrow a^+}f(x)=\lim_{x\rightarrow a^+}g(x)=0,\lim_{x\rightarrow a^+}\frac{f'(x)}{g'(x)}=A$ 则 $\lim_{x\rightarrow a^+}\frac{f(x)}{g(x)}=A$</li>
+<li>$\frac{\infty}{\infty}:\lim_{x\rightarrow a^+}g(x)=\pm\infty,\lim_{x\rightarrow a^+}\frac{f'(x)}{g'(x)}=A$ 则 $\lim_{x\rightarrow a^+}\frac{f(x)}{g(x)}=A$</li>
+<li>$0\cdot\infty=\frac{0}{\frac{1}{\infty}}$</li>
+<li>$0^0=e^{0\ln 0}=e^{0\cdot\infty}$</li>
+<li>$\infty^0=e^{0\ln \infty}=e^{0\cdot\infty}$</li>
+<li>$1^\infty=e^{\infty\cdot0}$</li>
+<li>$(+\infty)-(+\infty)=\ln\frac{0}{0}=\frac{1}{0}-\frac{1}{0}$</li>
+</ul>
+</li>
+<li>Taylor 公式：$f$ 定义在 $(a,b)$ 上，$x_0\in(a,b),f$ 在 $x_0$ 处 $n$ 阶可导，则
+<ul>
+<li>$f(x)=\sum_{i=0}^n\frac{f^{(i)}(x_0)}{i!}(x-x_0)^i+R(x)$</li>
+<li>$x\rightarrow x_0,R_n(x)=o(|x-x_n|^n)$</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>$f(x)$</th>
+<th>$x=0$ 处 Taylor 展开</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$e^x$</td>
+<td>$\sum_{i=0}^n\frac{x^i}{i!}+o(x^n)$</td>
+</tr>
+<tr>
+<td>$\ln(1+x)$</td>
+<td>$\sum_{i=1}^n\frac{(-1)^{i-1}}{i}x^i+o(x^n)$</td>
+</tr>
+<tr>
+<td>$\sin x$</td>
+<td>$\sum_{i=1}^n\frac{(-1)^{i-1}}{(2i-1)!}x^{2i-1}+o(x^{2n-1})$</td>
+</tr>
+<tr>
+<td>$\cos x$</td>
+<td>$\sum_{i=1}^n\frac{(-1)^i}{(2i)!}x^{2i}+o(x^{2n})$</td>
+</tr>
+<tr>
+<td>$(x_0+x)^\mu$</td>
+<td>$x_0^\mu+\sum_{i=1}^\mu C_\mu^i x_0^{\mu-i}x^i$</td>
+</tr>
+</tbody>
+</table>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>矩阵论 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概念补充">概念补充</a></li>
+    <li><a href="#内积空间上的等积变换">内积空间上的等积变换</a></li>
+    <li><a href="#埃尔米特矩阵">埃尔米特矩阵</a></li>
+    <li><a href="#kronecker-product">kronecker product</a></li>
+    <li><a href="#求导">求导</a></li>
+    <li><a href="#奇异值分解">奇异值分解</a></li>
+    <li><a href="#瑞利商">瑞利商</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#最大秩分解">最大秩分解</a></li>
+    <li><a href="#奇异值分解-1">奇异值分解</a></li>
+    <li><a href="#谱分解">谱分解</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="概念补充">概念补充</h2>
+<ul>
+<li>同构算子：$\mathcal{A}:V\rightarrow V'$
+<ul>
+<li>全映射</li>
+<li>可逆映射</li>
+</ul>
+</li>
+<li>同构：$V$与$V'$是同构的线性空间</li>
+<li>数域$P$上两个有限线性空间同构$\iff$两空间维数相同</li>
+<li>相似$A\sim B$:基 1 下矩阵为$A$，基 2 下矩阵为$B$，从基 1 到基 2 的过渡矩阵为$C$，则$B=C^{-1}AC$</li>
+<li>相抵$A\simeq B$: A,B$为$m*n$阶矩阵，$m$阶方阵$D$和$n$阶方阵$C$满足$B=DAC$
+<ul>
+<li>不同维线性空间$V^n$和$V^m$下，同一个线性变换在不同基偶下所对应的矩阵$A$和$B$之间的关系</li>
+</ul>
+</li>
+<li>非奇异$\iff$非退化$\iff$满秩$\iff$可逆</li>
+<li>当$A$有 n 个线性无关特征向量时，$A$有完备的特征向量系；否则$A$为亏损矩阵</li>
+</ul>
+<h2 id="内积空间上的等积变换">内积空间上的等积变换</h2>
+<ul>
+<li>
+<p>度量矩阵(Gram 矩阵)： 基的度量矩阵$A$,$A_{ij}=(\vec e_i,\vec e_j)$</p>
+<ul>
+<li>对称正定矩阵</li>
+<li>不同基的度量矩阵相合</li>
+</ul>
+</li>
+<li>
+<p>$(\vec x,\vec y)=X^TAY$</p>
+</li>
+<li>
+<p>$x\perp y$: $(x,y)=0$, x 与 y 正交</p>
+</li>
+<li>
+<p>施密特正交规范法</p>
+<ul>
+<li>$\vec y_m'=\vec x_m + k_{m1}\vec y_{m-1}'+\cdots+k_{m,m-1}\vec y_1'$</li>
+<li>$k_{mi}=-\frac{(\vec x_m,\vec y_{m-i}')}{(\vec y_{m-i}',y_{m-i}')}$</li>
+<li>$\vec y_i=\frac{1}{|\vec y_i'|}\vec y_i'$</li>
+</ul>
+</li>
+<li>
+<p>标准正交基$\iff$度量矩阵为单位矩阵</p>
+</li>
+<li>
+<p>复数域内积</p>
+<ul>
+<li>$(x,y)=\overline{(y,x)}$</li>
+<li>$(x+y,z)=(x,z)+(y,z)$</li>
+<li>$(kx,y)=k(x,y)$</li>
+<li>$(x,x)\geq0$, $(x,x)=0\iff x=0$</li>
+</ul>
+</li>
+<li>
+<p>酉空间：定义了内积的复数域上的线性空间</p>
+</li>
+<li>
+<p>转置共轭：$y^H=\overline{y}^T$</p>
+<ul>
+<li>$(\vec x,\vec y)=\vec y^H\vec x$
+<ul>
+<li>夹角:$cos^2\langle\vec x,\vec y\rangle=\frac{(x,y)(y,x)}{(x,x)(y,y)}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>柯西施瓦兹不等式：$(x,y)(y,x)\leq(x,x)(y,y)$</p>
+</li>
+<li>
+<p>单位向量: $x^Tx=1$</p>
+</li>
+<li>
+<p>正交变换: $(\mathcal{A}(\vec x),\mathcal{A}(\vec y))=(\vec x,\vec y)$</p>
+</li>
+<li>
+<p>正交变换的充要条件：</p>
+<ul>
+<li>$\forall \vec x\in V,\ (\mathcal{A}(\vec x),\mathcal{A}(\vec x))=(\vec x,\vec x)$</li>
+<li>任一组标注正交基变换后仍是一组标准正交基</li>
+<li>任一组标准正交基下为正交矩阵 $A^T=A^{-1}$</li>
+</ul>
+</li>
+<li>
+<p>正交矩阵$\iff$行（列）向量为标准正交向量</p>
+</li>
+<li>
+<p>初等旋转变换（Givens 变换）</p>
+<ul>
+<li>
+<p>初等旋转矩阵$R_{ij}$:</p>
+<p>$$
+L^i=\left[\begin{matrix}
+1 &amp; 0 &amp;\cdots &amp; 0 &amp; \cdots &amp; 0\newline
+0 &amp; 1 &amp;\cdots &amp; 0 &amp; \cdots &amp; 0\newline
+\vdots &amp; \vdots &amp; c &amp; \vdots &amp; s &amp; \vdots \newline
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; \cdots &amp; 0 \newline
+0 &amp; 0 &amp; -s &amp; 0 &amp; c &amp; \vdots\newline
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots\newline
+0 &amp; 0 &amp; \cdots &amp; 0 &amp; \cdots &amp; 1
+\end{matrix}\right],\ c^2+s^2=1
+$$</p>
+<ul>
+<li>$\det R_{ij}=1$</li>
+<li>$R_{ij}$正交</li>
+<li>$Y=R_{ij}X$, 则仅两个分量变化
+<ul>
+<li>$y_i=cx_i+sx_j$</li>
+<li>$y_j=-sx_i+cx_j$</li>
+</ul>
+</li>
+<li>化第$j$个分量为 0
+<ul>
+<li>$s=\frac{x_j}{\sqrt{x_i^2+x_j^2}}$</li>
+<li>$c=\frac{x_i}{\sqrt{x_i^2+x_j^2}}$</li>
+<li>$y_i=\sqrt{x_i^2+x_j^2}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>镜像变换（Householder 变换）</p>
+<ul>
+<li>
+<p>镜像变换：线性变换将向量$\xi$映射为与单位向量$\omega$正交的 n-1 维子空间的对称像$\eta$，且$\eta=(I-2\omega\omega^T)\xi = H\xi$</p>
+</li>
+<li>
+<p>初等反射矩阵：$H=I-2\omega\omega^T$</p>
+</li>
+<li>
+<p>$H$对称正交</p>
+</li>
+<li>
+<p>$Q$为初等旋转矩阵之积</p>
+<p>$$
+H=Q^{-1} \left[\begin{matrix}
+-1 &amp; 0 &amp; \cdots &amp; 0\newline
+0 &amp; 1 &amp; \cdots &amp; 1 \newline
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\newline
+0 &amp; 0 &amp; \cdots &amp; 1
+\end{matrix}\right] Q
+$$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="埃尔米特矩阵">埃尔米特矩阵</h2>
+<h2 id="kronecker-product">kronecker product</h2>
+<p>$${\displaystyle (A\otimes B)<em>{p(r-1)+v,q(s-1)+w}=a</em>{rs}b_{vw}} {\displaystyle (A\otimes B)_{p(r-1)+v,q(s-1)+w}=a_{rs}b_{vw}}$$</p>
+<h2 id="求导">求导</h2>
+<ul>
+<li>$\frac{\partial x^Ta}{\partial x}=\frac{\partial a^Tx}{\partial x}=a$</li>
+<li>$\frac{\partial AB}{\partial x}=\frac{\partial A}{\partial x}B+A\frac{\partial B}{\partial A}$</li>
+<li>$\frac{\partial A^{-1}}{\partial x}=-A^{-1}\frac{\partial A}{\partial x}A^{-1}$</li>
+<li>$\frac{\partial b^TX^TXc}{\partial X}=X(bc^T+cb^T)$</li>
+<li>$\frac{(Bx+b)^TC(Dx+d)}{\partial x}=B^TC(Dx+d)+D^TC(Bx+b)$</li>
+</ul>
+<h2 id="奇异值分解">奇异值分解</h2>
+<ul>
+<li>$A=U\Sigma V^T$</li>
+<li>$U^TU=I$, $V^TV=I$</li>
+</ul>
+<h2 id="瑞利商">瑞利商</h2>
+<ul>
+<li>$R(A,x)=\frac{x^HAx}{x^Hx}$, $A$ 为 Hermitan 矩阵
+<ul>
+<li>最大值：$A$ 最大的特征值</li>
+<li>最小值：$A$ 最小的特征值</li>
+</ul>
+</li>
+<li>广义瑞利商：$R(A,B,x)=\frac{x^HAx}{x^HBx}=R(B^{-\frac{1}{2}}AB^{-\frac{1}{2}},B^{-\frac{1}{2}}x)$</li>
+</ul>
+<h1 id="lu-分解">LU 分解</h1>
+<ul>
+<li>消元矩阵: $L^{i}$ 为高斯消元第 i 次对应的矩阵，由倍加阵相乘得到</li>
+</ul>
+<p>$$
+L^i=\left[\begin{matrix}
+1 &amp; 0 &amp;\cdots &amp; 0 &amp; \cdots &amp; 0\newline
+0 &amp; 1 &amp;\cdots &amp; 0 &amp; \cdots &amp; 0\newline
+\vdots &amp; \vdots &amp;\ddots &amp; \vdots &amp; \ddots &amp; \vdots \newline
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; \cdots &amp; 0 \newline
+0 &amp; 0 &amp; \cdots &amp; -\frac{a^i_{(i+1)i}}{a^{ii}} &amp; \cdots &amp; \vdots\newline
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots\newline
+0 &amp; 0 &amp; \cdots &amp; -\frac{a^i_{ni}}{a^i_{ii}} &amp; \cdots &amp; 1
+\end{matrix}\right]
+$$</p>
+<ul>
+<li>高斯消元过程： 上三角矩阵$U=A^n=L^{n-1}\cdots L^{2}L^{1}A^{1}$</li>
+<li>高斯消元过程可以进行到底$\iff$ $A$的前$n-1$个顺序主子式都不为 0</li>
+<li>$L=(L^1)^{-1}\cdots(L^{n-1})^{-1}$ 为单位下三角矩阵，$L_{ij}=-\frac{a^j_{ij}}{a^j_{jj}},i&lt;j$</li>
+<li>三角分解(LU 分解)： 方阵$A=LU$</li>
+<li>杜立特分解(Doolittle Decomposition)： $L$为单位下三角矩阵</li>
+<li>克劳特分解(Crout Decomposition): $L$为单位上三角矩阵</li>
+<li>$LDU$基本定理：n 阶方阵$A$可唯一分解为$A=LDU\iff$ $A$的前$n-1$个顺序主子式$A_k=\not0$, $L,U$为单位下、上三角矩阵，$D$为对角矩阵$diag(\frac{A_1}{A_0},\frac{A_2}{A_1},&hellip;,\frac{A_n}{A_{n-1}}),A_0=1$
+<ul>
+<li>杜立特和克劳特分解存在则唯一</li>
+</ul>
+</li>
+<li><strong>LDU 分解</strong>
+<ul>
+<li>计算$L^1,\cdots,L^n,A^1,\cdots,A^n$</li>
+<li>令$L=(L^1)^{-1}\cdots(L^{n-1})^{-1}$</li>
+<li>令$A^n=DU$</li>
+<li>$A=LA^n=LDU$</li>
+</ul>
+</li>
+<li><strong>克劳德分解</strong>
+<ul>
+<li>$l_{ij} = a_{ij}-\sum_{k=1}^{j-1}l_{ik}u_{kj}$</li>
+<li>$u_{ij} = (a_{ij}-\sum_{k=1}^{i-1}l_{ik}u_{kj})/l_{ii}$</li>
+<li>从上至下，从左至右</li>
+</ul>
+</li>
+<li><strong>杜立特分解</strong>
+<ul>
+<li>$u_{ij}=a_{ij}-\sum_{k=1}^{i-1}l_{ik}u_{kj}$</li>
+<li>$l_{ij}=(a_{ij}-\sum_{k=1}^{j-1}l_{ik}u_{kj})/u_{jj}$</li>
+</ul>
+</li>
+<li>n 阶对称正定矩阵$A$，唯一存在一个实的非奇异的下三角矩阵$L$，$A=LL^T$，称为乔累斯基分解（平方根分解）</li>
+<li><strong>乔累斯基分解</strong>
+<ul>
+<li>$l_{ij}=(a_{ij}-\sum_{k=1}^{j-1})/l_{jj}$</li>
+</ul>
+</li>
+<li>n 阶对称正定矩阵$A$可唯一分解为$A=LDL^T$,其中，对角矩阵$D$元素为$L$对角线元素倒数</li>
+<li><strong>不带平方根的乔累斯基分解</strong>
+<ul>
+<li>$l_{ij}=a_{ij}-\sum_{k=1}^{j-1}\frac{l_{ik}l_{jk}}{l_{kk}}$</li>
+</ul>
+</li>
+<li>置换矩阵$P=(e_{\pi(1)},\cdots,e_{\pi(n)})^T$</li>
+<li>任意矩阵$A$可进行$PLU$分解，$A=PLU$，其中$P$为置换矩阵</li>
+</ul>
+<h1 id="qr-分解">QR 分解</h1>
+<ul>
+<li>$QR$分解（正交三角分解）：实非奇异矩阵$A$能化成正交矩阵$Q$和实非奇异上三角矩阵$R$的乘积，$A=QR$</li>
+<li>任意非奇异 n 阶矩阵，存在三角分解，$A=QR$且相差一个对角线元素之差绝对值全等于 1 的对角矩阵因子
+<ul>
+<li>利用施密特正规化正交向量矩阵$A$和对应的上三角矩阵$B$</li>
+</ul>
+</li>
+<li><strong>Givens 方法</strong>=-9</li>
+<li><strong>Householder 方法</strong></li>
+</ul>
+<h2 id="最大秩分解">最大秩分解</h2>
+<h2 id="奇异值分解-1">奇异值分解</h2>
+<h2 id="谱分解">谱分解</h2></main>
+        </div>
+
+    </div>
+</body></html>

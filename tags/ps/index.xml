@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ps on Zangwei</title>
+    <link>https://zhengzangw.com/tags/ps/</link>
+    <description>Recent content in ps on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Thu, 23 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/ps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>7-Number Theory</title>
+      <link>https://zhengzangw.com/notes/problem-solving/7-number-theory/</link>
+      <pubDate>Wed, 16 Jan 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/7-number-theory/</guid>
+      <description>背景知识  自然数的集合论定义：  $a^+:=a\cup{a}$ 归纳集  $\emptyset\in A$ $\forall a(a\in A\rightarrow a^+\in A)$   $\mathbb{N}$ 为所有归纳集之交   Peano 结构  $e\in S$ $\forall a\in S,f(a)\in S$ $\forall b\in S,\forall c\in S,f(b)=f(c)\rightarrow b=c$ $\forall a\in S,f(a)\not= e$ $\forall A\subseteq S, (e\in A\wedge(\forall a\in A)(f(a)\in A))\rightarrow A=S$   良序公理与数学归纳法原理等价  数论基础  带余除法: $a=bq+r,b&amp;gt;0,0\leq r&amp;lt;b$  存在性证明：良序公理 唯一性证明   整除及其性质  $a|b,a|c\Rightarrow a|nb+mc$   最大公因子 (hcf/gcd)  裴蜀定理：$\gcd(a,b)=ar+bs$  证明：良序公理+带余除法   Strong Duality for GCD: $\max{d_i:d\in\mathbb{Z},d|a,d|b}=\min{ax+by:x\in\mathbb{Z},y\in\mathbb{Z},ax+by&amp;gt;0}$  证明  $d|s,s|d$ Weak Duality + $\exists$   唯一性证明   $\text{lcm}(a,b)\gcd(a,b)=ab$  证明  Isomorphism Theorem Unique Factorization $d|(a,b)\Leftrightarrow d|\frac{ab}{[a,b]}$   $(a,b,c)[a,b,c]=\frac{abc}{[(a,b),(b,c),(c,a)]}$ $[a,b,c]=\frac{abc(a,b,c)}{(a,b)(a,c)(b,c)}$   $\gcd(a,b,c)=\gcd(\gcd(a,b),c)$   质数  $\pi(x)\sim\frac{x}{\ln{x}}$ 无限质数证明  $P=p_1p_2\cdots p_n+1$ Fermat Numer $F_n=2^{2^n}+1$ 两两互素  $F_n-2=\prod_{k=1}^{n-1}F_k$   Mersenne Number $2^p-1$  $2^p\equiv 1\pmod{q}\Rightarrow p|q-1$     Dirichlet&amp;rsquo;s Theorem: $\gcd(a,m)=1$ then there are infinitely many primes $p,p\equiv a\pmod{m}$   筛法求素数 算术基本定理  存在性证明：良序公理（找不满足中最小的） 唯一性证明：$1\rightarrow n$     $\varphi(n)=n\prod_{p|n}(1-\frac{1}{p}),p$ is prime  $\varphi(p)=p-1$ $\varphi(n)&amp;gt;\frac{n}{e^\gamma\ln\ln n+\frac{3}{\ln\ln n}},\gamma=0.</description>
+    </item>
+    
+    <item>
+      <title>String Algorithm</title>
+      <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-string/</link>
+      <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-string/</guid>
+      <description>&lt;h1 id=&#34;字符串匹配&#34;&gt;字符串匹配&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;$w\sqsubset x$：w 为 x 前缀&lt;/li&gt;
+&lt;li&gt;$w\sqsupset x$: w 为 x 后缀&lt;/li&gt;
+&lt;li&gt;后缀重叠引理：$x\sqsupset z,y\sqsupset z,|x|\leq|y|\Rightarrow x\sqsupset y$&lt;/li&gt;
+&lt;li&gt;$P_k=P[1..k]$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;朴素方法&#34;&gt;朴素方法&lt;/h2&gt;
+&lt;p&gt;$O((n-m+1)m)$&lt;/p&gt;
+&lt;h2 id=&#34;rabin-karp-算法&#34;&gt;Rabin-Karp 算法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;预处理 $O(m)$
+&lt;ul&gt;
+&lt;li&gt;编码，利用对素数取模，减少计算量&lt;/li&gt;
+&lt;li&gt;相等则逐字编码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;最坏情况 $O((n-m+1)m)$&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>贪心专题</title>
+      <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-greedy/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-greedy/</guid>
+      <description>&lt;h1 id=&#34;活动选择问题&#34;&gt;活动选择问题&lt;/h1&gt;
+&lt;p&gt;最早结束&lt;/p&gt;
+&lt;h1 id=&#34;哈夫曼树&#34;&gt;哈夫曼树&lt;/h1&gt;
+&lt;p&gt;最小合并&lt;/p&gt;
+&lt;h2 id=&#34;合并花费最小问题&#34;&gt;合并花费最小问题&lt;/h2&gt;
+&lt;h1 id=&#34;字符串拼接字典序最小&#34;&gt;字符串拼接字典序最小&lt;/h1&gt;
+&lt;p&gt;比较a+b与b+a&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>背包九讲</title>
+      <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-knapsack/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-knapsack/</guid>
+      <description>dp 九讲
+01 背包 $$F[i,v] = \max{F[i-1,v],F[i-1,v-Ci]+Wi}$$
+for i=1 to N for v = V to Ci F[v] = max{F[v],F[v-Ci]+Wi} 恰好装满：$F[1..V] = -\infty; F[0] = 0$
+无必要： $F[0..V] = 0$
+完全背包 $$F[i,v] = \max{F[i-1,v-kCi] + kWi | 0&amp;lt;=kCi&amp;lt;=v &amp;amp;&amp;amp; 0&amp;lt;=k&amp;lt;Mi}$$ （利用$F[i,v-Ci]$代换）
+ $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物品 j 直接去掉，不用考虑 $O(V+N)$ 首先将费用大于 V 的物品去掉，然后使用类似计数排序的做法，计算出费用相同的物品中价值最高的是哪个 把第 i 种物品拆成费用为 Ci2k、价值为 Wi2k 的若干件物品，其中 k 取遍满足 Ci2k≤V 的非负整数  for i = 1 to N for v = Ci to v F[v] = max(F[v],F[v-Ci]+Wi) 多重背包 完全背包思路（可以看作是分组背包问题）</description>
+    </item>
+    
+  </channel>
+</rss>

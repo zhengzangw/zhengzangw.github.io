@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solution to HW 3 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#9-24">9-24</a></li>
+    <li><a href="#9-28">9-28</a></li>
+    <li><a href="#9-30">9-30</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><p>注意这次交三次的作业，缺交的同学及时补交（邮箱：zzw@smail.nju.edu.cn）</p>
+<h2 id="9-24">9-24</h2>
+<p>4.2</p>
+<ul>
+<li>
+<p>(a) $\frac{1}{2}n(n-1)$, decreasing sequence</p>
+</li>
+<li>
+<p>(b) increasing, $n-1$</p>
+<p>4.3</p>
+</li>
+<li>
+<p>(a) 用循环不变式证明 （$E[j]$ is the maximum in $[0,j]$)</p>
+</li>
+<li>
+<p>(b) 略</p>
+<p>4.4</p>
+</li>
+<li>
+<p>(a) 可利用 4.3(a) 的循环不变式证明</p>
+</li>
+<li>
+<p>略</p>
+</li>
+<li>
+<p>不影响</p>
+<p>4.23</p>
+</li>
+</ul>
+<p>注意需使用 Section 2.3.2 的数据结构</p>
+<p>4.27</p>
+<ul>
+<li>
+<p>(a) 可以使用两个数组 $A,B$，基于归并时处于归并树结点深度的奇偶性，奇数时保存到 $A$，偶数时保存到 $B$（滚动数组）</p>
+</li>
+<li>
+<p>(b) $n\log n$</p>
+<p>4.28</p>
+</li>
+</ul>
+<p>找中点：设置两个指针，一个步长为 1， 一个步长为 2，当快指针到达尾结点时，慢指针指向中间结点。该时间复杂度为 $O(n)$。由于 merge 也是 $O(n)$，时间复杂度不变为 $O(n\log n)$。空间复杂度 $O(n\log n)$，有 garbage collection 为 $O(n)$</p>
+<h2 id="9-28">9-28</h2>
+<p>1.27</p>
+<p>$n\leq 25$ 算法一快</p>
+<p>1.28</p>
+<p>略</p>
+<p>1.31</p>
+<p>用符号之前应说明一下，$&lt;$ 和 $=$ 都是在渐进复杂度关系下比较。最后一项可查阅斯特林公式</p>
+<p>$\lg\lg n&lt;\lg n=\ln n&lt;(\lg n)^2&lt;\sqrt{n}&lt;n&lt;n\lg n&lt;n^{1+\epsilon}&lt;n^2=n^2+\lg n&lt;n^3&lt;n-n^3+7n^5&lt;2^{n-1}=2^n&lt;e^n=n!$</p>
+<p>1.32</p>
+<p>反例：$2^n,n!$</p>
+<p>1.33</p>
+<p>根据定义（$O$ 是否使用极限定义）不同，可以证明或举反例</p>
+<ul>
+<li>证明思路：$\forall f\in o(f),f\in O(f)-\Theta(f)$ and $\forall f\in O(f)-\Theta(f),f\in o(f)$</li>
+<li>举反例：找一个极限不存在的函数</li>
+</ul>
+<p>3.7</p>
+<ul>
+<li>
+<p>(a) $O(n\log n)$</p>
+</li>
+<li>
+<p>(b) $M(n)=n\log_2n-n+1$</p>
+<p>3.8</p>
+</li>
+</ul>
+<p>$O(n)$</p>
+<p>3.10</p>
+<p>Tips: 部分使用 Master Theorem 更加简单</p>
+<ul>
+<li>(a) $O(\lg^2 n)$</li>
+<li>(b) $O(n)$</li>
+<li>(c) $O(n\lg n)$</li>
+<li>(d) $O(n(\lg n)^2)$</li>
+<li>(e) $O(n^2)$</li>
+</ul>
+<p>大整数乘法</p>
+<p>$T(n)=3T(\frac{m}{2})$，$T(n)=O(n^{\log_23})$</p>
+<h2 id="9-30">9-30</h2>
+<p>6.3</p>
+<p>略</p>
+<p>6.7</p>
+<p>破坏黑高</p>
+<p>6.8</p>
+<p>略</p>
+<p>6.9</p>
+<p>15 个节点高位 4 的满二叉树</p>
+<p>例：1-15 顺序插入，得到 8 4 12 14 10 6 2 15 13 11 9 7 5 3 1</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

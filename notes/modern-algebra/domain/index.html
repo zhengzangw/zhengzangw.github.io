@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>域 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#域的特征和扩张">域的特征和扩张</a></li>
+    <li><a href="#代数扩张">代数扩张</a></li>
+    <li><a href="#域的例子">域的例子</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><ul>
+<li>域： $F$ 为环, $F^\star$ 按乘法构成 Abel 群</li>
+</ul>
+<h2 id="域的特征和扩张">域的特征和扩张</h2>
+<ul>
+<li>加法阶
+<ul>
+<li>$F$ 加法群的阶为最小的 $n$, $na=0$</li>
+<li>$na=a+a+\cdots+a=0$, 最小的 $n$ 为 $a$ 的加法阶</li>
+<li>$F$ 中非零元的加法阶就是单位元的加法阶</li>
+<li>若 $e,2e,3e,\dots\not=0$, 则称 $F$ 的特征为 $0$. $ch(F)=0$</li>
+<li>域 $F$ 单位元 $e$ 的加法阶 $p&lt;\infty$, 则 $p$ 为素数。$ch(F)=p$</li>
+</ul>
+</li>
+<li>$ch(F)=p$, 则 $\sigma:m\rightarrow me$ 是 $Z$ 到 $F$ 的环同态，$ker\sigma=pZ$，$Z/pZ={me:m\in Z}$ 为 $F$ 的最小子域</li>
+<li>$F$ 为特征为 $p$ 的域，则 $a_1,\cdots,a_m\in F$ 时 $(a_1+\cdots+a_m)^{p^n}=a_1^{p^n}+\cdots+a_m^{p_n}$</li>
+<li>有限域(Galois 域)：$F$ 中只有有限个元素
+<ul>
+<li>$GF(p)$ 模 p 加乘</li>
+<li>$GF(p^w)$ 为含 $p^w$ 个元素的有限域，多项式系数只能取 p
+<ul>
+<li>由本原多项式在乘法下生成</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$q$ 元域：恰有 $q$ 个元素的域
+<ul>
+<li>$q$ 元域 $F$ 中有 $x^q-x=\prod_{a\in F}(x-a)$</li>
+</ul>
+</li>
+<li>域的扩张：$K$ 为 $L$ 子域，$L$ 为 $K$ 扩域， 记为 $L/K$, 即 $L$ 为 $K$ 的扩张</li>
+<li>线性空间：$V$ 是域 $F$ 上向量空间
+<ul>
+<li>$V$ 按加法构成 Abel 群</li>
+<li>数乘运算
+<ul>
+<li>$a(x+y)=ax+ay$</li>
+<li>$(a+b)x=ax+bx$</li>
+<li>$1x=x$</li>
+<li>$(ab)x=a(bx)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>扩张次数 $[L:K]$：$L$ 是数域 $K$ 上的向量空间，$L/K$的维数
+<ul>
+<li>$[L:k]=n$：$L$ 为 $K$ 的 $n$ 次扩域</li>
+<li>$[L:K]&lt;\infty$：$L$ 为 $K$ 的有限扩域</li>
+</ul>
+</li>
+<li>$F$ 为 $q$ 元有限域，则 $q$ 必为素数幂次；$q=p^n$ 为素数幂时，必有 $q$ 元域且任意两个 $q$ 元域同构，记为 $F_q$ 或 $GF(q)$</li>
+</ul>
+<h2 id="代数扩张">代数扩张</h2>
+<ul>
+<li>$X$ 生成的 $K$ 的扩环（在 $K$ 上添加 $X$ 生成的环）： $L/K$ 为域扩张，$X\subset L$, 令 $K<input checked="" disabled="" type="checkbox"> =\bigcap_{R为 L 子环，R\subset K\cup X} R$ 是 $L$ 包含 $K$ 与 $X$ 的最小子环</li>
+<li>$X$ 生成的 $K$ 上扩域：$K(X)=\bigcap_{K\leq L,F\subset K\cup X}$ 为 $L$ 包含 $K$ 与 $X$ 的最小子域
+<ul>
+<li>$X$ 有限时，$K<input checked="" disabled="" type="checkbox"> =K[\alpha_1,\cdots,\alpha_n],K(X)=K(\alpha_1,\cdots, \alpha_n)$</li>
+<li>$K[\alpha_1,\cdots,\alpha_n]={P(\alpha_1,\cdots,\alpha_n)}$</li>
+<li>$K(\alpha_1,\cdots,\alpha_n)={\frac{P(\alpha_1,\cdots,\alpha_n)}{Q(\alpha_1,\cdots,\alpha_n)}}$</li>
+<li>单扩张： $K(\alpha)/K$</li>
+</ul>
+</li>
+<li>代数元：$L/K$, $\alpha\in L$, 存在 $K<input checked="" disabled="" type="checkbox"> $ 中非零多项式 $f(x)$, $f(\alpha)=0$</li>
+<li>超越元：非代数元
+<ul>
+<li>$e,\pi$</li>
+</ul>
+</li>
+<li>$L/K$, $\alpha$ 为 $K$ 上代数元，则 $I={g(x)\in K<input checked="" disabled="" type="checkbox"> :g(\alpha)=0}$ 为 $K<input checked="" disabled="" type="checkbox"> $ 的理想。 又 $K<input checked="" disabled="" type="checkbox"> $ 为 PID, 故 $I$ 有唯一的首一多项式 $f\in K<input checked="" disabled="" type="checkbox"> $ 使得 $I=(f)$。 该首一多项式为 $\alpha$ 在 $K$ 上的极小多项式。 极小多项式为 $n$ 次，则称 $\alpha$ 为 $n$ 次代数元。</li>
+<li>$L/K$, ${\alpha\in L:\alpha 为K上代数元}$ 为 $L$ 的子域</li>
+<li>$L/K$, $\alpha\in L$ 为 $K$ 上 $n$ 次代数元，则
+<ul>
+<li>$K(\alpha)=K[\alpha],[K(\alpha):K]=n$，且 $K$ 上向量空间 $K(\alpha)$ 有基底 $1,\alpha,\alpha^2,\cdots,\alpha^{n-1}$</li>
+<li>$K<input checked="" disabled="" type="checkbox"> /(f)\cong K(\alpha)$</li>
+</ul>
+</li>
+<li>$K$ 为域， 若 $K<input checked="" disabled="" type="checkbox"> $ 中次数大于$1$的多项式均可约，即 $n$ 次 $f(x)\in K<input checked="" disabled="" type="checkbox"> $ 可写成 $c(x-\alpha_1)\cdots(x-\alpha_n)$ 则称 $K$ 为代数闭域
+<ul>
+<li>任何域 $K$ 可扩张称一个代数闭域</li>
+</ul>
+</li>
+<li>代数基本定理（Gauss 博士论文证明）：$\mathbb{C}$ 为代数闭域（或可正所有代数数构成代数闭域）</li>
+<li>$L/K$, $L$ 中元都是 $K$ 中代数元，则称 $L/K$ 为代数扩张。否则称为超越扩张</li>
+<li>$L/K$为代数扩张, 则 $[L:K]&lt;\infty \iff$ 有有限个 $K$ 上代数元 $\alpha_1,\cdots,\alpha_n$ 使 $L=K(\alpha_1,\cdots,\alpha_n)$</li>
+<li>$L/M$ 与 $M/K$ 都为代数扩张，则 $L/K$ 为代数扩张</li>
+</ul>
+<h2 id="域的例子">域的例子</h2>
+<ul>
+<li>$\mathbb{Q},\mathbb{R},\mathbb{C}$
+<ul>
+<li>$\mathbb{C}=\mathbb{R}(i)\cong R<input checked="" disabled="" type="checkbox"> /(x^2+1)$(Cauchy)$={a+bx \bmod (x^+1),a,b\in \mathbb{R}}$， $i=x \bmod x^2+1$, $\mathbb{C}$ 为 $\mathbb{R}$ 上的二维线性空间，$1,i$ 为一组基底</li>
+<li>$\mathbb{Q}$ 上的代数元为 代数数</li>
+<li>$\alpha\in \mathbb{C}$ 为 代数整数 指有首一的正系数多项式使得 $f(x)=0$</li>
+</ul>
+</li>
+<li>$p$ 为素数， $\mathbb{F}=\mathbb{Z}/p\mathbb{Z}$
+<ul>
+<li>$Z/pZ<input checked="" disabled="" type="checkbox"> $ 上必有 $n$ 次不可约多项式，域 $F_p<input checked="" disabled="" type="checkbox"> /(f)$ 中有 $p^n$ 个元素</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

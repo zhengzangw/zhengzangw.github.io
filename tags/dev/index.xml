@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dev on Zangwei</title>
+    <link>https://zhengzangw.com/tags/dev/</link>
+    <description>Recent content in dev on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Thu, 23 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Set Code Styles in vscode</title>
+      <link>https://zhengzangw.com/posts/code-style/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/code-style/</guid>
+      <description>&lt;h2 id=&#34;不同风格比较&#34;&gt;不同风格比较&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Google 好用，习惯，简洁。&lt;/li&gt;
+&lt;li&gt;Chromium&lt;/li&gt;
+&lt;li&gt;Mozilla&lt;/li&gt;
+&lt;li&gt;Webkit&lt;/li&gt;
+&lt;li&gt;LLVM&lt;/li&gt;
+&lt;li&gt;Visual Studio&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;code-style-setting&#34;&gt;Code Style Setting&lt;/h2&gt;
+&lt;h3 id=&#34;vscode设置&#34;&gt;Vscode设置&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;C_Cpp.clang_format_style&amp;quot;: 
+    &amp;quot;{ BasedOnStyle: Google, IndentWidth: 4}&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;indent&#34;&gt;indent&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;alias cindent=&amp;quot;indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1 -nut&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

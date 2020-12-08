@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linear Model | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#多元线性回归">多元线性回归</a></li>
+    <li><a href="#对数几率回归">对数几率回归</a></li>
+    <li><a href="#softmax-回归">Softmax 回归</a></li>
+    <li><a href="#lda">LDA</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="多元线性回归">多元线性回归</h2>
+<ul>
+<li>$f(x)=\omega^Tx+b$</li>
+<li>决策平面：$f(x;\omega)=0$
+<ul>
+<li>有向距离：$\gamma=\frac{f(x;\omega)}{|\omega|}$</li>
+</ul>
+</li>
+<li>最小二乘法
+<ul>
+<li>$\hat\omega^*=\arg\min_{\hat\omega}(y-X\hat\omega)^T(y-X\hat\omega)=(X^TX)^{-1}X^Ty$</li>
+</ul>
+</li>
+<li>广义线性模型：$y=g^{-1}(w^Tx+b)$</li>
+</ul>
+<h2 id="对数几率回归">对数几率回归</h2>
+<ul>
+<li>单位跃阶函数（Heaviside function): 理想但不连续</li>
+</ul>
+<p>$$y=\begin{cases}0,&amp; z&lt;0\newline 0.5,&amp; z=0\newline 1,&amp;z&gt;0\end{cases}$$</p>
+<ul>
+<li>对数几率函数 (logistic function/Sigmoid function)
+<ul>
+<li>$g=\ln\frac{y}{1-y}$
+<ul>
+<li>几率：$\frac{y}{1-y}$，反映了 $x$ 作为正例的相对可能性</li>
+</ul>
+</li>
+<li>$g^{-1}=S(x)=\frac{1}{1+e^{-x}}$
+<ul>
+<li>$S(x)'=S(x)(1-S(x))$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对数几率回归：用线性模型逼近真实标记的几率
+<ul>
+<li>$\ln\frac{p_1}{p_0}=\hat x\beta=(x,1)(\omega; b)$
+<ul>
+<li>二分类：$y_ia+(1-y_i)b=a^{y_i}b^{1-y_i}$</li>
+</ul>
+</li>
+<li>Maxmimum likelihood method
+<ul>
+<li>$l(\beta)=\sum_{i=1}^m\ln p(y_i|x_i;\beta_i)=\sum_{i=1}^my_i\ln (g(\hat x_i\beta)+(1-y_i)\ln (1-g(\hat x_i\beta)))$</li>
+<li>$l'=\sum_{i=1}^m(y_i-g(\hat x_i\beta))\hat x_i^T=X^T(Y-g(\beta^TX))$</li>
+<li>$l''=\sum_{i=1}^m\hat x_i\hat x_i^Tp_1(\hat x_i;\beta)(1-p_1(\hat x_i;\beta))$</li>
+</ul>
+</li>
+<li>交叉熵作损失函数梯度下降</li>
+</ul>
+</li>
+<li>梯度下降：$\theta_{t+1}=\theta_{t}-\alpha\frac{\partial L}{\partial \theta}$</li>
+</ul>
+<h2 id="softmax-回归">Softmax 回归</h2>
+<ul>
+<li>$p(y=c|x)=\text{softmax}(\omega_c^Tx)=\frac{\exp(\omega_c^Tx)}{\sum_{c'=1}^C\exp(\omega_{c'}^Tx)}=\frac{\exp(W^Tx)}{1_C^T\exp(W^Tx)}$</li>
+</ul>
+<h2 id="lda">LDA</h2>
+<ul>
+<li>给定训练集数据，设法将样例投影到一条直线上，使得同类样例投影点尽可能接近，异类投影点尽可能远离</li>
+<li>协方差矩阵：$\Sigma=\frac{1}{n-1}(X-\mu I)(X-\mu I)^T$
+<ul>
+<li>$\Sigma_{ij}=\sigma(x_i,x_j)$</li>
+<li>投影后：$\omega^T\Sigma\omega$</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>两类</th>
+<th>一般</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Within-class scatter matrix</td>
+<td>$S_\omega=\Sigma_0+\Sigma_1$</td>
+<td>$S_w=\sum_{i=1}^N\Sigma_i$</td>
+</tr>
+<tr>
+<td>Between-class scatter maxtrix</td>
+<td>$S_b=(\mu_0-\mu_1)(\mu_0-\mu_1)^T$</td>
+<td>$S_b=\sum_{i=1}^{N}m_i(\mu_i-\mu)(\mu_i-\mu)^Y$</td>
+</tr>
+<tr>
+<td>全局散度矩阵</td>
+<td>$S_t=S_b+S_w$</td>
+<td>$\sum_{i=1}^m(x_i-\mu)(x_i-\mu)^T$</td>
+</tr>
+<tr>
+<td>优化目标</td>
+<td>$\max_\omega\frac{\omega^TS_b\omega}{\omega^TS_w\omega}$</td>
+<td>$\max_W\frac{tr(W^TS_bW)}{tr(W^TS_wW)}$</td>
+</tr>
+<tr>
+<td>闭式解</td>
+<td>$w=S_w^{-1}(\mu_0-\mu_1)$</td>
+<td>$S_w^{-1}S_b$ 前 $k$ 大广义特征向量</td>
+</tr>
+</tbody>
+</table>
+</main>
+        </div>
+
+    </div>
+</body></html>

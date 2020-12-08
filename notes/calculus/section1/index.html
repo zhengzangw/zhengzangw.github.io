@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1-极限与连续 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本概念">基本概念</a></li>
+    <li><a href="#定理">定理</a></li>
+    <li><a href="#极限">极限</a></li>
+    <li><a href="#连续">连续</a></li>
+    <li><a href="#线性几何">线性几何</a></li>
+    <li><a href="#多元函数">多元函数</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="基本概念">基本概念</h2>
+<ul>
+<li>上界（下界）：$\exists M\in\mathbb{R},\forall x\in E,x\leq M$
+<ul>
+<li>$\sup E(\inf E)$: 上界中最小值</li>
+<li>无上界：$\sup E=+\infty$</li>
+</ul>
+</li>
+<li>$\max(\min)$：$x_0\in E,\forall x\in E,x_0\geq x$</li>
+<li>$x$ 的 $\delta$-邻域：$U(x;\delta)=(x-\delta,x+\delta)$</li>
+<li>$x$ 的 $\delta$-去心邻域：$\check{U}(x;\delta)\backslash{x}$</li>
+<li>聚点：$E\subseteq\mathbb{R},x\in\mathbb{R},\forall\delta&gt;0,\check{U}(x;\delta)\cap E\not=\emptyset$</li>
+<li>孤立点：$E\subseteq\mathbb{R},x_0\in E,x_0$ 非 $E$ 的聚点
+<ul>
+<li>$E$ 中点为聚点或孤立点</li>
+</ul>
+</li>
+<li>内点：$E\subseteq\mathbb{R},x_0\in\mathbb{R},\exists\delta&gt;0,U(x_0;\delta)\subseteq E$</li>
+<li>开集：$E\subseteq\mathbb{R}$, $E$ 的点皆为 $E$ 的内点</li>
+<li>凸性：$\forall x\in I,\forall y\in I$, 连接$x$与$y$的线段含于 $I$</li>
+<li>闭集：$\mathbb{R}\backslash E$ 为开集
+<ul>
+<li>有上界的非空闭子集有最大值</li>
+</ul>
+</li>
+<li>紧集：有界闭集（紧性）
+<ul>
+<li>$f$ 为连续函数，$\mathfrak{D}_f$ 为有界闭集，$\mathfrak{R}_f$ 为有界闭集</li>
+</ul>
+</li>
+<li>映射：$f:X\rightarrow Y$
+<ul>
+<li>定义域：$\mathfrak{D}_f=X$</li>
+<li>上域：$Y$</li>
+<li>值域（象）：$\mathfrak{R}=f(X)$</li>
+<li>复合 $g\circ f$</li>
+<li>限制 $f|_{X_1}$</li>
+<li>延拓</li>
+</ul>
+</li>
+<li>函数 $f:E\rightarrow \mathbb{R}$
+<ul>
+<li>图：$\mathcal{G}_f={(x,f(x))|x\in E}$</li>
+<li>基本初等函数
+<ul>
+<li>常函数</li>
+<li>指数函数</li>
+<li>对数函数</li>
+<li>三角函数</li>
+<li>反三角函数</li>
+</ul>
+</li>
+<li>初等函数：由基本初等函数出发，有限次四则运算和复合得到
+<ul>
+<li>$x^a=e^{a\ln x}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>极值：$x_0\in\mathfrak{D},\exists\delta&gt;0,\forall x\in U(x_0;\delta)\cap\mathfrak{D},f(x)\leq f(x_0)(f(x)\geq f(x_0)$</li>
+<li>临界点：$x_0$ 为内点且 $f'(x_0)=0$</li>
+<li>单调性</li>
+<li>凸函数:$\forall x_1\in I,\forall x_2\in I,\forall\lambda\in[0,1]$ 有 $f(\lambda x_1+(1-\lambda)x_2)\leq\lambda f(x_1)+(1-\lambda)f(x_2)$
+<ul>
+<li>$f'$ 增</li>
+</ul>
+</li>
+<li>Euler 公式：$e^{x+i\theta}=e^x(\cos\theta+i\sin\theta)$</li>
+<li>$\lim_{n\rightarrow+\infty}(1+\frac{1}{n})^n=\lim_{x\rightarrow 0}(1+x)^{\frac{1}{x}}e$</li>
+<li>Stirling 公式：$n!\sim \sqrt{2\pi}n^{n+\frac{1}{2}}e^{-n}$</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>反三角函数</th>
+<th>$\mathfrak{D}_f$</th>
+<th>$\mathfrak{R}_f$</th>
+<th>导数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\arcsin$</td>
+<td>$[-1,1]$</td>
+<td>$[-\frac{\pi}{2},\frac{\pi}{2}]$</td>
+<td>$\frac{1}{\sqrt{1-x^2}}$</td>
+</tr>
+<tr>
+<td>$\arccos$</td>
+<td>$[-1,1]$</td>
+<td>$[0,\pi]$</td>
+<td>$-\frac{1}{\sqrt{1-x^2}}$</td>
+</tr>
+<tr>
+<td>$\arctan$</td>
+<td>$\mathbb{R}$</td>
+<td>$(\frac{\pi}{2},\frac{\pi}{2})$</td>
+<td>$\frac{1}{1+x^2}$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="定理">定理</h2>
+<ul>
+<li>确界定理：非空有上界集合有上确界</li>
+<li>单调有界定理：${x_n}$ 单调增数列且有上界，则其收敛于上确界</li>
+<li>Cauchy 准则：${a_k}$ 收敛 $\iff\forall\epsilon&gt;0,\exists N,\forall m&gt;N,\forall n&gt;N,|a_m-a_n|&lt;\epsilon$</li>
+<li>Heine 定理：$\lim_{x\rightarrow x_0}f(x)=A\iff\forall{x_n}\subseteq\mathfrak{D}_f\backslash{x_0}$ s.t. $\lim_{x\rightarrow +\infty}x_n=x_0$ 有 $\lim_{n\rightarrow+\infty}f(x_n)=A$</li>
+<li>Cauchy 准则：$\lim_{x\rightarrow x_0}f(x)=A\iff\forall\epsilon&gt;0,\exists\delta&gt;0,\forall x_1\in\check{U}(x_0;\delta)\cap\mathfrak{D}_f,\forall x_2\in\check{U}(x_0;\delta)\cap\mathfrak{D}_f$ 有 $|f(x_1)-f(x_2)|&lt;\epsilon$</li>
+<li>单调有界定理：$f(x)$ 单调增有上界，$\lim_{x\rightarrow+\infty}f(x)=\sup f$</li>
+<li>实数稠密性：$V$ 为 $\mathbb{R}$ 的非空开子集，则 $V$ 中含有无限个有理数与无限个无理数</li>
+<li>介值定理：$f$ 为连续函数，$\mathfrak{D}_f$ 为区间或单电集，$A\in\mathfrak{R}_f,B\in\mathfrak{R}_f,C$ 在两者间，则 $\exists\xi\in\mathfrak{D},f(\xi)=C$</li>
+<li>路连通性：$f$ 为连续函数，$\mathfrak{D}_k$ 为区间为单点集，则$\mathfrak{R}_f$ 为区间或单点集</li>
+<li>Fermat 定理：$x_0$ 为极值点且为内点，$f$ 在 $x_0$ 处可导，则 $x_0$ 为临界点</li>
+</ul>
+<h2 id="极限">极限</h2>
+<ul>
+<li>$\lim_{n\rightarrow+\infty} x_n=A$: ${x_n},A\in\mathbb{R},\forall\epsilon&gt;0,\exists N\in\mathbb{R},\forall n&gt;N$ 有 $|x_n-A|&lt;\epsilon$
+<ul>
+<li>${x_n}$ 收敛</li>
+<li>唯一性</li>
+<li>有界性：${x_n}$ 收敛则 $\exists M\in\mathbb{R},|x_n|\leq M$</li>
+<li>保序性：$\lim_{n\rightarrow+\infty} x_n=A&gt;B$ 则 $\exists N,\forall n&gt;N,x_n&gt;B$</li>
+<li>迫敛性：$x_n\leq y_n\leq z_n,\lim_{n\rightarrow+\infty} x_n=\lim_{n\rightarrow+\infty} z_n=A$, 则 $\lim_{n\rightarrow+\infty} y_n=A$</li>
+<li>四则运算</li>
+<li>子列收敛于相同极限</li>
+</ul>
+</li>
+<li>$\lim_{n\rightarrow+\infty} x_n=+\infty$: ${x_n},\forall M\in\mathbb{R},\forall\epsilon&gt;0,\exists N\in\mathbb{R},\forall n&gt;N$ 有 $x_n\geq M$
+<ul>
+<li>${x_n}$ 无穷极限</li>
+</ul>
+</li>
+<li>$\lim_{x\rightarrow x_0}f(x)=A$: $x_0$ 为 $\mathfrak{D}_f$ 聚点，$A\in\mathbb{R},\forall\epsilon&gt;0,\exists\delta&gt;0,\forall x\in\check{U}(x_0;\delta)\cap\mathfrak{D}_f$ 有 $|f(x)-A|&lt;\epsilon$
+<ul>
+<li>唯一性</li>
+<li>局部性：$\lim_{x\rightarrow x_0}f(x)=A\iff\lim_{x\rightarrow x_0}f|_{U(x_0;\delta)\cap\mathfrak{D}_f}(x)=A$</li>
+<li>局部有界性</li>
+<li>局部保序性</li>
+<li>迫敛性</li>
+<li>变量代换</li>
+</ul>
+</li>
+<li>$\lim_{x\rightarrow+\infty}f(x)=A$: $\forall x\in\mathfrak{D}_f\cap[N,+\infty]\not=\emptyset,A\in\mathbb{R},\forall\epsilon&gt;0,\exists\delta&gt;0,\exists N\in\mathbb{R},\forall x\in\mathfrak{D}_f\cap[N,+\infty]$ 有 $|f(x)-A|&lt;\epsilon$</li>
+<li>$\lim_{x\rightarrow x_0}f(x)=+\infty$: $x_0$ 为聚点，$\forall M\in\mathbb{R},\exists\delta&gt;0,\forall x\in\check{U}(x_0;\delta)\cap\mathfrak{D}_f$ 有 $f(x)&gt;M$</li>
+<li>$\lim_{x\rightarrow x_0^+}f(x)=A$: $\forall\sigma&gt;0,(x_0,x_0+\sigma)\cap\mathfrak{D}_f\not=\emptyset,A\in\mathbb{R},\forall\epsilon&gt;0,\exists\delta&gt;0,\forall x\in(x_0,x_0+\delta)\cap\mathfrak{D}_f$ 有 $|f(x)-A|&lt;\epsilon$
+<ul>
+<li>$\lim_{x\rightarrow x_0^+}f(x)=\lim_{x\rightarrow x_0^-}f(x)=A\iff\lim_{x\rightarrow x_0}f(x)=A$</li>
+</ul>
+</li>
+<li>$x\rightarrow x_0$ 时，$f(x)$ 为无穷小量：$\lim_{x\rightarrow x_0}f(x)=0$</li>
+<li>$x\rightarrow x_0$ 时，$f(x)$ 为无穷大量：$\lim_{x\rightarrow x_0}f(x)=\pm\infty$</li>
+<li>$f(x)=o(g(x)),(x\rightarrow x_0)$
+<ul>
+<li>$f,g$ 定义域相同，$\lim_{x\rightarrow x_0}f(x)=\lim_{x\rightarrow x_0}g(x)=0,\lim_{x\rightarrow x_0}\frac{f(x)}{g(x)}=0$，则 $x\rightarrow x_0$ 时，$f$ 为 $g$ 的高阶无穷小，$g$ 为 $f$ 的低阶无穷小</li>
+</ul>
+</li>
+<li>$f(x)=O(g(x)),(x\rightarrow x_0)$
+<ul>
+<li>$f,g$ 定义域相同，$x_0$ 为定义域的聚点，$\exists M\in\mathbb{R},\exists\delta&gt;0,\forall x\in\check{U}(x_0;\delta)\cap\mathfrak{D}_f$ 有 $|\frac{f(x)}{g(x)}|\leq M$</li>
+</ul>
+</li>
+</ul>
+<h2 id="连续">连续</h2>
+<ul>
+<li>$f$ 在 $x_0$ 处连续：$x_0\in\mathfrak{D}_f,\forall\epsilon&gt;0,\exists x\in U(x_0;\delta)\cap\mathfrak{D}_f$ 有 $|f(x)-f(x_0)|&lt;\epsilon$
+<ul>
+<li>$x_0$ 为连续点</li>
+<li>不连续，间断，不连续点</li>
+<li>孤立点处连续</li>
+<li>聚点连续 $\iff \lim_{x\rightarrow x_0} f(x)=f(x_0)$</li>
+<li>四则运算，复合</li>
+</ul>
+</li>
+<li>在 $E$ 上一致连续：$\forall\epsilon&gt;0,\exists\delta&gt;0,\forall x_1\in E,\forall x_2\in E$ s.t. $|x_1-x_2|&lt;\delta$ 有 $|f(x_1)-f(x_2)|&lt;E$
+<ul>
+<li>一致连续则连续</li>
+<li>$f$ 连续且 $\mathfrak{D}_f$ 为有界闭集，则 $f$ 一致连续</li>
+</ul>
+</li>
+</ul>
+<h2 id="线性几何">线性几何</h2>
+<ul>
+<li>内积：$\langle f,g\rangle_{L^2[a,b]}=\int_a^bf(x)\overline{g(x)}dx$
+<ul>
+<li>共轭对称性</li>
+<li>共轭双线性</li>
+<li>非负性</li>
+</ul>
+</li>
+<li>正交规范性：$\langle e^{i2n\pi x},e^{i2m\pi x}\rangle=[n=m]$
+<ul>
+<li>正交规范族：${e^{i2n\pi x}|n\in\mathbb{Z}}$</li>
+<li>线性无关性</li>
+</ul>
+</li>
+<li>$X,Y\in\mathbb{R}^n,\langle X,Y\rangle=\sum_{i=1}^nx_iy_i$
+<ul>
+<li>对称性</li>
+<li>双线性</li>
+<li>正定性</li>
+<li>Cauchy-Schwarz 不等式：$|\langle X,Y\rangle|\leq\lVert X\rVert\cdot\lVert Y\rVert$</li>
+</ul>
+</li>
+<li>范数：$\lVert X\rVert=\sqrt{\langle X,X\rangle}$
+<ul>
+<li>正定性</li>
+<li>齐次性</li>
+<li>三角不等式</li>
+</ul>
+</li>
+<li>$X\perp Y$: $\langle X,Y\rangle=0$
+<ul>
+<li>双线性，反交换律</li>
+<li>$\lVert a\times b\rVert=\sqrt{\lVert a\rVert^2\lVert b\rVert^2-\langle a,b\rangle^2}$</li>
+</ul>
+</li>
+</ul>
+<p>$$
+a\times b =(|\begin{matrix} a_2 &amp; b_2\newline  a_3 &amp; b_3 \end{matrix}|,|\begin{matrix} a_3 &amp; b_3\newline  a_1 &amp; b_1 \end{matrix}|,|\begin{matrix} a_1 &amp; b_1\newline  a_2 &amp; b_2 \end{matrix}|)^T
+$$</p>
+<ul>
+<li>直线：$L:X(t)=P+tY$</li>
+<li>超平面
+<ul>
+<li>点法式：$\langle Q-P,\mathbf{n}\rangle=0$</li>
+<li>一般式：$\sum_kn_kx_k+b=0$</li>
+<li>参数方程：$\Pi:X(\lambda_1,\cdots,\lambda_{k-1})=\sum_{i=1}^{k-1}\lambda_iX_i+P$</li>
+</ul>
+</li>
+<li>曲线 $\gamma:I\rightarrow\mathbb{R}^n$
+<ul>
+<li>参数方程：$\gamma(t)=(\gamma_1(t),\cdots,\gamma_n(t))^T$</li>
+<li>切向量：$\lambda\gamma'(t_0)$</li>
+<li>切线：$L:X(t)=\gamma(t_0)+t\gamma'(t_0)$</li>
+</ul>
+</li>
+<li>超曲面：$S:F(P)=0,F$ 为连续可微函数</li>
+<li>切超平面：$\Pi={Q\in\mathbb{R}^k|\langle Q-P,\nabla F(P)\rangle=0}$</li>
+</ul>
+<h2 id="多元函数">多元函数</h2>
+<ul>
+<li>点列 ${P_k}\subset\mathbb{R}^n$</li>
+<li>$\lim_{k\rightarrow+\infty}P_k=P$：$\forall \epsilon&gt;0,\exists N\in\mathbb{R},\forall k&gt;N,\lVert P_k-P\rVert&lt;\epsilon$
+<ul>
+<li>唯一性</li>
+<li>点列收敛当且仅当所有坐标对应收敛</li>
+</ul>
+</li>
+<li>$\delta$-邻域：$U(P;\delta)={Q\in\mathbb{R}^n|d(P,Q)&lt;\delta}$</li>
+<li>$\delta$-邻域去心：$\hat U(P;\delta)=U(P;\delta)\backslash{P}$</li>
+<li>聚点：$\forall\delta&gt;0,\hat U(P;\delta)\cap E\not=\emptyset$</li>
+<li>孤立点：$P\in E$ 且 $P$ 非聚点</li>
+<li>内点：$\exists\delta&gt;0,U(P;\delta)\subseteq E$</li>
+<li>边界点：$\forall\delta&gt;0,U(P;,\delta)\cap E\not=\emptyset$ 且 $U(P;\delta)\cap(\mathbb{R}^n\backslash E)\not=\emptyset$</li>
+<li>开集：$E$ 的点皆为 $E$ 的内点</li>
+<li>闭集：$\mathbb{R}^n\backslash E$ 为开集</li>
+<li>$\lim_{P\rightarrow P_0}f(P)=A$: $\forall\epsilon&gt;0,\exists\delta&gt;0,\forall P\in\hat U(P_0;\delta)\cap D_f,|f(P)-A|&lt;\epsilon$</li>
+<li>连续：$\forall\epsilon&gt;0,\exists\delta&gt;0,\forall P\in U(P_0;\delta)\cap D_f,|f(P)-f(P_0)|&lt;\epsilon$
+<ul>
+<li>$f$ 连续则关于自变量所有分量皆连续</li>
+</ul>
+</li>
+<li>映射：$f:E\rightarrow\mathbb{R}^m$</li>
+<li>连续：$\forall\epsilon&gt;0,\exists\delta&gt;0,\forall P\in U(P_0;\delta)\cap D_f,|f(P)-f(P_0)|&lt;\epsilon$</li>
+<li>凸集：$\forall P\in E,\forall Q\in E,\forall t\in[0,1],tP+(1-t)Q\in E$</li>
+<li>路连通集：$\forall P\in E,\forall Q\in E$，有连续映射 $\gamma:[0,1]\rightarrow E,\gamma(0)=P,\gamma(1)=Q$</li>
+<li>$\mathbb{R}^1$ 中非空路连通集与凸集相同，为区间或单点集</li>
+<li>路连通性：$f$ 为连续映射，若$D_f$路连通，则$R_f$亦然</li>
+<li>介值定理</li>
+<li>紧性：$f$ 为连续映射，$D_f$ 有界闭集，$R_f$ 有界闭集</li>
+<li>最值定理：$f$ 为连续函数，$D_f$ 有界闭集，则 $f$ 有最大值与最小值</li>
+<li>一致连续：$\forall\epsilon&gt;0,\exists\delta&gt;0,\forall P_1\in E,\forall P_2\in E,\lVert P_1-P_2\rVert&lt;\delta,\lVert f(P_1)-f(P_2)\rVert&lt;\epsilon$
+<ul>
+<li>$f$ 为连续映射，且 $D_f$ 有界闭集，则 $f$ 一致连续</li>
+</ul>
+</li>
+<li>线性映射：$\mathbf{A}:\mathbb{R}^n\rightarrow\mathbb{R}^m,\mathbf{A}(X)=AX$</li>
+<li>仿射映射：$\mathbf{L}(X)=AX+b$
+<ul>
+<li>$\mathbf{L}(Q)-\mathbf{L}(P)=A(Q-P)$</li>
+<li>$\mathbf{L}(\square(P;X_1,\cdots,X_k))=\square(\mathbf{L}(P);AX_1,\cdots,AX_k))$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

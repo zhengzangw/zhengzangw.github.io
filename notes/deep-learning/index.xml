@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>[A] 深度学习 Deep Learning on Zangwei</title>
+    <link>https://zhengzangw.com/notes/deep-learning/</link>
+    <description>Recent content in [A] 深度学习 Deep Learning on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1-Perceptron</title>
+      <link>https://zhengzangw.com/notes/deep-learning/1-perceptron/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/1-perceptron/</guid>
+      <description>Perceptron 1957
+ 模型：$\hat y=\text{sgn}(\omega^\top x)$ 参数学习：错误驱动在线学习算法  $\omega\leftarrow 0$ 对于 $y\omega^\top x&amp;lt;0,\omega\leftarrow \omega+yx$ $L(\omega;x,y)=\max(0,-y\omega^\top x)$   感知机收敛性：$\mathcal{D}={(\mathbf{x}^{(n)},y^{(n)})}_{n=1}^N,R=\max_n|x^{(n)}|$，若 $\mathcal{D}$ 可分，则两类感知机权重更新不超过 $\frac{R^2}{\gamma^2}$  神经元  神经元  净输入：$z=\omega^\top x+b$ 活性值：$a=f(z)$ 激活函数：$f$    激活函数  Sigmoid 型函数：两端饱和函数  Logistic: $\sigma(x)=\frac{1}{1+\exp(-x)}$ Tanh: $\tanh(x)=2\sigma(2x)-1=\frac{\exp(x)-\exp(-x)}{\exp(x)+\exp(-x)}$ 计算开销较大   hard-logistic$(x)=\max(\min(0.25x+0.5,1),0)$ hard-Tanh$(x)=\max(\min(x,1),-1)$ ReLU$(x)=\max(0,x)$  计算高效 生物学合理性：单侧抑制、宽兴奋边界 非零中心化：偏置偏移 死亡 ReLU 问题   LeakyReLU$(x)=\max(x,\gamma x)$ 带参数 ReLU，对于第 $i$ 个神经元：PReLU$_i(x)=\max(0,x)+\gamma_i\min(0,x)$ Exponential Linear Unit: ELU$(x)=\max(0,x)+\min(0,\gamma(\exp(x)-1))$  近似零中心化   Softplus$(x)=\log(1+\exp(x))$ Swish$(x)=x\sigma(\beta x)$ GELU$(x)=xP(X\leq x),P(X\leq x)$ 为高斯累积分布函数 Maxout$(x)=\max_{k\in[1,K]}(z_k),z_k=\omega_k^\top x+b_k$  输入为向量    </description>
+    </item>
+    
+    <item>
+      <title>2-FNN</title>
+      <link>https://zhengzangw.com/notes/deep-learning/2-fnn/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/2-fnn/</guid>
+      <description>FNN  前向神经网络/全连接神经网络/多层感知机 前向传播  $z^{(l)}=W^{(l)}a^{(l-1)}+b^{(l)}$ $a^{(l)}=f_l(z^{(l)})$   通用近似定理（Universal Approximation Theorem,1989)  $\phi(\cdot)$ 是一个非常数、有界、单调递增的连续函数，$J_D$ 是一个 $D$ 维的单位超立方体 $[0,1]^D$，$C(J_D)$ 是定义在 $J_D$ 上的连续函数集合 $\forall f\in C(J_D),\exists M\in\mathbb{Z},v_m,b_m\in\mathbb{R},\omega_m\in\mathbb{R}^D$, 有函数 $F(x)=\sum_{m=1}^Mv_m\phi(\omega_m^\top x+b_m)$ $|F(x)-f(x)|&amp;lt;\epsilon,\forall x\in J_D,\epsilon$ 为很小正数 在 $\mathbb{R}^D$ 有界闭集上依然成立   $𝕀_i(t)$: 第 $i$ 个元素为 $t$ 其余为 $0$ 的行向量 反向传播算法  $\delta_i^{(l)}=\frac{\partial L}{\partial z^{(l)}}=\frac{\partial L}{\partial z^{(l+1)}}\frac{\partial z^{(l+1)}}{\partial a^{(l)}}\frac{\partial a^{(l)}}{\partial z^{(l)}}=\delta_{i+1}(W^{l+1})^\top\text{diag}(f&#39;(z^{(l)}))\in\mathbb{R}^{M_l}$ $dL=\text{tr}(\frac{\partial L}{\partial z^{(l)}}dz^{(l)})=\text{tr}((a^{(l-1)})^\top\delta^{(l)}dW)\Rightarrow\frac{L(y,\hat y)}{\partial W^{(l)}}=\delta^{(l)}(a^{(l-1)})^\top$   自动梯度计算  数值微分 符号微分 自动微分：$f:\mathbb{R}^N\rightarrow\mathbb{R}^M$  前向模式：$N$ 反向模式：$M$     优化  非凸优化问题 梯度消失问题 梯度弥散问题    </description>
+    </item>
+    
+    <item>
+      <title>3-CNN</title>
+      <link>https://zhengzangw.com/notes/deep-learning/3-cnn/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/3-cnn/</guid>
+      <description>卷积  卷积：$Y=W*X,y_{ij}=\sum_{u=1}^U\sum_{v=1}^V\omega_{uv}x_{i-u+1,j-v+1}$ 互相关：$Y=W\otimes X=\text{rot180}(W)*X$  $Y\in\mathbb{R}^{M-U+1,N-V+1}$ 深度学习中常用互相关代替卷积   卷积层输出长度（神经元数量）：$\frac{M-K+2P}{S}+1$  输入神经元 $M$ 步长 $S$ 卷积大小 $K$ 零填充：输入向量两端补 $P$ 个零   卷积分类  窄卷积：$S=1,P=0$ 宽卷积：$S=1,P=K-1,W\tilde\otimes X=W\otimes\tilde{X}$ 等宽卷积：$S=1,P=\frac{(K-1)}{2}$   卷积数学性质 $Y=W\otimes X$  $\text{rot180}(W)\tilde{\otimes}X=\text{rot180}(X)\tilde{\otimes}W$ $\frac{\partial f(Y)}{\partial W}=\frac{\partial f(Y)}{\partial Y}\otimes X$ $\frac{f(Y)}{\partial X}=\text{rot180}(W)\tilde{\otimes}\frac{\partial f(Y)}{\partial Y}$   其它卷积方式  转置卷积（反卷积）：从低维到高维的映射 微步卷积：$S&amp;lt;1$ 或在每两个向量元素间插入 $D$ 个 0，可得 $(D+1)\times(M-1)+K$ 维的向量 空洞卷积（卷积膨胀）：卷积核间增加空洞，增大感受野    CNN  FNN 处理图像信息  参数过多  $100\times100\times3$ 则第一隐藏层每个神经元有 $30000$ 参数 权重矩阵有 $M_l\times M_{l-1}$ 个参数   局部不变性特征   卷积层：$z^{(l)}=\omega^{(l)}\otimes a^{(l-1)}+b^{(l)}$  局部连接：卷积层中每个神经元只和前一层中某个局部窗口内的神经元相连构成局部连接网络 权重共享：$\omega^{(l)}$ 对所有神经元相同，一个卷积核只捕捉输入数据中的一种特定的局部特征 共 $K+1$ 个参数   卷积层  输入特征映射组：$\mathcal{X}\in\mathbb{R}^{M\times N\times D}$ 三维张量，切片 $X^d\in\mathbb{R}^{M\times N}$ 为一个输入特征映射 输出状态映射组：$\mathcal{Y}\in\mathbb{R}^{M&#39;\times N&#39;\times P}$ 三维张量，切片 $Y^p\in\mathbb{R}^{M&#39;\times N&#39;}$ 卷积核：$\mathcal{W}\in\mathbb{R}^{U\times V\times P\times D}$，切片 $W^{p,d}\in\mathbb{R}^{U\times V}$ 为一个二维卷积核 $Z^p=W^p\otimes X+b^p=\sum_{d=1}^DW^{p,d}\otimes X^d+b^p$ $Y^p=f(Z^p)$   汇聚层  最大汇聚：$y_{m,n}^d=\max_{i\in R_{m,n}^d}x_i$ 平均汇聚：$y_{m,n}^d=\frac{1}{|R_{m,n}^d|}\sum_{i\in R_{m,n}^d}x_i$   反向传播算法  $\delta^{(l,p)}=\frac{\partial L}{\partial Z^{(l,p)}}$ 汇聚层：$\delta^{(l,p)}=\frac{\partial L}{\partial Z^{(l,p)}}=f&#39;_l(Z^{(l,p)}\odot\text{up}(\delta^{(l+1,p)})$ 聚集层：$\delta^{(l,d)}=f&#39;l(Z^{(l,d)})\cdot\sum{P=1}^P(\text{rot180}(W^{(l+1,p,d)}\tilde\otimes\delta^{(l+1,p)}))$    Backbones  LeNet-5(1998)  连接表 输出层为 RBF 函数   AlexNet(2012)  GPU 训练 局部响应归一   Inception  Inception 模块：不同卷积核得到结果再深度上堆叠作为输出 Inception v1 (GoogLeNet, 2015) Inception v3 (2016)   ResNet  残差连接：$h(x)=x+(h(x)-x)$ ResNet-50   VGG  </description>
+    </item>
+    
+    <item>
+      <title>4-RNN</title>
+      <link>https://zhengzangw.com/notes/deep-learning/4-rnn/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/4-rnn/</guid>
+      <description>记忆能力   延时神经网络：非输出层前增加延时器
+ $h_t^{(l)}=f(h_t^{(l)},h_{t-1}^{(l-1)},\cdots,h^{(l-1)}_{t-K})$ 在时间维度上共享权值    有外部输入的非线性网络：每个时刻 $t$ 有一个外部输入，产生一个输出 $y_t$
+ 自回归模型：$y_t=\omega_0+\sum_{k=1}^K\omega_ky_{t-k}+\epsilon_t$ 有外部输入的非线性自回归模型：$y_t=f(x_t,x_{t-1},\cdots,x_{t-{K_x}},y_{t-1},y_{t-2},\cdots,y_{t-K_y})$    循环神经网络：$h_t=f(h_{t-1},x_t)$
+  循环神经网络的通用近似定理（2009）：以任何准确率近似任何一个非线性动力系统
+$$s_t=g(s_{t-1},x_t)\newline y_t=o(s_t)$$
+  图灵完备（1991）：所有图灵机可以被一个由使用 Sigmoid 型激活函数的神经元构成的全连接循环网络进行模拟
+    外部记忆单元
+  RNN  简单神经网络  $z_t=Uh_{t-1}+Wx_{t}+b$ $h_t=f(z_t)$ $y_t=Vh_t$   应用模式  序列到类别  $x_{1:T}=(x_1,\cdots,x_T)$ 按不同时刻输入到网络中 $y\in{1,\cdots,C}$ 序列特征：$h_T$ or $\frac{1}{T}\sum_{t=1}^Th_t$   同步序列到序列（序列标注）  $x_{1:T}=(x_1,\cdots,x_T)$ 按不同时刻输入到网络中 $y_{1:T}=(y_1,\cdots,y_T)$ $\hat y_t=g(h_t),\forall t\in[1,T]$   异步序列到序列（编码器-解码器）  $x_{1:T}=(x_1,\cdots,x_T)$ 按不同时刻输入到网络（编码器）中 $y_{1:M}=(y_1,\cdots,y_M)$ 按不同时刻输入到网络（解码器）中，初始隐状态为 $h_T$ $\hat y_t=g(h_{T+t})$     随时间反向传播（BPTT）：每层对应每个时刻  $\delta_{t,k}=\frac{\partial L_t}{\partial z_k}=\text{diag}(f&#39;(z_k))U^T\delta_{t,k+1}$ $\frac{\partial L_t}{\partial U}=\sum_{k=1}^t\delta_{t,k}h^T_{k-1}$ $\frac{\partial L}{\partial U}=\sum_{t=1}^T\sum_{k=1}^t\delta_{t,k}h^T_{k-1}$ 在一次完整前向传播和反向计算后才能更新参数   实时循环学习（RTRL） 堆叠循环神经网络（SRNN）  循环多层感知机（1991）：$h_t^{(l)}=f(U^{(l)}h_{t-1}^{(l)}+W^{(l)}h_t^{(l-1)}+b^{(l)})$   双向循环神经网络（Bi-RNN）  长程依赖问题  长程依赖问题  梯度消失：$\frac{\partial L_t}{\partial h_k}$ 梯度消失，参数 $U$ 更新主要靠相邻状态 $h_t=h_{t-1}+g(x_t,h_{t-1};\theta)$: 梯度爆炸，记忆容量不足 梯度爆炸：不稳定   长短期记忆网络（LSTM, 2000）  内部状态 $c_t=f_t\odot c_{t-1}+i_t\odot \tilde{c}_t$ 外部状态 $h_t=o_t\odot \tanh(c_t)$ 门 ${0,1}$ 遗忘门 $f_t=\sigma(W_fx_t+U_fh_{t-1}+b_f)$ 控制内部状态遗忘多少信息 输入门 $i_t=\sigma(W_ix_t+U_ih_{t-1}+b_i)$ 控制候选状态保存多少信息 输出门 $o_t=\sigma(W_0x_t+U_0h_{t-1}+b_0)$ 控制内部状态输出多少给外部状态 候选状态 $\tilde{c}t=\tanh(Wx_t+Uh{t-1}+b)$   LSTM 变体  无遗忘门(1997) peephole 连接：三个门同时依赖于上一时刻记忆单元 $c_{t-1}$ 耦合输入门与遗忘门：$c_t=(1-i_t)\odot c_{t-1}+i_t\odot\tilde{c}_t$   门控循环网络（GRU, 2014）  $h_t=z_t\odot h_{t-1}+(1-z_t)\odot \tilde{h}_t$ 更新门 $z_t=\sigma(W_zx_t+U_zh_{t-1}+b_z)$ 重置门 $r_t=\sigma(W_rx_t+U_rh_{t-1}+b_r)$ 候选状态 $\tilde{h}t=\tanh(W_cx_t+U_h(r_t\odot h{t-1})+b)$    图结构  递归神经网络（RecNN）：$h_i=f(h_{\pi_i})$  建模自然语言句子的语义   图神经网络（GNN）  $m_t^{(v)}=\sum_{u\in N(v)}f(h^{(v)}_{t-1},h_{t-1}^{(u)},e^{(u,v)})$ $h_t^{(v)}=g(h_{t-1}^{(v)},m_t^{(v)})$ 读出函数：$o_t=g({h_T^{(v)}|v\in V})$    </description>
+    </item>
+    
+    <item>
+      <title>5-Optimization and Regularization</title>
+      <link>https://zhengzangw.com/notes/deep-learning/5-optimization-and-regularization/</link>
+      <pubDate>Tue, 16 Jun 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/5-optimization-and-regularization/</guid>
+      <description>Optimization  高维变量非凸优化  鞍点 平坦最小值与尖锐最小值 局部最小解等价性    优化算法  小批量梯度下降（批量，学习率，梯度估计）  $g_t=\frac{1}{K}\sum_{(x,y)\in S_t}\frac{\partial L(y,f(x;\theta))}{\partial\theta}$ $\theta\leftarrow\theta-\alpha g_t$   批量大小选择  线性放缩规则：批量大小增加 $m$ 倍时，学习率也增加 $m$ 倍（批量大小较小时适用） 批量越大，越有可能收敛到尖锐最小值;批量越小，越有可能收敛到 平坦最小值   学习率衰减（退火）  分段常数分解：每经过 $T_1,\cdots,T_m$ 次迭代，衰减为原来的 $\beta_1,\cdots,\beta_m$ 倍 逆时衰减：$\alpha_t=\alpha_0\frac{1}{1+\beta\times t}$ 指数衰减：$\alpha=\alpha_0\beta^t$ 自然指数衰减：$\alpha_0\exp(-\beta\times t)$ 余弦衰减：$\alpha_t=\frac{1}{2}\alpha_0(1+\cos(\frac{t\pi}{T}))$   学习率预热：最初几轮使用较小的学习率  逐渐预热(2017)：$\alpha_t&#39;=\frac{t}{T&#39;}\alpha_0$   周期性学习率调整  循环学习率 带热重启的随机梯度下降   AdaGrad(2011)：自适应调整参数学习率  $\Delta\delta_t=-\frac{\alpha}{\sqrt{G_t+\epsilon}}\odot g_t$ 梯度平方的累计值: $G_t=\sum_{\tau=1}^tg_\tau\odot g_\tau$ 偏导数累积比较大，其学习率相对较小; 相反，如果其偏导数累积较小，其学习率相对较大。但整体是随着迭代次数的增加，学习率逐渐缩小   RMSProp(2012)：避免学习率过早衰减  $\Delta\theta_t=-\frac{\alpha}{\sqrt{G_t+\epsilon}}\odot g_t$ 梯度平方的指数衰减：$G_t=\beta G_{t-1}+(1-\beta)g_t\odot g_t$   AdaDelta 算法：引入参数更新差值 $\Delta\theta$ 的平方调整学习率  $\Delta\theta_t=-\frac{\sqrt{\Delta X_{t-1}^2+\epsilon}}{\sqrt{G_t+\epsilon}}\odot g_t$ $\Delta X_{t-1}^2=\beta_1\Delta X_{t-2}^2+(1-\beta_1)\Delta\theta_{t-1}\odot\Delta\theta_{t-1}$   梯度估计修正  动量法：$\Delta\theta_t=\rho\Delta_{t-1}-\alpha g_t$ Nesterov 动量法：$\Delta\theta_t=\rho\Delta_{t-1}-\alpha g_t(\theta_{t-1}+\rho\Delta\theta_{t-1})$ Adam 算法(2015)  $M_t=\beta_1 M_{t-1}+(1-\beta_1)g_t,\hat M_t=\frac{M_t}{1-\beta_1^t}$ $G_t=\beta_2G_{t-1}+(1-\beta_2)g_t\odot g_t,\hat G_t=\frac{G_t}{1-\beta_2^t}$ $\Delta\theta_t=-\frac{\alpha}{\hat G_t+\epsilon}\hat M_t$     梯度截断  按值截断：$g_t=\max(\min(g_t,b),a)$ 按模截断：$g_t=\frac{b}{|g_t|}g_t$    参数初始化  固定方差参数初始化  高斯分布初始化 均匀分布初始化   方差放缩参数初始化  Xavier 初始化：方差为 $\frac{2}{M_{l-1}+M_l}$  恒等函数 Logistic: 16 Tanh   He 初始化(Kaiming)：反差为 $\frac{2}{M_{l-1}}$  ReLU     正交初始化：范数保持性 $|\delta^{(l-1)}|^2=|\delta^{(l)}|^2$  高斯分布初始化后，SVD 分解并取一个正交矩阵作为权重    数据预处理  尺度不变性：算法在缩放部分特征后不影响学习和预测 归一化 白化：降低冗余性 数据增强：Rotation, Flip, Zoom In/Out, Shift, Noise  优化地形  ReLU 激活函数 残差连接 逐层归一化  批量归一化（BN）：$\text{BN}_{\gamma,\beta}(z^{(l)})=\frac{z^{(l)}-\mu_B}{\sqrt{\sigma_B^2+\epsilon}}\odot\gamma+\beta$  $\mu_B=\frac{1}{K}\sum_{k=1}^Kz^{(k,l)}$   层归一化（LN）：$\text{LN}_{\gamma,\beta}(z_t^{(l)})=\frac{z^{(l)}-\mu}{\sqrt{\sigma^2+\epsilon}}\odot\gamma+\beta$  $\mu=\frac{1}{\mathbb{M_l}}\sum_{i=1}^{M_I}z_i^{(l)}$   权重归一化：通过再参数化将权重分为长度与方向  $W_{i,:}=\frac{g_i}{|v_i|}v_i$   局部响应归一化（LRN）    超参数优化  超参数：网络结构、优化参数、正则化参数 困难  组合优化问题 评估一组参数配置的时间代价高   网格搜索 随机搜索 贝叶斯优化 动态资源分配 神经架构搜索  网络正则化  $l_1$ 正则化 $l_2$ 正则化 弹性网络衰减 权重衰减：$\theta_1\leftarrow (1-\beta)\theta_{t-1}-\alpha g_t$  标准随机梯度下降中与 $l_2$ 正则化等价   提前停止：使用验证集错误代替期望错误 丢弃法  训练时：$\text{mask}(x)=m\odot x, m$ 以概率为 $p$ 的伯努利分布随机生成 测试时：$\text{mask}(x)=px$ 集成学习角度：丢弃相当于采样一个子网络 贝叶斯学习角度   标签平滑：软目标标签，给其余 $K-1$ 个类概率 $\frac{\epsilon}{K-1}$  </description>
+    </item>
+    
+    <item>
+      <title>8-Methodology</title>
+      <link>https://zhengzangw.com/notes/deep-learning/8-methodology/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/8-methodology/</guid>
+      <description>半监督学习  自训练（Self-Training, Self-Teaching, Bootstrapping）：先用标注数据训练一个模型，将预测置信度较高的样本的位标签加入训练集重新训练 协同训练（Co-Training）：基于不同视角的分类器促进训练  在训练集上根据不同视角分别训练两个模型 $f_1$ 和 $f_2$ 在无标注训练集上预测，各选取预测置信度比较高的样本加入训练集，重新训练两个不同视角的模型    多任务学习  多任务学习：归纳迁移学习的一种，利用相关任务中的信息作为归纳偏置提高泛化能力 共享模式  硬共享模式：让不同任务的神经网络共同使用一些共享模块提取通用特征 软共享模式：每个任务从其它任务获得一些信息（如隐状态、注意力机制） 层次共享模式：一般神经网络中不同层抽取的特征类型不同，低层一般抽取一些低级的局部特征，高层抽取一些高级的抽象语义特征 共享-私有模式：将共享模块和任务特定(私有)模块的责任分开    迁移学习  领域：一个样本空间极其分布 $\mathcal{D}=(\mathcal{X},\mathcal{Y},p(x,y))$ 机器学习任务：建模 $\mathcal{D}$ 上的条件概率 $p(y|x)$  Inductive Trasfer Learning Different Tasks: $p_S(y|x)\neq p_T(y|x), p_S(x)=p_T(x)$
+ Multi-task Learning: Source Domain Labels are available  learn source and target   Self-taught Learning: Source Domain Labels are unavailable  feature based: learn good feature on source fine-tuning: pretrain model    Transductive Transfer Learning $p_S(x,y)\neq p_T(x,y)$，假设源领域有大量标记数据，目标领域有无标记数据</description>
+    </item>
+    
+    <item>
+      <title>9-Deep-Relief-Network</title>
+      <link>https://zhengzangw.com/notes/deep-learning/9-deep-reilef-network/</link>
+      <pubDate>Mon, 22 Jun 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/9-deep-reilef-network/</guid>
+      <description>玻尔兹曼机  动力系统：描述一个空间中所有点随时间变化情况 Boltzmann Machine: a Stochastic Dynamical System  每个随机变量二值：$X\in{0,1}^K$，可观察变量 $V$，隐变量 $H$ 所有结点全连接 每两个变量间影响对称   玻尔兹曼分布：$p(x)=\frac{1}{Z}\exp(\frac{-E(x)}{T})$  $E(x)=E(X=x)=-(\sum_{i&amp;lt;j}\omega_{ij}x_ix_j+\sum_ib_ix_i)$ $\frac{p_\alpha}{p_\beta}=\exp(\frac{E_\beta-E_\alpha}{kT})$   全条件概率：$p(x_i=1|x_{\backslash i})=\sigma(\frac{\sum_j\omega_{ij}x_j+b_i}{T})$ 生成模型：吉布斯采样生成服从 $p(x)$ 的函数  随机选择变量 $X_i$，根据 $p(x_i|x_{\backslash i})$ 设置状态，运行到热平衡 $T$ 越高越容易达到热平衡 $T\rightarrow+\infty$: 每个状态一样 $T\rightarrow 0$：退化为 Hopfield 网络   模拟退火寻找全局最优解：以概率 $\sigma(\frac{\Delta E_i(x_{\backslash i})}{T})$ 将变量设置为 1 参数学习  可观测变量 $v\in{0,1}^{K_v}$ 隐变量：$h\in{0,1}^{K_h}$ 对数似然：$L(D;W,b)=\frac{1}{N}\sum_{n=1}^N\log p(\hat v^{(n)};W,b)$    受限玻尔兹曼机  隐变量与可观察变量全连接 $E(v,h)=-a^\top v-b^\top h-v^\top Wh$ $p(v,h)=\frac{1}{Z}\exp(-E(v,h))$ 生成模型  $p(v_i|v_{\backslash i,h})=p(v_i|h)$ $p(v_i=1|h)=\sigma(a_i+\sum_j\omega_{ij}h_j)$ 吉布斯采样：并行对所有隐变量/可观测变量采样，快速达到热平衡   参数学习 对比散度算法 受限玻尔兹曼机类型  伯努利-伯努利 BB-RBM 高斯-伯努利 GB-RBM 伯努利-高斯 BG-RBM    深度信念网络  每层变量依赖于上一层变量，最底层为可观测变量 逐层训练：每层看做玻尔兹曼机  </description>
+    </item>
+    
+    <item>
+      <title>7-Unsupervised Learning</title>
+      <link>https://zhengzangw.com/notes/deep-learning/7-unsupervised/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/7-unsupervised/</guid>
+      <description>Unsupervised Feature Learning   PCA
+  Sparse Coding（字典学习）
+  自编码器
+  编码器：$f:\mathbb{R}^D\rightarrow\mathbb{R}^M$
+  解码器：$g:\mathbb{R}^M\rightarrow\mathbb{R}^D$
+  优化目标：最小化重构错误
+$$L=\sum_{n=1}^N|x^{(n)}-g(f(x^{(n)}))|+\lambda|W|^2$$
+  捆绑权重：$W^{(2)}=W^{(1)\top}$
+    稀疏自编码器
+  $M&amp;gt;D$ 且 $z$ 稀疏
+$$L=\sum_{n=1}^N|x^{(n)}-g(f(x^{(n)}))|+\eta\rho(Z)+\lambda|W|^2$$
+  稀疏性度量函数：$\rho$
+  $l_1$ 范数：$\rho(z)=\sum_{m=1}^M|z_m|$
+  对数函数：$\rho(z)=\sum_{m=1}^M\log(1+z_m^2)$
+  指数函数：$\rho(z)=\sum_{m=1}^M-\exp(-z_m^2)$
+  $\rho(z)=\sum_{j=1}^p\text{KL}(\rho^*|\hat\rho_j)$
+第 $j$ 个神经元激活概率近似（平均活性值）：$\hat\rho_j=\frac{1}{N}\sum_{n=1}^Nz_j^{(n)}$
+      堆叠自编码器
+  降噪自编码器：先根据一 个比例 $𝜇$ 随机将 $𝒙$ 的一些维度的值设置为 $0$，得到一个被损坏的向量 $𝒙̃$，然后将被损坏的向量 $𝒙̃$ 输入给自编码器得到编码 $𝒛$，并重构出无损的原始输入 $𝒙$。</description>
+    </item>
+    
+    <item>
+      <title>注意力机制与外部记忆</title>
+      <link>https://zhengzangw.com/notes/deep-learning/6-attention-and-memory/</link>
+      <pubDate>Tue, 16 Jun 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/6-attention-and-memory/</guid>
+      <description>注意力机制  认知神经科学中的注意力  聚焦式注意力 基于显著性的注意力 鸡尾酒会效应   基于显著性的注意力机制：最大汇聚、门控 注意力分布：  输入变量：$[x_1,\cdots,x_N]$ 查询变量：$q$ 注意力变量：$z=n$ 选择第 $n$ 个输入变量 注意力打分函数：$s(x,q)$  加性模型：$s(x,q)=v^\top \tanh(Wx+Uq)$ 点积模型：$s(x,q)=x^\top q$ 缩放点积模型：$s(x,q)=\frac{x^\top q}{\sqrt{D}}$ 双线性模型：$s(x,q)=x^\top Wq$   注意力分布：$\alpha_n=p(z=n|X,q)=\text{softmax}(s(x_n,q))$   软性注意力机制：$\text{att}(X,q)=\sum_{n=1}^N\alpha_nx_n$ 硬性注意力机制：无法使用反向转播，通常用强化学习训练  $\text{att}=x_{\hat n},\hat n=\arg\max\alpha_n$ 随机采样   键值对注意力  输入信息：$[(k_1,v_1),\cdots,(k_N,v_N)]$ 注意力函数：$\sum_{n=1}^N\frac{\exp(s(k_n,q))}{\sum_j\exp(s(k_j,q))}v_n$   多头注意力：$\text{att}((K,V),Q)=\oplus\text{att}((K,V),q_i)$ 结构化注意力 指针网络（2015）：序列到序列模型，输出下标  $p(c_{1:M}|x_{1:N})=\prod_{m=1}^M p(c_m|c_{1:(m-1)},x_{1:N})\approx\prod_{m=1}^Mp(c_m|x_{c1:c_{m-1}},x_{1:N})$ $p(c_m|c_{1:{(m-1)},x_{1:N}})=\text{softmax}(s_{m,n})$ $s_{m,n}=v^\top\tanh(Wx_n+Uh_m)$    自注意力模型  变长向量序列  卷积网络或循环网络编码 自注意力模型（内部注意力模型）   如果要建立输入序列之间的长距离依赖关系，可以使用以下两种方法：一种方法是增加网络的层数，通过一个深层网络来获取远距离的信息交互，另一种方法是使用全连接网络 QKV 模式  输入序列：$X=[x_1,\cdots,x_N]\in\mathbb{R}^{D_x\times N}$ 输出序列：$H=[h_1,\cdots,h_N]\in\mathbb{R}^{D_v\times N}$ 查询向量：$q_i\in\mathbb{R}^{D_k},Q=W_qX$ 键向量：$k_i,Q=W_qX\in\mathbb{R}^{D_k\times N}$ 值向量：$v_i,V=W_vX\in\mathbb{R}^{D_v\times N}$ $h_n=\text{att}((K,V),q_n)$    记忆  人脑记忆  整体效应储存（分布式） 周期性  长期记忆（结构记忆，知识） 短期记忆 工作记忆（约 4 组项目）   联想记忆：基于联想检索    记忆增强神经网络（MANN/MN）  基本模块  主网络（控制器） 外部记忆单元：分为多个记忆片段 $M=[m_1,\cdots,m_N]$ 读取模块：根据主网络的查询向量 $q_r$，读取 $r=R(M,q_r)$ 写入模块：根据主网络的查询向量 $q_\omega$ 和需写入信息 $a$ 更新 $M=W(M,q_\omega,a)$   按内容寻址：注意力机制  $r=\sum_{n=1}^N\alpha_n m_n$ $\alpha=\text{softmax}(s(m_n,q_r))$   端到端记忆网络（MemN2N,2015）：外部记忆只读  $m_{1:N}={m_1,\cdots,m_N}$ 转换成两组记忆片段 $A,C$ 分别用来寻址和输出 $r=\sum_{n=1}^N\text{softmax}(a_n^\top q)c_n$ $y=f(q+r)$ 多跳操作：$q^{(k)}=r^{(k-1)}+q^{(k-1)}$   神经图灵机（2014）  外部记忆：$M\in\mathbb{R}^{D\times N}$ 控制器：神经网络 每个时刻 $t$，接受 $x_t,h_{t-1},r_{t-1}$ 输出 $h_t$，生成查询向量 $q_t$，删除向量 $e_t$ 和增加向量 $a_t$ 读操作：$\alpha_{t,n}=\text{softmax}(s(m_{t,n},q_t))$  读向量：$r_t=\sum_{n=1}^N\alpha_{t,n}m_{t,n}$   写操作：$m_{t+1,n}=m_{t,n}(1-\alpha_{t,n}e_t)+\alpha_{t,n}\alpha_t$    基于神经动力学的联想记忆  Hopfield 网络  状态：${+1,-1}$ 更新规则：$s_i=s_i+\text{sgn}(\sum_{j=1}^M\omega_{ij}s_j+b_i)$ 能量函数：$E=-\frac{1}{2}\sum_{i,j}\omega_{ij}s_is_j-\sum_ib_is_i$ 权重对称：$\omega_{ii}=0,\omega_{ij}=\omega_{ji}$ 稳定性：能量函数多次迭代后收敛 吸引点：稳定状态，局部最优点，有限，网络储存的模式 信息储存（学习规则）：赫布规则 $\omega_{ij}=\frac{1}{N}\sum_{n=1}^Nx_i^{(n)}x_j^{(n)}$ 储存容量：数量为 $M$ 的二值神经元网络，总状态数为 $2^M$，有效稳定点状态数即储存容量  Hopfield: 0.</description>
+    </item>
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://zhengzangw.com/notes/deep-learning/deep-learning/</link>
+      <pubDate>Sun, 02 Sep 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/deep-learning/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Deep Learning&lt;/em&gt;
+&lt;a href=&#34;https://www.bilibili.com/video/av9770302/?p=5&#34;&gt;李宏毅课程&lt;/a&gt;
+&lt;a href=&#34;http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS17.html&#34;&gt;李宏毅的主页&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;第六章&#34;&gt;第六章&lt;/h2&gt;
+&lt;p&gt;Input -&amp;gt; FL -&amp;gt; FL -&amp;gt; FL -&amp;gt; Softmax -&amp;gt;&lt;/p&gt;
+&lt;h3 id=&#34;输出单元&#34;&gt;输出单元&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;高斯输出分布线性单元&lt;/li&gt;
+&lt;li&gt;Bernoulli输出分布sigmoid单元&lt;/li&gt;
+&lt;li&gt;Multinoulli输出分布softmax单元&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://zhengzangw.com/notes/deep-learning/11-deep-generative-network/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/11-deep-generative-network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://zhengzangw.com/notes/deep-learning/12-deep-reinforce-network/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/12-deep-reinforce-network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://zhengzangw.com/notes/deep-learning/13-sequence-generative/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/deep-learning/13-sequence-generative/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

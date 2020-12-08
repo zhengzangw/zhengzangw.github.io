@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Virtualization | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#process">Process</a>
+      <ul>
+        <li><a href="#api">API</a></li>
+      </ul>
+    </li>
+    <li><a href="#scheduling">Scheduling</a></li>
+    <li><a href="#memory">Memory</a>
+      <ul>
+        <li><a href="#api-1">API</a></li>
+        <li><a href="#进程空间">进程空间</a></li>
+        <li><a href="#free-space-management">free-space management</a></li>
+        <li><a href="#动态链接">动态链接</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><blockquote>
+<p>Operating System: Three Easy Pieces
+<a href="http://ics.nju.edu.cn/~jyywiki">讲义</a>
+NJU: 操作系统 - 蒋炎岩</p>
+</blockquote>
+<h2 id="process">Process</h2>
+<ul>
+<li>单个程序$\rightarrow$ 状态机$(M,R)$
+<ul>
+<li>分时复用处理器：利用中断$(M,R)$到状态机上</li>
+<li>分时复用寄存器
+<ul>
+<li>$(M_1,R_1)\rightarrow(M_2,R_2)\rightarrow\cdots$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>系统调用
+<ul>
+<li>操作系统为用户进程提供的一组API，通常在内核空间中实现，实现用户进程对操作系统对象/物理硬件访问的请求</li>
+<li>查看系统调用: strace/dtruss(macos)</li>
+</ul>
+</li>
+<li>File descriptor: 指向操作系统内对象的指针</li>
+<li>terminal
+<ul>
+<li>The processes belonging to a single command are called a process group or job</li>
+<li>A session is a larger group of processes</li>
+<li>session leader</li>
+</ul>
+</li>
+</ul>
+<h3 id="api">API</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Feature</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>进程状态</td>
+<td>Running,Ready,Blocked</td>
+<td></td>
+</tr>
+<tr>
+<td>fork</td>
+<td>写时复制(COW)</td>
+<td><code>:(){:|:&amp;};:</code></td>
+</tr>
+<tr>
+<td>exec</td>
+<td>不变：pid,fd,DIR,permission,附属终端,信号掩码</td>
+<td><code>execve(filename, argv, enpv)</code></td>
+</tr>
+<tr>
+<td>wait</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>exit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>spawn(not exists)</td>
+<td>fork代价低、共享中间结果、提供管道</td>
+<td><code>spawn(path, argv, envp)</code></td>
+</tr>
+<tr>
+<td>dup(int oldfd)</td>
+<td>复制oldfd</td>
+<td></td>
+</tr>
+<tr>
+<td>dup2(int old, int new)</td>
+<td>关闭newfd, 复制 oldfd 到 newfd</td>
+<td>dup2=dup+close+ATOM</td>
+</tr>
+<tr>
+<td>pipe(int pipefd[2])</td>
+<td>pipefd[0] 读口 pipefd[1] 写口</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">if</span> (pipe(fds) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) { perror(<span style="color:#e6db74">&#34;pipe&#34;</span>); exit(<span style="color:#ae81ff">1</span>); }
+pid <span style="color:#f92672">=</span> fork();
+<span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) { perror(<span style="color:#e6db74">&#34;fork&#34;</span>); exit(<span style="color:#ae81ff">1</span>); }
+<span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) { <span style="color:#75715e">// child: father out -&gt; child in
+</span><span style="color:#75715e"></span>  dup2(fds[<span style="color:#ae81ff">0</span>], STDIN_FILENO);
+  close(fds[<span style="color:#ae81ff">0</span>]); close(fds[<span style="color:#ae81ff">1</span>]);
+  ...
+} <span style="color:#66d9ef">else</span> {
+  dup2(fds[<span style="color:#ae81ff">1</span>], STDOUT_FILENO);
+  close(fds[<span style="color:#ae81ff">0</span>]); close(fds[<span style="color:#ae81ff">1</span>]);
+  ...
+}
+</code></pre></div><h2 id="scheduling">Scheduling</h2>
+<table>
+<thead>
+<tr>
+<th>metric</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$T_{\text{turnaround}}$</td>
+<td>$T_{\text{completion}}-T_{\text{arrival}}$</td>
+</tr>
+<tr>
+<td>$T_{\text{response}}$</td>
+<td>$T_{\text{firstrun}}-T_{\text{arrival}}$</td>
+</tr>
+<tr>
+<td>Fairness</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Strategy
+<ul>
+<li>$T_{\text{turnaround}}$
+<ul>
+<li>FIFO(FCFS)</li>
+<li>SJF (Shortest Job First)</li>
+<li>STCF (Shortest Time to Complete First)</li>
+</ul>
+</li>
+<li>$T_{\text{response}}$
+<ul>
+<li>Round Robin</li>
+</ul>
+</li>
+<li><strong>Multi-Level Feedback Queue</strong>(MLFQ)
+<ul>
+<li>Rule 1: Priority(A)&gt;Priority(B) then A runs</li>
+<li>Rule 2: Priority(A)=Priority(B) then A &amp; B runs in round-robin fashion using the time slice</li>
+<li>Rule 3: When a job A enters the system, Priority(A):=MAX
+<ul>
+<li>I/O</li>
+</ul>
+</li>
+<li>Rule 4: Once a job uses up its time allotment at a given level, its priority is reduced
+<ul>
+<li>avoid gaming</li>
+</ul>
+</li>
+<li>Rule 5: After some time period S, move all the jobs in the system to the topmost queue
+<ul>
+<li>starvation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Proportional Share</strong>
+<ul>
+<li>lottery scheduling
+<ul>
+<li>Each process has some tickets
+<ul>
+<li>more tickets, higher chance</li>
+</ul>
+</li>
+<li>ramdomly choose a ticket to run</li>
+</ul>
+</li>
+<li>stride scheduling: deterministic
+<ul>
+<li>Each process has value stride and pass
+<ul>
+<li>smaller stride, higher chance</li>
+</ul>
+</li>
+<li>choose process with least pass to run
+<ul>
+<li>update pass by adding its stride</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Completely Fair Scheduler(CFS in Linux)
+<ul>
+<li>Select one with minimum vruntime
+<ul>
+<li>vruntime = 实际运行时间*1024/权重</li>
+<li>vruntime&rsquo;s Fair</li>
+</ul>
+</li>
+<li>权重(由nice值决定)
+<ul>
+<li>nice 差1，权重相差10%</li>
+<li>-20: 88761</li>
+<li>19: 15
+<ul>
+<li>很nice，允许其他任务享有更多CPU时间</li>
+<li>优先级低</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Multiprocessor Scheduling
+<ul>
+<li>Single-queue multiprocessor scheduling (SQMS)
+<ul>
+<li>put all jobs that need to be scheduled into a single queue</li>
+</ul>
+</li>
+<li>MQMS</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="memory">Memory</h2>
+<ul>
+<li>Goal: Transparency, Efficiency, Protection</li>
+<li>虚拟储存 $f(x)\in[0,M)$
+<ul>
+<li>程序访问虚拟地址 $x$</li>
+<li>访问物理地址 $f(x)$</li>
+<li>若 $f(x)=\perp$ 出发 Segmentation Fault</li>
+</ul>
+</li>
+<li>实现 $f(x)$
+<ul>
+<li>segmentation
+<ul>
+<li>fine-grained vs. coarse-grained: whether the block is large or not</li>
+<li>external fragmentation prolem: physical memory quickly be- comes full of little holes of free space</li>
+</ul>
+</li>
+<li>paging
+<ul>
+<li>TLB: translation-lookaside buffer
+<ul>
+<li>manage TLB on a context switch
+<ul>
+<li>flush(empty) it</li>
+<li>ASID(address space identifier)</li>
+</ul>
+</li>
+<li>replacement policy</li>
+</ul>
+</li>
+<li>cr3: the current page table
+<ul>
+<li>每个进程维护自己的页表</li>
+</ul>
+</li>
+<li>Smaller Tables</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bigger Pages</td>
+<td>Internal fragmentation</td>
+</tr>
+<tr>
+<td>Paging and Segments</td>
+<td></td>
+</tr>
+<tr>
+<td>Multi-level Pages Tables(PML)</td>
+<td>PDE-&gt;PTE</td>
+</tr>
+<tr>
+<td>Inverted Page Table(IPT)</td>
+<td></td>
+</tr>
+<tr>
+<td>Swapping page tables to disk</td>
+<td>全局维护 $f(\text{id},x)$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="api-1">API</h3>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>malloc</td>
+<td>returns a pointer to type void （需要额外记录分配信息）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>malloc(strlen(s)+1)</code></td>
+</tr>
+<tr>
+<td>calloc</td>
+<td><code>void* calloc (size_t num, size_t size);</code> Allocates a block of memory for an array of num elements, each of them size bytes long, and initializes all its bits to zero.</td>
+</tr>
+<tr>
+<td>realloc</td>
+<td><code>void *realloc( void *ptr, size_t new_size );</code></td>
+</tr>
+<tr>
+<td>brk/sbrk</td>
+<td>manage heap</td>
+</tr>
+<tr>
+<td>mmap</td>
+<td><code>void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);</code></td>
+</tr>
+<tr>
+<td></td>
+<td>操作系统只需要记下这一次mmap操作，并将页面标记为“不存在”</td>
+</tr>
+<tr>
+<td></td>
+<td><code>malloc</code>大于<code>M_MMAP_THRESHOLD</code>则使用<code>mmap</code></td>
+</tr>
+<tr>
+<td>munmap</td>
+<td></td>
+</tr>
+<tr>
+<td>dlopen</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="进程空间">进程空间</h3>
+<table>
+<thead>
+<tr>
+<th>地址空间</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内核地址空间</td>
+<td></td>
+</tr>
+<tr>
+<td>vsyscall</td>
+<td>用户空间系统调用,被vdso+vvar替代</td>
+</tr>
+<tr>
+<td>vdso</td>
+<td>3pages,ro,内核数据</td>
+</tr>
+<tr>
+<td>vvar</td>
+<td>2pages,rx,调用代码</td>
+</tr>
+<tr>
+<td>stack</td>
+<td>[anon]</td>
+</tr>
+<tr>
+<td>共享库和内存映射</td>
+<td></td>
+</tr>
+<tr>
+<td>heap</td>
+<td>[anon],可不连续</td>
+</tr>
+<tr>
+<td>bss</td>
+<td>[anon]</td>
+</tr>
+<tr>
+<td>data</td>
+<td>rw-:a.out</td>
+</tr>
+<tr>
+<td>text</td>
+<td>r-x:a.out</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>ASLR: Address Space Layout Randomization
+<ul>
+<li>/proc/kallsyms</li>
+</ul>
+</li>
+</ul>
+<h3 id="free-space-management">free-space management</h3>
+<ul>
+<li>best-fit</li>
+<li>worst-fit</li>
+<li>first-fit</li>
+<li>next-fit</li>
+<li>segregated lists
+<ul>
+<li>Slab Allocator</li>
+</ul>
+</li>
+<li>Binary Buddy Allocator</li>
+</ul>
+<h3 id="动态链接">动态链接</h3>
+<ul>
+<li><a href="http://www.dbp-consulting.com/tutorials/debugging/linuxProgramStartup.html">启动过程</a>：loader-&gt;_start-&gt;__libc_start_main-&gt;main
+<ul>
+<li>main 之前：-&gt;__libc_csu_init-&gt;_init</li>
+<li>main 之后：-&gt;exit</li>
+</ul>
+</li>
+<li>GOT: Global Offset Table (Table中存的是地址)</li>
+<li>PLT: Procedure Linkage Table (Table中存的是代码)
+<ul>
+<li>For lazy linking</li>
+</ul>
+</li>
+<li><code>lld</code></li>
+</ul></main>
+        </div>
+
+    </div>
+</body></html>

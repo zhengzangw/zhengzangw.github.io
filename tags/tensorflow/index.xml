@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tensorflow on Zangwei</title>
+    <link>https://zhengzangw.com/tags/tensorflow/</link>
+    <description>Recent content in tensorflow on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Fri, 31 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introuction to TensorFlow 1 Picture Handle</title>
+      <link>https://zhengzangw.com/posts/tensorflow-picture/</link>
+      <pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/tensorflow-picture/</guid>
+      <description>&lt;h1 id=&#34;图片的基础知识&#34;&gt;图片的基础知识&lt;/h1&gt;
+&lt;p&gt;像素值只有 0，1： 二值图&lt;br&gt;
+0-255：256 级灰度图&lt;br&gt;
+图像位数通常是 8 位。简单可认为一张单通道 8 位彩色图有三通道 RGB&lt;br&gt;
+转换为灰度公式很多，如：
+$$Gray = R&lt;em&gt;30%+G&lt;/em&gt;59%+B*11%$$&lt;/p&gt;
+&lt;h2 id=&#34;亮度&#34;&gt;亮度&lt;/h2&gt;
+&lt;p&gt;RGB 颜色空间本身就是源于物体发光，每个通道上的值表示的是该通道上的光强，调整光强即是调整亮度。可以有如下公式：
+$$亮度＝R&lt;em&gt;0.299+G&lt;/em&gt;0.587+B*0.114$$
+$$l = (max(rgb) + min(rgb)) / 2$$&lt;/p&gt;
+&lt;h2 id=&#34;对比度&#34;&gt;对比度&lt;/h2&gt;
+&lt;p&gt;对比度反应了图片上亮区域和暗区域的层次感。而反应到图像编辑上，调整对比度就是在保证平均亮度不变的情况下，扩大或缩小亮的点和暗的点的差异&lt;/p&gt;
+&lt;p&gt;$$Out = Average + (In – Average) * ( 1 + percent)$$&lt;/p&gt;
+&lt;p&gt;其中 In 表示原始像素点亮度，Average 表示整张图片的平均亮度，Out 表示调整后的亮度，而 percent 即调整范围[-1,1]&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A toy experiments on Tensorflow 1</title>
+      <link>https://zhengzangw.com/posts/tensorflow-experiment/</link>
+      <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/tensorflow-experiment/</guid>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;《深度学习》终于获得了“过半警告”，不过CNN,RNN都还没学。前面的很多算法都没有实践看过效果，决定在Tensorflow上实现一下。&lt;/p&gt;
+&lt;p&gt;参考的资料有：《Tensorflow 实现Goolge深度学习框架》 莫烦的网络教程、&lt;/p&gt;
+&lt;p&gt;这个系列尽可能做的好一点，加深对参数的理解和使用&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

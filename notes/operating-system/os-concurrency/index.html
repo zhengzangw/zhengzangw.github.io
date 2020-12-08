@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Concurrency | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.efbec39b4acb0b61a954005cd4bde4dc167ca53110967a78b69bd99347eabe3f.css" integity="sha256-777Dm0rLC2GpVABc1L3k3BZ8pTEQlnp4tpvZk0fqvj8=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概念定义">概念定义</a></li>
+    <li><a href="#并发的问题">并发的问题</a></li>
+    <li><a href="#lock">Lock</a></li>
+    <li><a href="#并发数据结构">并发数据结构</a>
+      <ul>
+        <li><a href="#counter">counter</a></li>
+        <li><a href="#list">list</a></li>
+        <li><a href="#queue">queue</a></li>
+        <li><a href="#hash-table">hash table</a></li>
+      </ul>
+    </li>
+    <li><a href="#condition-variables">Condition Variables</a></li>
+    <li><a href="#semaphores">Semaphores</a></li>
+    <li><a href="#实际应用">实际应用</a>
+      <ul>
+        <li><a href="#producerconsumer-problem">Producer/Consumer Problem</a></li>
+        <li><a href="#reader-writer-locks">Reader-Writer Locks</a></li>
+        <li><a href="#the-dining-philosophers">The Dining Philosophers</a></li>
+      </ul>
+    </li>
+    <li><a href="#并发-bug">并发 bug</a></li>
+    <li><a href="#event-based-concurrency">Event-based Concurrency</a></li>
+    <li><a href="#thread-api-pthreadh">Thread API (pthread.h)</a>
+      <ul>
+        <li><a href="#thread">Thread</a></li>
+        <li><a href="#lock-1">Lock</a></li>
+        <li><a href="#condition">Condition</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="概念定义">概念定义</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>thread</td>
+<td>separate process that 共享代码、共享数据、拥有独立栈堆</td>
+</tr>
+<tr>
+<td>multi-thread</td>
+<td>parallelism and can avoid blocking program progress due to slow I/O</td>
+</tr>
+<tr>
+<td>race condition</td>
+<td>the results depend on the timing execution of the code</td>
+</tr>
+<tr>
+<td>critical section</td>
+<td>a piece of code that accesses a shared resource and must not be concurrently executed by more than one thread</td>
+</tr>
+<tr>
+<td>POSIX</td>
+<td>Portable Operating System Interface</td>
+</tr>
+<tr>
+<td>synchronization primitives</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="并发的问题">并发的问题</h2>
+<table>
+<thead>
+<tr>
+<th>Lack</th>
+<th>Location</th>
+<th>Reason</th>
+<th>Example</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>顺序性</td>
+<td>编译器</td>
+<td>编译器优化</td>
+<td>sum 累加 -O1 -O2</td>
+<td><code>volatile</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>内存屏障</td>
+</tr>
+<tr>
+<td>原子性</td>
+<td>操作系统</td>
+<td>中断随时到来</td>
+<td>sum 累加</td>
+<td>mutual lock</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>32位处理64位数(32-bit <code>mov</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td>可见性</td>
+<td>Cache</td>
+<td>缓存</td>
+<td>双写 x,y</td>
+<td>指令集</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>乱序执行</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>内存屏障
+<ul>
+<li><code>asm volatile(&quot;&quot; ::: &quot;memory&quot;)</code></li>
+<li><code>__sync_synchronize()</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="lock">Lock</h2>
+<table>
+<thead>
+<tr>
+<th>Spin Lock 实现方法</th>
+<th>具体描述</th>
+<th>代码实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>atomic-exchange</td>
+<td><code>while (atomic_xchg(&amp;locked, 1));</code></td>
+<td><code>asm volatile (&quot;lock xchg %0, %1&quot;:&quot;+m&quot;(*addr), &quot;=a&quot;(result) : &quot;1&quot;(newval) : &quot;cc&quot;);</code></td>
+</tr>
+<tr>
+<td>compare-and-exchange</td>
+<td><code>while (comp_swap(&amp;locked, 0, 1));</code></td>
+<td><code>lock cmpxchg1 %2, %1</code></td>
+</tr>
+<tr>
+<td>load-linked and store-conditional</td>
+<td><code>while(1) { while (LL(&amp;lock)); if (SC(&amp;lock, 1)) return;  }</code></td>
+<td>(ARM, RISC-V, MIPS)</td>
+</tr>
+<tr>
+<td>fetch-and-add</td>
+<td><code>int t=fetch-add(&amp;lock-&gt;ticket); while (t!=&amp;lock-&gt;turn);</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>spinlock: 持有锁时中断，其它进程等待浪费时间
+<ul>
+<li>Evaluating
+<ul>
+<li>Correctness
+<ul>
+<li>safety: 任意时刻至多一个</li>
+<li>liveness: 至少一个</li>
+</ul>
+</li>
+<li>Fairness</li>
+<li>Performance</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>spinlock+cli: (只有其它cpu可能在同一临界区spin)
+<ul>
+<li>中断丢失可能严重损害I/O性能</li>
+<li>互斥的代码本身就需要等待中断</li>
+</ul>
+</li>
+<li>mutex lock
+<ul>
+<li>yield</li>
+<li>sleeping with queue</li>
+</ul>
+</li>
+</ul>
+<h2 id="并发数据结构">并发数据结构</h2>
+<h3 id="counter">counter</h3>
+<ul>
+<li>single lock: not scalable</li>
+<li>approximate counter: accuracy/performance trade-off</li>
+</ul>
+<h3 id="list">list</h3>
+<ul>
+<li>hand-over-hand locking</li>
+</ul>
+<h3 id="queue">queue</h3>
+<h3 id="hash-table">hash table</h3>
+<h2 id="condition-variables">Condition Variables</h2>
+<ul>
+<li><strong>condition variable</strong>: an explicit <strong>queue</strong> that threads can put themselves on when some condition is waiting other thread
+<ul>
+<li>wait: release the lock and put the calling thread to sleep</li>
+<li>wakeup: re-acquire the lock</li>
+<li>signal: wake another thread</li>
+<li>broadcast: wake all other threads</li>
+</ul>
+</li>
+<li>Always hold the lock while signaling</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//wait
+</span><span style="color:#75715e"></span>lock(<span style="color:#f92672">&amp;</span>m)
+<span style="color:#66d9ef">while</span> (done<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>) wait(<span style="color:#f92672">&amp;</span>c,<span style="color:#f92672">&amp;</span>m)
+unlock(<span style="color:#f92672">&amp;</span>m)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//signal
+</span><span style="color:#75715e"></span>lock(<span style="color:#f92672">&amp;</span>m)
+done<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+signal(<span style="color:#f92672">&amp;</span>c)
+unlock(<span style="color:#f92672">&amp;</span>m)
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Semantics</th>
+<th>Definition</th>
+<th>Signaled</th>
+<th>Signaler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hoare</td>
+<td>the signaled thread immediately takes over the monitor, and the signaler is suspended</td>
+<td>可认为状态不变</td>
+<td>在 signaled thread 返回后继续</td>
+</tr>
+<tr>
+<td>Mesa</td>
+<td>the signaled thread transitions back to the ready state</td>
+<td>状态可能改变：must examine the monitor state again</td>
+<td>the signaler continues until it exits the monitor or waits</td>
+</tr>
+</tbody>
+</table>
+<h2 id="semaphores">Semaphores</h2>
+<ul>
+<li><strong>semaphore</strong>: an object with an integar value that we can manipulate with two routines: <code>sem_wait()</code> and <code>sem_post()</code>
+<ul>
+<li><code>sem_init(&amp;s, 0, s)</code></li>
+<li>P: <code>sem_wait</code> : s&ndash;, if s&lt;0 wait
+<ul>
+<li>the negative value equals waiting threads</li>
+</ul>
+</li>
+<li>V: <code>sem_post</code> : s++, if exists waiting threads, wake one</li>
+</ul>
+</li>
+<li>semaphore as lock (binary semaphore)
+<ul>
+<li><code>sem_init(&amp;s, 0, 1)</code></li>
+<li><code>sem_wait() ... sem_post()</code></li>
+</ul>
+</li>
+<li>semaphore for ordering (signal variable)
+<ul>
+<li><code>sem_init(&amp;s, 0, 0)</code></li>
+</ul>
+</li>
+<li>Implement of Semaphores</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">zem_wait</span>(){
+  lock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+  <span style="color:#66d9ef">while</span> (s<span style="color:#f92672">-&gt;</span>value<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">0</span>) wait(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>cond, <span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+  s<span style="color:#f92672">-&gt;</span>value<span style="color:#f92672">--</span>;
+  unlock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">zem_post</span>(){
+  lock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+  s<span style="color:#f92672">-&gt;</span>value<span style="color:#f92672">++</span>;
+  signal(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>cond);
+  unlock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+}
+</code></pre></div><h2 id="实际应用">实际应用</h2>
+<h3 id="producerconsumer-problem">Producer/Consumer Problem</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//Lock Version
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>() {
+  <span style="color:#66d9ef">for</span> (i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>loops; <span style="color:#f92672">++</span>i){
+    lock(<span style="color:#f92672">&amp;</span>m);
+    <span style="color:#66d9ef">while</span> (count <span style="color:#f92672">==</span> MAX) wait(<span style="color:#f92672">&amp;</span>empty, <span style="color:#f92672">&amp;</span>m);
+    put(i);
+    signal(<span style="color:#f92672">&amp;</span>fill);
+    unlock(<span style="color:#f92672">&amp;</span>m);
+  }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">consumer</span>() {
+  <span style="color:#66d9ef">for</span> (i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>loops; <span style="color:#f92672">++</span>i){
+    lock(<span style="color:#f92672">&amp;</span>m);
+    <span style="color:#66d9ef">while</span> (count<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>) wait(<span style="color:#f92672">&amp;</span>fill, <span style="color:#f92672">&amp;</span>m);
+    get(i);
+    signal(<span style="color:#f92672">&amp;</span>empty);
+    unlock(<span style="color:#f92672">&amp;</span>m);
+  }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//Semaphore Version
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>(){
+  <span style="color:#66d9ef">for</span> (i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>loops; <span style="color:#f92672">++</span>i){
+    sem_wait(<span style="color:#f92672">&amp;</span>emtpy); <span style="color:#75715e">// It is atomic so it can move here
+</span><span style="color:#75715e"></span>    sem_wait(<span style="color:#f92672">&amp;</span>mutex);
+    put(i);
+    sem_post(<span style="color:#f92672">&amp;</span>mutex);
+    sem_post(<span style="color:#f92672">&amp;</span>full);
+  }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">consumer</span>(){
+  <span style="color:#66d9ef">for</span> (i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>loops; <span style="color:#f92672">++</span>i){
+    sem_wait(<span style="color:#f92672">&amp;</span>full); <span style="color:#75715e">// It is atomic so it can move here
+</span><span style="color:#75715e"></span>    sem_wait(<span style="color:#f92672">&amp;</span>mutex);
+    put(i);
+    sem_post(<span style="color:#f92672">&amp;</span>mutex);
+    sem_wait(<span style="color:#f92672">&amp;</span>empty);
+  }
+}
+
+sem_init(<span style="color:#f92672">&amp;</span>empty, <span style="color:#ae81ff">0</span>, MAX);
+sem_init(<span style="color:#f92672">&amp;</span>full, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+sem_init(<span style="color:#f92672">&amp;</span>mutex, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>);
+</code></pre></div><h3 id="reader-writer-locks">Reader-Writer Locks</h3>
+<ul>
+<li>first reader aquires writelock</li>
+<li>last reader releases writelock</li>
+</ul>
+<h3 id="the-dining-philosophers">The Dining Philosophers</h3>
+<ul>
+<li>big lock (not scalable)</li>
+<li>Lock Ordering</li>
+<li>add manager</li>
+</ul>
+<h2 id="并发-bug">并发 bug</h2>
+<ul>
+<li>Deadlock: ABBA
+<ul>
+<li>Cause
+<ul>
+<li>circular dependencies</li>
+<li>encapsulation</li>
+<li>Live lock: harder to handle</li>
+</ul>
+</li>
+<li>Prevention: 见表格</li>
+<li>Avoidance
+<ul>
+<li>Scheduling</li>
+</ul>
+</li>
+<li>detect and recover</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>必要条件</th>
+<th>Description</th>
+<th>prevention</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mutual exclusion(互斥)</td>
+<td>一个资源每次只能被一个进程使用</td>
+<td>lock-free</td>
+<td>powerful hardware instruction</td>
+</tr>
+<tr>
+<td>Hold-and-wait(请求与保持)</td>
+<td>请求堵塞时不释放已获得的资源</td>
+<td>acquiring all lock at a time</td>
+<td></td>
+</tr>
+<tr>
+<td>No-preemption(不剥夺)</td>
+<td>进程已获得的资源不能强行剥夺</td>
+<td>release aquired lock</td>
+<td>may lead to livelock</td>
+</tr>
+<tr>
+<td>Circular wait(循环等待)</td>
+<td>若干进程之间形成头尾相接的循环等待资源关系</td>
+<td>total/partial ordering on lock acquisition</td>
+<td>不让外部调用，调用外部代码时释放锁</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>原子性违反(AV): ABA
+<ul>
+<li>Cause:
+<ul>
+<li>临界区间忘记上锁</li>
+<li>serialization violated</li>
+</ul>
+</li>
+<li>solution: lock</li>
+</ul>
+</li>
+<li>顺序违反(OV): BA
+<ul>
+<li>Cause
+<ul>
+<li>order flipped</li>
+<li>use after free</li>
+</ul>
+</li>
+<li>solution: condition variables</li>
+</ul>
+</li>
+<li>数据竞争
+<ul>
+<li>两个线程对同一个共享变量的非只读并发访问</li>
+</ul>
+</li>
+</ul>
+<h2 id="event-based-concurrency">Event-based Concurrency</h2>
+<ul>
+<li>解决问题
+<ul>
+<li>managing concurrency correctly in multi-threaded application is challenging</li>
+<li>has little control over what is scheduled at a given moment in time</li>
+</ul>
+</li>
+<li>event loop</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>){
+  events <span style="color:#f92672">=</span> getEvents();
+  <span style="color:#66d9ef">for</span> (e in events)
+      processEvent(e);
+}
+</code></pre></div><ul>
+<li>select/poll
+<ul>
+<li>check whether there is any incoming I/O that should be attended to</li>
+<li><code>select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *errorfds, struct timeval *timeout)</code></li>
+<li><code>poll(struct pollfd fds[], nfds+t nfds, int timeout)</code></li>
+</ul>
+</li>
+<li>Problem: Blocking System Calls
+<ul>
+<li>solution: Asynchronous I/O
+<ul>
+<li>轮训或signal</li>
+</ul>
+</li>
+<li>State Management</li>
+</ul>
+</li>
+<li>同步/异步：线程关系，消息通知机制
+<ul>
+<li>同步：一次性完成</li>
+<li>异步：两次完成</li>
+</ul>
+</li>
+<li>阻塞/非阻塞：等待调用结果时的状态
+<ul>
+<li>阻塞：做一件事</li>
+<li>非阻塞：做多件事</li>
+</ul>
+</li>
+<li>cpu密集型/io密集型</li>
+<li>协同式调度/抢占式调度</li>
+</ul>
+<h2 id="thread-api-pthreadh">Thread API (pthread.h)</h2>
+<h3 id="thread">Thread</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pthread_t</code></td>
+<td>线程结构体</td>
+</tr>
+<tr>
+<td><code>pthread_attr_init()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pthread_create(pthread_t *, pthread_attr_t *, void * (*start_routine)(void *), void *arg)</code></td>
+<td>创建线程</td>
+</tr>
+<tr>
+<td><code>pthread_join(pthread_t thread, void **value_ptr)</code></td>
+<td>等待线程结束</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lock-1">Lock</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pthread_mutex_t</code></td>
+<td>互斥锁结构体</td>
+</tr>
+<tr>
+<td><code>pthread_mutex_lock(pthread_mutex_t *mutex)</code></td>
+<td><code>int rc = pthread_mutex_init(&amp;lock, NULL); assert(rc==0);</code></td>
+</tr>
+<tr>
+<td><code>pthread_mutex_unlock(pthread_mutex_t *mutex)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pthread_mutex_init(pthread_mutex_t *mutex)</code></td>
+<td><code>lock=PTHREAD_MUTEX_INITIALIZER</code></td>
+</tr>
+<tr>
+<td><code>pthread_mutex_destroy(pthread_mutex_t *mutex)</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="condition">Condition</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pthread_cond_t</code></td>
+<td>条件量结构体</td>
+</tr>
+<tr>
+<td><code>pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pthread_cond_signal(pthread_cond_t *cond)</code></td>
+<td></td>
+</tr>
+</tbody>
+</table></main>
+        </div>
+
+    </div>
+</body></html>

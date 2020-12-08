@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>[&#43;] 图形绘制技术 Rendering on Zangwei</title>
+    <link>https://zhengzangw.com/notes/rendering/</link>
+    <description>Recent content in [&#43;] 图形绘制技术 Rendering on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Sun, 17 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/rendering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Concepts</title>
+      <link>https://zhengzangw.com/notes/rendering/2-concepts/</link>
+      <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/rendering/2-concepts/</guid>
+      <description>Concepts Geometry Optics  光的直线传播定律 光的反射定律  法向量：$N$ 入射光：$L$ （归一化） 反射光：$R=2(N\cdot L)N-L$   光的折射定律  Snell&amp;rsquo;s law: $\eta_L\sin\theta_L=\eta_T\sin\theta_T$ $T=-N\sqrt{1-\frac{\eta^2_L}{\eta^2_T\sin^2\theta_L}\sin^2\theta_L}-\frac{\eta_L}{\eta_T}[L-(N\cdot L)N]=(\frac{\eta_L}{\eta_T}N\cdot L-\sqrt{1-\frac{\eta_L^2}{\eta_T^2}[1-(N\cdot L)^2]})N-\frac{\eta_L}{\eta_T}L$ Total Internal Reflection   基本假设  Linearity Energy conservation Steady state No polarization No fluorescence or phosphorescence    Radiometry and Color  Radiometry: the science of measuring radiant energy transfer Radiometric Quantities  Energy Radiant power (total flux) $\Phi,P$ 功率 (J/s, W) Irradiance (flux density) $E$: total radiant power per unit area incident onto a surface  Inverse square law: $E=\frac{\Phi}{4\pi r^2}$ Lambert&amp;rsquo;s law: $E=\frac{\Phi\cos\theta}{A}$   Radiosity (flux density) $B$: total radiant power per unit area leaving a surface Intensity $I$: flux density per solid angle $I=\frac{d\Phi}{d\omega}$  isotropic point source: $\Phi=4\pi I$   Radiance $L$: total flux traveling at some point $x$ in a specified direction $\omega$, per unit area perpendicular to the direction of travel  $L(x,\omega)=\frac{d^2\Phi}{dA\cos\theta d\omega}$ 沿光线传输方向，radiance 不变（真空），sensors response is proportional to radiance     Solid Angles $\omega$: the solid angle subtended by an object is the surface area of its projection on to the unit spher  $d\omega=\frac{dA\cos\theta}{r^2}$ 球坐标系：$\sin\theta d\theta d\phi$   Spectrum: 370nm - 730nm  SPD: Spectral Power Distribution photometry: 物理量转换为视觉感知量    BRDF and The Rendering Equation  Bidirectional Reflectance Distribution Function: $f_r(\omega_i\rightarrow\omega_r)\equiv\frac{L_r(\omega_r)}{L_i(\omega_i)\cos\theta_i d\omega_i}$ (辐射率 $L$ 和辐照度 $E$ 的比值，对入射光改变的能力，材质，六维函数) The Reflection Equation(local direct illumination model): $L_r(\omega_r)=\int_{\Omega_i}f_r(\omega_i\rightarrow\omega_r)L_i(\omega_i)\cos\theta_id\omega_i$ The Rendering Equation: $L_o(x,\omega_o)=L_e(x,\omega_o)+\int_{\omega_i\in\Omega_+}f_r(\omega_i,x,\omega_o)L_i(x,\omega_i)\cos\theta_id\omega_i$  迭代计算：$L_o(x,\omega_o)=L_e(x,\omega_o)+\int_{y\in S}f_r(\omega_i,x,\omega_o)L_o(y(x,\omega_i),-\omega_i)V(x,y)G(x,y)dA_y$ Ligiting Simulation = Solving the Rendering Equation  Monte Carlo Methods (Ray tracing, path tracing&amp;hellip;) Finite element methods (Classic radiosity)      </description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://zhengzangw.com/notes/rendering/1-introduction/</link>
+      <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/rendering/1-introduction/</guid>
+      <description>Rendering   Rendering: The process of generating an image from a model, by means of a computer program
+Model -&amp;gt; Rendering -&amp;gt; Image -&amp;gt; Display
+ image + model - comp = painting, photography model + comp - image = 3D printing, hydrographic printing, sound rendering image + comp - model = abstract graphics    Realism
+ Shadows Reflections Transparency Translucency Textures Complex illumination Realistic Materials    Components</description>
+    </item>
+    
+    <item>
+      <title>Ray-Tracing</title>
+      <link>https://zhengzangw.com/notes/rendering/3-ray-tracing/</link>
+      <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/rendering/3-ray-tracing/</guid>
+      <description>Introduction  Good at simulating specular effects Rays are reflected, refracted or absorbed 三角形法向：$N=\frac{(P_1-P_0)\times(P_2-P_0)}{|(P_1-P_0)\times(P_2-P_0)|}$ 计算每个顶点法向：$N_v=\frac{\sum_{i=1}^k}{|\sum_{i=1}^k|}$ Tangent Space:  normal vecotr $N$ tangent vector $T$ bitangent vector $B$    求交  Shpere  Definition: $x^2+y^2+z^2-r^2=0$ Definition: $x=r\sin\theta\cos\phi,y=r\sin\theta\sin\phi,z=r\cos\theta$   Cylinder  Definition: $\phi=u\phi_{\max},x=r\cos\phi,y=r\sin\phi,z=z_{\min}+v(z_{\max}-z_{\min})$   Disk  Definition: $\phi=u\phi_{\max},x=((1-v)r_i+vr)\cos\phi,y=((1-v)r_i+vr)\sin\phi,z=h$   Triangle Mesh  Acceleration  Testing each object for each ray is slow Fewer Rays  Adaptive sampling: 减少采样，内插 depth control   Generalized Rays  beam tracing cone tracing pencil tracing   Faster Intersection  Object subdivision approaches  BVH (Bounding Volumne boxes)：recursively finding bounding box of objects and split objects into two groups   Space subdivision approaches   Uniform Grid</description>
+    </item>
+    
+    <item>
+      <title>Transformation</title>
+      <link>https://zhengzangw.com/notes/rendering/4-transformation/</link>
+      <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/rendering/4-transformation/</guid>
+      <description>Introduction  Why Transformation  Modeling  Moving the objects to the desired location Multiple instances of a protostype stape Kinematics of linkages/skeletons - character animation   Viewing  projection transforms     Types  Linear (preserves parallel lines)  Translation Rotation Scaling   projection: perspective/orthographic projection non-linear: twists, bends, warps, morphs   Implementation: Metrics  Representation with a $4\times 4$ matrix: Homogeneous coordinates    </description>
+    </item>
+    
+    <item>
+      <title>Monte Carlo Integration</title>
+      <link>https://zhengzangw.com/notes/rendering/7-monte-carlo-integration/</link>
+      <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/rendering/7-monte-carlo-integration/</guid>
+      <description>数值积分  Limitation  对于 $d$ 维函数 $f$，一维情况下 $O(n^{-r})$ 收敛，则高维仅 $O(n^{-\frac{r}{s}})$ 收敛 不连续：$O(n^{-\frac{r}{s}})$   Monte Carlo Method: $\int_0^1f(x)dx =\frac{1}{N}\sum_{i=1}^Nf(x_i)$  Adavantage  Easy to implement Robust efficient for high dimensional integrals   Disadvantages  noisy: 按概率采样 slow     Monte Carlo estimator: $F_N=\frac{b-a}{N}\sum_{i=1}^Nf(X_i)$  $E[F_N]=\int_a^bf(x)dx$   sample  $F_N=\frac{1}{N}\sum_{i=1}^N\frac{f(X_i)}{p(X_i)}$ 最理想：$p(x)=\frac{f(x)}{\int f(x)dx}$   采样  inversion  求 CDF 逆函数 CDF$^{-1}$ 均匀采样   rejection  accept $U_1$ if $U_2&amp;lt;f(U_1)$ 一般方法  find $q(x)$, $p(x)&amp;lt;Mq(x)$ Dart throwing $\xi &amp;lt; p(X)/Mq(X)$   efficiency = area / area of rectangle   transform  $Y=y(X)$ $P_y(y(x))=P_x(x)$ $p_y(y)=(\frac{dy}{dx})^{-1}p_x(x)$ $p_y(T(x))=|J_T(x)|^{-1}p_x(x)$     Multidimensional sampling: sample with $p(x)$ and $p(y|x)$  </description>
+    </item>
+    
+    <item>
+      <title>Camera</title>
+      <link>https://zhengzangw.com/notes/rendering/5-camera/</link>
+      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/rendering/5-camera/</guid>
+      <description>pinhole camera  near plane - far plane NDC: normalized device coordinate space  从 (0,0,0) 到 (1,1,1) 设备无关   Raster space: NDC 乘以分辨率 look-at Transformation Orthographic projection Perspective project 坐标系汇总  World space：场景坐标系 Object space：以物体为中心的坐标系 Camera space：(orgin: camera position, z: viewing direction, y: updirection) Normalized device space Raster space: from (0,0,0) to (xRes, yRes, 1)    thin lens  薄透镜：光线只折射一次 光线  Parallel Ray Focal Ray Chief Ray   $\frac{1}{f}=\frac{1}{u}+\frac{1}{v}$ Depth of Field:the range of distances from the lens at which objects appear in focus Circle of confusion(coc) 五位空间采样  x,y 采样 u,v 透镜采样 时间采样   真实相机特有效果  Vignetting 渐晕：亮度不均匀；打到一个透镜后，能量无法全部打到第二个透镜 Distortion 镜头畸变（鱼眼镜头） Chromatic Aberration：不同颜色的光的折射率不同 Bokeh 散焦：高光由于镜头原因出现散斑 Lens Flare：拍特别亮的光源出现多组亮光；透镜出现反射 Interflection    </description>
+    </item>
+    
+    <item>
+      <title>Sampling &amp; Reconstruction</title>
+      <link>https://zhengzangw.com/notes/rendering/6-sampling/</link>
+      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/rendering/6-sampling/</guid>
+      <description>Math  Fourier Series: 任意周期为 $1$ 的函数可表示为 $\frac{a_0}{2}+\sum_{n=1}^N(a_n\cos(2\pi nt)+b_n\sin(2\pi nt))$ $f(x)=\sum_{n=-N}^Nc_ne^{2\pi int},c_n=\int_0^1e^{-2\pi int}f(t)dt$ $(f*g)(t)=\int_{-\infty}^{\infty} g(t-x)f(x)dx$ $\Pi(x)=[|x|\leq 1]$ $(\Pi*\Pi)(x)=\Lambda(x)$ Radical Inverse  $n=a_k\cdots a_2a_1$ $\Phi_b(n)=0.a_1a_2\cdots a_k$   Van der Corput Sequence: $x_i=\Phi_2(i)$ Halton Sequence: $x_i=(\Phi_2(i),\Phi_3(i),\Phi_5(i),\dots,\Phi_{p_d}(i))$ Hammersley Sequence: $x_i=(\frac{i-\frac{1}{2}}{N},\Phi_2(i),\Phi_3(i),\Phi_5(i),\dots,\Phi_{p_{d-1}}(i))$  Reconstruction  时间域  冲激串 $\delta_T$ 重建 $\widetilde f(x)=(\delta f)\otimes r$ 重构核 $r$  sinc 高斯 三角     频率域  $\widetilde F=(F(\omega)\otimes \delta_{1/T})\Pi_T(\omega)$   reconstruction filter  ideal ones not exist Box Filter Triangle Filter Gaussian Filter Mitchell Filter Windowed Sinc Filter   Denoising  Aliasing  Small triangles Stairstepping(jaggies) Moire Patterns 车轮倒转  Source of High Frequencies  Geometry  Edges, Vertices, sharp boundaries silhouettes   Texture Illumination  Antialiasing Techiques  Nonuniform sampling: $\sum_{i=-\infty}^{\infty}\delta(x-(i+\frac{1}{2}-\xi)T)$  noise better than aliasing   Adaptive sampling: Taking more samples in high-frequency regions Prefiltering: mipmap  Evaluating  Blue noise property  白噪：完全随机采样，处处有能量 蓝噪：低频无能量，低频完美重构，高频转化为噪声   gittered grid Poisson Disk Sampling  Dart Throwing: keep throwing darts into a domain with minimum distance constrain Lloyd&amp;rsquo;s Relaxation  construct voronoi move to centroid   Tiled   Discrepany: how &amp;ldquo;uniform&amp;rdquo; the sampling pattern is  $D_N(B,P)=|\sum_{b\in B}\frac{#{x_i\in b}}{N}-\text{Vol}(b)|$    采样方法  Uniform Sampling Random Sampling Blue noise Sampling Stratified Sampling  Uniform sample + random perturbation (jittering)   Low-Discrepancy Sampling(quasi-random sampling)  Sample with Van der Corput Sequence $D^*_N(P)=O(\frac{\log N}{N})$ Sample with Halton Sequence: $D^*_N(P)=O(\frac{(\log N)^d}{N})$    </description>
+    </item>
+    
+  </channel>
+</rss>
