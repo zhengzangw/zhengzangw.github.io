@@ -4979,7 +4979,7 @@ data = pd.read_csv(&#39;test_no_NAN.csv&#39;, na_filter = &#39;False&#39;, parse
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/bangumi/</guid>
-      <description>Bangumi review</description>
+      <description>Personal Bangumi Review</description>
     </item>
     
     <item>
