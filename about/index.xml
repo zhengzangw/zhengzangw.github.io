@@ -53,7 +53,7 @@ Zangwei Zheng*, Xiangyu Yue*, Shanghang Zhang, Yang Gao, Trevor Darrell, Kurt Ke
       <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/projects/</guid>
-      <description>Android Mobile AI Game-Pad: A ML-based Android app turning your moblie phone into a Game-Pad. MBTI Personality Type Analyzer: A real-time MBTI Personality Analyzer by users&#39; posts and writings. Estimator for Time Taken in Convergence of SGD: An ensemble model to predict the time taken for stochastic gradient descent. Five-stage Pipeline MIPS System on FPGA: A toy MIPS32 system with a small OS. NJU Emulator: Implemented an emulator for x86 instructions, a machine-independent abstraction layer and a virtual machine on top of this layer, where some software and games can be directly launched.</description>
+      <description>hugo-theme-phd: Hugo theme for this page. Android Mobile AI Game-Pad: A ML-based Android app turning your moblie phone into a Game-Pad. MBTI Personality Type Analyzer: A real-time MBTI Personality Analyzer by users&#39; posts and writings. Estimator for Time Taken in Convergence of SGD: An ensemble model to predict the time taken for stochastic gradient descent. Five-stage Pipeline MIPS System on FPGA: A toy MIPS32 system with a small OS. NJU Emulator: Implemented an emulator for x86 instructions, a machine-independent abstraction layer and a virtual machine on top of this layer, where some software and games can be directly launched.</description>
     </item>
     
     <item>
