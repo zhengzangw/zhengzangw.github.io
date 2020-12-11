@@ -8,14 +8,14 @@
     <language>en-us</language>
     <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
     <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
-    <lastBuildDate>Mon, 07 Dec 2020 21:43:38 +0800</lastBuildDate><atom:link href="https://zhengzangw.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
       <link>https://zhengzangw.com/about/about/</link>
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/about/</guid>
-      <description>I am a undergraduate student of Department of Computer Science and Technology in Nanjing University, with an outstanding academic performance (4.61/5.00) in National Elite Program of Computer Science. From Apr. 2020, I am visiting iCyPy in UC Berkeley, supervised by Prof. Alberto L. Sangiovanni-Vincentelli and Dr. Xiangyu Yue.</description>
+      <description>I am a undergraduate student of Department of Computer Science and Technology in Nanjing University, with an outstanding academic performance (92.2/100) in National Elite Program of Computer Science. From Apr. 2020, I am visiting iCyPy in UC Berkeley, supervised by Prof. Alberto L. Sangiovanni-Vincentelli and Dr. Xiangyu Yue.</description>
     </item>
     
     <item>
@@ -2822,6 +2822,15 @@ ssh-keygen -f .ssh/id_rsa_new &lt;span style=&#34;color:#75715e&#34;&gt;# local&
 ssh-copy-id newuser@server &lt;span style=&#34;color:#75715e&#34;&gt;#local, and edit .ssh/config&lt;/span&gt;
 sudo apt install curl git unzip build-essential
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tricks for Python</title>
+      <link>https://zhengzangw.com/posts/python-trick/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/python-trick/</guid>
+      <description></description>
     </item>
     
     <item>
