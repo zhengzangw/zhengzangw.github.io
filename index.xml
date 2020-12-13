@@ -1117,8 +1117,8 @@ $$\text{support}(A\Rightarrow B)=P(A,B)=\frac{\text{# of tuples includes }A,B}{\
       <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/publications/</guid>
-      <description>  PCS
-Zangwei Zheng*, Xiangyu Yue*, etc. (preprint, will be released later)
+      <description>  PCS: A Prototypical Self-supervised Framework for Few-shot DA
+Zangwei Zheng*, Xiangyu Yue*, etc. (will be released later)
   </description>
     </item>
     
