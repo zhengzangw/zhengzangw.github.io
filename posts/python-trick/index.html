@@ -71,9 +71,137 @@
                 <div class="return">
                     <a href=".."> RETURN </a>
                 </div>
-                <nav id="TableOfContents"></nav>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#新建项目">新建项目</a></li>
+    <li><a href="#thread">Thread</a></li>
+    <li><a href="#miscellaneous">Miscellaneous</a></li>
+    <li><a href="#mvc">MVC</a></li>
+  </ul>
+</nav>
             </div>
-            <main class="flex-column-80"></main>
+            <main class="flex-column-80"><h2 id="新建项目">新建项目</h2>
+<p>一个完整的 Python Project 应该包括</p>
+<pre><code>project/
+    src/        --- source code
+    tests/      --- test code
+      __init__.py
+      conftest.py
+      test_xxx.py
+    setup.py    --- organize files into a package
+    setup.cfg
+    MANIFEST.in
+    requirements.txt
+    README.md
+    pyproject.toml
+</code></pre><p>其中，setup.py 用来构建包，譬如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> setuptools <span style="color:#f92672">import</span> find_packages, setup
+
+setup(
+    name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;flaskr&#39;</span>,
+    version<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1.0.0&#39;</span>,
+    packages<span style="color:#f92672">=</span>find_packages(),
+    include_package_data<span style="color:#f92672">=</span>True,
+    zip_safe<span style="color:#f92672">=</span>False,
+    install_requires<span style="color:#f92672">=</span>[
+        <span style="color:#e6db74">&#39;flask&#39;</span>,
+    ],
+)
+</code></pre></div><p>并可以用 MANIFEST.in 补充添加二进制文件。此外， <code>tests</code> 为测试文件夹，测试时 <code>coverage run -m pytest</code>, <code>coverage report</code>. 可用 <code>setup.cfg</code> 配置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cfg" data-lang="cfg"><span style="color:#66d9ef">[tool:pytest]</span>
+<span style="color:#a6e22e">testpaths</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">tests</span>
+
+<span style="color:#66d9ef">[coverage:run]</span>
+<span style="color:#a6e22e">branch</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">True</span>
+<span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    src</span>
+</code></pre></div><p>用 <code>pipreqs</code> 生成 <code>requirements.txt</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pipreqs src
+</code></pre></div><p>选择 <code>flake8</code> 作为 linter, <code>black</code> 作为 <code>formatter</code>，配置 <code>pyproject.toml</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">tool</span>.<span style="color:#a6e22e">black</span>]
+<span style="color:#a6e22e">line</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">length</span> = <span style="color:#ae81ff">99</span>
+<span style="color:#a6e22e">target</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">version</span> = [<span style="color:#e6db74">&#39;py38&#39;</span>]
+
+[<span style="color:#a6e22e">tool</span>.<span style="color:#a6e22e">isort</span>]
+<span style="color:#a6e22e">profile</span> = <span style="color:#e6db74">&#39;black&#39;</span>
+<span style="color:#a6e22e">src_paths</span> = [<span style="color:#e6db74">&#39;src&#39;</span>]
+<span style="color:#a6e22e">line_length</span> = <span style="color:#ae81ff">99</span>
+<span style="color:#a6e22e">lines_after_imports</span> = <span style="color:#ae81ff">2</span>
+<span style="color:#75715e"># force_single_line = &#39;True&#39;</span>
+<span style="color:#a6e22e">force_sort_within_sections</span> = <span style="color:#e6db74">&#39;True&#39;</span>
+<span style="color:#a6e22e">order_by_type</span> = <span style="color:#e6db74">&#39;False&#39;</span>
+</code></pre></div><h2 id="thread">Thread</h2>
+<p>Python 可支持多线程和多进程</p>
+<ul>
+<li>multi-thread: 由于 CPython 的 GIL 存在，所以近乎并发
+<ul>
+<li><code>Thread(target=func)</code></li>
+<li><code>class my_thread(Thread)</code></li>
+</ul>
+</li>
+<li>multi-procses</li>
+</ul>
+<p>进程间通信</p>
+<ul>
+<li>Event</li>
+<li>Condition</li>
+<li>Queue</li>
+</ul>
+<p>信息隔离：Local 定义在主线程中，主线程与子线程，子线程与子线程中 local 均为不同变量</p>
+<p>协程：使用 yield, async 实现</p>
+<h2 id="miscellaneous">Miscellaneous</h2>
+<ul>
+<li>
+<p><code>iter(partial(func, &quot;&quot;), &quot;&quot;)</code></p>
+</li>
+<li>
+<p><code>for x,y in product(X,Y)</code></p>
+</li>
+<li>
+<p><code>inspect</code> 库</p>
+</li>
+<li>
+<p><code>python -m site</code> 检查 python 路径</p>
+</li>
+<li>
+<p><code>timeit.timeit(func, number=5)</code></p>
+</li>
+<li>
+<p><code>@functools.lru_cache</code></p>
+</li>
+<li>
+<p><code>@atexit</code></p>
+</li>
+<li>
+<p>回调</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">with</span> contextlib<span style="color:#f92672">.</span>ExitStack() <span style="color:#66d9ef">as</span> stack:
+  stack<span style="color:#f92672">.</span>callback(cb)
+</code></pre></div></li>
+<li>
+<p>run a command: <code>result = subprocess.run(cmd_list, stdout=subprocess.PIPE).stdout.decode('utf-8')</code></p>
+</li>
+<li>
+<p>正则表达式 <code>re.findall(r&quot;\d+&quot;, s)[0]</code></p>
+</li>
+<li>
+<p>sched 包</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func</span>(sc, arg):
+    <span style="color:#75715e"># do something</span>
+
+    sc<span style="color:#f92672">.</span>enter(interval, <span style="color:#ae81ff">1</span>, func, (sc, arg))
+
+s <span style="color:#f92672">=</span> sched<span style="color:#f92672">.</span>schedular(time<span style="color:#f92672">.</span>time, time<span style="color:#f92672">.</span>sleep)
+s<span style="color:#f92672">.</span>enter(interval, <span style="color:#ae81ff">1</span>, func, (s, arg))
+s<span style="color:#f92672">.</span>run()
+</code></pre></div><h2 id="mvc">MVC</h2>
+<ul>
+<li>M(Model): CRUD</li>
+<li>V(View, output): html, xml, json</li>
+<li>C(Control, input): 转换格式，验证输入</li>
+</ul>
+</main>
         </div>
 
     </div>

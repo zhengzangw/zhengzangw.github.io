@@ -15,7 +15,10 @@
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/python-trick/</guid>
-      <description></description>
+      <description>新建项目 一个完整的 Python Project 应该包括
+project/ src/ --- source code tests/ --- test code __init__.py conftest.py test_xxx.py setup.py --- organize files into a package setup.cfg MANIFEST.in requirements.txt README.md pyproject.toml 其中，setup.py 用来构建包，譬如：
+from setuptools import find_packages, setup setup( name=&amp;#39;flaskr&amp;#39;, version=&amp;#39;1.0.0&amp;#39;, packages=find_packages(), include_package_data=True, zip_safe=False, install_requires=[ &amp;#39;flask&amp;#39;, ], ) 并可以用 MANIFEST.in 补充添加二进制文件。此外， tests 为测试文件夹，测试时 coverage run -m pytest, coverage report. 可用 setup.cfg 配置
+[tool:pytest] testpaths = tests [coverage:run] branch = True source =src 用 pipreqs 生成 requirements.</description>
     </item>
     
     <item>
