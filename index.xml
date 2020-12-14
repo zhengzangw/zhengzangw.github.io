@@ -2825,6 +2825,64 @@ sudo apt install curl git unzip build-essential
     </item>
     
     <item>
+      <title>Solution to OJ - Balance Segment Painting</title>
+      <link>https://zhengzangw.com/teach/algorithm-2020/oj1-4/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/teach/algorithm-2020/oj1-4/</guid>
+      <description>题目连接：Balance Segment Painting
+Balance Segment Painting 因为要维护的是连续连段的长度，染色 $[p_i-1,p_i]$ 时，相当与把 $p_i-1$ 所在的连续线段和 $p_i$ 所在的连续线段合并。每条连续线段相当与是一个集合，
+用并查集维护即可，可参考网上的实现。同时并查集需要维护集合的大小（按秩合并优化中已经有维护了）
+示例代码 #include &amp;lt;bits/stdc++.h&amp;gt;using namespace std; #define MAX_N 1000000  // disjoint set  int fa[MAX_N + 1], sz[MAX_N + 1]; void init(int n) { for (int i = 0; i &amp;lt;= n; ++i) { fa[i] = i; sz[i] = 1; } } int find(int x) { if (x != fa[x]) fa[x] = find(fa[x]); return fa[x]; } int merge(int x, int y) { int xx = find(x), yy = find(y); if (xx == yy) return sz[xx]; if (sz[xx] &amp;gt; sz[yy]) swap(xx, yy); fa[xx] = yy; sz[yy] += sz[xx]; return sz[yy]; } // main  int main() { int n, p, max_len = 0; bool is_first = true; // Input  scanf(&amp;#34;%d&amp;#34;, &amp;amp;n); init(n); for (int i = 0; i &amp;lt; n; ++i) { scanf(&amp;#34;%d&amp;#34;, &amp;amp;p); max_len = max(merge(p - 1, p) - 1, max_len); // Output  if (is_first) is_first = false; else printf(&amp;#34; &amp;#34;); printf(&amp;#34;%d&amp;#34;, max_len); } puts(&amp;#34;&amp;#34;); return 0; } </description>
+    </item>
+    
+    <item>
+      <title>Solution to OJ - Gold Miner</title>
+      <link>https://zhengzangw.com/teach/algorithm-2020/oj1-2/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/teach/algorithm-2020/oj1-2/</guid>
+      <description>题目连接：Gold Miner
+Gold Miner 这题要求至多进行 50 次操作，要能够将 $n\times n$ 的网格除对角线和对角线下发一条线全部涂满。每次可以选择若干行和若干列，将它们的交点涂上色。
+提示中说使用分治来思考。令 $T(n)$ 是 $n$ 大小的网格需要进行的操作次数（不是程序的运行时间），思考如何用 $T(\frac{n}{2})$ 来解决 $T(n)$。因为有一半，首先想到的是分割网格成 $\frac{n}{2}\times\frac{n}{2}$ 大小的子网格如下：
+如图按左上，左下，右上，右下正好分割成四块。其中，蓝色区域的很容易上色，用 3 次操作即可全部上色。而左上和右下又是两个 $T(\frac{n}{2})$ 的子问题，故按此方法可得 $T(n)=2T(\frac{n}{2})+3$。
+观察到左上和右下在横纵坐标的限制上耦合度很低，理想的情况是在左上的横纵坐标选择和右下的横纵坐标选择之间完全不影响（相互为独立的子问题）。这样我们就可以把左上中一次操作和右下中一次操作合并在一起，作为一次操作。总操作数即为 $T(n)=T(\frac{n}{2})+3$。但左下有一个不能选中的地方，这导致左上选择纵坐标 5 的时候，右下不能选中横坐标 6。为了解决这个问题，在划分子问题时必须是两个矩形的横纵坐标相交处没有禁止的点。
+一种可行的方法是缩小左上的矩形，如此交点处都是可以的。根据题目中 “It is allowed to enter some cells multiple times!”，上下两个子矩阵的求解就成为相互独立的子问题了。此时其余部分用 4 次操作可以填满。$n=3000,\log_2 n \approx 11,4*11=44&amp;lt;50$
+程序实现时，可以递归模拟二分过程，既可以用 vector 记录选择的 $X,Y$ 坐标，merge 时合并，也可以用全局变量记录。其中，特殊处理一下 $n=1,2,3,4$ 的情况，可以让染色数减少（如 $n=4$ 只需 3 次）。
+示例代码 #include &amp;lt;bits/stdc++.h&amp;gt;using namespace std; #define max_n 3000 #define max_round 50  int n; bool X[max_round + 1][max_n + 1], Y[max_round + 1][max_n + 1]; int solve(int n, int low, int round) { /** * n: size of matrix * low: the index of first row in this matrix * according to the original matrix * round: number of round */ // Special case for n&amp;lt;=4  if (n == 1) { return round; } else if (n == 2) { round += 1; X[round][low] = Y[round][low + 1] = true; return round; } else if (n == 3) { round += 1; X[round][low] = Y[round][low + 1] = Y[round][low + 2] = true; round += 1; X[round][low + 1] = Y[round][low + 2] = true; round += 1; X[round][low + 2] = Y[round][low] = true; return round; } else if (n == 4) { round += 1; X[round][low + 2] = X[round][low + 3] = Y[round][low] = true; round += 1; X[round][low] = X[round][low + 3] = Y[round][low + 1] = true; round += 1; X[round][low] = X[round][low + 1] = Y[round][low + 2] = Y[round][low + 3] = true; round += 1; X[round][low + 2] = Y[round][low + 3] = true; return round; } // 4 rounds for up_right and down_left  int up_n, down_n, down_low; up_n = (n - 1) / 2; down_n = n - up_n - 1; down_low = low + up_n + 1; // round 1  round += 1; for (int d = 0; d &amp;lt; down_n; ++d) X[round][down_low + d] = true; for (int d = 0; d &amp;lt; up_n; ++d) Y[round][low + d] = true; // round 2  round += 1; for (int d = 0; d &amp;lt; up_n; ++d) X[round][low + d] = true; for (int d = 0; d &amp;lt; down_n; ++d) Y[round][down_low + d] = true; // round 3  round += 1; X[round][low + up_n] = true; for (int d = 0; d &amp;lt; n; ++d) { if (d !</description>
+    </item>
+    
+    <item>
+      <title>Solution to OJ - Large Sum Subarray</title>
+      <link>https://zhengzangw.com/teach/algorithm-2020/oj1-1/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/teach/algorithm-2020/oj1-1/</guid>
+      <description>题目连接：Large Sum Subarray
+Large Sum Subarray 本题寻找以下配对的个数：$(i,j),i\leq j,\sum_{k=i}^ja_k&amp;gt;t$。通过求前缀和，我们可以把区间转换为两点的比较：$(i+1,j), S_j-S_{i}&amp;gt;t$。
+联想一道经典的求逆序对的问题，题目求以下配对的个数：$(i,j),i\leq j, a_j&amp;gt;a_i$。本题稍加改变，也可以变为 $(i,j),i\leq j, a_j&amp;lt;a_i+t$。
+归并排序的过程中（升序），在 merge 时，如果 $a_i+t$（第一部分） 比 $a_j$（第二部分） 小，那么 $a_i+t$ 比 $a_k,k&amp;gt;j$ 都要小。故我们把第一部分指针后移，并加上 $i$ 可以配对的数量 $R-j+1$，$R$ 是第二部分的右边界。
+解决问后可以再想想，如果排序是降序的，求顺序对和求逆序对的代码又应该放在哪里？该如何证明正确性？
+额外的注意事项 使用 C++ 的同学，读入时若使用 cin 需要加速，或使用 scanf 读入
+参考代码 #include &amp;lt;bits/stdc++.h&amp;gt;using namespace std; #define n_max 1000000  int64_t t, ans; int64_t a[n_max + 1], s[n_max + 1], tmp[n_max + 1]; void merge(int64_t* a, int left, int mid, int right) { int i, j, k; // count  i = left, j = mid + 1; while (i &amp;lt;= mid &amp;amp;&amp;amp; j &amp;lt;= right) { if (a[i] + t &amp;lt; a[j]) { i++; // ordered pair counted here  ans += right - j + 1; } else { j++; // inversion pair counted here  } } // merge  i = left, j = mid + 1, k = left; while (i &amp;lt;= mid &amp;amp;&amp;amp; j &amp;lt;= right) { if (a[i] &amp;lt; a[j]) { tmp[k++] = a[i++]; } else { tmp[k++] = a[j++]; } } while (i &amp;lt;= mid) tmp[k++] = a[i++]; while (j &amp;lt;= right) tmp[k++] = a[j++]; for (int i = left; i &amp;lt;= right; ++i) a[i] = tmp[i]; } void mergesort(int64_t* a, int left, int right) { if (left &amp;gt;= right) return; int mid = (left + right) / 2; mergesort(a, left, mid); mergesort(a, mid + 1, right); merge(a, left, mid, right); } int main() { // Read  int n; scanf(&amp;#34;%d%lld&amp;#34;, &amp;amp;n, &amp;amp;t); /* Calculate s[i] to be the presum of a, then sum(a[i.</description>
+    </item>
+    
+    <item>
+      <title>Solution to OJ - Range Sum of Multiset</title>
+      <link>https://zhengzangw.com/teach/algorithm-2020/oj1-3/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/teach/algorithm-2020/oj1-3/</guid>
+      <description>题目连接：Range Sum of Multiset
+Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)、区间和(3)的数据结构。根据数据规模 $1\leq Q\leq 5\cdot 10^5$，我们需要 $O(\lg n)$ 的时间支持这三种操作。
+如果只需要支持操作 1,2，我们可以采用平衡树（红黑树，Treap）或者跳表。为了支持操作 3，我们需要在原数据结构上额外维护一下区间相关的内容。为了求 $[l,r]$ 区间内的和，我们可以维护每个结点的前缀和，用前缀和来计算区间和。
+可以参考网上 Treap 和 跳表 的实现。
+对于 Treap，要注意的是前缀和并不是子树之和，而是左子树之和。
+对于跳表，可以在每层的每个结点维护：在该层，该节点到前一结点之间的元素之和。实现的时候要注意指针的使用。
+示例代码 (Treap &amp;amp; 跳表) #include &amp;lt;bits/stdc++.h&amp;gt; #include &amp;lt;random&amp;gt;using namespace std; #define MAXN 500000 // #define DEBUG  /* Treap */ typedef struct { int64_t key, sum_left, sum_right; int pri, w, l, r; } treap_node; struct treap_rotate { treap_node node[MAXN + 1]; int rt, sz; void l_rotate(int &amp;amp;k) { int t = node[k].</description>
+    </item>
+    
+    <item>
       <title>Tricks for Python</title>
       <link>https://zhengzangw.com/posts/python-trick/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
