@@ -1274,14 +1274,12 @@ $$\text{support}(A\Rightarrow B)=P(A,B)=\frac{\text{# of tuples includes }A,B}{\
     </item>
     
     <item>
-      <title>Publications</title>
-      <link>https://zhengzangw.com/about/publications/</link>
+      <title>News</title>
+      <link>https://zhengzangw.com/about/news/</link>
       <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/publications/</guid>
-      <description>  PCS: A Prototypical Self-supervised Framework for Few-shot DA
-Zangwei Zheng*, Xiangyu Yue*, etc. (will be released later)
-  </description>
+      <guid>https://zhengzangw.com/about/news/</guid>
+      <description> [2021.3] I will join HPC-AI @ NUS to start my Ph.D. degree under the supervision of Presidential Young Prof. Yang You! [2021.2] Got one co-first-authored paper accepted to CVPR&#39;21. Thanks to all my collaborators!  </description>
     </item>
     
     <item>
@@ -1572,12 +1570,14 @@ Object File Format  DOS - COM System V UNIX - COFF (Common Object File-Format) W
     </item>
     
     <item>
-      <title>Projects</title>
-      <link>https://zhengzangw.com/about/projects/</link>
-      <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
+      <title>Publications</title>
+      <link>https://zhengzangw.com/about/publications/</link>
+      <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/projects/</guid>
-      <description>hugo-theme-phd: Hugo theme for this page. Android Mobile AI Game-Pad: A ML-based Android app turning your moblie phone into a Game-Pad. MBTI Personality Type Analyzer: A real-time MBTI Personality Analyzer by users&#39; posts and writings. Estimator for Time Taken in Convergence of SGD: An ensemble model to predict the time taken for stochastic gradient descent. Five-stage Pipeline MIPS System on FPGA: A toy MIPS32 system with a small OS. NJU Emulator: Implemented an emulator for x86 instructions, a machine-independent abstraction layer and a virtual machine on top of this layer, where some software and games can be directly launched.</description>
+      <guid>https://zhengzangw.com/about/publications/</guid>
+      <description>  PCS: A Prototypical Self-supervised Framework for Few-shot DA
+Zangwei Zheng*, Xiangyu Yue*, etc. (will be released later)
+  </description>
     </item>
     
     <item>
@@ -1851,12 +1851,12 @@ $$&lt;/li&gt;
     </item>
     
     <item>
-      <title>Selected Awards</title>
-      <link>https://zhengzangw.com/about/awards/</link>
-      <pubDate>Mon, 07 Dec 2020 21:43:38 +0800</pubDate>
+      <title>Projects</title>
+      <link>https://zhengzangw.com/about/projects/</link>
+      <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/awards/</guid>
-      <description> 2020, First Prize, People Scholarship 2019, Outstanding Volunteer of Nanjing University 2019, First Prize, National Elite Program Scholarship 2019, Outstanding Peer Tutor 2019, Zheng Gang Overseas Study Scholarship 2019, 1st Place, Hong Kong HKUST-NJU Competition 2018, Outstanding Class Leader of May 4 2018, First Prize, National Elite Program Scholarship  </description>
+      <guid>https://zhengzangw.com/about/projects/</guid>
+      <description>hugo-theme-phd: Hugo theme for this page. Android Mobile AI Game-Pad: A ML-based Android app turning your moblie phone into a Game-Pad. MBTI Personality Type Analyzer: A real-time MBTI Personality Analyzer by users&#39; posts and writings. Estimator for Time Taken in Convergence of SGD: An ensemble model to predict the time taken for stochastic gradient descent. Five-stage Pipeline MIPS System on FPGA: A toy MIPS32 system with a small OS. NJU Emulator: Implemented an emulator for x86 instructions, a machine-independent abstraction layer and a virtual machine on top of this layer, where some software and games can be directly launched.</description>
     </item>
     
     <item>
@@ -2031,6 +2031,15 @@ savepoint
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/information-theory/7-gaussian-channel/</guid>
       <description>Gaussian Channel  continuous alphet channel: input $X_i$, noise $Z_i$, output $Y_i$ Gaussian channel: $Y_i=X_i+Z_i,Z_i\sim\mathcal{N}(0,N)$ Energy Constraint: $\frac{1}{n}\sum_{i=1}^n x_i^2\leq P$ $C=\max_{f(x):EX^2\leq P}I(X;Y)$ Gaussian channel $C=\frac{1}{2}\log (1+\frac{P}{N})$, maximum attained when $X\sim\mathcal{N}(0,P)$  $N=EZ^2$ 信噪比：$\frac{P}{N}$   Guassian Noise is worest noise  </description>
+    </item>
+    
+    <item>
+      <title>Selected Awards</title>
+      <link>https://zhengzangw.com/about/awards/</link>
+      <pubDate>Mon, 07 Dec 2020 21:43:38 +0800</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/about/awards/</guid>
+      <description> 2020, First Prize, People Scholarship 2019, Outstanding Volunteer of Nanjing University 2019, First Prize, National Elite Program Scholarship 2019, Outstanding Peer Tutor 2019, Zheng Gang Overseas Study Scholarship 2019, 1st Place, Hong Kong HKUST-NJU Competition 2018, Outstanding Class Leader of May 4 2018, First Prize, National Elite Program Scholarship  </description>
     </item>
     
     <item>

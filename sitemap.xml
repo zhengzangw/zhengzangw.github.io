@@ -343,7 +343,7 @@
     <loc>https://zhengzangw.com/notes/information-theory/4-data-compression/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/about/publications/</loc>
+    <loc>https://zhengzangw.com/about/news/</loc>
     <lastmod>2020-12-07T21:33:19+08:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/4-rnn/</loc>
@@ -432,8 +432,8 @@
     <loc>https://zhengzangw.com/notes/information-theory/5-channel-capacity/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/about/projects/</loc>
-    <lastmod>2020-12-07T21:40:24+08:00</lastmod>
+    <loc>https://zhengzangw.com/about/publications/</loc>
+    <lastmod>2020-12-07T21:33:19+08:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/5-optimization-and-regularization/</loc>
     <lastmod>2020-06-16T00:00:00+00:00</lastmod>
@@ -512,8 +512,8 @@
     <loc>https://zhengzangw.com/notes/information-theory/6-differential-entropy/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/about/awards/</loc>
-    <lastmod>2020-12-07T21:43:38+08:00</lastmod>
+    <loc>https://zhengzangw.com/about/projects/</loc>
+    <lastmod>2020-12-07T21:40:24+08:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/numerical-analysis/6-%E6%96%B9%E7%A8%8B%E6%B1%82%E6%A0%B9/</loc>
     <lastmod>2020-05-27T00:00:00+00:00</lastmod>
@@ -571,6 +571,9 @@
   </url><url>
     <loc>https://zhengzangw.com/notes/information-theory/7-gaussian-channel/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/about/awards/</loc>
+    <lastmod>2020-12-07T21:43:38+08:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/rendering/7-monte-carlo-integration/</loc>
     <lastmod>2020-05-11T00:00:00+00:00</lastmod>
