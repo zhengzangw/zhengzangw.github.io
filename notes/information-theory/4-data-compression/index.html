@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4. Data Compression | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.db87d7b55e29b75699acf73451f98e37f7029321133dd8ae45930563c6c76609.css" integity="sha256-24fXtV4pt1aZrPc0UfmON/cCkyETPdiuRZMFY8bHZgk=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#existence-of-code">Existence of Code</a></li>
+    <li><a href="#codes">Codes</a>
+      <ul>
+        <li><a href="#huffman-codes">Huffman Codes</a></li>
+        <li><a href="#shannon-codes">Shannon Codes</a></li>
+        <li><a href="#shannon-fano-elias-coding">Shannon-Fano-Elias Coding</a></li>
+      </ul>
+    </li>
+    <li><a href="#random-variable-generation">Random Variable Generation</a></li>
+    <li><a href="#universal-source-coding">Universal Source Coding</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="existence-of-code">Existence of Code</h2>
+<p>A source code $C$ for a random variable $X$ is a mapping from $\mathcal{X}$ to $D^*$</p>
+<ul>
+<li>$X$: the range of $X$</li>
+<li>$D$-ary alphabet is $\mathcal{D}={0,1,\cdots,D-1}$</li>
+<li>$C(x)$: codeword for $x$</li>
+<li>$l(x)$: length of $C(x)$</li>
+<li>$L(C)=\sum_{x\in\mathcal{X}}p(x)l(x)$: the expected length of a source code $C(x)$ for a random variable</li>
+<li>rate $R$: average length</li>
+</ul>
+<p>Nonsigular code</p>
+<ul>
+<li>every element of the range $X$ maps into a different string in $D^*$</li>
+<li>$C^*$: extension of a code $C$ is mapping from finite length strings of $X$ to finite-length strings of $D$, $C(x_1x_2\cdots x_n)=C(x_1)C(x_2)\cdots C(x_n)$</li>
+<li>Uniquely decodable: extension is nonsigular</li>
+</ul>
+<p>Prefix Code (instantaneous code)</p>
+<ul>
+<li>no codeword is a prefix of any other codeword</li>
+<li>Tree representation
+<ul>
+<li>Kraft Inequality (1949): For any instantaneous code over an alphabet of size $D$, the codeword lengths $l_1,l_2,\cdots,l_m$ must satisfy the inequality $\sum_{i=1}^mD^{-l_i}\leq 1$</li>
+<li>Conversly, given codeword satisfy above inequality, the prefix code exists.</li>
+</ul>
+</li>
+<li>Interval representation
+<ul>
+<li>Extended Kraft Inequality: For any countably infinite set of codewords</li>
+</ul>
+</li>
+</ul>
+<p>Optimal Codes</p>
+<ul>
+<li>optimal: $\sum_{p_il_i}$ is minimal</li>
+<li>optimization problem: Lagrange
+$$\min_{l_i} L=\sum p_il_i\\sum D^{-l_i}\leq 1$$</li>
+<li>$p_i=D^{-l_i},l_i=-\log p_i,L^*\geq H_D(X)$</li>
+<li>Bounds: $H_D(X)\leq L^*&lt;H_D(X)+1$</li>
+<li>Shannon codes: $l_i=\lceil\log_D\frac{1}{p_i}\rceil$</li>
+</ul>
+<p>Encode $n$ symbols together (block encode to remove 1 in $H_D(X)+1$)</p>
+<ul>
+<li>$\frac{H(X_1,X_2,\cdots,X_n)}{n}\leq L^<em>&lt;\frac{H(X_1,X_2,\cdots,X_n)}{n}+\frac{1}{n}$, if stationary stochastic process, $L^</em>\rightarrow H(\mathcal{X})$</li>
+<li>shortcome: alphabet has $|X^n|$</li>
+</ul>
+<p>Wrong code</p>
+<ul>
+<li>The expected length under $p(x)$ of the code assignment $l(x)=\log\frac{1}{q(x)}$: $H(p)+D(p|q)\leq E_pl(x)&lt;H(p)+D(p|q)+1$</li>
+</ul>
+<p>Kraft Inequality for Uniquely Decodable Codes (McMillan): The codeword length of any uniquely decodable $D$-ary code must satisfy the Kraft inequality $\sum_{D}^{-l_i}\leq 1$. Conversely, given a set of codeword satisfy this inequality, it is possible to construct a uniquely decodable with these codeword lengths. (prefix code is &lsquo;no less than&rsquo; any other code)</p>
+<h2 id="codes">Codes</h2>
+<h3 id="huffman-codes">Huffman Codes</h3>
+<ul>
+<li>$D$-ary Huffman codes (prefix code) for a given distribution: Each time combine $D$ symbols with the lowest probabilities into a single source symbol, until there is only one symbol</li>
+<li>add dummy symbols to the end of the set of symbols: $1+k(D-1)$</li>
+<li>optimal: $C'$ is any other uniquely decodable code, $L(C)\leq L(C')$</li>
+</ul>
+<h3 id="shannon-codes">Shannon Codes</h3>
+<ul>
+<li>$D$-adic distribution: $P(X=x_i)=D^{-n}$, $l_i=\log\frac{1}{p_i}=n_i$</li>
+<li>Shannon codes
+<ul>
+<li>attain optimality within 1</li>
+<li>$D$-adic: Shannon codes are optimal</li>
+<li>$p_i\rightarrow0$: Shannon codes may be worse</li>
+</ul>
+</li>
+</ul>
+<p>For any optimal coding scheme</p>
+<ul>
+<li>lengths are ordered inversely with probability ($p_j&gt;p_k,l_j\leq l_k$)</li>
+<li>the two longest codewords have the same length</li>
+<li>two of the longest codewords differ only in the last bit</li>
+</ul>
+<h3 id="shannon-fano-elias-coding">Shannon-Fano-Elias Coding</h3>
+<ul>
+<li>$F(x)=\sum_{a\leq x}p(a)$</li>
+<li>modified cumulative distribution function: $\overline F(x)=\sum_{a&lt;x}p(a)+\frac{1}{2}p(x)=F(x)+\frac{1}{2}p(x)$</li>
+<li>Truncate $\overline{F}(x)$ to $l(x)$ bit, $\overline F(x)-|\overline{F}(x)|_{l(x)}\leq\frac{1}{2^{l(x)}}$</li>
+<li>$l(x)=\lceil\log\frac{1}{p(x)}\rceil+1$, $\frac{1}{2^{l(x)}}\leq\frac{p(x)}{2}=\overline{F}(x)-\overline{F}(x-1)$</li>
+<li>$L=\sum p(x)l(x)&lt;H(X)+2$</li>
+</ul>
+<h2 id="random-variable-generation">Random Variable Generation</h2>
+<ul>
+<li>fair coin toss: $Z_1,\cdots, Z_n$</li>
+<li>expected number of fair bits $E(T)$</li>
+<li>generate variable: leaves are given symbols of $X$</li>
+<li>$E(T)\geq H(X)$
+<ul>
+<li>dyadic distribution: $E(T)=H(X)$</li>
+<li>otherwise: use binary expansions for the probabilities, $H(X)\leq ET&lt;H(X)+2$</li>
+</ul>
+</li>
+</ul>
+<h2 id="universal-source-coding">Universal Source Coding</h2>
+<ul>
+<li>minimax redundancy: $R^*=\min_q\max_{p_0}R=\min_q\max_{p_0}D(p_\theta|q)$</li>
+<li>Arithmetic Coding</li>
+<li>LZ77: slidinig windows</li>
+<li>LZ78: Trie</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -15,40 +15,64 @@
       <pubDate>Sat, 24 Nov 2018 00:00:00 +0000</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/physics/physics-mechanics/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;《大学物理》卢德鑫
-NJU: University Physics I - 卢德鑫&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;kinematics&#34;&gt;Kinematics&lt;/h1&gt;
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;物理学&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;diplacement: $\Delta\vec r=\vec r(t+\Delta t)-(\vec t)$&lt;/li&gt;
+&lt;li&gt;物质
+&lt;ul&gt;
+&lt;li&gt;microscopic: elementary particles （大数粒子组成体系中个别粒子的行为）&lt;/li&gt;
+&lt;li&gt;mesoscopic(介观)&lt;/li&gt;
+&lt;li&gt;macroscopic：大数粒子组成的体系整体行为&lt;/li&gt;
+&lt;li&gt;cosmological&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;运动：机械运动、热运动、微观粒子运动等（基于时间和空间）&lt;/li&gt;
+&lt;li&gt;相互作用：由场传递，引力、弱相互作用、电磁相互作用、强相互作用&lt;/li&gt;
+&lt;li&gt;orders, symmetry, symmetry-breaking, conservation laws or invariance&lt;/li&gt;
+&lt;li&gt;物理学发展历史
+&lt;ul&gt;
+&lt;li&gt;19 世纪中叶前：实验科学&lt;/li&gt;
+&lt;li&gt;20 世纪初：狭义和广义相对论，量子力学&lt;/li&gt;
+&lt;li&gt;20 世纪中叶：实验+理论科学&lt;/li&gt;
+&lt;li&gt;如今三足鼎立：实验物理、理论物理、计算物理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;基本理论
+&lt;ul&gt;
+&lt;li&gt;牛顿力学/经典力学&lt;/li&gt;
+&lt;li&gt;热力学&lt;/li&gt;
+&lt;li&gt;电磁学&lt;/li&gt;
+&lt;li&gt;相对论&lt;/li&gt;
+&lt;li&gt;量子力学&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;科学研究方法
+&lt;ul&gt;
+&lt;li&gt;观测、实验、模拟得到事实和数据&lt;/li&gt;
+&lt;li&gt;用已知原理分析事实和数据&lt;/li&gt;
+&lt;li&gt;（理论）形成假说和理论用以解释&lt;/li&gt;
+&lt;li&gt;（理论）预言新的事实和结果&lt;/li&gt;
+&lt;li&gt;（理论）用新的事例修改和更新理论&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;基本量（操作性定义）：长度、质量、时间、电流、热力学温度、物质的量、发光强度&lt;/li&gt;
+&lt;li&gt;非决定论性质
+&lt;ul&gt;
+&lt;li&gt;微观客体量子力学不确定性关系&lt;/li&gt;
+&lt;li&gt;多粒子系统中个别粒子统计不确定性&lt;/li&gt;
+&lt;li&gt;非线性动力系统中的不可预言性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;kinematics&#34;&gt;Kinematics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;diplacement: $\Delta\vec r=\vec r(t+\Delta t)-r(\vec t)$&lt;/li&gt;
 &lt;li&gt;velocity: $\overline{\vec v}=\frac{\Delta\vec r}{\Delta t}$&lt;/li&gt;
 &lt;li&gt;speed: $\overline{v}=\frac{\Delta s}{\Delta t}$&lt;/li&gt;
 &lt;li&gt;acceleration: $\vec a=\frac{d\vec v}{dt}$&lt;/li&gt;
 &lt;li&gt;angular velocity vector: $\vec \omega =\frac{d\vec\theta}{dt} = \dot{\varphi}\vec k$&lt;/li&gt;
 &lt;li&gt;velocity in circular motion: $\dot{\vec \rho}=\vec \omega\times\vec\rho$&lt;/li&gt;
 &lt;li&gt;Oscillation: temporal periodicity and spatial repetitiveness&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Fundamental Modern Physics</title>
-      <link>https://zhengzangw.com/notes/physics/physics-modern/</link>
-      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/physics-modern/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;《大学物理》卢德鑫
-NJU: University Physics II - 许望&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;energy-quantization&#34;&gt;Energy Quantization&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;$\nu\lambda=c$&lt;/li&gt;
-&lt;li&gt;Blackbody radiation(infrared to visible spectrum): $u=u(\nu,T)$ or $u=u(\lambda,T)$&lt;/li&gt;
-&lt;li&gt;Stefan-Boltzman Law: $J_B=\sigma T^4$&lt;/li&gt;
-&lt;li&gt;relation between density of outgoing energy flow $J_u$ and density of energy u in the cavity: $J_u=\frac{1}{4}uc$, $u(T)=\int_0^\infty(\nu,T)d\nu$&lt;/li&gt;
-&lt;li&gt;Radiation spectrun(or spectrum density): $u(\nu,T)$&lt;/li&gt;
-&lt;li&gt;mean energy $\overline{\varepsilon}$: $u(\nu)d\nu=\frac{8\pi\nu^2}{c^3}\overline{\varepsilon}d\nu$&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -68,6 +92,41 @@ NJU: University Physics I - 卢德鑫&lt;/p&gt;
 &lt;li&gt;phase: homogeneous part of system&lt;/li&gt;
 &lt;li&gt;equilibrium state: a state of a system in which macroscopic variables have definite values that remain constant as long as the external conditions are unchanged&lt;/li&gt;
 &lt;li&gt;relaxation time: $\tau$, the time system needs to adjust itself to follow the change of the surrounding.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Electromagnetism</title>
+      <link>https://zhengzangw.com/notes/physics/physics-electromagnetism/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-electromagnetism/</guid>
+      <description>&lt;h1 id=&#34;electromagnetism&#34;&gt;Electromagnetism&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Coulomb&amp;rsquo;s Law: $\overrightarrow{F_{21}} = -\overrightarrow{F_{12}} = k\frac{q_1q_2}{r_{12}^3}\overrightarrow{r_{12}}$&lt;/li&gt;
+&lt;li&gt;Electric Field: $\overrightarrow{E} \equiv lim_{q\rightarrow 0}\frac{\vec F}{q} = \frac{1}{4\pi\epsilon}*\frac{q}{r^3}\overrightarrow{r_{12}}$&lt;/li&gt;
+&lt;li&gt;Dipole moment(dipole field): $p\equiv q*2a$&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Fundamental Modern Physics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-modern/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-modern/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫&lt;br&gt;
+NJU: University Physics II - 许望&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;energy-quantization&#34;&gt;Energy Quantization&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;$\nu\lambda=c$&lt;/li&gt;
+&lt;li&gt;Blackbody radiation(infrared to visible spectrum): $u=u(\nu,T)$ or $u=u(\lambda,T)$&lt;/li&gt;
+&lt;li&gt;Stefan-Boltzman Law: $J_B=\sigma T^4$&lt;/li&gt;
+&lt;li&gt;relation between density of outgoing energy flow $J_u$ and density of energy u in the cavity: $J_u=\frac{1}{4}uc$, $u(T)=\int_0^\infty(\nu,T)d\nu$&lt;/li&gt;
+&lt;li&gt;Radiation spectrun(or spectrum density): $u(\nu,T)$&lt;/li&gt;
+&lt;li&gt;mean energy $\overline{\varepsilon}$: $u(\nu)d\nu=\frac{8\pi\nu^2}{c^3}\overline{\varepsilon}d\nu$&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -107,20 +166,6 @@ $$&lt;/li&gt;
 &lt;li&gt;Spherical systems $(\vec e_\rho, \vec e_\phi, \vec k)$&lt;/li&gt;
 &lt;li&gt;Cylindrical systems&lt;/li&gt;
 &lt;li&gt;intrinsic system&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Electromagnetism</title>
-      <link>https://zhengzangw.com/notes/physics/physics-electromagnetism/</link>
-      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/physics-electromagnetism/</guid>
-      <description>&lt;h1 id=&#34;electromagnetism&#34;&gt;Electromagnetism&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Coulomb&amp;rsquo;s Law: $\overrightarrow{F_{21}} = -\overrightarrow{F_{12}} = k\frac{q_1q_2}{r_{12}^3}\overrightarrow{r_{12}}$&lt;/li&gt;
-&lt;li&gt;Electric Field: $\overrightarrow{E} \equiv lim_{q\rightarrow 0}\frac{\vec F}{q} = \frac{1}{4\pi\epsilon}*\frac{q}{r^3}\overrightarrow{r_{12}}$&lt;/li&gt;
-&lt;li&gt;Dipole moment(dipole field): $p\equiv q*2a$&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

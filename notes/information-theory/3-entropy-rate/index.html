@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3. Entropy Rate | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.db87d7b55e29b75699acf73451f98e37f7029321133dd8ae45930563c6c76609.css" integity="sha256-24fXtV4pt1aZrPc0UfmON/cCkyETPdiuRZMFY8bHZgk=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#stationary-process">Stationary Process</a></li>
+    <li><a href="#entropy-rate">Entropy Rate</a></li>
+    <li><a href="#functions-of-markov-chain">Functions of Markov Chain</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="stationary-process">Stationary Process</h2>
+<ul>
+<li>stationary: $P(X_1=x_1,X_2=x_2,\cdots,X_n=x_n)=P(X_{1+l}=x_1,X_2=x_{2+l},\cdots,X_{n+l}=x_n)$
+<ul>
+<li>Gaussian process</li>
+<li>Stationary Markov Chain</li>
+</ul>
+</li>
+<li>Stationary Distribution of MC
+<ul>
+<li>$p(X_{n+1})=p(X_n)$</li>
+<li>$p(x_{n+1})=\sum_{x_n}p(x_n)P_{x_nx_{n+1}}$</li>
+<li>net probability flow across any cut set is zero</li>
+</ul>
+</li>
+</ul>
+<h2 id="entropy-rate">Entropy Rate</h2>
+<ul>
+<li>entropy rate of a stochastic process: $H(\mathcal{X})=\lim_{n\rightarrow\infty}\frac{1}{n}H(X_1,X_2,\cdots,X_n)$
+<ul>
+<li>$H(X_n,\cdots,X_1)=\sum_{i=1}^nH(X_i|X_{i-1},\cdots,X_1)$</li>
+</ul>
+</li>
+<li>(a) For a stationary stochastic process, $H(X_n|X_{n-1},\cdots,X_1)$ is nonincreasing and has a limit
+<ul>
+<li>$H'(X)=\lim_{n\rightarrow\infty}H(X_n|X_{n-1},\cdots,X_1)$ exists</li>
+</ul>
+</li>
+<li>(b) Cesaro Mean: $a_n\rightarrow a,b_n=\frac{1}{n}\sum_{i=1}^na_i,b_n\rightarrow a$</li>
+<li>For a stationary stochastic process, $H(\mathcal{X})=H'(\mathcal{X})$ (a,b)
+<ul>
+<li>Markov Chain: $H(\mathcal{X})=H(X_2|X_1)=-\sum_{ij}\mu_iP_{ij}\log P_{ij}$</li>
+</ul>
+</li>
+<li>Some results
+<ul>
+<li>Second Law of Thermodynamics: model the isolated system as a Morkov chain with transitions obeying the physical laws governing the system</li>
+<li>$D(\mu_n|\mu_n')$ decreases with $n$</li>
+<li>$H(X_n|X_1)$ increases</li>
+<li>Shuffles increase entropy: $H(TX)\geq H(X)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="functions-of-markov-chain">Functions of Markov Chain</h2>
+<ul>
+<li>$X_1,\cdots,X_n,\cdots$ be a stationary Markov chain, $Y_i=\phi(X_i)$</li>
+<li>$H(Y_n|Y_{n-1},\cdots,Y_1,X_1)\leq H(\mathcal{Y})\leq H(Y_n|Y_{n-1},\cdots,Y_1)$</li>
+<li>$\lim H(Y_n|Y_{n-1},\cdots,Y_1,X_1)= H(\mathcal{Y})= \lim H(Y_n|Y_{n-1},\cdots,Y_1)$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

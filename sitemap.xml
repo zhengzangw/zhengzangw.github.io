@@ -1,2240 +1,1382 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>https://zhengzangw.com/notes/topolopy/basic/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/information-theory/1-entropy/</loc>
+    <lastmod>2020-12-22T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://zhengzangw.com/about/about/</loc>
     <lastmod>2020-12-07T02:47:43+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/real-function-theory/%E9%9B%86%E5%90%88%E4%B8%8E%E6%B5%8B%E5%BA%A6/</loc>
     <lastmod>2020-05-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/1-algorithm-analysis/</loc>
     <lastmod>2020-05-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/static-program-analysis/1-introduction/</loc>
     <lastmod>2020-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/literature-management-and-information-analysis/2-research/</loc>
     <lastmod>2020-04-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/literature-management-and-information-analysis/1-search/</loc>
     <lastmod>2020-04-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/software-enginerring/1-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%BC%95%E8%AE%BA/</loc>
     <lastmod>2020-03-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/compiler/1-indtrodution/</loc>
     <lastmod>2020-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/computer-graphics/1-introduction/</loc>
     <lastmod>2020-02-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/data-mining/1-data-warehouse/</loc>
     <lastmod>2020-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/digital-circuit/basics/</loc>
     <lastmod>2020-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/abstract/</loc>
     <lastmod>2020-01-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/microelectronics/basic/</loc>
     <lastmod>2020-01-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/stochastic-process/preliminaries/</loc>
     <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/calculus/section1/</loc>
     <lastmod>2019-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/artificial-intelligence/1-introduction/</loc>
     <lastmod>2019-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/quantum-computation/math-foundation/</loc>
     <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/combinatorics/1-basic-enumeration/</loc>
     <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/conputer-network/1-basics/</loc>
     <lastmod>2019-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/digital-image-process/0-basics/</loc>
     <lastmod>2019-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/database/1-%E6%A6%82%E8%BF%B0/</loc>
     <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/1-perceptron/</loc>
     <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/machine-learning/1-introduction/</loc>
     <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/mathematic-logic/propositional-logic/</loc>
     <lastmod>2019-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/1-%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/music-review/%E5%9B%BD%E5%86%85%E6%B0%91%E6%AD%8C/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/data-communication/0-%E7%BB%BC%E8%BF%B0/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/web-develop/responsive-web-design/</loc>
     <lastmod>2019-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/multimedia/1-introduction/</loc>
     <lastmod>2019-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/numerical-analysis/1-introduction/</loc>
     <lastmod>2019-02-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/rendering/2-concepts/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/advanced-programming/1-data-abstraction/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/rendering/1-introduction/</loc>
     <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/modern-algebra/group-basic/</loc>
     <lastmod>2019-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/command-line/1-shell-basic/</loc>
     <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/advanced-algorithm/1-time-saving/</loc>
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/calculus/</loc>
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/islam-culture/%E4%B8%AD%E4%B8%9C/</loc>
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/linear-algebra/1-%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/</loc>
     <lastmod>2018-11-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/about/interest/</loc>
-    <lastmod>2020-12-07T02:47:43+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/deep-learning/2-fnn/</loc>
-    <lastmod>2020-06-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/real-function-theory/%E5%8F%AF%E6%B5%8B%E5%87%BD%E6%95%B0/</loc>
-    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/2-sorting-and-order/</loc>
-    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/static-program-analysis/2-data-flow-analysis/</loc>
-    <lastmod>2020-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/compiler/2-lexical-analysis/</loc>
-    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-graphics/2-resterscan/</loc>
-    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-mining/2-preprocessing/</loc>
-    <lastmod>2020-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/microelectronics/electrocircuit/</loc>
-    <lastmod>2020-01-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/stochastic-process/poisson-process/</loc>
-    <lastmod>2020-01-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/calculus/section2/</loc>
-    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/artificial-intelligence/2-search/</loc>
-    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/quantum-computation/postualates/</loc>
-    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/2-generating-function/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-image-process/1-spatial-domain/</loc>
-    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/database/2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/2-linearmodel/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/mathematic-logic/first-order-logic/</loc>
-    <lastmod>2019-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/web-develop/javascript/</loc>
-    <lastmod>2019-03-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/2-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/music-review/%E5%A4%96%E5%9B%BD%E6%B0%91%E6%AD%8C/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-communication/1-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%90%86%E8%AE%BA/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/multimedia/2-multimedia/</loc>
-    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/numerical-analysis/2-%E6%8F%92%E5%80%BC%E6%B3%95/</loc>
-    <lastmod>2019-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-programming/2-operation-overloading/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/modern-algebra/group/</loc>
-    <lastmod>2019-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/2-shell-script/</loc>
-    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/conputer-network/2-application-layer/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-algorithm/2-space-saving/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/linear-algebra/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/linear-algebra/2-%E7%9F%A9%E9%98%B5/</loc>
-    <lastmod>2018-11-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter2/</loc>
-    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/software-enginerring/2-%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B/</loc>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/about/teaching/</loc>
-    <lastmod>2020-12-07T21:31:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/deep-learning/3-cnn/</loc>
-    <lastmod>2020-06-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-mining/3-association/</loc>
-    <lastmod>2020-06-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/3-data-structure/</loc>
-    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/static-program-analysis/3-interprocedural-analysis/</loc>
-    <lastmod>2020-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/numerical-analysis/3-%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91%E4%B8%8E%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88/</loc>
-    <lastmod>2020-04-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/literature-management-and-information-analysis/creative/</loc>
-    <lastmod>2020-04-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/software-enginerring/3-%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82/</loc>
-    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/compiler/3-syntax-analysis/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-graphics/3-primitives/</loc>
-    <lastmod>2020-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/islam-culture/%E4%BC%8A%E6%96%AF%E5%85%B0/</loc>
-    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/calculus/section3/</loc>
-    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/artificial-intelligence/3-deduction/</loc>
-    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/quantum-computation/quantum-algorithm/</loc>
-    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-algorithm/3-dimension-reduction/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/3-sieve-methods/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-image-process/2-frequency-domain/</loc>
-    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/database/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/3-decisiontree/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/mathematic-logic/model-logic/</loc>
-    <lastmod>2019-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/3-shell-ui/</loc>
-    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/3-%E9%9A%8F%E6%9C%BA%E5%90%91%E9%87%8F/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-communication/2-%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/music-review/%E5%BE%B7%E5%A5%A5%E8%89%BA%E6%9C%AF%E6%AD%8C%E6%9B%B2/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/rendering/3-ray-tracing/</loc>
-    <lastmod>2019-03-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/multimedia/3-compression/</loc>
-    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-programming/3-inheritance/</loc>
-    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/modern-algebra/ring/</loc>
-    <lastmod>2019-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/conputer-network/3-transport-layer/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/mathematic-logic/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/matrix-theory/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/linear-algebra/3-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/</loc>
-    <lastmod>2018-11-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter3/</loc>
-    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/about/publications/</loc>
-    <lastmod>2020-12-07T21:33:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/deep-learning/4-rnn/</loc>
-    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/4-algorithm-design/</loc>
-    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/numerical-analysis/4-%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/</loc>
-    <lastmod>2020-04-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/static-program-analysis/4-pointer-analysis/</loc>
-    <lastmod>2020-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/rendering/4-transformation/</loc>
-    <lastmod>2020-03-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/4-job-control/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/compiler/4-syntax-directed-definition-and-translation/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-graphics/4-transformation/</loc>
-    <lastmod>2020-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-mining/6-nlp/</loc>
-    <lastmod>2020-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-mining/4-prediction-and-cluster/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/calculus/section4/</loc>
-    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/artificial-intelligence/4-knowledge/</loc>
-    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/quantum-computation/query-complex/</loc>
-    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-algorithm/4-linear-programming/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/4-polya-counting/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-image-process/3-restoration/</loc>
-    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/database/4-%E8%A7%84%E8%8C%83%E5%8C%96%E7%90%86%E8%AE%BA/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/4-bayesian/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/4-%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-communication/3-%E4%BF%A1%E5%8F%B7%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/multimedia/4-storage/</loc>
-    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-programming/4-template/</loc>
-    <lastmod>2019-02-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/conputer-network/4-network-layer/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/modern-algebra/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/linear-algebra/4-%E7%BA%BF%E6%80%A7%E7%AE%97%E5%AD%90/</loc>
-    <lastmod>2018-11-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter4/</loc>
-    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/software-enginerring/4-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1-sa/</loc>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/about/projects/</loc>
-    <lastmod>2020-12-07T21:40:24+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/deep-learning/5-optimization-and-regularization/</loc>
-    <lastmod>2020-06-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/numerical-analysis/5-%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/</loc>
-    <lastmod>2020-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/compiler/5-%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/</loc>
-    <lastmod>2020-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/5-data-wragling/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-graphics/5-trimming/</loc>
-    <lastmod>2020-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-mining/5-outlier-analysis/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/calculus/section5/</loc>
-    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/artificial-intelligence/6-reinforce-learning/</loc>
-    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/artificial-intelligence/5-learning/</loc>
-    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/5-cayley-formula/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-algorithm/5-semidefinite-program/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-image-process/4-colorful-image/</loc>
-    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/database/5-%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/5-svm/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/5-%E6%9E%81%E9%99%90%E7%90%86%E8%AE%BA/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-communication/4-%E5%B7%AE%E9%94%99%E6%A3%80%E9%AA%8C%E5%92%8C%E7%BA%A0%E6%AD%A3/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/multimedia/5-process/</loc>
-    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-programming/5-io/</loc>
-    <lastmod>2019-02-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/conputer-network/5-data-link-layer/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/linear-algebra/5-%E5%85%B6%E5%AE%83/</loc>
-    <lastmod>2018-11-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter5/</loc>
-    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/5-graph-theory/</loc>
-    <lastmod>2018-11-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/software-enginerring/5-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1-ooad/</loc>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/about/awards/</loc>
-    <lastmod>2020-12-07T21:43:38+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/numerical-analysis/6-%E6%96%B9%E7%A8%8B%E6%B1%82%E6%A0%B9/</loc>
-    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/compiler/6-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%88%BB%E7%8E%AF%E5%A2%83/</loc>
-    <lastmod>2020-04-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/6-terminal/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/software-enginerring/6-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-graphics/6-curve-and-surface/</loc>
-    <lastmod>2020-02-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/calculus/section6/</loc>
-    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/6-existence-by-counting/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-image-process/5-segmentation/</loc>
-    <lastmod>2019-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/6-hard-problems/</loc>
-    <lastmod>2019-08-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/database/6-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/6-essemble/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/6-%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-communication/5-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/multimedia/6-realtime/</loc>
-    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-programming/6-exception/</loc>
-    <lastmod>2019-02-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/conputer-network/6-data-link-layer-wireless/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter6/</loc>
-    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/rendering/7-monte-carlo-integration/</loc>
-    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/compiler/7-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/</loc>
-    <lastmod>2020-04-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/numerical-analysis/7-%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E7%9A%84%E8%A7%A3%E6%B3%95/</loc>
-    <lastmod>2020-03-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/7-security/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-graphics/7-solid-modeling/</loc>
-    <lastmod>2020-02-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-circuit/combination-logic-design/</loc>
-    <lastmod>2020-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-circuit/sequence-logic-design/</loc>
-    <lastmod>2020-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-algorithm/7-markov-chain-monte-carlo-methods/</loc>
-    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/calculus/section7/</loc>
-    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/artificial-intelligence/7-pgm/</loc>
-    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/7-probabilistic-method/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-image-process/6-compression/</loc>
-    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/database/7-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%89%A9%E7%90%86%E7%BB%84%E7%BB%87/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/7-cluster/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/7-%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-communication/6-%E5%A4%8D%E7%94%A8/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-programming/7-windows/</loc>
-    <lastmod>2019-02-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/conputer-network/7-security/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/multimedia/7-charset/</loc>
-    <lastmod>2019-01-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/7-number-theory/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/numerical-analysis/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/software-enginerring/7-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%92%8C%E9%AA%8C%E8%AF%81/</loc>
-    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter7/</loc>
-    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/deep-learning/8-methodology/</loc>
-    <lastmod>2020-06-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/numerical-analysis/8-%E7%89%B9%E5%BE%81%E5%80%BC%E8%AE%A1%E7%AE%97/</loc>
-    <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/compiler/8-%E6%9C%BA%E5%99%A8%E6%97%A0%E5%85%B3%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2020-04-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/8-network/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/artificial-intelligence/8-game-theory/</loc>
-    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/8-extremal-graph-theory/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-image-process/7-morphology/</loc>
-    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/8-cryptography-and-coding/</loc>
-    <lastmod>2019-07-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/database/8-%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/8-reduction/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/8-%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-communication/8-%E4%BA%A4%E6%8D%A2/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-programming/8-qt/</loc>
-    <lastmod>2019-02-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/conputer-network/8-multimedia/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/software-enginerring/8-%E8%BD%AF%E4%BB%B6%E7%BB%B4%E6%8A%A4%E5%92%8C%E6%BC%94%E5%8C%96/</loc>
-    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter8/</loc>
-    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/9-extremal-set-theory/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/9-%E6%A6%82%E7%8E%87%E4%B8%8D%E7%AD%89%E5%BC%8F%E4%B8%8E%E9%9E%85%E8%AE%BA/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-image-process/8-recognition/</loc>
-    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/database/9-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/9-distance/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/9-debugging/</loc>
-    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-communication/9-%E8%9C%82%E7%AA%9D%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/conputer-network/9-sdn/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/software-enginerring/9-%E5%AE%9E%E9%99%85%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E6%A1%88%E4%BE%8B/</loc>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/real-function-theory/</loc>
-    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/conputer-network/review/</loc>
-    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/quantum-computation/%E8%AF%BE%E7%A8%8B%E8%AE%BA%E6%96%87/</loc>
-    <lastmod>2019-12-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/10-git/</loc>
-    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/10-ramsey-theory/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/10-balls-into-bins/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/quantum-computation/quantum-error-correction/</loc>
-    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/10-featureselection/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-communication/10-%E6%89%A9%E9%A2%91/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/quantum-computation/quantum-crytography/</loc>
-    <lastmod>2019-12-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/combinatorics/11-matching-theory/</loc>
-    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-algorithm/6-lovasz-local-lemma/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/11-dictionary/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/11-make/</loc>
-    <lastmod>2018-11-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/12-vim/</loc>
-    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/13-vm-and-docker/</loc>
-    <lastmod>2020-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/14-multimedia-transform/</loc>
-    <lastmod>2020-02-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/15-linux/</loc>
-    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/16-comments-and-autodoc/</loc>
-    <lastmod>2020-03-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/17-formats-and-linters/</loc>
-    <lastmod>2020-03-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/18-file-hierarchy/</loc>
-    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/19-crawler/</loc>
-    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/20-args/</loc>
-    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/physics/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/ubuntu-setup/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/macos-setup/</loc>
-    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/php-setup/</loc>
-    <lastmod>2018-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-algorithm/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/artificial-intelligence/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/deep-learning/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/quantum-computation/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/microelectronics/</loc>
-    <lastmod>2020-01-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-circuit/</loc>
-    <lastmod>2020-01-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/operating-system/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-communication/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/conputer-network/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/database/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/compiler/</loc>
-    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-graphics/</loc>
-    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/advanced-programming/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/command-line/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/data-mining/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-vision/</loc>
-    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/digital-image-process/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/multimedia/</loc>
-    <lastmod>1970-08-23T00:23:47+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/static-program-analysis/</loc>
-    <lastmod>2020-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/software-enginerring/</loc>
-    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/rendering/</loc>
-    <lastmod>2019-02-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/web-develop/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/research/</loc>
-    <lastmod>2020-06-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/english/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/japanese/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/literature-management-and-information-analysis/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/music-review/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/islam-culture/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/concrete-math/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/convex-optimization/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/stochastic-process/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/algorithm-2020/oj1-4/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/algorithm-2020/oj1-2/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/algorithm-2020/oj1-1/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/algorithm-2020/oj1-3/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/algorithm-2020/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/python-trick/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/about/</loc>
-    <lastmod>2020-12-07T21:43:38+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-5/</loc>
-    <lastmod>2020-10-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-4/</loc>
-    <lastmod>2020-10-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-3/</loc>
-    <lastmod>2020-10-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-2/</loc>
-    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-1/</loc>
-    <lastmod>2020-09-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/research/adversial-learning/</loc>
-    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/research/3-cnn-backbones/</loc>
-    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/research/constrastive-learning/</loc>
-    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/research/2-datasets/</loc>
-    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/research/domain-adaptation/</loc>
-    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/</loc>
-    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/research/semi-supervised-learning/</loc>
-    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/abstract/info/</loc>
-    <lastmod>2020-06-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/deep-learning/9-deep-reilef-network/</loc>
-    <lastmod>2020-06-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/deep-learning/7-unsupervised/</loc>
-    <lastmod>2020-06-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/research/self-supervised-learning/</loc>
-    <lastmod>2020-06-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/research/1-essays/</loc>
-    <lastmod>2020-06-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/deep-learning/6-attention-and-memory/</loc>
-    <lastmod>2020-06-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/number-of-people/</loc>
-    <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/schools/</loc>
-    <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/artificial-intelligence/9-information-theory/</loc>
-    <lastmod>2020-06-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-vision/3-grouping-and-fitting/</loc>
-    <lastmod>2020-04-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/rendering/5-camera/</loc>
-    <lastmod>2020-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/rendering/6-sampling/</loc>
-    <lastmod>2020-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/stock-index/</loc>
-    <lastmod>2020-04-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/social-engineering/</loc>
-    <lastmod>2020-03-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-vision/2-features-and-filters/</loc>
-    <lastmod>2020-02-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/choose-computer-2/</loc>
-    <lastmod>2020-02-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/computer-vision/1-introduction/</loc>
-    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/choose-computer/</loc>
-    <lastmod>2020-02-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/microelectronics/transistor/</loc>
-    <lastmod>2020-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/interview-prepare/</loc>
-    <lastmod>2019-12-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/studying-abroad/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/english/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/culture/</loc>
-    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/islam-culture/%E9%98%BF%E6%8B%89%E4%BC%AF/</loc>
-    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/collaborative-filtering/</loc>
-    <lastmod>2019-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/ml/</loc>
-    <lastmod>2019-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/meta-learning/</loc>
-    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/notes/</loc>
-    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/learning-to-match/</loc>
-    <lastmod>2019-09-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/math/</loc>
-    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/spectral-clustering/</loc>
-    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/seminar-19/</loc>
-    <lastmod>2019-09-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/cs/</loc>
-    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/quantum-computation/gate/</loc>
-    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/physics/</loc>
-    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/english/tofle-words/</loc>
-    <lastmod>2019-08-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/english/voa-words/</loc>
-    <lastmod>2019-08-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/english/gre-words/</loc>
-    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/english/gre-knowledge/</loc>
-    <lastmod>2019-07-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/english/gre-notes/</loc>
-    <lastmod>2019-05-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/ps/</loc>
-    <lastmod>2019-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-string/</loc>
-    <lastmod>2019-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/design/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/info/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/info-fonts/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/jupyter-notebook-introduction/</loc>
-    <lastmod>2019-05-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/tutor/</loc>
-    <lastmod>2019-05-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/english/english-roots/</loc>
-    <lastmod>2019-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/config/</loc>
-    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/machine-learning/others/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/japan/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/japanese/japanese/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/android/</loc>
-    <lastmod>2019-04-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/android-develop/</loc>
-    <lastmod>2019-04-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/info-moblie-phone/</loc>
-    <lastmod>2019-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/js/</loc>
-    <lastmod>2019-03-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/mac-all-in-one/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/operating-system/os-extension/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/music/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/network/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/os/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/web/</loc>
-    <lastmod>2019-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/algorithm/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-km/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/sagemath/</loc>
-    <lastmod>2019-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/sage/</loc>
-    <lastmod>2019-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/travel-hongkong/</loc>
-    <lastmod>2019-02-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/travel/</loc>
-    <lastmod>2019-02-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/modern-algebra/galois-theory/</loc>
-    <lastmod>2019-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/modern-algebra/domain/</loc>
-    <lastmod>2019-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/python-matplotlib/</loc>
-    <lastmod>2019-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/python/</loc>
-    <lastmod>2019-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/convex-optimization/convex-optimization/</loc>
-    <lastmod>2019-01-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/matrix-theory/matrix-theory/</loc>
-    <lastmod>2019-01-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/operating-system/os-concurrency/</loc>
-    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/operating-system/os-persistance/</loc>
-    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/operating-system/os-virtualization/</loc>
-    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/project/</loc>
-    <lastmod>2019-01-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/google-mlcamp-2019/</loc>
-    <lastmod>2019-01-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/linux-tutor/</loc>
-    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/linux/</loc>
-    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/php/</loc>
-    <lastmod>2018-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/economy/</loc>
-    <lastmod>2018-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/the-price-of-inequality/</loc>
-    <lastmod>2018-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/physics/physics-mechanics/</loc>
     <lastmod>2018-11-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/latex/</loc>
-    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/latex-tikz/</loc>
-    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/mac/</loc>
-    <lastmod>2018-11-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/icarus-verilog/</loc>
-    <lastmod>2018-11-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/physics/physics-modern/</loc>
-    <lastmod>2018-11-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/information-theory/2-aep/</loc>
+    <lastmod>2020-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/about/interest/</loc>
+    <lastmod>2020-12-07T02:47:43+08:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/deep-learning/2-fnn/</loc>
+    <lastmod>2020-06-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/real-function-theory/%E5%8F%AF%E6%B5%8B%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/2-sorting-and-order/</loc>
+    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/static-program-analysis/2-data-flow-analysis/</loc>
+    <lastmod>2020-04-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/compiler/2-lexical-analysis/</loc>
+    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-graphics/2-resterscan/</loc>
+    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-mining/2-preprocessing/</loc>
+    <lastmod>2020-02-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/microelectronics/electrocircuit/</loc>
+    <lastmod>2020-01-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/stochastic-process/poisson-process/</loc>
+    <lastmod>2020-01-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/calculus/section2/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/artificial-intelligence/2-search/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/quantum-computation/postualates/</loc>
+    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/2-generating-function/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-image-process/1-spatial-domain/</loc>
+    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/database/2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/2-linearmodel/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/mathematic-logic/first-order-logic/</loc>
+    <lastmod>2019-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/web-develop/javascript/</loc>
+    <lastmod>2019-03-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/2-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/music-review/%E5%A4%96%E5%9B%BD%E6%B0%91%E6%AD%8C/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-communication/1-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%90%86%E8%AE%BA/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/multimedia/2-multimedia/</loc>
+    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/numerical-analysis/2-%E6%8F%92%E5%80%BC%E6%B3%95/</loc>
+    <lastmod>2019-02-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-programming/2-operation-overloading/</loc>
+    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/modern-algebra/group/</loc>
+    <lastmod>2019-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/2-shell-script/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/conputer-network/2-application-layer/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-algorithm/2-space-saving/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/linear-algebra/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/linear-algebra/2-%E7%9F%A9%E9%98%B5/</loc>
+    <lastmod>2018-11-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://zhengzangw.com/notes/physics/physics-thermal/</loc>
     <lastmod>2018-11-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/notes/physics/field-theory/</loc>
-    <lastmod>2018-11-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/math-not-yet-classifed/</loc>
-    <lastmod>2018-11-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/tags/ics/</loc>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter2/</loc>
     <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhengzangw.com/posts/python-logging/</loc>
-    <lastmod>2018-11-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/software-enginerring/2-%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B/</loc>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/real-function-theory/%E5%8B%92%E8%B4%9D%E6%A0%BC%E7%A7%AF%E5%88%86/</loc>
+    <lastmod>2021-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/information-theory/3-entropy-rate/</loc>
+    <lastmod>2020-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/about/teaching/</loc>
+    <lastmod>2020-12-07T21:31:28+08:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/deep-learning/3-cnn/</loc>
+    <lastmod>2020-06-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-mining/3-association/</loc>
+    <lastmod>2020-06-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/3-data-structure/</loc>
+    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/static-program-analysis/3-interprocedural-analysis/</loc>
+    <lastmod>2020-04-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/numerical-analysis/3-%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91%E4%B8%8E%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88/</loc>
+    <lastmod>2020-04-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/literature-management-and-information-analysis/creative/</loc>
+    <lastmod>2020-04-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/software-enginerring/3-%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82/</loc>
+    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/compiler/3-syntax-analysis/</loc>
+    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-graphics/3-primitives/</loc>
+    <lastmod>2020-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/islam-culture/%E4%BC%8A%E6%96%AF%E5%85%B0/</loc>
+    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/calculus/section3/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/artificial-intelligence/3-deduction/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/quantum-computation/quantum-algorithm/</loc>
+    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-algorithm/3-dimension-reduction/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/3-sieve-methods/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-image-process/2-frequency-domain/</loc>
+    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/database/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/3-decisiontree/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/mathematic-logic/model-logic/</loc>
+    <lastmod>2019-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/3-shell-ui/</loc>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/3-%E9%9A%8F%E6%9C%BA%E5%90%91%E9%87%8F/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-communication/2-%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/music-review/%E5%BE%B7%E5%A5%A5%E8%89%BA%E6%9C%AF%E6%AD%8C%E6%9B%B2/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/rendering/3-ray-tracing/</loc>
+    <lastmod>2019-03-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/multimedia/3-compression/</loc>
+    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-programming/3-inheritance/</loc>
+    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/modern-algebra/ring/</loc>
+    <lastmod>2019-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/conputer-network/3-transport-layer/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/mathematic-logic/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/matrix-theory/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/linear-algebra/3-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/</loc>
+    <lastmod>2018-11-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter3/</loc>
+    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://zhengzangw.com/notes/physics/physics-electromagnetism/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/information-theory/4-data-compression/</loc>
+    <lastmod>2020-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/about/publications/</loc>
+    <lastmod>2020-12-07T21:33:19+08:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/deep-learning/4-rnn/</loc>
+    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/4-algorithm-design/</loc>
+    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/numerical-analysis/4-%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/</loc>
+    <lastmod>2020-04-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/static-program-analysis/4-pointer-analysis/</loc>
+    <lastmod>2020-04-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/rendering/4-transformation/</loc>
+    <lastmod>2020-03-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/4-job-control/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/compiler/4-syntax-directed-definition-and-translation/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-graphics/4-transformation/</loc>
+    <lastmod>2020-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-mining/6-nlp/</loc>
+    <lastmod>2020-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-mining/4-prediction-and-cluster/</loc>
+    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/calculus/section4/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/artificial-intelligence/4-knowledge/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/quantum-computation/query-complex/</loc>
+    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-algorithm/4-linear-programming/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/4-polya-counting/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-image-process/3-restoration/</loc>
+    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/database/4-%E8%A7%84%E8%8C%83%E5%8C%96%E7%90%86%E8%AE%BA/</loc>
+    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/4-bayesian/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/4-%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-communication/3-%E4%BF%A1%E5%8F%B7%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/multimedia/4-storage/</loc>
+    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-programming/4-template/</loc>
+    <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/conputer-network/4-network-layer/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/modern-algebra/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/linear-algebra/4-%E7%BA%BF%E6%80%A7%E7%AE%97%E5%AD%90/</loc>
+    <lastmod>2018-11-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/physics/physics-modern/</loc>
+    <lastmod>2018-11-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter4/</loc>
+    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/software-enginerring/4-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1-sa/</loc>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/information-theory/5-channel-capacity/</loc>
+    <lastmod>2020-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/about/projects/</loc>
+    <lastmod>2020-12-07T21:40:24+08:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/deep-learning/5-optimization-and-regularization/</loc>
+    <lastmod>2020-06-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/numerical-analysis/5-%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/</loc>
+    <lastmod>2020-05-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/compiler/5-%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/</loc>
+    <lastmod>2020-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/5-data-wragling/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-graphics/5-trimming/</loc>
+    <lastmod>2020-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-mining/5-outlier-analysis/</loc>
+    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/calculus/section5/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/artificial-intelligence/6-reinforce-learning/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/artificial-intelligence/5-learning/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/5-cayley-formula/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-algorithm/5-semidefinite-program/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-image-process/4-colorful-image/</loc>
+    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/database/5-%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/</loc>
+    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/5-svm/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/5-%E6%9E%81%E9%99%90%E7%90%86%E8%AE%BA/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-communication/4-%E5%B7%AE%E9%94%99%E6%A3%80%E9%AA%8C%E5%92%8C%E7%BA%A0%E6%AD%A3/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/multimedia/5-process/</loc>
+    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-programming/5-io/</loc>
+    <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/conputer-network/5-data-link-layer/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/linear-algebra/5-%E5%85%B6%E5%AE%83/</loc>
+    <lastmod>2018-11-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/physics/field-theory/</loc>
+    <lastmod>2018-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter5/</loc>
+    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/5-graph-theory/</loc>
+    <lastmod>2018-11-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/software-enginerring/5-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1-ooad/</loc>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/information-theory/6-differential-entropy/</loc>
+    <lastmod>2020-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/about/awards/</loc>
+    <lastmod>2020-12-07T21:43:38+08:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/numerical-analysis/6-%E6%96%B9%E7%A8%8B%E6%B1%82%E6%A0%B9/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/compiler/6-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%88%BB%E7%8E%AF%E5%A2%83/</loc>
+    <lastmod>2020-04-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/6-terminal/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/software-enginerring/6-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-graphics/6-curve-and-surface/</loc>
+    <lastmod>2020-02-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/calculus/section6/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/6-existence-by-counting/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-image-process/5-segmentation/</loc>
+    <lastmod>2019-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/6-hard-problems/</loc>
+    <lastmod>2019-08-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/database/6-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/6-essemble/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/6-%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-communication/5-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/multimedia/6-realtime/</loc>
+    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-programming/6-exception/</loc>
+    <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/conputer-network/6-data-link-layer-wireless/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter6/</loc>
+    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/information-theory/7-gaussian-channel/</loc>
+    <lastmod>2020-12-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/rendering/7-monte-carlo-integration/</loc>
+    <lastmod>2020-05-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/compiler/7-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/</loc>
+    <lastmod>2020-04-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/numerical-analysis/7-%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E7%9A%84%E8%A7%A3%E6%B3%95/</loc>
+    <lastmod>2020-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/7-security/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-graphics/7-solid-modeling/</loc>
+    <lastmod>2020-02-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-circuit/combination-logic-design/</loc>
+    <lastmod>2020-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-circuit/sequence-logic-design/</loc>
+    <lastmod>2020-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-algorithm/7-markov-chain-monte-carlo-methods/</loc>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/calculus/section7/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/artificial-intelligence/7-pgm/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/7-probabilistic-method/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-image-process/6-compression/</loc>
+    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/database/7-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%89%A9%E7%90%86%E7%BB%84%E7%BB%87/</loc>
+    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/7-cluster/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/7-%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-communication/6-%E5%A4%8D%E7%94%A8/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-programming/7-windows/</loc>
+    <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/conputer-network/7-security/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/multimedia/7-charset/</loc>
+    <lastmod>2019-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/7-number-theory/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/numerical-analysis/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/software-enginerring/7-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%92%8C%E9%AA%8C%E8%AF%81/</loc>
+    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter7/</loc>
+    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/deep-learning/8-methodology/</loc>
+    <lastmod>2020-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/numerical-analysis/8-%E7%89%B9%E5%BE%81%E5%80%BC%E8%AE%A1%E7%AE%97/</loc>
+    <lastmod>2020-06-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/compiler/8-%E6%9C%BA%E5%99%A8%E6%97%A0%E5%85%B3%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2020-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/8-network/</loc>
+    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/artificial-intelligence/8-game-theory/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/8-extremal-graph-theory/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-image-process/7-morphology/</loc>
+    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/8-cryptography-and-coding/</loc>
+    <lastmod>2019-07-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/database/8-%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/</loc>
+    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/8-reduction/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/8-%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-communication/8-%E4%BA%A4%E6%8D%A2/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-programming/8-qt/</loc>
+    <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/conputer-network/8-multimedia/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/software-enginerring/8-%E8%BD%AF%E4%BB%B6%E7%BB%B4%E6%8A%A4%E5%92%8C%E6%BC%94%E5%8C%96/</loc>
+    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter8/</loc>
+    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/9-extremal-set-theory/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/9-%E6%A6%82%E7%8E%87%E4%B8%8D%E7%AD%89%E5%BC%8F%E4%B8%8E%E9%9E%85%E8%AE%BA/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-image-process/8-recognition/</loc>
+    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/database/9-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/9-distance/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/9-debugging/</loc>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-communication/9-%E8%9C%82%E7%AA%9D%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/conputer-network/9-sdn/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/software-enginerring/9-%E5%AE%9E%E9%99%85%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E6%A1%88%E4%BE%8B/</loc>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/topolopy/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/real-function-theory/</loc>
+    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/conputer-network/review/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/quantum-computation/%E8%AF%BE%E7%A8%8B%E8%AE%BA%E6%96%87/</loc>
+    <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/10-git/</loc>
+    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/10-ramsey-theory/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/10-balls-into-bins/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/quantum-computation/quantum-error-correction/</loc>
+    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/10-featureselection/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-communication/10-%E6%89%A9%E9%A2%91/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/information-theory/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/quantum-computation/quantum-crytography/</loc>
+    <lastmod>2019-12-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/combinatorics/11-matching-theory/</loc>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-algorithm/6-lovasz-local-lemma/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/11-dictionary/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/11-make/</loc>
+    <lastmod>2018-11-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/12-vim/</loc>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/13-vm-and-docker/</loc>
+    <lastmod>2020-02-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/14-multimedia-transform/</loc>
+    <lastmod>2020-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/15-linux/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/16-comments-and-autodoc/</loc>
+    <lastmod>2020-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/17-formats-and-linters/</loc>
+    <lastmod>2020-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/18-file-hierarchy/</loc>
+    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/19-crawler/</loc>
+    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/20-args/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/physics/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/ubuntu-setup/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/macos-setup/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/php-setup/</loc>
+    <lastmod>2018-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-algorithm/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/artificial-intelligence/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/deep-learning/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/quantum-computation/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/microelectronics/</loc>
+    <lastmod>2020-01-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-circuit/</loc>
+    <lastmod>2020-01-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/operating-system/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-communication/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/conputer-network/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/database/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/compiler/</loc>
+    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-graphics/</loc>
+    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/advanced-programming/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/command-line/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/data-mining/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-vision/</loc>
+    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/digital-image-process/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/multimedia/</loc>
+    <lastmod>1970-08-23T00:23:47+08:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/static-program-analysis/</loc>
+    <lastmod>2020-04-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/software-enginerring/</loc>
+    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/rendering/</loc>
+    <lastmod>2019-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/web-develop/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/research/</loc>
+    <lastmod>2020-06-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/english/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/japanese/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/literature-management-and-information-analysis/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/music-review/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/islam-culture/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/concrete-math/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/convex-optimization/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/stochastic-process/</loc>
+    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/</loc>
+    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/</loc>
+    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/invest/</loc>
+    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/3d-reconstruction/</loc>
+    <lastmod>2021-02-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/fmcw/</loc>
+    <lastmod>2021-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/algorithm-2020/oj1-4/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/algorithm-2020/oj1-2/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/algorithm-2020/oj1-1/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/algorithm-2020/oj1-3/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/algorithm-2020/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/python-trick/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/about/</loc>
+    <lastmod>2020-12-07T21:43:38+08:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-5/</loc>
+    <lastmod>2020-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-4/</loc>
+    <lastmod>2020-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-3/</loc>
+    <lastmod>2020-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-2/</loc>
+    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-1/</loc>
+    <lastmod>2020-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/research/adversial-learning/</loc>
+    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/research/3-cnn-backbones/</loc>
+    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/research/constrastive-learning/</loc>
+    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/research/2-datasets/</loc>
+    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/research/domain-adaptation/</loc>
+    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/research/semi-supervised-learning/</loc>
+    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/abstract/info/</loc>
+    <lastmod>2020-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/deep-learning/9-deep-reilef-network/</loc>
+    <lastmod>2020-06-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/deep-learning/7-unsupervised/</loc>
+    <lastmod>2020-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/research/self-supervised-learning/</loc>
+    <lastmod>2020-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/research/1-essays/</loc>
+    <lastmod>2020-06-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/deep-learning/6-attention-and-memory/</loc>
+    <lastmod>2020-06-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/number-of-people/</loc>
+    <lastmod>2020-06-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/schools/</loc>
+    <lastmod>2020-06-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/artificial-intelligence/9-information-theory/</loc>
+    <lastmod>2020-06-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-vision/3-grouping-and-fitting/</loc>
+    <lastmod>2020-04-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/rendering/5-camera/</loc>
+    <lastmod>2020-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/rendering/6-sampling/</loc>
+    <lastmod>2020-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/stock-index/</loc>
+    <lastmod>2020-04-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/social-engineering/</loc>
+    <lastmod>2020-03-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-vision/2-features-and-filters/</loc>
+    <lastmod>2020-02-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/choose-computer-2/</loc>
+    <lastmod>2020-02-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/computer-vision/1-introduction/</loc>
+    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/introduction-to-computer-science/choose-computer/</loc>
+    <lastmod>2020-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/microelectronics/transistor/</loc>
+    <lastmod>2020-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/interview-prepare/</loc>
+    <lastmod>2019-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/studying-abroad/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/english/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/culture/</loc>
+    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/islam-culture/%E9%98%BF%E6%8B%89%E4%BC%AF/</loc>
+    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/collaborative-filtering/</loc>
+    <lastmod>2019-11-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/ml/</loc>
+    <lastmod>2019-11-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/meta-learning/</loc>
+    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/notes/</loc>
+    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/learning-to-match/</loc>
+    <lastmod>2019-09-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/math/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/spectral-clustering/</loc>
+    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/seminar-19/</loc>
+    <lastmod>2019-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/cs/</loc>
+    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/quantum-computation/gate/</loc>
+    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/physics/</loc>
+    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/english/tofle-words/</loc>
+    <lastmod>2019-08-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/english/voa-words/</loc>
+    <lastmod>2019-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/english/gre-words/</loc>
+    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/english/gre-knowledge/</loc>
+    <lastmod>2019-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/english/gre-notes/</loc>
+    <lastmod>2019-05-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/ps/</loc>
+    <lastmod>2019-05-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-string/</loc>
+    <lastmod>2019-05-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/design/</loc>
+    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/info/</loc>
+    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/info-fonts/</loc>
+    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/jupyter-notebook-introduction/</loc>
+    <lastmod>2019-05-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/tutor/</loc>
+    <lastmod>2019-05-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/english/english-roots/</loc>
+    <lastmod>2019-05-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/config/</loc>
+    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/machine-learning/others/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/japan/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/japanese/japanese/</loc>
+    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/android/</loc>
+    <lastmod>2019-04-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/android-develop/</loc>
+    <lastmod>2019-04-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/info-moblie-phone/</loc>
+    <lastmod>2019-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/js/</loc>
+    <lastmod>2019-03-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/mac-all-in-one/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/operating-system/os-extension/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/music/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/network/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/os/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/web/</loc>
+    <lastmod>2019-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/algorithm/</loc>
+    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-km/</loc>
+    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/sagemath/</loc>
+    <lastmod>2019-02-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/sage/</loc>
+    <lastmod>2019-02-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/travel-hongkong/</loc>
+    <lastmod>2019-02-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/travel/</loc>
+    <lastmod>2019-02-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/modern-algebra/galois-theory/</loc>
+    <lastmod>2019-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/modern-algebra/domain/</loc>
+    <lastmod>2019-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/python-matplotlib/</loc>
+    <lastmod>2019-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/python/</loc>
+    <lastmod>2019-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/convex-optimization/convex-optimization/</loc>
+    <lastmod>2019-01-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/matrix-theory/matrix-theory/</loc>
+    <lastmod>2019-01-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/operating-system/os-concurrency/</loc>
+    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/operating-system/os-persistance/</loc>
+    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/operating-system/os-virtualization/</loc>
+    <lastmod>2019-01-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/project/</loc>
+    <lastmod>2019-01-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/google-mlcamp-2019/</loc>
+    <lastmod>2019-01-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/linux-tutor/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/linux/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/php/</loc>
+    <lastmod>2018-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/economy/</loc>
+    <lastmod>2018-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/the-price-of-inequality/</loc>
+    <lastmod>2018-11-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/latex/</loc>
+    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/latex-tikz/</loc>
+    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/mac/</loc>
+    <lastmod>2018-11-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/icarus-verilog/</loc>
+    <lastmod>2018-11-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/math-not-yet-classifed/</loc>
+    <lastmod>2018-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/ics/</loc>
+    <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/python-logging/</loc>
+    <lastmod>2018-11-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://zhengzangw.com/notes/introduction-to-computer-science/ics-pa/</loc>
     <lastmod>2018-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/tags/oj/</loc>
     <lastmod>2018-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-greedy/</loc>
     <lastmod>2018-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/advanced-programming/java/</loc>
     <lastmod>2018-09-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/tags/java/</loc>
     <lastmod>2018-09-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/python-reading/</loc>
     <lastmod>2018-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/deep-learning/</loc>
     <lastmod>2018-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/tensorflow-picture/</loc>
     <lastmod>2018-08-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/tags/tensorflow/</loc>
     <lastmod>2018-08-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/tensorflow-experiment/</loc>
     <lastmod>2018-08-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-linear-recurrence/</loc>
     <lastmod>2018-08-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/tags/ds/</loc>
     <lastmod>2018-08-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/segment-tree/</loc>
     <lastmod>2018-08-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/tags/dev/</loc>
     <lastmod>2018-08-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/code-style/</loc>
     <lastmod>2018-08-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-fft/</loc>
     <lastmod>2018-08-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-knapsack/</loc>
     <lastmod>2018-05-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/hype-cycle/</loc>
     <lastmod>2018-03-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/skip-list/</loc>
     <lastmod>2018-03-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/tags/debate/</loc>
     <lastmod>2018-03-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/debate/</loc>
     <lastmod>2018-03-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-optimization/</loc>
     <lastmod>2018-02-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/tags/rss/</loc>
     <lastmod>2018-02-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/awesome-rss/</loc>
     <lastmod>2018-02-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-interval/</loc>
     <lastmod>2018-02-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/debate-analysis/</loc>
     <lastmod>2018-02-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/poem/</loc>
     <lastmod>2018-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/tags/poem/</loc>
     <lastmod>2018-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/gtd/</loc>
     <lastmod>2018-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/tags/plan/</loc>
     <lastmod>2018-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/python-pandas/</loc>
     <lastmod>2018-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/mac-shortcut/</loc>
     <lastmod>2018-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/hexo/</loc>
     <lastmod>2018-01-20T14:50:22+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/computer-vision/3-matching-and-alignment/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/computer-vision/4-recognition/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/computer-vision/5-video-understanding/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/11-deep-generative-network/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/12-deep-reinforce-network/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/13-sequence-generative/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/notes/research/few-shot-learning/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/bangumi/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/friends/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zhengzangw.com/posts/domain-adaptation/</loc>
   </url>
-  
 </urlset>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>勒贝格积分 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.db87d7b55e29b75699acf73451f98e37f7029321133dd8ae45930563c6c76609.css" integity="sha256-24fXtV4pt1aZrPc0UfmON/cCkyETPdiuRZMFY8bHZgk=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#非负简单函数的-lebesgue-积分">非负简单函数的 Lebesgue 积分</a></li>
+    <li><a href="#非负可测函数的-lebesgue-积分">非负可测函数的 Lebesgue 积分</a></li>
+    <li><a href="#可测函数的-lebesgue-积分">可测函数的 Lebesgue 积分</a></li>
+    <li><a href="#控制收敛定理">控制收敛定理</a></li>
+    <li><a href="#riemann-vs-lebesgue">Riemann vs. Lebesgue</a></li>
+    <li><a href="#几何意义">几何意义</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="非负简单函数的-lebesgue-积分">非负简单函数的 Lebesgue 积分</h2>
+<ul>
+<li>简单函数：$f(x)=\sum_{i=1}^sc_iX_{E_i}(x), c_i\geq 0$</li>
+<li>def. $\int_E f(x)dx=\sum_{i=1}^sc_im(E_i)$</li>
+<li>$\int_{A\cup B}f(x)dx=\int_Af(x)dx+\int_Bf(x)dx$</li>
+<li>${A_n}<em>{n=1}^{\infty}$ 为 $E$ 一列可测子集，$A_1\subset A_2\subset\cdots$，$E=\sum</em>{n=1}^\infty A_n=\lim_{n\rightarrow \infty} A_n$，则 $\int_{\lim_{n\rightarrow A_n}}f(x)dx=\lim_{n\rightarrow\infty}\int_{A_n}f(x)dx$</li>
+<li>线性：$\int_E(\alpha f(x)+\beta g(x)) dx = \alpha\int_E f(x)dx+\beta\int_E g(x)dx$</li>
+</ul>
+<h2 id="非负可测函数的-lebesgue-积分">非负可测函数的 Lebesgue 积分</h2>
+<ul>
+<li>def. $\int_Ef(x)=\sup{\int_E\varphi(x)dx,\varphi(x)\leq f(x)},\varphi$ 为非负简单函数</li>
+<li>$f(x)\leq g(x),\int_E f(x)dx\leq\int_E g(x)dx$</li>
+<li>def. 勒贝格可积（L-可积）:$\int_Ef(x)&lt;+\infty$</li>
+<li>L-可积则 $m(E(f=+\infty))=0$</li>
+<li>$\int_{A\cup B}f(x)dx=\int_Af(x)dx+\int_Bf(x)dx$</li>
+<li>线性</li>
+<li>Levi 单调性定理：${f_n}$ 递增，$x\in E,\forall n,f_n(x)\leq f_{n+1}(x),\lim_{n\rightarrow+\infty}f_n(x)=f(x)$，则$\lim_{n\rightarrow}\int_Ef_n(x)=\int_Ef(x)dx$
+<ul>
+<li>逐项积分（无穷级数、积分交换）</li>
+</ul>
+</li>
+<li>Fatou 引理：$\int_S\underline{\lim_{n\rightarrow\infty}}f_nd\mu\leq\underline{\lim_{n\rightarrow\infty}}\int_Sf_nd\mu$</li>
+<li>零测集不影响积分</li>
+</ul>
+<h2 id="可测函数的-lebesgue-积分">可测函数的 Lebesgue 积分</h2>
+<ul>
+<li>def. $f$ 可测且积分确定时，在 $E$ 上的 L-积分为 $\int_E f(x)dx=\int_E f^+(x)dx -\int_Ef^-(x)$
+<ul>
+<li>积分确定：$f^+,f^-$ 至少一个有限</li>
+<li>L 可积：两个都有限</li>
+<li>L(E)：L 可积函数全体</li>
+</ul>
+</li>
+<li>可数可加性：$E=\cup_{n=1}^{+\infty}E_n$ 不相交，$\int_Ef(x)=\sum_{n=1}^{\infty}\int_{E_n}f(x)dx$</li>
+<li>$f\in L(E)\iff|f|\in L(E)$ <em>与 Riemann 积分不同</em></li>
+<li>绝对连续性：$f\in L(E),\forall \epsilon&gt;0,\exists\delta&gt;0$，当 $m(A)&lt;\delta$ 则 $|\int_Af(x)dx|\leq\int_A|f(x)|dx&lt;\epsilon$</li>
+<li>$g\in L(E),g\geq 0,|f|\leq g$ 则 $f\in L(E)$</li>
+<li>线性</li>
+</ul>
+<h2 id="控制收敛定理">控制收敛定理</h2>
+<ul>
+<li>非负 + 单调：Levi 单调性定理</li>
+<li>非负，下极限的积分$\leq$积分的下极限：Fatou 引理</li>
+<li>勒贝格控制收敛定理: ${f_n}$ 是 $E$ 上的可测函数，$\lim_{n\rightarrow\infty}f_n(x)=f(x)$ a.e. 于 $E$，若 $\exists E$ 上的非负 L 可积函数 $F$，使 $\forall n\in\mathcal{N},|f_n(x)|\leq F(x)$ a.e. 于 $E$，则 $\lim_{n\rightarrow\infty}\int_E f_n(x)dx=\int_Ef(x)dx$</li>
+</ul>
+<h2 id="riemann-vs-lebesgue">Riemann vs. Lebesgue</h2>
+<ul>
+<li>有界函数 $f$ 在 $[a,b]$ 上 $R$ 可积，则 $f$ 在 $[a,b]$ 上 L 可积，且 (L)$\int_{[a,b]}f(x)dx=\int_a^bf(x)dx$(R)</li>
+<li>反常函数也相同</li>
+</ul>
+<h2 id="几何意义">几何意义</h2>
+<ul>
+<li>def. 下方图图形：$G(E,f)={(x,z):x\in E,o\leq z&lt;f(x)}\subset R$</li>
+<li>$f(x)$ 为可测函数，则 $G(E,f)$ 是 $\mathcal{R}^{n+1}$ 中的可测集。当$f(x)$ 在 $E$ 上可测时，$\int_Ef(x)dx=m(G(E,f))$</li>
+<li>可测集的直积是可测集
+<ul>
+<li>$m(A\times B)=m(A)\cdot m(B)$</li>
+</ul>
+</li>
+<li>$E\subset \mathcal{R}^{n=p+q},x_0$ 是 $\mathcal{R}^p$ 中的固定点，则 ${y\in\mathcal{R}^q:(x_0,y)\in E}\subset\mathcal{R}^q$ 称为 $E$ 关于 $x_0$ 的截面，记为 $E_{x_0}$</li>
+<li>Fubini 定理：$A\subset\mathcal{R}^p$ 可测，$B\subset\mathcal{R}^q$ 可测
+<ul>
+<li>若 $f(p)=f(x,y)$ 在 $A\times B\subset\mathcal{R}^{p+q}$ 上非负可测，则对 a.e. 的 $x\in A$，$f(x,y)$ 作为 $y$ 的函数在 $B$ 上可测且 $\int_{A\times B}f(p)dp=\int_A(\int_Bf(x,y)dy)dx$</li>
+<li>若 $f(p)=f(x,y)$ 在 $A\times B\subset\mathcal{R}^{p+q}$ 上可积，则对 a.e. 的 $x\in A$，$f(x,y)$ 作为 $y$ 的函数在 $B$ 上可积且 $\int_{A\times B}f(p)dp=\int_A(\int_Bf(x,y)dy)dx$</li>
+</ul>
+</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

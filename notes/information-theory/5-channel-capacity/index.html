@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5. Channel Capacity | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.db87d7b55e29b75699acf73451f98e37f7029321133dd8ae45930563c6c76609.css" integity="sha256-24fXtV4pt1aZrPc0UfmON/cCkyETPdiuRZMFY8bHZgk=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#channel-capacity">Channel Capacity</a></li>
+    <li><a href="#channel-coding-theorem">Channel Coding Theorem</a>
+      <ul>
+        <li><a href="#dmc">DMC</a></li>
+        <li><a href="#feedback-capacity">Feedback Capacity</a></li>
+        <li><a href="#source-channel-separation">Source-Channel Separation</a></li>
+        <li><a href="#error-correction-code">Error Correction Code</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="channel-capacity">Channel Capacity</h2>
+<ul>
+<li>$(\mathcal{X},p(y|x),\mathcal{Y})$: send $x$, with probability $p(y|x)$, receiver get $y$</li>
+<li>Channel capacity: $C=\max_{p(x)}I(X;Y)$</li>
+<li>Strategy to calculate $C$
+<ul>
+<li>$I(X;Y)=H(Y)-H(Y|X)$</li>
+<li>convex sets: $d_{\min}=\min_{a\in A,b\in B}d(a,b)$</li>
+</ul>
+</li>
+<li>Examples:
+<ul>
+<li>Noiseless Binary Channel: $C=1,p(x)=(\frac{1}{2},\frac{1}{2})$</li>
+<li>Noisy Channel with nonoverlapping Outputs: in fact not noisy</li>
+<li>Noisy Typewriter: $\log13$</li>
+<li>Binary Symmetric Channel: $C=1-H(p)$</li>
+<li>Binary Erasure Channel: $\max_{p(x)}H(Y)-H(\alpha)=1-P_e$</li>
+</ul>
+</li>
+<li>symmetric channel: channel transition matrix row and columnr are permutations of each other $C=\log|\mathcal{Y}|-H(r)$</li>
+<li>weakly symmetric: rows</li>
+</ul>
+<h2 id="channel-coding-theorem">Channel Coding Theorem</h2>
+<ul>
+<li>Message $W$ (Encoder) $X^n$ (Channel) $Y^n$ (Decoder) $\hat W$</li>
+<li>$\max \frac{H(W)}{n}$</li>
+<li>Message: can be ordered and denoted by index, $\log M$ symbols</li>
+<li>discrete memoryless channel (DMC): $p(y_k|x^k,y^{k-1})=p(y_k|x_k)$</li>
+<li>without feedback: $p(x_k|x^{k-1},y^{k-1})=p(x_k|x^{k-1})$</li>
+<li>memoryless + no feedback: $H(Y^n|X^n)=\sum_{i=1}^nH(Y_i|X_i)$</li>
+<li>Markov chain: $W\rightarrow X^n\rightarrow Y^n\rightarrow\hat W$</li>
+<li>DMC: $C=\max I(X;Y)$</li>
+</ul>
+<h3 id="dmc">DMC</h3>
+<ul>
+<li>codebook ($f(w)=x^n$) shared between sender and receiver</li>
+<li>$(M,n)$ code
+<ul>
+<li>index set ${1,2,\cdots, M}$</li>
+<li>encoding function $f(x):{1,2,\cdots,M}\rightarrow\mathcal{X}^n$, yielding codewords $x^n(1),\cdots,x^n(M)$</li>
+<li>decoding function $g(x)$</li>
+</ul>
+</li>
+<li>Conditional probability of error: $\lambda_i=\sum_{y^n}p(y^n|x^n(i))[g(y^n\neq i)]$
+<ul>
+<li>maximal probability of error: $\lambda^{(n)}=\max \lambda_i$</li>
+<li>average: $P_e^{(n)}=\frac{1}{M}\sum\lambda_i$</li>
+</ul>
+</li>
+<li>rate $R$ of $(M, n)$ code: $R=\frac{\log M}{n}$ bits per transmission
+<ul>
+<li>achievable $R$: sequence $(2^{nR}, n)$ codes such that the maximal probability of error $\lambda(n)\rightarrow 0$ when $n\rightarrow\infty$</li>
+</ul>
+</li>
+<li>capacity: supremum of all achievable rates</li>
+<li>Channel coding theorem: $C=\max_{p(x)}I(X;Y)$
+<ul>
+<li>Achievability: For any $r&lt;C,\exists (2^{nr},n)$ code</li>
+<li>Converse: For any $r&gt;C,\lambda_e&gt;0$</li>
+</ul>
+</li>
+</ul>
+<p>Intuition for Channel Capacity: $2^{nI(X;Y)}=2^{n(H(Y)-H(Y|X))}$ （手电筒）</p>
+<p>Proof: $R\leq C$; $\forall R&lt;C$, achievable</p>
+<h3 id="feedback-capacity">Feedback Capacity</h3>
+<ul>
+<li>$(2^{nR}, n)$ feedback code: sequence of mappings $x_i(W,Y^{i-1})$</li>
+<li>$C_{FB}=C=\max_{p(x)}I(X;Y)$ (Feedback cannot increase capacity)</li>
+</ul>
+<h3 id="source-channel-separation">Source-Channel Separation</h3>
+<ul>
+<li>data compression: $R&gt;H$</li>
+<li>data transmission: $R&lt;C$</li>
+<li>Source-channel coding theorem
+<ul>
+<li>if $V_1,V_2,\cdots,V_n$ is a finite alphabet stochastic process that satisfies the AEP and $H(\mathcal{V})&lt;C$, exists source-channel code with probability of error $\rightarrow 0$</li>
+<li>if $H(\mathcal{V})&gt;C$, probability of error is bounded away from zero</li>
+</ul>
+</li>
+</ul>
+<h3 id="error-correction-code">Error Correction Code</h3>
+<ul>
+<li>Repetition code</li>
+<li>Parity check code</li>
+<li>Hamming code (n,k,d)</li>
+<li>BCH code</li>
+<li>Convolutional code</li>
+<li>LDPC code</li>
+<li>Polar code</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

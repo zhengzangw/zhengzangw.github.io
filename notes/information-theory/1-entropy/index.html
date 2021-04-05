@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1. Entropy | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.db87d7b55e29b75699acf73451f98e37f7029321133dd8ae45930563c6c76609.css" integity="sha256-24fXtV4pt1aZrPc0UfmON/cCkyETPdiuRZMFY8bHZgk=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#preliminary">Preliminary</a></li>
+    <li><a href="#entropy">Entropy</a></li>
+    <li><a href="#inequality">Inequality</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="preliminary">Preliminary</h2>
+<ul>
+<li>A mathematical theory of communicationo - Shannon 1948</li>
+<li>Convexity: $f(\sum_ip_ix_i)\leq \sum_ip_if(x_i)$
+<ul>
+<li>$f(E_p x_i)\leq E_pf(x_i)$</li>
+<li>convex: $f''(x)\geq 0$</li>
+</ul>
+</li>
+<li>$f(x)=-x\log x$ is concave</li>
+</ul>
+<h2 id="entropy">Entropy</h2>
+<p>Entropy: $H(X)=-\sum_{x\in\mathcal{X}}p(x)\log p(x)=E_{p}\log\frac{1}{p(X)}$</p>
+<ul>
+<li>$0\log 0\rightarrow 0$</li>
+<li>$0\leq H(X)\leq \log|\mathcal{X}|$</li>
+<li>uniform $X$: $H(X)=\log|\mathcal{X}|$</li>
+<li>$H_b(X)=\log_baH_a(X)$</li>
+</ul>
+<p>Joint Entropy: $H(X,Y)=-E\log p(X,Y)=-\sum_{x\in\mathcal{X}}\sum_{y\in\mathcal{Y}}p(x,y)\log p(x,y)$</p>
+<ul>
+<li>$H(X,X) = H(X)$</li>
+<li>$H(X,Y) = H(Y,X)$</li>
+</ul>
+<p>Conditional Entropy: $H(Y|X)=\sum_{x\in\mathcal{X}}p(x)H(Y|X=x)=-\sum_{x\in\mathcal{X}}\sum_{y\in\mathcal{Y}}p(x,y)\log p(y|x)=-E\log p(y|x)$</p>
+<ul>
+<li>$H(Y|X)\leq H(X)$</li>
+<li>remaining uncertainty when $X$ is known</li>
+<li>$H(X|Y)\neq H(Y|X)$</li>
+<li>$H(X|Y)+H(Y)=H(Y|X)+H(X)=H(X,Y)$</li>
+<li>Chain rule: $H(X_1,X_2,\cdots,X_n)=H(X_1)+H(X_2|X_1)+\cdots+H(X_n|X_{n-1},\cdots,X_1)$</li>
+<li><em>Zero conditional entropy</em>: if $H(Y|X)=0,Y=f(X)$</li>
+</ul>
+<p>Relative Entropy (Kullback-Leibler distance): $D(p|q)=\sum_{x\in X}p(x)\log\frac{p(x)}{q(x)}=E_p\log\frac{p(X)}{q(X)}=E_p(-\log q(x))-H(p)$</p>
+<ul>
+<li>$D(p|q)\geq 0$ equality iff $p(x)=q(x)$ (prove by concavity)</li>
+<li>variational distance $V(p,q)=\sum_{x\in\mathcal{X}}|p(x)-q(x)|$</li>
+<li>Pinsker&rsquo;s inequlity: $D(p|q)\geq\frac{1}{2\ln 2}V^2(p,q)$</li>
+<li>$D(p|u)=\log|\mathcal{X}|-H(X)$</li>
+</ul>
+<p>Mutual Information: $I(X;Y)=\sum_x\sum_yp(x,y)\log\frac{p(x,y)}{p(x)p(y)}=D(p(x,y)|p(x)p(y))=E_{p(x,y)}\log\frac{p(X,Y)}{p(X)p(Y)}$</p>
+<ul>
+<li>Independent $I(X;Y)=0$</li>
+<li>$I(X;X)=H(X)$</li>
+<li>$I(X;Y)=H(X)-H(X|Y)=H(X)+H(Y)-H(X,Y)$</li>
+</ul>
+<p>Conditional Mutual Information: $I(X;Y|Z)=H(X|Z)-H(X|Y,Z)=E_{p(x,y,z)}\log\frac{p(X,Y|Z)}{p(X|Z)p(Y|Z)}$</p>
+<ul>
+<li>Chain rule: $I(X_1,X_2,\cdots,X_n;Y)=\sum_{i=1}^nI(X_i;Y|X_{i-1},\cdots,X_1)$</li>
+</ul>
+<p>Conditional Relative Entropy: $D(p(y|x)|q(y|x))=E_{p(x,y)}\log \frac{q(Y|X)}{q(Y|X)}$</p>
+<h2 id="inequality">Inequality</h2>
+<ul>
+<li>$H(X_1,X_2,\cdots,X_n)\leq\sum_{i=1}^nH(X_i)$ equality iff $X_i$ are independent</li>
+<li>$I(X;Y|Z)$ and $I(X;Y)$
+<ul>
+<li>$X\rightarrow Y\rightarrow Z:I(X;Z|Y)=0$</li>
+<li>$Z=X+Y\bmod 2:I(X;Y|Z)&gt;I(X;Y)$</li>
+</ul>
+</li>
+<li>Data Processing Inequality: $X\rightarrow Y\rightarrow Z,I(X;Y)\geq I(X;Z)$
+<ul>
+<li>$X\rightarrow Y\rightarrow Z,I(X;Y)=I(X;Z)+I(X;Y|Z)$</li>
+</ul>
+</li>
+<li>$I(X;Y;Z)=I(X;Y)-I(X;Y|Z)$</li>
+<li>Perfect Secrecy: $H(X)\leq H(Z)$ 信息长度小于秘钥长度</li>
+<li>Fano&rsquo;s Inequality: relationship between $P_e$ and $H(X|Y)$
+<ul>
+<li>$X\rightarrow Y\rightarrow \hat X,P_e=P(\hat X\neq X)$</li>
+<li>$H(P_e)+P_e\log|\mathcal{X}|\geq H(X|\hat X)\geq H(X|Y)$</li>
+<li>weaken: $P_e\geq\frac{H(X|Y)-1}{\log |\mathcal{X}|}$</li>
+</ul>
+</li>
+<li>Log sum inequality: for nonnegative numbers, $\sum_{i=1}^na_i\log\frac{a_i}{b_i}\geq(sum_{i=1}^na_i)\log\frac{\sum_{i=1}^na_i}{\sum_{i=1}^nb_i}$, equal iff $\frac{a_i}{b_i}=c$</li>
+<li>$H(p)$ is concave of $p$</li>
+<li>$D(p|q)$ is convex in pair $(p,q)$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

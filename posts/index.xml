@@ -8,7 +8,35 @@
     <language>en-us</language>
     <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
     <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
-    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>量化投资</title>
+      <link>https://zhengzangw.com/posts/invest/</link>
+      <pubDate>Sun, 21 Feb 2021 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/invest/</guid>
+      <description>基本金融知识 tushare 包 </description>
+    </item>
+    
+    <item>
+      <title>3D reconstruction</title>
+      <link>https://zhengzangw.com/posts/3d-reconstruction/</link>
+      <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/3d-reconstruction/</guid>
+      <description>介绍  主动式/被动式 主要方法：立体视觉，深度图片 三维数据获取方法  软件建模（精细） 激光设备扫描 利用视频与图像进行重建   应用场景  高精度的三维重建 大规模的三维重建 非刚体的 structure from motion 动态三维重建    图像特征提取  霍夫变换 D2-Net SIFT  相机模型 坐标转换  坐标系  世界 world: $O_w-X_wY_wZ_w$ 相机 camera: 原点位于镜头光心，x,y 与相面两边平行，z 为镜头光轴 图像 $XOY$: 原点为主点（光轴相面交点），单位为毫米 像素 $uov$: 反映 CCD/CMOS 芯片中像素排列情况 （光-&amp;gt;电），单位为像素（整数）   坐标系转换  world to camera: $[X_c, Y_c, Z_c]^T=R[X_w,Y_w,Z_w]^T+T$  $[x_c, y_c, z_c, 1]^T=[R, t; 0, 1][x_w,y_w,z_w,1]^T$ $R,t$ 为相机外参 Camera Extrinsics 旋转矩阵：$R(X_A,\psi),R(Y_A,\theta),R(Z_A,\phi)$  左乘：相对于固定坐标系变换 右乘：相对于自身（活跃）坐标系   欧拉角：$zXZ-(\alpha,\beta,\gamma)$ （万向节死锁） 轴角：$([x, y, z]^T, \theta)$ 四元数   图像转换为像素：$[u,v,1]^T=[\frac{1}{dX}, 0, u_0; 0,\frac{1}{dY},v_0; 0,0,1][X, Y, 1]^T$  $[\frac{1}{dX}, 0, u_0; 0,\frac{1}{dY},v_0; 0,0,1]$ $dX,dY$ 像素在 $X,Y$ 轴上的物理尺度 ($u=\frac{X}{dX}+u_0$) $u_0,v_0$ 为主点在图像坐标中的坐标   camera to image (针孔成像原理)：$s[X, Y, 1]^T=[f, 0, 0, 0; 0, f, 0, 0; 0, 0, 1, 0][x, y, z, 1]^T$  $s$ 为比例因子 $s=z$ $f$ 为有效焦距   内参  $K=[f_x, 0, u_0; 0, f_y, v_0; 0, 0, 1]$ $P=[f_x, 0, u_0, 0; 0, f_y, v_0, 0; 0, 0, 1, 0]$     畸变 (distortion)：对直线投影的偏移（不能保持直线）  中心正常，越边缘越严重 径向畸变（主要）：透镜形状  桶形、枕形、胡子   切向畸变：透镜与图像不平行  薄透镜、离心   其它类型（不显著） 铅锤模型 (Plumb Bob model): 径向复合+薄透镜  畸变参数：$D=(k_1,k_2,p_1,p_2,k_3)$      相机标定  传统方法：一定的摄像机模型下，基于特定实验。经常调整摄像机的需求，设置已知参照物  张正友相机标定法、考虑畸变补偿的两步法等   自标定法：不依赖参照物，利用参数间约束关系  基于 Krupa 方程、分层逐步标定法等    张氏标定法  标定物：棋盘 单应性变换：世界坐标系到像素坐标系的位置映射关系  应用：图像矫正（四个点）、视角变换（普通到 BEV）、图像拼接（不同角度图像转换到同样的视角）、增强现实   图像对应点 $(x&#39;,y&#39;,1),(x,y,1)$, 单应矩阵 $H$（内参与外参的混合）  自由度：8 一个点确定两个方程   张氏标定法  打印棋盘格图纸，贴在物体表面（坐标系 $Z_w=0$） 拍摄一组不同方向的棋盘格图片 对每张拍摄的棋盘图片，检测图片的特征点（角点）   优化  LM 算法    三维重建 双目系统 双目立体视觉重建</description>
+    </item>
+    
+    <item>
+      <title>FMCW Radar</title>
+      <link>https://zhengzangw.com/posts/fmcw/</link>
+      <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/fmcw/</guid>
+      <description>Frequency-modulated continuous-waves radar
+Range  chirp  frequency: $f_c=77$ GHz duration: $T_c=40$ us bandwidth: $B=4$ GHz slope: $S=100$ MHz/us   mixer: $x_{\text{out}}=\sin[(w_1-w_2)t+(\phi_1-\phi_2)]$ IF signal  after $\tau=\frac{2d}{c}$, RX receives IF frequency: $f_\tau=S\tau=\frac{S2d}{c}$   discriminate two frequency in frequency domain: in time domain, two signal should have $&amp;gt;1$ cycles difference  window of $T$ can seperate $\frac{1}{T}$ Hz   Range Resolution:  $\Delta f=\frac{S2\Delta d}{c}&amp;gt;\frac{1}{T_c}$ $\Delta d&amp;gt;\frac{c}{2B}$   Digitize: LPF (remove high-freq) $\rightarrow$ ADC (sample, quantitize) $\rightarrow$ DSP (FFT) Maximum Distance: $d_{\max}$  IF bandwidth (LPF) $&amp;gt;\frac{S2d_{\max}}{c}$ ADC sampling rate $&amp;gt;\frac{S2d_{\max}}{c}$   Larger Chirp Bandwidth $B$: better resolution Larger IF Bandwidth: faster chirps, better $d_{\max}$  Velocity  IF signal: $A\sin(2\pi ft+\phi_0)$  $f=\frac{S2d}{c}$ $\Delta\phi = 2\pi f_c\Delta\tau=\frac{4\pi\Delta d}{\lambda}$   1mm can lead to 180 degree  Single Object  Transmit two chirps seperated by $T_c$  phase difference $\omega=\frac{4\pi vT_C}{\lambda}$ $v=\frac{\lambda\omega}{4\pi T_c}$   Maximum relative speed: $v_{\max}=\frac{\lambda}{4T_c}$  $|\omega|&amp;lt;\pi$   Velocity Resolution  Continous signal: $\Delta f=\frac{1}{T}$ cycles/sec Discrete signal: $\Delta \omega=\frac{1}{N}$ cycles/sample    Multiple Objects  $N$ equi-spaced chirps Doppler FFT: done along chiprs Velocity Resolution  $\Delta\omega&amp;gt;\frac{\pi}{N}$ $\Delta v&amp;gt;\frac{\lambda}{2NT_c}$    Radar Range Equation  Output power of device $P_t$ TX/RX Antenna Gain: $G$ Radiated Power Density: $\frac{P_t G_{\text{TX}}}{4\pi d^2}W/m^2$ Radar Cross Section of the Target (RCS): $\sigma$ Power reflected by object: $\frac{P_t G_{\text{TX}}\sigma}{4\pi d^2}W$ Power density at RX: $\frac{P_t G_{\text{TX}}\sigma}{(4\pi)^2 d^4}W/m^2$ Power captured at RX: $\frac{P_tG_{\text{TX}}\sigma A_{\text{RX}}}{{(4\pi)^2d^4}}W$ $A_{\text{RX}}=\frac{G_{\text{RX}}\lambda^2}{4\pi}$ SNR: $\frac{\sigma P_tG_{\text{TX}} G_{\text{RX}}\lambda^2T_{\text{meas}}}{{(4\pi)^3d^4 kTF}}W$ minimum SNR that is required for detecting an target (15dB - 20dB)  Angle  Angle of Arrival 2D-FFT: range-FFT (row) and dropplet-FFT (column, chirp) additional distance: $d\sin\theta$  Single Object (angle)  $\omega=\frac{2\pi d\sin\theta}{\lambda}$ $\theta=\sin^{-1}(\frac{\lambda\omega}{2\pi d})$  $\theta=0$ is most sensitive accuracy degrades as $\theta$ approaches 90 degree   maximun angle: $\theta=\sin^{-1}(\frac{\lambda}{2d})$  Multiple Objects (angle)  N annetina, Angle-FFT Angle Resolution: $\theta_{\text{res}}=\frac{\lambda}{Nd\cos\theta}$  $d=\frac{\lambda}{2}$ and $\theta=0$: $\theta_{\text{res}}=\frac{2}{N}$    </description>
+    </item>
+    
     <item>
       <title>Tricks for Python</title>
       <link>https://zhengzangw.com/posts/python-trick/</link>
@@ -28,7 +56,7 @@ from setuptools import find_packages, setup setup( name=&amp;#39;flaskr&amp;#39;
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/number-of-people/</guid>
       <description>行政级别  国 部（省） 局（厅） 处（县） 科（乡）  人口 2015~2019 间约数
- 总人口: 1.4e9 0-15: 2.5e8 &amp;gt;60 : 2.5e8 出生人数：1.6e7 死亡人数：1.1e7 净增长：4e6 学历  大学 1.7e8 高中 2.1e8 初中 4.8e8 小学 3.3e8   一届学生  高中：1.3e7 普高：0.8e7 高考：1e7  江苏高考：33.9 万 南大：&amp;lt;1500 双一流：1 万   高等：0.76e7 普高：0.42e7 双一流：2% 硕士：7.5e5 博士：0.8e5   留学生(18)：66.2 万 网民(19)：8.4e8 (61.2%)  学生 26% 个体户、自由职业者 20%    收入 </description>
+ 总人口: 1.4e9 0-15: 2.5e8 &amp;gt;60 : 2.5e8 出生人数：1.6e7 死亡人数：1.1e7 净增长：4e6 学历  大学 1.7e8 高中 2.1e8 初中 4.8e8 小学 3.3e8   一届学生  高中：1.3e7 普高：0.8e7 高考：1e7  江苏高考：33.9 万 南大：&amp;lt;1500 双一流：1 万   高等：0.76e7 普高：0.42e7 双一流：2% 硕士：7.5e5 博士：0.8e5   留学生(18)：66.2 万 网民(19)：8.4e8 (61.2%)  学生 26% 个体户、自由职业者 20%    收入 病  HPV: 7900 万美国人  </description>
     </item>
     
     <item>

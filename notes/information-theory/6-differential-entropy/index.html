@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>6. Differential Entropy | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.db87d7b55e29b75699acf73451f98e37f7029321133dd8ae45930563c6c76609.css" integity="sha256-24fXtV4pt1aZrPc0UfmON/cCkyETPdiuRZMFY8bHZgk=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#entropy">Entropy</a>
+      <ul>
+        <li><a href="#relation-to-discrete">Relation to discrete</a></li>
+        <li><a href="#aep">AEP</a></li>
+      </ul>
+    </li>
+    <li><a href="#covariance-matrix">Covariance Matrix</a></li>
+    <li><a href="#multivariate-normal-distribution">Multivariate Normal Distribution</a></li>
+    <li><a href="#maximum-entropy">Maximum Entropy</a></li>
+    <li><a href="#inequality">Inequality</a>
+      <ul>
+        <li><a href="#hadamards-inequality">Hadamard&rsquo;s Inequality</a></li>
+        <li><a href="#balanced-information-inequailty">Balanced Information Inequailty</a></li>
+        <li><a href="#hans-inequality">Han&rsquo;s Inequality</a></li>
+        <li><a href="#information-of-heat">Information of Heat</a></li>
+        <li><a href="#entropy-power-inequality">Entropy power inequality</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="entropy">Entropy</h2>
+<ul>
+<li>(continuous) $X$ with cumulative distribution function $F(x)=Pr(X\leq x)$</li>
+<li>support set of $X$: $f(x)&gt;0$</li>
+<li>differential entropy $h(x)$: $h(X)=-\int_Sf(x)\log f(x)dx$
+<ul>
+<li>$h(X+c) = h(X)$</li>
+<li>$h(aX)=h(X)+\log|a|$</li>
+<li>$h(AX)=h(X)+\log|\det A|$</li>
+<li>$h(X)$ may be negative ($f(x)$ may $&gt;1$)</li>
+</ul>
+</li>
+<li>uniform: $h(X)=\log a$</li>
+<li>Gaussian: $h(X)=\frac{1}{2}\log 2\pi e\sigma^2$</li>
+<li>$h(X)$: Infinite Information
+<ul>
+<li>does not serve as a measure of the average amount of information</li>
+</ul>
+</li>
+<li>$h(X_1,X_2,\cdots,X_n)=-\int f(x^n)\log f(x^n)dx^n$</li>
+<li>$h(X|Y)=-\int f(x,y)\log f(x|y)dxdy)$</li>
+<li>Relative Entropy: $D(f|g)=\int f\log\frac{f}{g}\geq 0$</li>
+<li>mutual information: $I(X;Y)=\int f(x,y)\log\frac{f(x,y)}{f(x)f(y)}dxdy\geq 0$</li>
+</ul>
+<h3 id="relation-to-discrete">Relation to discrete</h3>
+<ul>
+<li>$X^\Delta=x_i$ if $i\Delta\leq x&lt;(i+1)\Delta$</li>
+<li>$p_i=Pr(X^{Delta}=x_i)=f(x_i)\Delta$</li>
+<li>$H(X^{\Delta})=-\sum\Delta f(x_i)\log f(x_i)-\log \Delta$</li>
+<li>as $\Delta\rightarrow 0,H(X^\Delta)+\log \Delta\rightarrow h(f)=h(X)$</li>
+</ul>
+<h3 id="aep">AEP</h3>
+<ul>
+<li>$-\frac{1}{n}\log f(X_1,X_2,\cdots,X_n)\rightarrow E(-\log f(X))=h(f)$</li>
+<li>$A_\epsilon^{(n)}={(x_1,x_2,\cdots,x_n)\in S^n:|-\frac{1}{n}\log f(x_1,\cdots, x_n)-h(X)|\leq\epsilon}$</li>
+<li>$\text{Vol}(A)=\int_Adx_1dx_2\cdots dx_n$</li>
+<li>Properties
+<ul>
+<li>$Pr(A_\epsilon^{(n)})&gt;1-\epsilon$ for $n$ sufficiently large</li>
+<li>$\text{Vol}(A_\epsilon^{(n)})\leq 2^{n(h(X)+\epsilon)}$</li>
+<li>$\text{Vol}(A_\epsilon^{(n)})\geq (1-\epsilon)2^{n(h(X)-\epsilon)}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="covariance-matrix">Covariance Matrix</h2>
+<ul>
+<li>cov($X$, $Y$)=$E(X-EX)(Y-EY)=E(XY)-(EX)(EY)$</li>
+<li>$\vec X$: $K_X=E(X-EX)(X-EX)^T=[\text{cov}(X_i;X_j)]$</li>
+<li>correlation matrix: $\widetilde K_X=EXX^T=[EX_iX_j]$
+<ul>
+<li>symmetric and positive semidifinite</li>
+</ul>
+</li>
+<li>$K_X=\widetilde K_X-(EX)(EX^T)$</li>
+<li>$Y=AX$
+<ul>
+<li>$K_Y=AK_XA^T$</li>
+<li>$\widetilde K_Y=A\widetilde K_XA^T$</li>
+</ul>
+</li>
+</ul>
+<h2 id="multivariate-normal-distribution">Multivariate Normal Distribution</h2>
+<p>$f(x)=\frac{1}{(2\pi)^{\frac{n}{2}}}\exp(-\frac{1}{2}(x-\mu)^TK^{-1}(x-\mu))$</p>
+<ul>
+<li>uncorrelated then independent</li>
+<li>$h(X_1,X_2,\cdots,X_n)=h(\mathcal{N}(\mu, K))=\frac{1}{2}\log(2\pi e)^n|K|$</li>
+<li>the mutual information between $X$ and $Y$ is $I(X;Y)=\sup_{P,Q}I(<input checked="" disabled="" type="checkbox"> _P;[Y]_Q)$ over all finite partitions $P$ and $Q$</li>
+<li>Correlatetd Gaussian $(X,Y)\sim\mathcal{N}(0,K)$
+$$K=\begin{bmatrix}\sigma^2 &amp; \rho\sigma^2\\rho \sigma^2 &amp; \sigma^2\end{bmatrix}$$</li>
+</ul>
+<h2 id="maximum-entropy">Maximum Entropy</h2>
+<ul>
+<li>$X\in R$ have mean $\mu$ and variance $\sigma^2$, then $h(X)\leq\frac{1}{2}\log 2\pi e\sigma^2$ with equality iff $X\sim\mathcal{N}(\mu, \sigma^2)$</li>
+<li>$X\in R$ that $EX^2\leq \sigma^2$, then $h(X)\leq\frac{1}{2}\log 2\pi e\sigma^2$</li>
+<li>Problem: find density $f$ over $S$ meeting moment constraints $\alpha_1,\cdots,\alpha_m$
+<ul>
+<li>$f(x)\geq 0$</li>
+<li>$\int_S f(x)dx=1$</li>
+<li>$\int_S f(x)r_i(x)dx=\alpha_i$</li>
+</ul>
+</li>
+<li>Maximum entropy distribution: $f^*(x)=f_\lambda(x)=e^{\lambda_0+\sum_{i=1}^m\lambda_ir_i(x)}$
+<ul>
+<li>$S=[a,b]$ with no other constraints: uniform distributioni over this range</li>
+<li>$S=[0,\infty), EX=\mu$, then $f(x)=\frac{1}{\mu}e^{-\frac{x}{\mu}}$</li>
+<li>$S=(-\infty, \infty), EX=\alpha_1,EX^2=\alpha_2$, then $\mathcal{N}(\alpha_1,\alpha_2-\alpha_1^2)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="inequality">Inequality</h2>
+<h3 id="hadamards-inequality">Hadamard&rsquo;s Inequality</h3>
+<ul>
+<li>$K$ is a nonnegative definite symmetric $n\times n$ matrix</li>
+<li>(Hadamard) $|K|\leq\prod K_{ii}$ with equality iff $K_{ij}=0,i\neq j$</li>
+</ul>
+<h3 id="balanced-information-inequailty">Balanced Information Inequailty</h3>
+<ul>
+<li>$h(X,Y)\leq h(X)+h(Y)$</li>
+<li>neither $h(X,Y)\geq h(X)$ nor $h(X,Y)\leq h(X)$</li>
+<li>$[n]={1,2,\cdots,n}$, for $\alpha\subset[n]$, $X_\alpha=(X_i:i\in\alpha)$</li>
+<li>linear continous inequality $\sum_\alpha w_\alpha h(X_\alpha)\geq 0$ is valid iff its corresponding discrete counterpart $\sum_\alpha w_\alpha H(X_\alpha)\geq 0$ is valid and balanced</li>
+</ul>
+<h3 id="hans-inequality">Han&rsquo;s Inequality</h3>
+<ul>
+<li>$h_k^{(n)}=\frac{1}{\binom{n}{k}}\sum_{S:|S|=k}\frac{h(X(S))}{k}$</li>
+<li>$g_k^{(n)}=\frac{1}{\binom{n}{k}}\sum_{S:|S|=k}\frac{h(X(S))|X)(S^c)}{k}$</li>
+<li>Han&rsquo;s Inequality: $h_1^{(n)}\geq h_2^{(n)}\geq\cdots\geq h_n^{(n)}=H(X_1,\cdots,X_n)/n=g_n^{(n)}\geq\cdots\geq g_2^{(n)}\geq g_1^{(n)}$</li>
+</ul>
+<h3 id="information-of-heat">Information of Heat</h3>
+<ul>
+<li>Heat equation (Fourier, 热传导方程): $x$ is position and $t$ is time, $\frac{\partial}{\partial t}f(x, t)=\frac{1}{2}\frac{\partial^2}{\partial x^2}f(x,t)$</li>
+<li>$Y_t=X+\sqrt{t}Z,Z\sim\mathcal{N}(0,1)$, then $f(y;t)=\int f(x)\frac{1}{\sqrt{2\pi t}}e^{-\frac{(y-x)^2}{2t}}dx$</li>
+<li>Gaussian channel &ndash; Heat Equaition</li>
+<li>Fisher Information: $I(X)=\int_{-\infty}^{+\infty}f(x)[\frac{\frac{\partial}{\partial x}f(x)}{f(x)}]^2dx$</li>
+<li>De Bruijn&rsquo;s Identity: $\frac{\partial}{\partial t}h(Y_t)=\frac{1}{2}I(Y_t)$</li>
+</ul>
+<h3 id="entropy-power-inequality">Entropy power inequality</h3>
+<ul>
+<li>EPI (Entropy power inequality) $e^{\frac{2}{n}h(X+Y)}\geq e^{\frac{2}{n}h(X)}+e^{\frac{2}{n}h(Y)}$ &ldquo;最为强悍的工具&rdquo;
+<ul>
+<li>Uncertainty principle</li>
+<li>Young&rsquo;s inequality</li>
+<li>Nash&rsquo;s inequality</li>
+<li>Cramer-Rao bound: $V(\hat \theta)\geq\frac{1}{I(\theta)}$</li>
+</ul>
+</li>
+<li>FII (Fisher information inequality) $\frac{1}{I(X+Y)}\geq\frac{1}{I(X)}+\frac{1}{I(Y)}$</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>

@@ -153,6 +153,73 @@ i&lt;/p&gt;
     </item>
     
     <item>
+      <title>Mechanics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-mechanics/</link>
+      <pubDate>Sat, 24 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-mechanics/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;物理学&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;物质
+&lt;ul&gt;
+&lt;li&gt;microscopic: elementary particles （大数粒子组成体系中个别粒子的行为）&lt;/li&gt;
+&lt;li&gt;mesoscopic(介观)&lt;/li&gt;
+&lt;li&gt;macroscopic：大数粒子组成的体系整体行为&lt;/li&gt;
+&lt;li&gt;cosmological&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;运动：机械运动、热运动、微观粒子运动等（基于时间和空间）&lt;/li&gt;
+&lt;li&gt;相互作用：由场传递，引力、弱相互作用、电磁相互作用、强相互作用&lt;/li&gt;
+&lt;li&gt;orders, symmetry, symmetry-breaking, conservation laws or invariance&lt;/li&gt;
+&lt;li&gt;物理学发展历史
+&lt;ul&gt;
+&lt;li&gt;19 世纪中叶前：实验科学&lt;/li&gt;
+&lt;li&gt;20 世纪初：狭义和广义相对论，量子力学&lt;/li&gt;
+&lt;li&gt;20 世纪中叶：实验+理论科学&lt;/li&gt;
+&lt;li&gt;如今三足鼎立：实验物理、理论物理、计算物理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;基本理论
+&lt;ul&gt;
+&lt;li&gt;牛顿力学/经典力学&lt;/li&gt;
+&lt;li&gt;热力学&lt;/li&gt;
+&lt;li&gt;电磁学&lt;/li&gt;
+&lt;li&gt;相对论&lt;/li&gt;
+&lt;li&gt;量子力学&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;科学研究方法
+&lt;ul&gt;
+&lt;li&gt;观测、实验、模拟得到事实和数据&lt;/li&gt;
+&lt;li&gt;用已知原理分析事实和数据&lt;/li&gt;
+&lt;li&gt;（理论）形成假说和理论用以解释&lt;/li&gt;
+&lt;li&gt;（理论）预言新的事实和结果&lt;/li&gt;
+&lt;li&gt;（理论）用新的事例修改和更新理论&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;基本量（操作性定义）：长度、质量、时间、电流、热力学温度、物质的量、发光强度&lt;/li&gt;
+&lt;li&gt;非决定论性质
+&lt;ul&gt;
+&lt;li&gt;微观客体量子力学不确定性关系&lt;/li&gt;
+&lt;li&gt;多粒子系统中个别粒子统计不确定性&lt;/li&gt;
+&lt;li&gt;非线性动力系统中的不可预言性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;kinematics&#34;&gt;Kinematics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;diplacement: $\Delta\vec r=\vec r(t+\Delta t)-r(\vec t)$&lt;/li&gt;
+&lt;li&gt;velocity: $\overline{\vec v}=\frac{\Delta\vec r}{\Delta t}$&lt;/li&gt;
+&lt;li&gt;speed: $\overline{v}=\frac{\Delta s}{\Delta t}$&lt;/li&gt;
+&lt;li&gt;acceleration: $\vec a=\frac{d\vec v}{dt}$&lt;/li&gt;
+&lt;li&gt;angular velocity vector: $\vec \omega =\frac{d\vec\theta}{dt} = \dot{\varphi}\vec k$&lt;/li&gt;
+&lt;li&gt;velocity in circular motion: $\dot{\vec \rho}=\vec \omega\times\vec\rho$&lt;/li&gt;
+&lt;li&gt;Oscillation: temporal periodicity and spatial repetitiveness&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>2-一元微积分</title>
       <link>https://zhengzangw.com/notes/calculus/section2/</link>
       <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
@@ -282,6 +349,25 @@ i&lt;/p&gt;
     </item>
     
     <item>
+      <title>Thermal Physics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-thermal/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-thermal/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫
+NJU: University Physics I - 卢德鑫&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;temperature&#34;&gt;Temperature&lt;/h1&gt;
+&lt;h2 id=&#34;basic-concept&#34;&gt;Basic Concept&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;phase: homogeneous part of system&lt;/li&gt;
+&lt;li&gt;equilibrium state: a state of a system in which macroscopic variables have definite values that remain constant as long as the external conditions are unchanged&lt;/li&gt;
+&lt;li&gt;relaxation time: $\tau$, the time system needs to adjust itself to follow the change of the surrounding.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>Chapter 2</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter2/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
@@ -363,6 +449,20 @@ i&lt;/p&gt;
     </item>
     
     <item>
+      <title>Electromagnetism</title>
+      <link>https://zhengzangw.com/notes/physics/physics-electromagnetism/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-electromagnetism/</guid>
+      <description>&lt;h1 id=&#34;electromagnetism&#34;&gt;Electromagnetism&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Coulomb&amp;rsquo;s Law: $\overrightarrow{F_{21}} = -\overrightarrow{F_{12}} = k\frac{q_1q_2}{r_{12}^3}\overrightarrow{r_{12}}$&lt;/li&gt;
+&lt;li&gt;Electric Field: $\overrightarrow{E} \equiv lim_{q\rightarrow 0}\frac{\vec F}{q} = \frac{1}{4\pi\epsilon}*\frac{q}{r^3}\overrightarrow{r_{12}}$&lt;/li&gt;
+&lt;li&gt;Dipole moment(dipole field): $p\equiv q*2a$&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>4-多元微分</title>
       <link>https://zhengzangw.com/notes/calculus/section4/</link>
       <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
@@ -387,6 +487,27 @@ i&lt;/p&gt;
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/3-%E4%BF%A1%E5%8F%B7%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF/</guid>
       <description>基带信号：信源发出的没有经过调制，低频信号 载波信号：调制到高频的信号  数字基带信号（数数）    Data Element Signal Element     Data rate $R$ Signal rate $D=\frac{R}{L}=\frac{R}{\log_2M}$   $T_b=\frac{1}{R}$ 调制速率   比特差错率 BER      接受端需求  每比特定时关系 每比特信号电平   BER 影响  信噪比 数据率 带宽 编码机制       编码术语      单极性 正、零电平   双极性 正、负电平   归零 信号电压在码元终止前回到零电平   双相位 单码用多相位表示   差分波形 利用相邻码元的电平跳变和不变来表示消息代码   多电平波形      码型选择  信号谱频：  传输功率集中在带宽中心位置 减少高频 去掉直流：0，1 等概率则无直流分量   时钟同步  定时信息   差错检测 信号干扰 降低通信延迟和成本    不归零码 NRZ  NRZ-L：双极性不归零 NRZI: 双极性不归零差分 缺点  包含直流成分 缺乏同步能力    多电平二进制  双极性 AMI: 没有信号为 0，1 为正负脉冲交替 伪三进制码：没有信号为 1，0 为正负脉冲交替 nBmB 码：低速情况解决同步问题 $B_T=0.</description>
+    </item>
+    
+    <item>
+      <title>Fundamental Modern Physics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-modern/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-modern/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫&lt;br&gt;
+NJU: University Physics II - 许望&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;energy-quantization&#34;&gt;Energy Quantization&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;$\nu\lambda=c$&lt;/li&gt;
+&lt;li&gt;Blackbody radiation(infrared to visible spectrum): $u=u(\nu,T)$ or $u=u(\lambda,T)$&lt;/li&gt;
+&lt;li&gt;Stefan-Boltzman Law: $J_B=\sigma T^4$&lt;/li&gt;
+&lt;li&gt;relation between density of outgoing energy flow $J_u$ and density of energy u in the cavity: $J_u=\frac{1}{4}uc$, $u(T)=\int_0^\infty(\nu,T)d\nu$&lt;/li&gt;
+&lt;li&gt;Radiation spectrun(or spectrum density): $u(\nu,T)$&lt;/li&gt;
+&lt;li&gt;mean energy $\overline{\varepsilon}$: $u(\nu)d\nu=\frac{8\pi\nu^2}{c^3}\overline{\varepsilon}d\nu$&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -424,6 +545,45 @@ Object File Format  DOS - COM System V UNIX - COFF (Common Object File-Format) W
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/4-%E5%B7%AE%E9%94%99%E6%A3%80%E9%AA%8C%E5%92%8C%E7%BA%A0%E6%AD%A3/</guid>
       <description>差错类型  单比特差错 突发差错     概率值      $P_b$ BER, 接受到一个差错比特的概率   $P_1$ 无比特差错帧到达概率   $P_2$ 某种差错检测算法下，含有一个或多个未检测到的比特差错的帧的到达概率   $P_3$ 某种差错检测算法下，含有一个或多个且没有未检测到的比特差错的帧的到达概率    差错检测 奇偶检验  两个比特错误无法检测 同步传输：偶校验 异步传输：奇校验  二维奇偶检验  $i+j+1$ 个 矩形四个错误无法检测  因特网检验和  发送方计算检验位  将两个数字视为无符号二进制整数相加 如果最左边有进位比特，则和再加1 取反码   接收方验证  加上检验位后应全1    循环冗余检验 (CRC,Cyclic Redundancy Check)  发送的数据：$T[D(k)|F(n-k)]$  $D$ 数据 $F$ 检验序列 $P(n-k+1)$ 除数 $T=2^{n-k}D+F\equiv0\pmod{P}$   $F=2^{n-k}D\bmod P$  模2运算 多项式表示  $11001 \rightarrow X^4+X^3+1$   寄存器  Galois 域除法器      差错纠正  汉明距离 $d(v_1,v_2)$  差错检测+差错重传  无线链路:高比特差错率导致大量重传 卫星链路: 长传播时延导致效率低下  前向纠错 (FEC)  差错类型  无差错 可检测，可纠正差错 可检测，不可纠正之差错 不可检测之差错   见《代数编码》  </description>
+    </item>
+    
+    <item>
+      <title>Field-Theory</title>
+      <link>https://zhengzangw.com/notes/physics/field-theory/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/field-theory/</guid>
+      <description>&lt;h1 id=&#34;coordinate-system&#34;&gt;Coordinate system&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Cartesian system $(\vec i,\vec j,\vec k)$
+&lt;ul&gt;
+&lt;li&gt;orthogonal: $\vec i\cdot\vec j=\vec j\cdot\vec k=\vec k\cdot\vec i=0$&lt;/li&gt;
+&lt;li&gt;right-handed screw relation: $\vec i\times\vec j=\vec k$, $\vec j\times\vec k=\vec i$, $\vec k\times \vec i=\vec j$&lt;/li&gt;
+&lt;li&gt;$A\cdot B = A_1B_1+A_2B_2+A_3B_3$&lt;/li&gt;
+&lt;li&gt;$$
+A\times B=\det(\left[
+\begin{matrix}
+\vec i &amp;amp; \vec j &amp;amp; \vec k\newline
+A_1 &amp;amp; A_2 &amp;amp; A_3\newline
+B_1 &amp;amp; B_2 &amp;amp; B_3
+\end{matrix}
+\right])
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;polar coordinate systems $(\vec e_\rho, \vec e_\phi)$
+&lt;ul&gt;
+&lt;li&gt;moving frames&lt;/li&gt;
+&lt;li&gt;position vector $\vec\rho=\rho\vec e_\rho$&lt;/li&gt;
+&lt;li&gt;$\vec e_\rho=cos\varphi\vec i+sin\varphi\vec j$&lt;/li&gt;
+&lt;li&gt;$\frac{d\vec e_\rho}{dt}=\dot{\varphi}\vec e_\varphi$&lt;/li&gt;
+&lt;li&gt;$\frac{d\vec e_\varphi}{dt}=-\dot{\varphi}\vec e_\rho$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Spherical systems $(\vec e_\rho, \vec e_\phi, \vec k)$&lt;/li&gt;
+&lt;li&gt;Cylindrical systems&lt;/li&gt;
+&lt;li&gt;intrinsic system&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -1000,107 +1160,6 @@ NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
     </item>
     
     <item>
-      <title>Mechanics</title>
-      <link>https://zhengzangw.com/notes/physics/physics-mechanics/</link>
-      <pubDate>Sat, 24 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/physics-mechanics/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;《大学物理》卢德鑫
-NJU: University Physics I - 卢德鑫&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;kinematics&#34;&gt;Kinematics&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;diplacement: $\Delta\vec r=\vec r(t+\Delta t)-(\vec t)$&lt;/li&gt;
-&lt;li&gt;velocity: $\overline{\vec v}=\frac{\Delta\vec r}{\Delta t}$&lt;/li&gt;
-&lt;li&gt;speed: $\overline{v}=\frac{\Delta s}{\Delta t}$&lt;/li&gt;
-&lt;li&gt;acceleration: $\vec a=\frac{d\vec v}{dt}$&lt;/li&gt;
-&lt;li&gt;angular velocity vector: $\vec \omega =\frac{d\vec\theta}{dt} = \dot{\varphi}\vec k$&lt;/li&gt;
-&lt;li&gt;velocity in circular motion: $\dot{\vec \rho}=\vec \omega\times\vec\rho$&lt;/li&gt;
-&lt;li&gt;Oscillation: temporal periodicity and spatial repetitiveness&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Fundamental Modern Physics</title>
-      <link>https://zhengzangw.com/notes/physics/physics-modern/</link>
-      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/physics-modern/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;《大学物理》卢德鑫
-NJU: University Physics II - 许望&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;energy-quantization&#34;&gt;Energy Quantization&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;$\nu\lambda=c$&lt;/li&gt;
-&lt;li&gt;Blackbody radiation(infrared to visible spectrum): $u=u(\nu,T)$ or $u=u(\lambda,T)$&lt;/li&gt;
-&lt;li&gt;Stefan-Boltzman Law: $J_B=\sigma T^4$&lt;/li&gt;
-&lt;li&gt;relation between density of outgoing energy flow $J_u$ and density of energy u in the cavity: $J_u=\frac{1}{4}uc$, $u(T)=\int_0^\infty(\nu,T)d\nu$&lt;/li&gt;
-&lt;li&gt;Radiation spectrun(or spectrum density): $u(\nu,T)$&lt;/li&gt;
-&lt;li&gt;mean energy $\overline{\varepsilon}$: $u(\nu)d\nu=\frac{8\pi\nu^2}{c^3}\overline{\varepsilon}d\nu$&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Thermal Physics</title>
-      <link>https://zhengzangw.com/notes/physics/physics-thermal/</link>
-      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/physics-thermal/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;《大学物理》卢德鑫
-NJU: University Physics I - 卢德鑫&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;temperature&#34;&gt;Temperature&lt;/h1&gt;
-&lt;h2 id=&#34;basic-concept&#34;&gt;Basic Concept&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;phase: homogeneous part of system&lt;/li&gt;
-&lt;li&gt;equilibrium state: a state of a system in which macroscopic variables have definite values that remain constant as long as the external conditions are unchanged&lt;/li&gt;
-&lt;li&gt;relaxation time: $\tau$, the time system needs to adjust itself to follow the change of the surrounding.&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Field-Theory</title>
-      <link>https://zhengzangw.com/notes/physics/field-theory/</link>
-      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/field-theory/</guid>
-      <description>&lt;h1 id=&#34;coordinate-system&#34;&gt;Coordinate system&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Cartesian system $(\vec i,\vec j,\vec k)$
-&lt;ul&gt;
-&lt;li&gt;orthogonal: $\vec i\cdot\vec j=\vec j\cdot\vec k=\vec k\cdot\vec i=0$&lt;/li&gt;
-&lt;li&gt;right-handed screw relation: $\vec i\times\vec j=\vec k$, $\vec j\times\vec k=\vec i$, $\vec k\times \vec i=\vec j$&lt;/li&gt;
-&lt;li&gt;$A\cdot B = A_1B_1+A_2B_2+A_3B_3$&lt;/li&gt;
-&lt;li&gt;$$
-A\times B=\det(\left[
-\begin{matrix}
-\vec i &amp;amp; \vec j &amp;amp; \vec k\newline
-A_1 &amp;amp; A_2 &amp;amp; A_3\newline
-B_1 &amp;amp; B_2 &amp;amp; B_3
-\end{matrix}
-\right])
-$$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;polar coordinate systems $(\vec e_\rho, \vec e_\phi)$
-&lt;ul&gt;
-&lt;li&gt;moving frames&lt;/li&gt;
-&lt;li&gt;position vector $\vec\rho=\rho\vec e_\rho$&lt;/li&gt;
-&lt;li&gt;$\vec e_\rho=cos\varphi\vec i+sin\varphi\vec j$&lt;/li&gt;
-&lt;li&gt;$\frac{d\vec e_\rho}{dt}=\dot{\varphi}\vec e_\varphi$&lt;/li&gt;
-&lt;li&gt;$\frac{d\vec e_\varphi}{dt}=-\dot{\varphi}\vec e_\rho$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Spherical systems $(\vec e_\rho, \vec e_\phi, \vec k)$&lt;/li&gt;
-&lt;li&gt;Cylindrical systems&lt;/li&gt;
-&lt;li&gt;intrinsic system&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
       <title>Math Miscellaneous</title>
       <link>https://zhengzangw.com/posts/math-not-yet-classifed/</link>
       <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
@@ -1121,20 +1180,6 @@ $$&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;$I_n=\int^\infty_0x^ne^{-x^2}dx=\frac{1}{2}\Gamma(\frac{n+1}{2})$&lt;/li&gt;
 &lt;li&gt;Guassian Integral: $\int_{-\infty}^{\infty}ae^{\frac{-(x-b)^2}{c^2}}=ac\sqrt{\pi}$&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Electromagnetism</title>
-      <link>https://zhengzangw.com/notes/physics/physics-electromagnetism/</link>
-      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/physics-electromagnetism/</guid>
-      <description>&lt;h1 id=&#34;electromagnetism&#34;&gt;Electromagnetism&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Coulomb&amp;rsquo;s Law: $\overrightarrow{F_{21}} = -\overrightarrow{F_{12}} = k\frac{q_1q_2}{r_{12}^3}\overrightarrow{r_{12}}$&lt;/li&gt;
-&lt;li&gt;Electric Field: $\overrightarrow{E} \equiv lim_{q\rightarrow 0}\frac{\vec F}{q} = \frac{1}{4\pi\epsilon}*\frac{q}{r^3}\overrightarrow{r_{12}}$&lt;/li&gt;
-&lt;li&gt;Dipole moment(dipole field): $p\equiv q*2a$&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

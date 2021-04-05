@@ -7,7 +7,7 @@
     <title>集合与测度 | Zangwei</title>
 
     
-    <link rel="stylesheet" href="/scss/main.min.0f39d3a10d2b12312360655e4c36a82b5248ef6d4a7d090e10f0bb9bb1286a06.css" integity="sha256-DznToQ0rEjEjYGVeTDaoK1JI721KfQkOEPC7m7EoagY=">
+    <link rel="stylesheet" href="/scss/main.min.db87d7b55e29b75699acf73451f98e37f7029321133dd8ae45930563c6c76609.css" integity="sha256-24fXtV4pt1aZrPc0UfmON/cCkyETPdiuRZMFY8bHZgk=">
 
     <script type="text/javascript" src="/js/dark.js"></script>
 <script>
@@ -160,15 +160,15 @@
 <li>$\bigcap_{\lambda\in \Lambda}={x:\forall \lambda\in\Lambda,x\in A_\lambda}$</li>
 <li>数列的上下极限
 <ul>
-<li>$\overline\lim_{n\rightarrow\infty} a_n=\lim_{n\rightarrow\infty}\sup_{k\geq n}{a_k}=\inf_{n\geq 1}\sup_{k\geq n}{a_k}$ （最大的聚点）</li>
-<li>$\underline\lim_{n\rightarrow\infty}a_n=\lim_{n\rightarrow\infty}\inf_{k\geq n}{a_k}=\sup_{n\geq 1}\inf_{k\geq n}{a_k}$ （最小的聚点）</li>
+<li>$\overline{\lim_{n\rightarrow\infty}} a_n=\lim_{n\rightarrow\infty}\sup_{k\geq n}{a_k}=\inf_{n\geq 1}\sup_{k\geq n}{a_k}$ （最大的聚点）</li>
+<li>$\underline{\lim_{n\rightarrow\infty}}a_n=\lim_{n\rightarrow\infty}\inf_{k\geq n}{a_k}=\sup_{n\geq 1}\inf_{k\geq n}{a_k}$ （最小的聚点）</li>
 </ul>
 </li>
 <li>集合列的上下极限
 <ul>
-<li>$\overline\lim_{n\rightarrow\infty} A_n=\bigcap_{n\geq 1}\bigcup_{k\geq n}A_k$</li>
-<li>$\underline\lim_{n\rightarrow\infty} A_n=\bigcup_{n\geq 1}\bigcap_{k\geq n}A_k$</li>
-<li>若 $\overline\lim_{n\rightarrow\infty} A_n=\underline\lim_{n\rightarrow\infty} A_n$ 则 $\lim_{n\rightarrow\infty}A_n$ 存在</li>
+<li>$\overline{\lim_{n\rightarrow\infty}} A_n=\bigcap_{n\geq 1}\bigcup_{k\geq n}A_k$</li>
+<li>$\underline{\lim_{n\rightarrow\infty}} A_n=\bigcup_{n\geq 1}\bigcap_{k\geq n}A_k$</li>
+<li>若 $\overline{\lim_{n\rightarrow\infty}} A_n=\underline{\lim_{n\rightarrow\infty}} A_n$ 则 $\lim_{n\rightarrow\infty}A_n$ 存在</li>
 <li>递增集列：$\lim_{n\rightarrow\infty}A_n=\bigcup_{n=1}^{\infty}A_n$</li>
 <li>递减集列：$\lim_{n\rightarrow\infty}A_n=\bigcap_{n=1}^{\infty}A_n$</li>
 </ul>
@@ -224,7 +224,7 @@
 <h2 id="点">点</h2>
 <ul>
 <li>$\delta$-邻域：$U(P_0,\delta)={P:d(P,P_0)&lt;\delta}$</li>
-<li>以附件是否都是 $E$ 中的点划分
+<li>以附近是否都是 $E$ 中的点划分
 <ul>
 <li>内点：$\exists U(P_0,\delta),U(P_0,\delta)\subseteq E$</li>
 <li>外点：$\exists U(P_0,\delta),U(P_0,\delta)\subseteq E^c$</li>
@@ -233,9 +233,9 @@
 </li>
 <li>开核 $\dot{E}$：内点集合</li>
 <li>边界 $\partial{E}$：边界点集合</li>
-<li>以附件是否总有 $E$ 中的点划分
+<li>以附近是否总有 $E$ 中的点划分
 <ul>
-<li>聚点：$\forall \epsilon,\exists P\neq P,P\in E,P\in U(P_0,\epsilon)$</li>
+<li>聚点：$\forall \epsilon,\exists P\neq P_0,P\in E,P\in U(P_0,\epsilon)$</li>
 <li>孤立点： 非聚点</li>
 </ul>
 </li>
@@ -302,9 +302,9 @@
 <ul>
 <li>勒贝格测度公理
 <ul>
-<li>非负性</li>
+<li>非负性: $P(A)\geq 0$</li>
 <li>可列可加性</li>
-<li>正则性</li>
+<li>正则性: $P(\empty)=0,P(\Omega)=1$</li>
 </ul>
 </li>
 <li>外测度：$m^*(E)=\inf {\sum_{i=1}^\infty |I_i|:\bigcup_{i=1}^\infty I_i\supset E}, I_i$ 为开区间
@@ -328,11 +328,11 @@
 </ul>
 <h2 id="可测">可测</h2>
 <ul>
-<li>(Caratheodory) $L$-可测的：$\forall T\subset \mathbb{R}^n,m^(T)=m^\star(T\cap E)+m^\star(T\cap E^c)$
+<li>(Caratheodory) $L$-可测的：$\forall T\subset \mathbb{R}^n,m^<em>(T)=m^</em>(T\cap E)+m^*(T\cap E^c)$
 <ul>
 <li>此时 $m$ 的测度： $m(E)=m^*(E)$</li>
-<li>$\iff\forall I\subset \mathbb{R}^n,m^\star(I)=m^\star(I\cap E)+m^\star(I\cap E^c)$, $I$ 为开区间</li>
-<li>$\iff\forall A\subset E,B\subset E^c,m^\star(A)+m^*(B)=m^\star(A\cup B)$</li>
+<li>$\iff\forall I\subset \mathbb{R}^n,m^<em>(I)=m^\star(I\cap E)+m^</em>(I\cap E^c)$, $I$ 为开区间</li>
+<li>$\iff\forall A\subset E,B\subset E^c,m^<em>(A)+m^</em>(B)=m^*(A\cup B)$</li>
 </ul>
 </li>
 <li>可测集的运算
@@ -359,6 +359,8 @@
 <li>$\Sigma$ 生成的 $\sigma$ 代数：包含 $\Sigma$ 的 $\sigma$ 代数之交</li>
 <li>Borel $\sigma$ 代数：$\mathbb{R}^n$ 上所有开集生成的 $\sigma$ 代数
 <ul>
+<li>开集</li>
+<li>闭集</li>
 <li>$F_\sigma$ 型集合：闭集可数并</li>
 <li>$G_\delta$ 型集合：开集可数交</li>
 </ul>

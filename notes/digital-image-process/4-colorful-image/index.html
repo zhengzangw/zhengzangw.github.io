@@ -7,7 +7,7 @@
     <title>Colorful Image Processing | Zangwei</title>
 
     
-    <link rel="stylesheet" href="/scss/main.min.0f39d3a10d2b12312360655e4c36a82b5248ef6d4a7d090e10f0bb9bb1286a06.css" integity="sha256-DznToQ0rEjEjYGVeTDaoK1JI721KfQkOEPC7m7EoagY=">
+    <link rel="stylesheet" href="/scss/main.min.db87d7b55e29b75699acf73451f98e37f7029321133dd8ae45930563c6c76609.css" integity="sha256-24fXtV4pt1aZrPc0UfmON/cCkyETPdiuRZMFY8bHZgk=">
 
     <script type="text/javascript" src="/js/dark.js"></script>
 <script>
@@ -73,20 +73,28 @@
                 </div>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#彩色基础">彩色基础</a></li>
+    <li><a href="#术语">术语</a></li>
+    <li><a href="#电磁光谱">电磁光谱</a></li>
+    <li><a href="#光感受器生物特性">光感受器（生物特性）</a></li>
+    <li><a href="#主颜色">主颜色</a></li>
     <li><a href="#彩色模型">彩色模型</a></li>
-    <li><a href="#伪彩色图像处理">伪彩色图像处理</a></li>
-    <li><a href="#全彩色图像处理">全彩色图像处理</a></li>
-    <li><a href="#彩色图像分割">彩色图像分割</a></li>
+    <li><a href="#彩色图像处理">彩色图像处理</a>
+      <ul>
+        <li><a href="#伪彩色图像处理">伪彩色图像处理</a></li>
+        <li><a href="#全彩色图像处理">全彩色图像处理</a></li>
+        <li><a href="#彩色图像分割">彩色图像分割</a></li>
+      </ul>
+    </li>
     <li><a href="#显示器">显示器</a></li>
   </ul>
 </nav>
             </div>
-            <main class="flex-column-80"><h2 id="彩色基础">彩色基础</h2>
+            <main class="flex-column-80"><h2 id="术语">术语</h2>
 <ul>
 <li>全彩色：用全彩色传感器获取的真实彩色</li>
 <li>伪彩色：为特定灰度或灰度范围赋予颜色</li>
-<li>物理特性
+</ul>
+<h2 id="电磁光谱">电磁光谱</h2>
 <ul>
 <li>无色光：黑白
 <ul>
@@ -94,96 +102,116 @@
 <li>灰度级：表示强度的数值</li>
 </ul>
 </li>
-<li>彩色光：400nm~700nm电磁波
+<li>彩色光：400nm~700nm 电磁波
 <ul>
-<li>辐射：能量（瓦特）</li>
-<li>光强：感知的能量（流明）</li>
-<li>亮度：主观描绘</li>
+<li>光谱色：单色光对应的颜色</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>生物特性
+<li>单位
 <ul>
-<li>锥状细胞
+<li>辐射（能量）：$W$</li>
+<li>辐射强度（单位立体角内辐射功率）：$W$/steradian</li>
+<li>光通量（人眼对不同波长光的变化敏感度）：流明 lm</li>
+<li>光强（单位立体角内光通量）：坎德拉 cd = lm/steradian</li>
+<li>亮度（主观描绘，无单位）</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-47c4b342984fbd178745e1031d76492f_1440w.jpg" alt="色彩单位"></p>
+<h2 id="光感受器生物特性">光感受器（生物特性）</h2>
 <ul>
-<li>600~700万个</li>
-<li>(1965) 红色(65%,575nm),绿色(33%,535nm),蓝色(2%,445nm)</li>
-<li>主颜色：RGB
+<li>彩色视觉（color vision）：基于物体所反射、发出或透过的光的波长以区分物体</li>
+<li>人的彩色视觉：脑响应当进入的光与眼中的若干种视锥细胞作用时所产生的刺激
 <ul>
-<li>国际照明委员会(1931)：700nm,546.1nm,435.8nm</li>
-</ul>
-</li>
-<li>次生色</li>
+<li>暗光照：光由视网膜上的视杆细胞 (500nm) 检测，在彩色视觉中只起很少的作用</li>
+<li>亮视觉：锥状细胞(1965)， 600~700 万个, L (575nm, 65%), M (535nm, 33%), L (445nm, 2%)</li>
 </ul>
 </li>
 </ul>
-</li>
+<p><img src="https://pic4.zhimg.com/80/v2-4c4ff7b07ae06afafc088cb18b7dff7b_1440w.jpg" alt="视锥细胞"></p>
+<h2 id="主颜色">主颜色</h2>
+<ul>
+<li>主颜色 (国际照明委员会, CIE, 1931): R 700nm, G 546.1nm, B 435.8nm</li>
+<li>次生色：主颜色叠加（无法生成所有颜色）</li>
+<li>主波长：描述非纯色光的颜色</li>
 <li>颜料的主颜色（吸收）：Yellow, Magenta, Cyan</li>
-<li>属性
-<ul>
-<li>亮度 brightness：强度</li>
-<li>色调 hue：主波长</li>
-<li>饱和度 saturation：白光的比例</li>
-<li>色度 chromaticity：色调，饱和度</li>
 </ul>
-</li>
-<li>三色值：红色 X, 绿色 Y, 蓝色 Z
+<p>CIE XYZ 色彩空间</p>
+<p>三色值（CIE XYZ tristimulus values）：红色 X, 绿色 Y, 蓝色 Z，归一化为 $x,y,z$</p>
 <ul>
 <li>$x=\frac{X}{X+Y+Z}$</li>
 <li>$y=\frac{Y}{X+Y+Z}$</li>
 <li>$z=\frac{Z}{X+Y+Z}$</li>
 <li>$x+y+z=1$</li>
-<li>CIE 1931 XYZ色彩空间
-<ul>
-<li>两点连线：所有可能的加性组合</li>
-<li>任意三点无法覆盖全图</li>
-<li>色域</li>
+<li>The xy chromaticity graph isn&rsquo;t a color space; it&rsquo;s a two dimensional projection of a color space designed to separate hue and saturation from luminosity</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>两点连线：所有可能的加性组合；任意三点无法覆盖全图</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/CIE1931xy_blank.svg/652px-CIE1931xy_blank.svg.png" alt="CIE"></p>
+<ul>
+<li>属性
+<ul>
+<li>色调 hue：主波长</li>
+<li>亮度 brightness：强度，对应 lm</li>
+<li>饱和度 saturation：白光的比例</li>
+<li>色度 chromaticity：hue + saturation</li>
+</ul>
+</li>
+</ul>
 <h2 id="彩色模型">彩色模型</h2>
 <ul>
-<li>RGB彩色模型（面向显示器）
+<li>RGB 彩色模型（面向显示器）
 <ul>
 <li>笛卡尔坐标系，$[0,1]$，黑色原点，白色在最远的角，中间虚线是灰色</li>
 <li>三幅分量图像</li>
-<li>全彩色图像：24比特</li>
-<li>高端设备支持24比特 RGB 图像</li>
+<li>全彩色图像：24 比特</li>
+<li>高端设备支持 24 比特 RGB 图像</li>
 <li>低端设备通常只能显示 256 种彩色
 <ul>
-<li>稳定 RGB 色（通常216颜色）：每个 RGB 只有六种取值 00,33,66,99,CC,FF</li>
+<li>稳定 RGB 色（通常 216 颜色）：每个 RGB 只有六种取值 00,33,66,99,CC,FF</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>CYM彩色模型（面向打印机）
+<li>CYM 彩色模型（面向打印机）
 <ul>
 <li>$(C,M,Y)=1-(R,G,B)$</li>
 <li>CYMK: 添加黑色(K)</li>
 </ul>
 </li>
-<li>HSI(Intensity)/HSL(Lightness)（面向人，柱坐标系）
+<li>HSI/HSL（面向人，柱坐标系，将亮度和颜色信息解耦合）
 <ul>
-<li>hue, saturation, intensity</li>
-<li>将亮度和颜色信息解耦合</li>
-<li>intensity: 平行面与强度轴（灰色）的交点</li>
-<li>satuaration: 越小白光越大，与强度轴距离</li>
-<li>hue: 包含强度轴的面与强度轴的夹角，与红色轴夹角</li>
+<li>概念上可认为是双圆锥</li>
+<li>hue 色调: 包含强度轴的面与强度轴的夹角，红 0，绿 120，蓝 240</li>
+<li>intensity/lightness: white 1, black 0, saturated color at 0.5
+<ul>
+<li>平行面与强度轴（灰色）的交点</li>
 </ul>
 </li>
-<li>HSB(brightness)/HSV(Value)</li>
+<li>satuaration 饱和度: 数值越大，颜色中的灰色越少，颜色越鲜艳，呈现一种从灰度到纯色的变化
+<ul>
+<li>与强度轴距离</li>
 </ul>
-<h2 id="伪彩色图像处理">伪彩色图像处理</h2>
+</li>
+</ul>
+</li>
+<li>HSB/HSV（画家，柱坐标系）
+<ul>
+<li>概念上可认为是倒圆锥体</li>
+<li>hue: 包含强度轴的面与强度轴的夹角，红 0，绿 120，蓝 240</li>
+<li>brightness, value: black 0, saturated color at 1</li>
+<li>satuaration</li>
+</ul>
+</li>
+<li>Contrast 对比度: difference in luminance or color</li>
+</ul>
+<h2 id="彩色图像处理">彩色图像处理</h2>
+<h3 id="伪彩色图像处理">伪彩色图像处理</h3>
 <ul>
 <li>灰度分层</li>
-<li>独立变换3次</li>
+<li>独立变换 3 次</li>
 <li>多光谱图像处理</li>
 </ul>
-<h2 id="全彩色图像处理">全彩色图像处理</h2>
+<h3 id="全彩色图像处理">全彩色图像处理</h3>
 <ul>
 <li>方法
 <ul>
@@ -202,7 +230,7 @@
 <li>直方图处理</li>
 <li>平滑与锐化</li>
 </ul>
-<h2 id="彩色图像分割">彩色图像分割</h2>
+<h3 id="彩色图像分割">彩色图像分割</h3>
 <ul>
 <li>HIS 颜色空间直观
 <ul>
@@ -231,9 +259,9 @@
 </ul>
 <h2 id="显示器">显示器</h2>
 <ul>
-<li>CRT 显示器：RGB叠加</li>
+<li>CRT 显示器：RGB 叠加</li>
 <li>可视角度</li>
-<li>偏色程度 $\Delta E$: 平均（3以下难以分辨，1以内相当准确），最大</li>
+<li>偏色程度 $\Delta E$: 平均（3 以下难以分辨，1 以内相当准确），最大</li>
 <li>亮度
 <ul>
 <li>黑暗下 $&gt;80cd/m^2$</li>

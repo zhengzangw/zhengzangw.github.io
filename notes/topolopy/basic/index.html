@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Basic | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.db87d7b55e29b75699acf73451f98e37f7029321133dd8ae45930563c6c76609.css" integity="sha256-24fXtV4pt1aZrPc0UfmON/cCkyETPdiuRZMFY8bHZgk=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#拓扑空间">拓扑空间</a></li>
+    <li><a href="#闭集">闭集</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="拓扑空间">拓扑空间</h2>
+<p>拓扑空间：$X$ 为集合，$F$ 为 $X$ 中某些子集构成的集族（把 $F$ 中的元素称为 $X$ 中的开集），满足</p>
+<ul>
+<li>$\empty\in F,X\in F$</li>
+<li>$U,V\in F, U\cap V\in F$</li>
+<li>$U_\alpha\in F,\alpha\in I$, $\cup_{\alpha\in I}U_\alpha\in F$</li>
+</ul>
+<p>则称 $F$ 为 $X$ 上的拓扑</p>
+<p>设 $X$ 为拓扑空间；即 $X$ 为集合，且规定了 $X$ 上的拓扑 $F$；即指定了哪些子集为开集。</p>
+<ul>
+<li>平凡拓扑：$F={\empty, X}$</li>
+<li>离散拓扑：$F={U|U\subset X}$</li>
+<li>度量空间 $(X,d)$ 诱导的拓扑：$U\in F$ 若满足以下条件之一
+<ul>
+<li>$U=\empty$</li>
+<li>$U\neq\emptyset,\forall p\in U,\exists\delta&gt;0$, s.t. $p\in B(p,\delta)\subset U$</li>
+</ul>
+</li>
+</ul>
+<p>子空间拓扑：设 $X$ 为拓扑空间，$Y\subset X$，$F:={U\cap Y|U\subset_{\text{open}}X}$，则 $F$ 给出 $Y$ 上的一个拓扑</p>
+<p>连续：$f:X\rightarrow Y,\forall U\subset_{\text{open}}Y,f^{-1}(U)$ 为 $X$ 中开集</p>
+<h2 id="闭集">闭集</h2>
+<p>$X$ 为拓扑空间，$F\subset X$ 为闭集若 $X\backslash F$ 为开集</p>
+</main>
+        </div>
+
+    </div>
+</body></html>

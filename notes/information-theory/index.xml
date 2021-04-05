@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>[M] 信息论 Information Theory on Zangwei</title>
+    <link>https://zhengzangw.com/notes/information-theory/</link>
+    <description>Recent content in [M] 信息论 Information Theory on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
+    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/information-theory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Entropy</title>
+      <link>https://zhengzangw.com/notes/information-theory/1-entropy/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/1-entropy/</guid>
+      <description>Preliminary  A mathematical theory of communicationo - Shannon 1948 Convexity: $f(\sum_ip_ix_i)\leq \sum_ip_if(x_i)$  $f(E_p x_i)\leq E_pf(x_i)$ convex: $f&#39;&#39;(x)\geq 0$   $f(x)=-x\log x$ is concave  Entropy Entropy: $H(X)=-\sum_{x\in\mathcal{X}}p(x)\log p(x)=E_{p}\log\frac{1}{p(X)}$
+ $0\log 0\rightarrow 0$ $0\leq H(X)\leq \log|\mathcal{X}|$ uniform $X$: $H(X)=\log|\mathcal{X}|$ $H_b(X)=\log_baH_a(X)$  Joint Entropy: $H(X,Y)=-E\log p(X,Y)=-\sum_{x\in\mathcal{X}}\sum_{y\in\mathcal{Y}}p(x,y)\log p(x,y)$
+ $H(X,X) = H(X)$ $H(X,Y) = H(Y,X)$  Conditional Entropy: $H(Y|X)=\sum_{x\in\mathcal{X}}p(x)H(Y|X=x)=-\sum_{x\in\mathcal{X}}\sum_{y\in\mathcal{Y}}p(x,y)\log p(y|x)=-E\log p(y|x)$
+ $H(Y|X)\leq H(X)$ remaining uncertainty when $X$ is known $H(X|Y)\neq H(Y|X)$ $H(X|Y)+H(Y)=H(Y|X)+H(X)=H(X,Y)$ Chain rule: $H(X_1,X_2,\cdots,X_n)=H(X_1)+H(X_2|X_1)+\cdots+H(X_n|X_{n-1},\cdots,X_1)$ Zero conditional entropy: if $H(Y|X)=0,Y=f(X)$  Relative Entropy (Kullback-Leibler distance): $D(p|q)=\sum_{x\in X}p(x)\log\frac{p(x)}{q(x)}=E_p\log\frac{p(X)}{q(X)}=E_p(-\log q(x))-H(p)$</description>
+    </item>
+    
+    <item>
+      <title>2. AEP</title>
+      <link>https://zhengzangw.com/notes/information-theory/2-aep/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/2-aep/</guid>
+      <description>Convergence of random variables  In probability (convergence in probability): $P(|X_n-X|\leq\epsilon)\rightarrow 1$ In mean square: $E(X_n-X)^2\rightarrow 0$ With probability 1 (almost surely convergence): $P(\lim_{n\rightarrow\infty}X_n=X)=1$ (2)$\rightarrow$(1), (3)$\rightarrow$(1) Law of Large Numbers: $X_1,\cdots,X_n\sim p(x)$  Strong: $P(\lim_{n\rightarrow\infty} \overline X_n=E(X_1))=1$ Weak: $\overline X_n\rightarrow E(X_1)$ in probability    Asymptotic Equipartition Property  AEP: $X_1,X_2,\cdots X_n$ are i.i.d. $\sim p(x)$, then $-\frac{1}{n}\log p(X_1,X_2,\cdots, X_n)\rightarrow H(X)$  $2^{-nH(X)+\epsilon}\leq p(X_1,X_2,\cdots,X_n)\leq 2^{-n(H(X)-\epsilon)}$   typical set $A_\epsilon^{(n)}$ is the set of sequences $(x_1,\cdots, x_n)\in\mathcal{X}^n$ with property $2^{-nH(X)+\epsilon}\leq p(X_1,X_2,\cdots,X_n)\leq 2^{-n(H(X)-\epsilon)}$  $P(A_\epsilon^{(n)})\geq 1-\epsilon$ for $n$ sufficiently large (The typical set has probability nearly 1) $|A_\epsilon^{(n)}|\leq 2^{n(H(X)+\epsilon)}$ (All elements are nearly qeuiprobable) $|A_\epsilon^{(n)}|\geq (1-\epsilon)2^{n(H(X)-\epsilon)}$ (elements nearly $2^{nH}$)   High Probability Set: $B_\delta^{(n)}\subset\mathcal{X}^n$ be the smallest set with $P(B_\delta^{(n)})\geq 1-\delta$  if $P(B_\delta^{(n)})\geq 1-\delta$, then $\frac{1}{n}\log|B_\delta^{(n)}|&amp;gt;H-\delta&#39;$ for n sufficiently large   Data Compression  Encode: $E(\frac{1}{n}l(X^n))\leq H(X)+\epsilon$  $n\log|\mathcal{X}|+1+1$ for $(A_\epsilon^{(n)})^c$ $n(H+\epsilon)+1+1$ for $A_\epsilon^{(n)}$   For any scheme with rate $r&amp;lt;H(X),P_e\rightarrow 1$    Joint Typicality Jointly typical sequences $A_\epsilon^{(n)}$</description>
+    </item>
+    
+    <item>
+      <title>3. Entropy Rate</title>
+      <link>https://zhengzangw.com/notes/information-theory/3-entropy-rate/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/3-entropy-rate/</guid>
+      <description>Stationary Process  stationary: $P(X_1=x_1,X_2=x_2,\cdots,X_n=x_n)=P(X_{1+l}=x_1,X_2=x_{2+l},\cdots,X_{n+l}=x_n)$  Gaussian process Stationary Markov Chain   Stationary Distribution of MC  $p(X_{n+1})=p(X_n)$ $p(x_{n+1})=\sum_{x_n}p(x_n)P_{x_nx_{n+1}}$ net probability flow across any cut set is zero    Entropy Rate  entropy rate of a stochastic process: $H(\mathcal{X})=\lim_{n\rightarrow\infty}\frac{1}{n}H(X_1,X_2,\cdots,X_n)$  $H(X_n,\cdots,X_1)=\sum_{i=1}^nH(X_i|X_{i-1},\cdots,X_1)$   (a) For a stationary stochastic process, $H(X_n|X_{n-1},\cdots,X_1)$ is nonincreasing and has a limit  $H&#39;(X)=\lim_{n\rightarrow\infty}H(X_n|X_{n-1},\cdots,X_1)$ exists   (b) Cesaro Mean: $a_n\rightarrow a,b_n=\frac{1}{n}\sum_{i=1}^na_i,b_n\rightarrow a$ For a stationary stochastic process, $H(\mathcal{X})=H&#39;(\mathcal{X})$ (a,b)  Markov Chain: $H(\mathcal{X})=H(X_2|X_1)=-\sum_{ij}\mu_iP_{ij}\log P_{ij}$   Some results  Second Law of Thermodynamics: model the isolated system as a Morkov chain with transitions obeying the physical laws governing the system $D(\mu_n|\mu_n&#39;)$ decreases with $n$ $H(X_n|X_1)$ increases Shuffles increase entropy: $H(TX)\geq H(X)$    Functions of Markov Chain  $X_1,\cdots,X_n,\cdots$ be a stationary Markov chain, $Y_i=\phi(X_i)$ $H(Y_n|Y_{n-1},\cdots,Y_1,X_1)\leq H(\mathcal{Y})\leq H(Y_n|Y_{n-1},\cdots,Y_1)$ $\lim H(Y_n|Y_{n-1},\cdots,Y_1,X_1)= H(\mathcal{Y})= \lim H(Y_n|Y_{n-1},\cdots,Y_1)$  </description>
+    </item>
+    
+    <item>
+      <title>4. Data Compression</title>
+      <link>https://zhengzangw.com/notes/information-theory/4-data-compression/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/4-data-compression/</guid>
+      <description>Existence of Code A source code $C$ for a random variable $X$ is a mapping from $\mathcal{X}$ to $D^*$
+ $X$: the range of $X$ $D$-ary alphabet is $\mathcal{D}={0,1,\cdots,D-1}$ $C(x)$: codeword for $x$ $l(x)$: length of $C(x)$ $L(C)=\sum_{x\in\mathcal{X}}p(x)l(x)$: the expected length of a source code $C(x)$ for a random variable rate $R$: average length  Nonsigular code
+ every element of the range $X$ maps into a different string in $D^*$ $C^*$: extension of a code $C$ is mapping from finite length strings of $X$ to finite-length strings of $D$, $C(x_1x_2\cdots x_n)=C(x_1)C(x_2)\cdots C(x_n)$ Uniquely decodable: extension is nonsigular  Prefix Code (instantaneous code)</description>
+    </item>
+    
+    <item>
+      <title>5. Channel Capacity</title>
+      <link>https://zhengzangw.com/notes/information-theory/5-channel-capacity/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/5-channel-capacity/</guid>
+      <description>Channel Capacity  $(\mathcal{X},p(y|x),\mathcal{Y})$: send $x$, with probability $p(y|x)$, receiver get $y$ Channel capacity: $C=\max_{p(x)}I(X;Y)$ Strategy to calculate $C$  $I(X;Y)=H(Y)-H(Y|X)$ convex sets: $d_{\min}=\min_{a\in A,b\in B}d(a,b)$   Examples:  Noiseless Binary Channel: $C=1,p(x)=(\frac{1}{2},\frac{1}{2})$ Noisy Channel with nonoverlapping Outputs: in fact not noisy Noisy Typewriter: $\log13$ Binary Symmetric Channel: $C=1-H(p)$ Binary Erasure Channel: $\max_{p(x)}H(Y)-H(\alpha)=1-P_e$   symmetric channel: channel transition matrix row and columnr are permutations of each other $C=\log|\mathcal{Y}|-H(r)$ weakly symmetric: rows  Channel Coding Theorem  Message $W$ (Encoder) $X^n$ (Channel) $Y^n$ (Decoder) $\hat W$ $\max \frac{H(W)}{n}$ Message: can be ordered and denoted by index, $\log M$ symbols discrete memoryless channel (DMC): $p(y_k|x^k,y^{k-1})=p(y_k|x_k)$ without feedback: $p(x_k|x^{k-1},y^{k-1})=p(x_k|x^{k-1})$ memoryless + no feedback: $H(Y^n|X^n)=\sum_{i=1}^nH(Y_i|X_i)$ Markov chain: $W\rightarrow X^n\rightarrow Y^n\rightarrow\hat W$ DMC: $C=\max I(X;Y)$  DMC  codebook ($f(w)=x^n$) shared between sender and receiver $(M,n)$ code  index set ${1,2,\cdots, M}$ encoding function $f(x):{1,2,\cdots,M}\rightarrow\mathcal{X}^n$, yielding codewords $x^n(1),\cdots,x^n(M)$ decoding function $g(x)$   Conditional probability of error: $\lambda_i=\sum_{y^n}p(y^n|x^n(i))[g(y^n\neq i)]$  maximal probability of error: $\lambda^{(n)}=\max \lambda_i$ average: $P_e^{(n)}=\frac{1}{M}\sum\lambda_i$   rate $R$ of $(M, n)$ code: $R=\frac{\log M}{n}$ bits per transmission  achievable $R$: sequence $(2^{nR}, n)$ codes such that the maximal probability of error $\lambda(n)\rightarrow 0$ when $n\rightarrow\infty$   capacity: supremum of all achievable rates Channel coding theorem: $C=\max_{p(x)}I(X;Y)$  Achievability: For any $r&amp;lt;C,\exists (2^{nr},n)$ code Converse: For any $r&amp;gt;C,\lambda_e&amp;gt;0$    Intuition for Channel Capacity: $2^{nI(X;Y)}=2^{n(H(Y)-H(Y|X))}$ （手电筒）</description>
+    </item>
+    
+    <item>
+      <title>6. Differential Entropy</title>
+      <link>https://zhengzangw.com/notes/information-theory/6-differential-entropy/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/6-differential-entropy/</guid>
+      <description>Entropy  (continuous) $X$ with cumulative distribution function $F(x)=Pr(X\leq x)$ support set of $X$: $f(x)&amp;gt;0$ differential entropy $h(x)$: $h(X)=-\int_Sf(x)\log f(x)dx$  $h(X+c) = h(X)$ $h(aX)=h(X)+\log|a|$ $h(AX)=h(X)+\log|\det A|$ $h(X)$ may be negative ($f(x)$ may $&amp;gt;1$)   uniform: $h(X)=\log a$ Gaussian: $h(X)=\frac{1}{2}\log 2\pi e\sigma^2$ $h(X)$: Infinite Information  does not serve as a measure of the average amount of information   $h(X_1,X_2,\cdots,X_n)=-\int f(x^n)\log f(x^n)dx^n$ $h(X|Y)=-\int f(x,y)\log f(x|y)dxdy)$ Relative Entropy: $D(f|g)=\int f\log\frac{f}{g}\geq 0$ mutual information: $I(X;Y)=\int f(x,y)\log\frac{f(x,y)}{f(x)f(y)}dxdy\geq 0$  Relation to discrete  $X^\Delta=x_i$ if $i\Delta\leq x&amp;lt;(i+1)\Delta$ $p_i=Pr(X^{Delta}=x_i)=f(x_i)\Delta$ $H(X^{\Delta})=-\sum\Delta f(x_i)\log f(x_i)-\log \Delta$ as $\Delta\rightarrow 0,H(X^\Delta)+\log \Delta\rightarrow h(f)=h(X)$  AEP  $-\frac{1}{n}\log f(X_1,X_2,\cdots,X_n)\rightarrow E(-\log f(X))=h(f)$ $A_\epsilon^{(n)}={(x_1,x_2,\cdots,x_n)\in S^n:|-\frac{1}{n}\log f(x_1,\cdots, x_n)-h(X)|\leq\epsilon}$ $\text{Vol}(A)=\int_Adx_1dx_2\cdots dx_n$ Properties  $Pr(A_\epsilon^{(n)})&amp;gt;1-\epsilon$ for $n$ sufficiently large $\text{Vol}(A_\epsilon^{(n)})\leq 2^{n(h(X)+\epsilon)}$ $\text{Vol}(A_\epsilon^{(n)})\geq (1-\epsilon)2^{n(h(X)-\epsilon)}$    Covariance Matrix  cov($X$, $Y$)=$E(X-EX)(Y-EY)=E(XY)-(EX)(EY)$ $\vec X$: $K_X=E(X-EX)(X-EX)^T=[\text{cov}(X_i;X_j)]$ correlation matrix: $\widetilde K_X=EXX^T=[EX_iX_j]$  symmetric and positive semidifinite   $K_X=\widetilde K_X-(EX)(EX^T)$ $Y=AX$  $K_Y=AK_XA^T$ $\widetilde K_Y=A\widetilde K_XA^T$    Multivariate Normal Distribution $f(x)=\frac{1}{(2\pi)^{\frac{n}{2}}}\exp(-\frac{1}{2}(x-\mu)^TK^{-1}(x-\mu))$</description>
+    </item>
+    
+    <item>
+      <title>7. Gaussian Channel</title>
+      <link>https://zhengzangw.com/notes/information-theory/7-gaussian-channel/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/7-gaussian-channel/</guid>
+      <description>Gaussian Channel  continuous alphet channel: input $X_i$, noise $Z_i$, output $Y_i$ Gaussian channel: $Y_i=X_i+Z_i,Z_i\sim\mathcal{N}(0,N)$ Energy Constraint: $\frac{1}{n}\sum_{i=1}^n x_i^2\leq P$ $C=\max_{f(x):EX^2\leq P}I(X;Y)$ Gaussian channel $C=\frac{1}{2}\log (1+\frac{P}{N})$, maximum attained when $X\sim\mathcal{N}(0,P)$  $N=EZ^2$ 信噪比：$\frac{P}{N}$   Guassian Noise is worest noise  </description>
+    </item>
+    
+  </channel>
+</rss>

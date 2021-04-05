@@ -8,7 +8,31 @@
     <language>en-us</language>
     <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
     <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
-    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Basic</title>
+      <link>https://zhengzangw.com/notes/topolopy/basic/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/topolopy/basic/</guid>
+      <description>拓扑空间 拓扑空间：$X$ 为集合，$F$ 为 $X$ 中某些子集构成的集族（把 $F$ 中的元素称为 $X$ 中的开集），满足
+ $\empty\in F,X\in F$ $U,V\in F, U\cap V\in F$ $U_\alpha\in F,\alpha\in I$, $\cup_{\alpha\in I}U_\alpha\in F$  则称 $F$ 为 $X$ 上的拓扑
+设 $X$ 为拓扑空间；即 $X$ 为集合，且规定了 $X$ 上的拓扑 $F$；即指定了哪些子集为开集。
+ 平凡拓扑：$F={\empty, X}$ 离散拓扑：$F={U|U\subset X}$ 度量空间 $(X,d)$ 诱导的拓扑：$U\in F$ 若满足以下条件之一  $U=\empty$ $U\neq\emptyset,\forall p\in U,\exists\delta&amp;gt;0$, s.t. $p\in B(p,\delta)\subset U$    子空间拓扑：设 $X$ 为拓扑空间，$Y\subset X$，$F:={U\cap Y|U\subset_{\text{open}}X}$，则 $F$ 给出 $Y$ 上的一个拓扑</description>
+    </item>
+    
+    <item>
+      <title>1. Entropy</title>
+      <link>https://zhengzangw.com/notes/information-theory/1-entropy/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/1-entropy/</guid>
+      <description>Preliminary  A mathematical theory of communicationo - Shannon 1948 Convexity: $f(\sum_ip_ix_i)\leq \sum_ip_if(x_i)$  $f(E_p x_i)\leq E_pf(x_i)$ convex: $f&#39;&#39;(x)\geq 0$   $f(x)=-x\log x$ is concave  Entropy Entropy: $H(X)=-\sum_{x\in\mathcal{X}}p(x)\log p(x)=E_{p}\log\frac{1}{p(X)}$
+ $0\log 0\rightarrow 0$ $0\leq H(X)\leq \log|\mathcal{X}|$ uniform $X$: $H(X)=\log|\mathcal{X}|$ $H_b(X)=\log_baH_a(X)$  Joint Entropy: $H(X,Y)=-E\log p(X,Y)=-\sum_{x\in\mathcal{X}}\sum_{y\in\mathcal{Y}}p(x,y)\log p(x,y)$
+ $H(X,X) = H(X)$ $H(X,Y) = H(Y,X)$  Conditional Entropy: $H(Y|X)=\sum_{x\in\mathcal{X}}p(x)H(Y|X=x)=-\sum_{x\in\mathcal{X}}\sum_{y\in\mathcal{Y}}p(x,y)\log p(y|x)=-E\log p(y|x)$
+ $H(Y|X)\leq H(X)$ remaining uncertainty when $X$ is known $H(X|Y)\neq H(Y|X)$ $H(X|Y)+H(Y)=H(Y|X)+H(X)=H(X,Y)$ Chain rule: $H(X_1,X_2,\cdots,X_n)=H(X_1)+H(X_2|X_1)+\cdots+H(X_n|X_{n-1},\cdots,X_1)$ Zero conditional entropy: if $H(Y|X)=0,Y=f(X)$  Relative Entropy (Kullback-Leibler distance): $D(p|q)=\sum_{x\in X}p(x)\log\frac{p(x)}{q(x)}=E_p\log\frac{p(X)}{q(X)}=E_p(-\log q(x))-H(p)$</description>
+    </item>
+    
     <item>
       <title>About Me</title>
       <link>https://zhengzangw.com/about/about/</link>
@@ -24,7 +48,7 @@
       <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/real-function-theory/%E9%9B%86%E5%90%88%E4%B8%8E%E6%B5%8B%E5%BA%A6/</guid>
-      <description>实数  实数：完备的有序域  完备性（度量空间）  闭区间套定理 柯西收敛定理   连续性（完备性+阿基米德性质）  戴德金公理 确界存在定理 单调有界定理 有限覆盖定理 聚点定理 致密性定理 介值定理     实数有小数表示  空间  空间：集合 $X$ 拓扑空间  $\mu$ 是全部开集，若  全集，$\emptyset\in\mu$ 任意个集合并 $\in\mu$ 有限个集合交 $\in\mu$   $\mu$ 给定了一个拓扑   度量空间  $d:X\times X\rightarrow \mathbb{R}$  非负性、对称性、三角不等式   欧式空间：$(\mathbb{R}^n,d)$ 子空间：$Y\subseteq X,(X,d)$ 为度量空间 完备空间：任何柯西列都收敛   范数空间：定义范数  可以用范数定义距离 巴拿赫空间：赋范空间+完备性   线性空间：线性结构  赋范线性空间   内积空间：定义内积  希尔伯特空间：内积空间+完备性    集合  $\bigcup_{\lambda\in \Lambda}={x:\exists \lambda\in\Lambda,x\in A_\lambda}$ $\bigcap_{\lambda\in \Lambda}={x:\forall \lambda\in\Lambda,x\in A_\lambda}$ 数列的上下极限  $\overline\lim_{n\rightarrow\infty} a_n=\lim_{n\rightarrow\infty}\sup_{k\geq n}{a_k}=\inf_{n\geq 1}\sup_{k\geq n}{a_k}$ （最大的聚点） $\underline\lim_{n\rightarrow\infty}a_n=\lim_{n\rightarrow\infty}\inf_{k\geq n}{a_k}=\sup_{n\geq 1}\inf_{k\geq n}{a_k}$ （最小的聚点）   集合列的上下极限  $\overline\lim_{n\rightarrow\infty} A_n=\bigcap_{n\geq 1}\bigcup_{k\geq n}A_k$ $\underline\lim_{n\rightarrow\infty} A_n=\bigcup_{n\geq 1}\bigcap_{k\geq n}A_k$ 若 $\overline\lim_{n\rightarrow\infty} A_n=\underline\lim_{n\rightarrow\infty} A_n$ 则 $\lim_{n\rightarrow\infty}A_n$ 存在 递增集列：$\lim_{n\rightarrow\infty}A_n=\bigcup_{n=1}^{\infty}A_n$ 递减集列：$\lim_{n\rightarrow\infty}A_n=\bigcap_{n=1}^{\infty}A_n$   双等（对等、等势）：存在从 $A$ 到 $B$ 的一一映射  对等是等价关系 有限集：$A$ 与 ${1,2,\cdots,n}$ 对等 无限集：非有限集  存在一个真子集与自己对等     基数（势）：$|A|$  $|A|=|B|\iff A\sim B$ $|A|&amp;lt;|B|\iff A\sim C,C\subsetneq B$   伯恩斯坦定理：$|A|\leq|B|,|B|\leq|A|\Rightarrow|A|=|B|$ 可数集合：与 $\mathbb{Z}_+$ 对等，基数为 $ℵ_0$  任何无限集合至少包含一个可数子集 可数子集的任何无限子集是可数集   至多可数集：至多可数集 + 有限集  至多可数个至多可数集的并是至多可数集  $\mathbb{Q}$ 是可数集   有限个至多可数集的直积是至多可数集  代数数全体是有限可数集     康托尔定理：幂集阶数大于原集合 $\mathbb{R}\sim 2^{\mathbb{N}}$  $\mathbb{R}$ 不可数，连续基数 $\mathcal{C}$ $\mathcal{C}$ 个连续基数集合并为连续基数 至多可数个连续基数集合直积为连续基数 $\mathbb{R}^n=\mathcal{C}$    点  $\delta$-邻域：$U(P_0,\delta)={P:d(P,P_0)&amp;lt;\delta}$ 以附件是否都是 $E$ 中的点划分  内点：$\exists U(P_0,\delta),U(P_0,\delta)\subseteq E$ 外点：$\exists U(P_0,\delta),U(P_0,\delta)\subseteq E^c$ 边界点：$\exists U(P_0,\delta),U(P_0,\delta)\cap E\neq \emptyset,U(P_0,\delta)\cap E^c\neq \emptyset$   开核 $\dot{E}$：内点集合 边界 $\partial{E}$：边界点集合 以附件是否总有 $E$ 中的点划分  聚点：$\forall \epsilon,\exists P\neq P,P\in E,P\in U(P_0,\epsilon)$ 孤立点： 非聚点   导集 $E&#39;$：$E$ 全体聚点的集合 闭包 $\overline{E}=E\cup E&#39;$ 定理  $(\dot{E})^c=\overline{E^c}$ $(\overline{E})^c=(\dot{E^c})$ $(A\cup B)&#39;=A&#39;\cup B&#39;$ $E\neq \emptyset,E\neq \mathbb{R}^n$ 则 $\partial E\neq\emptyset$ Bolzano-Weierstrass 定理：$E\subset \mathbb{R}^n$ 有界无限集合，则 $E$ 至少有一个聚点    开集  开集：$\forall x\in E,x$ 内点 ($E=\dot{E}$)  $\dot{E}=\bigcup_{G\subset E\text{ 开集}}G$ 任意开集的并是开集 有限个开集的交是开集  $G_n=(-1-\frac{1}{n},1+\frac{1}{n}),\bigcup_{n=1}^\infty G_n=[-1,1]$     闭集：$\forall$ 聚点 $\in E$ ($E=\overline{E}$)  $\overline{E}=\bigcap_{F\subset E\text{ 闭集}}F$ 任意闭集的交是闭集 有限闭集的交是闭集   对偶性：$E$ 开（闭）则 $E^c$ 闭（开） 紧集：若 $M\subset \mathbb{R}^n$ 的任一开覆盖总有有限子覆盖，则 $M$ 是紧集  Heine-Borel: $\mathbb{R}^n$ 有界闭区间的任一开区间覆盖总有有限子覆盖 $\mathbb{R}^n$ 的有界闭集是紧集 $M\subset \mathbb{R}^n$ 是紧集，则 $M$ 是有界闭集   自密集：$E\subset E&#39;$（没有孤立点） 完备集：$E=E&#39;$（无孤立点闭集） $\mathbb{R}^1$ 中集合构造  直线上互不相交的区间的集合是至多可数集 构成区间：$G$ 是开集，$(\alpha,\beta)\subset G,\alpha,\beta\not\in G$ 开集构造定理：直线上任意一个非空集合可以表成至多可数个互不相交的构成区间的并 余区间（邻接区间）：闭集 $A$ 的余集的构成区间   Cantor 三分集 $P$  $P$ 完备 $P$ 无内点 $P$ 连续基数 $P$ 测度为 $0$    外测度  勒贝格测度公理  非负性 可列可加性 正则性   外测度：$m^*(E)=\inf {\sum_{i=1}^\infty |I_i|:\bigcup_{i=1}^\infty I_i\supset E}, I_i$ 为开区间  $m^*(\emptyset)=0$ $m^*({P})=0$ $m^*({P_1,\dots,P_n,\cdots})=0$   基本性质  非负性：$m^*(E)\geq 0$ 次可数可加性：$m^*(\bigcup_{i=1}^\infty A_i)\leq \sum_{i=1}^\infty m^*(A_i)$ 单调性：$A\subset B,m^(A)\leq m^(B)$ 正则性：$m^*([0,1])=1$   任意区间 $I$，$m^*(I)=|I|$ 平移不变性：$m^(E)=m^(\tau_a E)$ 反射不变性  可测  (Caratheodory) $L$-可测的：$\forall T\subset \mathbb{R}^n,m^(T)=m^\star(T\cap E)+m^\star(T\cap E^c)$  此时 $m$ 的测度： $m(E)=m^*(E)$ $\iff\forall I\subset \mathbb{R}^n,m^\star(I)=m^\star(I\cap E)+m^\star(I\cap E^c)$, $I$ 为开区间 $\iff\forall A\subset E,B\subset E^c,m^\star(A)+m^*(B)=m^\star(A\cup B)$   可测集的运算  $S^c$ 可测 $S_1,S_2$ 可测，$S_1\cup S_2$ 可测 $S_1-S_2$ 可测 有限个可测集之并（交）可测 至多可数个可测集之并（交）可测 ${S_i}{i=1}^\infty$ 递增可测集，则 $\lim{i\rightarrow\infty}S_i$ 可测，$m(\lim_{i\rightarrow S_i})=\lim_{i\rightarrow \infty}m(S_i)$ ${S_i}{i=1}^\infty$ 递减可测集，则 $\lim{i\rightarrow\infty}S_i$ 可测，当 $m(S_1)&amp;lt;\infty$ 时，$m(\lim_{i\rightarrow S_i})=\lim_{i\rightarrow \infty}m(S_i)$    $\sigma$ 代数  $\Omega$ 上的 $\sigma$ 代数（$\Omega$ 是 $X$ 某些子集组成的集合类）  $X\subset \Omega$ 可数并下封闭 取余集下封闭   $\Sigma$ 生成的 $\sigma$ 代数：包含 $\Sigma$ 的 $\sigma$ 代数之交 Borel $\sigma$ 代数：$\mathbb{R}^n$ 上所有开集生成的 $\sigma$ 代数  $F_\sigma$ 型集合：闭集可数并 $G_\delta$ 型集合：开集可数交   可测集类 $\mu$ 是 $\mathbb{R}^n$ 上的 $\sigma$ 代数  区间可测 Borel 集可测 零测集可测  零测集子集可测 至多可数个零测集之并可测     非 Borel 集可测集 若 $E$ 可测，则 $m(E)=\inf{m(G):E\subset G,G\text{ 开集}}=\sup{m(F):E\supset F,F\text{ 紧集}}$ （外正规性+内正规性）  $\forall \epsilon&amp;gt;0,\exists G$ 开集，$E\subset G,m(G-E)&amp;lt;\epsilon$ $\forall \epsilon&amp;gt;0,\exists F$ 闭集，$E\supset G,m(E-F)&amp;lt;\epsilon$   若 $E$ 有界，且 $m(E)=\inf{m(G):E\subset G,G\text{ 开集}}=\sup{m(F):E\supset F,F\text{ 紧集}}$，则 $E$ 可测 $E$ 是可测集，则  存在 $G_\delta$ 型集 $G$ 使 $G\supset E,m(G-E)=0$ 存在 $F_\sigma$ 型集 $F$ 使 $F\subset E,m(E-F)=0$    不可测集  Vitali 集  等价关系：$x\sim y\iff x-y\in\mathbb{Q}$ 每个等价类取一个代表元，构成一个不可测集   任意一个测度大于 $0$ 的集合中有不可测子集 满足正则性，可数可加性和全等不变性的测度存在不可测集  </description>
+      <description>实数  实数：完备的有序域  完备性（度量空间）  闭区间套定理 柯西收敛定理   连续性（完备性+阿基米德性质）  戴德金公理 确界存在定理 单调有界定理 有限覆盖定理 聚点定理 致密性定理 介值定理     实数有小数表示  空间  空间：集合 $X$ 拓扑空间  $\mu$ 是全部开集，若  全集，$\emptyset\in\mu$ 任意个集合并 $\in\mu$ 有限个集合交 $\in\mu$   $\mu$ 给定了一个拓扑   度量空间  $d:X\times X\rightarrow \mathbb{R}$  非负性、对称性、三角不等式   欧式空间：$(\mathbb{R}^n,d)$ 子空间：$Y\subseteq X,(X,d)$ 为度量空间 完备空间：任何柯西列都收敛   范数空间：定义范数  可以用范数定义距离 巴拿赫空间：赋范空间+完备性   线性空间：线性结构  赋范线性空间   内积空间：定义内积  希尔伯特空间：内积空间+完备性    集合  $\bigcup_{\lambda\in \Lambda}={x:\exists \lambda\in\Lambda,x\in A_\lambda}$ $\bigcap_{\lambda\in \Lambda}={x:\forall \lambda\in\Lambda,x\in A_\lambda}$ 数列的上下极限  $\overline{\lim_{n\rightarrow\infty}} a_n=\lim_{n\rightarrow\infty}\sup_{k\geq n}{a_k}=\inf_{n\geq 1}\sup_{k\geq n}{a_k}$ （最大的聚点） $\underline{\lim_{n\rightarrow\infty}}a_n=\lim_{n\rightarrow\infty}\inf_{k\geq n}{a_k}=\sup_{n\geq 1}\inf_{k\geq n}{a_k}$ （最小的聚点）   集合列的上下极限  $\overline{\lim_{n\rightarrow\infty}} A_n=\bigcap_{n\geq 1}\bigcup_{k\geq n}A_k$ $\underline{\lim_{n\rightarrow\infty}} A_n=\bigcup_{n\geq 1}\bigcap_{k\geq n}A_k$ 若 $\overline{\lim_{n\rightarrow\infty}} A_n=\underline{\lim_{n\rightarrow\infty}} A_n$ 则 $\lim_{n\rightarrow\infty}A_n$ 存在 递增集列：$\lim_{n\rightarrow\infty}A_n=\bigcup_{n=1}^{\infty}A_n$ 递减集列：$\lim_{n\rightarrow\infty}A_n=\bigcap_{n=1}^{\infty}A_n$   双等（对等、等势）：存在从 $A$ 到 $B$ 的一一映射  对等是等价关系 有限集：$A$ 与 ${1,2,\cdots,n}$ 对等 无限集：非有限集  存在一个真子集与自己对等     基数（势）：$|A|$  $|A|=|B|\iff A\sim B$ $|A|&amp;lt;|B|\iff A\sim C,C\subsetneq B$   伯恩斯坦定理：$|A|\leq|B|,|B|\leq|A|\Rightarrow|A|=|B|$ 可数集合：与 $\mathbb{Z}_+$ 对等，基数为 $ℵ_0$  任何无限集合至少包含一个可数子集 可数子集的任何无限子集是可数集   至多可数集：至多可数集 + 有限集  至多可数个至多可数集的并是至多可数集  $\mathbb{Q}$ 是可数集   有限个至多可数集的直积是至多可数集  代数数全体是有限可数集     康托尔定理：幂集阶数大于原集合 $\mathbb{R}\sim 2^{\mathbb{N}}$  $\mathbb{R}$ 不可数，连续基数 $\mathcal{C}$ $\mathcal{C}$ 个连续基数集合并为连续基数 至多可数个连续基数集合直积为连续基数 $\mathbb{R}^n=\mathcal{C}$    点  $\delta$-邻域：$U(P_0,\delta)={P:d(P,P_0)&amp;lt;\delta}$ 以附近是否都是 $E$ 中的点划分  内点：$\exists U(P_0,\delta),U(P_0,\delta)\subseteq E$ 外点：$\exists U(P_0,\delta),U(P_0,\delta)\subseteq E^c$ 边界点：$\exists U(P_0,\delta),U(P_0,\delta)\cap E\neq \emptyset,U(P_0,\delta)\cap E^c\neq \emptyset$   开核 $\dot{E}$：内点集合 边界 $\partial{E}$：边界点集合 以附近是否总有 $E$ 中的点划分  聚点：$\forall \epsilon,\exists P\neq P_0,P\in E,P\in U(P_0,\epsilon)$ 孤立点： 非聚点   导集 $E&#39;$：$E$ 全体聚点的集合 闭包 $\overline{E}=E\cup E&#39;$ 定理  $(\dot{E})^c=\overline{E^c}$ $(\overline{E})^c=(\dot{E^c})$ $(A\cup B)&#39;=A&#39;\cup B&#39;$ $E\neq \emptyset,E\neq \mathbb{R}^n$ 则 $\partial E\neq\emptyset$ Bolzano-Weierstrass 定理：$E\subset \mathbb{R}^n$ 有界无限集合，则 $E$ 至少有一个聚点    开集  开集：$\forall x\in E,x$ 内点 ($E=\dot{E}$)  $\dot{E}=\bigcup_{G\subset E\text{ 开集}}G$ 任意开集的并是开集 有限个开集的交是开集  $G_n=(-1-\frac{1}{n},1+\frac{1}{n}),\bigcup_{n=1}^\infty G_n=[-1,1]$     闭集：$\forall$ 聚点 $\in E$ ($E=\overline{E}$)  $\overline{E}=\bigcap_{F\subset E\text{ 闭集}}F$ 任意闭集的交是闭集 有限闭集的交是闭集   对偶性：$E$ 开（闭）则 $E^c$ 闭（开） 紧集：若 $M\subset \mathbb{R}^n$ 的任一开覆盖总有有限子覆盖，则 $M$ 是紧集  Heine-Borel: $\mathbb{R}^n$ 有界闭区间的任一开区间覆盖总有有限子覆盖 $\mathbb{R}^n$ 的有界闭集是紧集 $M\subset \mathbb{R}^n$ 是紧集，则 $M$ 是有界闭集   自密集：$E\subset E&#39;$（没有孤立点） 完备集：$E=E&#39;$（无孤立点闭集） $\mathbb{R}^1$ 中集合构造  直线上互不相交的区间的集合是至多可数集 构成区间：$G$ 是开集，$(\alpha,\beta)\subset G,\alpha,\beta\not\in G$ 开集构造定理：直线上任意一个非空集合可以表成至多可数个互不相交的构成区间的并 余区间（邻接区间）：闭集 $A$ 的余集的构成区间   Cantor 三分集 $P$  $P$ 完备 $P$ 无内点 $P$ 连续基数 $P$ 测度为 $0$    外测度  勒贝格测度公理  非负性: $P(A)\geq 0$ 可列可加性 正则性: $P(\empty)=0,P(\Omega)=1$   外测度：$m^*(E)=\inf {\sum_{i=1}^\infty |I_i|:\bigcup_{i=1}^\infty I_i\supset E}, I_i$ 为开区间  $m^*(\emptyset)=0$ $m^*({P})=0$ $m^*({P_1,\dots,P_n,\cdots})=0$   基本性质  非负性：$m^*(E)\geq 0$ 次可数可加性：$m^*(\bigcup_{i=1}^\infty A_i)\leq \sum_{i=1}^\infty m^*(A_i)$ 单调性：$A\subset B,m^(A)\leq m^(B)$ 正则性：$m^*([0,1])=1$   任意区间 $I$，$m^*(I)=|I|$ 平移不变性：$m^(E)=m^(\tau_a E)$ 反射不变性  可测  (Caratheodory) $L$-可测的：$\forall T\subset \mathbb{R}^n,m^(T)=m^(T\cap E)+m^*(T\cap E^c)$  此时 $m$ 的测度： $m(E)=m^*(E)$ $\iff\forall I\subset \mathbb{R}^n,m^(I)=m^\star(I\cap E)+m^(I\cap E^c)$, $I$ 为开区间 $\iff\forall A\subset E,B\subset E^c,m^(A)+m^(B)=m^*(A\cup B)$   可测集的运算  $S^c$ 可测 $S_1,S_2$ 可测，$S_1\cup S_2$ 可测 $S_1-S_2$ 可测 有限个可测集之并（交）可测 至多可数个可测集之并（交）可测 ${S_i}{i=1}^\infty$ 递增可测集，则 $\lim{i\rightarrow\infty}S_i$ 可测，$m(\lim_{i\rightarrow S_i})=\lim_{i\rightarrow \infty}m(S_i)$ ${S_i}{i=1}^\infty$ 递减可测集，则 $\lim{i\rightarrow\infty}S_i$ 可测，当 $m(S_1)&amp;lt;\infty$ 时，$m(\lim_{i\rightarrow S_i})=\lim_{i\rightarrow \infty}m(S_i)$    $\sigma$ 代数  $\Omega$ 上的 $\sigma$ 代数（$\Omega$ 是 $X$ 某些子集组成的集合类）  $X\subset \Omega$ 可数并下封闭 取余集下封闭   $\Sigma$ 生成的 $\sigma$ 代数：包含 $\Sigma$ 的 $\sigma$ 代数之交 Borel $\sigma$ 代数：$\mathbb{R}^n$ 上所有开集生成的 $\sigma$ 代数  开集 闭集 $F_\sigma$ 型集合：闭集可数并 $G_\delta$ 型集合：开集可数交   可测集类 $\mu$ 是 $\mathbb{R}^n$ 上的 $\sigma$ 代数  区间可测 Borel 集可测 零测集可测  零测集子集可测 至多可数个零测集之并可测     非 Borel 集可测集 若 $E$ 可测，则 $m(E)=\inf{m(G):E\subset G,G\text{ 开集}}=\sup{m(F):E\supset F,F\text{ 紧集}}$ （外正规性+内正规性）  $\forall \epsilon&amp;gt;0,\exists G$ 开集，$E\subset G,m(G-E)&amp;lt;\epsilon$ $\forall \epsilon&amp;gt;0,\exists F$ 闭集，$E\supset G,m(E-F)&amp;lt;\epsilon$   若 $E$ 有界，且 $m(E)=\inf{m(G):E\subset G,G\text{ 开集}}=\sup{m(F):E\supset F,F\text{ 紧集}}$，则 $E$ 可测 $E$ 是可测集，则  存在 $G_\delta$ 型集 $G$ 使 $G\supset E,m(G-E)=0$ 存在 $F_\sigma$ 型集 $F$ 使 $F\subset E,m(E-F)=0$    不可测集  Vitali 集  等价关系：$x\sim y\iff x-y\in\mathbb{Q}$ 每个等价类取一个代表元，构成一个不可测集   任意一个测度大于 $0$ 的集合中有不可测子集 满足正则性，可数可加性和全等不变性的测度存在不可测集  </description>
     </item>
     
     <item>
@@ -242,7 +266,7 @@ $$\lim_{n\rightarrow\infty}P(E_n)=P(\lim_{n\rightarrow\infty}E_n)$$
       <guid>https://zhengzangw.com/notes/digital-image-process/0-basics/</guid>
       <description>数字图像  数字图像：$f(x,y),f$ 为灰度或强度，皆离散 电磁波谱：伽马射线，X 射线，紫外线，可见光，红外线，微波，无线电波  单色光（无色光）  强度：灰度级   彩色光：430nm(紫)~790nm(红)  发光强度：能量总量 W 光通量：观察者从光源感受到的能量 lm(流明数) 亮度：光感知的主观描绘     图像增强：由人的主观感受评判  对比度拉伸 增强   图像复原：以预先制定的目标改善图像  去模糊 利用退化现象的先验知识恢复图像   图像分割：吧图像细分为它的区域或物体  采样 用有限的样本数目去近似无限的现实物理信号（有限近似无限）
  空间分辨度 像素数：每单位距离点数  1 inch = 2.54 cm dpi: 每英寸点数    量化 用离散计算机表示去近似连续的现实物理信号（离散近似连续）
- 灰度分辨率  $Q=2^b$: $b$ bit量化，$Q$ 级灰度   伪轮廓 最佳量化：量化误差最小（均方误差）  $$\delta^2=\sum_{k=1}^K\int_{Z_k}^{Z_{k+1}}(Z-q_k)^2p(Z)dZ$$
+ 灰度分辨率  $Q=2^b$: $b$ bit 量化，$Q$ 级灰度   伪轮廓 最佳量化：量化误差最小（均方误差）  $$\delta^2=\sum_{k=1}^K\int_{Z_k}^{Z_{k+1}}(Z-q_k)^2p(Z)dZ$$
 前沿学术期刊  TPAMI《IEEE Transactions on Pattern Analysis and Machine Intelligence》 TIP《IEEE Transactions on Image Processing》 CVIU《Computer Vision and Image Understanding 》 TSMCB《IEEE Transactions on Systems, Man and Cybernetics》  前沿学术会议  CVPR (IEEE Conference on Computer Vision and Pattern Recognition) ICCV (International Conference on Computer Vision) ECCV (European Conference on Computer Vision)  </description>
     </item>
     
@@ -435,6 +459,82 @@ Model -&amp;gt; Rendering -&amp;gt; Image -&amp;gt; Display
       <guid>https://zhengzangw.com/notes/linear-algebra/1-%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/</guid>
       <description>Guass 消元  数域：$\mathbb{F}\in\mathbb{C}$  $0\in\mathbb{F},1\in\mathbb{f}$ $\forall a,b\in\mathbb{F},a\pm b\in\mathbb{F}, ab\in{F},\frac{a}{b}\in\mathbb{F}(b \not=0)$   矩阵$A=(a_{ij})_{mn}$  阶数 $m*n$ 方程组的增广矩阵    $$ \left[ \begin{matrix} a_{11} &amp;amp; \cdots &amp;amp; a_{1n} &amp;amp; | &amp;amp;b_1\newline \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; | &amp;amp; \vdots\newline a_{n1} &amp;amp; \cdots &amp;amp; a_{n1} &amp;amp; | &amp;amp; b_n \end{matrix} \right] \tag{3} $$
  矩阵三初等行变换  $r_i\leftrightarrow r_j$ $kr_i + r_j \rightarrow r_j$ $kr_i \rightarrow r_i$   梯阵  若有零行在底 主元（某行从左向右第一非零元）为 1 主元列指标随 i 严格递增   约化行梯阵  某一列有行主元则其余元素为 0 的梯阵   高斯消元 $N=(\alpha_i)$为基础解系，则$X=Ny$ $AX=0$, 解空间与原空间垂直  线性空间  线性空间：$\mathbb{F}^n,\mathbb{F}_n$ 线性无关  $\sum_{i=1}^mk_i\alpha_i=0$,则$k_i=0$ 线性相关的延长组线性相关，线性无关的缩短组线性无关   线性表示  $\beta=\sum_{i=1}^mk_i\alpha_i$ 线性相关$\Leftrightarrow$任一向量可由其它线性表示 $\alpha_1,\cdots,\alpha_l$线性无关，可由$\beta_1,\cdots,\beta_m$线性表示，则$l\leq m$   $\mathbb{F}^n$的基  线性无关 生成$\mathbb{F}$ (三选一)个数等于维数   维数：基的个数$dim\mathbb{F}$ 子空间：  非空子集为子空间当且仅当其对加、数乘封闭 生成子空间    线性方程组的解之结构  齐次线性方程组：记方程的解系为$H$,为$\mathbb{F}$子空间，H 的基为基础解系。以未知数$x_{j_1},\cdots,x_{j_p}$为参数，令其中一个为 1 其余为零得到的$X_1,\cdots,X_p$为基础解系 仿射空间：$\alpha+W$  仿射空间关系：重合或不交   方程组解的关系  若$Y,Z$为方程$AX=b$的解，则$Y-Z$为方程$AX=0$的解 若$Y$为$AX=b$的解，$X$为$AX=0$的解，则$X+Y$为$AX=b$的解  若$AX=b$的解集为$S$,$AX=b$的解集为$H$，$Y\in S$, 则$S=Y+H$。 若$b=0$，则$S\cap H=\emptyset$   $Y$为$AX=b$特解，$X$为$AX=0$的通解，则$Y+X$为$AX=b$的通解    </description>
+    </item>
+    
+    <item>
+      <title>Mechanics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-mechanics/</link>
+      <pubDate>Sat, 24 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-mechanics/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;物理学&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;物质
+&lt;ul&gt;
+&lt;li&gt;microscopic: elementary particles （大数粒子组成体系中个别粒子的行为）&lt;/li&gt;
+&lt;li&gt;mesoscopic(介观)&lt;/li&gt;
+&lt;li&gt;macroscopic：大数粒子组成的体系整体行为&lt;/li&gt;
+&lt;li&gt;cosmological&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;运动：机械运动、热运动、微观粒子运动等（基于时间和空间）&lt;/li&gt;
+&lt;li&gt;相互作用：由场传递，引力、弱相互作用、电磁相互作用、强相互作用&lt;/li&gt;
+&lt;li&gt;orders, symmetry, symmetry-breaking, conservation laws or invariance&lt;/li&gt;
+&lt;li&gt;物理学发展历史
+&lt;ul&gt;
+&lt;li&gt;19 世纪中叶前：实验科学&lt;/li&gt;
+&lt;li&gt;20 世纪初：狭义和广义相对论，量子力学&lt;/li&gt;
+&lt;li&gt;20 世纪中叶：实验+理论科学&lt;/li&gt;
+&lt;li&gt;如今三足鼎立：实验物理、理论物理、计算物理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;基本理论
+&lt;ul&gt;
+&lt;li&gt;牛顿力学/经典力学&lt;/li&gt;
+&lt;li&gt;热力学&lt;/li&gt;
+&lt;li&gt;电磁学&lt;/li&gt;
+&lt;li&gt;相对论&lt;/li&gt;
+&lt;li&gt;量子力学&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;科学研究方法
+&lt;ul&gt;
+&lt;li&gt;观测、实验、模拟得到事实和数据&lt;/li&gt;
+&lt;li&gt;用已知原理分析事实和数据&lt;/li&gt;
+&lt;li&gt;（理论）形成假说和理论用以解释&lt;/li&gt;
+&lt;li&gt;（理论）预言新的事实和结果&lt;/li&gt;
+&lt;li&gt;（理论）用新的事例修改和更新理论&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;基本量（操作性定义）：长度、质量、时间、电流、热力学温度、物质的量、发光强度&lt;/li&gt;
+&lt;li&gt;非决定论性质
+&lt;ul&gt;
+&lt;li&gt;微观客体量子力学不确定性关系&lt;/li&gt;
+&lt;li&gt;多粒子系统中个别粒子统计不确定性&lt;/li&gt;
+&lt;li&gt;非线性动力系统中的不可预言性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;kinematics&#34;&gt;Kinematics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;diplacement: $\Delta\vec r=\vec r(t+\Delta t)-r(\vec t)$&lt;/li&gt;
+&lt;li&gt;velocity: $\overline{\vec v}=\frac{\Delta\vec r}{\Delta t}$&lt;/li&gt;
+&lt;li&gt;speed: $\overline{v}=\frac{\Delta s}{\Delta t}$&lt;/li&gt;
+&lt;li&gt;acceleration: $\vec a=\frac{d\vec v}{dt}$&lt;/li&gt;
+&lt;li&gt;angular velocity vector: $\vec \omega =\frac{d\vec\theta}{dt} = \dot{\varphi}\vec k$&lt;/li&gt;
+&lt;li&gt;velocity in circular motion: $\dot{\vec \rho}=\vec \omega\times\vec\rho$&lt;/li&gt;
+&lt;li&gt;Oscillation: temporal periodicity and spatial repetitiveness&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>2. AEP</title>
+      <link>https://zhengzangw.com/notes/information-theory/2-aep/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/2-aep/</guid>
+      <description>Convergence of random variables  In probability (convergence in probability): $P(|X_n-X|\leq\epsilon)\rightarrow 1$ In mean square: $E(X_n-X)^2\rightarrow 0$ With probability 1 (almost surely convergence): $P(\lim_{n\rightarrow\infty}X_n=X)=1$ (2)$\rightarrow$(1), (3)$\rightarrow$(1) Law of Large Numbers: $X_1,\cdots,X_n\sim p(x)$  Strong: $P(\lim_{n\rightarrow\infty} \overline X_n=E(X_1))=1$ Weak: $\overline X_n\rightarrow E(X_1)$ in probability    Asymptotic Equipartition Property  AEP: $X_1,X_2,\cdots X_n$ are i.i.d. $\sim p(x)$, then $-\frac{1}{n}\log p(X_1,X_2,\cdots, X_n)\rightarrow H(X)$  $2^{-nH(X)+\epsilon}\leq p(X_1,X_2,\cdots,X_n)\leq 2^{-n(H(X)-\epsilon)}$   typical set $A_\epsilon^{(n)}$ is the set of sequences $(x_1,\cdots, x_n)\in\mathcal{X}^n$ with property $2^{-nH(X)+\epsilon}\leq p(X_1,X_2,\cdots,X_n)\leq 2^{-n(H(X)-\epsilon)}$  $P(A_\epsilon^{(n)})\geq 1-\epsilon$ for $n$ sufficiently large (The typical set has probability nearly 1) $|A_\epsilon^{(n)}|\leq 2^{n(H(X)+\epsilon)}$ (All elements are nearly qeuiprobable) $|A_\epsilon^{(n)}|\geq (1-\epsilon)2^{n(H(X)-\epsilon)}$ (elements nearly $2^{nH}$)   High Probability Set: $B_\delta^{(n)}\subset\mathcal{X}^n$ be the smallest set with $P(B_\delta^{(n)})\geq 1-\delta$  if $P(B_\delta^{(n)})\geq 1-\delta$, then $\frac{1}{n}\log|B_\delta^{(n)}|&amp;gt;H-\delta&#39;$ for n sufficiently large   Data Compression  Encode: $E(\frac{1}{n}l(X^n))\leq H(X)+\epsilon$  $n\log|\mathcal{X}|+1+1$ for $(A_\epsilon^{(n)})^c$ $n(H+\epsilon)+1+1$ for $A_\epsilon^{(n)}$   For any scheme with rate $r&amp;lt;H(X),P_e\rightarrow 1$    Joint Typicality Jointly typical sequences $A_\epsilon^{(n)}$</description>
     </item>
     
     <item>
@@ -786,6 +886,25 @@ echo $(ls) # output -&amp;gt; string echo `ls` # output -&amp;gt; string diff &a
     </item>
     
     <item>
+      <title>Thermal Physics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-thermal/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-thermal/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫
+NJU: University Physics I - 卢德鑫&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;temperature&#34;&gt;Temperature&lt;/h1&gt;
+&lt;h2 id=&#34;basic-concept&#34;&gt;Basic Concept&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;phase: homogeneous part of system&lt;/li&gt;
+&lt;li&gt;equilibrium state: a state of a system in which macroscopic variables have definite values that remain constant as long as the external conditions are unchanged&lt;/li&gt;
+&lt;li&gt;relaxation time: $\tau$, the time system needs to adjust itself to follow the change of the surrounding.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>Chapter 2</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter2/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
@@ -804,6 +923,24 @@ echo $(ls) # output -&amp;gt; string echo `ls` # output -&amp;gt; string diff &a
 software process  the way we produce software, 以人为主体  evolution model waterfall model Iterative-and-incremental Process Models    waterfall model evolution-tree life-cycle model at the end of each episode we have a baseline: a complete set of artifacts
 artifact: a constituent component of a software product
 Iterative-and-incremental Process Models  Incrementation(增量): 指对于产品的功能上、模块上的增加 Iteration(迭代): 指增量部分仍然使用相同的流程来开发  generic process framework  framework activities  Communication Planning Modeling Construction Deployment   umbrella activities：普适性活动，是所有框架性活动都会涉及到的  project tracking and control risk management quality assurance configuration management technical reviews    software life-cycle model  a description of the steps that should be performed when building a software product，从软件自身来看 core workflows in life-cycles  Requirements workflow Analysis workflow Design workflow Implementation workflow Test workflow    Code-and-Fix life-cycle model waterfall life-cycle model or classic life cycle</description>
+    </item>
+    
+    <item>
+      <title>勒贝格积分</title>
+      <link>https://zhengzangw.com/notes/real-function-theory/%E5%8B%92%E8%B4%9D%E6%A0%BC%E7%A7%AF%E5%88%86/</link>
+      <pubDate>Sat, 06 Feb 2021 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/real-function-theory/%E5%8B%92%E8%B4%9D%E6%A0%BC%E7%A7%AF%E5%88%86/</guid>
+      <description>非负简单函数的 Lebesgue 积分  简单函数：$f(x)=\sum_{i=1}^sc_iX_{E_i}(x), c_i\geq 0$ def. $\int_E f(x)dx=\sum_{i=1}^sc_im(E_i)$ $\int_{A\cup B}f(x)dx=\int_Af(x)dx+\int_Bf(x)dx$ ${A_n}{n=1}^{\infty}$ 为 $E$ 一列可测子集，$A_1\subset A_2\subset\cdots$，$E=\sum{n=1}^\infty A_n=\lim_{n\rightarrow \infty} A_n$，则 $\int_{\lim_{n\rightarrow A_n}}f(x)dx=\lim_{n\rightarrow\infty}\int_{A_n}f(x)dx$ 线性：$\int_E(\alpha f(x)+\beta g(x)) dx = \alpha\int_E f(x)dx+\beta\int_E g(x)dx$  非负可测函数的 Lebesgue 积分  def. $\int_Ef(x)=\sup{\int_E\varphi(x)dx,\varphi(x)\leq f(x)},\varphi$ 为非负简单函数 $f(x)\leq g(x),\int_E f(x)dx\leq\int_E g(x)dx$ def. 勒贝格可积（L-可积）:$\int_Ef(x)&amp;lt;+\infty$ L-可积则 $m(E(f=+\infty))=0$ $\int_{A\cup B}f(x)dx=\int_Af(x)dx+\int_Bf(x)dx$ 线性 Levi 单调性定理：${f_n}$ 递增，$x\in E,\forall n,f_n(x)\leq f_{n+1}(x),\lim_{n\rightarrow+\infty}f_n(x)=f(x)$，则$\lim_{n\rightarrow}\int_Ef_n(x)=\int_Ef(x)dx$  逐项积分（无穷级数、积分交换）   Fatou 引理：$\int_S\underline{\lim_{n\rightarrow\infty}}f_nd\mu\leq\underline{\lim_{n\rightarrow\infty}}\int_Sf_nd\mu$ 零测集不影响积分  可测函数的 Lebesgue 积分  def. $f$ 可测且积分确定时，在 $E$ 上的 L-积分为 $\int_E f(x)dx=\int_E f^+(x)dx -\int_Ef^-(x)$  积分确定：$f^+,f^-$ 至少一个有限 L 可积：两个都有限 L(E)：L 可积函数全体   可数可加性：$E=\cup_{n=1}^{+\infty}E_n$ 不相交，$\int_Ef(x)=\sum_{n=1}^{\infty}\int_{E_n}f(x)dx$ $f\in L(E)\iff|f|\in L(E)$ 与 Riemann 积分不同 绝对连续性：$f\in L(E),\forall \epsilon&amp;gt;0,\exists\delta&amp;gt;0$，当 $m(A)&amp;lt;\delta$ 则 $|\int_Af(x)dx|\leq\int_A|f(x)|dx&amp;lt;\epsilon$ $g\in L(E),g\geq 0,|f|\leq g$ 则 $f\in L(E)$ 线性  控制收敛定理  非负 + 单调：Levi 单调性定理 非负，下极限的积分$\leq$积分的下极限：Fatou 引理 勒贝格控制收敛定理: ${f_n}$ 是 $E$ 上的可测函数，$\lim_{n\rightarrow\infty}f_n(x)=f(x)$ a.</description>
+    </item>
+    
+    <item>
+      <title>3. Entropy Rate</title>
+      <link>https://zhengzangw.com/notes/information-theory/3-entropy-rate/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/3-entropy-rate/</guid>
+      <description>Stationary Process  stationary: $P(X_1=x_1,X_2=x_2,\cdots,X_n=x_n)=P(X_{1+l}=x_1,X_2=x_{2+l},\cdots,X_{n+l}=x_n)$  Gaussian process Stationary Markov Chain   Stationary Distribution of MC  $p(X_{n+1})=p(X_n)$ $p(x_{n+1})=\sum_{x_n}p(x_n)P_{x_nx_{n+1}}$ net probability flow across any cut set is zero    Entropy Rate  entropy rate of a stochastic process: $H(\mathcal{X})=\lim_{n\rightarrow\infty}\frac{1}{n}H(X_1,X_2,\cdots,X_n)$  $H(X_n,\cdots,X_1)=\sum_{i=1}^nH(X_i|X_{i-1},\cdots,X_1)$   (a) For a stationary stochastic process, $H(X_n|X_{n-1},\cdots,X_1)$ is nonincreasing and has a limit  $H&#39;(X)=\lim_{n\rightarrow\infty}H(X_n|X_{n-1},\cdots,X_1)$ exists   (b) Cesaro Mean: $a_n\rightarrow a,b_n=\frac{1}{n}\sum_{i=1}^na_i,b_n\rightarrow a$ For a stationary stochastic process, $H(\mathcal{X})=H&#39;(\mathcal{X})$ (a,b)  Markov Chain: $H(\mathcal{X})=H(X_2|X_1)=-\sum_{ij}\mu_iP_{ij}\log P_{ij}$   Some results  Second Law of Thermodynamics: model the isolated system as a Morkov chain with transitions obeying the physical laws governing the system $D(\mu_n|\mu_n&#39;)$ decreases with $n$ $H(X_n|X_1)$ increases Shuffles increase entropy: $H(TX)\geq H(X)$    Functions of Markov Chain  $X_1,\cdots,X_n,\cdots$ be a stationary Markov chain, $Y_i=\phi(X_i)$ $H(Y_n|Y_{n-1},\cdots,Y_1,X_1)\leq H(\mathcal{Y})\leq H(Y_n|Y_{n-1},\cdots,Y_1)$ $\lim H(Y_n|Y_{n-1},\cdots,Y_1,X_1)= H(\mathcal{Y})= \lim H(Y_n|Y_{n-1},\cdots,Y_1)$  </description>
     </item>
     
     <item>
@@ -1112,6 +1249,31 @@ $$\text{support}(A\Rightarrow B)=P(A,B)=\frac{\text{# of tuples includes }A,B}{\
     </item>
     
     <item>
+      <title>Electromagnetism</title>
+      <link>https://zhengzangw.com/notes/physics/physics-electromagnetism/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-electromagnetism/</guid>
+      <description>&lt;h1 id=&#34;electromagnetism&#34;&gt;Electromagnetism&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Coulomb&amp;rsquo;s Law: $\overrightarrow{F_{21}} = -\overrightarrow{F_{12}} = k\frac{q_1q_2}{r_{12}^3}\overrightarrow{r_{12}}$&lt;/li&gt;
+&lt;li&gt;Electric Field: $\overrightarrow{E} \equiv lim_{q\rightarrow 0}\frac{\vec F}{q} = \frac{1}{4\pi\epsilon}*\frac{q}{r^3}\overrightarrow{r_{12}}$&lt;/li&gt;
+&lt;li&gt;Dipole moment(dipole field): $p\equiv q*2a$&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>4. Data Compression</title>
+      <link>https://zhengzangw.com/notes/information-theory/4-data-compression/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/4-data-compression/</guid>
+      <description>Existence of Code A source code $C$ for a random variable $X$ is a mapping from $\mathcal{X}$ to $D^*$
+ $X$: the range of $X$ $D$-ary alphabet is $\mathcal{D}={0,1,\cdots,D-1}$ $C(x)$: codeword for $x$ $l(x)$: length of $C(x)$ $L(C)=\sum_{x\in\mathcal{X}}p(x)l(x)$: the expected length of a source code $C(x)$ for a random variable rate $R$: average length  Nonsigular code
+ every element of the range $X$ maps into a different string in $D^*$ $C^*$: extension of a code $C$ is mapping from finite length strings of $X$ to finite-length strings of $D$, $C(x_1x_2\cdots x_n)=C(x_1)C(x_2)\cdots C(x_n)$ Uniquely decodable: extension is nonsigular  Prefix Code (instantaneous code)</description>
+    </item>
+    
+    <item>
       <title>Publications</title>
       <link>https://zhengzangw.com/about/publications/</link>
       <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
@@ -1352,6 +1514,27 @@ $$s_t=g(s_{t-1},x_t)\newline y_t=o(s_t)$$
     </item>
     
     <item>
+      <title>Fundamental Modern Physics</title>
+      <link>https://zhengzangw.com/notes/physics/physics-modern/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/physics-modern/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;《大学物理》卢德鑫&lt;br&gt;
+NJU: University Physics II - 许望&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;energy-quantization&#34;&gt;Energy Quantization&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;$\nu\lambda=c$&lt;/li&gt;
+&lt;li&gt;Blackbody radiation(infrared to visible spectrum): $u=u(\nu,T)$ or $u=u(\lambda,T)$&lt;/li&gt;
+&lt;li&gt;Stefan-Boltzman Law: $J_B=\sigma T^4$&lt;/li&gt;
+&lt;li&gt;relation between density of outgoing energy flow $J_u$ and density of energy u in the cavity: $J_u=\frac{1}{4}uc$, $u(T)=\int_0^\infty(\nu,T)d\nu$&lt;/li&gt;
+&lt;li&gt;Radiation spectrun(or spectrum density): $u(\nu,T)$&lt;/li&gt;
+&lt;li&gt;mean energy $\overline{\varepsilon}$: $u(\nu)d\nu=\frac{8\pi\nu^2}{c^3}\overline{\varepsilon}d\nu$&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>Chapter 4</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter4/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
@@ -1377,6 +1560,15 @@ Object File Format  DOS - COM System V UNIX - COFF (Common Object File-Format) W
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/software-enginerring/4-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1-sa/</guid>
       <description>结构化分析方法 SA  分析：从问题域向求解域迈进的第一步 分析活动的产生制品是应用域专家和计算机专家都可以看得懂的规格说明 基本思想：: “自顶向下，逐步求精” ,“抽象和分解” 结构化方法=结构化分析+结构化设计+结构化程序设计 分解：把系统的复杂性降低到可以掌握的程度，把大问题分解成若干小问题，然后分别解决 抽象：即先考虑问题最本质的属性，暂把细节略去，以后再逐层添加细节，直至涉及到最详细的内容 分析结果  数据字典：定义数据，描述了所有的在目标系统中使用的和生成的数据对象 数据流程图：表达信息系统中数据的流向方式（功能建模）  功能 = 功能 + {子功能} + 功能接口 数据流法 = 数据流 + 数据处理 + 数据存储 + 端点 + 处理说明 + 数据字典   实体&amp;mdash;关系图 ERD：描述数据对象及数据对象之间的关系（数据建模） 状态&amp;mdash;迁移图 STD：描述系统对外部事件如何响应，如何动作（行为建模） 系统关系图：系统与外界相关系统的输入与输出  系统 = 实体 + 属性 + 关系   信息结构图：表达系统的顶层架构、体现分解的过程 加工规格说明：定义数据的处理    结构化设计方法  结构化程序设计（Dijkstra）：概要设计+详细设计  概要设计 概念  模块化：软件被划分成独立命名和可独立访问的被称作模块的构件，每个模块完成一个子功能，它们集成到一起满足问题需求 实现模块化的手段  抽象：抽出事物的本质特性而暂时不考虑它们的细节 信息隐蔽：应该这样设计和确定模块，使得一个模块内包含的信息（过程和数据）对于不需要这些信息的模块来说，是不可访问的   模块独立性：开发具有独立功能而且和其它模块之间没有过多的相互作用的模块 独立性衡量  耦合性：开发具有独立功能而且和其它模块之间没有过多的相互作用的模块 内聚性：标志一个模块内各个处理元素彼此结合的紧密程度，理想的内聚模块只做一件事情   耦合分类  无任何连接（最低耦合） 数据耦合（低耦合）：两个模块彼此通过参数交换信息，且交换的仅仅是数据 控制耦合（中耦合）：两个模块之间传递的信息有控制成分 公共环境耦合：两个或多个模块通过一个公共环境相互作用  一个存一个取：低耦合 都存取数据：低&amp;mdash;中耦合   内容耦合  一个模块访问另一个模块的内部数据 两个模块有一部分程序代码重叠 一个模块不通过正常入口而转移的另一个的内部 一个模块有多个入口     内聚分类  偶然内聚（低）：一组任务关系松散 逻辑内聚（低）：一组任务在逻辑上同属一类，例如均为输出 时间内聚（低）：一组任务必须在同一段时间内执行 信息内聚（中）：模块内所有元素都引用相同的输入或输出数据集合 顺序内聚（高）：模块中的每个元素都是与同一功能紧密相关，一个元素的输出是下一个元素的输入 功能内聚（高）：一个模块完成一个且仅完成一个功能   扇出数：由一模块直接控制的其他模块的数目 扇入数：有多少个模块直接控制一个给定的模块  设计方法  面向数据流的设计  信息流  变换流：信息沿输入通路进入系统，同时由外部形式变换成内部形式。进入系统的信息通过变换中心，经过加工处理以后再沿着输出通路变换成外部形式离开系统。 事务流：事务流的特点是数据沿着接收通路把外部世界的信息转换成一个事务项，然后，计算该事务项的值，根据它的值激励起多条活动通路中的一条数据流。发出多条通路的信息流中枢被称为“事务中心”     面向数据结构的设计：Jackson 方法  详细设计  详细设计是给出软件结构中各模块的内部过程描述 图形工具  流程图 方块图（N-S） PAD 图   语言工具：PDL(Program Design Language) 软件设计说明书  系统的目标和作为系统元素的软件的作用 硬件、软件与人机接口 主要的软件功能 外部定义的数据库 主要的设计约束与限制 设计说明：数据说明、导出的软件结构、结构内接口 模块说明  处理说明 接口说明 设计语言说明 使用模块 数据组织 注解   文件结构和全程数据    </description>
+    </item>
+    
+    <item>
+      <title>5. Channel Capacity</title>
+      <link>https://zhengzangw.com/notes/information-theory/5-channel-capacity/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/5-channel-capacity/</guid>
+      <description>Channel Capacity  $(\mathcal{X},p(y|x),\mathcal{Y})$: send $x$, with probability $p(y|x)$, receiver get $y$ Channel capacity: $C=\max_{p(x)}I(X;Y)$ Strategy to calculate $C$  $I(X;Y)=H(Y)-H(Y|X)$ convex sets: $d_{\min}=\min_{a\in A,b\in B}d(a,b)$   Examples:  Noiseless Binary Channel: $C=1,p(x)=(\frac{1}{2},\frac{1}{2})$ Noisy Channel with nonoverlapping Outputs: in fact not noisy Noisy Typewriter: $\log13$ Binary Symmetric Channel: $C=1-H(p)$ Binary Erasure Channel: $\max_{p(x)}H(Y)-H(\alpha)=1-P_e$   symmetric channel: channel transition matrix row and columnr are permutations of each other $C=\log|\mathcal{Y}|-H(r)$ weakly symmetric: rows  Channel Coding Theorem  Message $W$ (Encoder) $X^n$ (Channel) $Y^n$ (Decoder) $\hat W$ $\max \frac{H(W)}{n}$ Message: can be ordered and denoted by index, $\log M$ symbols discrete memoryless channel (DMC): $p(y_k|x^k,y^{k-1})=p(y_k|x_k)$ without feedback: $p(x_k|x^{k-1},y^{k-1})=p(x_k|x^{k-1})$ memoryless + no feedback: $H(Y^n|X^n)=\sum_{i=1}^nH(Y_i|X_i)$ Markov chain: $W\rightarrow X^n\rightarrow Y^n\rightarrow\hat W$ DMC: $C=\max I(X;Y)$  DMC  codebook ($f(w)=x^n$) shared between sender and receiver $(M,n)$ code  index set ${1,2,\cdots, M}$ encoding function $f(x):{1,2,\cdots,M}\rightarrow\mathcal{X}^n$, yielding codewords $x^n(1),\cdots,x^n(M)$ decoding function $g(x)$   Conditional probability of error: $\lambda_i=\sum_{y^n}p(y^n|x^n(i))[g(y^n\neq i)]$  maximal probability of error: $\lambda^{(n)}=\max \lambda_i$ average: $P_e^{(n)}=\frac{1}{M}\sum\lambda_i$   rate $R$ of $(M, n)$ code: $R=\frac{\log M}{n}$ bits per transmission  achievable $R$: sequence $(2^{nR}, n)$ codes such that the maximal probability of error $\lambda(n)\rightarrow 0$ when $n\rightarrow\infty$   capacity: supremum of all achievable rates Channel coding theorem: $C=\max_{p(x)}I(X;Y)$  Achievability: For any $r&amp;lt;C,\exists (2^{nr},n)$ code Converse: For any $r&amp;gt;C,\lambda_e&amp;gt;0$    Intuition for Channel Capacity: $2^{nI(X;Y)}=2^{n(H(Y)-H(Y|X))}$ （手电筒）</description>
     </item>
     
     <item>
@@ -1504,7 +1696,7 @@ Semidefinite Program  $A≽0$: symmetric matrix $A\in\mathbb{R}^{n\times n}$ is 
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-image-process/4-colorful-image/</guid>
-      <description>彩色基础  全彩色：用全彩色传感器获取的真实彩色 伪彩色：为特定灰度或灰度范围赋予颜色 物理特性  无色光：黑白  属性：强度 灰度级：表示强度的数值   彩色光：400nm~700nm电磁波  辐射：能量（瓦特） 光强：感知的能量（流明） 亮度：主观描绘     生物特性  锥状细胞  600~700万个 (1965) 红色(65%,575nm),绿色(33%,535nm),蓝色(2%,445nm) 主颜色：RGB  国际照明委员会(1931)：700nm,546.1nm,435.8nm   次生色     颜料的主颜色（吸收）：Yellow, Magenta, Cyan 属性  亮度 brightness：强度 色调 hue：主波长 饱和度 saturation：白光的比例 色度 chromaticity：色调，饱和度   三色值：红色 X, 绿色 Y, 蓝色 Z  $x=\frac{X}{X+Y+Z}$ $y=\frac{Y}{X+Y+Z}$ $z=\frac{Z}{X+Y+Z}$ $x+y+z=1$ CIE 1931 XYZ色彩空间  两点连线：所有可能的加性组合 任意三点无法覆盖全图 色域      彩色模型  RGB彩色模型（面向显示器）  笛卡尔坐标系，$[0,1]$，黑色原点，白色在最远的角，中间虚线是灰色 三幅分量图像 全彩色图像：24比特 高端设备支持24比特 RGB 图像 低端设备通常只能显示 256 种彩色  稳定 RGB 色（通常216颜色）：每个 RGB 只有六种取值 00,33,66,99,CC,FF     CYM彩色模型（面向打印机）  $(C,M,Y)=1-(R,G,B)$ CYMK: 添加黑色(K)   HSI(Intensity)/HSL(Lightness)（面向人，柱坐标系）  hue, saturation, intensity 将亮度和颜色信息解耦合 intensity: 平行面与强度轴（灰色）的交点 satuaration: 越小白光越大，与强度轴距离 hue: 包含强度轴的面与强度轴的夹角，与红色轴夹角   HSB(brightness)/HSV(Value)  伪彩色图像处理  灰度分层 独立变换3次 多光谱图像处理  全彩色图像处理  方法  分别处理分量图像 直接处理彩色像素   彩色变换：$g(x,y)=T(f(x,y))$ 补色：合成为黑色的颜色 彩色分层：将不感兴趣的颜色设置为中性 色调和彩色校正  CIE $L^*a^b^$ 模型：设备无关的颜色模型   直方图处理 平滑与锐化  彩色图像分割  HIS 颜色空间直观  利用 $H$ 指定颜色 利用 $S$ 进一步限定区域 $I$ 很少用来分割   RGB 空间分割效果更好  距离 方形盒子：长度与标准差成比例   彩色边缘检测  $u=\frac{\partial R}{\partial x}r+\frac{\partial G}{\partial x}g+\frac{\partial B}{\partial x}b$ $v=\frac{\partial R}{\partial y}r+\frac{\partial G}{\partial y}g+\frac{\partial B}{\partial y}b$ $g_xx=u^Tu$ $g_yy=v^Tv$ $g_xy=u^Tv$ $\theta(x,y)$ $F_\theta(x,y)$    显示器  CRT 显示器：RGB叠加 可视角度 偏色程度 $\Delta E$: 平均（3以下难以分辨，1以内相当准确），最大 亮度  黑暗下 $&amp;gt;80cd/m^2$ 室外 $&amp;gt;300cd/m^2$   像素密度: $&amp;gt;150$ PPI 色域覆盖  色域标准  sRGB (Microsoft): 35% CIE Adobe RGB: 50% CIE，改善青绿色覆盖 NTSC(1953): CRT 标准，淘汰 REC-709: sRGB 的影视行业名称 DCI-P3: 美国数字电影(2017) REC-2020   色彩管理  操作系统仅支持 sRGB Chrome 仅支持 sRGB      </description>
+      <description>术语  全彩色：用全彩色传感器获取的真实彩色 伪彩色：为特定灰度或灰度范围赋予颜色  电磁光谱  无色光：黑白  属性：强度 灰度级：表示强度的数值   彩色光：400nm~700nm 电磁波  光谱色：单色光对应的颜色   单位  辐射（能量）：$W$ 辐射强度（单位立体角内辐射功率）：$W$/steradian 光通量（人眼对不同波长光的变化敏感度）：流明 lm 光强（单位立体角内光通量）：坎德拉 cd = lm/steradian 亮度（主观描绘，无单位）    光感受器（生物特性）  彩色视觉（color vision）：基于物体所反射、发出或透过的光的波长以区分物体 人的彩色视觉：脑响应当进入的光与眼中的若干种视锥细胞作用时所产生的刺激  暗光照：光由视网膜上的视杆细胞 (500nm) 检测，在彩色视觉中只起很少的作用 亮视觉：锥状细胞(1965)， 600~700 万个, L (575nm, 65%), M (535nm, 33%), L (445nm, 2%)    主颜色  主颜色 (国际照明委员会, CIE, 1931): R 700nm, G 546.1nm, B 435.8nm 次生色：主颜色叠加（无法生成所有颜色） 主波长：描述非纯色光的颜色 颜料的主颜色（吸收）：Yellow, Magenta, Cyan  CIE XYZ 色彩空间</description>
     </item>
     
     <item>
@@ -1584,6 +1776,45 @@ Semidefinite Program  $A≽0$: symmetric matrix $A\in\mathbb{R}^{n\times n}$ is 
     </item>
     
     <item>
+      <title>Field-Theory</title>
+      <link>https://zhengzangw.com/notes/physics/field-theory/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/field-theory/</guid>
+      <description>&lt;h1 id=&#34;coordinate-system&#34;&gt;Coordinate system&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Cartesian system $(\vec i,\vec j,\vec k)$
+&lt;ul&gt;
+&lt;li&gt;orthogonal: $\vec i\cdot\vec j=\vec j\cdot\vec k=\vec k\cdot\vec i=0$&lt;/li&gt;
+&lt;li&gt;right-handed screw relation: $\vec i\times\vec j=\vec k$, $\vec j\times\vec k=\vec i$, $\vec k\times \vec i=\vec j$&lt;/li&gt;
+&lt;li&gt;$A\cdot B = A_1B_1+A_2B_2+A_3B_3$&lt;/li&gt;
+&lt;li&gt;$$
+A\times B=\det(\left[
+\begin{matrix}
+\vec i &amp;amp; \vec j &amp;amp; \vec k\newline
+A_1 &amp;amp; A_2 &amp;amp; A_3\newline
+B_1 &amp;amp; B_2 &amp;amp; B_3
+\end{matrix}
+\right])
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;polar coordinate systems $(\vec e_\rho, \vec e_\phi)$
+&lt;ul&gt;
+&lt;li&gt;moving frames&lt;/li&gt;
+&lt;li&gt;position vector $\vec\rho=\rho\vec e_\rho$&lt;/li&gt;
+&lt;li&gt;$\vec e_\rho=cos\varphi\vec i+sin\varphi\vec j$&lt;/li&gt;
+&lt;li&gt;$\frac{d\vec e_\rho}{dt}=\dot{\varphi}\vec e_\varphi$&lt;/li&gt;
+&lt;li&gt;$\frac{d\vec e_\varphi}{dt}=-\dot{\varphi}\vec e_\rho$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Spherical systems $(\vec e_\rho, \vec e_\phi, \vec k)$&lt;/li&gt;
+&lt;li&gt;Cylindrical systems&lt;/li&gt;
+&lt;li&gt;intrinsic system&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>Chapter 5</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter5/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
@@ -1608,6 +1839,15 @@ Semidefinite Program  $A≽0$: symmetric matrix $A\in\mathbb{R}^{n\times n}$ is 
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/software-enginerring/5-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1-ooad/</guid>
       <description>UML  UML 历史  UML 建立在当今国际上最有代表性的三种面向对象方法（Booch 方法，OMT 方法，OOSE 方法）的基础之上 UML 由 OMG 于 1997 年 11 月正式采纳为标准   UML 为人们提供了从不同的角度去观察和展示系统的各种特征的一种标准表达方式 UML 视角  使用实例：外部操作者 逻辑结构：从内部描述如何设计实现系统功能 构成 并发性 配置   UML 语义  元-元模型：元模型的基础体系结构，定义一种说明元模型的语言 元模型：元-元模型的一个实例，定义一种说明模型的语言 模型：元模型的一个实例，定义一种语言来描述信息领域 用户对象：模型的一个实例，定义一个特定的领域   UML 2.0 目标：服务于模型驱动软件开发  Superstructure：定义了用户级的构造块（constructs ），用于对系统的结构、行为进行详述（如，类图、顺序图等） Diagram Interchange：定义了针对 UML 的图交换标准，用于对模型以及模型图（包含图形的布局信息）进行交换 Infrastructure：定义了最基本的构造块，用于描述 UML 本身以及针对特定的域（如，实时领域）对 UML 进行定制 OCL：用于定义针对模型以及模型元素的约束信息   UML 工具  IBM Rational Rose Borland Together Eclipse: Papyrus, Topcased    功能  用例图  Use Case：用户与计算机之间为达到某个目的的一次典型交互作用 执行者 联系    结构   类图：描述了系统中的类及其相互之间的各种关系</description>
+    </item>
+    
+    <item>
+      <title>6. Differential Entropy</title>
+      <link>https://zhengzangw.com/notes/information-theory/6-differential-entropy/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/6-differential-entropy/</guid>
+      <description>Entropy  (continuous) $X$ with cumulative distribution function $F(x)=Pr(X\leq x)$ support set of $X$: $f(x)&amp;gt;0$ differential entropy $h(x)$: $h(X)=-\int_Sf(x)\log f(x)dx$  $h(X+c) = h(X)$ $h(aX)=h(X)+\log|a|$ $h(AX)=h(X)+\log|\det A|$ $h(X)$ may be negative ($f(x)$ may $&amp;gt;1$)   uniform: $h(X)=\log a$ Gaussian: $h(X)=\frac{1}{2}\log 2\pi e\sigma^2$ $h(X)$: Infinite Information  does not serve as a measure of the average amount of information   $h(X_1,X_2,\cdots,X_n)=-\int f(x^n)\log f(x^n)dx^n$ $h(X|Y)=-\int f(x,y)\log f(x|y)dxdy)$ Relative Entropy: $D(f|g)=\int f\log\frac{f}{g}\geq 0$ mutual information: $I(X;Y)=\int f(x,y)\log\frac{f(x,y)}{f(x)f(y)}dxdy\geq 0$  Relation to discrete  $X^\Delta=x_i$ if $i\Delta\leq x&amp;lt;(i+1)\Delta$ $p_i=Pr(X^{Delta}=x_i)=f(x_i)\Delta$ $H(X^{\Delta})=-\sum\Delta f(x_i)\log f(x_i)-\log \Delta$ as $\Delta\rightarrow 0,H(X^\Delta)+\log \Delta\rightarrow h(f)=h(X)$  AEP  $-\frac{1}{n}\log f(X_1,X_2,\cdots,X_n)\rightarrow E(-\log f(X))=h(f)$ $A_\epsilon^{(n)}={(x_1,x_2,\cdots,x_n)\in S^n:|-\frac{1}{n}\log f(x_1,\cdots, x_n)-h(X)|\leq\epsilon}$ $\text{Vol}(A)=\int_Adx_1dx_2\cdots dx_n$ Properties  $Pr(A_\epsilon^{(n)})&amp;gt;1-\epsilon$ for $n$ sufficiently large $\text{Vol}(A_\epsilon^{(n)})\leq 2^{n(h(X)+\epsilon)}$ $\text{Vol}(A_\epsilon^{(n)})\geq (1-\epsilon)2^{n(h(X)-\epsilon)}$    Covariance Matrix  cov($X$, $Y$)=$E(X-EX)(Y-EY)=E(XY)-(EX)(EY)$ $\vec X$: $K_X=E(X-EX)(X-EX)^T=[\text{cov}(X_i;X_j)]$ correlation matrix: $\widetilde K_X=EXX^T=[EX_iX_j]$  symmetric and positive semidifinite   $K_X=\widetilde K_X-(EX)(EX^T)$ $Y=AX$  $K_Y=AK_XA^T$ $\widetilde K_Y=A\widetilde K_XA^T$    Multivariate Normal Distribution $f(x)=\frac{1}{(2\pi)^{\frac{n}{2}}}\exp(-\frac{1}{2}(x-\mu)^TK^{-1}(x-\mu))$</description>
     </item>
     
     <item>
@@ -1782,6 +2022,15 @@ savepoint
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter6/</guid>
       <description>储存器分类  储存元件  半导体储存器 磁表面储存器 光盘储存器（光介质）  基板，记录层，反射层，保护层，印刷层 CD(Compact disc) 1.2mm 700MB DVD(digital versatile disc) 0.6mm+0.6mm 4.7GB Blue-ray Disc     存取方式  RAM (Random Access Memory) SAM (Sequential Access Memory) DAM (Direct Access Memory) CAM (Content Addressed Memory) or AM (Associative Memory) : TLB   可更改性  ROM (Readly Only Memory)  Flash ROM 闪存 U盘，BIOS   RWM  SRAM: Static RAM 6个晶体管一个二进制位，cache DRAM: Dynamic RAM 一个晶体管一个二进制位，主存     断电后可保存性  Nonvolatile Memory Volatile Memory   功能  寄存器(1ns, &amp;lt;1KB) &amp;lt;- cache(2ns, 4MB) &amp;lt;- 主存储器(10ns, 500MB-4GB) &amp;lt;- 辅助存储器(辅存)(10ms, 40GB-500GB) &amp;lt;- 海量后备储存器 (10s, 10TB-100TB)(与辅存合称外部存储器)   储存器指标  访问时间：  读出时间：从存储器接到读命令开始至信息被送到数据线上所需的世界 读入时间：从存储器接到写命令开始至信息被写入存储器的时间   存储周期：存储器进行一次读写操作所需全部时间 带宽B：存储器被连续访问时可以提供的数据传送速率，位每秒    主存   SDRAM: Synchronous DRAM</description>
+    </item>
+    
+    <item>
+      <title>7. Gaussian Channel</title>
+      <link>https://zhengzangw.com/notes/information-theory/7-gaussian-channel/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/information-theory/7-gaussian-channel/</guid>
+      <description>Gaussian Channel  continuous alphet channel: input $X_i$, noise $Z_i$, output $Y_i$ Gaussian channel: $Y_i=X_i+Z_i,Z_i\sim\mathcal{N}(0,N)$ Energy Constraint: $\frac{1}{n}\sum_{i=1}^n x_i^2\leq P$ $C=\max_{f(x):EX^2\leq P}I(X;Y)$ Gaussian channel $C=\frac{1}{2}\log (1+\frac{P}{N})$, maximum attained when $X\sim\mathcal{N}(0,P)$  $N=EZ^2$ 信噪比：$\frac{P}{N}$   Guassian Noise is worest noise  </description>
     </item>
     
     <item>
@@ -2825,6 +3074,34 @@ sudo apt install curl git unzip build-essential
     </item>
     
     <item>
+      <title>量化投资</title>
+      <link>https://zhengzangw.com/posts/invest/</link>
+      <pubDate>Sun, 21 Feb 2021 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/invest/</guid>
+      <description>基本金融知识 tushare 包 </description>
+    </item>
+    
+    <item>
+      <title>3D reconstruction</title>
+      <link>https://zhengzangw.com/posts/3d-reconstruction/</link>
+      <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/3d-reconstruction/</guid>
+      <description>介绍  主动式/被动式 主要方法：立体视觉，深度图片 三维数据获取方法  软件建模（精细） 激光设备扫描 利用视频与图像进行重建   应用场景  高精度的三维重建 大规模的三维重建 非刚体的 structure from motion 动态三维重建    图像特征提取  霍夫变换 D2-Net SIFT  相机模型 坐标转换  坐标系  世界 world: $O_w-X_wY_wZ_w$ 相机 camera: 原点位于镜头光心，x,y 与相面两边平行，z 为镜头光轴 图像 $XOY$: 原点为主点（光轴相面交点），单位为毫米 像素 $uov$: 反映 CCD/CMOS 芯片中像素排列情况 （光-&amp;gt;电），单位为像素（整数）   坐标系转换  world to camera: $[X_c, Y_c, Z_c]^T=R[X_w,Y_w,Z_w]^T+T$  $[x_c, y_c, z_c, 1]^T=[R, t; 0, 1][x_w,y_w,z_w,1]^T$ $R,t$ 为相机外参 Camera Extrinsics 旋转矩阵：$R(X_A,\psi),R(Y_A,\theta),R(Z_A,\phi)$  左乘：相对于固定坐标系变换 右乘：相对于自身（活跃）坐标系   欧拉角：$zXZ-(\alpha,\beta,\gamma)$ （万向节死锁） 轴角：$([x, y, z]^T, \theta)$ 四元数   图像转换为像素：$[u,v,1]^T=[\frac{1}{dX}, 0, u_0; 0,\frac{1}{dY},v_0; 0,0,1][X, Y, 1]^T$  $[\frac{1}{dX}, 0, u_0; 0,\frac{1}{dY},v_0; 0,0,1]$ $dX,dY$ 像素在 $X,Y$ 轴上的物理尺度 ($u=\frac{X}{dX}+u_0$) $u_0,v_0$ 为主点在图像坐标中的坐标   camera to image (针孔成像原理)：$s[X, Y, 1]^T=[f, 0, 0, 0; 0, f, 0, 0; 0, 0, 1, 0][x, y, z, 1]^T$  $s$ 为比例因子 $s=z$ $f$ 为有效焦距   内参  $K=[f_x, 0, u_0; 0, f_y, v_0; 0, 0, 1]$ $P=[f_x, 0, u_0, 0; 0, f_y, v_0, 0; 0, 0, 1, 0]$     畸变 (distortion)：对直线投影的偏移（不能保持直线）  中心正常，越边缘越严重 径向畸变（主要）：透镜形状  桶形、枕形、胡子   切向畸变：透镜与图像不平行  薄透镜、离心   其它类型（不显著） 铅锤模型 (Plumb Bob model): 径向复合+薄透镜  畸变参数：$D=(k_1,k_2,p_1,p_2,k_3)$      相机标定  传统方法：一定的摄像机模型下，基于特定实验。经常调整摄像机的需求，设置已知参照物  张正友相机标定法、考虑畸变补偿的两步法等   自标定法：不依赖参照物，利用参数间约束关系  基于 Krupa 方程、分层逐步标定法等    张氏标定法  标定物：棋盘 单应性变换：世界坐标系到像素坐标系的位置映射关系  应用：图像矫正（四个点）、视角变换（普通到 BEV）、图像拼接（不同角度图像转换到同样的视角）、增强现实   图像对应点 $(x&#39;,y&#39;,1),(x,y,1)$, 单应矩阵 $H$（内参与外参的混合）  自由度：8 一个点确定两个方程   张氏标定法  打印棋盘格图纸，贴在物体表面（坐标系 $Z_w=0$） 拍摄一组不同方向的棋盘格图片 对每张拍摄的棋盘图片，检测图片的特征点（角点）   优化  LM 算法    三维重建 双目系统 双目立体视觉重建</description>
+    </item>
+    
+    <item>
+      <title>FMCW Radar</title>
+      <link>https://zhengzangw.com/posts/fmcw/</link>
+      <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/posts/fmcw/</guid>
+      <description>Frequency-modulated continuous-waves radar
+Range  chirp  frequency: $f_c=77$ GHz duration: $T_c=40$ us bandwidth: $B=4$ GHz slope: $S=100$ MHz/us   mixer: $x_{\text{out}}=\sin[(w_1-w_2)t+(\phi_1-\phi_2)]$ IF signal  after $\tau=\frac{2d}{c}$, RX receives IF frequency: $f_\tau=S\tau=\frac{S2d}{c}$   discriminate two frequency in frequency domain: in time domain, two signal should have $&amp;gt;1$ cycles difference  window of $T$ can seperate $\frac{1}{T}$ Hz   Range Resolution:  $\Delta f=\frac{S2\Delta d}{c}&amp;gt;\frac{1}{T_c}$ $\Delta d&amp;gt;\frac{c}{2B}$   Digitize: LPF (remove high-freq) $\rightarrow$ ADC (sample, quantitize) $\rightarrow$ DSP (FFT) Maximum Distance: $d_{\max}$  IF bandwidth (LPF) $&amp;gt;\frac{S2d_{\max}}{c}$ ADC sampling rate $&amp;gt;\frac{S2d_{\max}}{c}$   Larger Chirp Bandwidth $B$: better resolution Larger IF Bandwidth: faster chirps, better $d_{\max}$  Velocity  IF signal: $A\sin(2\pi ft+\phi_0)$  $f=\frac{S2d}{c}$ $\Delta\phi = 2\pi f_c\Delta\tau=\frac{4\pi\Delta d}{\lambda}$   1mm can lead to 180 degree  Single Object  Transmit two chirps seperated by $T_c$  phase difference $\omega=\frac{4\pi vT_C}{\lambda}$ $v=\frac{\lambda\omega}{4\pi T_c}$   Maximum relative speed: $v_{\max}=\frac{\lambda}{4T_c}$  $|\omega|&amp;lt;\pi$   Velocity Resolution  Continous signal: $\Delta f=\frac{1}{T}$ cycles/sec Discrete signal: $\Delta \omega=\frac{1}{N}$ cycles/sample    Multiple Objects  $N$ equi-spaced chirps Doppler FFT: done along chiprs Velocity Resolution  $\Delta\omega&amp;gt;\frac{\pi}{N}$ $\Delta v&amp;gt;\frac{\lambda}{2NT_c}$    Radar Range Equation  Output power of device $P_t$ TX/RX Antenna Gain: $G$ Radiated Power Density: $\frac{P_t G_{\text{TX}}}{4\pi d^2}W/m^2$ Radar Cross Section of the Target (RCS): $\sigma$ Power reflected by object: $\frac{P_t G_{\text{TX}}\sigma}{4\pi d^2}W$ Power density at RX: $\frac{P_t G_{\text{TX}}\sigma}{(4\pi)^2 d^4}W/m^2$ Power captured at RX: $\frac{P_tG_{\text{TX}}\sigma A_{\text{RX}}}{{(4\pi)^2d^4}}W$ $A_{\text{RX}}=\frac{G_{\text{RX}}\lambda^2}{4\pi}$ SNR: $\frac{\sigma P_tG_{\text{TX}} G_{\text{RX}}\lambda^2T_{\text{meas}}}{{(4\pi)^3d^4 kTF}}W$ minimum SNR that is required for detecting an target (15dB - 20dB)  Angle  Angle of Arrival 2D-FFT: range-FFT (row) and dropplet-FFT (column, chirp) additional distance: $d\sin\theta$  Single Object (angle)  $\omega=\frac{2\pi d\sin\theta}{\lambda}$ $\theta=\sin^{-1}(\frac{\lambda\omega}{2\pi d})$  $\theta=0$ is most sensitive accuracy degrades as $\theta$ approaches 90 degree   maximun angle: $\theta=\sin^{-1}(\frac{\lambda}{2d})$  Multiple Objects (angle)  N annetina, Angle-FFT Angle Resolution: $\theta_{\text{res}}=\frac{\lambda}{Nd\cos\theta}$  $d=\frac{\lambda}{2}$ and $\theta=0$: $\theta_{\text{res}}=\frac{2}{N}$    </description>
+    </item>
+    
+    <item>
       <title>Solution to OJ - Balance Segment Painting</title>
       <link>https://zhengzangw.com/teach/algorithm-2020/oj1-4/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
@@ -3119,7 +3396,7 @@ $$L=\sum_{n=1}^N|x^{(n)}-g(f(x^{(n)}))|+\eta\rho(Z)+\lambda|W|^2$$
       <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/number-of-people/</guid>
       <description>行政级别  国 部（省） 局（厅） 处（县） 科（乡）  人口 2015~2019 间约数
- 总人口: 1.4e9 0-15: 2.5e8 &amp;gt;60 : 2.5e8 出生人数：1.6e7 死亡人数：1.1e7 净增长：4e6 学历  大学 1.7e8 高中 2.1e8 初中 4.8e8 小学 3.3e8   一届学生  高中：1.3e7 普高：0.8e7 高考：1e7  江苏高考：33.9 万 南大：&amp;lt;1500 双一流：1 万   高等：0.76e7 普高：0.42e7 双一流：2% 硕士：7.5e5 博士：0.8e5   留学生(18)：66.2 万 网民(19)：8.4e8 (61.2%)  学生 26% 个体户、自由职业者 20%    收入 </description>
+ 总人口: 1.4e9 0-15: 2.5e8 &amp;gt;60 : 2.5e8 出生人数：1.6e7 死亡人数：1.1e7 净增长：4e6 学历  大学 1.7e8 高中 2.1e8 初中 4.8e8 小学 3.3e8   一届学生  高中：1.3e7 普高：0.8e7 高考：1e7  江苏高考：33.9 万 南大：&amp;lt;1500 双一流：1 万   高等：0.76e7 普高：0.42e7 双一流：2% 硕士：7.5e5 博士：0.8e5   留学生(18)：66.2 万 网民(19)：8.4e8 (61.2%)  学生 26% 个体户、自由职业者 20%    收入 病  HPV: 7900 万美国人  </description>
     </item>
     
     <item>
@@ -4383,28 +4660,6 @@ NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
     </item>
     
     <item>
-      <title>Mechanics</title>
-      <link>https://zhengzangw.com/notes/physics/physics-mechanics/</link>
-      <pubDate>Sat, 24 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/physics-mechanics/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;《大学物理》卢德鑫
-NJU: University Physics I - 卢德鑫&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;kinematics&#34;&gt;Kinematics&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;diplacement: $\Delta\vec r=\vec r(t+\Delta t)-(\vec t)$&lt;/li&gt;
-&lt;li&gt;velocity: $\overline{\vec v}=\frac{\Delta\vec r}{\Delta t}$&lt;/li&gt;
-&lt;li&gt;speed: $\overline{v}=\frac{\Delta s}{\Delta t}$&lt;/li&gt;
-&lt;li&gt;acceleration: $\vec a=\frac{d\vec v}{dt}$&lt;/li&gt;
-&lt;li&gt;angular velocity vector: $\vec \omega =\frac{d\vec\theta}{dt} = \dot{\varphi}\vec k$&lt;/li&gt;
-&lt;li&gt;velocity in circular motion: $\dot{\vec \rho}=\vec \omega\times\vec\rho$&lt;/li&gt;
-&lt;li&gt;Oscillation: temporal periodicity and spatial repetitiveness&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
       <title>Use Tikz in LaTeX</title>
       <link>https://zhengzangw.com/posts/latex-tikz/</link>
       <pubDate>Tue, 20 Nov 2018 00:00:00 +0000</pubDate>
@@ -4444,85 +4699,6 @@ NJU: University Physics I - 卢德鑫&lt;/p&gt;
     </item>
     
     <item>
-      <title>Fundamental Modern Physics</title>
-      <link>https://zhengzangw.com/notes/physics/physics-modern/</link>
-      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/physics-modern/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;《大学物理》卢德鑫
-NJU: University Physics II - 许望&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;energy-quantization&#34;&gt;Energy Quantization&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;$\nu\lambda=c$&lt;/li&gt;
-&lt;li&gt;Blackbody radiation(infrared to visible spectrum): $u=u(\nu,T)$ or $u=u(\lambda,T)$&lt;/li&gt;
-&lt;li&gt;Stefan-Boltzman Law: $J_B=\sigma T^4$&lt;/li&gt;
-&lt;li&gt;relation between density of outgoing energy flow $J_u$ and density of energy u in the cavity: $J_u=\frac{1}{4}uc$, $u(T)=\int_0^\infty(\nu,T)d\nu$&lt;/li&gt;
-&lt;li&gt;Radiation spectrun(or spectrum density): $u(\nu,T)$&lt;/li&gt;
-&lt;li&gt;mean energy $\overline{\varepsilon}$: $u(\nu)d\nu=\frac{8\pi\nu^2}{c^3}\overline{\varepsilon}d\nu$&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Thermal Physics</title>
-      <link>https://zhengzangw.com/notes/physics/physics-thermal/</link>
-      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/physics-thermal/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;《大学物理》卢德鑫
-NJU: University Physics I - 卢德鑫&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;temperature&#34;&gt;Temperature&lt;/h1&gt;
-&lt;h2 id=&#34;basic-concept&#34;&gt;Basic Concept&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;phase: homogeneous part of system&lt;/li&gt;
-&lt;li&gt;equilibrium state: a state of a system in which macroscopic variables have definite values that remain constant as long as the external conditions are unchanged&lt;/li&gt;
-&lt;li&gt;relaxation time: $\tau$, the time system needs to adjust itself to follow the change of the surrounding.&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Field-Theory</title>
-      <link>https://zhengzangw.com/notes/physics/field-theory/</link>
-      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/field-theory/</guid>
-      <description>&lt;h1 id=&#34;coordinate-system&#34;&gt;Coordinate system&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Cartesian system $(\vec i,\vec j,\vec k)$
-&lt;ul&gt;
-&lt;li&gt;orthogonal: $\vec i\cdot\vec j=\vec j\cdot\vec k=\vec k\cdot\vec i=0$&lt;/li&gt;
-&lt;li&gt;right-handed screw relation: $\vec i\times\vec j=\vec k$, $\vec j\times\vec k=\vec i$, $\vec k\times \vec i=\vec j$&lt;/li&gt;
-&lt;li&gt;$A\cdot B = A_1B_1+A_2B_2+A_3B_3$&lt;/li&gt;
-&lt;li&gt;$$
-A\times B=\det(\left[
-\begin{matrix}
-\vec i &amp;amp; \vec j &amp;amp; \vec k\newline
-A_1 &amp;amp; A_2 &amp;amp; A_3\newline
-B_1 &amp;amp; B_2 &amp;amp; B_3
-\end{matrix}
-\right])
-$$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;polar coordinate systems $(\vec e_\rho, \vec e_\phi)$
-&lt;ul&gt;
-&lt;li&gt;moving frames&lt;/li&gt;
-&lt;li&gt;position vector $\vec\rho=\rho\vec e_\rho$&lt;/li&gt;
-&lt;li&gt;$\vec e_\rho=cos\varphi\vec i+sin\varphi\vec j$&lt;/li&gt;
-&lt;li&gt;$\frac{d\vec e_\rho}{dt}=\dot{\varphi}\vec e_\varphi$&lt;/li&gt;
-&lt;li&gt;$\frac{d\vec e_\varphi}{dt}=-\dot{\varphi}\vec e_\rho$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Spherical systems $(\vec e_\rho, \vec e_\phi, \vec k)$&lt;/li&gt;
-&lt;li&gt;Cylindrical systems&lt;/li&gt;
-&lt;li&gt;intrinsic system&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
       <title>Math Miscellaneous</title>
       <link>https://zhengzangw.com/posts/math-not-yet-classifed/</link>
       <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
@@ -4555,20 +4731,6 @@ $$&lt;/li&gt;
       <description>&lt;h1 id=&#34;logging-module&#34;&gt;Logging module&lt;/h1&gt;
 &lt;h2 id=&#34;level&#34;&gt;level&lt;/h2&gt;
 &lt;p&gt;CRITICAL &amp;gt; ERROR &amp;gt; WARNING &amp;gt; INFO &amp;gt; DEBUG &amp;gt; NOTSET&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Electromagnetism</title>
-      <link>https://zhengzangw.com/notes/physics/physics-electromagnetism/</link>
-      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/physics-electromagnetism/</guid>
-      <description>&lt;h1 id=&#34;electromagnetism&#34;&gt;Electromagnetism&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Coulomb&amp;rsquo;s Law: $\overrightarrow{F_{21}} = -\overrightarrow{F_{12}} = k\frac{q_1q_2}{r_{12}^3}\overrightarrow{r_{12}}$&lt;/li&gt;
-&lt;li&gt;Electric Field: $\overrightarrow{E} \equiv lim_{q\rightarrow 0}\frac{\vec F}{q} = \frac{1}{4\pi\epsilon}*\frac{q}{r^3}\overrightarrow{r_{12}}$&lt;/li&gt;
-&lt;li&gt;Dipole moment(dipole field): $p\equiv q*2a$&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     
     <item>

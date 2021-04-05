@@ -127,6 +127,45 @@
     </item>
     
     <item>
+      <title>Field-Theory</title>
+      <link>https://zhengzangw.com/notes/physics/field-theory/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/physics/field-theory/</guid>
+      <description>&lt;h1 id=&#34;coordinate-system&#34;&gt;Coordinate system&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Cartesian system $(\vec i,\vec j,\vec k)$
+&lt;ul&gt;
+&lt;li&gt;orthogonal: $\vec i\cdot\vec j=\vec j\cdot\vec k=\vec k\cdot\vec i=0$&lt;/li&gt;
+&lt;li&gt;right-handed screw relation: $\vec i\times\vec j=\vec k$, $\vec j\times\vec k=\vec i$, $\vec k\times \vec i=\vec j$&lt;/li&gt;
+&lt;li&gt;$A\cdot B = A_1B_1+A_2B_2+A_3B_3$&lt;/li&gt;
+&lt;li&gt;$$
+A\times B=\det(\left[
+\begin{matrix}
+\vec i &amp;amp; \vec j &amp;amp; \vec k\newline
+A_1 &amp;amp; A_2 &amp;amp; A_3\newline
+B_1 &amp;amp; B_2 &amp;amp; B_3
+\end{matrix}
+\right])
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;polar coordinate systems $(\vec e_\rho, \vec e_\phi)$
+&lt;ul&gt;
+&lt;li&gt;moving frames&lt;/li&gt;
+&lt;li&gt;position vector $\vec\rho=\rho\vec e_\rho$&lt;/li&gt;
+&lt;li&gt;$\vec e_\rho=cos\varphi\vec i+sin\varphi\vec j$&lt;/li&gt;
+&lt;li&gt;$\frac{d\vec e_\rho}{dt}=\dot{\varphi}\vec e_\varphi$&lt;/li&gt;
+&lt;li&gt;$\frac{d\vec e_\varphi}{dt}=-\dot{\varphi}\vec e_\rho$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Spherical systems $(\vec e_\rho, \vec e_\phi, \vec k)$&lt;/li&gt;
+&lt;li&gt;Cylindrical systems&lt;/li&gt;
+&lt;li&gt;intrinsic system&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>6-场论</title>
       <link>https://zhengzangw.com/notes/calculus/section6/</link>
       <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
@@ -240,45 +279,6 @@
 &lt;/li&gt;
 &lt;li&gt;非奇异$\iff$非退化$\iff$满秩$\iff$可逆&lt;/li&gt;
 &lt;li&gt;当$A$有 n 个线性无关特征向量时，$A$有完备的特征向量系；否则$A$为亏损矩阵&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Field-Theory</title>
-      <link>https://zhengzangw.com/notes/physics/field-theory/</link>
-      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/physics/field-theory/</guid>
-      <description>&lt;h1 id=&#34;coordinate-system&#34;&gt;Coordinate system&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Cartesian system $(\vec i,\vec j,\vec k)$
-&lt;ul&gt;
-&lt;li&gt;orthogonal: $\vec i\cdot\vec j=\vec j\cdot\vec k=\vec k\cdot\vec i=0$&lt;/li&gt;
-&lt;li&gt;right-handed screw relation: $\vec i\times\vec j=\vec k$, $\vec j\times\vec k=\vec i$, $\vec k\times \vec i=\vec j$&lt;/li&gt;
-&lt;li&gt;$A\cdot B = A_1B_1+A_2B_2+A_3B_3$&lt;/li&gt;
-&lt;li&gt;$$
-A\times B=\det(\left[
-\begin{matrix}
-\vec i &amp;amp; \vec j &amp;amp; \vec k\newline
-A_1 &amp;amp; A_2 &amp;amp; A_3\newline
-B_1 &amp;amp; B_2 &amp;amp; B_3
-\end{matrix}
-\right])
-$$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;polar coordinate systems $(\vec e_\rho, \vec e_\phi)$
-&lt;ul&gt;
-&lt;li&gt;moving frames&lt;/li&gt;
-&lt;li&gt;position vector $\vec\rho=\rho\vec e_\rho$&lt;/li&gt;
-&lt;li&gt;$\vec e_\rho=cos\varphi\vec i+sin\varphi\vec j$&lt;/li&gt;
-&lt;li&gt;$\frac{d\vec e_\rho}{dt}=\dot{\varphi}\vec e_\varphi$&lt;/li&gt;
-&lt;li&gt;$\frac{d\vec e_\varphi}{dt}=-\dot{\varphi}\vec e_\rho$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Spherical systems $(\vec e_\rho, \vec e_\phi, \vec k)$&lt;/li&gt;
-&lt;li&gt;Cylindrical systems&lt;/li&gt;
-&lt;li&gt;intrinsic system&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

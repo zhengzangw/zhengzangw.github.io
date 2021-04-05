@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2. AEP | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.db87d7b55e29b75699acf73451f98e37f7029321133dd8ae45930563c6c76609.css" integity="sha256-24fXtV4pt1aZrPc0UfmON/cCkyETPdiuRZMFY8bHZgk=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/teach">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/posts">[ Posts ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#convergence-of-random-variables">Convergence of random variables</a></li>
+    <li><a href="#asymptotic-equipartition-property">Asymptotic Equipartition Property</a></li>
+    <li><a href="#joint-typicality">Joint Typicality</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><h2 id="convergence-of-random-variables">Convergence of random variables</h2>
+<ul>
+<li>In probability (convergence in probability): $P(|X_n-X|\leq\epsilon)\rightarrow 1$</li>
+<li>In mean square: $E(X_n-X)^2\rightarrow 0$</li>
+<li>With probability 1 (almost surely convergence): $P(\lim_{n\rightarrow\infty}X_n=X)=1$</li>
+<li>(2)$\rightarrow$(1), (3)$\rightarrow$(1)</li>
+<li>Law of Large Numbers: $X_1,\cdots,X_n\sim p(x)$
+<ul>
+<li>Strong: $P(\lim_{n\rightarrow\infty} \overline X_n=E(X_1))=1$</li>
+<li>Weak: $\overline X_n\rightarrow E(X_1)$ in probability</li>
+</ul>
+</li>
+</ul>
+<h2 id="asymptotic-equipartition-property">Asymptotic Equipartition Property</h2>
+<ul>
+<li>AEP: $X_1,X_2,\cdots X_n$ are i.i.d. $\sim p(x)$, then $-\frac{1}{n}\log p(X_1,X_2,\cdots, X_n)\rightarrow H(X)$
+<ul>
+<li>$2^{-nH(X)+\epsilon}\leq p(X_1,X_2,\cdots,X_n)\leq 2^{-n(H(X)-\epsilon)}$</li>
+</ul>
+</li>
+<li>typical set $A_\epsilon^{(n)}$ is the set of sequences $(x_1,\cdots, x_n)\in\mathcal{X}^n$ with property $2^{-nH(X)+\epsilon}\leq p(X_1,X_2,\cdots,X_n)\leq 2^{-n(H(X)-\epsilon)}$
+<ul>
+<li>$P(A_\epsilon^{(n)})\geq 1-\epsilon$ for $n$ sufficiently large (The typical set has probability nearly 1)</li>
+<li>$|A_\epsilon^{(n)}|\leq 2^{n(H(X)+\epsilon)}$ (All elements are nearly qeuiprobable)</li>
+<li>$|A_\epsilon^{(n)}|\geq (1-\epsilon)2^{n(H(X)-\epsilon)}$ (elements nearly $2^{nH}$)</li>
+</ul>
+</li>
+<li>High Probability Set: $B_\delta^{(n)}\subset\mathcal{X}^n$ be the smallest set with $P(B_\delta^{(n)})\geq 1-\delta$
+<ul>
+<li>if $P(B_\delta^{(n)})\geq 1-\delta$, then $\frac{1}{n}\log|B_\delta^{(n)}|&gt;H-\delta'$ for n sufficiently large</li>
+</ul>
+</li>
+<li>Data Compression
+<ul>
+<li>Encode: $E(\frac{1}{n}l(X^n))\leq H(X)+\epsilon$
+<ul>
+<li>$n\log|\mathcal{X}|+1+1$ for $(A_\epsilon^{(n)})^c$</li>
+<li>$n(H+\epsilon)+1+1$ for $A_\epsilon^{(n)}$</li>
+</ul>
+</li>
+<li>For any scheme with rate $r&lt;H(X),P_e\rightarrow 1$</li>
+</ul>
+</li>
+</ul>
+<h2 id="joint-typicality">Joint Typicality</h2>
+<p>Jointly typical sequences $A_\epsilon^{(n)}$</p>
+<ul>
+<li>$|-\frac{1}{n}\log p(x^n)-H(X)|&lt;\epsilon$</li>
+<li>$|-\frac{1}{n}\log p(y^n)-H(X)|&lt;\epsilon$</li>
+<li>$|-\frac{1}{n}\log p(x^n, y^n)-H(X, Y)|&lt;\epsilon$</li>
+</ul>
+<p>$X^n\in A_\epsilon^{(n)}, Y^n\in A_\epsilon^{(n)}$ cannot imply $(X^n, Y^n)\in A_\epsilon^{(n)}$</p>
+<p>Three Properties:</p>
+<ul>
+<li>$Pr((X^n,Y^n)\in A_\epsilon^{(n)})\rightarrow 1$ as $n\rightarrow \infty$</li>
+<li>$|A_\epsilon^{(n)}|\leq 2^{n(H(X,Y)+\epsilon)}$</li>
+<li>If $(\widetilde{X}^n, \widetilde{Y}^n)\sim p(x^n)p(y^n)$, then $(1-\epsilon)2^{-n(I(X,Y)+3\epsilon)} \leq Pr((\widetilde{X}^n, \widetilde{Y}^n)\in A_\epsilon^{(n)})\leq 2^{n(I(X,Y)-3\epsilon)}$</li>
+</ul>
+<p>The probability of joint AEP: $2^{-nI(X;Y)}=\frac{2^{nH(X,Y)}}{2^{nH(X)}2^{nH(Y)}}$</p>
+</main>
+        </div>
+
+    </div>
+</body></html>
