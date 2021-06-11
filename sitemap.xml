@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://zhengzangw.com/notes/geology/mineral/</loc>
+    <lastmod>2021-04-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://zhengzangw.com/notes/topolopy/basic/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url><url>
@@ -41,10 +44,10 @@
     <loc>https://zhengzangw.com/notes/digital-circuit/basics/</loc>
     <lastmod>2020-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/notes/abstract/</loc>
+    <loc>https://zhengzangw.com/notes/microelectronics/basic/</loc>
     <lastmod>2020-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/notes/microelectronics/basic/</loc>
+    <loc>https://zhengzangw.com/notes/abstract/</loc>
     <lastmod>2020-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/stochastic-process/preliminaries/</loc>
@@ -127,6 +130,9 @@
   </url><url>
     <loc>https://zhengzangw.com/notes/physics/physics-mechanics/</loc>
     <lastmod>2018-11-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/notes/geology/rock/</loc>
+    <lastmod>2021-04-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/information-theory/2-aep/</loc>
     <lastmod>2020-12-22T00:00:00+00:00</lastmod>
@@ -238,8 +244,8 @@
     <loc>https://zhengzangw.com/notes/information-theory/3-entropy-rate/</loc>
     <lastmod>2020-12-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/about/teaching/</loc>
-    <lastmod>2020-12-07T21:31:28+08:00</lastmod>
+    <loc>https://zhengzangw.com/about/news/</loc>
+    <lastmod>2020-12-07T21:33:19+08:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/3-cnn/</loc>
     <lastmod>2020-06-14T00:00:00+00:00</lastmod>
@@ -343,8 +349,8 @@
     <loc>https://zhengzangw.com/notes/information-theory/4-data-compression/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/about/news/</loc>
-    <lastmod>2020-12-07T21:33:19+08:00</lastmod>
+    <loc>https://zhengzangw.com/about/teaching/</loc>
+    <lastmod>2020-12-07T21:31:28+08:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/4-rnn/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>
@@ -512,9 +518,6 @@
     <loc>https://zhengzangw.com/notes/information-theory/6-differential-entropy/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/about/projects/</loc>
-    <lastmod>2020-12-07T21:40:24+08:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/numerical-analysis/6-%E6%96%B9%E7%A8%8B%E6%B1%82%E6%A0%B9/</loc>
     <lastmod>2020-05-27T00:00:00+00:00</lastmod>
   </url><url>
@@ -643,6 +646,9 @@
   </url><url>
     <loc>https://zhengzangw.com/notes/introduction-to-computer-science/chapter7/</loc>
     <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/about/projects/</loc>
+    <lastmod>2020-12-07T21:40:24+08:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/8-methodology/</loc>
     <lastmod>2020-06-18T00:00:00+00:00</lastmod>
@@ -901,6 +907,9 @@
     <loc>https://zhengzangw.com/notes/islam-culture/</loc>
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://zhengzangw.com/notes/geology/</loc>
+    <lastmod>2021-04-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://zhengzangw.com/notes/concrete-math/</loc>
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -910,17 +919,17 @@
     <loc>https://zhengzangw.com/notes/stochastic-process/</loc>
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/posts/</loc>
-    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
+    <loc>https://zhengzangw.com/notes/</loc>
+    <lastmod>2021-04-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/</loc>
+    <lastmod>2021-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/posts/</loc>
     <lastmod>2021-02-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/posts/invest/</loc>
     <lastmod>2021-02-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/</loc>
-    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/posts/3d-reconstruction/</loc>
     <lastmod>2021-02-02T00:00:00+00:00</lastmod>

@@ -6,14 +6,14 @@
     <description>Recent content in ds on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
-    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
     <lastBuildDate>Sat, 25 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/ds/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Segment Tree</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/segment-tree/</link>
       <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/segment-tree/</guid>
       <description>&lt;h1 id=&#34;prepare&#34;&gt;Prepare&lt;/h1&gt;
 &lt;h2 id=&#34;离散化&#34;&gt;离散化&lt;/h2&gt;
@@ -28,7 +28,7 @@ len &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; unique(m,m&lt;span 
       <title>Skip list</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/skip-list/</link>
       <pubDate>Mon, 12 Mar 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/skip-list/</guid>
       <description>&lt;h1 id=&#34;skip-list&#34;&gt;Skip List&lt;/h1&gt;
 &lt;h2 id=&#34;构造&#34;&gt;构造&lt;/h2&gt;

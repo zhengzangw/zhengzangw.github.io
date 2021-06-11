@@ -6,14 +6,14 @@
     <description>Recent content in [S] 数字逻辑电路 Digital Logic Circuit on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
-    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
     <lastBuildDate>Fri, 31 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/digital-circuit/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basics</title>
       <link>https://zhengzangw.com/notes/digital-circuit/basics/</link>
       <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-circuit/basics/</guid>
       <description>数制与数码  补码  正数：原码=反码=补码 负数：反码不变符号位，其它取反；补码先反码，再在最低位加一   数码  8421(BCD) 2421 Excess-3 Biquinary 1-out-of-10 Gray code    逻辑电路  逻辑门：非，与，或，与非，或非 逻辑代数 逻辑函数  最大项表达式 Product of Sums：所有自变量的或项 最小项表达式 Sum of Products：所有自变量的与项 卡诺图(Karnaugh map)  最小化 Product of Sums/Sum of products      </description>
     </item>
@@ -22,7 +22,7 @@
       <title>Combination Logic Design</title>
       <link>https://zhengzangw.com/notes/digital-circuit/combination-logic-design/</link>
       <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-circuit/combination-logic-design/</guid>
       <description>竞争与冒险  竞争：某一输入量经不同路径传输后，到达电路某一汇合点的时间有先有后 冒险：由于竞争是电路输出发生瞬间错误 通过卡诺图消除竞争：增加冗余项  Combinational PLDs  PLD: Programmable Logic Arrays, two-level AND-OR device that can be programmed to realize any sum-of-products logic expression PAL: Programmable Array Logic, a special case of PLA, fixed OR array  编码器 二进制电平转换为二进制编码
 优先编码器
@@ -36,7 +36,7 @@
       <title>Sequential Logic Design</title>
       <link>https://zhengzangw.com/notes/digital-circuit/sequence-logic-design/</link>
       <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-circuit/sequence-logic-design/</guid>
       <description>基本器件  S-R 锁存器（Latch）     S R Q QN     0 0 last Q last QN   0 1 0 1   1 0 1 0   1 1 0 0     D Latch     C D Q QN     1 0 0 1   1 1 1 0   0 x last Q last QN      Flip-Flop 触发器：某个信号处于上升沿或者下降沿的时候工作</description>
     </item>

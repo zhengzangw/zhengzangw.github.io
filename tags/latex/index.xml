@@ -6,14 +6,14 @@
     <description>Recent content in latex on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
-    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
     <lastBuildDate>Tue, 20 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Use Tikz in LaTeX</title>
       <link>https://zhengzangw.com/posts/latex-tikz/</link>
       <pubDate>Tue, 20 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/latex-tikz/</guid>
       <description>&lt;h1 id=&#34;图片放置&#34;&gt;图片放置&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-tex&#34; data-lang=&#34;tex&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}[htbp]

@@ -6,72 +6,74 @@
     <description>Recent content in About on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
-    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
     <lastBuildDate>Mon, 07 Dec 2020 21:43:38 +0800</lastBuildDate><atom:link href="https://zhengzangw.com/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
       <link>https://zhengzangw.com/about/about/</link>
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/about/</guid>
-      <description>I am a undergraduate student of Department of Computer Science and Technology in Nanjing University, with an outstanding academic performance (92.2/100) in National Elite Program of Computer Science. From Apr. 2020, I am visiting iCyPy in UC Berkeley, supervised by Prof. Alberto L. Sangiovanni-Vincentelli and Dr. Xiangyu Yue.</description>
+      <description>I am a Ph.D. student at NUS, advised by Asst. Prof. Yang You. I received my B.Sc. in Computer Science from Nanjing University in June 2017. I spent a year in iCyPy at UC Berkeley from Apr. 2020, supervised by Prof. Alberto L. Sangiovanni-Vincentelli and Dr. Xiangyu Yue.</description>
     </item>
     
     <item>
       <title>Research Interest</title>
       <link>https://zhengzangw.com/about/interest/</link>
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/interest/</guid>
-      <description>My research interest lies on Artificial Intelligence (AI) and Cyber-Physical Systems (CPS), with a particular focus on Computer Vision, Domain Adaptation and Self-supervised Learning. My work has been focused on techniques for solving healthcare AI (computer vision for medical image processing), and on understanding the theoretical underpinnings of such techniques.</description>
-    </item>
-    
-    <item>
-      <title>Teaching Assistant</title>
-      <link>https://zhengzangw.com/about/teaching/</link>
-      <pubDate>Mon, 07 Dec 2020 21:31:28 +0800</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/teaching/</guid>
-      <description> Algorithm Analysis &amp;amp; Design (NJU, CS, Fall 2020)  </description>
+      <description>My research interest lies on Artificial Intelligence (AI), High-Performance Computing (HPC) and Computer Vision (CV), with a particular focus on Large Batch Training and Domain Adaptation.</description>
     </item>
     
     <item>
       <title>News</title>
       <link>https://zhengzangw.com/about/news/</link>
       <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/news/</guid>
       <description> [2021.3] I will join HPC-AI @ NUS to start my Ph.D. degree under the supervision of Presidential Young Prof. Yang You! [2021.2] Got one co-first-authored paper accepted to CVPR&#39;21. Thanks to all my collaborators!  </description>
+    </item>
+    
+    <item>
+      <title>Teaching Assistant</title>
+      <link>https://zhengzangw.com/about/teaching/</link>
+      <pubDate>Mon, 07 Dec 2020 21:31:28 +0800</pubDate>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/about/teaching/</guid>
+      <description> Algorithm Analysis &amp;amp; Design (NJU, CS, Fall 2020)  </description>
     </item>
     
     <item>
       <title>Publications</title>
       <link>https://zhengzangw.com/about/publications/</link>
       <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/publications/</guid>
-      <description>  Prototypical Cross-domain Self-supervised Learning for Few-shot Unsupervised Domain Adaptation
-Xiangyu Yue*, Zangwei Zheng*, Shanghang Zhang, Yang Gao, Trevor Darrell, Kurt Keutzer, Alberto Sangiovanni-Vincentelli at CVPR&#39;21
+      <description>  Prototypical Cross-domain Self-supervised Learning for Few-shot Unsupervised Domain Adaptation CVPR&#39;21
+Xiangyu Yue*, Zangwei Zheng*, Shanghang Zhang, Yang Gao, Trevor Darrell, Kurt Keutzer, Alberto Sangiovanni-Vincentelli
+  Scene-aware Learning Network for Radar Object Detection ICMR&#39;21
+Zangwei Zheng Xiangyu Yue, Kurt Keutzer, Alberto Sangiovanni Vincentelli
   </description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>https://zhengzangw.com/about/projects/</link>
-      <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/projects/</guid>
-      <description>hugo-theme-phd: Hugo theme for this page. Android Mobile AI Game-Pad: A ML-based Android app turning your moblie phone into a Game-Pad. MBTI Personality Type Analyzer: A real-time MBTI Personality Analyzer by users&#39; posts and writings. Estimator for Time Taken in Convergence of SGD: An ensemble model to predict the time taken for stochastic gradient descent. Five-stage Pipeline MIPS System on FPGA: A toy MIPS32 system with a small OS. NJU Emulator: Implemented an emulator for x86 instructions, a machine-independent abstraction layer and a virtual machine on top of this layer, where some software and games can be directly launched.</description>
     </item>
     
     <item>
       <title>Selected Awards</title>
       <link>https://zhengzangw.com/about/awards/</link>
       <pubDate>Mon, 07 Dec 2020 21:43:38 +0800</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/awards/</guid>
-      <description> 2020, First Prize, People Scholarship 2019, Outstanding Volunteer of Nanjing University 2019, First Prize, National Elite Program Scholarship 2019, Outstanding Peer Tutor 2019, Zheng Gang Overseas Study Scholarship 2019, 1st Place, Hong Kong HKUST-NJU Competition 2018, Outstanding Class Leader of May 4 2018, First Prize, National Elite Program Scholarship  </description>
+      <description> 2021, Outstanding Graduates of Nanjing University 2020, Outstanding Student of Nanjing University [2018-2019], 2 times, National Elite Program First-Class Scholarship 2019, Zheng Gang Overseas Study Scholarship  </description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://zhengzangw.com/about/projects/</link>
+      <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/about/projects/</guid>
+      <description> hugo-theme-phd: Hugo theme for this page.  </description>
     </item>
     
   </channel>

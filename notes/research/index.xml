@@ -6,14 +6,14 @@
     <description>Recent content in [R] Computer Vision Related on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
-    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
     <lastBuildDate>Tue, 16 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/research/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adversial Learning 综述</title>
       <link>https://zhengzangw.com/notes/research/adversial-learning/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/research/adversial-learning/</guid>
       <description></description>
     </item>
@@ -22,7 +22,7 @@
       <title>CNN backbones</title>
       <link>https://zhengzangw.com/notes/research/3-cnn-backbones/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/research/3-cnn-backbones/</guid>
       <description>CNN backbones 结构介绍
  LeNet5(1998) AlexNet8(2012) VGG(2014)  VGG16 VGG19   GoogLeNet22(2014)  Inception v1-v4   ResNet(2015)  ResNet50 ResNet101   DRN-26  Semantic Segmentation  $p_{ij}$: 被预测为 $j$ 类样本的 $i$ 类样本 Pixel Accuarcy: $\text{PA}=\frac{\sum_{i=0}^kp_{ii}}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}$ Mean Pixel Accuracy: $\text{MPA}=\frac{1}{k}\sum_{i=0}^k\frac{p_{ii}}{\sum_{j=0}^kp_{ij}}$ Mean Intersection over Union: $\text{MIoU}=\frac{1}{k}\sum_{i=0}^k\frac{p_{ii}}{\sum_{j=0}^kp_{ij}+\sum_{j=0}^kp_{ji}-p_{ii}}$ Frequency Weighted Intersection over Union: $\text{FWIoU}=\frac{1}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}\sum_{i=0}\frac{p_{ii}\sum_{j=0}^kp_{ij}}{\sum_{j=0}^kp_{ij}+\sum_{j=0}^kp_{ji}-p_{ii}}$  架构
@@ -33,7 +33,7 @@
       <title>Contrastive Learning 综述</title>
       <link>https://zhengzangw.com/notes/research/constrastive-learning/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/research/constrastive-learning/</guid>
       <description></description>
     </item>
@@ -42,7 +42,7 @@
       <title>Datasets</title>
       <link>https://zhengzangw.com/notes/research/2-datasets/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/research/2-datasets/</guid>
       <description> Place365 CIFAR-10 ImageNet SVHN  </description>
     </item>
@@ -51,7 +51,7 @@
       <title>Domain Adapation 综述</title>
       <link>https://zhengzangw.com/notes/research/domain-adaptation/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/research/domain-adaptation/</guid>
       <description>Adversial  GAN: $\min_G\max_D V(D,G)=E_{x\sim p_{\text{data}(x)}}[\log D(x)]+E_{z\sim p_z(z)}[\log (1-D(x))]$ cGAN: $\min_G\max_D V(D,G)=E_{x\sim p_{\text{data}(x|y)}}[\log D(x)]+E_{z\sim p_z(z)}[\log (1-D(x|y))]$  paired data generate   BicycleGAN: diverse output Cycle GAN: no need of paired data 泛化性：所有模型都是需要先用有限的训练样本来训练的，那么由这些有限样本训练得到的模型可不可以从这些有限训练样本中生成出新的样本，而非简单地记着训练集 GAN 的问题  训练过程难以收敛，经常出现震荡；实验结果随机，难以复现； mode collapse：只生成某一模式 生成了一些没有意义、或者现实中不可能出现的图片    Graphical models DA Dataset  Digital Recognition  MNIST USPS SVHM   Autodriving  SYNTHIA: 1280x760 GTA5: 1914x1052 CityScapes BDD100K Mapillary    Leading results in DA GTA5-&amp;gt;CitySpaces, VGG16-FCN8s, mIoU</description>
     </item>
@@ -60,7 +60,7 @@
       <title>Semi-Supervised Learning 综述</title>
       <link>https://zhengzangw.com/notes/research/semi-supervised-learning/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/research/semi-supervised-learning/</guid>
       <description></description>
     </item>
@@ -69,7 +69,7 @@
       <title>Self-Supervised Learning 综述</title>
       <link>https://zhengzangw.com/notes/research/self-supervised-learning/</link>
       <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/research/self-supervised-learning/</guid>
       <description>Imagenet  PASCAL VOC: 20 classes, $3\times10^4$ Imagenet-40 ILSVRC (Imagenet-1K): 1000 classes, $1.28\times 10^6$ IMAGENET: 20000 classes, $1.5\times10^7$  pretext tasks  Crop Resize Flip Rotate Color distort  drop jitter   Gaussian noise Gaussian blur Sobel filtering  Contrastive Learning Framework  特点  在 feature space 上构建度量距离 通过特征不变性，得到多种预测结果 使用 Siamese Network 无需 pixel-level 重建    Generative Methods  AE VAE GAN  </description>
     </item>
@@ -78,7 +78,7 @@
       <title>Information</title>
       <link>https://zhengzangw.com/notes/research/1-essays/</link>
       <pubDate>Tue, 16 Jun 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/research/1-essays/</guid>
       <description>会议 录取率为 2019 数据，截稿时间约提前 5 个月
  AAAI(The AAAI Conference on Artificial Intelligence): AI, 2 初, AC 1591 20.6% IJCAI(International Joint Conference on Artificial Intelligence): AI, 8 末, AC 850, 17.9% NeurIPS(Conference on Neural Information Processing Systems): ML, 12 初, AC 1428 21% ICML(International Conference on Machine Learning): ML, 7/8 初, 774 22.6% ICCV(International Conference on Computer Vision): CV, 10 初, AC, 621 29% CVPR(Conference on Computer Vision and Pattern Recognition): CV, 7 末, AC 1300 25.</description>
@@ -88,7 +88,7 @@
       <title></title>
       <link>https://zhengzangw.com/notes/research/few-shot-learning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/research/few-shot-learning/</guid>
       <description></description>
     </item>

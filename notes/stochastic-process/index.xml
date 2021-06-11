@@ -6,14 +6,14 @@
     <description>Recent content in [D] 随机过程 Stochastic Process on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
-    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
     <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/stochastic-process/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Stochastic Processes</title>
       <link>https://zhengzangw.com/notes/stochastic-process/preliminaries/</link>
       <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/stochastic-process/preliminaries/</guid>
       <description>Probability Definition of Probability Three Axioms
   $0\leq P(E)\leq 1$
@@ -33,7 +33,7 @@ $$\lim_{n\rightarrow\infty}P(E_n)=P(\lim_{n\rightarrow\infty}E_n)$$
       <title>Poisson Process</title>
       <link>https://zhengzangw.com/notes/stochastic-process/poisson-process/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/stochastic-process/poisson-process/</guid>
       <description>Poisson Process Counting Process  $N(t)\geq 0$ $N(t)\in\mathbb{N}$ $s&amp;lt;t,N(s)\leq N(t)$ $s&amp;lt;t,N(t)-N(s)$ equals the number of events that have occurred in the interval $(s,t]$  Definition 1 of Poisson Process   $N(0)=0$
   independent increments

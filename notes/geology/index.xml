@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>地质学 on Zangwei</title>
+    <link>https://zhengzangw.com/notes/geology/</link>
+    <description>Recent content in 地质学 on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
+    <lastBuildDate>Wed, 07 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/geology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Mineral</title>
+      <link>https://zhengzangw.com/notes/geology/mineral/</link>
+      <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/geology/mineral/</guid>
+      <description>绪论  研究内容  地球的结构：地球各个部分之间的关系和它们的分布规律和演化 地球的构造：三大层圈，液体和固体  地球半径：6360 km 地壳：0-35 km 地幔：35-2890 km   地球物质：岩石、矿物和元素；地层-岩体-矿床，它们的分布及迁移富集规律 地质事件：层圈物质相互作用在地表的反映 地球的历史：距今 45 亿年，最古老的岩石 38 亿年 生命和演化   思维  将今论古 议古论今、论将来 活动论   科学特点  不是一般性 可检验与重复 预见性   中国地质学研究优势  青藏高原（最老 6 亿年，最年轻几百万年） 最大面积黄土高原 大别-秦岭高压-超高压变质带 热河生物群：中华龙鸟、中华神州鸟；张和兽 云南澄江生物群（5.4 亿生命大爆炸） 分布面积最广的喀斯特地貌 独特的陆相生油田 巨量的华南花岗岩与矿产    矿物 地壳有岩石组成，岩石由矿物组成，矿物有元素组成。地壳上有数百种岩石，数千种矿物，近百种元素
+ 研究地球的同位素：铀、铅  元素  克拉克值（地壳元素丰度值）：中上地壳（0-16 km） 50 种元素的平均百分重量  PPM（克顿）: 1e-6 PPB: 1e-9   克拉值：贵重宝石衡量单位  1 克拉 = 0.</description>
+    </item>
+    
+    <item>
+      <title>2. Rock</title>
+      <link>https://zhengzangw.com/notes/geology/rock/</link>
+      <pubDate>Fri, 09 Apr 2021 00:00:00 +0000</pubDate>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/notes/geology/rock/</guid>
+      <description>火成岩  外力：地球表面的力（沉积岩） 内力：不同层圈的摩擦（变质岩和火成岩） 火山爆发  79.8.24 意大利维苏威火山爆发（13 km，火山灰铺 7m） 1883 印度尼西亚火山带 基拉威尔：比高最高的火山 1951.5.27 南疆火山爆发，最近期的火山活动记录 2002.8-9，新建乌苏县泥火山   岩浆（magma）：形成与地下深处、具有较大粘性的高温熔融流体物质  硅酸盐 + 1-8% 以水为主的挥发物质 生成于地表下 50-200 km 650-1400 摄氏度，1.0Gpa   岩浆做有关：岩浆发育、运动、固结成火成岩的作用  火山作用 侵入作用   火山岩石的类型  按 SiO2 含量的分类  &amp;lt;45%：超基性岩（超镁铁熔岩）  科马提岩：南非、澳大利亚（麗刺结构）   45-52：基性  玄武岩 basalt：黑色致密比重大有气孔，印度德干高原、峨眉山地区   52-65：中性  安山岩 andesite：安第斯山区、日本、台湾、五台山     65：酸性
+       火山岩 valcanic rock 岩浆喷发到地表、气体逃逸、冷凝而成的岩石</description>
+    </item>
+    
+  </channel>
+</rss>

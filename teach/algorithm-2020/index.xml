@@ -6,14 +6,14 @@
     <description>Recent content in TA: Algorithm Analysis and Design (NJU, CS, Fall 2020) on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zzw at smail.nju.edu.cn (Zangwei Zheng)</managingEditor>
-    <webMaster>zzw at smail.nju.edu.cn (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
     <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/teach/algorithm-2020/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Solution to OJ - Balance Segment Painting</title>
       <link>https://zhengzangw.com/teach/algorithm-2020/oj1-4/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/algorithm-2020/oj1-4/</guid>
       <description>题目连接：Balance Segment Painting
 Balance Segment Painting 因为要维护的是连续连段的长度，染色 $[p_i-1,p_i]$ 时，相当与把 $p_i-1$ 所在的连续线段和 $p_i$ 所在的连续线段合并。每条连续线段相当与是一个集合，
@@ -25,7 +25,7 @@ Balance Segment Painting 因为要维护的是连续连段的长度，染色 $[p
       <title>Solution to OJ - Gold Miner</title>
       <link>https://zhengzangw.com/teach/algorithm-2020/oj1-2/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/algorithm-2020/oj1-2/</guid>
       <description>题目连接：Gold Miner
 Gold Miner 这题要求至多进行 50 次操作，要能够将 $n\times n$ 的网格除对角线和对角线下发一条线全部涂满。每次可以选择若干行和若干列，将它们的交点涂上色。
@@ -41,7 +41,7 @@ Gold Miner 这题要求至多进行 50 次操作，要能够将 $n\times n$ 的�
       <title>Solution to OJ - Large Sum Subarray</title>
       <link>https://zhengzangw.com/teach/algorithm-2020/oj1-1/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/algorithm-2020/oj1-1/</guid>
       <description>题目连接：Large Sum Subarray
 Large Sum Subarray 本题寻找以下配对的个数：$(i,j),i\leq j,\sum_{k=i}^ja_k&amp;gt;t$。通过求前缀和，我们可以把区间转换为两点的比较：$(i+1,j), S_j-S_{i}&amp;gt;t$。
@@ -56,7 +56,7 @@ Large Sum Subarray 本题寻找以下配对的个数：$(i,j),i\leq j,\sum_{k=i}
       <title>Solution to OJ - Range Sum of Multiset</title>
       <link>https://zhengzangw.com/teach/algorithm-2020/oj1-3/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/algorithm-2020/oj1-3/</guid>
       <description>题目连接：Range Sum of Multiset
 Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)、区间和(3)的数据结构。根据数据规模 $1\leq Q\leq 5\cdot 10^5$，我们需要 $O(\lg n)$ 的时间支持这三种操作。
@@ -71,7 +71,7 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
       <title>Solution to HW 5</title>
       <link>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-5/</link>
       <pubDate>Mon, 26 Oct 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-5/</guid>
       <description>10-19 6.1 空间上消耗可能增多，时间上摊还复杂度低（$1+\frac{4}{3}t$）。两种方法视实际情况需要使用。
 6.2 应该使用均摊分析（有些同学写了平均分析，实际给的是一种特殊情况下的时间开销）
@@ -86,7 +86,7 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
       <title>Solution to HW 4</title>
       <link>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-4/</link>
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-4/</guid>
       <description>10-12 6.11 Tips: 分情况讨论
   ansRight.status = ok/rbr
@@ -101,7 +101,7 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
       <title>Solution to HW 3</title>
       <link>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-3/</link>
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-3/</guid>
       <description>注意这次交三次的作业，缺交的同学及时补交（邮箱：zzw@smail.nju.edu.cn）
 9-24 4.2
@@ -127,7 +127,7 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
       <title>Solution to HW 2</title>
       <link>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-2/</link>
       <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-2/</guid>
       <description>共 13 题。不会的题不要空着，展示一些思路，都有分的。
 可以不抄题目，但请装订后上交。做的好的我用星（下次用 A）打了标记，很差的用 B 打标记（暂时没有）
@@ -146,7 +146,7 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
       <title>Solution to HW 1</title>
       <link>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-1/</link>
       <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
-      <author>zzw at smail.nju.edu.cn (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/algorithm-2020/solution-to-algorithm-1/</guid>
       <description>作业评分：每题 10 分，选做属于加分题
 一些共性的问题：

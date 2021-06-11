@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Wallpoet
+- Font Author: Copyright (c) 2011 by Lars Berggren (punktlars@gmail.com). All rights reserved.
+- Font Source: http://fonts.gstatic.com/s/wallpoet/v12/f0X10em2_8RnXVVdUNbu7cXP8L8G.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL)
