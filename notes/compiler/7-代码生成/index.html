@@ -109,16 +109,16 @@
 <ul>
 <li>
 <p>call callee</p>
-<pre><code class="language-mips" data-lang="mips">ST callee.staticArea, #here + 20
+<pre tabindex="0"><code class="language-mips" data-lang="mips">ST callee.staticArea, #here + 20
 BR callee.codeArea
 </code></pre></li>
 <li>
 <p>return</p>
-<pre><code class="language-mips" data-lang="mips">BR *callee.staticArea
+<pre tabindex="0"><code class="language-mips" data-lang="mips">BR *callee.staticArea
 </code></pre></li>
 <li>
 <p>name</p>
-<pre><code class="language-mips" data-lang="mips">LD 112, #0
+<pre tabindex="0"><code class="language-mips" data-lang="mips">LD 112, #0
 LD 12(SP), #0
 </code></pre></li>
 </ul>
@@ -128,13 +128,13 @@ LD 12(SP), #0
 <ul>
 <li>
 <p>call callee</p>
-<pre><code class="language-mips" data-lang="mips">ADD SP, SP, #caller.recordSize
+<pre tabindex="0"><code class="language-mips" data-lang="mips">ADD SP, SP, #caller.recordSize
 ST 0(SP), #here + 16
 BR callee.codeArea
 </code></pre></li>
 <li>
 <p>return</p>
-<pre><code class="language-mips" data-lang="mips">BR *0(SP)
+<pre tabindex="0"><code class="language-mips" data-lang="mips">BR *0(SP)
 SUB SP, SP, #caller.recordSize
 </code></pre></li>
 </ul>

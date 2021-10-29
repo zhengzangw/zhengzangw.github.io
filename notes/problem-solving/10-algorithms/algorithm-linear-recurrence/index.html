@@ -128,7 +128,7 @@ $$g(\lambda)=(-1)^n(\lambda^n-\sum_{i=1}^{n}a_i\lambda^{n-i})$$</p>
 直接用多项式取模 $O(n\log n)$<br>
 快速幂 $O(k\log k\log n)$</p>
 <h2 id="code">Code</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">LL TG[MAXN],TR[MAXN];
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">LL TG[MAXN],TR[MAXN];
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">poly_mult_mod</span>(<span style="color:#66d9ef">int</span> m, LL <span style="color:#f92672">*</span>A, LL <span style="color:#f92672">*</span>B,LL <span style="color:#f92672">*</span>MOD,<span style="color:#66d9ef">int</span> opt)
 {
     opt <span style="color:#f92672">=</span> min(opt,m<span style="color:#f92672">&lt;&lt;</span><span style="color:#ae81ff">1</span>);

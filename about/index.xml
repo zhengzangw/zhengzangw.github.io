@@ -19,21 +19,34 @@
     </item>
     
     <item>
+      <title>News</title>
+      <link>https://zhengzangw.com/about/news/</link>
+      <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/about/news/</guid>
+      <description>[2021.3] I will join HPC-AI @ NUS to start my Ph.D. degree under the supervision of Presidential Young Prof. Yang You! [2021.2] Got one co-first-authored paper accepted to CVPR&#39;21. Thanks to all my collaborators!</description>
+    </item>
+    
+    <item>
       <title>Research Interest</title>
       <link>https://zhengzangw.com/about/interest/</link>
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/interest/</guid>
-      <description>My research interest lies on Artificial Intelligence (AI), High-Performance Computing (HPC) and Computer Vision (CV), with a particular focus on Large Batch Training (on CV, NLP, RecSys etc.) and Domain Adaptation.</description>
+      <description>My research interest lies on Machine Learning (AI) and High-Performance Computing (HPC), with a particular focus on training models with large batch and training models that generalize well.</description>
     </item>
     
     <item>
-      <title>News</title>
-      <link>https://zhengzangw.com/about/news/</link>
+      <title>Publications</title>
+      <link>https://zhengzangw.com/about/publications/</link>
       <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/news/</guid>
-      <description> [2021.3] I will join HPC-AI @ NUS to start my Ph.D. degree under the supervision of Presidential Young Prof. Yang You! [2021.2] Got one co-first-authored paper accepted to CVPR&#39;21. Thanks to all my collaborators!  </description>
+      <guid>https://zhengzangw.com/about/publications/</guid>
+      <description>  Prototypical Cross-domain Self-supervised Learning for Few-shot Unsupervised Domain Adaptation CVPR&#39;21
+Xiangyu Yue*, Zangwei Zheng*, Shanghang Zhang, Yang Gao, Trevor Darrell, Kurt Keutzer, Alberto Sangiovanni-Vincentelli
+  Scene-aware Learning Network for Radar Object Detection ICMR&#39;21
+Zangwei Zheng, Xiangyu Yue, Kurt Keutzer, Alberto Sangiovanni Vincentelli
+  </description>
     </item>
     
     <item>
@@ -46,25 +59,12 @@
     </item>
     
     <item>
-      <title>Publications</title>
-      <link>https://zhengzangw.com/about/publications/</link>
-      <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/publications/</guid>
-      <description>  Prototypical Cross-domain Self-supervised Learning for Few-shot Unsupervised Domain Adaptation CVPR&#39;21
-Xiangyu Yue*, Zangwei Zheng*, Shanghang Zhang, Yang Gao, Trevor Darrell, Kurt Keutzer, Alberto Sangiovanni-Vincentelli
-  Scene-aware Learning Network for Radar Object Detection ICMR&#39;21
-Zangwei Zheng Xiangyu Yue, Kurt Keutzer, Alberto Sangiovanni Vincentelli
-  </description>
-    </item>
-    
-    <item>
       <title>Selected Awards</title>
       <link>https://zhengzangw.com/about/awards/</link>
       <pubDate>Mon, 07 Dec 2020 21:43:38 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/awards/</guid>
-      <description> 2021, Outstanding Graduates of Nanjing University 2020, Outstanding Student of Nanjing University [2018-2019], 2 times, National Elite Program First-Class Scholarship 2019, Zheng Gang Overseas Study Scholarship  </description>
+      <description> 2021, Outstanding Graduates of Nanjing University 2020, Outstanding Student of Nanjing University 2019, 2018 (2 times), National Elite Program First-Class Scholarship 2019, Zheng Gang Overseas Study Scholarship  </description>
     </item>
     
     <item>

@@ -192,7 +192,7 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">RandomContract(G){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">RandomContract(G){
   <span style="color:#66d9ef">while</span> V<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">2</span>
     e <span style="color:#f92672">=</span> choose(E)
     contract(G,e)
@@ -217,7 +217,7 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">FastCut(G){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">FastCut(G){
   <span style="color:#66d9ef">if</span> (V<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">6</span>) <span style="color:#66d9ef">return</span> brute_force(V)
   <span style="color:#66d9ef">else</span> {
     t <span style="color:#f92672">=</span> ceil(<span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>V<span style="color:#f92672">/</span>sqrt(<span style="color:#ae81ff">2</span>))
@@ -246,7 +246,7 @@
 <h2 id="max-cut">Max-Cut</h2>
 <h3 id="greedy-heuristics">Greedy Heuristics</h3>
 <p>0.5-approximation algorithm</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">GreedyMaxCut(V,E){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">GreedyMaxCut(V,E){
   S<span style="color:#f92672">=</span>T<span style="color:#f92672">=</span>emptyset
   <span style="color:#66d9ef">for</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,...,n (random order)
     vi joins one of S,T to maximize the current E(S,T)
@@ -275,7 +275,7 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">MonotonePath(V,E){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">MonotonePath(V,E){
   S<span style="color:#f92672">=</span>T<span style="color:#f92672">=</span>emptyset
   <span style="color:#66d9ef">for</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,...,n (random order)
     vi joins one of S,T to maximize the average size of cut conditioning on the choices made so far by the vertice
@@ -296,7 +296,7 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">k <span style="color:#f92672">=</span> log(n)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">k <span style="color:#f92672">=</span> log(n)
 <span style="color:#66d9ef">for</span> Y<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">2</span><span style="color:#f92672">**</span>k:
   X<span style="color:#f92672">=</span>generatePairwise(Y)
   t<span style="color:#f92672">=</span>assignVertexAccordingTo(X)

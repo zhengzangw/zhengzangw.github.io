@@ -134,14 +134,14 @@ standard-version
 &lt;/ul&gt;
 &lt;h2 id=&#34;commit-message&#34;&gt;commit message&lt;/h2&gt;
 &lt;p&gt;Angular Git Commit Guidelines&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&amp;lt;type&amp;gt;(&amp;lt;scope&amp;gt;): &amp;lt;subject&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&amp;lt;type&amp;gt;(&amp;lt;scope&amp;gt;): &amp;lt;subject&amp;gt;
 &amp;lt;br&amp;gt;
 &amp;lt;body&amp;gt;
 &amp;lt;br&amp;gt;
 &amp;lt;footer&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;commitizen&#34;&gt;commitizen&lt;/h3&gt;
 &lt;p&gt;使用 commitizen 规范信息，需要 nodejs&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;using namespace std;
 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, q &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
@@ -163,7 +163,7 @@ vector&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span st
     nex[i][s[i] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i;
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;yarn global add commitizen
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;yarn global add commitizen
 npm init --yes
 ln -s /Users/username/node_modules ./node_modules
 commitizen init cz-conventional-changelog --save --save-exact
@@ -224,10 +224,10 @@ git cz
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gcc -M main.c &lt;span style=&#34;color:#75715e&#34;&gt;#输出用于 Make 的规则&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gcc -M main.c &lt;span style=&#34;color:#75715e&#34;&gt;#输出用于 Make 的规则&lt;/span&gt;
 gcc -MM &lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;.c &lt;span style=&#34;color:#75715e&#34;&gt;#不包含系统头文件&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;var&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 使用变量
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;var&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 使用变量
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;var &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 将整个makefile展开后，再决定变量的值&lt;/span&gt;
 var &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 立即赋值&lt;/span&gt;
 var &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 追加赋值&lt;/span&gt;
@@ -238,7 +238,7 @@ space &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;内置变量与常用变量&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-makefilet&#34; data-lang=&#34;makefilet&#34;&gt;.RECIPEPREFIX = &amp;gt; # 默认命令前为 \t
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-makefilet&#34; data-lang=&#34;makefilet&#34;&gt;.RECIPEPREFIX = &amp;gt; # 默认命令前为 \t
 OUTPUT_OPTION = -o \$@
 CC = cc
 
@@ -288,7 +288,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;RULE:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; prerequisite
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; prerequisite
   command1 &lt;span style=&#34;color:#75715e&#34;&gt;# 对于 Makefile 中的每个以 Tab 开头的命令，make 会创建一个 Shell 进程去执行它。&lt;/span&gt;
   @command2 &lt;span style=&#34;color:#75715e&#34;&gt;# 不显示命令&lt;/span&gt;
   -command3 &lt;span style=&#34;color:#75715e&#34;&gt;# 错误继续执行&lt;/span&gt;
@@ -405,7 +405,7 @@ Lint 静态代码检测
       <description>&lt;h2 id=&#34;platform&#34;&gt;Platform&lt;/h2&gt;
 &lt;h3 id=&#34;virtual-machine-on-macosx&#34;&gt;Virtual Machine on macosx&lt;/h3&gt;
 &lt;p&gt;Install virtualbox&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;    brew cask install virtualbox
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;    brew cask install virtualbox
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Download Ubuntu from &lt;a href=&#34;https://mirror.tuna.tsinghua.edu.cn/ubuntu-releases/&#34;&gt;Tsinghua Image&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;LTS version&lt;/p&gt;
 &lt;ul&gt;
@@ -430,7 +430,7 @@ Lint 静态代码检测
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/php-setup/</guid>
       <description>&lt;h1 id=&#34;set-up-vm&#34;&gt;Set up VM&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update
 adduser newuser
 usermod -aG sudo newuser
 sudo nano /etc/ssh/sshd_config

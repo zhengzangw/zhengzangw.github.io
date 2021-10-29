@@ -126,28 +126,28 @@
 <li>日志输出文件</li>
 </ul>
 <h3 id="example">example</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">logging<span style="color:#f92672">.</span>basicConfig(level<span style="color:#f92672">=</span>DEBUG,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">logging<span style="color:#f92672">.</span>basicConfig(level<span style="color:#f92672">=</span>DEBUG,
                       format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%(asctime)s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(filename)s</span><span style="color:#e6db74">[func:</span><span style="color:#e6db74">%(funcName)s</span><span style="color:#e6db74"> line:</span><span style="color:#e6db74">%(lineno)d</span><span style="color:#e6db74">] %(message))</span>
 </code></pre></div><h2 id="streamhandler">StreamHandler</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">console <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>streamHandler()  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">console <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>streamHandler()  
 console<span style="color:#f92672">.</span>setLevel(logging<span style="color:#f92672">.</span>INFO)  
 
 formatter <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>Formatter(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%(name)-12s</span><span style="color:#e6db74">: </span><span style="color:#e6db74">%(levelname)-8s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#39;</span>)
 console<span style="color:#f92672">.</span>setFormatter
 logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>addHandler(console)
 </code></pre></div><h2 id="日志回滚">日志回滚</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> logging.handlers <span style="color:#f92672">import</span> RotatingFileHandler
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> logging.handlers <span style="color:#f92672">import</span> RotatingFileHandler
 Rthandler <span style="color:#f92672">=</span> RotatingFileHandler(<span style="color:#e6db74">&#39;myapp.log&#39;</span>, maxBytes<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span>,backupCount<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
 Rthandler<span style="color:#f92672">.</span>setLevel(logging<span style="color:#f92672">.</span>INFO)
 formatter <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>Formatter(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%(name)-12s</span><span style="color:#e6db74">: </span><span style="color:#e6db74">%(levelname)-8s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#39;</span>)
 Rthandler<span style="color:#f92672">.</span>setFormatter(formatter)
 logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>addHandler(Rthandler)
 </code></pre></div><h2 id="loggingconfig-配置">logging.config 配置</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">logging<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>fileConfig(<span style="color:#e6db74">&#34;\&lt;filename\&gt;&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">logging<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>fileConfig(<span style="color:#e6db74">&#34;\&lt;filename\&gt;&#34;</span>)
 logger <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;\&lt;name\&gt;&#34;</span>)
 logger<span style="color:#f92672">.</span>warning()
 </code></pre></div><h3 id="配置文件">配置文件</h3>
-<pre><code class="language-conf" data-lang="conf">#logger.conf
+<pre tabindex="0"><code class="language-conf" data-lang="conf">#logger.conf
 ###############################################
 [loggers]
 keys=root,example01,example02

@@ -88,7 +88,7 @@
             </div>
             <main class="flex-column-80"><h2 id="新建项目">新建项目</h2>
 <p>一个完整的 Python Project 应该包括</p>
-<pre><code>project/
+<pre tabindex="0"><code>project/
     src/        --- source code
     tests/      --- test code
       __init__.py
@@ -101,20 +101,20 @@
     README.md
     pyproject.toml
 </code></pre><p>其中，setup.py 用来构建包，譬如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> setuptools <span style="color:#f92672">import</span> find_packages, setup
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> setuptools <span style="color:#f92672">import</span> find_packages, setup
 
 setup(
     name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;flaskr&#39;</span>,
     version<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1.0.0&#39;</span>,
     packages<span style="color:#f92672">=</span>find_packages(),
-    include_package_data<span style="color:#f92672">=</span>True,
-    zip_safe<span style="color:#f92672">=</span>False,
+    include_package_data<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+    zip_safe<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
     install_requires<span style="color:#f92672">=</span>[
         <span style="color:#e6db74">&#39;flask&#39;</span>,
     ],
 )
 </code></pre></div><p>并可以用 MANIFEST.in 补充添加二进制文件。此外， <code>tests</code> 为测试文件夹，测试时 <code>coverage run -m pytest</code>, <code>coverage report</code>. 可用 <code>setup.cfg</code> 配置</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cfg" data-lang="cfg"><span style="color:#66d9ef">[tool:pytest]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cfg" data-lang="cfg"><span style="color:#66d9ef">[tool:pytest]</span>
 <span style="color:#a6e22e">testpaths</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">tests</span>
 
 <span style="color:#66d9ef">[coverage:run]</span>
@@ -122,11 +122,11 @@ setup(
 <span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span><span style="color:#e6db74">
 </span><span style="color:#e6db74">    src</span>
 </code></pre></div><p>用 <code>pipreqs</code> 生成 <code>requirements.txt</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pipreqs src
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pipreqs src
 </code></pre></div><p>选择 <code>flake8</code> 作为 linter, <code>black</code> 作为 <code>formatter</code>，配置 <code>pyproject.toml</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">tool</span>.<span style="color:#a6e22e">black</span>]
-<span style="color:#a6e22e">line</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">length</span> = <span style="color:#ae81ff">99</span>
-<span style="color:#a6e22e">target</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">version</span> = [<span style="color:#e6db74">&#39;py38&#39;</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">tool</span>.<span style="color:#a6e22e">black</span>]
+<span style="color:#a6e22e">line-length</span> = <span style="color:#ae81ff">99</span>
+<span style="color:#a6e22e">target-version</span> = [<span style="color:#e6db74">&#39;py38&#39;</span>]
 
 [<span style="color:#a6e22e">tool</span>.<span style="color:#a6e22e">isort</span>]
 <span style="color:#a6e22e">profile</span> = <span style="color:#e6db74">&#39;black&#39;</span>
@@ -180,7 +180,7 @@ setup(
 </li>
 <li>
 <p>回调</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">with</span> contextlib<span style="color:#f92672">.</span>ExitStack() <span style="color:#66d9ef">as</span> stack:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">with</span> contextlib<span style="color:#f92672">.</span>ExitStack() <span style="color:#66d9ef">as</span> stack:
   stack<span style="color:#f92672">.</span>callback(cb)
 </code></pre></div></li>
 <li>
@@ -193,7 +193,7 @@ setup(
 <p>sched 包</p>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func</span>(sc, arg):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func</span>(sc, arg):
     <span style="color:#75715e"># do something</span>
 
     sc<span style="color:#f92672">.</span>enter(interval, <span style="color:#ae81ff">1</span>, func, (sc, arg))

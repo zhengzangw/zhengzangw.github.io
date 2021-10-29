@@ -183,7 +183,7 @@
 </li>
 <li>成员对象</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">class_name</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">class_name</span>
 {
 <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span><span style="color:#75715e">//访问不受限制
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> do_nothing(){}<span style="color:#75715e">//定义,建议编译器按内联函数处理
@@ -229,7 +229,7 @@
 </li>
 <li>
 <p>可以重载</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//动态对象
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//动态对象
 </span><span style="color:#75715e"></span>Data <span style="color:#f92672">*</span>p;
 p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date;
 deleta p;
@@ -259,7 +259,7 @@ p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> A[
 </li>
 <li>
 <p>类中的成员函数对该类的每个对象只有一个拷贝</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//成员函数的实际形式
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//成员函数的实际形式
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">g</span>(A <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">this</span>, <span style="color:#66d9ef">int</span> i){
     <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>x<span style="color:#f92672">=</span>i;
 }
@@ -272,7 +272,7 @@ p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> A[
 </li>
 <li>
 <p>预编译宏</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">  <span style="color:#75715e">#ifndef _HEADERNAME_H
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">  <span style="color:#75715e">#ifndef _HEADERNAME_H
 </span><span style="color:#75715e">#define _HEADERNAME_H
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">#endif
@@ -297,7 +297,7 @@ p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> A[
 <li>默认构造函数：不带参数的构造函数</li>
 <li>对象创建后不能再调用构造函数</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">A a1; <span style="color:#75715e">//also A a1=A(); can&#39;t write A a1();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">A a1; <span style="color:#75715e">//also A a1=A(); can&#39;t write A a1();
 </span><span style="color:#75715e"></span>A <span style="color:#a6e22e">a2</span>(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">//also A a2 = A(1); or A a2 = 1;
 </span><span style="color:#75715e"></span>A <span style="color:#a6e22e">a3</span>(<span style="color:#e6db74">&#34;abcd&#34;</span>); <span style="color:#75715e">//also A a3(&#34;abcd&#34;) or a3 = &#34;abcd&#34;;
 </span><span style="color:#75715e"></span>A a[<span style="color:#ae81ff">4</span>]; <span style="color:#75715e">//调用 a[0]~a[3] 默认构造函数
@@ -316,7 +316,7 @@ A <span style="color:#f92672">*</span>p3 <span style="color:#f92672">=</span> <s
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>{
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> y;
     <span style="color:#66d9ef">int</span> x;
     <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>z;
@@ -355,7 +355,7 @@ A <span style="color:#f92672">*</span>p3 <span style="color:#f92672">=</span> <s
 </li>
 <li>自定义拷贝构造函数</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
 {
     <span style="color:#66d9ef">int</span> x,y
     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p
@@ -379,7 +379,7 @@ A <span style="color:#a6e22e">a2</span>(a1);<span style="color:#75715e">//a1和a
     strcpy(p, a.p);
 }
 </code></pre></div><h3 id="析构函数">析构函数</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
 {
     <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
      A(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>s){
@@ -406,7 +406,7 @@ A <span style="color:#a6e22e">a2</span>(a1);<span style="color:#75715e">//a1和a
 <li>If a const and/or volatile keyword is next to a type specifier, it applies to the type specifier. Otherwise the const and/or volatile keyword applies to the pointer asterisk on its immediate left.</li>
 <li>成员函数声明为 const 则不允许修改类的数据成员</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//also int const a = 1;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//also int const a = 1;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> c; <span style="color:#75715e">//also int const* c;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> c;
 <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> r[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>};

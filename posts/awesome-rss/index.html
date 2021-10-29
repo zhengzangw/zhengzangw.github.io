@@ -116,7 +116,7 @@
 </ul>
 <h2 id="利用applescript快速添加">利用Applescript快速添加</h2>
 <p>适合知乎和b站：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-applescript" data-lang="applescript"><span style="color:#66d9ef">tell</span> application <span style="color:#e6db74">&#34;Safari&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-applescript" data-lang="applescript"><span style="color:#66d9ef">tell</span> application <span style="color:#e6db74">&#34;Safari&#34;</span>
 <span style="color:#66d9ef">set</span> theURL <span style="color:#66d9ef">to</span> URL <span style="color:#66d9ef">of</span> front <span style="color:#a6e22e">document</span>
 <span style="color:#66d9ef">if</span> theURL <span style="color:#f92672">contains</span> <span style="color:#e6db74">&#34;space.bilibili.com&#34;</span> <span style="color:#66d9ef">then</span>
     do shell script <span style="color:#e6db74">&#34;echo &#34;</span> <span style="color:#f92672">&amp;</span> theURL <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;|egrep -o &#39;[0-9]{6,9}&#39;&#34;</span>

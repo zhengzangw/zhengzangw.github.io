@@ -236,7 +236,7 @@
 </li>
 <li>属性级约束（域约束）</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> 
 <span style="color:#f92672">|</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#960050;background-color:#1e0010">{</span>default_constant<span style="color:#f92672">|</span><span style="color:#66d9ef">NULL</span><span style="color:#960050;background-color:#1e0010">}</span>
 <span style="color:#f92672">|</span> [ <span style="color:#66d9ef">CONSTRAINT</span> <span style="color:#66d9ef">constraint_name</span> ]
       <span style="color:#66d9ef">UNIQUE</span>
@@ -248,7 +248,7 @@
 </code></pre></div><ul>
 <li>元组级约束（表约束）</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL">[ <span style="color:#66d9ef">CONSTRAINT</span> <span style="color:#66d9ef">constraint_name</span> ]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL">[ <span style="color:#66d9ef">CONSTRAINT</span> <span style="color:#66d9ef">constraint_name</span> ]
 <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">UNIQUE</span> ( colname <span style="color:#960050;background-color:#1e0010">{</span> , colname ... <span style="color:#960050;background-color:#1e0010">}</span> )
 <span style="color:#f92672">|</span> <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> ( colname <span style="color:#960050;background-color:#1e0010">{</span> , colname ... <span style="color:#960050;background-color:#1e0010">}</span> )
 <span style="color:#f92672">|</span> <span style="color:#66d9ef">CHECK</span> ( search_condition )
@@ -259,7 +259,7 @@
 </code></pre></div><ul>
 <li>全局约束（assertion）</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">ASSERTION</span>  <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span>  <span style="color:#66d9ef">CHECK</span>( <span style="color:#f92672">&lt;</span>condition<span style="color:#f92672">&gt;</span> )
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">ASSERTION</span>  <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span>  <span style="color:#66d9ef">CHECK</span>( <span style="color:#f92672">&lt;</span>condition<span style="color:#f92672">&gt;</span> )
 <span style="color:#66d9ef">DROP</span>   <span style="color:#66d9ef">ASSERTION</span>  <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">assertion</span><span style="color:#f92672">-</span>name<span style="color:#f92672">-</span>list<span style="color:#f92672">&gt;</span>
 </code></pre></div><ul>
 <li>触发器
@@ -270,7 +270,7 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TRIGGER</span> <span style="color:#66d9ef">trigger_name</span> <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">BEFORE</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">AFTER</span> <span style="color:#960050;background-color:#1e0010">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TRIGGER</span> <span style="color:#66d9ef">trigger_name</span> <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">BEFORE</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">AFTER</span> <span style="color:#960050;background-color:#1e0010">}</span>
     <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">INSERT</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">UPDATE</span> [ <span style="color:#66d9ef">OF</span> colname <span style="color:#960050;background-color:#1e0010">{</span>, colname ... <span style="color:#960050;background-color:#1e0010">}</span>]<span style="color:#960050;background-color:#1e0010">}</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">table_name</span> 
     [ <span style="color:#66d9ef">REFERENCING</span> <span style="color:#960050;background-color:#1e0010">{</span>
         <span style="color:#66d9ef">OLD</span> [ <span style="color:#66d9ef">ROW</span> ] [ <span style="color:#66d9ef">AS</span> ] old_row_corr_name

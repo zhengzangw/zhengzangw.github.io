@@ -8,17 +8,7 @@
     <language>en-us</language>
     <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
     <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
-    <lastBuildDate>Fri, 09 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>1. Mineral</title>
-      <link>https://zhengzangw.com/notes/geology/mineral/</link>
-      <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/geology/mineral/</guid>
-      <description>绪论  研究内容  地球的结构：地球各个部分之间的关系和它们的分布规律和演化 地球的构造：三大层圈，液体和固体  地球半径：6360 km 地壳：0-35 km 地幔：35-2890 km   地球物质：岩石、矿物和元素；地层-岩体-矿床，它们的分布及迁移富集规律 地质事件：层圈物质相互作用在地表的反映 地球的历史：距今 45 亿年，最古老的岩石 38 亿年 生命和演化   思维  将今论古 议古论今、论将来 活动论   科学特点  不是一般性 可检验与重复 预见性   中国地质学研究优势  青藏高原（最老 6 亿年，最年轻几百万年） 最大面积黄土高原 大别-秦岭高压-超高压变质带 热河生物群：中华龙鸟、中华神州鸟；张和兽 云南澄江生物群（5.4 亿生命大爆炸） 分布面积最广的喀斯特地貌 独特的陆相生油田 巨量的华南花岗岩与矿产    矿物 地壳有岩石组成，岩石由矿物组成，矿物有元素组成。地壳上有数百种岩石，数千种矿物，近百种元素
- 研究地球的同位素：铀、铅  元素  克拉克值（地壳元素丰度值）：中上地壳（0-16 km） 50 种元素的平均百分重量  PPM（克顿）: 1e-6 PPB: 1e-9   克拉值：贵重宝石衡量单位  1 克拉 = 0.</description>
-    </item>
-    
+    <lastBuildDate>Sun, 21 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basic</title>
       <link>https://zhengzangw.com/notes/topolopy/basic/</link>
@@ -539,16 +529,6 @@ Model -&amp;gt; Rendering -&amp;gt; Image -&amp;gt; Display
     </item>
     
     <item>
-      <title>2. Rock</title>
-      <link>https://zhengzangw.com/notes/geology/rock/</link>
-      <pubDate>Fri, 09 Apr 2021 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/notes/geology/rock/</guid>
-      <description>火成岩  外力：地球表面的力（沉积岩） 内力：不同层圈的摩擦（变质岩和火成岩） 火山爆发  79.8.24 意大利维苏威火山爆发（13 km，火山灰铺 7m） 1883 印度尼西亚火山带 基拉威尔：比高最高的火山 1951.5.27 南疆火山爆发，最近期的火山活动记录 2002.8-9，新建乌苏县泥火山   岩浆（magma）：形成与地下深处、具有较大粘性的高温熔融流体物质  硅酸盐 + 1-8% 以水为主的挥发物质 生成于地表下 50-200 km 650-1400 摄氏度，1.0Gpa   岩浆做有关：岩浆发育、运动、固结成火成岩的作用  火山作用 侵入作用   火山岩石的类型  按 SiO2 含量的分类  &amp;lt;45%：超基性岩（超镁铁熔岩）  科马提岩：南非、澳大利亚（麗刺结构）   45-52：基性  玄武岩 basalt：黑色致密比重大有气孔，印度德干高原、峨眉山地区   52-65：中性  安山岩 andesite：安第斯山区、日本、台湾、五台山     65：酸性
-       火山岩 valcanic rock 岩浆喷发到地表、气体逃逸、冷凝而成的岩石</description>
-    </item>
-    
-    <item>
       <title>2. AEP</title>
       <link>https://zhengzangw.com/notes/information-theory/2-aep/</link>
       <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
@@ -558,12 +538,21 @@ Model -&amp;gt; Rendering -&amp;gt; Image -&amp;gt; Display
     </item>
     
     <item>
+      <title>News</title>
+      <link>https://zhengzangw.com/about/news/</link>
+      <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/about/news/</guid>
+      <description>[2021.3] I will join HPC-AI @ NUS to start my Ph.D. degree under the supervision of Presidential Young Prof. Yang You! [2021.2] Got one co-first-authored paper accepted to CVPR&#39;21. Thanks to all my collaborators!</description>
+    </item>
+    
+    <item>
       <title>Research Interest</title>
       <link>https://zhengzangw.com/about/interest/</link>
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/interest/</guid>
-      <description>My research interest lies on Artificial Intelligence (AI), High-Performance Computing (HPC) and Computer Vision (CV), with a particular focus on Large Batch Training (on CV, NLP, RecSys etc.) and Domain Adaptation.</description>
+      <description>My research interest lies on Machine Learning (AI) and High-Performance Computing (HPC), with a particular focus on training models with large batch and training models that generalize well.</description>
     </item>
     
     <item>
@@ -964,15 +953,6 @@ Iterative-and-incremental Process Models  Incrementation(增量): 指对于产�
     </item>
     
     <item>
-      <title>News</title>
-      <link>https://zhengzangw.com/about/news/</link>
-      <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/news/</guid>
-      <description> [2021.3] I will join HPC-AI @ NUS to start my Ph.D. degree under the supervision of Presidential Young Prof. Yang You! [2021.2] Got one co-first-authored paper accepted to CVPR&#39;21. Thanks to all my collaborators!  </description>
-    </item>
-    
-    <item>
       <title>3-CNN</title>
       <link>https://zhengzangw.com/notes/deep-learning/3-cnn/</link>
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
@@ -1294,12 +1274,16 @@ $$\text{support}(A\Rightarrow B)=P(A,B)=\frac{\text{# of tuples includes }A,B}{\
     </item>
     
     <item>
-      <title>Teaching Assistant</title>
-      <link>https://zhengzangw.com/about/teaching/</link>
-      <pubDate>Mon, 07 Dec 2020 21:31:28 +0800</pubDate>
+      <title>Publications</title>
+      <link>https://zhengzangw.com/about/publications/</link>
+      <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/teaching/</guid>
-      <description> Algorithm Analysis &amp;amp; Design (NJU, CS, Fall 2020)  </description>
+      <guid>https://zhengzangw.com/about/publications/</guid>
+      <description>  Prototypical Cross-domain Self-supervised Learning for Few-shot Unsupervised Domain Adaptation CVPR&#39;21
+Xiangyu Yue*, Zangwei Zheng*, Shanghang Zhang, Yang Gao, Trevor Darrell, Kurt Keutzer, Alberto Sangiovanni-Vincentelli
+  Scene-aware Learning Network for Radar Object Detection ICMR&#39;21
+Zangwei Zheng, Xiangyu Yue, Kurt Keutzer, Alberto Sangiovanni Vincentelli
+  </description>
     </item>
     
     <item>
@@ -1590,16 +1574,12 @@ Object File Format  DOS - COM System V UNIX - COFF (Common Object File-Format) W
     </item>
     
     <item>
-      <title>Publications</title>
-      <link>https://zhengzangw.com/about/publications/</link>
-      <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
+      <title>Teaching Assistant</title>
+      <link>https://zhengzangw.com/about/teaching/</link>
+      <pubDate>Mon, 07 Dec 2020 21:31:28 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/publications/</guid>
-      <description>  Prototypical Cross-domain Self-supervised Learning for Few-shot Unsupervised Domain Adaptation CVPR&#39;21
-Xiangyu Yue*, Zangwei Zheng*, Shanghang Zhang, Yang Gao, Trevor Darrell, Kurt Keutzer, Alberto Sangiovanni-Vincentelli
-  Scene-aware Learning Network for Radar Object Detection ICMR&#39;21
-Zangwei Zheng Xiangyu Yue, Kurt Keutzer, Alberto Sangiovanni Vincentelli
-  </description>
+      <guid>https://zhengzangw.com/about/teaching/</guid>
+      <description> Algorithm Analysis &amp;amp; Design (NJU, CS, Fall 2020)  </description>
     </item>
     
     <item>
@@ -1873,6 +1853,15 @@ $$&lt;/li&gt;
     </item>
     
     <item>
+      <title>Selected Awards</title>
+      <link>https://zhengzangw.com/about/awards/</link>
+      <pubDate>Mon, 07 Dec 2020 21:43:38 +0800</pubDate>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/about/awards/</guid>
+      <description> 2021, Outstanding Graduates of Nanjing University 2020, Outstanding Student of Nanjing University 2019, 2018 (2 times), National Elite Program First-Class Scholarship 2019, Zheng Gang Overseas Study Scholarship  </description>
+    </item>
+    
+    <item>
       <title>方程求根</title>
       <link>https://zhengzangw.com/notes/numerical-analysis/6-%E6%96%B9%E7%A8%8B%E6%B1%82%E6%A0%B9/</link>
       <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
@@ -2047,12 +2036,12 @@ savepoint
     </item>
     
     <item>
-      <title>Selected Awards</title>
-      <link>https://zhengzangw.com/about/awards/</link>
-      <pubDate>Mon, 07 Dec 2020 21:43:38 +0800</pubDate>
+      <title>Projects</title>
+      <link>https://zhengzangw.com/about/projects/</link>
+      <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/awards/</guid>
-      <description> 2021, Outstanding Graduates of Nanjing University 2020, Outstanding Student of Nanjing University [2018-2019], 2 times, National Elite Program First-Class Scholarship 2019, Zheng Gang Overseas Study Scholarship  </description>
+      <guid>https://zhengzangw.com/about/projects/</guid>
+      <description> hugo-theme-phd: Hugo theme for this page.  </description>
     </item>
     
     <item>
@@ -2335,15 +2324,6 @@ Lower Bound for Ramsey&amp;rsquo;s Number  $R(k,k),\forall$ two coloring of $K_n
  进程的上下文：物理实体和支持进程运行的环境 用户堆栈：运行时堆和用户栈 用户级上下文：程序块、数据块、用户堆栈等组成的用户空间信息 系统级上下文：进程标识信息、进程现场信息、进程控制信息（各种内核数据结构）和系统内核栈组成的内核空间信息 硬件/寄存器上下文 上下文切换  将寄存器上下文保存到当前进程的系统级上下文中 将新进程系统级上下文中的现场信息恢复到寄存器中 将控制转移到新进程    memory mapping 将进程虚拟地址空间中的一个区域与硬盘上一个对象关联，初始化一个vm_area_struct结构
 mmap函数
  void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offset 返回值 MAP_FAILED(-1), 成功则为指向映射区域的指针 prot 访问权限 PROT_EXE/READ/WRITE/NONE flags 对象类型  普通文件  MAP_PRIVATE: 只读代码和已初始化数据，私有对象，写时拷贝  私有的写时拷贝页   MAP_SHARED: 共享对象   匿名文件：MAP_ANON 内核创建，全部由0组成。对应区域页面称为demand-zero page    loader  execve() 启动加载器 int execve(char *filename, char *argv[], *envp[]) 失败 -1 成功 _start(定义于crtl.</description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>https://zhengzangw.com/about/projects/</link>
-      <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/projects/</guid>
-      <description> hugo-theme-phd: Hugo theme for this page.  </description>
     </item>
     
     <item>
@@ -2706,14 +2686,14 @@ standard-version
 &lt;/ul&gt;
 &lt;h2 id=&#34;commit-message&#34;&gt;commit message&lt;/h2&gt;
 &lt;p&gt;Angular Git Commit Guidelines&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&amp;lt;type&amp;gt;(&amp;lt;scope&amp;gt;): &amp;lt;subject&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&amp;lt;type&amp;gt;(&amp;lt;scope&amp;gt;): &amp;lt;subject&amp;gt;
 &amp;lt;br&amp;gt;
 &amp;lt;body&amp;gt;
 &amp;lt;br&amp;gt;
 &amp;lt;footer&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;commitizen&#34;&gt;commitizen&lt;/h3&gt;
 &lt;p&gt;使用 commitizen 规范信息，需要 nodejs&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;using namespace std;
 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, q &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
@@ -2735,7 +2715,7 @@ vector&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span st
     nex[i][s[i] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i;
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;yarn global add commitizen
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;yarn global add commitizen
 npm init --yes
 ln -s /Users/username/node_modules ./node_modules
 commitizen init cz-conventional-changelog --save --save-exact
@@ -2886,10 +2866,10 @@ Spread Spectrum Frequency Hopping(FHSS)  signal is broadcast over seemingly rand
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gcc -M main.c &lt;span style=&#34;color:#75715e&#34;&gt;#输出用于 Make 的规则&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gcc -M main.c &lt;span style=&#34;color:#75715e&#34;&gt;#输出用于 Make 的规则&lt;/span&gt;
 gcc -MM &lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;.c &lt;span style=&#34;color:#75715e&#34;&gt;#不包含系统头文件&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;var&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 使用变量
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;var&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 使用变量
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;var &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 将整个makefile展开后，再决定变量的值&lt;/span&gt;
 var &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 立即赋值&lt;/span&gt;
 var &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 追加赋值&lt;/span&gt;
@@ -2900,7 +2880,7 @@ space &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;内置变量与常用变量&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-makefilet&#34; data-lang=&#34;makefilet&#34;&gt;.RECIPEPREFIX = &amp;gt; # 默认命令前为 \t
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-makefilet&#34; data-lang=&#34;makefilet&#34;&gt;.RECIPEPREFIX = &amp;gt; # 默认命令前为 \t
 OUTPUT_OPTION = -o \$@
 CC = cc
 
@@ -2950,7 +2930,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;RULE:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; prerequisite
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; prerequisite
   command1 &lt;span style=&#34;color:#75715e&#34;&gt;# 对于 Makefile 中的每个以 Tab 开头的命令，make 会创建一个 Shell 进程去执行它。&lt;/span&gt;
   @command2 &lt;span style=&#34;color:#75715e&#34;&gt;# 不显示命令&lt;/span&gt;
   -command3 &lt;span style=&#34;color:#75715e&#34;&gt;# 错误继续执行&lt;/span&gt;
@@ -3067,7 +3047,7 @@ Lint 静态代码检测
       <description>&lt;h2 id=&#34;platform&#34;&gt;Platform&lt;/h2&gt;
 &lt;h3 id=&#34;virtual-machine-on-macosx&#34;&gt;Virtual Machine on macosx&lt;/h3&gt;
 &lt;p&gt;Install virtualbox&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;    brew cask install virtualbox
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;    brew cask install virtualbox
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Download Ubuntu from &lt;a href=&#34;https://mirror.tuna.tsinghua.edu.cn/ubuntu-releases/&#34;&gt;Tsinghua Image&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;LTS version&lt;/p&gt;
 &lt;ul&gt;
@@ -3092,7 +3072,7 @@ Lint 静态代码检测
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/php-setup/</guid>
       <description>&lt;h1 id=&#34;set-up-vm&#34;&gt;Set up VM&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update
 adduser newuser
 usermod -aG sudo newuser
 sudo nano /etc/ssh/sshd_config
@@ -4246,7 +4226,7 @@ Single qubit operator  Pauli operators  $I=(1,0;0,1)$ $X=(0,1;1,0)$ (非门)  $X
 &lt;/ul&gt;
 &lt;h1 id=&#34;developers-tools&#34;&gt;Developer&amp;rsquo;s Tools&lt;/h1&gt;
 &lt;h2 id=&#34;ide&#34;&gt;IDE&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;Xcode
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;Xcode
 vscode: Main Code Editor
 Anaconda: Python
 PyCharm CE: Python
@@ -4697,7 +4677,7 @@ NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/latex-tikz/</guid>
       <description>&lt;h1 id=&#34;图片放置&#34;&gt;图片放置&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-tex&#34; data-lang=&#34;tex&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}[htbp]
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-tex&#34; data-lang=&#34;tex&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}[htbp]
     &lt;span style=&#34;color:#66d9ef&#34;&gt;\centering&lt;/span&gt;
     &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle1]&lt;/span&gt;{
         &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
@@ -4798,7 +4778,7 @@ NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-programming/java/</guid>
       <description>&lt;h2 id=&#34;示例代码&#34;&gt;示例代码&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// HelloWorld
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// HelloWorld
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;HelloWorld&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
     &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
         System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello World!&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
@@ -4902,7 +4882,7 @@ $$l = (max(rgb) + min(rgb)) / 2$$&lt;/p&gt;
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/segment-tree/</guid>
       <description>&lt;h1 id=&#34;prepare&#34;&gt;Prepare&lt;/h1&gt;
 &lt;h2 id=&#34;离散化&#34;&gt;离散化&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;m &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a.y
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;m &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a.y
 sort(m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
 len &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; unique(m,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; m
 &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt;n;&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;i) a[i].y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lower_bound(m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;len&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,a[i].y) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; m;
@@ -5109,7 +5089,7 @@ for i=1 to N for v = V to Ci F[v] = max{F[v],F[v-Ci]+Wi} 恰好装满：$F[1..V]
 &lt;p&gt;In this arcticle, I will give examples to illustrate and remind me the usage of some pandas funtion. Just a reminder.&lt;/p&gt;
 &lt;h2 id=&#34;数据读写&#34;&gt;数据读写&lt;/h2&gt;
 &lt;h3 id=&#34;read_csv&#34;&gt;read_csv&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-pandas&#34; data-lang=&#34;pandas&#34;&gt;data = pd.read_csv(&#39;test.csv&#39;)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-pandas&#34; data-lang=&#34;pandas&#34;&gt;data = pd.read_csv(&#39;test.csv&#39;)
 data = pd.read_csv(&#39;test.csv&#39;,header = 0/[0,1,2]列名,  index_col = 0/[0,1], nrows = 100)
 data = pd.read_csv(&#39;test_one.csv&#39;, squeeze = True, encoding = &#39;utf-8&#39;) 一列返回Series
 data = pd.read_csv(&#39;test.csv&#39;, prefix = &#39;X&#39;列前缀, skiprows = 3, skipfooter = 3, na_values = &#39;NAN&#39;)

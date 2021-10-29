@@ -89,14 +89,14 @@
 </nav>
             </div>
             <main class="flex-column-80"><h2 id="帮助">帮助</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">man mkdir
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">man mkdir
 tldr mkdir
 type cd
 which ffmpeg
 shellcheck script.sh <span style="color:#75715e"># brew install shellcheck</span>
 history <span style="color:#ae81ff">1</span> <span style="color:#75715e"># history from 1</span>
 </code></pre></div><h2 id="file-system">File System</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 查看</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 查看</span>
 ls -R
 tree -L <span style="color:#ae81ff">1</span> <span style="color:#75715e"># brew install tree</span>
 <span style="color:#75715e"># 跳转</span>
@@ -118,7 +118,7 @@ mkdir -p <span style="color:#75715e"># Create missing ones</span>
 basename ./a/b/c.d <span style="color:#75715e"># 返回不包含路径的文件名</span>
 dirname ./a/b/c.d <span style="color:#75715e"># 返回文件所在路径（上级）</span>
 </code></pre></div><h2 id="search">Search</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">find . -name src -type d <span style="color:#75715e"># type directory</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">find . -name src -type d <span style="color:#75715e"># type directory</span>
 find . -path <span style="color:#e6db74">&#39;**/test/*.py&#39;</span> -type f
 find . -name <span style="color:#e6db74">&#34;*.tmp&#34;</span> -exec rm <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
 fd <span style="color:#e6db74">&#39;image.*&#39;</span> --extension <span style="color:#e6db74">&#39;jpg&#39;</span> <span style="color:#75715e"># </span>
@@ -135,7 +135,7 @@ fzf
 <span style="color:#75715e"># brew install fzf</span>
 <span style="color:#75715e"># /usr/local/opt/fzf/install</span>
 </code></pre></div><h2 id="pipeline">Pipeline</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">&gt; <span style="color:#75715e"># 重定向，覆盖</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">&gt; <span style="color:#75715e"># 重定向，覆盖</span>
 ?&gt; <span style="color:#75715e"># 重定向，强制覆盖 in mac</span>
 &gt;&gt; <span style="color:#75715e"># 追加</span>
 &gt; /dev/null 2&gt; /dev/null
@@ -144,13 +144,13 @@ ffmpeg -loglevel panic -i /dev/video0 -frames <span style="color:#ae81ff">1</spa
 | xargs -d <span style="color:#e6db74">&#34;\t&#34;</span> <span style="color:#75715e"># 将标准输入按\t分解为命令行参数 -p 只打印不执行</span>
 | tee <span style="color:#75715e"># output and forward</span>
 </code></pre></div><h2 id="globbing">globbing</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ls project*
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ls project*
 ls project?
 touch project<span style="color:#f92672">{</span>1,2<span style="color:#f92672">}</span>/src/text/test<span style="color:#f92672">{</span>1,2,3<span style="color:#f92672">}</span>.py
 touch <span style="color:#f92672">{</span>foo,bar<span style="color:#f92672">}</span>/<span style="color:#f92672">{</span>a..g<span style="color:#f92672">}</span>
 **/test/*.py <span style="color:#75715e"># ** means any prefix</span>
 </code></pre></div><h2 id="其它常用命令">其它常用命令</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">date
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">date
 date +%Y-%m-%d
 cmp a.c b.c
 diff a.c b.c

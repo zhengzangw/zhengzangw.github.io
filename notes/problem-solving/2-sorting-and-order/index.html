@@ -99,7 +99,7 @@
             </div>
             <main class="flex-column-80"><h2 id="排序">排序</h2>
 <h3 id="插入排序">插入排序</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>; j<span style="color:#f92672">&lt;</span>A.size(); <span style="color:#f92672">++</span>j){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>; j<span style="color:#f92672">&lt;</span>A.size(); <span style="color:#f92672">++</span>j){
     <span style="color:#66d9ef">auto</span> key <span style="color:#f92672">=</span> A[j];
     <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> A[i]<span style="color:#f92672">&gt;</span>key; <span style="color:#f92672">--</span>i)
         A[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> A[i];
@@ -111,7 +111,7 @@
 <li>average: $\Theta(n^2)$</li>
 </ul>
 <h3 id="归并排序">归并排序</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge_sort</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A, <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge_sort</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A, <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r){
     <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&lt;</span> r){
         <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> (l<span style="color:#f92672">+</span>r)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
         merge_sort(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A, l, mid);
@@ -124,7 +124,7 @@
 <li>average case: $\Theta(n\lg n)$</li>
 </ul>
 <h3 id="堆排序">堆排序</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">build_max_heap(A)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">build_max_heap(A)
 <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(A<span style="color:#f92672">.</span>length, <span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
     swap(A[<span style="color:#ae81ff">1</span>], A[i])
     A<span style="color:#f92672">.</span>size <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
@@ -134,7 +134,7 @@
 <li>not stable</li>
 </ul>
 <h3 id="快速排序">快速排序</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">partition</span>(A, p, r):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">partition</span>(A, p, r):
     x <span style="color:#f92672">=</span> A[r]
     <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>):
         <span style="color:#66d9ef">while</span> (a[i] <span style="color:#f92672">&lt;</span> x) i<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
@@ -168,7 +168,7 @@
 </ul>
 <h2 id="order-statics">Order statics</h2>
 <h3 id="快排修改">快排修改</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">random_select</span>(A, p, r, i):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">random_select</span>(A, p, r, i):
     <span style="color:#66d9ef">if</span> p<span style="color:#f92672">==</span>r:
         <span style="color:#66d9ef">return</span> A[p]
     q <span style="color:#f92672">=</span> random_partion(A, p, r)
@@ -188,7 +188,7 @@
 </li>
 </ul>
 <h3 id="方法二">方法二</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">select</span>(A, p, r, i):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">select</span>(A, p, r, i):
     <span style="color:#66d9ef">if</span> p<span style="color:#f92672">==</span>r:
         <span style="color:#66d9ef">return</span> A[p]
     <span style="color:#75715e"># Get divide point</span>

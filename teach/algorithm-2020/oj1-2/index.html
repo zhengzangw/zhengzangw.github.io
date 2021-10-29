@@ -96,7 +96,7 @@
 <p>一种可行的方法是缩小左上的矩形，如此交点处都是可以的。根据题目中 “It is allowed to enter some cells multiple times!”，上下两个子矩阵的求解就成为相互独立的子问题了。此时其余部分用 4 次操作可以填满。$n=3000,\log_2 n \approx 11,4*11=44&lt;50$</p>
 <p>程序实现时，可以递归模拟二分过程，既可以用 <code>vector</code> 记录选择的 $X,Y$ 坐标，<code>merge</code> 时合并，也可以用全局变量记录。其中，特殊处理一下 $n=1,2,3,4$ 的情况，可以让染色数减少（如 $n=4$ 只需 3 次）。</p>
 <h2 id="示例代码">示例代码</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
 
 <span style="color:#75715e">#define max_n 3000

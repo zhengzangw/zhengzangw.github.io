@@ -89,7 +89,7 @@
 <p>因为要维护的是连续连段的长度，染色 $[p_i-1,p_i]$ 时，相当与把 $p_i-1$ 所在的连续线段和 $p_i$ 所在的连续线段合并。每条连续线段相当与是一个集合，</p>
 <p>用并查集维护即可，可参考网上的<a href="https://oi-wiki.org/ds/dsu/">实现</a>。同时并查集需要维护集合的大小（按秩合并优化中已经有维护了）</p>
 <h2 id="示例代码">示例代码</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
 
 <span style="color:#75715e">#define MAX_N 1000000

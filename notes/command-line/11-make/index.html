@@ -134,10 +134,10 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">gcc -M main.c <span style="color:#75715e">#输出用于 Make 的规则</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">gcc -M main.c <span style="color:#75715e">#输出用于 Make 的规则</span>
 gcc -MM <span style="color:#ae81ff">\*</span>.c <span style="color:#75715e">#不包含系统头文件</span>
 </code></pre></div><h2 id="变量">变量</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#66d9ef">$(</span>var<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 使用变量
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#66d9ef">$(</span>var<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 使用变量
 </span><span style="color:#75715e"></span>var <span style="color:#f92672">=</span> string <span style="color:#75715e"># 将整个makefile展开后，再决定变量的值</span>
 var <span style="color:#f92672">:=</span> string <span style="color:#75715e"># 立即赋值</span>
 var <span style="color:#f92672">+=</span> string <span style="color:#75715e"># 追加赋值</span>
@@ -148,7 +148,7 @@ space <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span
 </code></pre></div><ul>
 <li>内置变量与常用变量</li>
 </ul>
-<pre><code class="language-makefilet" data-lang="makefilet">.RECIPEPREFIX = &gt; # 默认命令前为 \t
+<pre tabindex="0"><code class="language-makefilet" data-lang="makefilet">.RECIPEPREFIX = &gt; # 默认命令前为 \t
 OUTPUT_OPTION = -o \$@
 CC = cc
 
@@ -198,7 +198,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
 <ul>
 <li>
 <p>RULE:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> prerequisite
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> prerequisite
   command1 <span style="color:#75715e"># 对于 Makefile 中的每个以 Tab 开头的命令，make 会创建一个 Shell 进程去执行它。</span>
   @command2 <span style="color:#75715e"># 不显示命令</span>
   -command3 <span style="color:#75715e"># 错误继续执行</span>
@@ -213,7 +213,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
 <li>某个条件需要更新</li>
 <li>某个条件的修改时间比目标晚</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#75715e">#强制更新条件
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#75715e">#强制更新条件
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">FORCE</span><span style="color:#f92672">:</span>
 <span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> FORCE
 </code></pre></div></li>
@@ -246,10 +246,10 @@ $(VERBOSE).SILENT # Suppress display of executed command
 <ul>
 <li>模式规则</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">COMPILE.c <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>CC<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>CFLAGS<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>CPPFLAGS<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>TARGET_ARCH<span style="color:#66d9ef">)</span> -c
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">COMPILE.c <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>CC<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>CFLAGS<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>CPPFLAGS<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>TARGET_ARCH<span style="color:#66d9ef">)</span> -c
 <span style="color:#a6e22e">%.o</span><span style="color:#f92672">:</span> %.c
 </code></pre></div><h2 id="指令">指令</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>CC<span style="color:#66d9ef">)</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#960050;background-color:#1e0010">gcc)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>CC<span style="color:#66d9ef">)</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#960050;background-color:#1e0010">gcc)</span>
   libs<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>libs_for_gcc<span style="color:#66d9ef">)</span>
 <span style="color:#960050;background-color:#1e0010">else</span>
   libs<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>normal_libs<span style="color:#66d9ef">)</span>
@@ -271,7 +271,7 @@ srcfiles <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</s
 <ul>
 <li>c</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">edit</span><span style="color:#f92672">:</span> main.o kbd.o command.o display.o
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">edit</span><span style="color:#f92672">:</span> main.o kbd.o command.o display.o
     cc -o edit main.o kbd.o command.o display.o
 
 <span style="color:#a6e22e">main.o</span><span style="color:#f92672">:</span> main.c defs.h
@@ -290,7 +290,7 @@ srcfiles <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</s
 </code></pre></div><ul>
 <li>c++</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">CC<span style="color:#f92672">=</span>gcc
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">CC<span style="color:#f92672">=</span>gcc
 CXX<span style="color:#f92672">=</span>g++
 RM<span style="color:#f92672">=</span>rm -f
 CPPFLAGS<span style="color:#f92672">=</span>-g <span style="color:#66d9ef">$(</span>shell root-config --cflags<span style="color:#66d9ef">)</span>

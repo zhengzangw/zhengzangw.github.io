@@ -110,7 +110,7 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T1</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T2</span>, ...<span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T1</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T2</span>, ...<span style="color:#f92672">&gt;</span>
 <span style="color:#f92672">&lt;</span>return_type<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span>func_name<span style="color:#f92672">&gt;</span>(<span style="color:#f92672">&lt;</span>params_list<span style="color:#f92672">&gt;</span>){
     ...
 }
@@ -124,7 +124,7 @@
 </li>
 <li>带非类型参数的模板：使用时必须显示实例化</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>, <span style="color:#66d9ef">int</span> size<span style="color:#f92672">&gt;</span> <span style="color:#75715e">//size为一个int型的普通参数
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>, <span style="color:#66d9ef">int</span> size<span style="color:#f92672">&gt;</span> <span style="color:#75715e">//size为一个int型的普通参数
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> f(T a)
 {
     T temp[size];
@@ -136,7 +136,7 @@ f<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,<
 <li>类属类：一个类的成员的类型可变</li>
 <li>类模板</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stack</span>{
     T buffer[<span style="color:#ae81ff">100</span>];
     <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">pop</span>(T <span style="color:#f92672">&amp;</span>x);
@@ -149,7 +149,7 @@ f<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,<
 <li>可带非类型参数</li>
 <li>类模板友元</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>;
 <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> f3(A<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> a) { ... }
 <span style="color:#66d9ef">template</span> <span style="color:#66d9ef">class</span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
@@ -210,7 +210,7 @@ A<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><s
 <li><code>multiset&lt;type&gt;</code></li>
 </ul>
 <h3 id="容器操作">容器操作</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">size();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">size();
 T<span style="color:#f92672">&amp;</span> front();
 T<span style="color:#f92672">&amp;</span> back();
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push_front</span>(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> x);
@@ -330,7 +330,7 @@ T<span style="color:#f92672">&amp;</span> at(size_type pos); <span style="color:
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//调序算法
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//调序算法
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span>(RanIt first, RandIt last); <span style="color:#75715e">//&lt;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span>(RanIt first, RandIt last, BinPred less);
 <span style="color:#75715e">//编辑算法

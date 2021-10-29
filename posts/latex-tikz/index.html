@@ -89,7 +89,7 @@
 </nav>
             </div>
             <main class="flex-column-80"><h1 id="图片放置">图片放置</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\begin</span>{figure}[htbp]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\begin</span>{figure}[htbp]
     <span style="color:#66d9ef">\centering</span>
     <span style="color:#66d9ef">\subfloat</span><span style="color:#a6e22e">[subtitle1]</span>{
         <span style="color:#66d9ef">\begin</span>{tikzpicture}
@@ -182,20 +182,20 @@
 </li>
 </ul>
 <h1 id="node-tree">node tree</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\node</span>{root}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\node</span>{root}
 child {node {a1}}
 child {node {a2}
     child{node{b1}}
     child{node{b2}}
     }
 </code></pre></div><h1 id="dot">dot</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\usetizpackage</span>{graphs}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\usetizpackage</span>{graphs}
 <span style="color:#66d9ef">\graph</span>{
     &#34;<span style="color:#e6db74">$</span>x_<span style="color:#ae81ff">1</span><span style="color:#e6db74">$</span>&#34; -&gt; b -- 1;
     1-&gt;2;
 }
 </code></pre></div><h2 id="graphviz-dot">graphviz dot</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    brew install graphviz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    brew install graphviz
     dot -Tpng *.dot -o *.png
 </code></pre></div><h3 id="语法">语法</h3>
 <ul>
@@ -205,7 +205,7 @@ child {node {a2}
 <li>graph 无向图</li>
 <li>哈希表</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex">digraph g{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex">digraph g{
     nodesep = .5
     randkir = LR
     node[shape=record, width=.1, height-.1]
@@ -240,7 +240,7 @@ child {node {a2}
 <li><a href="https://www.jianshu.com/p/e44885a777f0">参考文章</a></li>
 </ul>
 <h2 id="例子">例子</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">node <span style="color:#f92672">[</span>color<span style="color:#f92672">=</span>red!70,pos<span style="color:#f92672">=</span>0.25,above,sloped<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">node <span style="color:#f92672">[</span>color<span style="color:#f92672">=</span>red!70,pos<span style="color:#f92672">=</span>0.25,above,sloped<span style="color:#f92672">]</span>
 </code></pre></div></main>
         </div>
 

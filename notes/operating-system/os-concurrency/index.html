@@ -296,11 +296,11 @@
 </li>
 <li>Always hold the lock while signaling</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//wait
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//wait
 </span><span style="color:#75715e"></span>lock(<span style="color:#f92672">&amp;</span>m)
 <span style="color:#66d9ef">while</span> (done<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>) wait(<span style="color:#f92672">&amp;</span>c,<span style="color:#f92672">&amp;</span>m)
 unlock(<span style="color:#f92672">&amp;</span>m)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//signal
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//signal
 </span><span style="color:#75715e"></span>lock(<span style="color:#f92672">&amp;</span>m)
 done<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 signal(<span style="color:#f92672">&amp;</span>c)
@@ -355,13 +355,13 @@ unlock(<span style="color:#f92672">&amp;</span>m)
 </li>
 <li>Implement of Semaphores</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">zem_wait</span>(){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">zem_wait</span>(){
   lock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
   <span style="color:#66d9ef">while</span> (s<span style="color:#f92672">-&gt;</span>value<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">0</span>) wait(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>cond, <span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
   s<span style="color:#f92672">-&gt;</span>value<span style="color:#f92672">--</span>;
   unlock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">zem_post</span>(){
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">zem_post</span>(){
   lock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
   s<span style="color:#f92672">-&gt;</span>value<span style="color:#f92672">++</span>;
   signal(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>cond);
@@ -369,7 +369,7 @@ unlock(<span style="color:#f92672">&amp;</span>m)
 }
 </code></pre></div><h2 id="实际应用">实际应用</h2>
 <h3 id="producerconsumer-problem">Producer/Consumer Problem</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//Lock Version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//Lock Version
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>() {
   <span style="color:#66d9ef">for</span> (i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>loops; <span style="color:#f92672">++</span>i){
     lock(<span style="color:#f92672">&amp;</span>m);
@@ -389,7 +389,7 @@ unlock(<span style="color:#f92672">&amp;</span>m)
     unlock(<span style="color:#f92672">&amp;</span>m);
   }
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//Semaphore Version
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//Semaphore Version
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>(){
   <span style="color:#66d9ef">for</span> (i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>loops; <span style="color:#f92672">++</span>i){
     sem_wait(<span style="color:#f92672">&amp;</span>emtpy); <span style="color:#75715e">// It is atomic so it can move here
@@ -520,7 +520,7 @@ sem_init(<span style="color:#f92672">&amp;</span>mutex, <span style="color:#ae81
 </li>
 <li>event loop</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>){
   events <span style="color:#f92672">=</span> getEvents();
   <span style="color:#66d9ef">for</span> (e in events)
       processEvent(e);

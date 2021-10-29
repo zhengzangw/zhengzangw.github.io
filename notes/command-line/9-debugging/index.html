@@ -98,7 +98,7 @@
 </nav>
             </div>
             <main class="flex-column-80"><h2 id="system">System</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">stress -c <span style="color:#75715e"># brew install stress</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">stress -c <span style="color:#75715e"># brew install stress</span>
 <span style="color:#75715e"># Log</span>
 ls /var/log <span style="color:#75715e"># Log file</span>
 cat /var/log/system.log | lnav <span style="color:#75715e"># brew install lnav</span>
@@ -125,19 +125,19 @@ lsof <span style="color:#75715e"># list open files</span>
 hyperfine --warmup <span style="color:#ae81ff">3</span> <span style="color:#e6db74">&#39;fd -e jpg&#39;</span> <span style="color:#960050;background-color:#1e0010">&#39;</span>find . -iname <span style="color:#e6db74">&#34;*.jpg&#34;</span>
 </code></pre></div><h2 id="c">C</h2>
 <h3 id="time">time</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>usleep(ms)
 </code></pre></div><h3 id="gdb">gdb</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">gdb --args sleep <span style="color:#ae81ff">20</span> <span style="color:#75715e"># gdb with binary</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">gdb --args sleep <span style="color:#ae81ff">20</span> <span style="color:#75715e"># gdb with binary</span>
 lldb -- sleep <span style="color:#ae81ff">20</span> <span style="color:#75715e"># lldb</span>
 </code></pre></div><h3 id="profile">profile</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">valgrind
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">valgrind
 </code></pre></div><h2 id="python">Python</h2>
 <h3 id="static-analysis">static analysis</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pyflakes test.py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pyflakes test.py
 mypy test.py
 </code></pre></div><h3 id="pdb">pdb</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">python -m ipdb test.py <span style="color:#75715e"># pip install ipdb</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">python -m ipdb test.py <span style="color:#75715e"># pip install ipdb</span>
 <span style="color:#75715e"># in ipdb</span>
 l <span style="color:#75715e">#list</span>
 s <span style="color:#75715e">#step</span>
@@ -149,10 +149,10 @@ q <span style="color:#75715e">#quit debugger</span>
 b <span style="color:#ae81ff">6</span> <span style="color:#75715e">#breakpoint</span>
 </code></pre></div><h3 id="profiles">profiles</h3>
 <p>Trace profiles</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">python -m cProfile -s tottime test.py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">python -m cProfile -s tottime test.py
 python -m memory_profiler test.py <span style="color:#75715e"># pip install memory_profiler</span>
 </code></pre></div><p>Line profiles: add <code>@profile</code> before function</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kernprof -l -v urls.py <span style="color:#75715e"># pip install line_profiler</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kernprof -l -v urls.py <span style="color:#75715e"># pip install line_profiler</span>
 </code></pre></div></main>
         </div>
 

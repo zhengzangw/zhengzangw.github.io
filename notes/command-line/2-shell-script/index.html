@@ -88,14 +88,14 @@
 </nav>
             </div>
             <main class="flex-column-80"><h2 id="内建命令">内建命令</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">man builtin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">man builtin
 source ~/.zshrc
 read -p <span style="color:#e6db74">&#34;Enter some information &gt; &#34;</span> name url age
 cd
 </code></pre></div><h2 id="变量">变量</h2>
 <p>字母数字及下划线组成，并且变量名的第一个字符不能为数字
 赋值时，变量和等号之间不要有空格，等号和值之间也不要有空格，否则 shell 不会认为变量被定义</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#66d9ef">$(</span>ls<span style="color:#66d9ef">)</span> <span style="color:#75715e"># output -&gt; string</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#66d9ef">$(</span>ls<span style="color:#66d9ef">)</span> <span style="color:#75715e"># output -&gt; string</span>
 echo <span style="color:#e6db74">`</span>ls<span style="color:#e6db74">`</span> <span style="color:#75715e"># output -&gt; string</span>
 diff &lt;<span style="color:#f92672">(</span>ls<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">(</span>ls ..<span style="color:#f92672">)</span> <span style="color:#75715e"># output -&gt; tmp file</span>
 <span style="color:#75715e"># declare</span>
@@ -150,7 +150,7 @@ test $age -le <span style="color:#ae81ff">2</span>
 <span style="color:#f92672">[[</span>$age -le 2<span style="color:#f92672">]]</span> <span style="color:#75715e"># upgrade of [], support ||,&amp;&amp;,!</span>
 <span style="color:#f92672">[[</span>$str <span style="color:#f92672">=</span>~ ^1<span style="color:#f92672">[</span>0-9<span style="color:#f92672">]{</span>10<span style="color:#f92672">}</span>$ <span style="color:#f92672">]]</span> <span style="color:#75715e"># support regex</span>
 </code></pre></div><h2 id="流程控制">流程控制</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># if</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># if</span>
 <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#f92672">]</span> <span style="color:#75715e"># Judge if exists</span>
 <span style="color:#66d9ef">then</span>
     ...
@@ -200,7 +200,7 @@ false <span style="color:#f92672">||</span> echo <span style="color:#e6db74">&#3
 <span style="color:#75715e"># exit</span>
 exit -1
 </code></pre></div><h2 id="系统变量">系统变量</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$# <span style="color:#75715e"># 命令行参数个数</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$# <span style="color:#75715e"># 命令行参数个数</span>
 $n <span style="color:#75715e"># $1 表示第一个参数，$2 表示第二个参数，以此类推</span>
 $0 <span style="color:#75715e"># 当前程序名</span>
 $$ <span style="color:#75715e"># PID</span>
@@ -212,7 +212,7 @@ $_ <span style="color:#75715e"># 上一命令的最后一个参数</span>
 shift 将第一个参数删除
 </code></pre></div><h2 id="环境变量">环境变量</h2>
 <p>环境变量：当 shell 程序启动自动设置的一组变量，可以在~/.bash_profile 或者~/.bashrc 中设置</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export TEST<span style="color:#f92672">=</span>test <span style="color:#75715e"># 定义环境变量</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export TEST<span style="color:#f92672">=</span>test <span style="color:#75715e"># 定义环境变量</span>
 env <span style="color:#75715e"># 显示命令</span>
 env PATH<span style="color:#f92672">=</span>/usr/bin python --version <span style="color:#75715e"># 执行命令</span>
 

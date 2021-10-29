@@ -124,7 +124,7 @@
 <li>派生类中定义了与基类同名的成员，则基类的成员名在派生类的作用域内不直接可见</li>
 <li>使用全局函数，加全局作用域 <code>::</code></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span> {
       <span style="color:#66d9ef">int</span> x,y;
       <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
           <span style="color:#66d9ef">void</span> f();
@@ -190,7 +190,7 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//合法操作
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//合法操作
 </span><span style="color:#75715e"></span>A a;
 B b;<span style="color:#75715e">//B 继承 A
 </span><span style="color:#75715e"></span>a <span style="color:#f92672">=</span> b;
@@ -256,7 +256,7 @@ func1(<span style="color:#f92672">&amp;</span>b); func2(b); func3(b);
 </li>
 <li>
 <p>静态绑定</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func1</span>(A<span style="color:#f92672">&amp;</span> x)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func1</span>(A<span style="color:#f92672">&amp;</span> x)
   {
       x.f(); <span style="color:#75715e">//调用A::f
 </span><span style="color:#75715e"></span>  }
@@ -290,7 +290,7 @@ func1(<span style="color:#f92672">&amp;</span>b); func2(b); func3(b);
 <p>通过基类指针访问派生类中新定义的成员：运行时刻类型信息(RTTI)支持</p>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">B <span style="color:#f92672">*</span>q<span style="color:#f92672">=</span><span style="color:#66d9ef">dynamic_cast</span><span style="color:#f92672">&lt;</span>B <span style="color:#f92672">*&gt;</span>(p);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">B <span style="color:#f92672">*</span>q<span style="color:#f92672">=</span><span style="color:#66d9ef">dynamic_cast</span><span style="color:#f92672">&lt;</span>B <span style="color:#f92672">*&gt;</span>(p);
 <span style="color:#66d9ef">if</span> (q<span style="color:#f92672">!=</span>NULL) q<span style="color:#f92672">-&gt;</span>g();
 </code></pre></div><ul>
 <li>纯虚函数：<code>virtual int f()=0;</code></li>
@@ -309,13 +309,13 @@ func1(<span style="color:#f92672">&amp;</span>b); func2(b); func3(b);
 </li>
 <li>虚函数的实现</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">typedef</span> <span style="color:#a6e22e">void</span> (<span style="color:#f92672">*</span>FuncPtr)(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>);<span style="color:#75715e">//指向函数的指针
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">typedef</span> <span style="color:#a6e22e">void</span> (<span style="color:#f92672">*</span>FuncPtr)(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>);<span style="color:#75715e">//指向函数的指针
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> FuncPtr <span style="color:#f92672">*</span>VtblPtr;
 <span style="color:#75715e">//每个类维护虚函数表
 </span><span style="color:#75715e"></span>p<span style="color:#f92672">-&gt;</span>f(); <span style="color:#75715e">//编译为 (*(*(VtblPtr*)p))(p);
 </span><span style="color:#75715e"></span>p<span style="color:#f92672">-&gt;</span>g(); <span style="color:#75715e">//编译为 (*(*(VtblPtr*)p+1))(p);
 </span></code></pre></div><h2 id="多继承">多继承</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">C</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> A, <span style="color:#66d9ef">public</span> B
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">C</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> A, <span style="color:#66d9ef">public</span> B
 {
   <span style="color:#66d9ef">int</span> r;
   <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
@@ -335,7 +335,7 @@ func1(<span style="color:#f92672">&amp;</span>b); func2(b); func3(b);
 <ul>
 <li>重复继承问题：类D从类A继承两次</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">public</span> A {...};
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">public</span> A {...};
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">C</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">public</span> A {...};
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">D</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> B, <span style="color:#66d9ef">public</span> C {...};
 D d;<span style="color:#75715e">//D只包含一个A中元素
@@ -364,7 +364,7 @@ D d;<span style="color:#75715e">//D只包含一个A中元素
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">A(A<span style="color:#f92672">&amp;&amp;</span> x){<span style="color:#75715e">//参数类型右值引用类型
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">A(A<span style="color:#f92672">&amp;&amp;</span> x){<span style="color:#75715e">//参数类型右值引用类型
 </span><span style="color:#75715e"></span>  p <span style="color:#f92672">=</span> x.p;
   x.p <span style="color:#f92672">=</span> NULL;
 }

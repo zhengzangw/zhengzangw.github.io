@@ -134,7 +134,7 @@
             <main class="flex-column-80"><h2 id="platform">Platform</h2>
 <h3 id="virtual-machine-on-macosx">Virtual Machine on macosx</h3>
 <p>Install virtualbox</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">    brew cask install virtualbox
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">    brew cask install virtualbox
 </code></pre></div><p>Download Ubuntu from <a href="https://mirror.tuna.tsinghua.edu.cn/ubuntu-releases/">Tsinghua Image</a></p>
 <p>LTS version</p>
 <ul>
@@ -165,7 +165,7 @@
 </ul>
 <h3 id="cloud">Cloud</h3>
 <h2 id="users">Users</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">useradd newuser
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">useradd newuser
 passwd newuser
 usermod -s /bin/bash newuser
 usermod -d /home/newuser newuser
@@ -173,7 +173,7 @@ visudo
 <span style="color:#75715e"># Add below root ALL=(ALL:ALL) ALL</span>
 <span style="color:#75715e"># newuser ALL=(ALL:ALL) ALL</span>
 </code></pre></div><h2 id="apt">APT</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt upgrade
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt upgrade
 sudo apt install openssh-server <span style="color:#75715e"># Client default installed, server need to be installed</span>
 sudo apt install build-essential man gcc-doc git vim
 sudo apt install zsh tldr tree tmux ctags wget net-tools curl cmake
@@ -183,11 +183,11 @@ sudo apt install libc6-dev-i386 <span style="color:#75715e"># For c -m32</span>
 sudo apt install g++-multilib <span style="color:#75715e"># For c++ -m32</span>
 sudo apt install texlive-full, linux-tools-common, linux-tools-generic, linux-tools-<span style="color:#e6db74">`</span>uname -r<span style="color:#e6db74">`</span>
 </code></pre></div><p>If apt upgrade fails, try remove the mentioned lock</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo rm /var/lib/apt/lists/lock
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo rm /var/lib/apt/lists/lock
 </code></pre></div><h3 id="change-source">change source</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gedit /etc/apt/sources.list
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gedit /etc/apt/sources.list
 </code></pre></div><p>写入如下内容 （以下是 18.04 的，版本不符请上<a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/">清华镜像</a>）</p>
-<pre><code class="language-config" data-lang="config"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+<pre tabindex="0"><code class="language-config" data-lang="config"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
@@ -202,7 +202,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
 </code></pre><h2 id="vim">Vim</h2>
 <h3 id="install-with-lua">Install with lua</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/vim/vim
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/vim/vim
 cd vim/src
 make distclean
 ./configure --with-features<span style="color:#f92672">=</span>huge <span style="color:#ae81ff">\
@@ -225,16 +225,16 @@ make distclean
 make
 sudo make install
 </code></pre></div><h3 id="spf13">spf13</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sh &lt;<span style="color:#f92672">(</span>curl https://j.mp/spf13-vim3 -L<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sh &lt;<span style="color:#f92672">(</span>curl https://j.mp/spf13-vim3 -L<span style="color:#f92672">)</span>
 <span style="color:#f92672">(</span>update: curl https://j.mp/spf13-vim3 -L -o - | sh<span style="color:#f92672">)</span>
 
 sudo apt install fonts-inconsolata
 </code></pre></div><p>In ~/.vimrc.local</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">let g:indent_guides_enable_on_vim_startup <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">let g:indent_guides_enable_on_vim_startup <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
 set wrap
 set tags<span style="color:#f92672">=</span>./tags;/
 </code></pre></div><h3 id="uninstall">Uninstall</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkdir /usr/include/lua5.1/include
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkdir /usr/include/lua5.1/include
 sudo cp /usr/include/lua5.1/*.h /usr/include/lua5.1/include/
 sudo apt-get remove --purge vim vim-runtime vim-gnome vim-tiny vim-gui-common
 sudo rm -rf /usr/local/share/vim
@@ -242,20 +242,20 @@ sudo rm /usr/bin/vim
 </code></pre></div><h2 id="zsh">zsh</h2>
 <h3 id="prezto">prezto</h3>
 <h4 id="install">Install</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zsh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ZDOTDIR<span style="color:#66d9ef">:-</span>$HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/.zprezto&#34;</span>
 </code></pre></div><p>Add the following content to ~/.zshrc</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">setopt EXTENDED_GLOB
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">setopt EXTENDED_GLOB
 <span style="color:#66d9ef">for</span> rcfile in <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ZDOTDIR<span style="color:#66d9ef">:-</span>$HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>/.zprezto/runcoms/^README.md<span style="color:#f92672">(</span>.N<span style="color:#f92672">)</span>; <span style="color:#66d9ef">do</span>
   ln -s <span style="color:#e6db74">&#34;</span>$rcfile<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ZDOTDIR<span style="color:#66d9ef">:-</span>$HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/.</span><span style="color:#e6db74">${</span>rcfile:t<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 <span style="color:#66d9ef">done</span>
 </code></pre></div><p>Then change shell (not use sudo, otherwise root shell is changed instead of current one)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chsh -s <span style="color:#e6db74">`</span>which zsh<span style="color:#e6db74">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chsh -s <span style="color:#e6db74">`</span>which zsh<span style="color:#e6db74">`</span>
 </code></pre></div><p>After that, if some warning appears, change ~/.zshrc to</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ZDOTDIR<span style="color:#66d9ef">:-</span>$HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/.zprezto/init.zsh&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ZDOTDIR<span style="color:#66d9ef">:-</span>$HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/.zprezto/init.zsh&#34;</span>
 </code></pre></div><h4 id="plugin">plugin</h4>
 <p>The plugin in ~/.zpreztorc</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">zstyle <span style="color:#e6db74">&#39;:prezto:load&#39;</span> pmodule <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">zstyle <span style="color:#e6db74">&#39;:prezto:load&#39;</span> pmodule <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  <span style="color:#e6db74">&#39;environment&#39;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  <span style="color:#e6db74">&#39;terminal&#39;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  <span style="color:#e6db74">&#39;editor&#39;</span> <span style="color:#ae81ff">\
@@ -269,41 +269,41 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git <span style="c
 </span><span style="color:#ae81ff"></span>  <span style="color:#e6db74">&#39;autosuggestions&#39;</span><span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  <span style="color:#e6db74">&#39;prompt&#39;</span>
 </code></pre></div><h3 id="update">update</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">cd $ZPREZTODIR
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">cd $ZPREZTODIR
 git pull
 git submodule update --init --recursive
 </code></pre></div><h2 id="cli-apps-config">CLI apps config</h2>
 <h3 id="git">git</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git config --global user.name <span style="color:#e6db74">&#34;zhengzangw&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git config --global user.name <span style="color:#e6db74">&#34;zhengzangw&#34;</span>
 git config --global user.email <span style="color:#e6db74">&#34;zhengzangw@163.com&#34;</span>
 git config --global core.editor vim
 git config --global core.excludesfile ~/.gitignore
 </code></pre></div><h3 id="tmux">Tmux</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd
 git clone https://github.com/gpakosz/.tmux.git
 ln -s -f .tmux/.tmux.conf
 cp .tmux/.tmux.conf.local .
 </code></pre></div><h3 id="fzf">fzf</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">git clone --depth <span style="color:#ae81ff">1</span> https://github.com/junegunn/fzf.git ~/.fzf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">git clone --depth <span style="color:#ae81ff">1</span> https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 </code></pre></div><h3 id="ssh">ssh</h3>
 <p>Config ssh server</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo gedit /etc/ssh/sshd_config
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo gedit /etc/ssh/sshd_config
 <span style="color:#75715e">#PasswordAuthentication yes</span>
 sudo /etc/init.d/ssh restart
 cd ~
 mkdir .ssh
 </code></pre></div><p>Generate ssh key pair on mac</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh-keygen -t rsa
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh-keygen -t rsa
 scp id_rsa.pub serveraddress:~/.ssh/
 cat *.pub &gt;&gt; authorized_keys
 </code></pre></div><p>Add in mac ssh config</p>
-<pre><code class="language-ssh" data-lang="ssh">Host alias
+<pre tabindex="0"><code class="language-ssh" data-lang="ssh">Host alias
     User newuser
     HostName serveraddress
     IdentityFile ~/.ssh/id_rsa
 </code></pre><h3 id="ss">ss</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install shadowsocks-libev libsodium-dev
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install shadowsocks-libev libsodium-dev
 </code></pre></div><p>The second one is for rc4-md5</p>
 <p>Setting at <code>/etc/shadowsocks-libev/config.json</code>, run with <code>nohup sudo ss-local -c /etc/shadowsocks-libev/config.json &amp;</code></p>
 <p>Install Chrome and <a href="https://github.com/FelisCatus/SwitchyOmega">SwitchyOmega</a>, select sock5 and <code>127.0.0.1:port</code>.</p>
@@ -322,25 +322,25 @@ cat *.pub &gt;&gt; authorized_keys
 <h3 id="remote">Remote</h3>
 <p>Use Remote-SSH with ssh</p>
 <h2 id="python">Python</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt -y install python-dev python3-dev
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt -y install python-dev python3-dev
 sudo apt install python2.7 python2.7-dev python3.5 python3.5-dev
 </code></pre></div><h3 id="pip">pip</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir .pip
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir .pip
 vim .pip/pip.conf
 </code></pre></div><p>Add following content to .pip/pip.conf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>global<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>global<span style="color:#f92672">]</span>
 index-url <span style="color:#f92672">=</span> https://pypi.tuna.tsinghua.edu.cn/simple
 </code></pre></div><p>or use <code>pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install --upgrade pip
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install --upgrade pip
 </code></pre></div><h3 id="virtualenv">virtualenv</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install virtualenv virtualenvwrapper
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install virtualenv virtualenvwrapper
 echo <span style="color:#e6db74">&#34;export WORKON_HOME=~/.virtualenvs&#34;</span> &gt;&gt; .bashrc
 echo <span style="color:#e6db74">&#34;source /usr/local/bin/virtualenvwrapper.sh&#34;</span> &gt;&gt; .bashrc
 exit
 source .bashrc
 mkvirtualenv ml --python<span style="color:#f92672">=</span>python3.5
 </code></pre></div><h2 id="mips-cross-compilation">MIPS Cross Compilation</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install linux-libc-dev-mips-cross libc6-mips-cross libc6-dev-mips-cross binutils-mips-linux-gnu gcc-mips-linux-gnu g++-mips-linux-gnu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install linux-libc-dev-mips-cross libc6-mips-cross libc6-dev-mips-cross binutils-mips-linux-gnu gcc-mips-linux-gnu g++-mips-linux-gnu
 </code></pre></div><h2 id="software">Software</h2>
 <ul>
 <li>Language Input: fcitx</li>
