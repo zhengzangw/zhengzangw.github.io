@@ -538,15 +538,6 @@ Model -&amp;gt; Rendering -&amp;gt; Image -&amp;gt; Display
     </item>
     
     <item>
-      <title>News</title>
-      <link>https://zhengzangw.com/about/news/</link>
-      <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
-      <guid>https://zhengzangw.com/about/news/</guid>
-      <description>[2021.3] I will join HPC-AI @ NUS to start my Ph.D. degree under the supervision of Presidential Young Prof. Yang You! [2021.2] Got one co-first-authored paper accepted to CVPR&#39;21. Thanks to all my collaborators!</description>
-    </item>
-    
-    <item>
       <title>Research Interest</title>
       <link>https://zhengzangw.com/about/interest/</link>
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
@@ -950,6 +941,15 @@ Iterative-and-incremental Process Models  Incrementation(增量): 指对于产�
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/information-theory/3-entropy-rate/</guid>
       <description>Stationary Process  stationary: $P(X_1=x_1,X_2=x_2,\cdots,X_n=x_n)=P(X_{1+l}=x_1,X_2=x_{2+l},\cdots,X_{n+l}=x_n)$  Gaussian process Stationary Markov Chain   Stationary Distribution of MC  $p(X_{n+1})=p(X_n)$ $p(x_{n+1})=\sum_{x_n}p(x_n)P_{x_nx_{n+1}}$ net probability flow across any cut set is zero    Entropy Rate  entropy rate of a stochastic process: $H(\mathcal{X})=\lim_{n\rightarrow\infty}\frac{1}{n}H(X_1,X_2,\cdots,X_n)$  $H(X_n,\cdots,X_1)=\sum_{i=1}^nH(X_i|X_{i-1},\cdots,X_1)$   (a) For a stationary stochastic process, $H(X_n|X_{n-1},\cdots,X_1)$ is nonincreasing and has a limit  $H&#39;(X)=\lim_{n\rightarrow\infty}H(X_n|X_{n-1},\cdots,X_1)$ exists   (b) Cesaro Mean: $a_n\rightarrow a,b_n=\frac{1}{n}\sum_{i=1}^na_i,b_n\rightarrow a$ For a stationary stochastic process, $H(\mathcal{X})=H&#39;(\mathcal{X})$ (a,b)  Markov Chain: $H(\mathcal{X})=H(X_2|X_1)=-\sum_{ij}\mu_iP_{ij}\log P_{ij}$   Some results  Second Law of Thermodynamics: model the isolated system as a Morkov chain with transitions obeying the physical laws governing the system $D(\mu_n|\mu_n&#39;)$ decreases with $n$ $H(X_n|X_1)$ increases Shuffles increase entropy: $H(TX)\geq H(X)$    Functions of Markov Chain  $X_1,\cdots,X_n,\cdots$ be a stationary Markov chain, $Y_i=\phi(X_i)$ $H(Y_n|Y_{n-1},\cdots,Y_1,X_1)\leq H(\mathcal{Y})\leq H(Y_n|Y_{n-1},\cdots,Y_1)$ $\lim H(Y_n|Y_{n-1},\cdots,Y_1,X_1)= H(\mathcal{Y})= \lim H(Y_n|Y_{n-1},\cdots,Y_1)$  </description>
+    </item>
+    
+    <item>
+      <title>News</title>
+      <link>https://zhengzangw.com/about/news/</link>
+      <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
+      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <guid>https://zhengzangw.com/about/news/</guid>
+      <description>[2021.8] The NJU-CSE-Flyers Handbook (南京大学 CSE 飞跃手册) has been published. [2021.7] Happy to start my intership in ByteDance. [2021.6] Graduated from Nanjing University！Thanks and good lucks to all my teachers and classmates. [2021.4] Got one first-authored paper accepted to ICMR&#39;21 Challenge. Thanks to all my collaborators. [2021.3] I will join HPC-AI @ NUS to start my Ph.D. degree under the supervision of Presidential Young Prof. Yang You! [2021.2] Got one co-first-authored paper accepted to CVPR&#39;21.</description>
     </item>
     
     <item>
