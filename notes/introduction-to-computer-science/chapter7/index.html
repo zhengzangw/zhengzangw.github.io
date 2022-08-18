@@ -99,10 +99,10 @@
             </div>
             <main class="flex-column-80"><h2 id="基本概念">基本概念</h2>
 <ul>
-<li>CPU控制流：CPU所执行的地址序列</li>
+<li>CPU 控制流：CPU 所执行的地址序列</li>
 <li>正常控制流：按指令存放顺序或转移类指令指示地址得到的控制流</li>
 <li>ECF: Excptional Control of Flow</li>
-<li>process descriptor: 结构类型task_structure</li>
+<li>process descriptor: 结构类型 task_structure</li>
 <li>task_list: 双向循环列表，每个元素为进程描述符</li>
 <li>TSS: Task State Segment</li>
 <li>逻辑控制流：进程确定的指令执行地址序列</li>
@@ -129,8 +129,8 @@
 </li>
 </ul>
 <h3 id="memory-mapping">memory mapping</h3>
-<p>将进程虚拟地址空间中的一个区域与硬盘上一个对象关联，初始化一个vm_area_struct结构<br>
-mmap函数</p>
+<p>将进程虚拟地址空间中的一个区域与硬盘上一个对象关联，初始化一个 vm_area_struct 结构<br>
+mmap 函数</p>
 <ul>
 <li><code>void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offset</code></li>
 <li>返回值 MAP_FAILED(-1), 成功则为指向映射区域的指针</li>
@@ -147,7 +147,7 @@ mmap函数</p>
 <li>MAP_SHARED: 共享对象</li>
 </ul>
 </li>
-<li>匿名文件：MAP_ANON 内核创建，全部由0组成。对应区域页面称为demand-zero page</li>
+<li>匿名文件：MAP_ANON 内核创建，全部由 0 组成。对应区域页面称为 demand-zero page</li>
 </ul>
 </li>
 </ul>
@@ -156,7 +156,7 @@ mmap函数</p>
 <li>execve() 启动加载器</li>
 <li><code>int execve(char *filename, char *argv[], *envp[])</code></li>
 <li>失败 -1</li>
-<li>成功 _start(定义于crtl.o)-&gt;__libc_init_first, _init -&gt; atexit() 登记终止处理函数 -&gt; exit(main()) -&gt; _exit()</li>
+<li>成功 _start(定义于 crtl.o)-&gt;__libc_init_first, _init -&gt; atexit() 登记终止处理函数 -&gt; exit(main()) -&gt; _exit()</li>
 <li>加载执行 fork() -&gt; execve()</li>
 </ul>
 <h2 id="exception-and-interrupt">Exception and Interrupt</h2>
@@ -181,29 +181,29 @@ mmap函数</p>
 <li>maskable interrupt &amp; nonmaskable interrupt, NMI</li>
 </ul>
 <h3 id="处理过程">处理过程</h3>
-<p>保护断点和程序状态 -&gt; 关中断（中断允许位置0） -&gt; 识别事件(irq_handle) -&gt; 转到相应处理程序执行(操作系统)</p>
+<p>保护断点和程序状态 -&gt; 关中断（中断允许位置 0） -&gt; 识别事件(irq_handle) -&gt; 转到相应处理程序执行(操作系统)</p>
 <ul>
-<li>PSWR:程序状态字寄存器，保存PSW (IA-32中为EFLAGS)。 也需保存</li>
+<li>PSWR:程序状态字寄存器，保存 PSW (IA-32 中为 EFLAGS)。 也需保存</li>
 <li>软件识别（程序）/硬件识别（向量中断方式）</li>
 <li>中断向量表：保存中断向量，每个中断和异常有一个中断类型号</li>
 </ul>
 <h3 id="ia-32linux">IA-32+Linux</h3>
 <ul>
-<li>中断向量（256种），前32个保留给处理器</li>
+<li>中断向量（256 种），前 32 个保留给处理器</li>
 <li>向量号（中断类型号）</li>
-<li>INT n： CPU跳转到中断服务程序</li>
-<li>实地址模式(Real Mode)，8086兼容模式，20位储存器寻址空间(1MB), 中断向量表为00000 - 003FF, 256*4=1KB</li>
-<li>19个确定类型。Linux 128为系统调用， Windows 46为系统调用</li>
+<li>INT n： CPU 跳转到中断服务程序</li>
+<li>实地址模式(Real Mode)，8086 兼容模式，20 位储存器寻址空间(1MB), 中断向量表为 00000 - 003FF, 256*4=1KB</li>
+<li>19 个确定类型。Linux 128 为系统调用， Windows 46 为系统调用</li>
 <li>保护模式，使用中断描述附表（IDT, Interrupt Descriptor Table）, 256*8=2KB</li>
 <li>中断门（中断），陷阱门（异常）
 <ul>
 <li>31-16： 偏移地址</li>
-<li>P(段存在), DPL(最低特权等级), 0, 段选择符（中断门1110，陷阱门1111，任务门0101）,00000000</li>
-<li>段选择符：GDT和LDT中的位置</li>
+<li>P(段存在), DPL(最低特权等级), 0, 段选择符（中断门 1110，陷阱门 1111，任务门 0101）,00000000</li>
+<li>段选择符：GDT 和 LDT 中的位置</li>
 <li>15-0：偏移地址，异常或中断服务程序第一条指令所在偏移量</li>
 </ul>
 </li>
-<li>任务门：只包含TSS选择段，指向GDT中的一个TSS段描述符
+<li>任务门：只包含 TSS 选择段，指向 GDT 中的一个 TSS 段描述符
 <ul>
 <li>双重故障#DF 通过任务门实现的唯一异常</li>
 </ul>
@@ -211,31 +211,31 @@ mmap函数</p>
 </ul>
 <h4 id="ia-32-处理异常和中断">IA-32 处理异常和中断</h4>
 <ul>
-<li>确定类型号i，从IDTR指向的IDT中取出第i个表项IDTi</li>
-<li>根据IDTi中的段选择符，从GDTR指向的GDT中取得相应的段描述符，得到服务程序所在段DPL、基地址（Linux中为0）</li>
-<li>比较CPL与DPL</li>
+<li>确定类型号 i，从 IDTR 指向的 IDT 中取出第 i 个表项 IDTi</li>
+<li>根据 IDTi 中的段选择符，从 GDTR 指向的 GDT 中取得相应的段描述符，得到服务程序所在段 DPL、基地址（Linux 中为 0）</li>
+<li>比较 CPL 与 DPL</li>
 <li>检查特权级变化。从用户栈转换到内核栈：
 <ul>
-<li>读TR寄存器，访问TSS段</li>
-<li>将TSS段中的内核栈段选择符和栈指针写入SS和ESP，在内核中保存原来的用户栈SS和ESP</li>
+<li>读 TR 寄存器，访问 TSS 段</li>
+<li>将 TSS 段中的内核栈段选择符和栈指针写入 SS 和 ESP，在内核中保存原来的用户栈 SS 和 ESP</li>
 </ul>
 </li>
-<li>若发生的是故障，将逻辑地址写入CS和EIP</li>
-<li>栈中保存EFLAGS,CS,EIP。若是中断门，IF清0</li>
+<li>若发生的是故障，将逻辑地址写入 CS 和 EIP</li>
+<li>栈中保存 EFLAGS,CS,EIP。若是中断门，IF 清 0</li>
 <li>若产生硬件出错码，保存在内核栈中</li>
-<li>将IDTi中的段选择符载入CS，偏移地址装入EIP</li>
-<li><em>处理异常和中断，结束后由IRET返回</em>
+<li>将 IDTi 中的段选择符载入 CS，偏移地址装入 EIP</li>
+<li><em>处理异常和中断，结束后由 IRET 返回</em>
 <ul>
-<li>从内核栈中弹出EIP,CS,EFLAGS</li>
+<li>从内核栈中弹出 EIP,CS,EFLAGS</li>
 <li>检测特权级别</li>
-<li>从内核栈中弹出SS,ESP</li>
-<li>检查DS,ES,FS,GS</li>
+<li>从内核栈中弹出 SS,ESP</li>
+<li>检查 DS,ES,FS,GS</li>
 </ul>
 </li>
 </ul>
 <h4 id="linux-处理异常和中断">Linux 处理异常和中断</h4>
 <ul>
-<li>IDT初始化：完成GDT,GDTR,IDT,IDTR设置
+<li>IDT 初始化：完成 GDT,GDTR,IDT,IDTR 设置
 <ul>
 <li>interrupt gate: DPL=0, TYPE=1110</li>
 <li>system interrupt gate: DPL=3, TYPE=1110, int3</li>
@@ -247,29 +247,29 @@ mmap函数</p>
 <li>异常处理
 <ul>
 <li>准备阶段:内核栈中保存现场信息</li>
-<li>处理阶段：若发送信号给当前进程，若有对于的信号处理程序，则执行，否则调用abort例程终止进程</li>
+<li>处理阶段：若发送信号给当前进程，若有对于的信号处理程序，则执行，否则调用 abort 例程终止进程</li>
 <li>恢复阶段</li>
 </ul>
 </li>
 <li>信号处理
 <ul>
-<li>定义信号处理函数替换默认信号处理函数，并通过signal函数将自定义信号处理函数注册到系统中</li>
+<li>定义信号处理函数替换默认信号处理函数，并通过 signal 函数将自定义信号处理函数注册到系统中</li>
 <li><code>typedef void (*sighandler_t)(int);</code></li>
 <li><code>sighandler_t signal (int signum, sighandler_t handler);</code></li>
 <li>nonlocal jump：
 <ul>
-<li>sigsetjmp: 第一次调用返回0，而后返回非0</li>
-<li>siglongjmp: sigsetjmp一次后，返回到sigsetjmp函数</li>
+<li>sigsetjmp: 第一次调用返回 0，而后返回非 0</li>
+<li>siglongjmp: sigsetjmp 一次后，返回到 sigsetjmp 函数</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>中断处理
 <ul>
-<li>I/O中断
+<li>I/O 中断
 <ul>
-<li>IRQ线连接到PIC(programmable interrupt controller)</li>
-<li>IRQ引脚：PIC上，都有编号</li>
+<li>IRQ 线连接到 PIC(programmable interrupt controller)</li>
+<li>IRQ 引脚：PIC 上，都有编号</li>
 </ul>
 </li>
 <li>时钟中断</li>
