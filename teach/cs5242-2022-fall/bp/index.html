@@ -98,7 +98,7 @@
 </nav>
             </div>
             <main class="flex-column-80"><h2 id="outline">Outline</h2>
-<p>There are several ways for calculation of BP. First, notice that we want to calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ for each layer, which is a scalar-to-matrix derivative. We can use the following methods:</p>
+<p>There are several ways for calculation of BP for multi-layer perceptron (MLP). First, notice that we want to calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ for each layer, which is a scalar-to-matrix derivative. We can use the following methods:</p>
 <ul>
 <li>Calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ directly with matrix-to-matrix gradients. (not adopted here because matrix-to-matrix gradients are not easy to calculate)</li>
 <li>Calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ directly and avoid vector-to-matrix gradients. (not adopted here, because it is still hard)</li>
@@ -172,13 +172,12 @@ $$</p>
 $$\mathbf{\delta}^{(l)}=\frac{\partial \mathcal{L}}{\partial \mathbf{z}^{(l)}}$$
 which is a column vector for the ease of chain rule calclation. For the last layer, $\mathbf{\delta}^{(L)}=\mathbf{a}^{(L)}-y$.</p>
 <p>If we can calculate $\mathbf{\delta}^{(l)}$ for all $l$, then we can calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ for all $l$. The calculation uses multivariable chain rule. Since we want to use chain rule to connect $L$ and $W$ by $\mathbf{z}$, we need to use multivariable chain rule $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}_{i,j}}=\sum_{k}\frac{\partial \mathcal{L}}{\partial \mathbf{z}_k^{(l)}}\frac{\partial \mathbf{z}_k^{(L)}}{\partial \mathbf{W}^{(L)}_{i,j}}$.</p>
-<p>Now let&rsquo;s recap the matrix multiplication in $\mathbf{z}^{(l)}= \mathbf{W}^{(l)}\mathbf{a}^{(l-1)} + \mathbf{b}^{(l)}$, we have $\mathbf{z}^{(l)}_i=\sum_{j=1}^n \mathbf{W}^{(l)}_{i,j}\mathbf{a}^{(l-1)}_j+\mathbf{b}^{(l)}_i$. Then we have $\frac{\partial \mathbf{z}^{(l)}_i}{\partial \mathbf{W}^{(l)}_{i,j}}=\mathbf{a}^{(l-1)}_j$, and $\frac{\partial \mathbf{z}^{(l)}_k}{\partial \mathbf{W}^{(l)}_{i,j}}=0$ for $i\neq k$. Thus, we have</p>
+<p>Now let&rsquo;s recap the matrix multiplication in $\mathbf{z}^{(l)}= \mathbf{W}^{(l)}\mathbf{a}^{(l-1)} + \mathbf{b}^{(l)}$, we have $\mathbf{z}^{(l)}_i=\sum_{j=1}^n \mathbf{W}^{(l)}_{i,j}\mathbf{a}^{(l-1)}_j+\mathbf{b}^{(l)}_i$. Then we have $\frac{\partial \mathbf{z}^{(l)}_i}{\partial \mathbf{W}^{(l)}_{i,j}}=\mathbf{a}^{(l-1)}_j$, and $\frac{\partial \mathbf{z}^{(l)}_k}{\partial \mathbf{W}^{(l)}_{i,j}}=0$ for $i\neq k$ (namely, the $W_{ij}^{(L-1)}$ only involves in the calculation of $\mathbf{z}_j^{(L)}$). Thus, we have</p>
 <p>$$\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}_{i,j}}=\frac{\partial \mathcal{L}}{\partial \mathbf{z}_i^{(l)}}\frac{\partial \mathbf{z}_i^{(l)}}{\partial \mathbf{W}^{(l)}_{i,j}}=\mathbf{\delta}_i^{(l)}\mathbf{a}_j^{(l-1)}$$</p>
 <p>Now let&rsquo;s assemble the result. We have $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}=[\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}_{i,j}}]_{i,j}=[\mathbf{\delta}_i^{(l)}\mathbf{a}_j^{(l-1)}]_{i,j}=\mathbf{\delta}^{(l)}\mathbf{a}^{(l-1)\top}$.</p>
 <p>For the last layer, we have $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(L)}_{i,j}}=(\mathbf{a}^{(L)}_j-\mathbf{y}_j)\mathbf{a}_j^{(L-1)}$, and $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(L)}}=(\mathbf{a}^{(L)}_j-\mathbf{y}_j)\mathbf{a}^{(L-1)\top}$.</p>
 <h2 id="back-propagation-through-layers">Back propagation through layers</h2>
-<p>Now the only problem left is to calculate $\mathbf{\delta}^{(l)}$ for all $l$. We can use the chain rule to calculate $\mathbf{\delta}^{(l)}$ for all $l$.</p>
-<p>In the forward pass, the $W_{ij}^{(L-1)}$ only involves in the calculation of $\mathbf{z}_j^{(L)}$, and $\mathbf{z}_j$ only involves in the computation of $\mathbf{a}_j^{(L)}$. Thus, by multivariable chain rule, we can use $\mathbf{\delta}^{l}$ to calculate $\mathbf{\delta}^{l-1}$:</p>
+<p>Now the only problem left is to calculate $\mathbf{\delta}^{(l)}$ for all $l$. We can use the chain rule to calculate $\mathbf{\delta}^{(l)}$ for all $l$:</p>
 <p>$$
 \begin{align*}
 \mathbf{\delta}_j^{(l-1)} &amp;= \frac{\partial \mathcal{L}}{\partial \mathbf{z}_j^{(l-1)}} \\
@@ -221,11 +220,11 @@ $$</p>
 \mathbf{\Delta}^{(l)} &amp; = \mathbf{\Delta}^{(l+1)}\mathbf{W}^{(l)}\odot f'(\mathbf{Z}^{(l-1)}) \\
 \frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}} &amp; = \mathbf{\Delta}^{(l)\top}\mathbf{A}^{(l-1)} \\
 \end{align*}$$</p>
-<p>Then we can implement the backward pass easily. The pseudo code for a multilayer perceptron without bias is as follows:</p>
+<p>Then we can implement the backward pass easily. The pseudo code for a multilayer perceptron without bias is as follows. Note here the $\mathbf{W}$ matrix strictly follows the definition above, and is consistent with PyTorch <a href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html">nn.Linear</a>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># With PyTorch style API</span>
 <span style="color:#75715e"># W is a list of weight matrix</span>
 
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward_pass</span>(X, W):
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>\_pass(X, W):
     L <span style="color:#f92672">=</span> len(W)
     A, Z <span style="color:#f92672">=</span> [], []
     <span style="color:#66d9ef">for</span> l <span style="color:#f92672">in</span> range(L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
@@ -236,17 +235,17 @@ $$</p>
     L <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>sum(Y <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log(A[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]))
     <span style="color:#66d9ef">return</span> L, A, Z
 
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backward_pass</span>(Y, A, Z, W)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backward</span>\_pass(Y, A, Z, W)
     L <span style="color:#f92672">=</span> len(W)
-    Delta, W_g <span style="color:#f92672">=</span> []
+    Delta, W\_g <span style="color:#f92672">=</span> []
     Delta[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> (A[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> Y) <span style="color:#f92672">/</span> Y<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
     <span style="color:#66d9ef">for</span> l <span style="color:#f92672">in</span> range(L<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
-        Delta[l] <span style="color:#f92672">=</span> Delta[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">@</span> W[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> d_f(Z[l])
-        W_g[l] <span style="color:#f92672">=</span> Delta[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>T <span style="color:#f92672">@</span> A[l<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-    <span style="color:#66d9ef">return</span> W_g
+        Delta[l] <span style="color:#f92672">=</span> Delta[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">@</span> W[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> d\_f(Z[l])
+        W\_g[l] <span style="color:#f92672">=</span> Delta[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>T <span style="color:#f92672">@</span> A[l<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+    <span style="color:#66d9ef">return</span> W\_g
 
-L, A, Z <span style="color:#f92672">=</span> forward_pass(X, W)
-W_g <span style="color:#f92672">=</span> backward_pass(Y, A, Z, W) <span style="color:#75715e"># PyTorch L.backward()</span>
+L, A, Z <span style="color:#f92672">=</span> forward\_pass(X, W)
+W\_g <span style="color:#f92672">=</span> backward\_pass(Y, A, Z, W) <span style="color:#75715e"># PyTorch L.backward()</span>
 </code></pre></div></main>
         </div>
 

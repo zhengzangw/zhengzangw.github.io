@@ -15,7 +15,7 @@
       <pubDate>Wed, 07 Sep 2022 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/cs5242-2022-fall/bp/</guid>
-      <description>Outline There are several ways for calculation of BP. First, notice that we want to calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ for each layer, which is a scalar-to-matrix derivative. We can use the following methods:
+      <description>Outline There are several ways for calculation of BP for multi-layer perceptron (MLP). First, notice that we want to calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ for each layer, which is a scalar-to-matrix derivative. We can use the following methods:
  Calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ directly with matrix-to-matrix gradients. (not adopted here because matrix-to-matrix gradients are not easy to calculate) Calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ directly and avoid vector-to-matrix gradients. (not adopted here, because it is still hard) Calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}_{i,j}}$ and then assemble them into a matrix.</description>
     </item>
     
