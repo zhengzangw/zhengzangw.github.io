@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CS 5242: Neural Networks and Deep Learning (NUS, Fall 2022) on Zangwei</title>
+    <link>https://zhengzangw.com/teach/cs5242-2022-fall/</link>
+    <description>Recent content in CS 5242: Neural Networks and Deep Learning (NUS, Fall 2022) on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster><atom:link href="https://zhengzangw.com/teach/cs5242-2022-fall/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

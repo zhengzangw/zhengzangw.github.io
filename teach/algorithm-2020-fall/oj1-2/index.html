@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solution to OJ - Gold Miner | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.6c4d523b15a1f1714ec1a02eecf7283de3733cb142ca8bf9edd01f9f077cc730.css" integity="sha256-bE1SOxWh8XFOwaAu7PcoPeNzPLFCyov57dAfnwd8xzA=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/#Publications">[ Publication ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/#Teaching-Assistant">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gold-miner">Gold Miner</a></li>
+    <li><a href="#示例代码">示例代码</a></li>
+  </ul>
+</nav>
+            </div>
+            <main class="flex-column-80"><p>题目连接：<a href="https://oj.chaodong.me/problem/minerdup">Gold Miner</a></p>
+<h2 id="gold-miner">Gold Miner</h2>
+<p>这题要求至多进行 50 次操作，要能够将 $n\times n$ 的网格除对角线和对角线下发一条线全部涂满。每次可以选择若干行和若干列，将它们的交点涂上色。</p>
+<p><img src="/images/content/algorithm2020-OJ1-1.png" alt="题目含义"></p>
+<p>提示中说使用分治来思考。令 $T(n)$ 是 $n$ 大小的网格需要进行的操作次数（不是程序的运行时间），思考如何用 $T(\frac{n}{2})$ 来解决 $T(n)$。因为有一半，首先想到的是分割网格成 $\frac{n}{2}\times\frac{n}{2}$ 大小的子网格如下：</p>
+<p><img src="/images/content/algorithm2020-OJ1-3.png" alt="分割"></p>
+<p>如图按左上，左下，右上，右下正好分割成四块。其中，蓝色区域的很容易上色，用 3 次操作即可全部上色。而左上和右下又是两个 $T(\frac{n}{2})$ 的子问题，故按此方法可得 $T(n)=2T(\frac{n}{2})+3$。</p>
+<p>观察到左上和右下在横纵坐标的限制上耦合度很低，理想的情况是在左上的横纵坐标选择和右下的横纵坐标选择之间完全不影响（相互为独立的子问题）。这样我们就可以把左上中一次操作和右下中一次操作合并在一起，作为一次操作。总操作数即为 $T(n)=T(\frac{n}{2})+3$。但左下有一个不能选中的地方，这导致左上选择纵坐标 5 的时候，右下不能选中横坐标 6。为了解决这个问题，在划分子问题时必须是两个矩形的横纵坐标相交处没有禁止的点。</p>
+<p><img src="/images/content/algorithm2020-OJ1-2.png" alt="冲突"></p>
+<p>一种可行的方法是缩小左上的矩形，如此交点处都是可以的。根据题目中 “It is allowed to enter some cells multiple times!”，上下两个子矩阵的求解就成为相互独立的子问题了。此时其余部分用 4 次操作可以填满。$n=3000,\log_2 n \approx 11,4*11=44&lt;50$</p>
+<p>程序实现时，可以递归模拟二分过程，既可以用 <code>vector</code> 记录选择的 $X,Y$ 坐标，<code>merge</code> 时合并，也可以用全局变量记录。其中，特殊处理一下 $n=1,2,3,4$ 的情况，可以让染色数减少（如 $n=4$ 只需 3 次）。</p>
+<h2 id="示例代码">示例代码</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+
+<span style="color:#75715e">#define max_n 3000
+</span><span style="color:#75715e">#define max_round 50
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> n;
+<span style="color:#66d9ef">bool</span> X[max_round <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][max_n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>], Y[max_round <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][max_n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">solve</span>(<span style="color:#66d9ef">int</span> n, <span style="color:#66d9ef">int</span> low, <span style="color:#66d9ef">int</span> round) {
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * n: size of matrix
+</span><span style="color:#75715e">     * low: the index of first row in this matrix
+</span><span style="color:#75715e">     *      according to the original matrix
+</span><span style="color:#75715e">     * round: number of round
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#75715e">// Special case for n&lt;=4
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+        <span style="color:#66d9ef">return</span> round;
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) {
+        round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        X[round][low] <span style="color:#f92672">=</span> Y[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> true;
+        <span style="color:#66d9ef">return</span> round;
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) {
+        round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        X[round][low] <span style="color:#f92672">=</span> Y[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> Y[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> true;
+        round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        X[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> Y[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> true;
+        round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        X[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> Y[round][low] <span style="color:#f92672">=</span> true;
+        <span style="color:#66d9ef">return</span> round;
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>) {
+        round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        X[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> X[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> Y[round][low] <span style="color:#f92672">=</span> true;
+        round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        X[round][low] <span style="color:#f92672">=</span> X[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> Y[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> true;
+        round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        X[round][low] <span style="color:#f92672">=</span> X[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> Y[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span>
+            Y[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> true;
+        round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        X[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> Y[round][low <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> true;
+        <span style="color:#66d9ef">return</span> round;
+    }
+    <span style="color:#75715e">// 4 rounds for up_right and down_left
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> up_n, down_n, down_low;
+    up_n <span style="color:#f92672">=</span> (n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
+    down_n <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> up_n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+    down_low <span style="color:#f92672">=</span> low <span style="color:#f92672">+</span> up_n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#75715e">// round 1
+</span><span style="color:#75715e"></span>    round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; d <span style="color:#f92672">&lt;</span> down_n; <span style="color:#f92672">++</span>d) X[round][down_low <span style="color:#f92672">+</span> d] <span style="color:#f92672">=</span> true;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; d <span style="color:#f92672">&lt;</span> up_n; <span style="color:#f92672">++</span>d) Y[round][low <span style="color:#f92672">+</span> d] <span style="color:#f92672">=</span> true;
+    <span style="color:#75715e">// round 2
+</span><span style="color:#75715e"></span>    round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; d <span style="color:#f92672">&lt;</span> up_n; <span style="color:#f92672">++</span>d) X[round][low <span style="color:#f92672">+</span> d] <span style="color:#f92672">=</span> true;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; d <span style="color:#f92672">&lt;</span> down_n; <span style="color:#f92672">++</span>d) Y[round][down_low <span style="color:#f92672">+</span> d] <span style="color:#f92672">=</span> true;
+    <span style="color:#75715e">// round 3
+</span><span style="color:#75715e"></span>    round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+    X[round][low <span style="color:#f92672">+</span> up_n] <span style="color:#f92672">=</span> true;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; d <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>d) {
+        <span style="color:#66d9ef">if</span> (d <span style="color:#f92672">!=</span> up_n and d <span style="color:#f92672">!=</span> up_n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) Y[round][low <span style="color:#f92672">+</span> d] <span style="color:#f92672">=</span> true;
+    }
+    <span style="color:#75715e">// round 4
+</span><span style="color:#75715e"></span>    round <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+    Y[round][low <span style="color:#f92672">+</span> up_n] <span style="color:#f92672">=</span> true;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; d <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>d) {
+        <span style="color:#66d9ef">if</span> (d <span style="color:#f92672">!=</span> up_n and d <span style="color:#f92672">!=</span> up_n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) X[round][low <span style="color:#f92672">+</span> d] <span style="color:#f92672">=</span> true;
+    }
+    <span style="color:#75715e">// solve up_left and down_right
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> up_round <span style="color:#f92672">=</span> solve(up_n, low, round);
+    <span style="color:#66d9ef">int</span> down_round <span style="color:#f92672">=</span> solve(down_n, down_low, round);
+    <span style="color:#66d9ef">return</span> max(up_round, down_round);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">output_round</span>(<span style="color:#66d9ef">bool</span><span style="color:#f92672">*</span> X) {
+    <span style="color:#66d9ef">bool</span> is_first <span style="color:#f92672">=</span> true;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>j) {
+        <span style="color:#66d9ef">if</span> (X[j]) {
+            <span style="color:#66d9ef">if</span> (is_first) {
+                printf(<span style="color:#e6db74">&#34;%d&#34;</span>, j);
+                is_first <span style="color:#f92672">=</span> false;
+            } <span style="color:#66d9ef">else</span> {
+                printf(<span style="color:#e6db74">&#34; %d&#34;</span>, j);
+            }
+        }
+    }
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#75715e">// Input
+</span><span style="color:#75715e"></span>    scanf(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#f92672">&amp;</span>n);
+
+    <span style="color:#75715e">// Solve by Divide &amp; Conquer
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> round <span style="color:#f92672">=</span> solve(n, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>);
+
+    <span style="color:#75715e">// Output
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// printf(&#34;%d\n&#34;, round);
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> round; <span style="color:#f92672">++</span>i) {
+        output_round(X[i]);
+        output_round(Y[i]);
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></main>
+        </div>
+
+    </div>
+</body></html>

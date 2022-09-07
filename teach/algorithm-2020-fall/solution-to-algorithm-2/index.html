@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solution to HW 2 | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.6c4d523b15a1f1714ec1a02eecf7283de3733cb142ca8bf9edd01f9f077cc730.css" integity="sha256-bE1SOxWh8XFOwaAu7PcoPeNzPLFCyov57dAfnwd8xzA=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/#Publications">[ Publication ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/#Teaching-Assistant">[ Teaching ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/friends">[ Friends ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-20">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents"></nav>
+            </div>
+            <main class="flex-column-80"><p>共 13 题。不会的题不要空着，展示一些思路，都有分的。</p>
+<p>可以不抄题目，但请装订后上交。做的好的我用星（下次用 A）打了标记，很差的用 B 打标记（暂时没有）</p>
+<p>4.7</p>
+<p>最好情况：已经排序，比较 n-1 次</p>
+<p>4.8</p>
+<ul>
+<li>(a) $n-1+\log_2[(n-1)!]=\Theta(n\log n)$</li>
+<li>(b) $\frac{(n-1)n}{2}$</li>
+<li>(d) 链表可以减少移动次数，但无法进行二分查找（不能直接索引）</li>
+</ul>
+<p>4.9</p>
+<p>平均复杂度变低（相同 key 取同一个）/ 渐进平均复杂度不变</p>
+<p>4.11</p>
+<p>时间复杂度 $\Theta(n^2)$，无垃圾回收空间复杂度 $\Theta(n^2)$，有垃圾回收 $\Theta(n)$</p>
+<p>4.14</p>
+<table>
+<thead>
+<tr>
+<th>before i</th>
+<th>left-end</th>
+<th>right-end</th>
+<th>vacancy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>low</td>
+<td>high</td>
+<td>left</td>
+</tr>
+<tr>
+<td>3</td>
+<td>low</td>
+<td>high</td>
+<td>left</td>
+</tr>
+<tr>
+<td>4</td>
+<td>low</td>
+<td>highVac</td>
+<td>right</td>
+</tr>
+<tr>
+<td>5</td>
+<td>lowVac</td>
+<td>highVac</td>
+<td>left</td>
+</tr>
+</tbody>
+</table>
+<p>4.15</p>
+<p>比较了 $\frac{n(n-1)}{2}$ 次，移动了 0 次</p>
+<p>4.22</p>
+<p>时间复杂度最坏情况 $O(n^2)$，平均情况分析较为复杂，不能简单认为每次都能对半分</p>
+<p>空间复杂度：根据书写的代码计算。使用 intList 时，若认为 intList.rest() 返回的是指针不占用新空间，则在有垃圾回收机制时为 $O(\log n)$</p>
+<p>4.34</p>
+<p>不是堆 5&lt;7</p>
+<p>4.35</p>
+<p>小根堆：CIEOLMXPTF，比较次数 11 次（调用 fixheap 时，相邻子节点比较一次，再与父节点比较一次）</p>
+<p>大根堆： YTXPOEMICL，比较次数 14 次</p>
+<p>4.37</p>
+<p>heapsort 实现 increasing order，不考虑其它技巧，应使用大根堆</p>
+<ul>
+<li>(a) 9 次</li>
+<li>(b) n-1 次</li>
+<li>(c) best case</li>
+</ul>
+<p>4.39</p>
+<p>（从 $n=2^k-1$ 的堆开始考虑）令 $k=\lfloor\log_2 n\rfloor$，高度之和为 $\sum_{i=0}^{k-1}i2^{k-1-i}=2^k-1-k\leq n-1$</p>
+<p>4.42</p>
+<ul>
+<li>
+<p>(a)(b) $h=6$，hstop 变化：$3\rightarrow 1\rightarrow 0$。与 $k$ 比较了 3 次，子节点互相比较了 6 次，共 9 次。</p>
+</li>
+<li>
+<p>(c) $2*\lfloor \log_2100\rfloor = 12$ 次</p>
+<p>4.43</p>
+</li>
+</ul>
+<p>(a) $8<em>2+4</em>2+2<em>4+1</em>4=36$ 次</p>
+<p>(b) 这题精确计算较为复杂，可以只考虑特殊情况（$n=2^k-1$），且精确计算可以有向上向下取整的偏差</p>
+<p>每次 fixHeapFast 时，先向下移动到 $\frac{h}{2}$，再向上 bubbleHeapUp 到原处。故比较次数约为 $h$</p>
+<p>总比较次数约为 $\sum_{h=0}^{k-1}h2^{k-1-h}=2^k-1-k$ （可以是 $n-1$）</p>
+<p>(c) Intermedia Case:</p>
+<ul>
+<li>Best Case 应该是折中后恰好能找到，高度为 $h$ 的子树调用 fixHeapFast 比较次数为 $\frac{h}{2}$</li>
+<li>Worst Case 是 increasing order，子节点比较 $h$ 次，判断是否需继续向下比较需 $\lg h$ 次，故高度为 $h$ 的子树调用 fixHeapFast 比较次数为 $h+\lg h$ 次</li>
+</ul>
+</main>
+        </div>
+
+    </div>
+</body></html>
