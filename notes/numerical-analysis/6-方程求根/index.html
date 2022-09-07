@@ -123,7 +123,7 @@
 <li>$p$ 阶收敛：$\frac{\epsilon_{k+1}}{\epsilon_k^p}\rightarrow C\neq 0$</li>
 </ul>
 </li>
-<li>若 $x_{k+1}=\varphi(x_k),\varphi^{(p)}(x)$ 在 $x^*$ 附件连续，且 $\varphi'(x^*)=\varphi''(x^*)=\cdots=\varphi^{(p-1)}(x^*)=0,\varphi^{(p)}(x^*)\neq 0$，则迭代过程在 $x^*$ 附件 $p$ 阶收敛</li>
+<li>若 $x_{k+1}=\varphi(x_k),\varphi^{(p)}(x)$ 在 $x^<em>$ 附件连续，且 $\varphi'(x^</em>)=\varphi''(x^<em>)=\cdots=\varphi^{(p-1)}(x^</em>)=0,\varphi^{(p)}(x^<em>)\neq 0$，则迭代过程在 $x^</em>$ 附件 $p$ 阶收敛</li>
 <li>局部收敛</li>
 <li>全局收敛</li>
 </ul>
@@ -143,7 +143,7 @@
 <li>$\forall x_0\in[a,b],f(x_0)f''(x_0)&gt;0$</li>
 </ul>
 </li>
-<li>局部收敛性：$f\in C^2[a,b],x^<em>$ 为 $f(x)$ 在 $[a,b]$ 上的根且 $f'(x)\neq 0$，则存在 $x^</em>$ 的邻域，使任意邻域上的初值产生的序列收敛到 $x^*$，且 $\lim_{k\rightarrow\infty}\frac{x^*-x_{k+1}}{(x^*-x_k)^2}=-\frac{f''(x^*)}{2f'(x^*)}$</li>
+<li>局部收敛性：$f\in C^2[a,b],x^<em>$ 为 $f(x)$ 在 $[a,b]$ 上的根且 $f'(x)\neq 0$，则存在 $x^</em>$ 的邻域，使任意邻域上的初值产生的序列收敛到 $x^<em>$，且 $\lim_{k\rightarrow\infty}\frac{x^</em>-x_{k+1}}{(x^<em>-x_k)^2}=-\frac{f''(x^</em>)}{2f'(x^*)}$</li>
 <li>割线法：$x_{k+1}=x_k-\frac{f(x_k)(x_k-x_{k_1})}{f(x_k)-f(x_{k-1})}$</li>
 <li>下山法：若 $x_{k+1}$ 处的值不比原有的小，则在 $(x_k,x_{k+1})$ 间找一个更好的点使值变小：$\overline{x_{k+1}}=x_k-\lambda\frac{f(x_k)}{f'(x_k)}$</li>
 <li>特殊情况
@@ -155,7 +155,7 @@
 </ul>
 <h2 id="迭代过程加速方法">迭代过程加速方法</h2>
 <ul>
-<li>埃特金加速收敛方法（Aitken）：$x_{k+1}=x_k-\frac{(\tilde{x}_{k+1}-x_k)^2}{\overline{x}_{k+1}-2\tilde{x}_{k+1}+x_k}$
+<li>埃特金加速收敛方法（Aitken）：$x_{k+1}=x_k-\frac{(\tilde{x}<em>{k+1}-x_k)^2}{\overline{x}</em>{k+1}-2\tilde{x}_{k+1}+x_k}$
 <ul>
 <li>超线性收敛：$\lim_{k\rightarrow\infty}\frac{|e_{k+1}|}{|e_k|}=0$</li>
 </ul>

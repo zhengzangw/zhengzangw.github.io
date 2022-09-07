@@ -284,14 +284,14 @@ j = n/(n/i);
 性质：h=f*g,则$\sum_{i=1}^{n}h(i)=\sum_i^ng(i)S([n/i])$<br>
 得: g(1)S(n) = $\sum_{i=1}^nh(i)-\sum_2^ng(i)S([n/i])$<br>
 O(1)计算 g(i)前缀和，O($\sqrt n$)计算$\sum_{i=1}^nh(i)$,时间复杂度为 O($n^\frac{3}{4}$)。<br>
-若 f 为积性函数，先用欧拉筛求出前$n^\frac{2}{3}$项，更后面的项再递归。_O($n^\frac{2}{3}$)求积性函数前缀和_</p>
+若 f 为积性函数，先用欧拉筛求出前$n^\frac{2}{3}$项，更后面的项再递归。<em>O($n^\frac{2}{3}$)求积性函数前缀和</em></p>
 <h2 id="积性函数的情况">积性函数的情况</h2>
 <ol>
 <li>莫比乌斯函数</li>
 <li>欧拉函数</li>
 </ol>
 <h1 id="extended-eratosthenes-sieve-或洲阁筛">Extended Eratosthenes Sieve （或洲阁筛）</h1>
-<p>求$S(n) = \sum_{i=1}^{n}f(i)$, f(p)为关于 p 的多项式。_O($\frac{n^\frac{3}{4}}{logn}$)求积性函数前缀和_</p>
+<p>求$S(n) = \sum_{i=1}^{n}f(i)$, f(p)为关于 p 的多项式。<em>O($\frac{n^\frac{3}{4}}{logn}$)求积性函数前缀和</em></p>
 <p>和分两部分，是否有&gt;$\sqrt n$的质因子
 $\sum_{i=1}^{n}F(i) = \sum_{1&lt;=1&lt;=n\newline no\ factors&gt;\sqrt n}F(i)(1+\sum_{\sqrt n&lt;=j&lt;=[\frac{n}{i}]\newline j\ is\ prime}F(j)$</p>
 <h2 id="第一部分">第一部分</h2>

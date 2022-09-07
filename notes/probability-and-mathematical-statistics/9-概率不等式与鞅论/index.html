@@ -136,7 +136,7 @@
 <h2 id="chernoff-bound">Chernoff Bound</h2>
 <p>Generic Chernoff Bound:</p>
 <p>$$P(X\geq t)=P(e^{\lambda X}\geq e^{\lambda t})\leq\frac{E[e^{\lambda X}]}{e^{\lambda t}}\newline  P(X\leq t)=P(e^{-\lambda X}\geq e^{-\lambda t})\leq\frac{E[e^{-\lambda X}]}{e^{-\lambda t}}$$</p>
-<p>Chernoff Bound for $X=\sum_{i=1}^nX_i$ of **independent** events</p>
+<p>Chernoff Bound for $X=\sum_{i=1}^nX_i$ of <strong>independent</strong> events</p>
 <p>$$P(X\geq t)\leq \min_{\lambda&gt;0}e^{-\lambda t}\prod_i E[e^{tX_i}]$$</p>
 <p>Chernoff Bound for concentration $t=(1+\delta)\mu,\mu=E[X]$</p>
 <p>$$P(X\geq (1+\delta)\mu)=P(e^{\lambda X}\geq e^{\lambda(1+\delta)\mu})\leq\frac{E(e^{\lambda X})}{e^{\lambda(1+\delta)\mu}}$$</p>

@@ -71,7 +71,7 @@
       <guid>https://zhengzangw.com/notes/combinatorics/7-probabilistic-method/</guid>
       <description>Existence by Probability $$\exists x,A(x)\Leftarrow P(A(x))&amp;gt;0$$
 $$\exists x,A(x)\Leftarrow P(\neg A(x))&amp;lt;1$$
-$$P(A)=P(\wedge_{i=1}^n\overline{A}_i)&amp;gt;0\Leftarrow P(\vee_{i=1}^nA_i)&amp;lt;1\Leftarrow \sum_{i=1}^nP(A_i)$$
+$$P(A)=P(\wedge_{i=1}^n\overline{A}i)&amp;gt;0\Leftarrow P(\vee{i=1}^nA_i)&amp;lt;1\Leftarrow \sum_{i=1}^nP(A_i)$$
 Lower Bound for Ramsey&amp;rsquo;s Number  $R(k,k),\forall$ two coloring of $K_n,n&amp;gt;R(k,k),\exists$ a monochromactic $K_k$ Erdős Theorem(1947): ${n\choose k}2^{1-C_k^2}&amp;lt;1$ then it is possible to color the edges of $K_n$ with two colors so that there is no monochromatic $K_k$ subgraph  Paradoxical Tournament  orientation of the edges of the complete graph on set of vertices $V$ $k$-paradoxical: $\forall V, |V|=k,\exists v$ beats them all Theorem (Erdős 1963): if ${n\choose k}(1-2^{-k})^{n-k}&amp;lt;1$, there is a tournament on $n$ vertices that is $k$-paradoxical  The Averaging principle $$\exists x,A(x)\geq t\Leftarrow E(x)\geq t$$</description>
     </item>
     

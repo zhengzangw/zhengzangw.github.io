@@ -201,7 +201,7 @@ $$</p>
 <li>Rounding: $\hat x_v=\text{sgn}(\langle x_v^*,u\rangle),u\in\mathbb{R}^n,|u|_2=1$ is uniform random unit vector
 <ul>
 <li>Generate $u$: $u=\frac{r}{|r|_2},r=(r_1,\cdots,r_n)\in\mathbb{R}^n,r_i\sim N(0,1)$ i.i.d</li>
-<li>$E(\text{cut})=\sum_{uv\in E}{\frac{\theta_{uv}}{\pi}}=\sum_{uv\in E}\frac{\arccos\langle x_u^*,x_v^*\rangle}{\pi}\geq\alpha\sum_{uv\in E}\frac{1}{2}(1-\langle x_u^*,x_v^*\rangle),\geq\alpha\text{OPT}_{\text{IP}}\geq\alpha\text{OPT}$</li>
+<li>$E(\text{cut})=\sum_{uv\in E}{\frac{\theta_{uv}}{\pi}}=\sum_{uv\in E}\frac{\arccos\langle x_u^<em>,x_v^</em>\rangle}{\pi}\geq\alpha\sum_{uv\in E}\frac{1}{2}(1-\langle x_u^<em>,x_v^</em>\rangle),\geq\alpha\text{OPT}_{\text{IP}}\geq\alpha\text{OPT}$</li>
 <li>Assuming the unique games conjecture: no poly-time algorithm with approx. ratio $&lt;\alpha=\inf_{x\in[-1,1]}\frac{2\arccos(x)}{\pi(1-x)}=0.87856\cdots$</li>
 </ul>
 </li>

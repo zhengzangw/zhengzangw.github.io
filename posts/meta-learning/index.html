@@ -118,13 +118,13 @@
 <li>meta-parameters: $\theta$: $p(\theta|\mathcal{D}_{\text{meta-train}})$
 <ul>
 <li>$\phi$⫫$\mathcal{D}_{\text{meta-train}}|\theta$</li>
-<li>$\theta^*=\arg\max\limits_\theta\log p(\theta|D_{\text{meta-train}})=\arg\max\limits_\theta\sum_{i=1}^n\log p(\phi_i|\mathcal{D}_i^{\text{ts}}),\phi_i=f_\theta(D_i^\text{tr})$</li>
+<li>$\theta^*=\arg\max\limits_\theta\log p(\theta|D_{\text{meta-train}})=\arg\max\limits_\theta\sum_{i=1}^n\log p(\phi_i|\mathcal{D}<em>i^{\text{ts}}),\phi_i=f</em>\theta(D_i^\text{tr})$</li>
 </ul>
 </li>
 <li>$\arg\max\limits_\phi\log p(\phi|\mathcal{D},\mathcal{D}_{\text{meta-train}})$
 <ul>
-<li>$\log p(\phi|D,D_{\text{meta-train}})=\log \int_\Theta p(\phi|\mathcal{D},\theta)p(\theta|D_{\text{meta-train}})d\theta\approx \log p(\phi|\mathcal{D},\theta^*)+\log p(\theta^*|\mathcal{D}_{\text{meta-train}})$</li>
-<li>$\arg\max\limits_\phi\log p(\phi|\mathcal{D},\mathcal{D}_{\text{meta-train}})\approx \arg\max\limits_\phi\log p(\phi|\mathcal{D},\theta^*)$</li>
+<li>$\log p(\phi|D,D_{\text{meta-train}})=\log \int_\Theta p(\phi|\mathcal{D},\theta)p(\theta|D_{\text{meta-train}})d\theta\approx \log p(\phi|\mathcal{D},\theta^<em>)+\log p(\theta^</em>|\mathcal{D}_{\text{meta-train}})$</li>
+<li>$\arg\max\limits_\phi\log p(\phi|\mathcal{D},\mathcal{D}<em>{\text{meta-train}})\approx \arg\max\limits</em>\phi\log p(\phi|\mathcal{D},\theta^*)$</li>
 </ul>
 </li>
 <li>Dataset
@@ -199,7 +199,7 @@
 </li>
 <li>Loss Function: $\mathcal{L}(\phi_i,\mathcal{D}<em>i^\text{ts})=\sum</em>{(x,y)\sim D_i^{\text{ts}}}\log g_{\phi_i}(y|x)$
 <ul>
-<li>supervised learning: $\min\limits_\theta\sum_{\mathcal{T}_i}\mathcal{L}(f_\theta(\mathcal{D}_i^\text{tr}),\mathcal{D}_i^\text{ts})$</li>
+<li>supervised learning: $\min\limits_\theta\sum_{\mathcal{T}<em>i}\mathcal{L}(f</em>\theta(\mathcal{D}_i^\text{tr}),\mathcal{D}_i^\text{ts})$</li>
 </ul>
 </li>
 <li>Algorithm: for each iteration</li>
@@ -225,7 +225,7 @@ Update $\theta$ using $\nabla</em>\theta\mathcal{L}(\phi_i,\mathcal{D}_i^{\text{
 <h2 id="optimization-based-inference-model-agnostic-meta-learning">Optimization-based inference (Model-agnostic meta-learning)</h2>
 <p>Acquire $\phi_i$ through optimization</p>
 <ul>
-<li>$y^\text{ts}=f_\text{MAML}(\mathcal{D}_i^\text{tr},x^\text{ts})=f_{\phi_i}(x^\text{ts})$
+<li>$y^\text{ts}=f_\text{MAML}(\mathcal{D}<em>i^\text{tr},x^\text{ts})=f</em>{\phi_i}(x^\text{ts})$
 <ul>
 <li>$\phi_i=\theta-\alpha\nabla_\theta\mathcal{L}(\theta,\mathcal{D}_i^\text{tr})$</li>
 <li>$\max\limits_{\phi_i}\log p(\mathcal{D}_i^\text{tr}|\phi_i)+\log p(\phi_i|\theta)$</li>
@@ -266,7 +266,7 @@ Update $\theta$ using $\nabla</em>\theta\mathcal{L}(\phi_i,\mathcal{D}_i^{\text{
 <li>pseudo siamese network</li>
 </ul>
 </li>
-<li>$y^{\text{ts}}=f_{PN}(\mathcal{D}_i^{\text{tr}},x^{\text{ts}})=\text{softmax}(-d(f_\theta(x),c_k))$
+<li>$y^{\text{ts}}=f_{PN}(\mathcal{D}<em>i^{\text{tr}},x^{\text{ts}})=\text{softmax}(-d(f</em>\theta(x),c_k))$
 <ul>
 <li>Prototype: $c_k=\frac{1}{|D_i^{\text{tr}}}|\sum_{(x,y)\in D_i^{tr}}f_\theta(x)$</li>
 </ul>
