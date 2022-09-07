@@ -110,13 +110,13 @@
 <p>To make the calculation easier, we will first introduce three points that you should be aware of: denominator layout, multivariable chain rule, and the assembly of a matrix.</p>
 <p>First, in deep learning community, the derivate is under the denominator layout by default, which means a scalar-to-matrix gradients will result in a matrix the same shape as the original matrix. If the result is transposed matrix of the original matrix, then it is a denominator layout. You can learn more about denominator layout from <a href="https://en.wikipedia.org/wiki/Matri%5Cmathbf%7Bx%7D_calculus">Wiki</a>.</p>
 <p>Next, we should know the multivariable chain rule. If $x=x(t),y=y(t),z=f(x,y)$, then we habe $\frac{\partial z}{\partial t}=\frac{\partial f}{\partial x}\frac{\partial x}{\partial t}+\frac{\partial f}{\partial y}\frac{\partial y}{\partial t}$. Here is an <a href="https://math.hmc.edu/calculus/hmc-mathematics-calculus-online-tutorials/multivariable-calculus/multi-variable-chain-rule/">article</a> on multivariale chain rule. Since we calculate the gradient in a scalar way, a function that accepts a vector or matrix becomes a multivariable function. For example, $f(\mathbf{x})$ becomes $f(\mathbf{x}_0, \mathbf{x}_1, \cdots, \mathbf{x}_n)$. Thus, in the following deduction, we should always use multivariable chain rule.</p>
-<p>Finally, we need to know how to assemble a vector or matrix. For matrix $\mathbf{W}$, we can also write it as $\mathbf{W}=[\mathbf{W}<em>{i,j}]</em>{i,j}$, where the outer index $i$ and $j$ means that we need to iterate each row and column. Similarly, for a vector, we have $\mathbf{v}=[\mathbf{v}_i]_i$. The assembly can be a reverse process of the matrix multiplication. For example, the multiplication of two column vector $\mathbf{xy}^\top=[\mathbf{x}<em>i\mathbf{y}<em>j]</em>{i,j}$. Thus if we meet a scalar result of $\mathbf{W}</em>{i,j}=\mathbf{x}_i\mathbf{y}_j$, we can assemble it into the matrix $\mathbf{W}=\mathbf{x}\mathbf{y}^T$.</p>
+<p>Finally, we need to know how to assemble a vector or matrix. For matrix $\mathbf{W}$, we can also write it as $\mathbf{W}=[\mathbf{W}_{i,j}]_{i,j}$, where the outer index $i$ and $j$ means that we need to iterate each row and column. Similarly, for a vector, we have $\mathbf{v}=[\mathbf{v}_i]_i$. The assembly can be a reverse process of the matrix multiplication. For example, the multiplication of two column vector $\mathbf{xy}^\top=[\mathbf{x}_i\mathbf{y}_j]_{i,j}$. Thus if we meet a scalar result of $\mathbf{W}_{i,j}=\mathbf{x}_i\mathbf{y}_j$, we can assemble it into the matrix $\mathbf{W}=\mathbf{x}\mathbf{y}^T$.</p>
 <h2 id="definition">Definition</h2>
 <p>scalar: $x, y, \cdots$<br>
 vector: $\mathbf{x}, \mathbf{y}, \cdots$<br>
 matrix: $\mathbf{X}, \mathbf{Y}, \cdots$<br>
-Subscript: $\mathbf{x}<em>i$ means the $i$th element of $\mathbf{x}$, which is a scalar.<br>
-$\mathbf{1}</em>{ij}$ equals 1 if $i=j$ and 0 otherwise.</p>
+Subscript: $\mathbf{x}_i$ means the $i$th element of $\mathbf{x}$, which is a scalar.<br>
+$\mathbf{1}_{ij}$ equals 1 if $i=j$ and 0 otherwise.</p>
 <p>Input: $x$ $[n, 1]$<br>
 Label: $y$ $[c, 1]$ one-hot<br>
 Number of layers: $L$<br>
@@ -138,88 +138,88 @@ Activation at layer $l$: $\mathbf{a}^{(l)}$</p>
 </ul>
 <h2 id="forward-pass">Forward Pass</h2>
 <p>$$\begin{align*}
-\mathbf{a}^{(0)} &amp;= \mathbf{x} \
-\mathbf{z}^{(1)} &amp;= \mathbf{W}^{(1)}\mathbf{a}^{(0)} + \mathbf{b}^{(1)} \
-\mathbf{a}^{(1)} &amp;= f(\mathbf{z}^{(1)}) \
-\vdots &amp; \quad\vdots\
-\mathbf{z}^{(l)} &amp;= \mathbf{W}^{(l)}\mathbf{a}^{(l-1)} + \mathbf{b}^{(l)} \
-\mathbf{a}^{(l)} &amp;= f(\mathbf{z}^{(l-1)}) \
-\vdots &amp; \quad\vdots\
-\mathbf{z}^{(L)} &amp;= \mathbf{W}^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{(L)} \
-\mathbf{a}^{(L)} &amp;= \text{softmax}(\mathbf{z}^{(L-1)}) \
-\mathcal{L} &amp;=\text{CE}(\mathbf{a}^{(L)},y) \
+\mathbf{a}^{(0)} &amp;= \mathbf{x} \\
+\mathbf{z}^{(1)} &amp;= \mathbf{W}^{(1)}\mathbf{a}^{(0)} + \mathbf{b}^{(1)} \\
+\mathbf{a}^{(1)} &amp;= f(\mathbf{z}^{(1)}) \\
+\vdots &amp; \quad\vdots\\
+\mathbf{z}^{(l)} &amp;= \mathbf{W}^{(l)}\mathbf{a}^{(l-1)} + \mathbf{b}^{(l)} \\
+\mathbf{a}^{(l)} &amp;= f(\mathbf{z}^{(l-1)}) \\
+\vdots &amp; \quad\vdots\\
+\mathbf{z}^{(L)} &amp;= \mathbf{W}^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{(L)} \\
+\mathbf{a}^{(L)} &amp;= \text{softmax}(\mathbf{z}^{(L-1)}) \\
+\mathcal{L} &amp;=\text{CE}(\mathbf{a}^{(L)},y) \\
 \end{align*}
 $$</p>
 <p>where cross entropy loss $\mathcal{L}=\text{CE}(\mathbf{a}^{(L)},y)=-\sum_{i=1}^c \mathbf{y}_i\log(\mathbf{a}_i^{(L)})$.</p>
 <p>We want to calculate the gradient of $L$ with respect to $\mathbf{W}^{(l)}$ and $\mathbf{b}^{(l)}$. Here we only discuss the gradient to $\mathbf{W}^{(l)}$. $\mathbf{b}^{(l)}$ is similar.</p>
 <h2 id="the-last-layer">The last layer</h2>
 <p>Since the last layer is different from the other layers, we calculate the gradient for it separately.</p>
-<p>In the forward pass, $\mathbf{a}^{(L)}_i=\frac{e^{\mathbf{z}<em>i}}{\sum</em>{k=1}^c e^{\mathbf{z}_k}}$ is normalized probability outputed by the softmax layer. An high-school calculation of the gradient of softmax leads to $\frac{\partial \mathbf{a}^{(L)}_i}{\partial \mathbf{z}^{(L)}_j}=\mathbf{a}^{(L)}<em>i(\mathbf{1}</em>{ij}-\mathbf{a}^{(L)}_j)$.</p>
-<p>To calculate the gradients $\frac{\partial \mathcal{L}}{\partial \mathbf{z}_j^{(L)}}$, we use the chain rule by introducing $\mathbf{a}$. An important thing here is that when we use the scalar form, most functions we meet here are multivariable functions, so we need to use the multivariable chain rule. For example, $L$ is the result of cross entropy function on $\mathbf{a}_0^{(L)}, \mathbf{a}<em>1^{(L)}, \dots, \mathbf{a}</em>{c-1}^{(L)}$. According to the multivariable chain rule, we have $\frac{\partial \mathcal{L}}{\partial \mathbf{z}<em>j^{(L)}}=\sum</em>{i=1}^c\frac{\partial \mathcal{L}}{\partial \mathbf{a}_i^{(L)}}\frac{\partial \mathbf{a}_i^{(L)}}{\partial \mathbf{z}_j^{(L)}}$.</p>
+<p>In the forward pass, $\mathbf{a}^{(L)}_i=\frac{e^{\mathbf{z}_i}}{\sum_{k=1}^c e^{\mathbf{z}_k}}$ is normalized probability outputed by the softmax layer. An high-school calculation of the gradient of softmax leads to $\frac{\partial \mathbf{a}^{(L)}_i}{\partial \mathbf{z}^{(L)}_j}=\mathbf{a}^{(L)}_i(\mathbf{1}_{ij}-\mathbf{a}^{(L)}_j)$.</p>
+<p>To calculate the gradients $\frac{\partial \mathcal{L}}{\partial \mathbf{z}_j^{(L)}}$, we use the chain rule by introducing $\mathbf{a}$. An important thing here is that when we use the scalar form, most functions we meet here are multivariable functions, so we need to use the multivariable chain rule. For example, $L$ is the result of cross entropy function on $\mathbf{a}_0^{(L)}, \mathbf{a}_1^{(L)}, \dots, \mathbf{a}_{c-1}^{(L)}$. According to the multivariable chain rule, we have $\frac{\partial \mathcal{L}}{\partial \mathbf{z}_j^{(L)}}=\sum_{i=1}^c\frac{\partial \mathcal{L}}{\partial \mathbf{a}_i^{(L)}}\frac{\partial \mathbf{a}_i^{(L)}}{\partial \mathbf{z}_j^{(L)}}$.</p>
 <p>Thus, we have</p>
 <p>$$
 \begin{align*}
-\frac{\partial \mathcal{L}}{\partial \mathbf{z}<em>j^{(L)}} &amp;= \sum</em>{i=1}^c\frac{\partial \mathcal{L}}{\partial \mathbf{a}_i^{(L)}}\frac{\partial \mathbf{a}_i^{(L)}}{\partial \mathbf{z}<em>j^{(L)}} \
-&amp; =\sum</em>{i=1}^c(\frac{\mathbf{y}_i}{\mathbf{a}_i^{(L)}})\frac{\partial \mathbf{a}_i^{(L)}}{\partial \mathbf{z}<em>j^{(L)}} \
-&amp;=-\sum</em>{i=1}^c\mathbf{y}<em>i(\mathbf{1}</em>{ij}-\mathbf{a}^{(L)}<em>j) \
-&amp;=-\sum</em>{i=1}^c\mathbf{y}<em>i\mathbf{1}</em>{ij}+\mathbf{a}<em>j^{(L)}\sum</em>{i=1}^c\mathbf{y}_i \
+\frac{\partial \mathcal{L}}{\partial \mathbf{z}_j^{(L)}} &amp;= \sum_{i=1}^c\frac{\partial \mathcal{L}}{\partial \mathbf{a}_i^{(L)}}\frac{\partial \mathbf{a}_i^{(L)}}{\partial \mathbf{z}_j^{(L)}} \\
+&amp; =\sum_{i=1}^c(\frac{\mathbf{y}_i}{\mathbf{a}_i^{(L)}})\frac{\partial \mathbf{a}_i^{(L)}}{\partial \mathbf{z}_j^{(L)}} \\
+&amp;=-\sum_{i=1}^c\mathbf{y}_i(\mathbf{1}_{ij}-\mathbf{a}^{(L)}_j) \\
+&amp;=-\sum_{i=1}^c\mathbf{y}_i\mathbf{1}_{ij}+\mathbf{a}_j^{(L)}\sum_{i=1}^c\mathbf{y}_i \\
 &amp;=\mathbf{a}^{(L)}_j-\mathbf{y}_j
 \end{align*}
 $$</p>
-<p>Then assemble $\frac{\partial \mathcal{L}}{\partial \mathbf{z}_j^{(L)}}$ into a vector $\frac{\partial \mathcal{L}}{\partial \mathbf{z}^{(L)}}=\mathbf{a}^{(L)}-y$. The detailed assembly process is $z=[\frac{\partial \mathcal{L}}{\partial \mathbf{z}<em>j^{(L)}}]</em>{j=1}^{c}=[\mathbf{a}^{(L)}_j-\mathbf{y}<em>j]</em>{j=1}^{c}=[\mathbf{a}^{(L)}<em>j]</em>{j=1}^{c}-[\mathbf{y}<em>j]</em>{j=1}^{c}=\mathbf{a}^{(L)}-y$.</p>
+<p>Then assemble $\frac{\partial \mathcal{L}}{\partial \mathbf{z}_j^{(L)}}$ into a vector $\frac{\partial \mathcal{L}}{\partial \mathbf{z}^{(L)}}=\mathbf{a}^{(L)}-y$. The detailed assembly process is $z=[\frac{\partial \mathcal{L}}{\partial \mathbf{z}_j^{(L)}}]_{j=1}^{c}=[\mathbf{a}^{(L)}_j-\mathbf{y}_j]_{j=1}^{c}=[\mathbf{a}^{(L)}_j]_{j=1}^{c}-[\mathbf{y}_j]_{j=1}^{c}=\mathbf{a}^{(L)}-y$.</p>
 <h2 id="gradients-for-weights">Gradients for weights</h2>
 <p>We can define
 $$\mathbf{\delta}^{(l)}=\frac{\partial \mathcal{L}}{\partial \mathbf{z}^{(l)}}$$
 which is a column vector for the ease of chain rule calclation. For the last layer, $\mathbf{\delta}^{(L)}=\mathbf{a}^{(L)}-y$.</p>
-<p>If we can calculate $\mathbf{\delta}^{(l)}$ for all $l$, then we can calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ for all $l$. The calculation uses multivariable chain rule. Since we want to use chain rule to connect $L$ and $W$ by $\mathbf{z}$, we need to use multivariable chain rule $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}<em>{i,j}}=\sum</em>{k}\frac{\partial \mathcal{L}}{\partial \mathbf{z}_k^{(l)}}\frac{\partial \mathbf{z}<em>k^{(L)}}{\partial \mathbf{W}^{(L)}</em>{i,j}}$.</p>
-<p>Now let&rsquo;s recap the matrix multiplication in $\mathbf{z}^{(l)}= \mathbf{W}^{(l)}\mathbf{a}^{(l-1)} + \mathbf{b}^{(l)}$, we have $\mathbf{z}^{(l)}<em>i=\sum</em>{j=1}^n \mathbf{W}^{(l)}_{i,j}\mathbf{a}^{(l-1)}_j+\mathbf{b}^{(l)}_i$. Then we have $\frac{\partial \mathbf{z}^{(l)}<em>i}{\partial \mathbf{W}^{(l)}</em>{i,j}}=\mathbf{a}^{(l-1)}_j$, and $\frac{\partial \mathbf{z}^{(l)}<em>k}{\partial \mathbf{W}^{(l)}</em>{i,j}}=0$ for $i\neq k$. Thus, we have</p>
-<p>$$\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}_{i,j}}=\frac{\partial \mathcal{L}}{\partial \mathbf{z}_i^{(l)}}\frac{\partial \mathbf{z}<em>i^{(l)}}{\partial \mathbf{W}^{(l)}</em>{i,j}}=\mathbf{\delta}_i^{(l)}\mathbf{a}_j^{(l-1)}$$</p>
-<p>Now let&rsquo;s assemble the result. We have $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}=[\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}<em>{i,j}}]</em>{i,j}=[\mathbf{\delta}_i^{(l)}\mathbf{a}<em>j^{(l-1)}]</em>{i,j}=\mathbf{\delta}^{(l)}\mathbf{a}^{(l-1)\top}$.</p>
+<p>If we can calculate $\mathbf{\delta}^{(l)}$ for all $l$, then we can calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ for all $l$. The calculation uses multivariable chain rule. Since we want to use chain rule to connect $L$ and $W$ by $\mathbf{z}$, we need to use multivariable chain rule $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}_{i,j}}=\sum_{k}\frac{\partial \mathcal{L}}{\partial \mathbf{z}_k^{(l)}}\frac{\partial \mathbf{z}_k^{(L)}}{\partial \mathbf{W}^{(L)}_{i,j}}$.</p>
+<p>Now let&rsquo;s recap the matrix multiplication in $\mathbf{z}^{(l)}= \mathbf{W}^{(l)}\mathbf{a}^{(l-1)} + \mathbf{b}^{(l)}$, we have $\mathbf{z}^{(l)}_i=\sum_{j=1}^n \mathbf{W}^{(l)}_{i,j}\mathbf{a}^{(l-1)}_j+\mathbf{b}^{(l)}_i$. Then we have $\frac{\partial \mathbf{z}^{(l)}_i}{\partial \mathbf{W}^{(l)}_{i,j}}=\mathbf{a}^{(l-1)}_j$, and $\frac{\partial \mathbf{z}^{(l)}_k}{\partial \mathbf{W}^{(l)}_{i,j}}=0$ for $i\neq k$. Thus, we have</p>
+<p>$$\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}_{i,j}}=\frac{\partial \mathcal{L}}{\partial \mathbf{z}_i^{(l)}}\frac{\partial \mathbf{z}_i^{(l)}}{\partial \mathbf{W}^{(l)}_{i,j}}=\mathbf{\delta}_i^{(l)}\mathbf{a}_j^{(l-1)}$$</p>
+<p>Now let&rsquo;s assemble the result. We have $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}=[\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}_{i,j}}]_{i,j}=[\mathbf{\delta}_i^{(l)}\mathbf{a}_j^{(l-1)}]_{i,j}=\mathbf{\delta}^{(l)}\mathbf{a}^{(l-1)\top}$.</p>
 <p>For the last layer, we have $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(L)}_{i,j}}=(\mathbf{a}^{(L)}_j-\mathbf{y}_j)\mathbf{a}_j^{(L-1)}$, and $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(L)}}=(\mathbf{a}^{(L)}_j-\mathbf{y}_j)\mathbf{a}^{(L-1)\top}$.</p>
 <h2 id="back-propagation-through-layers">Back propagation through layers</h2>
 <p>Now the only problem left is to calculate $\mathbf{\delta}^{(l)}$ for all $l$. We can use the chain rule to calculate $\mathbf{\delta}^{(l)}$ for all $l$.</p>
 <p>In the forward pass, the $W_{ij}^{(L-1)}$ only involves in the calculation of $\mathbf{z}_j^{(L)}$, and $\mathbf{z}_j$ only involves in the computation of $\mathbf{a}_j^{(L)}$. Thus, by multivariable chain rule, we can use $\mathbf{\delta}^{l}$ to calculate $\mathbf{\delta}^{l-1}$:</p>
 <p>$$
 \begin{align*}
-\mathbf{\delta}_j^{(l-1)} &amp;= \frac{\partial \mathcal{L}}{\partial \mathbf{z}<em>j^{(l-1)}} \
-&amp;= \sum</em>{k}\frac{\partial \mathcal{L}}{\partial \mathbf{z}_k^{(l)}}\frac{\partial \mathbf{z}_k^{(l)}}{\partial \mathbf{z}<em>j^{(l-1)}} \
-&amp;= \sum</em>{k}\frac{\partial \mathcal{L}}{\partial \mathbf{z}_k^{(l)}}\frac{\partial \mathbf{z}_k^{(l)}}{\partial \mathbf{a}_k^{(l-1)}}\frac{\partial \mathbf{a}_k^{(l-1)}}{\partial \mathbf{z}_j^{(l-1)}} \
+\mathbf{\delta}_j^{(l-1)} &amp;= \frac{\partial \mathcal{L}}{\partial \mathbf{z}_j^{(l-1)}} \\
+&amp;= \sum_{k}\frac{\partial \mathcal{L}}{\partial \mathbf{z}_k^{(l)}}\frac{\partial \mathbf{z}_k^{(l)}}{\partial \mathbf{z}_j^{(l-1)}} \\
+&amp;= \sum_{k}\frac{\partial \mathcal{L}}{\partial \mathbf{z}_k^{(l)}}\frac{\partial \mathbf{z}_k^{(l)}}{\partial \mathbf{a}_k^{(l-1)}}\frac{\partial \mathbf{a}_k^{(l-1)}}{\partial \mathbf{z}_j^{(l-1)}} \\
 \end{align*}
 $$</p>
 <p>The second step is because $\mathbf{z}_j^{(l)}$ contributes to every $\mathbf{z}_k^{(l)}$ in the linear transformation. The third step is because $\mathbf{z}_j^{(l-1)}$ only contributes to $\mathbf{a}_k^{(l-1)}$ in the nonlinear transformation.</p>
-<p>Since $\mathbf{a}_k^{(l-1)}=f(\mathbf{z}_k^{(l-1)})$, we have $\frac{\partial \mathbf{a}_k^{(l-1)}}{\partial \mathbf{z}_k^{(l-1)}}=f'(\mathbf{z}_k^{(l-1)})$. Since $\mathbf{z}^{l}=\mathbf{W}^{l}\mathbf{a}^{l-1}+\mathbf{b}^{l}$, from the matrix multiplication, we have $\frac{\partial \mathbf{z}_k^{(l)}}{\partial \mathbf{a}<em>k^{(l-1)}}=\mathbf{W}^{l}</em>{k,j}$. Thus, we have:</p>
-<p>$$\mathbf{\delta}<em>j^{(l-1)}=\sum</em>{k}\mathbf{\delta}<em>k^{(l)}\mathbf{W}^{l}</em>{k,j}f'(\mathbf{z}_j^{(l-1)})$$</p>
+<p>Since $\mathbf{a}_k^{(l-1)}=f(\mathbf{z}_k^{(l-1)})$, we have $\frac{\partial \mathbf{a}_k^{(l-1)}}{\partial \mathbf{z}_k^{(l-1)}}=f'(\mathbf{z}_k^{(l-1)})$. Since $\mathbf{z}^{l}=\mathbf{W}^{l}\mathbf{a}^{l-1}+\mathbf{b}^{l}$, from the matrix multiplication, we have $\frac{\partial \mathbf{z}_k^{(l)}}{\partial \mathbf{a}_k^{(l-1)}}=\mathbf{W}^{l}_{k,j}$. Thus, we have:</p>
+<p>$$\mathbf{\delta}_j^{(l-1)}=\sum_{k}\mathbf{\delta}_k^{(l)}\mathbf{W}^{l}_{k,j}f'(\mathbf{z}_j^{(l-1)})$$</p>
 <p>Now let&rsquo;s assemble the result. We have</p>
 <p>$$
 \begin{align*}
-\mathbf{\delta}^{(l-1)} &amp;=[\mathbf{\delta}<em>j^{(l-1)}]</em>{j=1}^m=[\sum_{k}\mathbf{\delta}<em>k^{(l)}\mathbf{W}^{l}</em>{k,j}f'(\mathbf{z}<em>j^{(l-1)})]</em>{j=1}^m \
-&amp;=[\sum_{k}\mathbf{\delta}<em>k^{(l)}\mathbf{W}^{(l)}</em>{k,j}]<em>{j=1}^n\odot[f'(\mathbf{z}<em>j^{(l-1)})]</em>{j=1}^m \
-&amp;=[W</em>{\star,j}^{(l)\top} \mathbf{\delta}^{(l)}]_{j=1}^n\odot f'(\mathbf{z}^{(l-1)}) \
+\mathbf{\delta}^{(l-1)} &amp;=[\mathbf{\delta}_j^{(l-1)}]_{j=1}^m=[\sum_{k}\mathbf{\delta}_k^{(l)}\mathbf{W}^{l}_{k,j}f'(\mathbf{z}_j^{(l-1)})]_{j=1}^m \\
+&amp;=[\sum_{k}\mathbf{\delta}_k^{(l)}\mathbf{W}^{(l)}_{k,j}]_{j=1}^n\odot[f'(\mathbf{z}_j^{(l-1)})]_{j=1}^m \\
+&amp;=[W_{\star,j}^{(l)\top} \mathbf{\delta}^{(l)}]_{j=1}^n\odot f'(\mathbf{z}^{(l-1)}) \\
 &amp;=\mathbf{W}^{(l)\top}\mathbf{\delta}^{(l)}\odot f'(\mathbf{z}^{(l-1)})
 \end{align*}
 $$</p>
 <h2 id="a-batch-of-data">A batch of data</h2>
-<p>We can extend the above calculation to batch of data. Due to the routine, one example is represented as column vector in the above discussion, while in deep learning programming, we represent example in each row of the matrix. We have $X=[\mathbf{x}_1^\top,\mathbf{x}<em>2^\top,\cdots,\mathbf{x}</em>\mathbf{b}^\top]$ (shape $[b, n]$), where $\mathbf{x}_i$ is a column vector. We have $Y=[\mathbf{y}_1,\mathbf{y}_2,\cdots,\mathbf{y}_b]$, where $\mathbf{y}_i$ is a column vector.</p>
+<p>We can extend the above calculation to batch of data. Due to the routine, one example is represented as column vector in the above discussion, while in deep learning programming, we represent example in each row of the matrix. We have $X=[\mathbf{x}_1^\top,\mathbf{x}_2^\top,\cdots,\mathbf{x}_\mathbf{b}^\top]$ (shape $[b, n]$), where $\mathbf{x}_i$ is a column vector. We have $Y=[\mathbf{y}_1,\mathbf{y}_2,\cdots,\mathbf{y}_b]$, where $\mathbf{y}_i$ is a column vector.</p>
 <p>Then, the loss is $\mathcal{L}=\frac{1}{b}\sum_{i=1}^b\mathcal{L}(\mathbf{x}_i,\mathbf{y}_i)$. Then vectors $\mathbf{a}^{(l)},\mathbf{z}^{(l)},\mathbf{\delta}^{(l)}$ become matrix $\mathbf{A}^{(l)},\mathbf{Z}^{(l)},\mathbf{\Delta}^{(l)}$ respectively (all of shape $[b, m]$). For the linear transformation, we have</p>
-<p>$$\mathbf{z}^{(l)}=\mathbf{a}^{(l-1)}\mathbf{W}^{(l)\top}+\mathbf{b}^{(l)}$$</p>
-<p>where $\mathbf{b}^{(l)}$ is stacked by $\mathbf{b}^{(l)}$. For the nonlinear transformation, we have $\mathbf{a}^{(l)}=f(\mathbf{z}^{(l)})$. (You can also define the $W$ matrix to be the transpose of the original definition to avoid the transpose in linear transformation).</p>
+<p>$$\mathbf{Z}^{(l)}=\mathbf{A}^{(l-1)}\mathbf{W}^{(l)\top}+\mathbf{B}^{(l)}$$</p>
+<p>where $\mathbf{B}^{(l)}$ is stacked by $\mathbf{b}^{(l)}$. For the nonlinear transformation, we have $\mathbf{A}^{(l)}=f(\mathbf{Z}^{(l)})$. (You can also define the $W$ matrix to be the transpose of the original definition to avoid the transpose in linear transformation).</p>
 <p>Note that since the above discussion for one vector is done on a single element, so for the matrix case with a batch of data, the deduction is similar.</p>
 <h3 id="loss-and-softmax">Loss and softmax</h3>
-<p>For the loss and softmax, $\frac{\partial \mathcal{L}}{\mathbf{z}^{(L)}<em>{i,j}}=\frac{1}{b}(\mathbf{a}^{(L)}</em>{i,j}-\mathbf{y}_{i,j})$. The assembling process is straight forward which leads to $\frac{\partial \mathcal{L}}{\mathbf{z}^{(L)}}=\frac{1}{b}(\mathbf{a}^{(L)}-Y)$.</p>
+<p>For the loss and softmax, $\frac{\partial \mathcal{L}}{\mathbf{Z}^{(L)}_{i,j}}=\frac{1}{b}(\mathbf{A}^{(L)}_{i,j}-\mathbf{Y}_{i,j})$. The assembling process is straight forward which leads to $\frac{\partial \mathcal{L}}{\mathbf{Z}^{(L)}}=\frac{1}{b}(\mathbf{A}^{(L)}-\mathbf{Y})$.</p>
 <h3 id="gradients-for-the-weight">Gradients for the weight</h3>
-<p>For the gradients of weights, the update is equvalent to $\mathbf{z}^{(l)\top}=\mathbf{W}^{(l)}\mathbf{a}^{(l-1)\top}+\mathbf{b}^{(l)\top}$, which is more similar to the vector form. Since the weight involves in the calculation for each example, using multivariable chain rule, we have</p>
-<p>$$\frac{\mathcal{L}}{W_{i,j}^{(l)}}=\sum_{k=1}^{b}\frac{\partial \mathcal{L}}{\partial \mathbf{z}<em>{i,k}^{(l)\top}}\frac{\partial \mathbf{z}</em>{i,k}^{(l)\top}}{\partial \mathbf{W}^{(l)\top}<em>{i,j}}=\sum</em>{k=1}^b\mathbf{\delta}<em>{i,k}^{(l)\top}\mathbf{a}</em>{j,k}^{(l-1)\top}=\sum_{i=1}^b\mathbf{\delta}<em>{i,k}^{(l)\top}\mathbf{a}</em>{k,j}^{(l-1)}$$</p>
+<p>For the gradients of weights, the update is equvalent to $\mathbf{Z}^{(l)\top}=\mathbf{W}^{(l)}\mathbf{A}^{(l-1)\top}+\mathbf{B}^{(l)\top}$, which is more similar to the vector form. Since the weight involves in the calculation for each example, using multivariable chain rule, we have</p>
+<p>$$\frac{\partial\mathcal{L}}{\partial \mathbf{W}_{i,j}^{(l)}}=\sum_{k=1}^{b}\frac{\partial \mathcal{L}}{\partial \mathbf{Z}_{i,k}^{(l)\top}}\frac{\partial \mathbf{Z}_{i,k}^{(l)\top}}{\partial \mathbf{W}^{(l)\top}_{i,j}}=\sum_{k=1}^b\mathbf{\Delta}_{i,k}^{(l)\top}\mathbf{A}_{j,k}^{(l-1)\top}=\sum_{i=1}^b\mathbf{\Delta}_{i,k}^{(l)\top}\mathbf{A}_{k,j}^{(l-1)}$$</p>
 <p>After assembly, we have</p>
-<p>$$\frac{\mathcal{L}}{\mathbf{W}^{(l)}}=\mathbf{\delta}^{(l)\top}\mathbf{a}^{(l-1)}$$</p>
-<p>An quick shape check to verify the result. $\frac{\mathcal{L}}{\mathbf{W}^{(l)}}$ should have the same shape as $\mathbf{W}^{(l)}$, which is [$m^{(l)}$, $m^{(l-1)}$]. $\mathbf{\delta}^{(l)\top}$ is of shape [$m^{(l)}$, b], $\mathbf{a}^{(l-1)}$ is of shape [b, $m^{(l-1)}$]. Thus, $\mathbf{\delta}^{(l)\top}\mathbf{a}^{(l-1)}$ is of shape [$m^{(l)}$, $m^{(l-1)}$]. This is the same as $\mathbf{W}^{(l)}$.</p>
+<p>$$\frac{\mathcal{L}}{\mathbf{W}^{(l)}}=\mathbf{\Delta}^{(l)\top}\mathbf{A}^{(l-1)}$$</p>
+<p>An quick shape check to verify the result. $\frac{\mathcal{L}}{\mathbf{W}^{(l)}}$ should have the same shape as $\mathbf{W}^{(l)}$, which is $[m^{(l)}, m^{(l-1)}]$. $\mathbf{\Delta}^{(l)\top}$ is of shape $[m^{(l)}, b]$, $\mathbf{A}^{(l-1)}$ is of shape $[b, m^{(l-1)}]$. Thus, $\mathbf{\Delta}^{(l)\top}\mathbf{A}^{(l-1)}$ is of shape $[m^{(l)}, m^{(l-1)}]$. This is the same as $\mathbf{W}^{(l)}$.</p>
 <h3 id="bp-through-layers">BP through layers</h3>
-<p>Finally, for the update from $\mathbf{\delta}^{(l)}$ to $\mathbf{\delta}^{(l-1)}$, since each example is independent from each other, it is easy to see that $\mathbf{\delta}^{(l-1)\top}=\mathbf{W}^{(l)\top}\mathbf{\delta}^{(l)\top}\odot f'(\mathbf{z}^{(l-1)\top})$, which means $\mathbf{\delta}^{(l-1)}=\mathbf{\delta}^{(l)}\mathbf{W}^{(l)}\odot f'(\mathbf{z}^{(l-1)})$. This is a direct extension from the vector form.</p>
+<p>Finally, for the update from $\mathbf{\Delta}^{(l)}$ to $\mathbf{\Delta}^{(l-1)}$, since each example is independent from each other, it is easy to see that $\mathbf{\Delta}^{(l-1)\top}=\mathbf{W}^{(l)\top}\mathbf{\Delta}^{(l)\top}\odot f'(\mathbf{Z}^{(l-1)\top})$, which means $\mathbf{\Delta}^{(l-1)}=\mathbf{\Delta}^{(l)}\mathbf{W}^{(l)}\odot f'(\mathbf{Z}^{(l-1)})$. This is a direct extension from the vector form.</p>
 <h2 id="implementation">Implementation</h2>
 <p>Now we have the derivation of the backpropagation algorithm:</p>
 <p>$$\begin{align*}
-\mathbf{\delta}^{(L)} &amp; = \frac{1}{b}(\mathbf{a}^{(L)}-Y) \
-\mathbf{\delta}^{(l)} &amp; = \mathbf{\delta}^{(l+1)}\mathbf{W}^{(l)}\odot f'(\mathbf{z}^{(l-1)}) \
-\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}} &amp; = \mathbf{\delta}^{(l)\top}\mathbf{a}^{(l-1)} \
+\mathbf{\Delta}^{(L)} &amp; = \frac{1}{b}(\mathbf{A}^{(L)}-Y) \\
+\mathbf{\Delta}^{(l)} &amp; = \mathbf{\Delta}^{(l+1)}\mathbf{W}^{(l)}\odot f'(\mathbf{Z}^{(l-1)}) \\
+\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}} &amp; = \mathbf{\Delta}^{(l)\top}\mathbf{A}^{(l-1)} \\
 \end{align*}$$</p>
 <p>Then we can implement the backward pass easily. The pseudo code for a multilayer perceptron without bias is as follows:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># With PyTorch style API</span>
