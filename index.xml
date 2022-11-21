@@ -543,7 +543,7 @@ Model -&amp;gt; Rendering -&amp;gt; Image -&amp;gt; Display
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/interest/</guid>
-      <description>My research interest lies on Machine Learning (AI) and High-Performance Computing (HPC), with a particular focus on training models with large batch and training models that generalize well.</description>
+      <description>My current research interest includes: Machine Learning (transfer learning, continual learning), Computer Vision (self-supervised learning), and High-Performance Computing (large-batch training, optimizer).</description>
     </item>
     
     <item>
@@ -949,7 +949,7 @@ Iterative-and-incremental Process Models  Incrementation(增量): 指对于产�
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/news/</guid>
-      <description>[2021.8] The NJU-CSE-Flyers Handbook 2021 has been published. [2021.7] Happy to start my intership in ByteDance. [2021.6] Graduated from Nanjing University！Thanks and good lucks to all my teachers and classmates. [2021.4] Got one first-authored paper accepted to ICMR&#39;21 Challenge. Thanks to all my collaborators. [2021.3] I will join HPC-AI @ NUS to start my Ph.D. degree under the supervision of Presidential Young Prof. Yang You! [2021.2] Got one co-first-authored paper accepted to CVPR&#39;21.</description>
+      <description>[2022.11] Got one paper accepted to AAAI 2023. Thanks to all my collaborators! [2021.8] The NJU-CSE-Flyers Handbook 2021 has been published. [2021.7] Happy to start my intership in ByteDance. [2021.6] Graduated from Nanjing University！Thanks and good lucks to all my teachers and classmates. [2021.4] Got one first-authored paper accepted to ICMR&#39;21 Challenge. Thanks to all my collaborators. [2021.3] I will join HPC-AI @ NUS to start my Ph.D. degree under the supervision of Presidential Young Prof.</description>
     </item>
     
     <item>
@@ -1279,11 +1279,7 @@ $$\text{support}(A\Rightarrow B)=P(A,B)=\frac{\text{# of tuples includes }A,B}{\
       <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/publications/</guid>
-      <description>  Prototypical Cross-domain Self-supervised Learning for Few-shot Unsupervised Domain Adaptation CVPR&#39;21
-Xiangyu Yue*, Zangwei Zheng*, Shanghang Zhang, Yang Gao, Trevor Darrell, Kurt Keutzer, Alberto Sangiovanni-Vincentelli
-  Scene-aware Learning Network for Radar Object Detection ICMR&#39;21
-Zangwei Zheng, Xiangyu Yue, Kurt Keutzer, Alberto Sangiovanni Vincentelli
-  </description>
+      <description>See Google Scholar.</description>
     </item>
     
     <item>
@@ -2041,7 +2037,7 @@ savepoint
       <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/projects/</guid>
-      <description> hugo-theme-phd: Hugo theme for this page.  </description>
+      <description> awesome-huge-models: Collection of huge AI models. hugo-theme-phd: Hugo theme for this page.  </description>
     </item>
     
     <item>
