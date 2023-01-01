@@ -138,20 +138,20 @@
 <li>
 <p>立即左递归的消除</p>
 <p>如果有 $A\rightarrow A\alpha_1|\cdots|A\alpha_m|\beta_1|\cdots|\beta_n$</p>
-<p>变换为 $A\rightarrow \beta_1 A'|\cdots|\beta_n A'$ 和 $A'\rightarrow \alpha_1 A'|\cdots|\alpha_m A'|\epsilon$</p>
+<p>变换为 $A\rightarrow \beta_1 A&rsquo;|\cdots|\beta_n A&rsquo;$ 和 $A&rsquo;\rightarrow \alpha_1 A&rsquo;|\cdots|\alpha_m A&rsquo;|\epsilon$</p>
 </li>
 <li>
 <p>左递归消除算法</p>
 <p>输入：无环和$\epsilon$产生式的文法 $G$
 输出：等价的无左递归的文法
 算法：非终结符号排序 $A_1,\cdots,A_n$</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to n <span style="color:#66d9ef">do</span>{
-  <span style="color:#66d9ef">for</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">do</span> {
-    <span style="color:#960050;background-color:#1e0010">将</span> Ai <span style="color:#f92672">-&gt;</span> Aj t <span style="color:#960050;background-color:#1e0010">替换为</span> Ai <span style="color:#f92672">-&gt;</span> s1 t <span style="color:#f92672">|</span> s2 t <span style="color:#f92672">|</span> ... <span style="color:#f92672">|</span> sk t, <span style="color:#960050;background-color:#1e0010">其中</span> Aj <span style="color:#f92672">-&gt;</span> s1 <span style="color:#f92672">|</span> s2 <span style="color:#f92672">|</span> ... <span style="color:#f92672">|</span> sk
-  }
-  <span style="color:#960050;background-color:#1e0010">消除</span> Ai <span style="color:#960050;background-color:#1e0010">立即左递归</span>
-}
-</code></pre></div><p>问题：很难找到新文法和旧文法之间的对应关系，很难进行语义分析</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to n <span style="color:#66d9ef">do</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">将</span> Ai <span style="color:#f92672">-&gt;</span> Aj t <span style="color:#960050;background-color:#1e0010">替换为</span> Ai <span style="color:#f92672">-&gt;</span> s1 t <span style="color:#f92672">|</span> s2 t <span style="color:#f92672">|</span> ... <span style="color:#f92672">|</span> sk t, <span style="color:#960050;background-color:#1e0010">其中</span> Aj <span style="color:#f92672">-&gt;</span> s1 <span style="color:#f92672">|</span> s2 <span style="color:#f92672">|</span> ... <span style="color:#f92672">|</span> sk
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">消除</span> Ai <span style="color:#960050;background-color:#1e0010">立即左递归</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>问题：很难找到新文法和旧文法之间的对应关系，很难进行语义分析</p>
 </li>
 </ul>
 </li>
@@ -255,7 +255,7 @@
 <li>LR(k) 语法分析：最左扫描，反向构造最右推导，$k\leq 1$，表格驱动</li>
 <li>LR(0) 项：文法的一个产生式加上在其中某处的一个点
 <ul>
-<li>增广文法：增加新开始符号 $S'$，产生式 $S'\rightarrow S$</li>
+<li>增广文法：增加新开始符号 $S&rsquo;$，产生式 $S&rsquo;\rightarrow S$</li>
 <li>项集闭包 CLOSURE：如果 $I$ 是文法 $G$ 的一个项集
 <ul>
 <li>$I$ 中各项加入 CLOSURE(I)</li>
@@ -280,7 +280,7 @@
 <ul>
 <li>$[A\rightarrow\alpha\cdot a\beta]$ 在 $I_i$，且 GOTO$(I_i,a)=I_j$，则 ACTION$[i,a]$=$s_j$（移入 j）</li>
 <li>$[A\rightarrow\alpha\cdot]$ 在 $I_i$ 中，那么对 FOLLOW($A$) 中所有 $a$，ACTION$[i,a]$=按 $A\rightarrow\alpha$ 规约</li>
-<li>如果 $[S'\rightarrow S\cdot]$ 在 $I_i$ 中，则 ACTION[$i,$$] 设为接受</li>
+<li>如果 $[S&rsquo;\rightarrow S\cdot]$ 在 $I_i$ 中，则 ACTION[$i,$$] 设为接受</li>
 <li>GOTO($I_i,A$)=$I_j$, GOTO[i,A]=j</li>
 <li>如果 SLR 分析表没有冲突，则该文法为 SLR</li>
 </ul>
@@ -291,7 +291,7 @@
 </li>
 <li>LR(1) 项：$[A\rightarrow\alpha\cdot\beta,a]$，$a$为向前看符号
 <ul>
-<li>增广文法：$[S'\rightarrow S,$]$</li>
+<li>增广文法：$[S&rsquo;\rightarrow S,$]$</li>
 <li>闭包：存在 $[A\rightarrow\alpha\cdot B\beta,a]$，则 $[B\rightarrow\cdot \theta,b],b=$FIRST($\beta a$)</li>
 <li>GOTO: $[A\rightarrow\alpha\cdot X\beta,a]$，则$[A\rightarrow\alpha X\cdot\beta,a]$</li>
 </ul>
@@ -301,7 +301,7 @@
 <ul>
 <li>$[A\rightarrow\alpha\cdot a\beta,b]$ 在项集中，且 GOTO($I_i$,a)=$I_j$，那么 ACTION[$i,a$]=移入 $j$</li>
 <li>$[A\rightarrow\alpha\cdot,a]$ 在项集中，ACTION[i,a]=按 $A\rightarrow\alpha$ 规约</li>
-<li>$[S'\rightarrow S,$]$ 在项集中，ACTION[i,$]=接受</li>
+<li>$[S&rsquo;\rightarrow S,$]$ 在项集中，ACTION[i,$]=接受</li>
 </ul>
 </li>
 <li>LALR(1) 语法分析

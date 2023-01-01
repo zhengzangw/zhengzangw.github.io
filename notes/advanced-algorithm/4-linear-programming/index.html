@@ -112,7 +112,7 @@
 </li>
 <li>unbounded: have a infinite objective value</li>
 <li>infeasible: no feasible value</li>
-<li>Equivalent: for each feasible solution $\overline{x}$ to $L$ with objective value $z$, there is a corresponding feasible solution $\overline{x}'$ to $L'$ with objective value $z'$, and for each feasible solution $\overline{x}'$ to $L'$ with objective value $z'$, there is a corresponding feasible solution $\overline{x}$ to $L$ with objective value ́.</li>
+<li>Equivalent: for each feasible solution $\overline{x}$ to $L$ with objective value $z$, there is a corresponding feasible solution $\overline{x}&rsquo;$ to $L&rsquo;$ with objective value $z&rsquo;$, and for each feasible solution $\overline{x}&rsquo;$ to $L&rsquo;$ with objective value $z&rsquo;$, there is a corresponding feasible solution $\overline{x}$ to $L$ with objective value ́.</li>
 </ul>
 <h3 id="standard-form">Standard Form</h3>
 <ul>
@@ -166,49 +166,49 @@
 <li>at most $\binom{n+m}{m}$ iterations, otherwise cycles</li>
 <li>Bland&rsquo;s rule: choose smallest index then must terminate</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//n: number of variable
-</span><span style="color:#75715e">//m: number of restriction
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pivot</span>(<span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> e) {
-    <span style="color:#75715e">// Update leaving basic variable
-</span><span style="color:#75715e"></span>    b[l] <span style="color:#f92672">/=</span> a[l][e];
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; j<span style="color:#f92672">++</span>)
-        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> e) a[l][j] <span style="color:#f92672">/=</span> a[l][e];
-    a[l][e] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> a[l][e];
-    <span style="color:#75715e">// Update other basic variable
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> m; i<span style="color:#f92672">++</span>)
-        <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> l <span style="color:#f92672">&amp;&amp;</span> fabs(a[i][e]) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
-            b[i] <span style="color:#f92672">-=</span> a[i][e] <span style="color:#f92672">*</span> b[l];
-            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; j<span style="color:#f92672">++</span>)
-                <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> e) a[i][j] <span style="color:#f92672">-=</span> a[i][e] <span style="color:#f92672">*</span> a[l][j];
-            a[i][e] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>a[i][e] <span style="color:#f92672">*</span> a[l][e];
-        }
-    <span style="color:#75715e">// Update entering nonbasic variable
-</span><span style="color:#75715e"></span>    ans <span style="color:#f92672">+=</span> c[e] <span style="color:#f92672">*</span> b[l];
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; j<span style="color:#f92672">++</span>)
-        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> e) c[j] <span style="color:#f92672">-=</span> c[e] <span style="color:#f92672">*</span> a[l][j];
-    c[e] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>c[e] <span style="color:#f92672">*</span> a[l][e];
-}
-
-<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">simplex</span>() {
-    <span style="color:#66d9ef">while</span> (true) {
-        <span style="color:#66d9ef">int</span> enter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, leave <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-        <span style="color:#75715e">// Select enter variable
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (enter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; enter <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>enter)
-            <span style="color:#66d9ef">if</span> (c[enter] <span style="color:#f92672">&gt;</span> eps) <span style="color:#66d9ef">break</span>;
-        <span style="color:#66d9ef">if</span> (enter <span style="color:#f92672">==</span> n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> ans;
-        <span style="color:#75715e">// Select leave variable
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">double</span> mn <span style="color:#f92672">=</span> INF;
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> m; <span style="color:#f92672">++</span>i)
-            <span style="color:#66d9ef">if</span> (a[i][enter] <span style="color:#f92672">&gt;</span> eps <span style="color:#f92672">&amp;&amp;</span> mn <span style="color:#f92672">&gt;</span> b[i] <span style="color:#f92672">/</span> a[i][enter]) {
-                mn <span style="color:#f92672">=</span> b[i] <span style="color:#f92672">/</span> a[i][enter];
-                leave <span style="color:#f92672">=</span> i;
-            }
-        <span style="color:#66d9ef">if</span> (mn <span style="color:#f92672">==</span> INF) <span style="color:#66d9ef">return</span> INF;
-        pivot(leave, enter);
-    }
-}
-</code></pre></div><h2 id="formulating-problems">Formulating Problems</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">//n: number of variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//m: number of restriction
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pivot</span>(<span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> e) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Update leaving basic variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    b[l] <span style="color:#f92672">/=</span> a[l][e];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; j<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> e) a[l][j] <span style="color:#f92672">/=</span> a[l][e];
+</span></span><span style="display:flex;"><span>    a[l][e] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> a[l][e];
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Update other basic variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> m; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> l <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">fabs</span>(a[i][e]) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            b[i] <span style="color:#f92672">-=</span> a[i][e] <span style="color:#f92672">*</span> b[l];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; j<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> e) a[i][j] <span style="color:#f92672">-=</span> a[i][e] <span style="color:#f92672">*</span> a[l][j];
+</span></span><span style="display:flex;"><span>            a[i][e] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>a[i][e] <span style="color:#f92672">*</span> a[l][e];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Update entering nonbasic variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ans <span style="color:#f92672">+=</span> c[e] <span style="color:#f92672">*</span> b[l];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; j<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> e) c[j] <span style="color:#f92672">-=</span> c[e] <span style="color:#f92672">*</span> a[l][j];
+</span></span><span style="display:flex;"><span>    c[e] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>c[e] <span style="color:#f92672">*</span> a[l][e];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> <span style="color:#a6e22e">simplex</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (true) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> enter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, leave <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Select enter variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (enter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; enter <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>enter)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (c[enter] <span style="color:#f92672">&gt;</span> eps) <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (enter <span style="color:#f92672">==</span> n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> ans;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Select leave variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">double</span> mn <span style="color:#f92672">=</span> INF;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> m; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (a[i][enter] <span style="color:#f92672">&gt;</span> eps <span style="color:#f92672">&amp;&amp;</span> mn <span style="color:#f92672">&gt;</span> b[i] <span style="color:#f92672">/</span> a[i][enter]) {
+</span></span><span style="display:flex;"><span>                mn <span style="color:#f92672">=</span> b[i] <span style="color:#f92672">/</span> a[i][enter];
+</span></span><span style="display:flex;"><span>                leave <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (mn <span style="color:#f92672">==</span> INF) <span style="color:#66d9ef">return</span> INF;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">pivot</span>(leave, enter);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="formulating-problems">Formulating Problems</h2>
 <ul>
 <li>Shortest Path
 <ul>

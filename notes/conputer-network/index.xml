@@ -15,7 +15,7 @@
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/conputer-network/1-basics/</guid>
-      <description>因特网  根据硬件和软件组件描述  communication link: 通信链路 packet switch: 分组交换机 packet: 分组，数据分段并加上头部 ISP: Internet Service Provider  PoP(Point of Presence) 多宿(multi-home) 对等(peer): IXP(Internet Exchange Point)       根据基础设施向分布式应用程序提供的服务描述  分布式应用程序 套接字接口   协议：定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文发送和/或接受一条报文或其他时间所采取的动作  网络边缘  host/end system: 主机/端系统  客户端：client 服务器：server  数据中心: data center      接入网  家庭接入  DSL(Digital Subscriber Line, 数字用户线)：本地电话公司(CO)为 ISP  DSLAM 高速下行 50kHz - 1MHz 中速上行 4kHz - 50kHz 普通的双向电话信道 0 - 4kHz   电缆(cable Internet access)：利用有线电视公司现有的有线电视基础设施  CMTS(Cable Modem Termination System) HFS   FTTH(Fiber To The Home)  AON(Active Optical Network) PON(Passive Optical Network)   卫星链路 拨号接入   企业接入  以太网 WiFi   广域无线接入  蜂窝网络    网络核心 分组交换  储存转发传输：交换机能够输出第一个比特前，必须接受整个分组 节点时延  节点处理时延 排队时延  流量强度：$\frac{La}{R}$ 丢包   传输时延 传播时延   端到端时延 = $N$ (处理时延+ 传输时延 + 传播时延 ) 吞吐量：$\frac{F}{T}$ bps，瓶颈链路的传输速率 最大聚合带宽：设备所有接口的速率之和  集线器 (hub) 工作在物理层，多接口中继器</description>
+      <description>因特网 根据硬件和软件组件描述 communication link: 通信链路 packet switch: 分组交换机 packet: 分组，数据分段并加上头部 ISP: Internet Service Provider PoP(Point of Presence) 多宿(multi-home) 对等(peer): IXP(Internet Exchange Point) 根据基础设施向分布式应用程序提供的服务描述 分布式应用程序 套接字接口 协议：定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文发送和/或接受一条报文或其他时间所采取的动作 网络边缘 host/end system: 主机/端系统 客户端：client 服务器：server 数据中心: data center 接入网 家庭接入 DSL(Digital Subscriber Line, 数字用户线)：本地电话公司(CO)为 ISP DSLAM 高速下行 50kHz - 1MHz 中速上行 4kHz - 50kHz 普通的双向电话信道 0 - 4kHz 电缆(cable Internet access)：利用有线电视公司现有的有线电视基础设施 CMTS(Cable Modem Termination System) HFS FTTH(Fiber To The Home) AON(Active Optical Network) PON(Passive Optical Network) 卫星链路 拨号接入 企业接入 以太网 WiFi 广域无线接入 蜂窝网络 网络核心 分组交换 储存转发传输：交换机能够输出第一个比特前，必须接受整个分组 节点时延 节点处理时延 排队时延 流量强度：$\frac{La}{R}$ 丢包 传输时延 传播时延 端到端时延 = $N$ (处理时延+ 传输时延 + 传播时延 ) 吞吐量：$\frac{F}{T}$ bps，瓶颈链路的传输速率 最大聚合带宽：设备所有接口的速率之和 集线器 (hub) 工作在物理层，多接口中继器</description>
     </item>
     
     <item>
@@ -24,9 +24,15 @@
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/conputer-network/2-application-layer/</guid>
-      <description>可供使用的运输服务  可靠数据传输/容忍丢失 吞吐量 定时 安全性  HTTP HyperText Transfer Protocol
+      <description>可供使用的运输服务 可靠数据传输/容忍丢失 吞吐量 定时 安全性 HTTP HyperText Transfer Protocol
 端口 80/8080/3128/8081/9080, TCP
-   术语      无状态 每个事务都独立进行   用户代理进程 发起请求的客户进程   源服务器 期望得到资源的所在服务器（如Web服务器）   代理服务器（Web 缓存） 转发的代理：安全中介，不同版本的HTTP   网关 安全中介，非HTTP服务器   隧道    非持续连接 每个请求/响应单独发送   持续连接 单独 TCP 连接    请求报文 GET /somedir/page.html HTTP/1.1 Host: www.someschool.edu Connection: close User-agent: Mozilla/5.0 Accept-language: fr [Entity-Body] 请求行(get, head, post, delete, put)</description>
+术语 无状态 每个事务都独立进行 用户代理进程 发起请求的客户进程 源服务器 期望得到资源的所在服务器（如Web服务器） 代理服务器（Web 缓存） 转发的代理：安全中介，不同版本的HTTP 网关 安全中介，非HTTP服务器 隧道 非持续连接 每个请求/响应单独发送 持续连接 单独 TCP 连接 请求报文 GET /somedir/page.html HTTP/1.1 Host: www.someschool.edu Connection: close User-agent: Mozilla/5.0 Accept-language: fr [Entity-Body] 请求行(get, head, post, delete, put)
+通用首部
+请求首部
+实体首部
+实体主体 = Transfer-Encoding(Content-Encoding(Content-Type(Data)))
+条件 GET：更新 Web 缓存
+响应报文 HTTP/1.1 200 OK Connection: close Date: Tue, 24 Dec 2019 18:10:05 CST Server: Apache/2.</description>
     </item>
     
     <item>
@@ -35,9 +41,9 @@
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/conputer-network/3-transport-layer/</guid>
-      <description>提供服务  多路复用与多路分解：主机间的交付扩展到进程间交付 完整性检验 可靠数据传输 (TCP)  可靠：面向连接的LLC服务的局域网，面向连接的分组交换网络 不可靠：使用IP的网际互联，无确认LLC服务的局域网   流量控制 (TCP) 拥塞控制 (TCP)  多路复用与多路分解  套接字：源端口号，目的端口号，源IP，目的IP  不同套接字创建进程/线程   端口号 0-65535  0-1023 周知端口号   UDP 套接字：由(目的IP, 目的端口号)标识 TCP 套接字：由(源端口号，目的端口号，源IP，目的IP)标识  UDP RFC 768
- UDP 优势  防止 TCP 的拥塞控制，应用层 进行拥塞控制 无需连接建立 无连接状态 分组首部开销小   完整性检验：因特网检验和  基于端到端原则    UDP 报文段首部
-   Source Port Destination Port Length Checksum     16 bits 16 16 16    可靠数据传输  经完全可靠信道的可靠数据传输 rdt1.</description>
+      <description>提供服务 多路复用与多路分解：主机间的交付扩展到进程间交付 完整性检验 可靠数据传输 (TCP) 可靠：面向连接的LLC服务的局域网，面向连接的分组交换网络 不可靠：使用IP的网际互联，无确认LLC服务的局域网 流量控制 (TCP) 拥塞控制 (TCP) 多路复用与多路分解 套接字：源端口号，目的端口号，源IP，目的IP 不同套接字创建进程/线程 端口号 0-65535 0-1023 周知端口号 UDP 套接字：由(目的IP, 目的端口号)标识 TCP 套接字：由(源端口号，目的端口号，源IP，目的IP)标识 UDP RFC 768
+UDP 优势 防止 TCP 的拥塞控制，应用层 进行拥塞控制 无需连接建立 无连接状态 分组首部开销小 完整性检验：因特网检验和 基于端到端原则 UDP 报文段首部
+Source Port Destination Port Length Checksum 16 bits 16 16 16 可靠数据传输 经完全可靠信道的可靠数据传输 rdt1.0 经具有比特差错信道的可导数据传输 rdt2.0: stop-and-wait rdt2.1: stop-and-wait 01 经具有比特差错的丢包信道的可导数据传输 rdt3.0: stop-and-wait 01 ARQ 流水线可靠数据协议 Go-Back-N ARQ Selective Reject ARQ TCP 面向连接 三次握手 C-&amp;gt;S: SYN 1, seq i S-&amp;gt;C: SYN 1, seq j, ack i+1 C-&amp;gt;S: SYN 0, seq i+1, ack j+1 C-&amp;gt;S: Data, seq i+1, ack j+1 结束连接 C-&amp;gt;S: FIN S-&amp;gt;C: ACK S-&amp;gt;C: FIN C-&amp;gt;S: ACK 发送缓存：三次握手期间建立 最大报文段长度(MSS, Maximum Segment Size) e.</description>
     </item>
     
     <item>
@@ -46,8 +52,8 @@
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/conputer-network/4-network-layer/</guid>
-      <description>提供服务  分片与重组 路由服务 服务分类  确保交付  确保时延上限的确保交付 有序分组交付   确保最小带宽 安全性 尽力而为服务（无服务，数据报服务）   审计服务  IPv4 服务  原语：执行的功能  发送原语：请求数据单元的传输 交付原语：通知有数据到达   参数：传递数据和控制信息  源地址，目的地址 协议 服务类型指示，标识，不分片标识符，生存时间，数据长度，数据    IPv4 数据报格式 首部通常长 20 字节
-   版本 互联网首部长度 IHL DS ECN 总长度 标识 标志 Fragment Offset Time to Live 协议 首部检验和 源地址 目的地址 选择+填充 数据     4 bits 4 bits 6 2 16 16 3 13 8 8 16 32 32  $&amp;lt;65535*8$   4 以32比特为单位首部长度，最小值为5 区分服务功能 阻塞通知字段    数据报片在源数据报中的位置 TTL TCP=6,UDP=17 因特网检验和        IPv4 分片  片(fragment)：分片成的较小的数据报封装成的帧 重装工作在端系统中完成 属于同一数据报的片具有相同标识 最后一片标志比特为0，其余为1 以 64 bit 为单位  IPv4 地址 一个 IP 地址与一个接口相关联</description>
+      <description>提供服务 分片与重组 路由服务 服务分类 确保交付 确保时延上限的确保交付 有序分组交付 确保最小带宽 安全性 尽力而为服务（无服务，数据报服务） 审计服务 IPv4 服务 原语：执行的功能 发送原语：请求数据单元的传输 交付原语：通知有数据到达 参数：传递数据和控制信息 源地址，目的地址 协议 服务类型指示，标识，不分片标识符，生存时间，数据长度，数据 IPv4 数据报格式 首部通常长 20 字节
+版本 互联网首部长度 IHL DS ECN 总长度 标识 标志 Fragment Offset Time to Live 协议 首部检验和 源地址 目的地址 选择+填充 数据 4 bits 4 bits 6 2 16 16 3 13 8 8 16 32 32 $&amp;lt;65535*8$ 4 以32比特为单位首部长度，最小值为5 区分服务功能 阻塞通知字段 数据报片在源数据报中的位置 TTL TCP=6,UDP=17 因特网检验和 IPv4 分片 片(fragment)：分片成的较小的数据报封装成的帧 重装工作在端系统中完成 属于同一数据报的片具有相同标识 最后一片标志比特为0，其余为1 以 64 bit 为单位 IPv4 地址 一个 IP 地址与一个接口相关联</description>
     </item>
     
     <item>
@@ -56,9 +62,11 @@
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/conputer-network/5-data-link-layer/</guid>
-      <description>提供服务  成帧 链路接入  点对点链路  HDLC: Bit-Oriented Protocols PPP: Byte-Oriented Protocols SONET: Clock-Based Framing   广播链路  以太网 无线局域网     可靠交付 差错检验与纠正  差错检验  奇偶校验 因特网检验和：6比特 循环冗余检测  多路访问协议 广播链路的链路接入，期望特性
- 当仅有一个节点发送数据，$R$ bps 吞吐量 $M$ 个节点发送数据，$\frac{R}{M}$ bps 吞吐量 协议是分散的 协议是简单的  信道划分协议  TDM FDM CDMA  随机接入协议 ALOHA 发送$\rightarrow$等待确认$\rightarrow$超时$p$ 概率重传
- 信道最大利用率约 18%  $Np(1-p)^{2(N-1)}$   时隙 ALOHA：所有传输只允许在时隙的边界处开始，37%  $Np(1-p)^{N-1}$   无法利用局域网和分组无线网的一个重要性质：帧的传播时延小于传输时延  小的传播时延提供更好的网络状态反馈信息    CSMA (载波监听多点接入) Carrier Sensing Multiple Access</description>
+      <description>提供服务 成帧 链路接入 点对点链路 HDLC: Bit-Oriented Protocols PPP: Byte-Oriented Protocols SONET: Clock-Based Framing 广播链路 以太网 无线局域网 可靠交付 差错检验与纠正 差错检验 奇偶校验 因特网检验和：6比特 循环冗余检测 多路访问协议 广播链路的链路接入，期望特性
+当仅有一个节点发送数据，$R$ bps 吞吐量 $M$ 个节点发送数据，$\frac{R}{M}$ bps 吞吐量 协议是分散的 协议是简单的 信道划分协议 TDM FDM CDMA 随机接入协议 ALOHA 发送$\rightarrow$等待确认$\rightarrow$超时$p$ 概率重传
+信道最大利用率约 18% $Np(1-p)^{2(N-1)}$ 时隙 ALOHA：所有传输只允许在时隙的边界处开始，37% $Np(1-p)^{N-1}$ 无法利用局域网和分组无线网的一个重要性质：帧的传播时延小于传输时延 小的传播时延提供更好的网络状态反馈信息 CSMA (载波监听多点接入) Carrier Sensing Multiple Access
+监听信道$\rightarrow$发送$\rightarrow$等待确认$\rightarrow$超时重传
+CS(载波检测)：判断是否有AM/FM信号 LBT: Listen Before Talk 监听算法 非持续CSMA：忙则等待一段时间，该时间长度从一个概率分布中获得 $1$ 持续协议：忙则持续监听，空闲立即传输 $p$ 持续CSMA：空闲则有$p$概率直接传输，否则等待一段时间 缺点：两个被破坏帧的传输时间内信道无法使用 CSMA/CD (带冲突检测的载波监听多点接入) $1$ 持续 CSMA + 二进制指数退避 发现信道空闲等待 96 比特时间 干扰信号，帧间最小间隔 检测冲突的时间不超过端到端传播时延两倍 CSMA/CD 效率：当有大量的活跃结点，且每个节点有大量帧要发送时，帧在信道中无碰撞传输的那部分时间在长期运行时间中所占比例 $d_{\text{prop}}$: 信号能量在任意两个适配器间传播的最大时间 $d_{\text{trans}}$: 传输一个最大长度的以太帧的时间 效率 $=\frac{1}{1+5\frac{d_{\text{prop}}}{d_{\text{trans}}}}$ 二进制指数退避(BEB) 检测到冲突后，节点停止传输，发送干扰序列（JAM序列），之后进行backoff，完成之后可以尝试再次重传</description>
     </item>
     
     <item>
@@ -67,8 +75,11 @@
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/conputer-network/6-data-link-layer-wireless/</guid>
-      <description>无线网络分类  单跳有基础设施  802.11 4G   单跳无基础设施  蓝牙 自组织模式 802.11   多跳有基础设施  无线网状网络   多跳无基础设施  移动自组织网络(MANET)    IEEE 802.11 无线局域网,WiFi
-   术语      控制模块(CM) 含有网桥/路由器功能，无线局域网接口   用户模块(UM)    接入点(AP) 任何具有站点功能并能向建立连接的站点提供经过无线媒体及接入分发系统的实体   基本服务集(BSS) 单个协调功能所控制的站点集合   协调功能(coordination function) 判断在BSS内运行的节点何时允许传输，何时能够接收 PDU 的逻辑功能   分发系统(DS) 连接多个BSS以及综合局域网，形成ESS   扩展服务集(ESS)    MPDU MAC协议数据单元   MSDU MAC服务数据单元   站点(STA) 任何包含了 IEEE 802.</description>
+      <description>无线网络分类 单跳有基础设施 802.11 4G 单跳无基础设施 蓝牙 自组织模式 802.11 多跳有基础设施 无线网状网络 多跳无基础设施 移动自组织网络(MANET) IEEE 802.11 无线局域网,WiFi
+术语 控制模块(CM) 含有网桥/路由器功能，无线局域网接口 用户模块(UM) 接入点(AP) 任何具有站点功能并能向建立连接的站点提供经过无线媒体及接入分发系统的实体 基本服务集(BSS) 单个协调功能所控制的站点集合 协调功能(coordination function) 判断在BSS内运行的节点何时允许传输，何时能够接收 PDU 的逻辑功能 分发系统(DS) 连接多个BSS以及综合局域网，形成ESS 扩展服务集(ESS) MPDU MAC协议数据单元 MSDU MAC服务数据单元 站点(STA) 任何包含了 IEEE 802.11 MAC层和物理层的设备 WiFi联盟 Wireless Fidelity 提供服务
+功能 服务 分发报文 分发，综合，MSDU交付 关联 关联，重建关联，取消关联 接入与保密 鉴别，取消鉴别，保密 安装 AP 时，分配服务集表示符(SSID)和信道号(共 11 个)，信道由4个或以上隔开时为无重叠
+AP 周期性发送信标帧(SSID+MAC)
+MAC层 分布式协调功能(DCF) CSMA/CA 链路层确认：等待 SIFS 后返回确认帧 隐藏终端问题 两帧交换：(源)数据帧，(终)ACK 四帧交换（解决隐藏终端问题）：(源)RTS，(终)CTS，(源)数据帧，(终)ACK threshold 控制模式转换：采用小的数据包碰撞，来避免大的数据包碰撞（如 2347Bytes） 点协调功能(PCF)：可选子层，基本无产品 中央轮询主控器（点协调器）进行轮询，与 DCF 兼容工作 帧格式 帧控制 持续时间 Address1 Address2 Address3 序号控制 Address4 QoS 控制 高吞吐控制 帧主体 FCS $2*8$ $1*8$ $6*8$ $6*8$ $6*8$ $2*8$ $6*8$ 帧控制：Protocal(2)+Type(2)+Subtype(4)+Flag(8)</description>
     </item>
     
     <item>
@@ -77,7 +88,7 @@
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/conputer-network/7-security/</guid>
-      <description>安全通信要求  CIA triad  Confidentiality  Data confidentiality Privacy   Integrity  Data Integrity System integrity   Availability   Authenticity Accountability operational security  Threats    Threat consequence Thread Action     Unauthorized Disclosure Exposure,Interception,inference,Intrusion   Deception Masquerade,Falsification,repudiation   Disrupction Incapacitation,Corruption,Obstruction   Usurpation Misappropriation,Misuse        Availability Confidentiality Integrity     Hardware denying service     Software Programs deleted unauthorized copy of software working program modified   Data Files deleted unauthorized read files modified, new files fabricated   Communication Lines Messages destroyed Messages read Messages modified    Intruders  Masquerader: An individual who is not authorized to use the computer and who penetrates a system&amp;rsquo;s access controls to exploit legitimate user&amp;rsquo;s account Misfeasor: A legitimate user access authorized data or programs Clandestine user: An individual seizes supervisory control of the system  Malicious software(malware)    Name Description     Virus Malware that, when executed, tries to replicate itself into other executable code; when it succeeds the code is said to be infected.</description>
+      <description>安全通信要求 CIA triad Confidentiality Data confidentiality Privacy Integrity Data Integrity System integrity Availability Authenticity Accountability operational security Threats Threat consequence Thread Action Unauthorized Disclosure Exposure,Interception,inference,Intrusion Deception Masquerade,Falsification,repudiation Disrupction Incapacitation,Corruption,Obstruction Usurpation Misappropriation,Misuse Availability Confidentiality Integrity Hardware denying service Software Programs deleted unauthorized copy of software working program modified Data Files deleted unauthorized read files modified, new files fabricated Communication Lines Messages destroyed Messages read Messages modified Intruders Masquerader: An individual who is not authorized to use the computer and who penetrates a system&amp;rsquo;s access controls to exploit legitimate user&amp;rsquo;s account Misfeasor: A legitimate user access authorized data or programs Clandestine user: An individual seizes supervisory control of the system Malicious software(malware) Name Description Virus Malware that, when executed, tries to replicate itself into other executable code; when it succeeds the code is said to be infected.</description>
     </item>
     
     <item>
@@ -86,7 +97,7 @@
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/conputer-network/8-multimedia/</guid>
-      <description>流式存储视频  UDP 流 HTTP 流  预取视频 客户端应用缓存和TCP缓存   DASH  IP 语音  消除延时抖动：播放时延 从丢包恢复  前向纠错 交织 差错掩盖    通信量管理  丢弃的选择  公平性 服务质量 预留   通信量整形(traffic shaping)  通过减轻分组的堆集，使流量平滑 关注离开交换机的通信量   通信量管制(traffic policing)  判断传入分组是否符合服务质量规约 关注进入交换机的通信量    权标桶  权标补充速率 $R$: 可连续支持的数据率 桶大小 $B$：短时间内允许数据率超过 $R$ 的量 任意时间段 $T$ 内，发送的数量不能超过 $RT+B$ 权标生成器以 $R$ bps 向桶中补充权标，到达的分组消耗一定数量的权标进行传输  漏桶  计数器 $X$: 泄露速率为 1 的漏桶 每当有一个分组到达，计数器上升 $I$ 使计数器超过最大值的分组违规  多媒体网络  尽可能服务 区分服务 每连接服务质量(QoS)保证  Y.</description>
+      <description>流式存储视频 UDP 流 HTTP 流 预取视频 客户端应用缓存和TCP缓存 DASH IP 语音 消除延时抖动：播放时延 从丢包恢复 前向纠错 交织 差错掩盖 通信量管理 丢弃的选择 公平性 服务质量 预留 通信量整形(traffic shaping) 通过减轻分组的堆集，使流量平滑 关注离开交换机的通信量 通信量管制(traffic policing) 判断传入分组是否符合服务质量规约 关注进入交换机的通信量 权标桶 权标补充速率 $R$: 可连续支持的数据率 桶大小 $B$：短时间内允许数据率超过 $R$ 的量 任意时间段 $T$ 内，发送的数量不能超过 $RT+B$ 权标生成器以 $R$ bps 向桶中补充权标，到达的分组消耗一定数量的权标进行传输 漏桶 计数器 $X$: 泄露速率为 1 的漏桶 每当有一个分组到达，计数器上升 $I$ 使计数器超过最大值的分组违规 多媒体网络 尽可能服务 区分服务 每连接服务质量(QoS)保证 Y.1291 框架 数据平面 队列管理算法：适当的时候丢弃分组来管理分组队列 排队和调度算法 拥塞避免 分组标记 通信量分类 通信量管制 通信量整形 控制平面 准入控制 QoS路由选择 资源预留 管理平面 服务级别协约 通信量度量和记录 通信量恢复 策略 服务级别协约 (SLA) 网络提供者与客户之间的一份合约，规定向客户提供的具体服务内容</description>
     </item>
     
     <item>
@@ -95,8 +106,9 @@
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/conputer-network/9-sdn/</guid>
-      <description>通用转发  基于目的地转发的特征：匹配 + 动作 分组交换机（同时负责第三和第二层）  匹配动作表：远程控制器计算，安装和更新（位于控制平面） 基于匹配动作表更新：数据平面    SDN (Software Defined Network) 利用定义成熟的 API 将网络设备的数据与控制功能分离，集中管理，可编程化 可编程交换机: Google B4 20%-&amp;gt;80%
- 需求  服务器虚拟化应用越来越广泛 流量要求灵活 企业员工越来越多使用移动设备访问，应对资源、QoS和安全性要求       SDN 体系结构 功能     应用平面 云端管理，业务应用，SDN应用   控制平面 流量工程，路由选择，移动性   数据平面 路由器，分组交换机等网络设备     SDN 域  SDNi 协议   Networking Operating System  OC-Y SONiC (Software for Open Networking in the Cloud) (Microsoft)    OpenFlow (ONF) 在MAC层仅支持以太网，在上层支持各种协议和网络服务</description>
+      <description>通用转发 基于目的地转发的特征：匹配 + 动作 分组交换机（同时负责第三和第二层） 匹配动作表：远程控制器计算，安装和更新（位于控制平面） 基于匹配动作表更新：数据平面 SDN (Software Defined Network) 利用定义成熟的 API 将网络设备的数据与控制功能分离，集中管理，可编程化 可编程交换机: Google B4 20%-&amp;gt;80%
+需求 服务器虚拟化应用越来越广泛 流量要求灵活 企业员工越来越多使用移动设备访问，应对资源、QoS和安全性要求 SDN 体系结构 功能 应用平面 云端管理，业务应用，SDN应用 控制平面 流量工程，路由选择，移动性 数据平面 路由器，分组交换机等网络设备 SDN 域 SDNi 协议 Networking Operating System OC-Y SONiC (Software for Open Networking in the Cloud) (Microsoft) OpenFlow (ONF) 在MAC层仅支持以太网，在上层支持各种协议和网络服务
+OpenFlow 交换机 动作：系列动作构成动作集 Output:转发分组到指定端口 Set-Queue:设置队列ID Group:使用指定的组来处理分组 Push-Tag/Pop-Tag: 为VLAN或MPLS 分组推进货弹出一个标签 Set-Field: 通过字段的类型来标识各种不同的Set-Field动作 Change-TTL: 修改分组中的TTL值 流表: 传入的分组与某个特定的流相匹配，并指明分组应当执行什么功能 流表项 匹配字段 传入端口：端口标识符 以太网源和目的地址 IP协议号，IP源地址和目的地址 TCP源端口和目的端口 UDP源端口和目的端口 优先级 计数器 指令 引导分组通过流水线：Goto-Table指令引导分组到达下一个表 对分组执行动作：分组与表项匹配时，可能会对该分组进行某些操作 更新动作集 更新元数据 超时 Cookie table-miss 流表项 流水线：多个流表组成 组表：流表可能将流引导到组表 计量表：在流的基础上触发各种性能相关动作 OpenFlow 协议 发生在 OpenFlow 控制器和 OpenFlow 交换机间的报文交换</description>
     </item>
     
     <item>
@@ -106,7 +118,7 @@
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/conputer-network/review/</guid>
       <description>访问 Web 页面的过程 电缆 -&amp;gt; 以太网交换机 -&amp;gt; 路由器(提供 DHCP, NAT) -&amp;gt; ISP(提供 DNS)
- 获取IP: [DHCP|UDP|IP(255.255.255.255)|以太网(FF:FF:FF:FF:FF:FF)] -&amp;gt; 交换机 -&amp;gt; 路由器 分配 CIDR块 68.85.2.0/24（同时获得默认网关 IP 地址） HTTP -&amp;gt; DNS -&amp;gt; ARP: IP=网关地址 HTTP -&amp;gt; DNS: 网关 -&amp;gt; ISP DNS 查询 HTTP: [HTTP|TCP|IP(DNS结果)|以太网(网关MAC地址)]  知识提纲  接入网络  网络边缘 接入方法 ISP 组织方式   运输层：提供逻辑链路  多路复用与多路分解 完整性检验 可靠数据传输 拥塞控制   网络层  尽力而为服务 分片与重组 路由服务   链路层  成帧 链路接入 差错检验与纠正    算法  TCP 拥塞传输算法 DV 路由选择 LS 路由选择 CSMA/CD 随机接入 CSMA/CA 随机接入  </description>
+获取IP: [DHCP|UDP|IP(255.255.255.255)|以太网(FF:FF:FF:FF:FF:FF)] -&amp;gt; 交换机 -&amp;gt; 路由器 分配 CIDR块 68.85.2.0/24（同时获得默认网关 IP 地址） HTTP -&amp;gt; DNS -&amp;gt; ARP: IP=网关地址 HTTP -&amp;gt; DNS: 网关 -&amp;gt; ISP DNS 查询 HTTP: [HTTP|TCP|IP(DNS结果)|以太网(网关MAC地址)] 知识提纲 接入网络 网络边缘 接入方法 ISP 组织方式 运输层：提供逻辑链路 多路复用与多路分解 完整性检验 可靠数据传输 拥塞控制 网络层 尽力而为服务 分片与重组 路由服务 链路层 成帧 链路接入 差错检验与纠正 算法 TCP 拥塞传输算法 DV 路由选择 LS 路由选择 CSMA/CD 随机接入 CSMA/CA 随机接入 </description>
     </item>
     
   </channel>

@@ -148,20 +148,20 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">max_heapify</span>(A, i):
-    <span style="color:#75715e"># l, r are already max-heaps</span>
-    l <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> i
-    r <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-    <span style="color:#66d9ef">if</span> l <span style="color:#f92672">&lt;=</span> A<span style="color:#f92672">.</span>size <span style="color:#f92672">and</span> A[l] <span style="color:#f92672">&gt;</span> A[i]:
-        largest <span style="color:#f92672">=</span> l
-    <span style="color:#66d9ef">else</span>:
-        largest <span style="color:#f92672">=</span> i
-    <span style="color:#66d9ef">if</span> r <span style="color:#f92672">&lt;=</span> A<span style="color:#f92672">.</span>size <span style="color:#f92672">and</span> A[r] <span style="color:#f92672">&gt;</span> A[largest]:
-        largest <span style="color:#f92672">=</span> r
-    <span style="color:#66d9ef">if</span> largest <span style="color:#f92672">!=</span> i:
-        swap(A[i], A[largest])
-        mex_heapify(A, largest)
-</code></pre></div><h2 id="哈希表">哈希表</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">max_heapify</span>(A, i):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># l, r are already max-heaps</span>
+</span></span><span style="display:flex;"><span>    l <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> i
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> l <span style="color:#f92672">&lt;=</span> A<span style="color:#f92672">.</span>size <span style="color:#f92672">and</span> A[l] <span style="color:#f92672">&gt;</span> A[i]:
+</span></span><span style="display:flex;"><span>        largest <span style="color:#f92672">=</span> l
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        largest <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> r <span style="color:#f92672">&lt;=</span> A<span style="color:#f92672">.</span>size <span style="color:#f92672">and</span> A[r] <span style="color:#f92672">&gt;</span> A[largest]:
+</span></span><span style="display:flex;"><span>        largest <span style="color:#f92672">=</span> r
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> largest <span style="color:#f92672">!=</span> i:
+</span></span><span style="display:flex;"><span>        swap(A[i], A[largest])
+</span></span><span style="display:flex;"><span>        mex_heapify(A, largest)
+</span></span></code></pre></div><h2 id="哈希表">哈希表</h2>
 <ul>
 <li>m slots store n elements</li>
 <li>hash function: simple uniform hashing
@@ -182,7 +182,7 @@
 <li>open addressing
 <ul>
 <li>linear probing</li>
-<li>quadratic probing: $h(k,i)=(h'(k)+c_1i+c_2i^2)\bmod m$</li>
+<li>quadratic probing: $h(k,i)=(h&rsquo;(k)+c_1i+c_2i^2)\bmod m$</li>
 <li>double hashing: $h(k,i)=(h_1(k)+ih_2(k))\bmod m$</li>
 </ul>
 </li>
@@ -195,36 +195,36 @@
 <li>property: left &lt; root &lt; right</li>
 <li>search, min/max, succ/pre: $O(h)$</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bst_insert</span>(T, z){
-  y <span style="color:#f92672">=</span> NULL
-  x <span style="color:#f92672">=</span> T.root
-  <span style="color:#66d9ef">while</span> (x){
-    y <span style="color:#f92672">=</span> x;
-    <span style="color:#66d9ef">if</span> z.key <span style="color:#f92672">&lt;</span> x.key
-      x <span style="color:#f92672">=</span> x.left
-    <span style="color:#66d9ef">else</span> x <span style="color:#f92672">=</span> x.right
-  }
-  z.p <span style="color:#f92672">=</span> y;
-  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>y) T.root <span style="color:#f92672">=</span> z;
-  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (z.key <span style="color:#f92672">&lt;</span> y.key) T.left <span style="color:#f92672">=</span> z;
-  <span style="color:#66d9ef">else</span> y.right <span style="color:#f92672">=</span> z;
-}
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bst_delete</span>(T, z){
-  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>z.left) transplant(T, z, z.right);
-  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>z.right) transplant(T, z, z.left);
-  <span style="color:#66d9ef">else</span> {
-    y <span style="color:#f92672">=</span> bst_min(z.right);
-    <span style="color:#66d9ef">if</span> (y.parent <span style="color:#f92672">!=</span> z){
-      transplant(T, y, y.right);
-      y.right <span style="color:#f92672">=</span> z.right;
-      y.right.parent <span style="color:#f92672">=</span> y;
-    }
-    transplant(T, z, y);
-    y.left <span style="color:#f92672">=</span> z.left;
-    y.left.parent <span style="color:#f92672">=</span> y;
-  }
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bst_insert</span>(T, z){
+</span></span><span style="display:flex;"><span>  y <span style="color:#f92672">=</span> NULL
+</span></span><span style="display:flex;"><span>  x <span style="color:#f92672">=</span> T.root
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (x){
+</span></span><span style="display:flex;"><span>    y <span style="color:#f92672">=</span> x;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> z.key <span style="color:#f92672">&lt;</span> x.key
+</span></span><span style="display:flex;"><span>      x <span style="color:#f92672">=</span> x.left
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> x <span style="color:#f92672">=</span> x.right
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  z.p <span style="color:#f92672">=</span> y;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>y) T.root <span style="color:#f92672">=</span> z;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (z.key <span style="color:#f92672">&lt;</span> y.key) T.left <span style="color:#f92672">=</span> z;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> y.right <span style="color:#f92672">=</span> z;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bst_delete</span>(T, z){
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>z.left) transplant(T, z, z.right);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>z.right) transplant(T, z, z.left);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    y <span style="color:#f92672">=</span> bst_min(z.right);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (y.parent <span style="color:#f92672">!=</span> z){
+</span></span><span style="display:flex;"><span>      transplant(T, y, y.right);
+</span></span><span style="display:flex;"><span>      y.right <span style="color:#f92672">=</span> z.right;
+</span></span><span style="display:flex;"><span>      y.right.parent <span style="color:#f92672">=</span> y;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    transplant(T, z, y);
+</span></span><span style="display:flex;"><span>    y.left <span style="color:#f92672">=</span> z.left;
+</span></span><span style="display:flex;"><span>    y.left.parent <span style="color:#f92672">=</span> y;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>randomly built BST has expected $h=O(\lg n)$</li>
 </ul>
 <h2 id="红黑树">红黑树</h2>
@@ -241,21 +241,21 @@
 </li>
 <li>rotation</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">left_rotate</span>(T, x){
-  y <span style="color:#f92672">=</span> x.right;
-  x.right <span style="color:#f92672">=</span> y.left;
-  <span style="color:#66d9ef">if</span> y.left <span style="color:#f92672">!=</span> T.nil
-    y.left.p <span style="color:#f92672">=</span> x
-  y.p <span style="color:#f92672">=</span> x.p
-  <span style="color:#66d9ef">if</span> x.p <span style="color:#f92672">==</span> T.nil
-    T.root <span style="color:#f92672">=</span> y
-  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> x <span style="color:#f92672">==</span> x.p.left
-    x.p.left <span style="color:#f92672">=</span> y
-  <span style="color:#66d9ef">else</span> x.p.right <span style="color:#f92672">=</span> y
-  y.left <span style="color:#f92672">=</span> x
-  x.p <span style="color:#f92672">=</span> y
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">left_rotate</span>(T, x){
+</span></span><span style="display:flex;"><span>  y <span style="color:#f92672">=</span> x.right;
+</span></span><span style="display:flex;"><span>  x.right <span style="color:#f92672">=</span> y.left;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> y.left <span style="color:#f92672">!=</span> T.nil
+</span></span><span style="display:flex;"><span>    y.left.p <span style="color:#f92672">=</span> x
+</span></span><span style="display:flex;"><span>  y.p <span style="color:#f92672">=</span> x.p
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> x.p <span style="color:#f92672">==</span> T.nil
+</span></span><span style="display:flex;"><span>    T.root <span style="color:#f92672">=</span> y
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> x <span style="color:#f92672">==</span> x.p.left
+</span></span><span style="display:flex;"><span>    x.p.left <span style="color:#f92672">=</span> y
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> x.p.right <span style="color:#f92672">=</span> y
+</span></span><span style="display:flex;"><span>  y.left <span style="color:#f92672">=</span> x
+</span></span><span style="display:flex;"><span>  x.p <span style="color:#f92672">=</span> y
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>Insertion: insert red + fixup(以下父亲为祖父左结点)
 <ul>
 <li>case1: uncle is red</li>

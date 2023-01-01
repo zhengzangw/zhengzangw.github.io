@@ -633,31 +633,31 @@
 <ul>
 <li>表的创建删除</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> tablename(
-    colname datatype [<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">属性级约束</span><span style="color:#f92672">&gt;</span>]
-    <span style="color:#960050;background-color:#1e0010">{</span>, colname datatype [<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">属性级约束</span><span style="color:#f92672">&gt;</span>]<span style="color:#960050;background-color:#1e0010">}</span>
-    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表级约束</span><span style="color:#f92672">&gt;</span>
-)
-<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">table</span> name<span style="color:#f92672">&gt;</span>;
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> tablename(
+</span></span><span style="display:flex;"><span>    colname datatype [<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">属性级约束</span><span style="color:#f92672">&gt;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">{</span>, colname datatype [<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">属性级约束</span><span style="color:#f92672">&gt;</span>]<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表级约束</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">table</span> name<span style="color:#f92672">&gt;</span>;
+</span></span></code></pre></div><ul>
 <li>属性的增加删除</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">table</span> name<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">ADD</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">column</span> name<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">type</span><span style="color:#f92672">&gt;</span>;
-<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">table</span> name<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">DROP</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">column</span> name<span style="color:#f92672">&gt;</span>;
-</code></pre></div><h3 id="数据操纵功能">数据操纵功能</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">table</span> name<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">ADD</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">column</span> name<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">type</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">table</span> name<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">DROP</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">column</span> name<span style="color:#f92672">&gt;</span>;
+</span></span></code></pre></div><h3 id="数据操纵功能">数据操纵功能</h3>
 <ul>
 <li>查询 $\pi_{A_1,\cdots,A_m}(\sigma_F(R_1\times\cdots\times R_n))$</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> A1,A2,...,Am
-<span style="color:#66d9ef">FROM</span> R1,R2,...,Rn
-<span style="color:#66d9ef">WHERE</span> F
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> A1,A2,...,Am
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> R1,R2,...,Rn
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> F
+</span></span></code></pre></div><ul>
 <li>查询 $\pi_{A_1,A_2,\cdots,A_m}(\sigma_F(R\Join S))$</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> A1,A2,...,Am
-<span style="color:#66d9ef">FROM</span> R1,R2,...,Rn
-<span style="color:#66d9ef">WHERE</span> F <span style="color:#66d9ef">and</span> R.B1<span style="color:#f92672">=</span>S.B1 <span style="color:#66d9ef">and</span> ... <span style="color:#66d9ef">and</span> R.Bk<span style="color:#f92672">=</span>S.Bk
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> A1,A2,...,Am
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> R1,R2,...,Rn
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> F <span style="color:#66d9ef">and</span> R.B1<span style="color:#f92672">=</span>S.B1 <span style="color:#66d9ef">and</span> ... <span style="color:#66d9ef">and</span> R.Bk<span style="color:#f92672">=</span>S.Bk
+</span></span></code></pre></div><ul>
 <li>映像语句
 <ul>
 <li>目标子句: <code>SELECT *| colname {, colname ...}</code>
@@ -762,31 +762,31 @@
 <ul>
 <li>元组删除语句</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
-[<span style="color:#66d9ef">WHERE</span> search_condition];
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#66d9ef">WHERE</span> search_condition];
+</span></span></code></pre></div><ul>
 <li>元组插入语句</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> tabname [(colname <span style="color:#960050;background-color:#1e0010">{</span>, colname ...<span style="color:#960050;background-color:#1e0010">}</span>)]
-<span style="color:#66d9ef">VALUES</span> (expr <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span> <span style="color:#960050;background-color:#1e0010">{</span>,expr<span style="color:#f92672">|</span><span style="color:#66d9ef">NULL</span> ...<span style="color:#960050;background-color:#1e0010">}</span>)
-<span style="color:#f92672">|</span> subquery;
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> tabname [(colname <span style="color:#960050;background-color:#1e0010">{</span>, colname ...<span style="color:#960050;background-color:#1e0010">}</span>)]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">VALUES</span> (expr <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span> <span style="color:#960050;background-color:#1e0010">{</span>,expr<span style="color:#f92672">|</span><span style="color:#66d9ef">NULL</span> ...<span style="color:#960050;background-color:#1e0010">}</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> subquery;
+</span></span></code></pre></div><ul>
 <li>元组修改语句</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">table_name</span>
-<span style="color:#66d9ef">SET</span> colname<span style="color:#f92672">=</span>expr<span style="color:#f92672">|</span><span style="color:#66d9ef">NULL</span><span style="color:#f92672">|</span>subquery, ...
-[<span style="color:#66d9ef">WHERE</span> search_condition];
-</code></pre></div><h3 id="视图导出表虚表">视图（导出表，虚表）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">table_name</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> colname<span style="color:#f92672">=</span>expr<span style="color:#f92672">|</span><span style="color:#66d9ef">NULL</span><span style="color:#f92672">|</span>subquery, ...
+</span></span><span style="display:flex;"><span>[<span style="color:#66d9ef">WHERE</span> search_condition];
+</span></span></code></pre></div><h3 id="视图导出表虚表">视图（导出表，虚表）</h3>
 <ul>
 <li>由若干张表经映像语句构筑而成的表</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">VIEW</span> <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span> [(<span style="color:#f92672">&lt;</span>col_name<span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">{</span>, <span style="color:#f92672">&lt;</span>col_name<span style="color:#f92672">&gt;</span> ...<span style="color:#960050;background-color:#1e0010">}</span>)] <span style="color:#66d9ef">AS</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">statement</span><span style="color:#f92672">&gt;</span> [<span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">CHECK</span> <span style="color:#66d9ef">OPTION</span>]
-<span style="color:#75715e">--cannot use ORDER BY
-</span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">VIEW</span> <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span> [(<span style="color:#f92672">&lt;</span>col_name<span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">{</span>, <span style="color:#f92672">&lt;</span>col_name<span style="color:#f92672">&gt;</span> ...<span style="color:#960050;background-color:#1e0010">}</span>)] <span style="color:#66d9ef">AS</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">statement</span><span style="color:#f92672">&gt;</span> [<span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">CHECK</span> <span style="color:#66d9ef">OPTION</span>]
+</span></span><span style="display:flex;"><span><span style="color:#75715e">--cannot use ORDER BY
+</span></span></span></code></pre></div><ul>
 <li>视图的删除：连带删除定义在该视图上的其它视图</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">VIEW</span> <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">VIEW</span> <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><ul>
 <li>可更新视图：视图的每一行对应基表唯一一行，每一列对应基表的唯一一列</li>
 <li>优点
 <ul>

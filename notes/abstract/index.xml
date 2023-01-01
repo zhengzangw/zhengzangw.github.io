@@ -16,7 +16,7 @@
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/abstract/info/</guid>
       <description>Problem with Markdown Rendering There is a conflict between MathJax and Markdown Render Engine. My notes will follow markdown grammar and as a result, some formula may not be correctly rendered.
-Intersection of course content  Problem Solving/Linear Programming -&amp;gt; Advanced Algorithm/Linear Programming Problem Solving/Group Theory -&amp;gt; Modern Algebra/Basics of Group Theory Advanced Algorithm/Probabilistic Inequality -&amp;gt; Probabiliity and Mathematical Statistics/Probabilistic Inequality  Category  M: Math P: Physics A: Algorithm S: System +: Application R: Research Theory E: Language L: Computer Language D: Draft  </description>
+Intersection of course content Problem Solving/Linear Programming -&amp;gt; Advanced Algorithm/Linear Programming Problem Solving/Group Theory -&amp;gt; Modern Algebra/Basics of Group Theory Advanced Algorithm/Probabilistic Inequality -&amp;gt; Probabiliity and Mathematical Statistics/Probabilistic Inequality Category M: Math P: Physics A: Algorithm S: System +: Application R: Research Theory E: Language L: Computer Language D: Draft </description>
     </item>
     
   </channel>

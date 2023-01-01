@@ -24,7 +24,7 @@
       <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/3d-reconstruction/</guid>
-      <description>介绍  主动式/被动式 主要方法：立体视觉，深度图片 三维数据获取方法  软件建模（精细） 激光设备扫描 利用视频与图像进行重建   应用场景  高精度的三维重建 大规模的三维重建 非刚体的 structure from motion 动态三维重建    图像特征提取  霍夫变换 D2-Net SIFT  相机模型 坐标转换  坐标系  世界 world: $O_w-X_wY_wZ_w$ 相机 camera: 原点位于镜头光心，x,y 与相面两边平行，z 为镜头光轴 图像 $XOY$: 原点为主点（光轴相面交点），单位为毫米 像素 $uov$: 反映 CCD/CMOS 芯片中像素排列情况 （光-&amp;gt;电），单位为像素（整数）   坐标系转换  world to camera: $[X_c, Y_c, Z_c]^T=R[X_w,Y_w,Z_w]^T+T$  $[x_c, y_c, z_c, 1]^T=[R, t; 0, 1][x_w,y_w,z_w,1]^T$ $R,t$ 为相机外参 Camera Extrinsics 旋转矩阵：$R(X_A,\psi),R(Y_A,\theta),R(Z_A,\phi)$  左乘：相对于固定坐标系变换 右乘：相对于自身（活跃）坐标系   欧拉角：$zXZ-(\alpha,\beta,\gamma)$ （万向节死锁） 轴角：$([x, y, z]^T, \theta)$ 四元数   图像转换为像素：$[u,v,1]^T=[\frac{1}{dX}, 0, u_0; 0,\frac{1}{dY},v_0; 0,0,1][X, Y, 1]^T$  $[\frac{1}{dX}, 0, u_0; 0,\frac{1}{dY},v_0; 0,0,1]$ $dX,dY$ 像素在 $X,Y$ 轴上的物理尺度 ($u=\frac{X}{dX}+u_0$) $u_0,v_0$ 为主点在图像坐标中的坐标   camera to image (针孔成像原理)：$s[X, Y, 1]^T=[f, 0, 0, 0; 0, f, 0, 0; 0, 0, 1, 0][x, y, z, 1]^T$  $s$ 为比例因子 $s=z$ $f$ 为有效焦距   内参  $K=[f_x, 0, u_0; 0, f_y, v_0; 0, 0, 1]$ $P=[f_x, 0, u_0, 0; 0, f_y, v_0, 0; 0, 0, 1, 0]$     畸变 (distortion)：对直线投影的偏移（不能保持直线）  中心正常，越边缘越严重 径向畸变（主要）：透镜形状  桶形、枕形、胡子   切向畸变：透镜与图像不平行  薄透镜、离心   其它类型（不显著） 铅锤模型 (Plumb Bob model): 径向复合+薄透镜  畸变参数：$D=(k_1,k_2,p_1,p_2,k_3)$      相机标定  传统方法：一定的摄像机模型下，基于特定实验。经常调整摄像机的需求，设置已知参照物  张正友相机标定法、考虑畸变补偿的两步法等   自标定法：不依赖参照物，利用参数间约束关系  基于 Krupa 方程、分层逐步标定法等    张氏标定法  标定物：棋盘 单应性变换：世界坐标系到像素坐标系的位置映射关系  应用：图像矫正（四个点）、视角变换（普通到 BEV）、图像拼接（不同角度图像转换到同样的视角）、增强现实   图像对应点 $(x&#39;,y&#39;,1),(x,y,1)$, 单应矩阵 $H$（内参与外参的混合）  自由度：8 一个点确定两个方程   张氏标定法  打印棋盘格图纸，贴在物体表面（坐标系 $Z_w=0$） 拍摄一组不同方向的棋盘格图片 对每张拍摄的棋盘图片，检测图片的特征点（角点）   优化  LM 算法    三维重建 双目系统 双目立体视觉重建</description>
+      <description>介绍 主动式/被动式 主要方法：立体视觉，深度图片 三维数据获取方法 软件建模（精细） 激光设备扫描 利用视频与图像进行重建 应用场景 高精度的三维重建 大规模的三维重建 非刚体的 structure from motion 动态三维重建 图像特征提取 霍夫变换 D2-Net SIFT 相机模型 坐标转换 坐标系 世界 world: $O_w-X_wY_wZ_w$ 相机 camera: 原点位于镜头光心，x,y 与相面两边平行，z 为镜头光轴 图像 $XOY$: 原点为主点（光轴相面交点），单位为毫米 像素 $uov$: 反映 CCD/CMOS 芯片中像素排列情况 （光-&amp;gt;电），单位为像素（整数） 坐标系转换 world to camera: $[X_c, Y_c, Z_c]^T=R[X_w,Y_w,Z_w]^T+T$ $[x_c, y_c, z_c, 1]^T=[R, t; 0, 1][x_w,y_w,z_w,1]^T$ $R,t$ 为相机外参 Camera Extrinsics 旋转矩阵：$R(X_A,\psi),R(Y_A,\theta),R(Z_A,\phi)$ 左乘：相对于固定坐标系变换 右乘：相对于自身（活跃）坐标系 欧拉角：$zXZ-(\alpha,\beta,\gamma)$ （万向节死锁） 轴角：$([x, y, z]^T, \theta)$ 四元数 图像转换为像素：$[u,v,1]^T=[\frac{1}{dX}, 0, u_0; 0,\frac{1}{dY},v_0; 0,0,1][X, Y, 1]^T$ $[\frac{1}{dX}, 0, u_0; 0,\frac{1}{dY},v_0; 0,0,1]$ $dX,dY$ 像素在 $X,Y$ 轴上的物理尺度 ($u=\frac{X}{dX}+u_0$) $u_0,v_0$ 为主点在图像坐标中的坐标 camera to image (针孔成像原理)：$s[X, Y, 1]^T=[f, 0, 0, 0; 0, f, 0, 0; 0, 0, 1, 0][x, y, z, 1]^T$ $s$ 为比例因子 $s=z$ $f$ 为有效焦距 内参 $K=[f_x, 0, u_0; 0, f_y, v_0; 0, 0, 1]$ $P=[f_x, 0, u_0, 0; 0, f_y, v_0, 0; 0, 0, 1, 0]$ 畸变 (distortion)：对直线投影的偏移（不能保持直线） 中心正常，越边缘越严重 径向畸变（主要）：透镜形状 桶形、枕形、胡子 切向畸变：透镜与图像不平行 薄透镜、离心 其它类型（不显著） 铅锤模型 (Plumb Bob model): 径向复合+薄透镜 畸变参数：$D=(k_1,k_2,p_1,p_2,k_3)$ 相机标定 传统方法：一定的摄像机模型下，基于特定实验。经常调整摄像机的需求，设置已知参照物 张正友相机标定法、考虑畸变补偿的两步法等 自标定法：不依赖参照物，利用参数间约束关系 基于 Krupa 方程、分层逐步标定法等 张氏标定法 标定物：棋盘 单应性变换：世界坐标系到像素坐标系的位置映射关系 应用：图像矫正（四个点）、视角变换（普通到 BEV）、图像拼接（不同角度图像转换到同样的视角）、增强现实 图像对应点 $(x&amp;rsquo;,y&amp;rsquo;,1),(x,y,1)$, 单应矩阵 $H$（内参与外参的混合） 自由度：8 一个点确定两个方程 张氏标定法 打印棋盘格图纸，贴在物体表面（坐标系 $Z_w=0$） 拍摄一组不同方向的棋盘格图片 对每张拍摄的棋盘图片，检测图片的特征点（角点） 优化 LM 算法 三维重建 双目系统 双目立体视觉重建</description>
     </item>
     
     <item>
@@ -34,7 +34,7 @@
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/fmcw/</guid>
       <description>Frequency-modulated continuous-waves radar
-Range  chirp  frequency: $f_c=77$ GHz duration: $T_c=40$ us bandwidth: $B=4$ GHz slope: $S=100$ MHz/us   mixer: $x_{\text{out}}=\sin[(w_1-w_2)t+(\phi_1-\phi_2)]$ IF signal  after $\tau=\frac{2d}{c}$, RX receives IF frequency: $f_\tau=S\tau=\frac{S2d}{c}$   discriminate two frequency in frequency domain: in time domain, two signal should have $&amp;gt;1$ cycles difference  window of $T$ can seperate $\frac{1}{T}$ Hz   Range Resolution:  $\Delta f=\frac{S2\Delta d}{c}&amp;gt;\frac{1}{T_c}$ $\Delta d&amp;gt;\frac{c}{2B}$   Digitize: LPF (remove high-freq) $\rightarrow$ ADC (sample, quantitize) $\rightarrow$ DSP (FFT) Maximum Distance: $d_{\max}$  IF bandwidth (LPF) $&amp;gt;\frac{S2d_{\max}}{c}$ ADC sampling rate $&amp;gt;\frac{S2d_{\max}}{c}$   Larger Chirp Bandwidth $B$: better resolution Larger IF Bandwidth: faster chirps, better $d_{\max}$  Velocity  IF signal: $A\sin(2\pi ft+\phi_0)$  $f=\frac{S2d}{c}$ $\Delta\phi = 2\pi f_c\Delta\tau=\frac{4\pi\Delta d}{\lambda}$   1mm can lead to 180 degree  Single Object  Transmit two chirps seperated by $T_c$  phase difference $\omega=\frac{4\pi vT_C}{\lambda}$ $v=\frac{\lambda\omega}{4\pi T_c}$   Maximum relative speed: $v_{\max}=\frac{\lambda}{4T_c}$  $|\omega|&amp;lt;\pi$   Velocity Resolution  Continous signal: $\Delta f=\frac{1}{T}$ cycles/sec Discrete signal: $\Delta \omega=\frac{1}{N}$ cycles/sample    Multiple Objects  $N$ equi-spaced chirps Doppler FFT: done along chiprs Velocity Resolution  $\Delta\omega&amp;gt;\frac{\pi}{N}$ $\Delta v&amp;gt;\frac{\lambda}{2NT_c}$    Radar Range Equation  Output power of device $P_t$ TX/RX Antenna Gain: $G$ Radiated Power Density: $\frac{P_t G_{\text{TX}}}{4\pi d^2}W/m^2$ Radar Cross Section of the Target (RCS): $\sigma$ Power reflected by object: $\frac{P_t G_{\text{TX}}\sigma}{4\pi d^2}W$ Power density at RX: $\frac{P_t G_{\text{TX}}\sigma}{(4\pi)^2 d^4}W/m^2$ Power captured at RX: $\frac{P_tG_{\text{TX}}\sigma A_{\text{RX}}}{{(4\pi)^2d^4}}W$ $A_{\text{RX}}=\frac{G_{\text{RX}}\lambda^2}{4\pi}$ SNR: $\frac{\sigma P_tG_{\text{TX}} G_{\text{RX}}\lambda^2T_{\text{meas}}}{{(4\pi)^3d^4 kTF}}W$ minimum SNR that is required for detecting an target (15dB - 20dB)  Angle  Angle of Arrival 2D-FFT: range-FFT (row) and dropplet-FFT (column, chirp) additional distance: $d\sin\theta$  Single Object (angle)  $\omega=\frac{2\pi d\sin\theta}{\lambda}$ $\theta=\sin^{-1}(\frac{\lambda\omega}{2\pi d})$  $\theta=0$ is most sensitive accuracy degrades as $\theta$ approaches 90 degree   maximun angle: $\theta=\sin^{-1}(\frac{\lambda}{2d})$  Multiple Objects (angle)  N annetina, Angle-FFT Angle Resolution: $\theta_{\text{res}}=\frac{\lambda}{Nd\cos\theta}$  $d=\frac{\lambda}{2}$ and $\theta=0$: $\theta_{\text{res}}=\frac{2}{N}$    </description>
+Range chirp frequency: $f_c=77$ GHz duration: $T_c=40$ us bandwidth: $B=4$ GHz slope: $S=100$ MHz/us mixer: $x_{\text{out}}=\sin[(w_1-w_2)t+(\phi_1-\phi_2)]$ IF signal after $\tau=\frac{2d}{c}$, RX receives IF frequency: $f_\tau=S\tau=\frac{S2d}{c}$ discriminate two frequency in frequency domain: in time domain, two signal should have $&amp;gt;1$ cycles difference window of $T$ can seperate $\frac{1}{T}$ Hz Range Resolution: $\Delta f=\frac{S2\Delta d}{c}&amp;gt;\frac{1}{T_c}$ $\Delta d&amp;gt;\frac{c}{2B}$ Digitize: LPF (remove high-freq) $\rightarrow$ ADC (sample, quantitize) $\rightarrow$ DSP (FFT) Maximum Distance: $d_{\max}$ IF bandwidth (LPF) $&amp;gt;\frac{S2d_{\max}}{c}$ ADC sampling rate $&amp;gt;\frac{S2d_{\max}}{c}$ Larger Chirp Bandwidth $B$: better resolution Larger IF Bandwidth: faster chirps, better $d_{\max}$ Velocity IF signal: $A\sin(2\pi ft+\phi_0)$ $f=\frac{S2d}{c}$ $\Delta\phi = 2\pi f_c\Delta\tau=\frac{4\pi\Delta d}{\lambda}$ 1mm can lead to 180 degree Single Object Transmit two chirps seperated by $T_c$ phase difference $\omega=\frac{4\pi vT_C}{\lambda}$ $v=\frac{\lambda\omega}{4\pi T_c}$ Maximum relative speed: $v_{\max}=\frac{\lambda}{4T_c}$ $|\omega|&amp;lt;\pi$ Velocity Resolution Continous signal: $\Delta f=\frac{1}{T}$ cycles/sec Discrete signal: $\Delta \omega=\frac{1}{N}$ cycles/sample Multiple Objects $N$ equi-spaced chirps Doppler FFT: done along chiprs Velocity Resolution $\Delta\omega&amp;gt;\frac{\pi}{N}$ $\Delta v&amp;gt;\frac{\lambda}{2NT_c}$ Radar Range Equation Output power of device $P_t$ TX/RX Antenna Gain: $G$ Radiated Power Density: $\frac{P_t G_{\text{TX}}}{4\pi d^2}W/m^2$ Radar Cross Section of the Target (RCS): $\sigma$ Power reflected by object: $\frac{P_t G_{\text{TX}}\sigma}{4\pi d^2}W$ Power density at RX: $\frac{P_t G_{\text{TX}}\sigma}{(4\pi)^2 d^4}W/m^2$ Power captured at RX: $\frac{P_tG_{\text{TX}}\sigma A_{\text{RX}}}{{(4\pi)^2d^4}}W$ $A_{\text{RX}}=\frac{G_{\text{RX}}\lambda^2}{4\pi}$ SNR: $\frac{\sigma P_tG_{\text{TX}} G_{\text{RX}}\lambda^2T_{\text{meas}}}{{(4\pi)^3d^4 kTF}}W$ minimum SNR that is required for detecting an target (15dB - 20dB) Angle Angle of Arrival 2D-FFT: range-FFT (row) and dropplet-FFT (column, chirp) additional distance: $d\sin\theta$ Single Object (angle) $\omega=\frac{2\pi d\sin\theta}{\lambda}$ $\theta=\sin^{-1}(\frac{\lambda\omega}{2\pi d})$ $\theta=0$ is most sensitive accuracy degrades as $\theta$ approaches 90 degree maximun angle: $\theta=\sin^{-1}(\frac{\lambda}{2d})$ Multiple Objects (angle) N annetina, Angle-FFT Angle Resolution: $\theta_{\text{res}}=\frac{\lambda}{Nd\cos\theta}$ $d=\frac{\lambda}{2}$ and $\theta=0$: $\theta_{\text{res}}=\frac{2}{N}$ </description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ Range  chirp  frequency: $f_c=77$ GHz duration: $T_c=40$ us bandwidth: $B=4$ GHz
       <description>新建项目 一个完整的 Python Project 应该包括
 project/ src/ --- source code tests/ --- test code __init__.py conftest.py test_xxx.py setup.py --- organize files into a package setup.cfg MANIFEST.in requirements.txt README.md pyproject.toml 其中，setup.py 用来构建包，譬如：
 from setuptools import find_packages, setup setup( name=&amp;#39;flaskr&amp;#39;, version=&amp;#39;1.0.0&amp;#39;, packages=find_packages(), include_package_data=True, zip_safe=False, install_requires=[ &amp;#39;flask&amp;#39;, ], ) 并可以用 MANIFEST.in 补充添加二进制文件。此外， tests 为测试文件夹，测试时 coverage run -m pytest, coverage report. 可用 setup.cfg 配置
-[tool:pytest] testpaths = tests [coverage:run] branch = True source =src 用 pipreqs 生成 requirements.</description>
+[tool:pytest] testpaths = tests [coverage:run] branch = True source = src 用 pipreqs 生成 requirements.</description>
     </item>
     
     <item>
@@ -55,8 +55,8 @@ from setuptools import find_packages, setup setup( name=&amp;#39;flaskr&amp;#39;
       <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/number-of-people/</guid>
-      <description>行政级别  国 部（省） 局（厅） 处（县） 科（乡）  人口 2015~2019 间约数
- 总人口: 1.4e9 0-15: 2.5e8 &amp;gt;60 : 2.5e8 出生人数：1.6e7 死亡人数：1.1e7 净增长：4e6 学历  大学 1.7e8 高中 2.1e8 初中 4.8e8 小学 3.3e8   一届学生  高中：1.3e7 普高：0.8e7 高考：1e7  江苏高考：33.9 万 南大：&amp;lt;1500 双一流：1 万   高等：0.76e7 普高：0.42e7 双一流：2% 硕士：7.5e5 博士：0.8e5   留学生(18)：66.2 万 网民(19)：8.4e8 (61.2%)  学生 26% 个体户、自由职业者 20%    收入 病  HPV: 7900 万美国人  </description>
+      <description>行政级别 国 部（省） 局（厅） 处（县） 科（乡） 人口 2015~2019 间约数
+总人口: 1.4e9 0-15: 2.5e8 &amp;gt;60 : 2.5e8 出生人数：1.6e7 死亡人数：1.1e7 净增长：4e6 学历 大学 1.7e8 高中 2.1e8 初中 4.8e8 小学 3.3e8 一届学生 高中：1.3e7 普高：0.8e7 高考：1e7 江苏高考：33.9 万 南大：&amp;lt;1500 双一流：1 万 高等：0.76e7 普高：0.42e7 双一流：2% 硕士：7.5e5 博士：0.8e5 留学生(18)：66.2 万 网民(19)：8.4e8 (61.2%) 学生 26% 个体户、自由职业者 20% 收入 病 HPV: 7900 万美国人 </description>
     </item>
     
     <item>
@@ -65,7 +65,7 @@ from setuptools import find_packages, setup setup( name=&amp;#39;flaskr&amp;#39;
       <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/schools/</guid>
-      <description>CS Ranking  清北上浙南复中 AI: 清北中南浙复 Theory  Algorithm &amp;amp; complexity 上财、南大、清华 Cryptography 清 logic &amp;amp; verification 清南   Interdisciplinary  bio 清复 CG 浙清深北 eco 上财、清 HCI 清北南 Robitics visualization   System: 清北上  SE: 北南 PL: 南 OS Measurement &amp;amp; perf analysis Mobile computing 清 HPC 清上 E&amp;amp;R sys Design automation(EDA) Database 清 Comp Sec 浙 Network Arch   英国 AI  爱丁堡 NLP, ML 牛津 AI   美国 AI: CMU, Cornel, Stanford, Illinois UC, MIT, Washington, UCLA  中国大学  总数 2956 + 44  普高 2688  独立学院 257 公安院校、艺术院校、建筑院校、中医药、示范性软件学院   成人 268 军事 44   大学为厅级单位 归属部门  解放军、武警 省、省教育厅 教育部 部：工业和信息化部（国防七子）   双一流  A 36 B 6 建设 95   985: 39 211: 112 中西部高校基建工程: 100 C9: 9 中外合办：9+3  实验室  国家重点实验室：253 国家实验室：4 重点学科  一级 286 二级 677    </description>
+      <description>CS Ranking 清北上浙南复中 AI: 清北中南浙复 Theory Algorithm &amp;amp; complexity 上财、南大、清华 Cryptography 清 logic &amp;amp; verification 清南 Interdisciplinary bio 清复 CG 浙清深北 eco 上财、清 HCI 清北南 Robitics visualization System: 清北上 SE: 北南 PL: 南 OS Measurement &amp;amp; perf analysis Mobile computing 清 HPC 清上 E&amp;amp;R sys Design automation(EDA) Database 清 Comp Sec 浙 Network Arch 英国 AI 爱丁堡 NLP, ML 牛津 AI 美国 AI: CMU, Cornel, Stanford, Illinois UC, MIT, Washington, UCLA 中国大学 总数 2956 + 44 普高 2688 独立学院 257 公安院校、艺术院校、建筑院校、中医药、示范性软件学院 成人 268 军事 44 大学为厅级单位 归属部门 解放军、武警 省、省教育厅 教育部 部：工业和信息化部（国防七子） 双一流 A 36 B 6 建设 95 985: 39 211: 112 中西部高校基建工程: 100 C9: 9 中外合办：9+3 实验室 国家重点实验室：253 国家实验室：4 重点学科 一级 286 二级 677 </description>
     </item>
     
     <item>
@@ -74,7 +74,8 @@ from setuptools import find_packages, setup setup( name=&amp;#39;flaskr&amp;#39;
       <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/stock-index/</guid>
-      <description>基本术语  股票分析：基本面，技术面，消息面，资金面，政策面 趋势行情与振荡行情  K 线  柱上下：收盘价 $C_n$ 与开盘价 线上下：最高值 $H_n$ 和最低值 $L_n$ 颜色  Red：$C_n&amp;gt;$ 开盘价 Green: $C_n&amp;lt;$ 开盘价    VOL  成交量：单边计算，单位为手（1 手 = 100 股）  缩量：成交量萎缩   交易量：双边计算（成交量 ×2) 成交额 = 成交量$\times$成交价 颜色：收盘价高于或等于开盘价为红色，反之绿色  均线  $\text{MA}(n)=\frac{1}{n}\sum_{k=0}^{n-1}C_{n-k}$ $\text{EMA}(n)=\frac{2}{N+1}\sum_{k=0}^\infty(\frac{N-1}{N+1})^kC_{n-k}$  MACD  $\text{DIF} = \text{EMA}(12)-\text{EMA}(26)$  $|\text{DIF}|$：长短期均线距离大小 $\text{DIF}&amp;gt;0$：股票上涨   $\text{DEA} = \text{EMA}(\text{DIF}, 9)$ $\text{MACD} = 2(\text{DIF}-\text{DEA})$ 金叉：上穿 死叉：下穿  RSI  $A=\sum_{i}(C_i-C_{i-1})[C_i-C_{i-1}&amp;gt;0]$ $B=\sum_{i}(C_{i-1}-C_{i})[C_i-C_{i-1}&amp;lt;0]$ $\text{RSI}=100\frac{A}{A+B}$  KDJ  $\text{RSV}(n)=100\frac{C_t-L_t}{H_n-L_n}$ $\text{K}(n)=\frac{2}{3}K(n-1)+\frac{1}{3}\text{RSV}(n)$ $\text{D}(n)=\frac{2}{3}D(n-1)+\frac{1}{3}\text{K}(n)$  W%R  $\text{W%R}=100\frac{H_n-C_n}{H_n-L_n}$ 中短期  OBV 能量潮指标</description>
+      <description>基本术语 股票分析：基本面，技术面，消息面，资金面，政策面 趋势行情与振荡行情 K 线 柱上下：收盘价 $C_n$ 与开盘价 线上下：最高值 $H_n$ 和最低值 $L_n$ 颜色 Red：$C_n&amp;gt;$ 开盘价 Green: $C_n&amp;lt;$ 开盘价 VOL 成交量：单边计算，单位为手（1 手 = 100 股） 缩量：成交量萎缩 交易量：双边计算（成交量 ×2) 成交额 = 成交量$\times$成交价 颜色：收盘价高于或等于开盘价为红色，反之绿色 均线 $\text{MA}(n)=\frac{1}{n}\sum_{k=0}^{n-1}C_{n-k}$ $\text{EMA}(n)=\frac{2}{N+1}\sum_{k=0}^\infty(\frac{N-1}{N+1})^kC_{n-k}$ MACD $\text{DIF} = \text{EMA}(12)-\text{EMA}(26)$ $|\text{DIF}|$：长短期均线距离大小 $\text{DIF}&amp;gt;0$：股票上涨 $\text{DEA} = \text{EMA}(\text{DIF}, 9)$ $\text{MACD} = 2(\text{DIF}-\text{DEA})$ 金叉：上穿 死叉：下穿 RSI $A=\sum_{i}(C_i-C_{i-1})[C_i-C_{i-1}&amp;gt;0]$ $B=\sum_{i}(C_{i-1}-C_{i})[C_i-C_{i-1}&amp;lt;0]$ $\text{RSI}=100\frac{A}{A+B}$ KDJ $\text{RSV}(n)=100\frac{C_t-L_t}{H_n-L_n}$ $\text{K}(n)=\frac{2}{3}K(n-1)+\frac{1}{3}\text{RSV}(n)$ $\text{D}(n)=\frac{2}{3}D(n-1)+\frac{1}{3}\text{K}(n)$ W%R $\text{W%R}=100\frac{H_n-C_n}{H_n-L_n}$ 中短期 OBV 能量潮指标
+$\text{OBV}(n)=\text{OBV}(n-1)+\text{sgn}\times V(n)$ DMA $\text{AMA}=\text{AVE}(10)$ $\text{DMA}=\text(AVE)(10)-\text{AVE}(50)$ SAR $\text{SAR}(n)=\text{SAR}(n-1)+\text{AF}(n)(\text{EP}(n-1)-\text{SAR}(n-1)))$ </description>
     </item>
     
     <item>
@@ -83,7 +84,7 @@ from setuptools import find_packages, setup setup( name=&amp;#39;flaskr&amp;#39;
       <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/social-engineering/</guid>
-      <description>社工攻击  熟人攻击 伪造相似的信息背景 伪装成新人打入内部 利用面试机会 通过兴趣、话题、出现场所和肢体语言拉进距离 美人计 伪装技术顾问 伪装弱势群体  </description>
+      <description>社工攻击 熟人攻击 伪造相似的信息背景 伪装成新人打入内部 利用面试机会 通过兴趣、话题、出现场所和肢体语言拉进距离 美人计 伪装技术顾问 伪装弱势群体 </description>
     </item>
     
     <item>
@@ -92,7 +93,7 @@ from setuptools import find_packages, setup setup( name=&amp;#39;flaskr&amp;#39;
       <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/interview-prepare/</guid>
-      <description>网前准备  网络面试准备  skype:  头像设置为大头像面带微笑 互相加 skype   网络质量：  选择网络好的地点 准备手机备用 可以用 skype 主动打过去，对方打过来越洋手机信号往往不好   通话背景  干净（如白墙），光源来自正前方 背景音低（如家里） 提前找同学模拟测试 skype 背景和格调   面试材料  准备好纸，笔 准备好 CV, PS, 成绩单（中英文）   提前60分钟就位 面试时看摄像头而非屏幕，面带微笑   穿着  business casual clothing: button-down shirt or a V-neck sweater women: formal-looking top, tie long hair 隐形眼镜   Thanks letter 先拟好，定点发出  问题准备  了解对方  教授(面试官)：他们正在找什么样的人？为什么是我?</description>
+      <description>网前准备 网络面试准备 skype: 头像设置为大头像面带微笑 互相加 skype 网络质量： 选择网络好的地点 准备手机备用 可以用 skype 主动打过去，对方打过来越洋手机信号往往不好 通话背景 干净（如白墙），光源来自正前方 背景音低（如家里） 提前找同学模拟测试 skype 背景和格调 面试材料 准备好纸，笔 准备好 CV, PS, 成绩单（中英文） 提前60分钟就位 面试时看摄像头而非屏幕，面带微笑 穿着 business casual clothing: button-down shirt or a V-neck sweater women: formal-looking top, tie long hair 隐形眼镜 Thanks letter 先拟好，定点发出 问题准备 了解对方 教授(面试官)：他们正在找什么样的人？为什么是我? 我可以为这个团队带来什么价值? 1-2年一作的文章看一下 方法：标题-摘要-关键词-导论-结论 团队 课题兴趣 了解学校：为什么对自己感兴趣，想通过面试了解什么书面了解不到的事 说出该校申请的项目中的某些课程或教授 介绍自己 个人 准备 1min 自我介绍 说清项目名和课程名 项目 熟悉自己的申报材料 熟悉 research 仔细读网站，github，简历 阅读三封推荐信里面特别提及的事情 让别人听懂你做的项目(1-2min) background：一带而过 achievement 最后结果 意义：结合自身优势 失败经历：从失败中学到的经验总结和成长 action 职责 用了哪种方法，最后做出来结果咋样 contribution 重要的细节可以提一提，不展开 不提具体的实验或者模拟的细节 申报原因 自身原因 感兴趣 某物有NB的应用 工作意义 该研究在学术界的进展 我的科研基于前人哪些工作 可以带来哪些贡献 Why do you think the research is important?</description>
     </item>
     
     <item>
@@ -482,26 +483,26 @@ Underlying Assumption: if a person A has the same opinion as a person B on an is
 &lt;/ul&gt;
 &lt;h1 id=&#34;developers-tools&#34;&gt;Developer&amp;rsquo;s Tools&lt;/h1&gt;
 &lt;h2 id=&#34;ide&#34;&gt;IDE&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;Xcode
-vscode: Main Code Editor
-Anaconda: Python
-PyCharm CE: Python
-Sagemath: sage
-IntelliJ IDEA CE: Java
-Android Studio
-MATLAB R2019a: Matlab
-script editor: (native) Apple Script
-Qt Series: Qt
-
-&lt;span style=&#34;color:#f92672&#34;&gt;- CocosCreator: 游戏引擎，基于 cocos
-&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Orange3: 快速测试 ML 算法
-&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Ecllipse: Java, 选择 IntelliJ 替代
-&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- CLion: C++, 选择终端命令执行
-&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Visual Studio: C#
-&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- CodeRunner: multi language
-&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- DataGrip: SQL
-&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Mathematica: Mathematica
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Xcode
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vscode: Main Code Editor
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Anaconda: Python
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PyCharm CE: Python
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Sagemath: sage
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;IntelliJ IDEA CE: Java
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Android Studio
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MATLAB R2019a: Matlab
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;script editor: (native) Apple Script
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Qt Series: Qt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- CocosCreator: 游戏引擎，基于 cocos
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Orange3: 快速测试 ML 算法
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Ecllipse: Java, 选择 IntelliJ 替代
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- CLion: C++, 选择终端命令执行
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Visual Studio: C#
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- CodeRunner: multi language
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- DataGrip: SQL
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Mathematica: Mathematica
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -608,23 +609,23 @@ plt.subplot(212)
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/latex-tikz/</guid>
       <description>&lt;h1 id=&#34;图片放置&#34;&gt;图片放置&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-tex&#34; data-lang=&#34;tex&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}[htbp]
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;\centering&lt;/span&gt;
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle1]&lt;/span&gt;{
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
-            &lt;span style=&#34;color:#75715e&#34;&gt;%code
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tikzpicture}
-    }
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle2]&lt;/span&gt;{
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
-            &lt;span style=&#34;color:#75715e&#34;&gt;%code
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tikzpicture}
-    }
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;\caption&lt;/span&gt;{caption}
-&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{figure}
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;\tikz&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;%code
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-tex&#34; data-lang=&#34;tex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}[htbp]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\centering&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle1]&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;%code
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tikzpicture}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle2]&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;%code
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tikzpicture}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\caption&lt;/span&gt;{caption}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{figure}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\tikz&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;%code
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -859,11 +860,11 @@ $$l = (max(rgb) + min(rgb)) / 2$$&lt;/p&gt;
 &lt;p&gt;In this arcticle, I will give examples to illustrate and remind me the usage of some pandas funtion. Just a reminder.&lt;/p&gt;
 &lt;h2 id=&#34;数据读写&#34;&gt;数据读写&lt;/h2&gt;
 &lt;h3 id=&#34;read_csv&#34;&gt;read_csv&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-pandas&#34; data-lang=&#34;pandas&#34;&gt;data = pd.read_csv(&#39;test.csv&#39;)
-data = pd.read_csv(&#39;test.csv&#39;,header = 0/[0,1,2]列名,  index_col = 0/[0,1], nrows = 100)
-data = pd.read_csv(&#39;test_one.csv&#39;, squeeze = True, encoding = &#39;utf-8&#39;) 一列返回Series
-data = pd.read_csv(&#39;test.csv&#39;, prefix = &#39;X&#39;列前缀, skiprows = 3, skipfooter = 3, na_values = &#39;NAN&#39;)
-data = pd.read_csv(&#39;test_no_NAN.csv&#39;, na_filter = &#39;False&#39;, parse_dates=True/{&#39;foo&#39;:[1,3]},infer_datatime_format = True, data_parser = function)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-pandas&#34; data-lang=&#34;pandas&#34;&gt;data = pd.read_csv(&amp;#39;test.csv&amp;#39;)
+data = pd.read_csv(&amp;#39;test.csv&amp;#39;,header = 0/[0,1,2]列名,  index_col = 0/[0,1], nrows = 100)
+data = pd.read_csv(&amp;#39;test_one.csv&amp;#39;, squeeze = True, encoding = &amp;#39;utf-8&amp;#39;) 一列返回Series
+data = pd.read_csv(&amp;#39;test.csv&amp;#39;, prefix = &amp;#39;X&amp;#39;列前缀, skiprows = 3, skipfooter = 3, na_values = &amp;#39;NAN&amp;#39;)
+data = pd.read_csv(&amp;#39;test_no_NAN.csv&amp;#39;, na_filter = &amp;#39;False&amp;#39;, parse_dates=True/{&amp;#39;foo&amp;#39;:[1,3]},infer_datatime_format = True, data_parser = function)
 &lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
@@ -930,8 +931,8 @@ data = pd.read_csv(&#39;test_no_NAN.csv&#39;, na_filter = &#39;False&#39;, parse
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/domain-adaptation/</guid>
       <description>CNN backbones 结构介绍
- LeNet5(1998) AlexNet8(2012) VGG(2014)  VGG16 VGG19   GoogLeNet22(2014)  Inception v1-v4   ResNet(2015)  ResNet50 ResNet101   DRN-26  Semantic Segmentation  $p_{ij}$: 被预测为 $j$ 类样本的 $i$ 类样本 Pixel Accuarcy: $\text{PA}=\frac{\sum_{i=0}^kp_{ii}}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}$ Mean Pixel Accuracy: $\text{MPA}=\frac{1}{k}\sum_{i=0}^k\frac{p_{ii}}{\sum_{j=0}^kp_{ij}}$ Mean Intersection over Union: $\text{MIoU}=\frac{1}{k}\sum_{i=0}^k\frac{p_{ii}}{\sum_{j=0}^kp_{ij}+\sum_{j=0}^kp_{ji}-p_{ii}}$ Frequency Weighted Intersection over Union: $\text{FWIoU}=\frac{1}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}\sum_{i=0}\frac{p_{ii}\sum_{j=0}^kp_{ij}}{\sum_{j=0}^kp_{ij}+\sum_{j=0}^kp_{ji}-p_{ii}}$  架构
- FCN-8s DeepLab V2  Adversial  GAN: $\min_G\max_D V(D,G)=E_{x\sim p_{\text{data}(x)}}[\log D(x)]+E_{z\sim p_z(z)}[\log (1-D(x))]$ cGAN: $\min_G\max_D V(D,G)=E_{x\sim p_{\text{data}(x|y)}}[\log D(x)]+E_{z\sim p_z(z)}[\log (1-D(x|y))]$  paired data generate   BicycleGAN: diverse output Cycle GAN: no need of paired data 泛化性：所有模型都是需要先用有限的训练样本来训练的，那么由这些有限样本训练得到的模型可不可以从这些有限训练样本中生成出新的样本，而非简单地记着训练集 GAN 的问题  训练过程难以收敛，经常出现震荡；实验结果随机，难以复现； mode collapse：只生成某一模式 生成了一些没有意义、或者现实中不可能出现的图片    Graphical models Transfer Learning $D_S={X_S,f_S},T_S$ $D_T={X_T,f_T},T_T$</description>
+LeNet5(1998) AlexNet8(2012) VGG(2014) VGG16 VGG19 GoogLeNet22(2014) Inception v1-v4 ResNet(2015) ResNet50 ResNet101 DRN-26 Semantic Segmentation $p_{ij}$: 被预测为 $j$ 类样本的 $i$ 类样本 Pixel Accuarcy: $\text{PA}=\frac{\sum_{i=0}^kp_{ii}}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}$ Mean Pixel Accuracy: $\text{MPA}=\frac{1}{k}\sum_{i=0}^k\frac{p_{ii}}{\sum_{j=0}^kp_{ij}}$ Mean Intersection over Union: $\text{MIoU}=\frac{1}{k}\sum_{i=0}^k\frac{p_{ii}}{\sum_{j=0}^kp_{ij}+\sum_{j=0}^kp_{ji}-p_{ii}}$ Frequency Weighted Intersection over Union: $\text{FWIoU}=\frac{1}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}\sum_{i=0}\frac{p_{ii}\sum_{j=0}^kp_{ij}}{\sum_{j=0}^kp_{ij}+\sum_{j=0}^kp_{ji}-p_{ii}}$ 架构
+FCN-8s DeepLab V2 Adversial GAN: $\min_G\max_D V(D,G)=E_{x\sim p_{\text{data}(x)}}[\log D(x)]+E_{z\sim p_z(z)}[\log (1-D(x))]$ cGAN: $\min_G\max_D V(D,G)=E_{x\sim p_{\text{data}(x|y)}}[\log D(x)]+E_{z\sim p_z(z)}[\log (1-D(x|y))]$ paired data generate BicycleGAN: diverse output Cycle GAN: no need of paired data 泛化性：所有模型都是需要先用有限的训练样本来训练的，那么由这些有限样本训练得到的模型可不可以从这些有限训练样本中生成出新的样本，而非简单地记着训练集 GAN 的问题 训练过程难以收敛，经常出现震荡；实验结果随机，难以复现； mode collapse：只生成某一模式 生成了一些没有意义、或者现实中不可能出现的图片 Graphical models Transfer Learning $D_S={X_S,f_S},T_S$ $D_T={X_T,f_T},T_T$</description>
     </item>
     
   </channel>

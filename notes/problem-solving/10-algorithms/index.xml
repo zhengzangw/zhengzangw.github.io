@@ -93,11 +93,11 @@
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/segment-tree/</guid>
       <description>&lt;h1 id=&#34;prepare&#34;&gt;Prepare&lt;/h1&gt;
 &lt;h2 id=&#34;离散化&#34;&gt;离散化&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;m &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a.y
-sort(m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
-len &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; unique(m,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; m
-&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt;n;&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;i) a[i].y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lower_bound(m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;len&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,a[i].y) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; m;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;m &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a.y
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sort(m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;len &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; unique(m,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; m
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt;n;&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;i) a[i].y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lower_bound(m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,m&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;len&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,a[i].y) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; m;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -121,7 +121,7 @@ len &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; unique(m,m&lt;span 
 for i=1 to N for v = V to Ci F[v] = max{F[v],F[v-Ci]+Wi} 恰好装满：$F[1..V] = -\infty; F[0] = 0$
 无必要： $F[0..V] = 0$
 完全背包 $$F[i,v] = \max{F[i-1,v-kCi] + kWi | 0&amp;lt;=kCi&amp;lt;=v &amp;amp;&amp;amp; 0&amp;lt;=k&amp;lt;Mi}$$ （利用$F[i,v-Ci]$代换）
- $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物品 j 直接去掉，不用考虑 $O(V+N)$ 首先将费用大于 V 的物品去掉，然后使用类似计数排序的做法，计算出费用相同的物品中价值最高的是哪个 把第 i 种物品拆成费用为 Ci2k、价值为 Wi2k 的若干件物品，其中 k 取遍满足 Ci2k≤V 的非负整数  for i = 1 to N for v = Ci to v F[v] = max(F[v],F[v-Ci]+Wi) 多重背包 完全背包思路（可以看作是分组背包问题）</description>
+$O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物品 j 直接去掉，不用考虑 $O(V+N)$ 首先将费用大于 V 的物品去掉，然后使用类似计数排序的做法，计算出费用相同的物品中价值最高的是哪个 把第 i 种物品拆成费用为 Ci2k、价值为 Wi2k 的若干件物品，其中 k 取遍满足 Ci2k≤V 的非负整数 for i = 1 to N for v = Ci to v F[v] = max(F[v],F[v-Ci]+Wi) 多重背包 完全背包思路（可以看作是分组背包问题）</description>
     </item>
     
     <item>

@@ -16,17 +16,21 @@
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/stochastic-process/preliminaries/</guid>
       <description>Probability Definition of Probability Three Axioms
-  $0\leq P(E)\leq 1$
-  $P(S)=1$
-  For any sequence of eventes $E_1,E_2,\cdots,$ that are mutually exclusive
+$0\leq P(E)\leq 1$
+$P(S)=1$
+For any sequence of eventes $E_1,E_2,\cdots,$ that are mutually exclusive
 $$P(\bigcup_{i=1}^\infty E_i)=\sum_{i=1}^{\infty}P(E_i))$$
-  Sequence of Events   increasing sequence of events: ${E_n,n\geq 1},E_n\subset E_{n+1}$
+Sequence of Events increasing sequence of events: ${E_n,n\geq 1},E_n\subset E_{n+1}$
 $$\lim_{n\rightarrow\infty}E_n=\bigcup_{i=1}^\infty E_i$$
-  decreasing sequence of events: ${E_n,n\geq 1},E_n\supset E_{n+1}$
+decreasing sequence of events: ${E_n,n\geq 1},E_n\supset E_{n+1}$
 $$\lim_{n\rightarrow\infty}E_n=\bigcap_{i=1}^\infty E_i$$
-  for an increasing or decreasing sequences of events
+for an increasing or decreasing sequences of events
 $$\lim_{n\rightarrow\infty}P(E_n)=P(\lim_{n\rightarrow\infty}E_n)$$
-  Borel-Cantelli Lemma</description>
+Borel-Cantelli Lemma
+if $\sum_{n=1}^{\infty}P(E_n)&amp;lt;\infty$, then
+$$P(\text{an infinite number of the }E_i\text{ occur})=P(\lim\sup_{t\rightarrow\infty}E_i)=P(\bigcap_{n=1}^\infty\bigcup_{i=n}^\infty E_i)=0$$
+Converse
+$E_i$ are independent events, $\sum_{n-1}^\infty P(E_n)=\infty$, then</description>
     </item>
     
     <item>
@@ -35,11 +39,13 @@ $$\lim_{n\rightarrow\infty}P(E_n)=P(\lim_{n\rightarrow\infty}E_n)$$
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/stochastic-process/poisson-process/</guid>
-      <description>Poisson Process Counting Process  $N(t)\geq 0$ $N(t)\in\mathbb{N}$ $s&amp;lt;t,N(s)\leq N(t)$ $s&amp;lt;t,N(t)-N(s)$ equals the number of events that have occurred in the interval $(s,t]$  Definition 1 of Poisson Process   $N(0)=0$
-  independent increments
-  $\forall s,t\geq 0$
+      <description>Poisson Process Counting Process $N(t)\geq 0$ $N(t)\in\mathbb{N}$ $s&amp;lt;t,N(s)\leq N(t)$ $s&amp;lt;t,N(t)-N(s)$ equals the number of events that have occurred in the interval $(s,t]$ Definition 1 of Poisson Process $N(0)=0$
+independent increments
+$\forall s,t\geq 0$
 $$P(N(t+s)-N(s)=n)=e^{-\lambda t}\frac{(\lambda t)^n}{n!},n=0,1$$
-  Definition 2 of Poisson Process  $N(0)=0$ The process has stationary and independent increments $P(N(t+h)-N(t)=1)=\lambda h+o(h)$ $P(N(t+h)-N(t)\geq 2)=o(h)$  Sequence of interarrival times   ${X_n,n\geq 1}$: $X_n$ denotes the time of the $n$th event</description>
+Definition 2 of Poisson Process $N(0)=0$ The process has stationary and independent increments $P(N(t+h)-N(t)=1)=\lambda h+o(h)$ $P(N(t+h)-N(t)\geq 2)=o(h)$ Sequence of interarrival times ${X_n,n\geq 1}$: $X_n$ denotes the time of the $n$th event
+$$P(X_1&amp;gt;t)=P(N(t)=0)=e^{-\lambda t}$$
+$X_n$ are independent identically distributed exponential random variables having mean $\frac{1}{\lambda}$</description>
     </item>
     
   </channel>

@@ -115,7 +115,7 @@
 <li>定理：$\varphi(x)\in C[a,b]$ 满足以下条件则在 $[a,b]$ 上存在唯一的不动点
 <ul>
 <li>$\forall x\in[a,b],a\leq \varphi(x)\leq b$</li>
-<li>$\exists L\in (0,1),\forall x,y\in C[a,b],|\varphi(x)-\varphi(y)|\leq L|x-y|$ （或 $|\varphi'(x)|\leq L&lt;1$）</li>
+<li>$\exists L\in (0,1),\forall x,y\in C[a,b],|\varphi(x)-\varphi(y)|\leq L|x-y|$ （或 $|\varphi&rsquo;(x)|\leq L&lt;1$）</li>
 </ul>
 </li>
 <li>收敛充分条件：满足以上条件的函数，$\forall x_0\in[a,b]$，由 $x_{k+1}=\varphi(x_k)$ 得到的迭代序列 ${x_k}$ 收敛到不动点，且 $|x_k-x^*|\leq\frac{L^k}{1-L}|x_1-x_0|$</li>
@@ -123,33 +123,33 @@
 <li>$p$ 阶收敛：$\frac{\epsilon_{k+1}}{\epsilon_k^p}\rightarrow C\neq 0$</li>
 </ul>
 </li>
-<li>若 $x_{k+1}=\varphi(x_k),\varphi^{(p)}(x)$ 在 $x^<em>$ 附件连续，且 $\varphi'(x^</em>)=\varphi''(x^<em>)=\cdots=\varphi^{(p-1)}(x^</em>)=0,\varphi^{(p)}(x^<em>)\neq 0$，则迭代过程在 $x^</em>$ 附件 $p$ 阶收敛</li>
+<li>若 $x_{k+1}=\varphi(x_k),\varphi^{(p)}(x)$ 在 $x^<em>$ 附件连续，且 $\varphi&rsquo;(x^</em>)=\varphi&rsquo;&rsquo;(x^<em>)=\cdots=\varphi^{(p-1)}(x^</em>)=0,\varphi^{(p)}(x^<em>)\neq 0$，则迭代过程在 $x^</em>$ 附件 $p$ 阶收敛</li>
 <li>局部收敛</li>
 <li>全局收敛</li>
 </ul>
 <h2 id="牛顿法">牛顿法</h2>
 <ul>
 <li>基本思想：将非线性方程逐步线性化形成迭代公式</li>
-<li>取 $x_0\approx x^*$，$f(x)$ 在 $x_0$ 处做一阶 Taylor 展开：$f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(\xi)}{2}(x-x_0)^2$
+<li>取 $x_0\approx x^*$，$f(x)$ 在 $x_0$ 处做一阶 Taylor 展开：$f(x)=f(x_0)+f&rsquo;(x_0)(x-x_0)+\frac{f&rsquo;&rsquo;(\xi)}{2}(x-x_0)^2$
 <ul>
-<li>$x^*\approx x_0-\frac{f(x_0)}{f'(x_0)}$</li>
+<li>$x^*\approx x_0-\frac{f(x_0)}{f&rsquo;(x_0)}$</li>
 </ul>
 </li>
-<li>牛顿法：$x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)}$</li>
+<li>牛顿法：$x_{k+1}=x_k-\frac{f(x_k)}{f&rsquo;(x_k)}$</li>
 <li>牛顿法收敛的充分条件：若 $f\in C^2[a,b]$
 <ul>
 <li>$f(a)f(b)&lt;0$</li>
-<li>$[a,b]$ 上 $f''$ 不变号且 $f'(x)\neq 0$</li>
-<li>$\forall x_0\in[a,b],f(x_0)f''(x_0)&gt;0$</li>
+<li>$[a,b]$ 上 $f&rsquo;&rsquo;$ 不变号且 $f&rsquo;(x)\neq 0$</li>
+<li>$\forall x_0\in[a,b],f(x_0)f&rsquo;&rsquo;(x_0)&gt;0$</li>
 </ul>
 </li>
-<li>局部收敛性：$f\in C^2[a,b],x^<em>$ 为 $f(x)$ 在 $[a,b]$ 上的根且 $f'(x)\neq 0$，则存在 $x^</em>$ 的邻域，使任意邻域上的初值产生的序列收敛到 $x^<em>$，且 $\lim_{k\rightarrow\infty}\frac{x^</em>-x_{k+1}}{(x^<em>-x_k)^2}=-\frac{f''(x^</em>)}{2f'(x^*)}$</li>
+<li>局部收敛性：$f\in C^2[a,b],x^<em>$ 为 $f(x)$ 在 $[a,b]$ 上的根且 $f&rsquo;(x)\neq 0$，则存在 $x^</em>$ 的邻域，使任意邻域上的初值产生的序列收敛到 $x^<em>$，且 $\lim_{k\rightarrow\infty}\frac{x^</em>-x_{k+1}}{(x^<em>-x_k)^2}=-\frac{f&rsquo;&rsquo;(x^</em>)}{2f&rsquo;(x^*)}$</li>
 <li>割线法：$x_{k+1}=x_k-\frac{f(x_k)(x_k-x_{k_1})}{f(x_k)-f(x_{k-1})}$</li>
-<li>下山法：若 $x_{k+1}$ 处的值不比原有的小，则在 $(x_k,x_{k+1})$ 间找一个更好的点使值变小：$\overline{x_{k+1}}=x_k-\lambda\frac{f(x_k)}{f'(x_k)}$</li>
+<li>下山法：若 $x_{k+1}$ 处的值不比原有的小，则在 $(x_k,x_{k+1})$ 间找一个更好的点使值变小：$\overline{x_{k+1}}=x_k-\lambda\frac{f(x_k)}{f&rsquo;(x_k)}$</li>
 <li>特殊情况
 <ul>
 <li>重根：线性收敛</li>
-<li>$f'(x^*)\neq 0$ 至少平方收敛</li>
+<li>$f&rsquo;(x^*)\neq 0$ 至少平方收敛</li>
 </ul>
 </li>
 </ul>

@@ -177,11 +177,11 @@
 <li>输出格式为自动或两者都有时，setprecision 设置有效数字个数</li>
 <li>字节流输出</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>put(<span style="color:#66d9ef">char</span> ch);
-cout.put(<span style="color:#e6db74">&#39;A&#39;</span>);
-ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>write(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p, <span style="color:#66d9ef">int</span> count);
-cout.write(a, n);
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>put(<span style="color:#66d9ef">char</span> ch);
+</span></span><span style="display:flex;"><span>cout.put(<span style="color:#e6db74">&#39;A&#39;</span>);
+</span></span><span style="display:flex;"><span>ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>write(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p, <span style="color:#66d9ef">int</span> count);
+</span></span><span style="display:flex;"><span>cout.write(a, n);
+</span></span></code></pre></div><ul>
 <li>
 <p>控制台输入</p>
 <ul>
@@ -193,24 +193,24 @@ cout.write(a, n);
 </li>
 <li>操纵符
 <ul>
-<li>setw(int n): 把输入的字符串和'\0&rsquo;放入 str 中，最多输入 n-1 个字符</li>
+<li>setw(int n): 把输入的字符串和&rsquo;\0&rsquo;放入 str 中，最多输入 n-1 个字符</li>
 </ul>
 </li>
 <li>字节流</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">  istream<span style="color:#f92672">::</span>get(<span style="color:#66d9ef">char</span> <span style="color:#f92672">&amp;</span>ch);
-  istream<span style="color:#f92672">::</span>getline(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p, <span style="color:#66d9ef">int</span> count, <span style="color:#66d9ef">char</span> delim<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\n&#39;</span>);<span style="color:#75715e">//输入一个字符串直到输入了count-1个字符或遇到delim指定的字符为止，并自动加上一个&#39;\0&#39;字符
-</span><span style="color:#75715e"></span>  istream<span style="color:#f92672">::</span>read(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p, <span style="color:#66d9ef">int</span> count);
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>  istream<span style="color:#f92672">::</span>get(<span style="color:#66d9ef">char</span> <span style="color:#f92672">&amp;</span>ch);
+</span></span><span style="display:flex;"><span>  istream<span style="color:#f92672">::</span>getline(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p, <span style="color:#66d9ef">int</span> count, <span style="color:#66d9ef">char</span> delim<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\n&#39;</span>);<span style="color:#75715e">//输入一个字符串直到输入了count-1个字符或遇到delim指定的字符为止，并自动加上一个&#39;\0&#39;字符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  istream<span style="color:#f92672">::</span>read(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p, <span style="color:#66d9ef">int</span> count);
+</span></span></code></pre></div></li>
 <li>
 <p>重载输入输出操作符</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ostream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">&lt;&lt;</span> (ostream<span style="color:#f92672">&amp;</span> out, <span style="color:#66d9ef">const</span> A <span style="color:#f92672">&amp;</span>a){
-    out <span style="color:#f92672">&lt;&lt;</span> a.x;
-    <span style="color:#66d9ef">return</span> out;
-}
-</code></pre></div><h2 id="面向文件-io">面向文件 I/O</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>ostream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">&lt;&lt;</span> (ostream<span style="color:#f92672">&amp;</span> out, <span style="color:#66d9ef">const</span> A <span style="color:#f92672">&amp;</span>a){
+</span></span><span style="display:flex;"><span>    out <span style="color:#f92672">&lt;&lt;</span> a.x;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> out;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="面向文件-io">面向文件 I/O</h2>
 <ul>
 <li>
 <p>在 C++中，把文件看成是由一系列字节所构成的字节串，对文件中数据的操作（输入/输出）通常是逐个字节顺序进行，因此称为流式文件</p>
@@ -237,9 +237,9 @@ cout.write(a, n);
 <li>直接方式：<code>ofstream out_file(&lt;文件名&gt;,&lt;打开方式&gt;);</code></li>
 <li>间接方式</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ofstream out_file;
-out_file.open(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">文件名</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">打开方式</span><span style="color:#f92672">&gt;</span>);
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>ofstream out_file;
+</span></span><span style="display:flex;"><span>out_file.open(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">文件名</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">打开方式</span><span style="color:#f92672">&gt;</span>);
+</span></span></code></pre></div></li>
 <li>
 <p>打开方式</p>
 <ul>
@@ -253,11 +253,11 @@ out_file.open(<span style="color:#f92672">&lt;</span><span style="color:#960050;
 </li>
 <li>
 <p>ios::out | ios::binary / ios::app | ios::binary</p>
-<p>按二进制打开，对以文本方式打开的文件，当输出的字符为'\n&rsquo;时，在某些平台上（如：DOS 和 Windows 平台）将自动转换成'\r&rsquo;和'\n&rsquo;两个字符写入外部文件</p>
+<p>按二进制打开，对以文本方式打开的文件，当输出的字符为&rsquo;\n&rsquo;时，在某些平台上（如：DOS 和 Windows 平台）将自动转换成&rsquo;\r&rsquo;和&rsquo;\n&rsquo;两个字符写入外部文件</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">out_file.write((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>s1, <span style="color:#66d9ef">sizeof</span>(s1));
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>out_file.write((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>s1, <span style="color:#66d9ef">sizeof</span>(s1));
+</span></span></code></pre></div></li>
 <li>
 <p>判断打开操作是否成功</p>
 <ul>
@@ -280,9 +280,9 @@ out_file.open(<span style="color:#f92672">&lt;</span><span style="color:#960050;
 <li>直接方式：<code>ifstream in_file(&lt;文件名&gt;,&lt;打开方式&gt;);</code></li>
 <li>间接方式</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ifstream in_file;
-in_file.open(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">文件名</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">打开方式</span><span style="color:#f92672">&gt;</span>);
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>ifstream in_file;
+</span></span><span style="display:flex;"><span>in_file.open(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">文件名</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">打开方式</span><span style="color:#f92672">&gt;</span>);
+</span></span></code></pre></div></li>
 <li>
 <p>打开方式</p>
 <ul>
@@ -291,7 +291,7 @@ in_file.open(<span style="color:#f92672">&lt;</span><span style="color:#960050;b
 </li>
 <li>
 <p>ios::in | ios::binary</p>
-<p>对以文本方式打开的文件，当文件中的字符为连续的'\r&rsquo;和'\n&rsquo;时，在某些平台上（如：DOS 和 Windows 平台）将自动转换成一个字符'\n&rsquo;输入</p>
+<p>对以文本方式打开的文件，当文件中的字符为连续的&rsquo;\r&rsquo;和&rsquo;\n&rsquo;时，在某些平台上（如：DOS 和 Windows 平台）将自动转换成一个字符&rsquo;\n&rsquo;输入</p>
 </li>
 </ul>
 </li>
@@ -314,17 +314,17 @@ in_file.open(<span style="color:#f92672">&lt;</span><span style="color:#960050;b
 <p>文件随机存储</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">istream<span style="color:#f92672">&amp;</span> istream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//绝对位置
-</span><span style="color:#75715e"></span>istream<span style="color:#f92672">&amp;</span> istream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">偏移量</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">参照位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//指定相对位置
-</span><span style="color:#75715e"></span>streampos istream<span style="color:#f92672">::</span>tellg(); <span style="color:#75715e">//获取指针位置
-</span><span style="color:#75715e"></span>ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//绝对位置
-</span><span style="color:#75715e"></span>ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">偏移量</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">参照位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//指定相对位置
-</span><span style="color:#75715e"></span>streampos ostream<span style="color:#f92672">::</span>tellg(); <span style="color:#75715e">//获取指针位置
-</span><span style="color:#75715e">//参照位置
-</span><span style="color:#75715e"></span>ios<span style="color:#f92672">::</span>beg <span style="color:#75715e">//文件头
-</span><span style="color:#75715e"></span>ios<span style="color:#f92672">::</span>cur <span style="color:#75715e">//当前位置
-</span><span style="color:#75715e"></span>ios<span style="color:#f92672">::</span>end <span style="color:#75715e">//文件尾
-</span></code></pre></div></main>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>istream<span style="color:#f92672">&amp;</span> istream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//绝对位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>istream<span style="color:#f92672">&amp;</span> istream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">偏移量</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">参照位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//指定相对位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>streampos istream<span style="color:#f92672">::</span>tellg(); <span style="color:#75715e">//获取指针位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//绝对位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span>seekg(<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">偏移量</span><span style="color:#f92672">&gt;</span>,<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">参照位置</span><span style="color:#f92672">&gt;</span>); <span style="color:#75715e">//指定相对位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>streampos ostream<span style="color:#f92672">::</span>tellg(); <span style="color:#75715e">//获取指针位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//参照位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ios<span style="color:#f92672">::</span>beg <span style="color:#75715e">//文件头
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ios<span style="color:#f92672">::</span>cur <span style="color:#75715e">//当前位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ios<span style="color:#f92672">::</span>end <span style="color:#75715e">//文件尾
+</span></span></span></code></pre></div></main>
         </div>
 
     </div>

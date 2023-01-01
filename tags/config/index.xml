@@ -34,16 +34,16 @@
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/php-setup/</guid>
       <description>&lt;h1 id=&#34;set-up-vm&#34;&gt;Set up VM&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update
-adduser newuser
-usermod -aG sudo newuser
-sudo nano /etc/ssh/sshd_config
-&lt;span style=&#34;color:#75715e&#34;&gt;# change PasswordAuthentication from no to yes (Afterwards you can change it back)&lt;/span&gt;
-sudo systemctl restart sshd
-ssh-keygen -f .ssh/id_rsa_new &lt;span style=&#34;color:#75715e&#34;&gt;# local&lt;/span&gt;
-ssh-copy-id newuser@server &lt;span style=&#34;color:#75715e&#34;&gt;#local, and edit .ssh/config&lt;/span&gt;
-sudo apt install curl git unzip build-essential
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adduser newuser
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usermod -aG sudo newuser
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo nano /etc/ssh/sshd_config
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# change PasswordAuthentication from no to yes (Afterwards you can change it back)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl restart sshd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh-keygen -f .ssh/id_rsa_new &lt;span style=&#34;color:#75715e&#34;&gt;# local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh-copy-id newuser@server &lt;span style=&#34;color:#75715e&#34;&gt;#local, and edit .ssh/config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install curl git unzip build-essential
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>

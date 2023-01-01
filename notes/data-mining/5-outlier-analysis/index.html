@@ -157,7 +157,7 @@
 <ul>
 <li>Distance-based: global view
 <ul>
-<li>$\text{DB}(r,\pi)$-outlier: $\frac{|{o'|\text{dist}(o,o')\leq r}|}{|D|}\leq\pi$</li>
+<li>$\text{DB}(r,\pi)$-outlier: $\frac{|{o&rsquo;|\text{dist}(o,o&rsquo;)\leq r}|}{|D|}\leq\pi$</li>
 <li>CELL (Grid-base)</li>
 </ul>
 </li>
@@ -165,12 +165,12 @@
 <ul>
 <li>LOF
 <ul>
-<li>K-distance neighborhood: $N_k(o)={o'|o'\in D,d(o,o')\leq d_k(o)}$</li>
+<li>K-distance neighborhood: $N_k(o)={o&rsquo;|o&rsquo;\in D,d(o,o&rsquo;)\leq d_k(o)}$</li>
 </ul>
 </li>
-<li>Reachability distance: $\text{reachdist}_k(o\leftarrow o')=\max{d_k(o),d(o,o')}$</li>
-<li>Local reachability density: $\text{lrd}<em>k(o)=\frac{|N_k(o)|}{\sum</em>{o'\in N_k(o)}\text{reachdist}_k(o'\leftarrow o)}$</li>
-<li>Local outlier factor(the larger, the more abnormal): $\text{LOF}<em>k(o)=\sum</em>{o'\in N_k(o)}\sum_{o'\in N_k(o)}\text{reachdist}_k(o'\leftarrow o)$</li>
+<li>Reachability distance: $\text{reachdist}_k(o\leftarrow o&rsquo;)=\max{d_k(o),d(o,o&rsquo;)}$</li>
+<li>Local reachability density: $\text{lrd}<em>k(o)=\frac{|N_k(o)|}{\sum</em>{o&rsquo;\in N_k(o)}\text{reachdist}_k(o&rsquo;\leftarrow o)}$</li>
+<li>Local outlier factor(the larger, the more abnormal): $\text{LOF}<em>k(o)=\sum</em>{o&rsquo;\in N_k(o)}\sum_{o&rsquo;\in N_k(o)}\text{reachdist}_k(o&rsquo;\leftarrow o)$</li>
 </ul>
 </li>
 </ul>

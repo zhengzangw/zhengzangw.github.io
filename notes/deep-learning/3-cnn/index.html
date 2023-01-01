@@ -147,7 +147,7 @@
 <li>卷积层
 <ul>
 <li>输入特征映射组：$\mathcal{X}\in\mathbb{R}^{M\times N\times D}$ 三维张量，切片 $X^d\in\mathbb{R}^{M\times N}$ 为一个输入特征映射</li>
-<li>输出状态映射组：$\mathcal{Y}\in\mathbb{R}^{M'\times N'\times P}$ 三维张量，切片 $Y^p\in\mathbb{R}^{M'\times N'}$</li>
+<li>输出状态映射组：$\mathcal{Y}\in\mathbb{R}^{M&rsquo;\times N&rsquo;\times P}$ 三维张量，切片 $Y^p\in\mathbb{R}^{M&rsquo;\times N&rsquo;}$</li>
 <li>卷积核：$\mathcal{W}\in\mathbb{R}^{U\times V\times P\times D}$，切片 $W^{p,d}\in\mathbb{R}^{U\times V}$ 为一个二维卷积核</li>
 <li>$Z^p=W^p\otimes X+b^p=\sum_{d=1}^DW^{p,d}\otimes X^d+b^p$</li>
 <li>$Y^p=f(Z^p)$</li>
@@ -162,8 +162,8 @@
 <li>反向传播算法
 <ul>
 <li>$\delta^{(l,p)}=\frac{\partial L}{\partial Z^{(l,p)}}$</li>
-<li>汇聚层：$\delta^{(l,p)}=\frac{\partial L}{\partial Z^{(l,p)}}=f'_l(Z^{(l,p)}\odot\text{up}(\delta^{(l+1,p)})$</li>
-<li>聚集层：$\delta^{(l,d)}=f'<em>l(Z^{(l,d)})\cdot\sum</em>{P=1}^P(\text{rot180}(W^{(l+1,p,d)}\tilde\otimes\delta^{(l+1,p)}))$</li>
+<li>汇聚层：$\delta^{(l,p)}=\frac{\partial L}{\partial Z^{(l,p)}}=f&rsquo;_l(Z^{(l,p)}\odot\text{up}(\delta^{(l+1,p)})$</li>
+<li>聚集层：$\delta^{(l,d)}=f&rsquo;<em>l(Z^{(l,d)})\cdot\sum</em>{P=1}^P(\text{rot180}(W^{(l+1,p,d)}\tilde\otimes\delta^{(l+1,p)}))$</li>
 </ul>
 </li>
 </ul>

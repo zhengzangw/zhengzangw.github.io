@@ -195,10 +195,10 @@
 <p>Hermite 插值：已知在 $x_0,\cdots,x_n$ 处的函数值和导数值（$2n+2$个条件）</p>
 </li>
 <li>
-<p>$H_{2n+1}(x)=\sum_{i=0}^ny_i\alpha_i(x)+\sum_{i=0}^ny_i'\beta_i(x)$</p>
+<p>$H_{2n+1}(x)=\sum_{i=0}^ny_i\alpha_i(x)+\sum_{i=0}^ny_i&rsquo;\beta_i(x)$</p>
 <ul>
-<li>$\alpha_i(x_k)=\delta_{ik},\alpha'(x_k)=0$</li>
-<li>$\beta_i(x_k)=0,\beta_i'(x_k)=\delta_{ik}$</li>
+<li>$\alpha_i(x_k)=\delta_{ik},\alpha&rsquo;(x_k)=0$</li>
+<li>$\beta_i(x_k)=0,\beta_i&rsquo;(x_k)=\delta_{ik}$</li>
 <li>Hermite 值问题解存在且唯一</li>
 </ul>
 </li>
@@ -213,7 +213,7 @@
 </li>
 <li>
 <p>两点三次插值</p>
-<p>$$H_3(x)=f_0(1+2l_1(x))l^2_0(x)+f_1(1+2l_0(x))l_1^2(x)+f_0'(x-x_0)l_0^2(x)+f'_1(x-x_1)l^2_1(x)$$</p>
+<p>$$H_3(x)=f_0(1+2l_1(x))l^2_0(x)+f_1(1+2l_0(x))l_1^2(x)+f_0&rsquo;(x-x_0)l_0^2(x)+f&rsquo;_1(x-x_1)l^2_1(x)$$</p>
 </li>
 <li>
 <p>两点三次插值余项：$R_3(x)=f(x)-H_3(x)=K(x)(x-x_0)^2(x-x_1)^2$</p>
@@ -243,8 +243,8 @@
 </li>
 <li>分段线性插值余项
 <ul>
-<li>$R_1(x)=f(x)-\phi(x)=\frac{f''(\xi)}{2}(x-x_k)(x-x_{k+1})$</li>
-<li>$|R_1(x)|\leq\frac{1}{2}\max_{a\leq x\leq b}|f''(x)|\max_{x_k\leq x\leq x_{k+1}}|(x-x_k)(x-x_{k+1})|\leq \frac{1}{2}M_2\frac{1}{4}h^2=\frac{1}{8}M_2h^2$</li>
+<li>$R_1(x)=f(x)-\phi(x)=\frac{f&rsquo;&rsquo;(\xi)}{2}(x-x_k)(x-x_{k+1})$</li>
+<li>$|R_1(x)|\leq\frac{1}{2}\max_{a\leq x\leq b}|f&rsquo;&rsquo;(x)|\max_{x_k\leq x\leq x_{k+1}}|(x-x_k)(x-x_{k+1})|\leq \frac{1}{2}M_2\frac{1}{4}h^2=\frac{1}{8}M_2h^2$</li>
 <li>$h=\max_{1\leq i\leq n}(x_i-x_{i-1})$</li>
 </ul>
 </li>
@@ -273,16 +273,16 @@
 <li>内节点连续性条件
 <ul>
 <li>$S(x_j-0)=S(x_j+0)$</li>
-<li>$S'(x_j-0)=S'(x_j+0)$</li>
-<li>$S''(x_j=0)=S''(x_j+0)$</li>
+<li>$S&rsquo;(x_j-0)=S&rsquo;(x_j+0)$</li>
+<li>$S&rsquo;&rsquo;(x_j=0)=S&rsquo;&rsquo;(x_j+0)$</li>
 <li>共 $3n-3$ 个条件</li>
 </ul>
 </li>
 <li>边界条件 2 个
 <ul>
-<li>固支条件（一阶边界条件）：$S'(x_0)=f_0', S'(x_n)=f_n'$</li>
-<li>二阶边界条件：$S''(x_0)=f_0'', S''(x_n)=f_n''$</li>
-<li>二阶自然边界条件：$S''(x_0)=S''(x_n)=0$</li>
+<li>固支条件（一阶边界条件）：$S&rsquo;(x_0)=f_0&rsquo;, S&rsquo;(x_n)=f_n'$</li>
+<li>二阶边界条件：$S&rsquo;&rsquo;(x_0)=f_0&rsquo;&rsquo;, S&rsquo;&rsquo;(x_n)=f_n&rsquo;'$</li>
+<li>二阶自然边界条件：$S&rsquo;&rsquo;(x_0)=S&rsquo;&rsquo;(x_n)=0$</li>
 <li>周期性条件：两段函数值，一阶函数，二阶函数相等</li>
 </ul>
 </li>
@@ -294,26 +294,26 @@
 <li>
 <p>三转角方法：通过二阶导数连续性，求出一阶导数，使用 Hermite 插值</p>
 <ul>
-<li>设 $S'(x_j)=m_j$</li>
+<li>设 $S&rsquo;(x_j)=m_j$</li>
 <li>令 $h_k=x_{x+1}-x_k,k=0,\cdots,n-1$</li>
 <li>逐个求 $f(x)$ 在 $[x_k,x_{k+1}]$ 上的三次插值多项式 $S_k(x)$</li>
-<li>由 $S''<em>k(x_k+0)=S''</em>{k-1}(x_k-0)$ 得 $n-1$ 个方程组，$n+1$ 个未知量</li>
+<li>由 $S&rsquo;&rsquo;<em>k(x_k+0)=S&rsquo;&rsquo;</em>{k-1}(x_k-0)$ 得 $n-1$ 个方程组，$n+1$ 个未知量</li>
 </ul>
 <p>$$\lambda_km_{k-1}+2m_k+\mu_km_{k+1}=g_k\newline \lambda_k=\frac{h_k}{h_k+h_{k-1}}\newline \mu_k=\frac{h_{k-1}}{h_k+h_{k-1}}\newline g_k=3\lambda_k\frac{y_k-y_{k-1}}{h_{k-1}}+\mu_k\frac{y_{k+1}-y_k}{h_k}\newline k=1,\cdots,n-1$$</p>
 <ul>
 <li>满足一阶边界条件：三对角方程组</li>
 <li>满足二阶自然边界条件：三对角方程组</li>
-<li>定理：$h=\max_{0\leq i\leq n-1} h_i,\delta=\min_{0\leq i\leq n-1}h_i$，当$\frac{h}{\delta}\leq c&lt;\infty$ 时，$S(x)$ 和 $S'(x)$ 一致收敛到 $f(x)$ 和 $f'(x)$</li>
+<li>定理：$h=\max_{0\leq i\leq n-1} h_i,\delta=\min_{0\leq i\leq n-1}h_i$，当$\frac{h}{\delta}\leq c&lt;\infty$ 时，$S(x)$ 和 $S&rsquo;(x)$ 一致收敛到 $f(x)$ 和 $f&rsquo;(x)$</li>
 </ul>
 </li>
 <li>
 <p>三弯矩方法：求出二阶导数</p>
 <ul>
-<li>$M(x)=S''(x)=M_i\frac{x_{i+1}-x}{h_i}+M_{i+1}\frac{x-x_i}{h_i}$：隐含二阶导数连续</li>
+<li>$M(x)=S&rsquo;&rsquo;(x)=M_i\frac{x_{i+1}-x}{h_i}+M_{i+1}\frac{x-x_i}{h_i}$：隐含二阶导数连续</li>
 <li>两次不定积分：$S(x)=M_i\frac{(x_{i+1}-x)^3}{6h_i}+M_{i+1}\frac{(x-x_i)^3}{6h_i}+\alpha_i\frac{x_{i+1}-x}{h_i}+\beta_i\frac{x-x_i}{h_i}$</li>
 <li>由 $S(x_i)=f(x_i)$ 可得：$\alpha_i=f(x_i)-\frac{M_ih^2_i}{6}$, $\beta_i=f(x_{i+1})-\frac{M_{i+1}h_i^2}{6}$</li>
-<li>$S'(x)=-M_i\frac{(x_{i+1}-x)^2}{2h_i}+M_{i+1}\frac{(x-x_i)^2}{2h_i}+f[x_i,x_{i+1}]-\frac{h_i}{6}(M_{i+1}-M_i),x\in[x_i,x_{i+1}]$</li>
-<li>由 $S'(x_i+0)=S'(x_i-0)$ 可得 $n-1$ 个方程</li>
+<li>$S&rsquo;(x)=-M_i\frac{(x_{i+1}-x)^2}{2h_i}+M_{i+1}\frac{(x-x_i)^2}{2h_i}+f[x_i,x_{i+1}]-\frac{h_i}{6}(M_{i+1}-M_i),x\in[x_i,x_{i+1}]$</li>
+<li>由 $S&rsquo;(x_i+0)=S&rsquo;(x_i-0)$ 可得 $n-1$ 个方程</li>
 </ul>
 <p>$$\mu_iM_{i-1}+2M_i+\lambda_iM_{i+1}=d_i,i=1,2,\cdots,n-1\newline \mu_i=\frac{h_{i-1}}{h_{i-1}+h_i}\newline \lambda_i=\frac{{h_i}}{h_{i-1}+h_i}=1-\mu_i\newline d_i=6f[x_{i-1},x_i,x_{i+1}]$$</p>
 <ul>

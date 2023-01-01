@@ -15,7 +15,7 @@
       <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-circuit/basics/</guid>
-      <description>数制与数码  补码  正数：原码=反码=补码 负数：反码不变符号位，其它取反；补码先反码，再在最低位加一   数码  8421(BCD) 2421 Excess-3 Biquinary 1-out-of-10 Gray code    逻辑电路  逻辑门：非，与，或，与非，或非 逻辑代数 逻辑函数  最大项表达式 Product of Sums：所有自变量的或项 最小项表达式 Sum of Products：所有自变量的与项 卡诺图(Karnaugh map)  最小化 Product of Sums/Sum of products      </description>
+      <description>数制与数码 补码 正数：原码=反码=补码 负数：反码不变符号位，其它取反；补码先反码，再在最低位加一 数码 8421(BCD) 2421 Excess-3 Biquinary 1-out-of-10 Gray code 逻辑电路 逻辑门：非，与，或，与非，或非 逻辑代数 逻辑函数 最大项表达式 Product of Sums：所有自变量的或项 最小项表达式 Sum of Products：所有自变量的与项 卡诺图(Karnaugh map) 最小化 Product of Sums/Sum of products </description>
     </item>
     
     <item>
@@ -24,12 +24,12 @@
       <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-circuit/combination-logic-design/</guid>
-      <description>竞争与冒险  竞争：某一输入量经不同路径传输后，到达电路某一汇合点的时间有先有后 冒险：由于竞争是电路输出发生瞬间错误 通过卡诺图消除竞争：增加冗余项  Combinational PLDs  PLD: Programmable Logic Arrays, two-level AND-OR device that can be programmed to realize any sum-of-products logic expression PAL: Programmable Array Logic, a special case of PLA, fixed OR array  编码器 二进制电平转换为二进制编码
+      <description>竞争与冒险 竞争：某一输入量经不同路径传输后，到达电路某一汇合点的时间有先有后 冒险：由于竞争是电路输出发生瞬间错误 通过卡诺图消除竞争：增加冗余项 Combinational PLDs PLD: Programmable Logic Arrays, two-level AND-OR device that can be programmed to realize any sum-of-products logic expression PAL: Programmable Array Logic, a special case of PLA, fixed OR array 编码器 二进制电平转换为二进制编码
 优先编码器
 译码器 二进制代码转换为对应高低电平
 数据选择器(MUX, multiplexer) $2^n$ 位地址输入、$2^n$ 位数据输入、1位输出，每次在地址输入的控制下，从多路输入数据中选择一路输出
 数据分配器(DEMUX, demultiplexer) 将输入数据按地址送到输出端上
-计算  数据比较器 加法器 ALU(arithmetic and logic unit) Combinational Multipliers  </description>
+计算 数据比较器 加法器 ALU(arithmetic and logic unit) Combinational Multipliers </description>
     </item>
     
     <item>
@@ -38,7 +38,9 @@
       <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-circuit/sequence-logic-design/</guid>
-      <description>基本器件  S-R 锁存器（Latch）     S R Q QN     0 0 last Q last QN   0 1 0 1   1 0 1 0   1 1 0 0     D Latch     C D Q QN     1 0 0 1   1 1 1 0   0 x last Q last QN      Flip-Flop 触发器：某个信号处于上升沿或者下降沿的时候工作</description>
+      <description>基本器件 S-R 锁存器（Latch） S R Q QN 0 0 last Q last QN 0 1 0 1 1 0 1 0 1 1 0 0 D Latch C D Q QN 1 0 0 1 1 1 1 0 0 x last Q last QN Flip-Flop 触发器：某个信号处于上升沿或者下降沿的时候工作
+D Flip-Flop Master/Slave S-R flip-flop Master/Slave J-K Flip-Flop T Flip-Flop 特征方程
+同步时序电路 输出方程，状态方程，激励方程 输入 $X$ 输出 $Z$ 当前电路状态：$Q^n$ 触发器输入 $Y$ 摩尔型电路：$Z$ 为当前状态函数 米里型电路：$Z$ 为当前状态与输入的函数 激励方程：$Y=F(X,Q^n)$ 状态方程：$Q^{n+1}=F(Y,Q^n)$ 同步时序逻辑电路分析 特性方程+激励方程+输出方程 获得 $Q^{n+1}$ 的表达式 画出状态转换表，转态转换图，确定功能 同步时序逻辑逻辑电路设计 建立状态图或状态表 状态化简：合并等价状态 状态分配：$n$ 个触发器确定 $2^n$ 个状态 选择触发器 求出激励方程与输出方程 </description>
     </item>
     
   </channel>

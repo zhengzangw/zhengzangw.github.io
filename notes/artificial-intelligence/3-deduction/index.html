@@ -209,7 +209,7 @@
 <h3 id="合一unification">合一（Unification）</h3>
 <p>找到使不同的逻辑表示变得相同的置换</p>
 <ul>
-<li>一般化假言推理规则：$\forall i,p_i[x/\theta]=p_i'[x/\theta],\frac{p_1',\cdots,p_n',(\bigvee_{i=1}^n p_i\Rightarrow q)}{q[x/\theta]}$</li>
+<li>一般化假言推理规则：$\forall i,p_i[x/\theta]=p_i&rsquo;[x/\theta],\frac{p_1&rsquo;,\cdots,p_n&rsquo;,(\bigvee_{i=1}^n p_i\Rightarrow q)}{q[x/\theta]}$</li>
 <li>$\text{UNIFY}(p,q)=\theta,p[x/\theta]=q[x/\theta]$
 <ul>
 <li>${E_1,\cdots,E_n}$ 可合一：存在置换 $\theta$ 使 $E_1\theta=\cdots=E_n\theta$</li>
@@ -226,25 +226,25 @@
 </li>
 <li>合一算法</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unify</span>(E1,E2):
-  <span style="color:#66d9ef">if</span> E1,E2 <span style="color:#f92672">is</span> all constant <span style="color:#f92672">or</span> all empty:
-    <span style="color:#66d9ef">if</span> E1 <span style="color:#f92672">=</span> E2: <span style="color:#66d9ef">return</span> {}
-    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> FAIL
-  <span style="color:#66d9ef">elif</span> E1 <span style="color:#f92672">is</span> variable:
-    <span style="color:#66d9ef">if</span> E1 <span style="color:#f92672">in</span> E2: <span style="color:#66d9ef">return</span> FAIL
-    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> {E2<span style="color:#f92672">/</span>E1}
-  <span style="color:#66d9ef">elif</span> E2 <span style="color:#f92672">is</span> variable:
-    <span style="color:#66d9ef">if</span> E2 <span style="color:#f92672">in</span> E1: <span style="color:#66d9ef">return</span> FAIL
-    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> {E1<span style="color:#f92672">/</span>E2}
-  <span style="color:#66d9ef">else</span>:
-    ret <span style="color:#f92672">=</span> unify(E1[<span style="color:#ae81ff">0</span>], E2[<span style="color:#ae81ff">0</span>])
-    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">==</span> FAIL): <span style="color:#66d9ef">return</span> FAIL
-    E1 <span style="color:#f92672">=</span> apply(ret, E1[<span style="color:#ae81ff">1</span>:])
-    E2 <span style="color:#f92672">=</span> apply(ret, E2[<span style="color:#ae81ff">1</span>:])
-    ret2 <span style="color:#f92672">=</span> unify(E1, E2)
-    <span style="color:#66d9ef">if</span> (ret2 <span style="color:#f92672">==</span> FAIL): <span style="color:#66d9ef">return</span> FAIL
-    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> ret<span style="color:#f92672">+</span>ret2
-</code></pre></div><h3 id="前向链接">前向链接</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unify</span>(E1,E2):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> E1,E2 <span style="color:#f92672">is</span> all constant <span style="color:#f92672">or</span> all empty:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> E1 <span style="color:#f92672">=</span> E2: <span style="color:#66d9ef">return</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> FAIL
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> E1 <span style="color:#f92672">is</span> variable:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> E1 <span style="color:#f92672">in</span> E2: <span style="color:#66d9ef">return</span> FAIL
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> {E2<span style="color:#f92672">/</span>E1}
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> E2 <span style="color:#f92672">is</span> variable:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> E2 <span style="color:#f92672">in</span> E1: <span style="color:#66d9ef">return</span> FAIL
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> {E1<span style="color:#f92672">/</span>E2}
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> unify(E1[<span style="color:#ae81ff">0</span>], E2[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">==</span> FAIL): <span style="color:#66d9ef">return</span> FAIL
+</span></span><span style="display:flex;"><span>    E1 <span style="color:#f92672">=</span> apply(ret, E1[<span style="color:#ae81ff">1</span>:])
+</span></span><span style="display:flex;"><span>    E2 <span style="color:#f92672">=</span> apply(ret, E2[<span style="color:#ae81ff">1</span>:])
+</span></span><span style="display:flex;"><span>    ret2 <span style="color:#f92672">=</span> unify(E1, E2)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret2 <span style="color:#f92672">==</span> FAIL): <span style="color:#66d9ef">return</span> FAIL
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">return</span> ret<span style="color:#f92672">+</span>ret2
+</span></span></code></pre></div><h3 id="前向链接">前向链接</h3>
 <ul>
 <li>一阶确定子句：文字析取且恰有一个正文字</li>
 <li>数据日志类知识库：无函词

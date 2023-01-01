@@ -108,14 +108,14 @@
 </li>
 </ul>
 <h2 id="c-异常处理机制">C++ 异常处理机制</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">try</span> {
-    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">语句序列</span><span style="color:#f92672">&gt;</span>;
-    <span style="color:#66d9ef">throw</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表达式</span><span style="color:#f92672">&gt;</span>;
-}
-<span style="color:#66d9ef">catch</span> (<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">类型</span><span style="color:#f92672">&gt;</span> [<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">变量</span><span style="color:#f92672">&gt;</span>]){
-    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">语句序列</span><span style="color:#f92672">&gt;</span>
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">语句序列</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表达式</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">catch</span> (<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">类型</span><span style="color:#f92672">&gt;</span> [<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">变量</span><span style="color:#f92672">&gt;</span>]){
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">语句序列</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>一个 try 语句块的后面可以跟多个 catch 语句块，用于捕获不同类型的异常对象并进行处理</li>
 <li>try 语句块 throw 了异常对象，如果该 try 语句块之后
 <ul>

@@ -34,7 +34,8 @@ echo $(ls) # output -&amp;gt; string echo `ls` # output -&amp;gt; string diff &a
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/3-shell-ui/</guid>
-      <description>Escape Code    Escape Sequence Representation     \a alert   \n newline   \t Horizontal Tab   \v Vertical Tab   &#39;,&amp;quot;,? Symbol   \nnn ASCII in octal   \xhh ASCII   \uhhhh Unicode   \uhhhhhhhh Unicode    Escape Character echo -e &amp;#34;\033[32;31mstring \033[0m&amp;#34; # Different format seperated by ; echo &amp;#34;\e[32;31mstring\e[0m&amp;#34; echo &amp;#34;\x1b[32;31mstring\x1b[0m&amp;#34;  (x): not work in iterm</description>
+      <description>Escape Code Escape Sequence Representation \a alert \n newline \t Horizontal Tab \v Vertical Tab &#39;,&amp;quot;,? Symbol \nnn ASCII in octal \xhh ASCII \uhhhh Unicode \uhhhhhhhh Unicode Escape Character echo -e &amp;#34;\033[32;31mstring \033[0m&amp;#34; # Different format seperated by ; echo &amp;#34;\e[32;31mstring\e[0m&amp;#34; echo &amp;#34;\x1b[32;31mstring\x1b[0m&amp;#34; (x): not work in iterm
+Format Representation 0 Default 1 Dim 4 Underline 5 Blink (x) 7 Reverse (invert the foreground and background colors) 8 Hidden (x) 9 strikes (x) 20+i Reset above values 39 Default fg color 30+i 8 color: Black,R,G,Y,B,M,C,Light gray 90+i 16 color: Dark gray,lR,lG,lY,lB,lM,lC,W 38;5;ASCII 256 color 38;2;R;G;B RGB color 49 Default bg color 40+i 8 color for bg 100+i 16 color for bg 48;5;ASCII 256 color 48;2;R;G;B RGB color Without m:</description>
     </item>
     
     <item>
@@ -43,7 +44,7 @@ echo $(ls) # output -&amp;gt; string echo `ls` # output -&amp;gt; string diff &a
       <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/4-job-control/</guid>
-      <description>Jobs Control sleep 20 # seconds man signal #ctrl+c SIGINT #ctrl+\ SIGQUIT #ctrl+z SIGSTOP nohup ./run.sh &amp;amp; jobs # show jobs background bg %1 # continue to run fg %2 kill -STOP %1 kill -HUP %1 kill -KILL %2 C signal #include &amp;lt;signal.h&amp;gt;#include &amp;lt;stdint.h&amp;gt;void signal_callback_handler(int signum) { printf(&amp;#34; TERMINATED \n&amp;#34;); setBufferedInput(true); printf(&amp;#34;\033[?25h\033[m&amp;#34;); exit(signum); } int main(){ signal(SIGINT, signal_callback_handler); } Python signal #!/usr/bin/env python import signal, time def handler(signum, time): print(&amp;#34;\nI got a SIGINT, but I am not stopping&amp;#34;) signal.</description>
+      <description>Jobs Control sleep 20 # seconds man signal #ctrl+c SIGINT #ctrl+\ SIGQUIT #ctrl+z SIGSTOP nohup ./run.sh &amp;amp; jobs # show jobs background bg %1 # continue to run fg %2 kill -STOP %1 kill -HUP %1 kill -KILL %2 C signal #include &amp;lt;signal.h&amp;gt; #include &amp;lt;stdint.h&amp;gt; void signal_callback_handler(int signum) { printf(&amp;#34; TERMINATED \n&amp;#34;); setBufferedInput(true); printf(&amp;#34;\033[?25h\033[m&amp;#34;); exit(signum); } int main(){ signal(SIGINT, signal_callback_handler); } Python signal #!/usr/bin/env python import signal, time def handler(signum, time): print(&amp;#34;\nI got a SIGINT, but I am not stopping&amp;#34;) signal.</description>
     </item>
     
     <item>
@@ -61,7 +62,7 @@ echo $(ls) # output -&amp;gt; string echo `ls` # output -&amp;gt; string diff &a
       <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/6-terminal/</guid>
-      <description>快捷键     功能     ctrl + a 移动到行首   ctrl + e 移动到行尾   ctrl + u 删除当前光标前面的文字   ctrl + l 清屏   ctrl + r 搜索历史记录   ctrl + z SIGSTOP 挂起   ctrl + c SIGINT   ctrl + s 阻止屏幕输出   ctrl + q 允许屏幕输出    Bang 命令 !! #上一条命令 ^foo^bar # 将上一条命令中 foo 替换为 bar ^foo # 将上一条命令中 foo 删除 !</description>
+      <description>快捷键 功能 ctrl + a 移动到行首 ctrl + e 移动到行尾 ctrl + u 删除当前光标前面的文字 ctrl + l 清屏 ctrl + r 搜索历史记录 ctrl + z SIGSTOP 挂起 ctrl + c SIGINT ctrl + s 阻止屏幕输出 ctrl + q 允许屏幕输出 Bang 命令 !! #上一条命令 ^foo^bar # 将上一条命令中 foo 替换为 bar ^foo # 将上一条命令中 foo 删除 !wget # 最近的以 wget 开头的命令 !$ # 上个命令最后一个参数 !* # 上个命令所有参数 !-5 # 倒数第五条 fc # Open the most recent command and edit it </description>
     </item>
     
     <item>
@@ -134,41 +135,41 @@ standard-version
 &lt;/ul&gt;
 &lt;h2 id=&#34;commit-message&#34;&gt;commit message&lt;/h2&gt;
 &lt;p&gt;Angular Git Commit Guidelines&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&amp;lt;type&amp;gt;(&amp;lt;scope&amp;gt;): &amp;lt;subject&amp;gt;
-&amp;lt;br&amp;gt;
-&amp;lt;body&amp;gt;
-&amp;lt;br&amp;gt;
-&amp;lt;footer&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;commitizen&#34;&gt;commitizen&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;type&amp;gt;(&amp;lt;scope&amp;gt;): &amp;lt;subject&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;br&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;body&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;br&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;footer&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;commitizen&#34;&gt;commitizen&lt;/h3&gt;
 &lt;p&gt;使用 commitizen 规范信息，需要 nodejs&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;using namespace std;
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, q &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
-string s;
-
-vector&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; d[&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;];
-&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; nex[&lt;span style=&#34;color:#ae81ff&#34;&gt;100005&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {};
-&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; dp[&lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {};
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;prepare&lt;/span&gt;() {
-  memset(dp, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;sizeof&lt;/span&gt;(dp));
-  &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; c &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; c &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;; &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;c) {
-    nex[n][c] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nex[n &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][c] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n;
-  }
-  &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; &lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;i) {
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; c &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; c &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;; &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;c) {
-      nex[i][c] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nex[i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][c];
-    }
-    nex[i][s[i] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;yarn global add commitizen
-npm init --yes
-ln -s /Users/username/node_modules ./node_modules
-commitizen init cz-conventional-changelog --save --save-exact
-git cz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;using namespace std;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, q &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;string s;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vector&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; d[&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; nex[&lt;span style=&#34;color:#ae81ff&#34;&gt;100005&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; dp[&lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;prepare&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;memset&lt;/span&gt;(dp, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;sizeof&lt;/span&gt;(dp));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; c &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; c &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;; &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;c) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    nex[n][c] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nex[n &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][c] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; &lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;i) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; c &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; c &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;; &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;c) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      nex[i][c] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nex[i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][c];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    nex[i][s[i] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yarn global add commitizen
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm init --yes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ln -s /Users/username/node_modules ./node_modules
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;commitizen init cz-conventional-changelog --save --save-exact
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git cz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -224,18 +225,18 @@ git cz
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;gcc -M main.c &lt;span style=&#34;color:#75715e&#34;&gt;#输出用于 Make 的规则&lt;/span&gt;
-gcc -MM &lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;.c &lt;span style=&#34;color:#75715e&#34;&gt;#不包含系统头文件&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;var&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 使用变量
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;var &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 将整个makefile展开后，再决定变量的值&lt;/span&gt;
-var &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 立即赋值&lt;/span&gt;
-var &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 追加赋值&lt;/span&gt;
-var &lt;span style=&#34;color:#f92672&#34;&gt;?=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 若无定义则定义&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# 定义空格
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;nullstring &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt;
-space &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;nullstring&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gcc -M main.c &lt;span style=&#34;color:#75715e&#34;&gt;#输出用于 Make 的规则&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gcc -MM &lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;.c &lt;span style=&#34;color:#75715e&#34;&gt;#不包含系统头文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;var&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 使用变量
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;var &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 将整个makefile展开后，再决定变量的值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 立即赋值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 追加赋值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var &lt;span style=&#34;color:#f92672&#34;&gt;?=&lt;/span&gt; string &lt;span style=&#34;color:#75715e&#34;&gt;# 若无定义则定义&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 定义空格
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;nullstring &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;space &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;nullstring&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;内置变量与常用变量&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-makefilet&#34; data-lang=&#34;makefilet&#34;&gt;.RECIPEPREFIX = &amp;gt; # 默认命令前为 \t
@@ -288,12 +289,12 @@ $(VERBOSE).SILENT # Suppress display of executed command
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;RULE:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; prerequisite
-  command1 &lt;span style=&#34;color:#75715e&#34;&gt;# 对于 Makefile 中的每个以 Tab 开头的命令，make 会创建一个 Shell 进程去执行它。&lt;/span&gt;
-  @command2 &lt;span style=&#34;color:#75715e&#34;&gt;# 不显示命令&lt;/span&gt;
-  -command3 &lt;span style=&#34;color:#75715e&#34;&gt;# 错误继续执行&lt;/span&gt;
-&lt;span style=&#34;color:#a6e22e&#34;&gt;%.o&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; %.c &lt;span style=&#34;color:#75715e&#34;&gt;# 模式匹配
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; prerequisite
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  command1 &lt;span style=&#34;color:#75715e&#34;&gt;# 对于 Makefile 中的每个以 Tab 开头的命令，make 会创建一个 Shell 进程去执行它。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  @command2 &lt;span style=&#34;color:#75715e&#34;&gt;# 不显示命令&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -command3 &lt;span style=&#34;color:#75715e&#34;&gt;# 错误继续执行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;%.o&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; %.c &lt;span style=&#34;color:#75715e&#34;&gt;# 模式匹配
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -321,7 +322,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
       <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/14-multimedia-transform/</guid>
-      <description>视频 ffmpeg  ffmpeg -formats 查看支持容器 ffmpeg -codec 查看支持编码 ffmpeg -encoders 查看编码器 ffmpeg -hide_banner     参数 效果     -i 输入文件   -c copy 直接复制   -c:v libx264 视频编码器   -c:a acc 音频编码器   -an 去除音频流   -vn 去除视频流   -preset ultrafast, superfast, medium, slow, veryslow   -y 覆盖同名   -vf scale=480:-1 分辨率   -ss 00:01:24 -t 00:00:01 裁剪一秒视频   -ss 01:02:03 -vframes 1 -q:v 2 截取一帧，质量为 2   -loop 1 -shortest 音频文件化为带封面的视频   -r 24 强制帧数   -b:v 64k 输出文件比特率（缺省 200kb/s）   -minrate 964K -maxrate 3856K -bufsize 2000K 码率调整     普屏4:3：320240 640480 宽屏16:9：480272 640360 672378 720480 1024600 1280720 1920*1080 获取封面：ffmpeg -ss 00:00:10 -i test1.</description>
+      <description>视频 ffmpeg ffmpeg -formats 查看支持容器 ffmpeg -codec 查看支持编码 ffmpeg -encoders 查看编码器 ffmpeg -hide_banner 参数 效果 -i 输入文件 -c copy 直接复制 -c:v libx264 视频编码器 -c:a acc 音频编码器 -an 去除音频流 -vn 去除视频流 -preset ultrafast, superfast, medium, slow, veryslow -y 覆盖同名 -vf scale=480:-1 分辨率 -ss 00:01:24 -t 00:00:01 裁剪一秒视频 -ss 01:02:03 -vframes 1 -q:v 2 截取一帧，质量为 2 -loop 1 -shortest 音频文件化为带封面的视频 -r 24 强制帧数 -b:v 64k 输出文件比特率（缺省 200kb/s） -minrate 964K -maxrate 3856K -bufsize 2000K 码率调整 普屏4:3：320240 640480 宽屏16:9：480272 640360 672378 720480 1024600 1280720 1920*1080 获取封面：ffmpeg -ss 00:00:10 -i test1.</description>
     </item>
     
     <item>
@@ -357,7 +358,7 @@ indent astyle --style=gnu src/*.cpp include/*.h # brew install astyle In Vscode:
 Python 代码风格：pep8
 autopep8 --in-place --aggressive test.py # pip install pep8 Frontend Prettier
 Lint 静态代码检测
- pylint eslint  </description>
+pylint eslint </description>
     </item>
     
     <item>
@@ -393,7 +394,7 @@ Lint 静态代码检测
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/20-args/</guid>
-      <description>Shell # getopts # : after letter indicates it requires arguments while getopts &amp;#34;:a:&amp;#34; opt; do case $opt in a) echo &amp;#34;-a was triggered, Parameter: $OPTARG&amp;#34; &amp;gt;&amp;amp;2 ;; \?) echo &amp;#34;Invalid option: -$OPTARG&amp;#34; &amp;gt;&amp;amp;2 exit 1 ;; :) echo &amp;#34;Option -$OPTARGrequires an argument.&amp;#34; &amp;gt;&amp;amp;2 exit 1 ;; esac done # getopt Python argparse</description>
+      <description>Shell # getopts # : after letter indicates it requires arguments while getopts &amp;#34;:a:&amp;#34; opt; do case $opt in a) echo &amp;#34;-a was triggered, Parameter: $OPTARG&amp;#34; &amp;gt;&amp;amp;2 ;; \?) echo &amp;#34;Invalid option: -$OPTARG&amp;#34; &amp;gt;&amp;amp;2 exit 1 ;; :) echo &amp;#34;Option -$OPTARG requires an argument.&amp;#34; &amp;gt;&amp;amp;2 exit 1 ;; esac done # getopt Python argparse</description>
     </item>
     
     <item>
@@ -405,8 +406,8 @@ Lint 静态代码检测
       <description>&lt;h2 id=&#34;platform&#34;&gt;Platform&lt;/h2&gt;
 &lt;h3 id=&#34;virtual-machine-on-macosx&#34;&gt;Virtual Machine on macosx&lt;/h3&gt;
 &lt;p&gt;Install virtualbox&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;    brew cask install virtualbox
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Download Ubuntu from &lt;a href=&#34;https://mirror.tuna.tsinghua.edu.cn/ubuntu-releases/&#34;&gt;Tsinghua Image&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    brew cask install virtualbox
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Download Ubuntu from &lt;a href=&#34;https://mirror.tuna.tsinghua.edu.cn/ubuntu-releases/&#34;&gt;Tsinghua Image&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;LTS version&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;16.04&lt;/li&gt;
@@ -430,16 +431,16 @@ Lint 静态代码检测
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/php-setup/</guid>
       <description>&lt;h1 id=&#34;set-up-vm&#34;&gt;Set up VM&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update
-adduser newuser
-usermod -aG sudo newuser
-sudo nano /etc/ssh/sshd_config
-&lt;span style=&#34;color:#75715e&#34;&gt;# change PasswordAuthentication from no to yes (Afterwards you can change it back)&lt;/span&gt;
-sudo systemctl restart sshd
-ssh-keygen -f .ssh/id_rsa_new &lt;span style=&#34;color:#75715e&#34;&gt;# local&lt;/span&gt;
-ssh-copy-id newuser@server &lt;span style=&#34;color:#75715e&#34;&gt;#local, and edit .ssh/config&lt;/span&gt;
-sudo apt install curl git unzip build-essential
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adduser newuser
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usermod -aG sudo newuser
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo nano /etc/ssh/sshd_config
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# change PasswordAuthentication from no to yes (Afterwards you can change it back)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl restart sshd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh-keygen -f .ssh/id_rsa_new &lt;span style=&#34;color:#75715e&#34;&gt;# local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh-copy-id newuser@server &lt;span style=&#34;color:#75715e&#34;&gt;#local, and edit .ssh/config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install curl git unzip build-essential
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

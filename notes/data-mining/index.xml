@@ -15,7 +15,7 @@
       <pubDate>Sun, 02 Feb 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-mining/1-data-warehouse/</guid>
-      <description>Big Data  GB: $2^{30}$ B TB, PB, EB, ZB data newly generated globally  2006: 180 EB 2001: 1.8 ZB 2020: 35 ZB   Data Mining Examples:  supermarket transactions valuable customers network instrusion gene data medical data web financial data software data usage data data from sensors data of arts audio generation   Data mining: non-trivial process of identifying valid, novel, potentially useful, and ultimately understandable patterns from huge volume of data KDD: Knowledge Discovery in Data  狭义：Data mining is a core step of KDD 广义：KDD = DM   data mining tasks: descriptive or predictive  characterization discrimination association clustering classification regression outlier analysis trend and evolution analysis    数据仓库概念  Property  Subject-Oriented Integrated Time-variant Nonvolatile   Data Cube: lattice of cuboids (not a paradigm of actual physical storage) Multidimensional Data Model  fact table: contains the facts as well as keys to each of the related dimension tables schema  star schema: 事实表+维表 snowflake schema fact constalleation schema     concept hierarchy  schema hierarchy: Total or partial order set-grouping hierarchy    OLAP OnLine Analysis Process</description>
+      <description>Big Data GB: $2^{30}$ B TB, PB, EB, ZB data newly generated globally 2006: 180 EB 2001: 1.8 ZB 2020: 35 ZB Data Mining Examples: supermarket transactions valuable customers network instrusion gene data medical data web financial data software data usage data data from sensors data of arts audio generation Data mining: non-trivial process of identifying valid, novel, potentially useful, and ultimately understandable patterns from huge volume of data KDD: Knowledge Discovery in Data 狭义：Data mining is a core step of KDD 广义：KDD = DM data mining tasks: descriptive or predictive characterization discrimination association clustering classification regression outlier analysis trend and evolution analysis 数据仓库概念 Property Subject-Oriented Integrated Time-variant Nonvolatile Data Cube: lattice of cuboids (not a paradigm of actual physical storage) Multidimensional Data Model fact table: contains the facts as well as keys to each of the related dimension tables schema star schema: 事实表+维表 snowflake schema fact constalleation schema concept hierarchy schema hierarchy: Total or partial order set-grouping hierarchy OLAP OnLine Analysis Process</description>
     </item>
     
     <item>
@@ -24,7 +24,7 @@
       <pubDate>Sun, 02 Feb 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-mining/2-preprocessing/</guid>
-      <description>预处理流程  General  Data cleaning Data reduction Data Integration Data transformation    Data cleaning  incomplete: mainly from data collection  忽略属性 手动填充 使用全局量 属性均值 相同类属性均值 最可能值   噪音：mainly from data collection，数据平滑技术（smooth）  分箱（binning）  partition: equi-depth, equi-width smoothing: means, median, boundaries   regression: fit into a mathematical function clustering: organize similar values into groups or clusters data editing  exploiting local smoothness exploiting global consistency with a noise tolerant model     不一致：mainly from data integreation  knowledge engineering tools    Data Integration  Schema Integration  entity identification problem: family name vs.</description>
+      <description>预处理流程 General Data cleaning Data reduction Data Integration Data transformation Data cleaning incomplete: mainly from data collection 忽略属性 手动填充 使用全局量 属性均值 相同类属性均值 最可能值 噪音：mainly from data collection，数据平滑技术（smooth） 分箱（binning） partition: equi-depth, equi-width smoothing: means, median, boundaries regression: fit into a mathematical function clustering: organize similar values into groups or clusters data editing exploiting local smoothness exploiting global consistency with a noise tolerant model 不一致：mainly from data integreation knowledge engineering tools Data Integration Schema Integration entity identification problem: family name vs.</description>
     </item>
     
     <item>
@@ -33,10 +33,12 @@
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-mining/3-association/</guid>
-      <description>Quantitative Discriminant Rule  general form: $\forall X,$target_class$(X)\Leftrightarrow$ contition$_1(X)[t:w_1,d:\omega_1]\vee\cdots\vee$ condition$_n(X)[t: w_n, d:\omega_n]$ Discriminant rule: sufficient condition of the target class  d-weight = $\frac{\text{count}(q_a\in C_{\text{target}})}{\sum_{i=1}^N\text{count}(q_a\in C_i)}$ d-weight: discriminability of each disjunct in the rule important   Characteristic rule: necessary condition  $\sum t_i=100%$    Association   Association rules: $A\Rightarrow B$[support, condifence]
-  Support
+      <description>Quantitative Discriminant Rule general form: $\forall X,$target_class$(X)\Leftrightarrow$ contition$_1(X)[t:w_1,d:\omega_1]\vee\cdots\vee$ condition$_n(X)[t: w_n, d:\omega_n]$ Discriminant rule: sufficient condition of the target class d-weight = $\frac{\text{count}(q_a\in C_{\text{target}})}{\sum_{i=1}^N\text{count}(q_a\in C_i)}$ d-weight: discriminability of each disjunct in the rule important Characteristic rule: necessary condition $\sum t_i=100%$ Association Association rules: $A\Rightarrow B$[support, condifence]
+Support
 $$\text{support}(A\Rightarrow B)=P(A,B)=\frac{\text{# of tuples includes }A,B}{\text{# of total tuples}}$$
-  Confidence (t-weight)</description>
+Confidence (t-weight)
+$$\text{confidence}(A\Rightarrow B)=P(B|A)=\frac{\text{# of tuples includes }A,B}{\text{# of tuples includes }A}$$
+strong: support &amp;gt; min_sup, confidence &amp;gt; min_conf</description>
     </item>
     
     <item>
@@ -45,7 +47,7 @@ $$\text{support}(A\Rightarrow B)=P(A,B)=\frac{\text{# of tuples includes }A,B}{\
       <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-mining/6-nlp/</guid>
-      <description>Text  NLP 预处理  （网页）确定 main block 去除标点与特殊符号 （网页）去除标签 （中文）分词 （英文）小写化 去除停用词 （英文）stemming + lemmatization   Representation  bag of words  Binary Frequency TF-IDF = $\text{tf}(t,d)\log\frac{|C|}{n_t}$   N-gram  第 $N$ 个词的出现只与前 $N-1$ 个词相关，整句概率为各词出现概率乘积   Distributed representation: 将词语用多个维度表示 word2vec  只有一个隐层的神经元网络，输入 one-hot 编码词汇表向量，输出 one-hot 编码词汇表向量 词向量：输入层到隐藏层权重第 $i$ 行 CBOW: 上下文预测单词 Skip-gram: 单词预测上下文     Document Clustering  partition-based  distance: cosine similarity centroid: topical words   Probabilistic  $p(\omega_j|G_m)=\frac{\sum_{\overline{X}}P(G_m|\overline{X})I(\overline{X},\omega_j)}{\sum_{\overline{X}}P(G_m|\overline{X})}$     Document and words co-clustering  Bipartite graph partioning   Topic Model  LSA Probalistic LSA   Classification  Instance-based  Cosine similarity LSA + Cosine similarity Centroid-based classification (clustering + cosine similarity)   Naive Bayes  Bernoulli NB Multinomial NB   Linear SVM    </description>
+      <description>Text NLP 预处理 （网页）确定 main block 去除标点与特殊符号 （网页）去除标签 （中文）分词 （英文）小写化 去除停用词 （英文）stemming + lemmatization Representation bag of words Binary Frequency TF-IDF = $\text{tf}(t,d)\log\frac{|C|}{n_t}$ N-gram 第 $N$ 个词的出现只与前 $N-1$ 个词相关，整句概率为各词出现概率乘积 Distributed representation: 将词语用多个维度表示 word2vec 只有一个隐层的神经元网络，输入 one-hot 编码词汇表向量，输出 one-hot 编码词汇表向量 词向量：输入层到隐藏层权重第 $i$ 行 CBOW: 上下文预测单词 Skip-gram: 单词预测上下文 Document Clustering partition-based distance: cosine similarity centroid: topical words Probabilistic $p(\omega_j|G_m)=\frac{\sum_{\overline{X}}P(G_m|\overline{X})I(\overline{X},\omega_j)}{\sum_{\overline{X}}P(G_m|\overline{X})}$ Document and words co-clustering Bipartite graph partioning Topic Model LSA Probalistic LSA Classification Instance-based Cosine similarity LSA + Cosine similarity Centroid-based classification (clustering + cosine similarity) Naive Bayes Bernoulli NB Multinomial NB Linear SVM </description>
     </item>
     
     <item>
@@ -54,7 +56,7 @@ $$\text{support}(A\Rightarrow B)=P(A,B)=\frac{\text{# of tuples includes }A,B}{\
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-mining/4-prediction-and-cluster/</guid>
-      <description>Prediction  Evaluate prediction algorithms  Generalization Speed Robustness Scalability Comprehensibility   Semi-supervised Learning  Generative methods Low-density separations Graph-based methods Disagreement-based methods    </description>
+      <description>Prediction Evaluate prediction algorithms Generalization Speed Robustness Scalability Comprehensibility Semi-supervised Learning Generative methods Low-density separations Graph-based methods Disagreement-based methods </description>
     </item>
     
     <item>
@@ -63,7 +65,7 @@ $$\text{support}(A\Rightarrow B)=P(A,B)=\frac{\text{# of tuples includes }A,B}{\
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-mining/5-outlier-analysis/</guid>
-      <description>Outlier analysis  Outliers  Global: deviates from the rest of the data set Contextual: deviates significantly with respect to a specific context of the object Collective: objects as a whole deviate significantly from the entire data set   Categorization based on supervision  Supervised Unsupervised Semi-supervised   Mining contextual outliers  transforming contextual to conventional Modeling normal behavior   Mining collective outliers  Exploring the structure of the data   high dimensional data  dimensionality reduction partiion the original feature space into small region    Statistical  Parametric approaches  Univariate  mean + standard deviation: $\mu\pm3\sigma$ median $\pm$ 1.</description>
+      <description>Outlier analysis Outliers Global: deviates from the rest of the data set Contextual: deviates significantly with respect to a specific context of the object Collective: objects as a whole deviate significantly from the entire data set Categorization based on supervision Supervised Unsupervised Semi-supervised Mining contextual outliers transforming contextual to conventional Modeling normal behavior Mining collective outliers Exploring the structure of the data high dimensional data dimensionality reduction partiion the original feature space into small region Statistical Parametric approaches Univariate mean + standard deviation: $\mu\pm3\sigma$ median $\pm$ 1.</description>
     </item>
     
   </channel>

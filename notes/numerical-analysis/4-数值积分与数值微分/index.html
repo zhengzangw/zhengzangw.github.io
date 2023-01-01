@@ -108,7 +108,7 @@
 <li>右矩公式</li>
 <li>中矩公式</li>
 <li>梯形公式：$f(x)\approx L_1(x)=\frac{x-x_1}{x_0-x_1}f(x_0)+\frac{x-x_0}{x_1-x_0}f(x_1)$ （0 次）</li>
-<li>Simpson 公式（三点公式，抛物线公式）：$x'=\frac{x_0+x_1}{2},\int_{x_0}^{x_1}f(x)dx\approx\frac{(x_1-x_0)}{6}(f(x_0)+4f(\frac{x_0+x_1}{2})+f(x_1))$ （3 次）</li>
+<li>Simpson 公式（三点公式，抛物线公式）：$x&rsquo;=\frac{x_0+x_1}{2},\int_{x_0}^{x_1}f(x)dx\approx\frac{(x_1-x_0)}{6}(f(x_0)+4f(\frac{x_0+x_1}{2})+f(x_1))$ （3 次）</li>
 </ul>
 </li>
 <li>代数精度法
@@ -141,7 +141,7 @@
 <ul>
 <li>$C_k^{(1)}=\frac{1}{2}$</li>
 <li>$T=\frac{b-a}{2}(f(a)+f(b))$</li>
-<li>$R(T)=-\frac{(b-a)^3}{12}f''(\eta)$</li>
+<li>$R(T)=-\frac{(b-a)^3}{12}f&rsquo;&rsquo;(\eta)$</li>
 </ul>
 </li>
 <li>$n=2$: Simpson 公式
@@ -166,8 +166,8 @@
 <li>$p$阶收敛 $f\sim O(h^p)$：$\lim_{h\rightarrow}\frac{I-I_n}{h^p}-C&lt;\infty,C\neq 0$</li>
 <li>复化梯形公式：$T_n=\int_a^bf(x)dx\approx\frac{h}{2}[f(a)+2\sum_{k=1}^{n-1}f(x_k)+f(b)]$
 <ul>
-<li>$R(f)=-\frac{h^2}{12}(b-a)f''(\xi)$</li>
-<li>$\lim_{h\rightarrow 0}$ 时，$R(f)=-\frac{1}{12}[f'(b)-f'(a)]$</li>
+<li>$R(f)=-\frac{h^2}{12}(b-a)f&rsquo;&rsquo;(\xi)$</li>
+<li>$\lim_{h\rightarrow 0}$ 时，$R(f)=-\frac{1}{12}[f&rsquo;(b)-f&rsquo;(a)]$</li>
 <li>2 阶收敛</li>
 </ul>
 </li>
@@ -244,16 +244,16 @@
 <h2 id="数值微分">数值微分</h2>
 <ul>
 <li>差商：向前，向后，中心差商</li>
-<li>插值型求导公式 $f'(x)\approx P_n'(x)$
+<li>插值型求导公式 $f&rsquo;(x)\approx P_n&rsquo;(x)$
 <ul>
-<li>$f'(x)$ 与 $P_n'(x)$ 相差可能很大</li>
-<li>$f'(x_k)$ 与 $P_n'(x)$ 相差一般较小</li>
+<li>$f&rsquo;(x)$ 与 $P_n&rsquo;(x)$ 相差可能很大</li>
+<li>$f&rsquo;(x_k)$ 与 $P_n&rsquo;(x)$ 相差一般较小</li>
 </ul>
 </li>
 <li>两点公式
 <ul>
-<li>$f'(x_0)=\frac{1}{h}(-f(x_0)+f(x_1))$ 向前差商</li>
-<li>$f'(x_1)=\frac{1}{h}(-f(x_0)+f(x_1))$ 向后差商</li>
+<li>$f&rsquo;(x_0)=\frac{1}{h}(-f(x_0)+f(x_1))$ 向前差商</li>
+<li>$f&rsquo;(x_1)=\frac{1}{h}(-f(x_0)+f(x_1))$ 向后差商</li>
 </ul>
 </li>
 <li>三点公式</li>

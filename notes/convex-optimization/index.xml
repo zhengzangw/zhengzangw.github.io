@@ -15,9 +15,9 @@
       <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/convex-optimization/convex-optimization/</guid>
-      <description>凸优化  拉格朗日乘子法  约束曲面上任意点 $x$, $\nabla g(x)$ 正交于约束曲面 最优点 $x^$, $\nabla f(x^)$ 正交与约束曲面 拉格朗日乘子 $\lambda\not=0$ 拉格朗日函数 $L(x,\lambda) = f(x)+\lambda g(x)$  优化 $f(x)$ -&amp;gt; 优化 $L(x,\lambda)$     主问题，最优解 $p^*$  $$ \begin{aligned} \min_x &amp;amp; f(x) \newline s.t. &amp;amp; h_i(x)=0 &amp;amp; (i=1,&amp;hellip;,m) \newline &amp;amp; g_j(x)\leq 0 &amp;amp; (j=1,&amp;hellip;,n) \end{aligned} $$
- 引入拉格朗日乘子和 KKT 条件 (Karush-Kuhn-Tucker)  $$ \begin{aligned} \min L(x,\lambda,\mu)=f(x)+\sum_{i=1}^m\lambda_ih_i(x)+\sum_{j=1}^n\mu_jg_j(x)\newline g_j(x)\leq 0\newline \mu_j\geq0\newline \mu_jg_j(x)=0 \end{aligned} $$
- $\sup$ 上限函数， $\inf$ 下限函数 拉格朗日对偶函数：$\Gamma(\lambda,\mu)=\inf_{x\in D}L(x,\lambda,\mu)$  $\Gamma(\lambda,\mu)\leq L(x,\lambda,mu)\leq f(x)\leq p^*,x\in D$ $L$ 对 $x$ 求导后令之为 0，带入得对偶问题   对偶问题 （凸优化问题），最优解 $d^*$  $$ \begin{aligned} &amp;amp; \max_{\lambda,\mu}\Gamma(\lambda,\mu)\newline s.</description>
+      <description>凸优化 拉格朗日乘子法 约束曲面上任意点 $x$, $\nabla g(x)$ 正交于约束曲面 最优点 $x^$, $\nabla f(x^)$ 正交与约束曲面 拉格朗日乘子 $\lambda\not=0$ 拉格朗日函数 $L(x,\lambda) = f(x)+\lambda g(x)$ 优化 $f(x)$ -&amp;gt; 优化 $L(x,\lambda)$ 主问题，最优解 $p^*$ $$ \begin{aligned} \min_x &amp;amp; f(x) \newline s.t. &amp;amp; h_i(x)=0 &amp;amp; (i=1,&amp;hellip;,m) \newline &amp;amp; g_j(x)\leq 0 &amp;amp; (j=1,&amp;hellip;,n) \end{aligned} $$
+引入拉格朗日乘子和 KKT 条件 (Karush-Kuhn-Tucker) $$ \begin{aligned} \min L(x,\lambda,\mu)=f(x)+\sum_{i=1}^m\lambda_ih_i(x)+\sum_{j=1}^n\mu_jg_j(x)\newline g_j(x)\leq 0\newline \mu_j\geq0\newline \mu_jg_j(x)=0 \end{aligned} $$
+$\sup$ 上限函数， $\inf$ 下限函数 拉格朗日对偶函数：$\Gamma(\lambda,\mu)=\inf_{x\in D}L(x,\lambda,\mu)$ $\Gamma(\lambda,\mu)\leq L(x,\lambda,mu)\leq f(x)\leq p^*,x\in D$ $L$ 对 $x$ 求导后令之为 0，带入得对偶问题 对偶问题 （凸优化问题），最优解 $d^*$ $$ \begin{aligned} &amp;amp; \max_{\lambda,\mu}\Gamma(\lambda,\mu)\newline s.</description>
     </item>
     
   </channel>

@@ -185,19 +185,19 @@ NJU: 操作系统 - 蒋炎岩</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">if</span> (pipe(fds) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) { perror(<span style="color:#e6db74">&#34;pipe&#34;</span>); exit(<span style="color:#ae81ff">1</span>); }
-pid <span style="color:#f92672">=</span> fork();
-<span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) { perror(<span style="color:#e6db74">&#34;fork&#34;</span>); exit(<span style="color:#ae81ff">1</span>); }
-<span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) { <span style="color:#75715e">// child: father out -&gt; child in
-</span><span style="color:#75715e"></span>  dup2(fds[<span style="color:#ae81ff">0</span>], STDIN_FILENO);
-  close(fds[<span style="color:#ae81ff">0</span>]); close(fds[<span style="color:#ae81ff">1</span>]);
-  ...
-} <span style="color:#66d9ef">else</span> {
-  dup2(fds[<span style="color:#ae81ff">1</span>], STDOUT_FILENO);
-  close(fds[<span style="color:#ae81ff">0</span>]); close(fds[<span style="color:#ae81ff">1</span>]);
-  ...
-}
-</code></pre></div><h2 id="scheduling">Scheduling</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">pipe</span>(fds) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) { <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;pipe&#34;</span>); <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>); }
+</span></span><span style="display:flex;"><span>pid <span style="color:#f92672">=</span> <span style="color:#a6e22e">fork</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) { <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;fork&#34;</span>); <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) { <span style="color:#75715e">// child: father out -&gt; child in
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">dup2</span>(fds[<span style="color:#ae81ff">0</span>], STDIN_FILENO);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">close</span>(fds[<span style="color:#ae81ff">0</span>]); <span style="color:#a6e22e">close</span>(fds[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dup2</span>(fds[<span style="color:#ae81ff">1</span>], STDOUT_FILENO);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">close</span>(fds[<span style="color:#ae81ff">0</span>]); <span style="color:#a6e22e">close</span>(fds[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="scheduling">Scheduling</h2>
 <table>
 <thead>
 <tr>

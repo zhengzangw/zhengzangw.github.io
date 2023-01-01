@@ -200,7 +200,7 @@
 <li>
 <p>在控制点 $P_k$ 和 $P_{k+1}$ 间的曲线段 $p(u)$</p>
 <ul>
-<li>边界条件：$p(0)=P_k,p'(0)=DP_k,p(1)=P_{k+1},p'(1)=DP_{k+1}$</li>
+<li>边界条件：$p(0)=P_k,p&rsquo;(0)=DP_k,p(1)=P_{k+1},p&rsquo;(1)=DP_{k+1}$</li>
 </ul>
 <p>$$p(u)=\begin{bmatrix}u^3\newline u^2\newline u\newline 1\end{bmatrix}^T\begin{bmatrix}2&amp;-2&amp;1&amp;1\newline -3&amp;3&amp;-2&amp;-1\newline 0&amp;0&amp;1&amp;0\newline 1&amp;0&amp;0&amp;0\end{bmatrix}\begin{bmatrix}P_k\newline P_{k+1}\newline DP_k\newline DP_{k+1}\end{bmatrix}$$</p>
 </li>
@@ -209,7 +209,7 @@
 <li>
 <p>Cardinal 样条</p>
 <ul>
-<li>边界条件：$p(0)=P_k,p(1)=P_{k+1},p'(0)=(1-t)\frac{P_{k+1}-P_{k-1}}{2},p'(1)=(1-t)\frac{P_{k+2}-P_k}{2}$</li>
+<li>边界条件：$p(0)=P_k,p(1)=P_{k+1},p&rsquo;(0)=(1-t)\frac{P_{k+1}-P_{k-1}}{2},p&rsquo;(1)=(1-t)\frac{P_{k+2}-P_k}{2}$</li>
 <li>张量参数 $t$：$t&lt;0$ 较松，$t&gt;0$ 较紧</li>
 </ul>
 <p>$$p(u)=\begin{bmatrix}u^3\newline u^2\newline u\newline 1\end{bmatrix}^T\begin{bmatrix}-t&amp;2-t&amp;t-2&amp;t\newline 2t&amp;t-3&amp;3-2t&amp;-t\newline -t&amp;0&amp;t&amp;0\newline 0&amp;1&amp;0&amp;0\end{bmatrix}\begin{bmatrix}P_{k-1}\newline P_{k}\newline P_{k+1}\newline P_{k+2}\end{bmatrix}$$</p>
@@ -218,8 +218,8 @@
 <p>Kochanek-Bartels 样条</p>
 <ul>
 <li>边界条件：$p(0)=P_k,p(1)=P_{k+1}$</li>
-<li>$p'(0)=\frac{1}{2}(1-t)[(1+b)(1-c)(p_k-p_{k-1})+(1-b)(1+c)(p_{k+1}-p_k)]$</li>
-<li>$p'(1)=\frac{1}{2}(1-t)[(1+b)(1+c)(p_{k+1}-p_{k})+(1-b)(1-c)(p_{k+2}-p_{k+1})]$</li>
+<li>$p&rsquo;(0)=\frac{1}{2}(1-t)[(1+b)(1-c)(p_k-p_{k-1})+(1-b)(1+c)(p_{k+1}-p_k)]$</li>
+<li>$p&rsquo;(1)=\frac{1}{2}(1-t)[(1+b)(1+c)(p_{k+1}-p_{k})+(1-b)(1-c)(p_{k+2}-p_{k+1})]$</li>
 <li>偏离参数 $b$：调整在端点处弯曲的数值，可以偏向某一个端点</li>
 <li>连续参数 $c$：控制切向量在曲线段边界处的连续性；$c$非零则曲线在曲线段处斜率不连续</li>
 </ul>
@@ -245,7 +245,7 @@
 <li>Bezier 曲线性质
 <ul>
 <li>端点位置：$p(0)=P_0,p(1)=P_1$</li>
-<li>端点切矢量：$p'(0)=n(P_1-P_0),p'(1)=n(P_n-P_{n-1})$</li>
+<li>端点切矢量：$p&rsquo;(0)=n(P_1-P_0),p&rsquo;(1)=n(P_n-P_{n-1})$</li>
 <li>对称性：次序颠倒曲线形状不变</li>
 <li>仿射不变性：$A(p(u))=\sum_{k=0}^nA(P_k)B_{n-k,n}(u)$</li>
 <li>凸包性：Bezier 曲线位于控制顶点的凸包内</li>
@@ -264,14 +264,14 @@
 </li>
 <li>Bezier 曲线操作
 <ul>
-<li>分割定理：任意 $u'\in(0,1),P(u')$ 将 Bezier 曲线分为两段，仍可以表示为 Bezier 曲线，器控制顶点由 de Casteljau 算法产生</li>
+<li>分割定理：任意 $u&rsquo;\in(0,1),P(u&rsquo;)$ 将 Bezier 曲线分为两段，仍可以表示为 Bezier 曲线，器控制顶点由 de Casteljau 算法产生</li>
 <li>曲线拼接
 <ul>
 <li>$C^0$: 端点拼接</li>
 <li>$C^1$: 新增控制点使三控制点共线</li>
 </ul>
 </li>
-<li>曲线升阶：增加控制点项，$P_i'=(1-\lambda)P_i+P_{i-1}$</li>
+<li>曲线升阶：增加控制点项，$P_i&rsquo;=(1-\lambda)P_i+P_{i-1}$</li>
 </ul>
 </li>
 <li>Bezier 曲面：给定空间 $(m+1)\times(n+1)$ 个点的位置 $P_{j,k}$，$m\times n$次 Bezier 曲面为：$P(u,v)=\sum_{j=0}^m\sum_{k=0}^nP_{j,k}B_{j,m}(u)B_{k,n}(v),u,v\in[0,1]$

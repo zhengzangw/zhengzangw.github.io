@@ -16,23 +16,23 @@
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/posts/latex-tikz/</guid>
       <description>&lt;h1 id=&#34;图片放置&#34;&gt;图片放置&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-tex&#34; data-lang=&#34;tex&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}[htbp]
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;\centering&lt;/span&gt;
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle1]&lt;/span&gt;{
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
-            &lt;span style=&#34;color:#75715e&#34;&gt;%code
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tikzpicture}
-    }
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle2]&lt;/span&gt;{
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
-            &lt;span style=&#34;color:#75715e&#34;&gt;%code
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tikzpicture}
-    }
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;\caption&lt;/span&gt;{caption}
-&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{figure}
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;\tikz&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;%code
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-tex&#34; data-lang=&#34;tex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}[htbp]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\centering&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle1]&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;%code
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tikzpicture}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle2]&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;%code
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tikzpicture}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\caption&lt;/span&gt;{caption}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{figure}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\tikz&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;%code
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

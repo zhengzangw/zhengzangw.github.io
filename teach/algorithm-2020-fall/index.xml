@@ -18,7 +18,7 @@
       <description>题目连接：Balance Segment Painting
 Balance Segment Painting 因为要维护的是连续连段的长度，染色 $[p_i-1,p_i]$ 时，相当与把 $p_i-1$ 所在的连续线段和 $p_i$ 所在的连续线段合并。每条连续线段相当与是一个集合，
 用并查集维护即可，可参考网上的实现。同时并查集需要维护集合的大小（按秩合并优化中已经有维护了）
-示例代码 #include &amp;lt;bits/stdc++.h&amp;gt;using namespace std; #define MAX_N 1000000  // disjoint set  int fa[MAX_N + 1], sz[MAX_N + 1]; void init(int n) { for (int i = 0; i &amp;lt;= n; ++i) { fa[i] = i; sz[i] = 1; } } int find(int x) { if (x != fa[x]) fa[x] = find(fa[x]); return fa[x]; } int merge(int x, int y) { int xx = find(x), yy = find(y); if (xx == yy) return sz[xx]; if (sz[xx] &amp;gt; sz[yy]) swap(xx, yy); fa[xx] = yy; sz[yy] += sz[xx]; return sz[yy]; } // main  int main() { int n, p, max_len = 0; bool is_first = true; // Input  scanf(&amp;#34;%d&amp;#34;, &amp;amp;n); init(n); for (int i = 0; i &amp;lt; n; ++i) { scanf(&amp;#34;%d&amp;#34;, &amp;amp;p); max_len = max(merge(p - 1, p) - 1, max_len); // Output  if (is_first) is_first = false; else printf(&amp;#34; &amp;#34;); printf(&amp;#34;%d&amp;#34;, max_len); } puts(&amp;#34;&amp;#34;); return 0; } </description>
+示例代码 #include &amp;lt;bits/stdc++.h&amp;gt; using namespace std; #define MAX_N 1000000 // disjoint set int fa[MAX_N + 1], sz[MAX_N + 1]; void init(int n) { for (int i = 0; i &amp;lt;= n; ++i) { fa[i] = i; sz[i] = 1; } } int find(int x) { if (x != fa[x]) fa[x] = find(fa[x]); return fa[x]; } int merge(int x, int y) { int xx = find(x), yy = find(y); if (xx == yy) return sz[xx]; if (sz[xx] &amp;gt; sz[yy]) swap(xx, yy); fa[xx] = yy; sz[yy] += sz[xx]; return sz[yy]; } // main int main() { int n, p, max_len = 0; bool is_first = true; // Input scanf(&amp;#34;%d&amp;#34;, &amp;amp;n); init(n); for (int i = 0; i &amp;lt; n; ++i) { scanf(&amp;#34;%d&amp;#34;, &amp;amp;p); max_len = max(merge(p - 1, p) - 1, max_len); // Output if (is_first) is_first = false; else printf(&amp;#34; &amp;#34;); printf(&amp;#34;%d&amp;#34;, max_len); } puts(&amp;#34;&amp;#34;); return 0; } </description>
     </item>
     
     <item>
@@ -34,7 +34,7 @@ Gold Miner 这题要求至多进行 50 次操作，要能够将 $n\times n$ 的�
 观察到左上和右下在横纵坐标的限制上耦合度很低，理想的情况是在左上的横纵坐标选择和右下的横纵坐标选择之间完全不影响（相互为独立的子问题）。这样我们就可以把左上中一次操作和右下中一次操作合并在一起，作为一次操作。总操作数即为 $T(n)=T(\frac{n}{2})+3$。但左下有一个不能选中的地方，这导致左上选择纵坐标 5 的时候，右下不能选中横坐标 6。为了解决这个问题，在划分子问题时必须是两个矩形的横纵坐标相交处没有禁止的点。
 一种可行的方法是缩小左上的矩形，如此交点处都是可以的。根据题目中 “It is allowed to enter some cells multiple times!”，上下两个子矩阵的求解就成为相互独立的子问题了。此时其余部分用 4 次操作可以填满。$n=3000,\log_2 n \approx 11,4*11=44&amp;lt;50$
 程序实现时，可以递归模拟二分过程，既可以用 vector 记录选择的 $X,Y$ 坐标，merge 时合并，也可以用全局变量记录。其中，特殊处理一下 $n=1,2,3,4$ 的情况，可以让染色数减少（如 $n=4$ 只需 3 次）。
-示例代码 #include &amp;lt;bits/stdc++.h&amp;gt;using namespace std; #define max_n 3000 #define max_round 50  int n; bool X[max_round + 1][max_n + 1], Y[max_round + 1][max_n + 1]; int solve(int n, int low, int round) { /** * n: size of matrix * low: the index of first row in this matrix * according to the original matrix * round: number of round */ // Special case for n&amp;lt;=4  if (n == 1) { return round; } else if (n == 2) { round += 1; X[round][low] = Y[round][low + 1] = true; return round; } else if (n == 3) { round += 1; X[round][low] = Y[round][low + 1] = Y[round][low + 2] = true; round += 1; X[round][low + 1] = Y[round][low + 2] = true; round += 1; X[round][low + 2] = Y[round][low] = true; return round; } else if (n == 4) { round += 1; X[round][low + 2] = X[round][low + 3] = Y[round][low] = true; round += 1; X[round][low] = X[round][low + 3] = Y[round][low + 1] = true; round += 1; X[round][low] = X[round][low + 1] = Y[round][low + 2] = Y[round][low + 3] = true; round += 1; X[round][low + 2] = Y[round][low + 3] = true; return round; } // 4 rounds for up_right and down_left  int up_n, down_n, down_low; up_n = (n - 1) / 2; down_n = n - up_n - 1; down_low = low + up_n + 1; // round 1  round += 1; for (int d = 0; d &amp;lt; down_n; ++d) X[round][down_low + d] = true; for (int d = 0; d &amp;lt; up_n; ++d) Y[round][low + d] = true; // round 2  round += 1; for (int d = 0; d &amp;lt; up_n; ++d) X[round][low + d] = true; for (int d = 0; d &amp;lt; down_n; ++d) Y[round][down_low + d] = true; // round 3  round += 1; X[round][low + up_n] = true; for (int d = 0; d &amp;lt; n; ++d) { if (d !</description>
+示例代码 #include &amp;lt;bits/stdc++.h&amp;gt; using namespace std; #define max_n 3000 #define max_round 50 int n; bool X[max_round + 1][max_n + 1], Y[max_round + 1][max_n + 1]; int solve(int n, int low, int round) { /** * n: size of matrix * low: the index of first row in this matrix * according to the original matrix * round: number of round */ // Special case for n&amp;lt;=4 if (n == 1) { return round; } else if (n == 2) { round += 1; X[round][low] = Y[round][low + 1] = true; return round; } else if (n == 3) { round += 1; X[round][low] = Y[round][low + 1] = Y[round][low + 2] = true; round += 1; X[round][low + 1] = Y[round][low + 2] = true; round += 1; X[round][low + 2] = Y[round][low] = true; return round; } else if (n == 4) { round += 1; X[round][low + 2] = X[round][low + 3] = Y[round][low] = true; round += 1; X[round][low] = X[round][low + 3] = Y[round][low + 1] = true; round += 1; X[round][low] = X[round][low + 1] = Y[round][low + 2] = Y[round][low + 3] = true; round += 1; X[round][low + 2] = Y[round][low + 3] = true; return round; } // 4 rounds for up_right and down_left int up_n, down_n, down_low; up_n = (n - 1) / 2; down_n = n - up_n - 1; down_low = low + up_n + 1; // round 1 round += 1; for (int d = 0; d &amp;lt; down_n; ++d) X[round][down_low + d] = true; for (int d = 0; d &amp;lt; up_n; ++d) Y[round][low + d] = true; // round 2 round += 1; for (int d = 0; d &amp;lt; up_n; ++d) X[round][low + d] = true; for (int d = 0; d &amp;lt; down_n; ++d) Y[round][down_low + d] = true; // round 3 round += 1; X[round][low + up_n] = true; for (int d = 0; d &amp;lt; n; ++d) { if (d !</description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@ Large Sum Subarray 本题寻找以下配对的个数：$(i,j),i\leq j,\sum_{k=i}
 归并排序的过程中（升序），在 merge 时，如果 $a_i+t$（第一部分） 比 $a_j$（第二部分） 小，那么 $a_i+t$ 比 $a_k,k&amp;gt;j$ 都要小。故我们把第一部分指针后移，并加上 $i$ 可以配对的数量 $R-j+1$，$R$ 是第二部分的右边界。
 解决问后可以再想想，如果排序是降序的，求顺序对和求逆序对的代码又应该放在哪里？该如何证明正确性？
 额外的注意事项 使用 C++ 的同学，读入时若使用 cin 需要加速，或使用 scanf 读入
-参考代码 #include &amp;lt;bits/stdc++.h&amp;gt;using namespace std; #define n_max 1000000  int64_t t, ans; int64_t a[n_max + 1], s[n_max + 1], tmp[n_max + 1]; void merge(int64_t* a, int left, int mid, int right) { int i, j, k; // count  i = left, j = mid + 1; while (i &amp;lt;= mid &amp;amp;&amp;amp; j &amp;lt;= right) { if (a[i] + t &amp;lt; a[j]) { i++; // ordered pair counted here  ans += right - j + 1; } else { j++; // inversion pair counted here  } } // merge  i = left, j = mid + 1, k = left; while (i &amp;lt;= mid &amp;amp;&amp;amp; j &amp;lt;= right) { if (a[i] &amp;lt; a[j]) { tmp[k++] = a[i++]; } else { tmp[k++] = a[j++]; } } while (i &amp;lt;= mid) tmp[k++] = a[i++]; while (j &amp;lt;= right) tmp[k++] = a[j++]; for (int i = left; i &amp;lt;= right; ++i) a[i] = tmp[i]; } void mergesort(int64_t* a, int left, int right) { if (left &amp;gt;= right) return; int mid = (left + right) / 2; mergesort(a, left, mid); mergesort(a, mid + 1, right); merge(a, left, mid, right); } int main() { // Read  int n; scanf(&amp;#34;%d%lld&amp;#34;, &amp;amp;n, &amp;amp;t); /* Calculate s[i] to be the presum of a, then sum(a[i.</description>
+参考代码 #include &amp;lt;bits/stdc++.h&amp;gt; using namespace std; #define n_max 1000000 int64_t t, ans; int64_t a[n_max + 1], s[n_max + 1], tmp[n_max + 1]; void merge(int64_t* a, int left, int mid, int right) { int i, j, k; // count i = left, j = mid + 1; while (i &amp;lt;= mid &amp;amp;&amp;amp; j &amp;lt;= right) { if (a[i] + t &amp;lt; a[j]) { i++; // ordered pair counted here ans += right - j + 1; } else { j++; // inversion pair counted here } } // merge i = left, j = mid + 1, k = left; while (i &amp;lt;= mid &amp;amp;&amp;amp; j &amp;lt;= right) { if (a[i] &amp;lt; a[j]) { tmp[k++] = a[i++]; } else { tmp[k++] = a[j++]; } } while (i &amp;lt;= mid) tmp[k++] = a[i++]; while (j &amp;lt;= right) tmp[k++] = a[j++]; for (int i = left; i &amp;lt;= right; ++i) a[i] = tmp[i]; } void mergesort(int64_t* a, int left, int right) { if (left &amp;gt;= right) return; int mid = (left + right) / 2; mergesort(a, left, mid); mergesort(a, mid + 1, right); merge(a, left, mid, right); } int main() { // Read int n; scanf(&amp;#34;%d%lld&amp;#34;, &amp;amp;n, &amp;amp;t); /* Calculate s[i] to be the presum of a, then sum(a[i.</description>
     </item>
     
     <item>
@@ -64,7 +64,7 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
 可以参考网上 Treap 和 跳表 的实现。
 对于 Treap，要注意的是前缀和并不是子树之和，而是左子树之和。
 对于跳表，可以在每层的每个结点维护：在该层，该节点到前一结点之间的元素之和。实现的时候要注意指针的使用。
-示例代码 (Treap &amp;amp; 跳表) #include &amp;lt;bits/stdc++.h&amp;gt; #include &amp;lt;random&amp;gt;using namespace std; #define MAXN 500000 // #define DEBUG  /* Treap */ typedef struct { int64_t key, sum_left, sum_right; int pri, w, l, r; } treap_node; struct treap_rotate { treap_node node[MAXN + 1]; int rt, sz; void l_rotate(int &amp;amp;k) { int t = node[k].</description>
+示例代码 (Treap &amp;amp; 跳表) #include &amp;lt;bits/stdc++.h&amp;gt; #include &amp;lt;random&amp;gt; using namespace std; #define MAXN 500000 // #define DEBUG /* Treap */ typedef struct { int64_t key, sum_left, sum_right; int pri, w, l, r; } treap_node; struct treap_rotate { treap_node node[MAXN + 1]; int rt, sz; void l_rotate(int &amp;amp;k) { int t = node[k].</description>
     </item>
     
     <item>
@@ -76,10 +76,11 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
       <description>10-19 6.1 空间上消耗可能增多，时间上摊还复杂度低（$1+\frac{4}{3}t$）。两种方法视实际情况需要使用。
 6.2 应该使用均摊分析（有些同学写了平均分析，实际给的是一种特殊情况下的时间开销）
 根据书中的 accounting scheme，在无 shrink 的情况下，push 的 amortized cost 为 $1+2t$，pop 的 amortized cost 为 $1$。这道题的处理关键在于要考虑 pop 操作的 credit
-  (a) 取临界情况（栈大小 $n$，$n-1$ 次 push 后反复 push + pop）可知均摊时间复杂度非常数（均摊分析也是在最坏情况下的分析）
-  (b) push: $1+2t$, pop: $1+t$
+(a) 取临界情况（栈大小 $n$，$n-1$ 次 push 后反复 push + pop）可知均摊时间复杂度非常数（均摊分析也是在最坏情况下的分析）
+(b) push: $1+2t$, pop: $1+t$
 考虑已扩展到 $4N$ 的情况
- $2N\sim 4N$: push 的 accounting 足够 $N\sim2N$: push 的 accounting 保证下一次 push 时 credit 为正，pop 累积有 $Nt$ 的 accounting 用于 shrink    (c) push: $1+2t$, pop: $1$</description>
+$2N\sim 4N$: push 的 accounting 足够 $N\sim2N$: push 的 accounting 保证下一次 push 时 credit 为正，pop 累积有 $Nt$ 的 accounting 用于 shrink (c) push: $1+2t$, pop: $1$
+与 (b) 不同在于此时可以借用 $N\sim 2N$ 间 push 的 accounting 用于 shrink</description>
     </item>
     
     <item>
@@ -89,11 +90,11 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/teach/algorithm-2020-fall/solution-to-algorithm-4/</guid>
       <description>10-12 6.11 Tips: 分情况讨论
-  ansRight.status = ok/rbr
-  ansRight.status = brb
- oldTree.color = black oldTree.color = red    otherwise
- oldTree.leftSubtree.color = red oldTree.leftSubtree.color = black    6.15 略
-6.16  (1) 右旋+左旋 (2) 左旋 (3) r = black, 左旋 (4) s = black, p = red, 左旋  6.17  (a) 错误 (b) 错误  10-15 6.18 略
+ansRight.status = ok/rbr
+ansRight.status = brb
+oldTree.color = black oldTree.color = red otherwise
+oldTree.leftSubtree.color = red oldTree.leftSubtree.color = black 6.15 略
+6.16 (1) 右旋+左旋 (2) 左旋 (3) r = black, 左旋 (4) s = black, p = red, 左旋 6.17 (a) 错误 (b) 错误 10-15 6.18 略
 6.19 言之有理即可。(a) 简单的可以认为空间多两倍</description>
     </item>
     
@@ -105,22 +106,28 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
       <guid>https://zhengzangw.com/teach/algorithm-2020-fall/solution-to-algorithm-3/</guid>
       <description>注意这次交三次的作业，缺交的同学及时补交（邮箱：zzw@smail.nju.edu.cn）
 9-24 4.2
-  (a) $\frac{1}{2}n(n-1)$, decreasing sequence
-  (b) increasing, $n-1$
+(a) $\frac{1}{2}n(n-1)$, decreasing sequence
+(b) increasing, $n-1$
 4.3
-  (a) 用循环不变式证明 （$E[j]$ is the maximum in $[0,j]$)
-  (b) 略
+(a) 用循环不变式证明 （$E[j]$ is the maximum in $[0,j]$)
+(b) 略
 4.4
-  (a) 可利用 4.3(a) 的循环不变式证明
-  略
-  不影响
+(a) 可利用 4.3(a) 的循环不变式证明
+略
+不影响
 4.23
-  注意需使用 Section 2.3.2 的数据结构
+注意需使用 Section 2.3.2 的数据结构
 4.27
-  (a) 可以使用两个数组 $A,B$，基于归并时处于归并树结点深度的奇偶性，奇数时保存到 $A$，偶数时保存到 $B$（滚动数组）
-  (b) $n\log n$
+(a) 可以使用两个数组 $A,B$，基于归并时处于归并树结点深度的奇偶性，奇数时保存到 $A$，偶数时保存到 $B$（滚动数组）
+(b) $n\log n$
 4.28
-  找中点：设置两个指针，一个步长为 1， 一个步长为 2，当快指针到达尾结点时，慢指针指向中间结点。该时间复杂度为 $O(n)$。由于 merge 也是 $O(n)$，时间复杂度不变为 $O(n\log n)$。空间复杂度 $O(n\log n)$，有 garbage collection 为 $O(n)$</description>
+找中点：设置两个指针，一个步长为 1， 一个步长为 2，当快指针到达尾结点时，慢指针指向中间结点。该时间复杂度为 $O(n)$。由于 merge 也是 $O(n)$，时间复杂度不变为 $O(n\log n)$。空间复杂度 $O(n\log n)$，有 garbage collection 为 $O(n)$
+9-28 1.27
+$n\leq 25$ 算法一快
+1.28
+略
+1.31
+用符号之前应说明一下，$&amp;lt;$ 和 $=$ 都是在渐进复杂度关系下比较。最后一项可查阅斯特林公式</description>
     </item>
     
     <item>
@@ -134,12 +141,18 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
 4.7
 最好情况：已经排序，比较 n-1 次
 4.8
- (a) $n-1+\log_2[(n-1)!]=\Theta(n\log n)$ (b) $\frac{(n-1)n}{2}$ (d) 链表可以减少移动次数，但无法进行二分查找（不能直接索引）  4.9
+(a) $n-1+\log_2[(n-1)!]=\Theta(n\log n)$ (b) $\frac{(n-1)n}{2}$ (d) 链表可以减少移动次数，但无法进行二分查找（不能直接索引） 4.9
 平均复杂度变低（相同 key 取同一个）/ 渐进平均复杂度不变
 4.11
 时间复杂度 $\Theta(n^2)$，无垃圾回收空间复杂度 $\Theta(n^2)$，有垃圾回收 $\Theta(n)$
 4.14
-   before i left-end right-end vacancy     2 low high left   3 low high left   4 low highVac right   5 lowVac highVac left    4.15</description>
+before i left-end right-end vacancy 2 low high left 3 low high left 4 low highVac right 5 lowVac highVac left 4.15
+比较了 $\frac{n(n-1)}{2}$ 次，移动了 0 次
+4.22
+时间复杂度最坏情况 $O(n^2)$，平均情况分析较为复杂，不能简单认为每次都能对半分
+空间复杂度：根据书写的代码计算。使用 intList 时，若认为 intList.rest() 返回的是指针不占用新空间，则在有垃圾回收机制时为 $O(\log n)$
+4.34
+不是堆 5&amp;lt;7</description>
     </item>
     
     <item>
@@ -150,7 +163,7 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
       <guid>https://zhengzangw.com/teach/algorithm-2020-fall/solution-to-algorithm-1/</guid>
       <description>作业评分：每题 10 分，选做属于加分题
 一些共性的问题：
- 作业只收到 41 份，名单有 54 位同学，请确认自己已经提交作业 作业严禁抄袭 作业记得写好学号姓名，并用订书钉或回形针等方式装订好 许多同学表示不会写伪代码  作业都只需要给出伪代码，理论上不应该使用任何一种实际的编程语言书写（如 java/c/python）很多同学作业中伪代码直接交了可运行的代码，这样书写很费时间，同时也没法很好展示自己的思路 写伪代码主要在于展现算法思路，只需要保留核心算法部分即可。一些辅助函数在说明了功能后可以直接使用，没必要完整的写出来。这里放一篇 pseudo code 的参考文章 大家可以看一下教程上给的代码示例，如 4.8 Heapsort 这一章的伪代码    海盗分金 上交作业的同学必做部分（m=5）基本都得分了。泛化的情况属于选做部分，很多同学都给出了思路，主要失分点在于没有考虑到&amp;quot;乐观&amp;quot;这一条件
+作业只收到 41 份，名单有 54 位同学，请确认自己已经提交作业 作业严禁抄袭 作业记得写好学号姓名，并用订书钉或回形针等方式装订好 许多同学表示不会写伪代码 作业都只需要给出伪代码，理论上不应该使用任何一种实际的编程语言书写（如 java/c/python）很多同学作业中伪代码直接交了可运行的代码，这样书写很费时间，同时也没法很好展示自己的思路 写伪代码主要在于展现算法思路，只需要保留核心算法部分即可。一些辅助函数在说明了功能后可以直接使用，没必要完整的写出来。这里放一篇 pseudo code 的参考文章 大家可以看一下教程上给的代码示例，如 4.8 Heapsort 这一章的伪代码 海盗分金 上交作业的同学必做部分（m=5）基本都得分了。泛化的情况属于选做部分，很多同学都给出了思路，主要失分点在于没有考虑到&amp;quot;乐观&amp;quot;这一条件
 以下给一个 python 参考代码
 def solve(m, n): &amp;#34;&amp;#34;&amp;#34;解决海盗分金问题，时间复杂度 O(m^2lgm)；使用一些技巧可优化到 O(m^2) Args: m (int): 海盗数 n (int): 金币数 Returns: (list): 由第一个人分配，每个人期望分到的金币数，-1 表示无法存活 &amp;#34;&amp;#34;&amp;#34; # 临界情况 if m == 1: return [n] # 递归：规约问题到 m-1 个海盗 plan = solve(m-1, n) # 按照 m-1 个海盗时每个人期望获得的金币数从小到大排序 sorted_plan = sorted(zip(plan, list(range(m-1)))) current_plan = [0] * m remain_money = n # 第一个海盗需要在剩下 m 个海盗中争取到 m/2（下取整）个同意票 for i in range(m//2): expected_money, member_id = sorted_plan[i] expected_money += 1 # 嗜血：需要多给一个金币赢取同意 remain_money -= expected_money # 如果金币不够分了，则无法存活 if remain_money &amp;lt; 0: return plan + [-1] else: current_plan[member_id] = expected_money # 第一个海盗可以获得剩余所有金币 # 注意：到目前为止，去除 -1，current_plan 之和为 n # 此时得到的是一个可行的分配方案 current_plan[-1] = remain_money # 乐观：对于最后需要赢得同意的海盗，可能只需在多人中选部分即可 # 但所有持相同期望金币的都认为自己会被选到，在此要更新他们认为的期望金币 # n &amp;gt;= 6 时乐观起作用 while i+1 &amp;lt; m and sorted_plan[i][0] == sorted_plan[i+1][0]: i += 1 expected_money, member_id = sorted_plan[i] current_plan[member_id] = expected_money + 1 return current_plan 扔鸡蛋 必做题 为了计算 $f(k,m)$，假设在第 $i$ 层楼扔一个蛋。如果碎了，我们还剩 $k-1$ 个蛋，强度肯定小于 $i$，故问题化为 $f(k-1, i)$；如果没碎，把第 $i$ 层楼看做是新的一楼，则问题化为 $f(k, m-i)$。最坏情况是两者的最大值，为了取得最优，我们选择最佳的第 $i$ 层。</description>
     </item>

@@ -99,57 +99,57 @@
             </div>
             <main class="flex-column-80"><h2 id="排序">排序</h2>
 <h3 id="插入排序">插入排序</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>; j<span style="color:#f92672">&lt;</span>A.size(); <span style="color:#f92672">++</span>j){
-    <span style="color:#66d9ef">auto</span> key <span style="color:#f92672">=</span> A[j];
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> A[i]<span style="color:#f92672">&gt;</span>key; <span style="color:#f92672">--</span>i)
-        A[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> A[i];
-    A[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> key;
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>; j<span style="color:#f92672">&lt;</span>A.size(); <span style="color:#f92672">++</span>j){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> key <span style="color:#f92672">=</span> A[j];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> A[i]<span style="color:#f92672">&gt;</span>key; <span style="color:#f92672">--</span>i)
+</span></span><span style="display:flex;"><span>        A[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> A[i];
+</span></span><span style="display:flex;"><span>    A[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> key;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>循环不变量：每次循环开始前，子数组 A[1..j-1] 有序</li>
 <li>worst: $\Theta(n^2)$</li>
 <li>average: $\Theta(n^2)$</li>
 </ul>
 <h3 id="归并排序">归并排序</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge_sort</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A, <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r){
-    <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&lt;</span> r){
-        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> (l<span style="color:#f92672">+</span>r)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
-        merge_sort(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A, l, mid);
-        merge_sort(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A, mid, r);
-        merge(A, l, mid, r); <span style="color:#75715e">// O(r-l)
-</span><span style="color:#75715e"></span>    }
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge_sort</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A, <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&lt;</span> r){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> (l<span style="color:#f92672">+</span>r)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>        merge_sort(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A, l, mid);
+</span></span><span style="display:flex;"><span>        merge_sort(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A, mid, r);
+</span></span><span style="display:flex;"><span>        merge(A, l, mid, r); <span style="color:#75715e">// O(r-l)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>worst case: $\Theta(n\lg n)$</li>
 <li>average case: $\Theta(n\lg n)$</li>
 </ul>
 <h3 id="堆排序">堆排序</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">build_max_heap(A)
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(A<span style="color:#f92672">.</span>length, <span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
-    swap(A[<span style="color:#ae81ff">1</span>], A[i])
-    A<span style="color:#f92672">.</span>size <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
-    max_heapify(A, <span style="color:#ae81ff">1</span>)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>build_max_heap(A)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(A<span style="color:#f92672">.</span>length, <span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    swap(A[<span style="color:#ae81ff">1</span>], A[i])
+</span></span><span style="display:flex;"><span>    A<span style="color:#f92672">.</span>size <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    max_heapify(A, <span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><ul>
 <li>worst case: $O(n\lg n)$</li>
 <li>not stable</li>
 </ul>
 <h3 id="快速排序">快速排序</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">partition</span>(A, p, r):
-    x <span style="color:#f92672">=</span> A[r]
-    <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>):
-        <span style="color:#66d9ef">while</span> (a[i] <span style="color:#f92672">&lt;</span> x) i<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> (a[j] <span style="color:#f92672">&gt;</span> x) j<span style="color:#f92672">-=</span><span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">if</span> (i<span style="color:#f92672">&gt;=</span>j) <span style="color:#66d9ef">break</span>
-        swap(a[i], a[j])
-    swap(A[r], A[j])
-    <span style="color:#66d9ef">return</span> j
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quicksort</span>(A, p, r):
-    <span style="color:#66d9ef">if</span> p<span style="color:#f92672">&lt;</span>r:
-        q <span style="color:#f92672">=</span> Partition(A, p, r)
-        quicksort(A, p, q<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-        quicksort(A, q<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, r)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">partition</span>(A, p, r):
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> A[r]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (a[i] <span style="color:#f92672">&lt;</span> x) i<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (a[j] <span style="color:#f92672">&gt;</span> x) j<span style="color:#f92672">-=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (i<span style="color:#f92672">&gt;=</span>j) <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        swap(a[i], a[j])
+</span></span><span style="display:flex;"><span>    swap(A[r], A[j])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> j
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quicksort</span>(A, p, r):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> p<span style="color:#f92672">&lt;</span>r:
+</span></span><span style="display:flex;"><span>        q <span style="color:#f92672">=</span> Partition(A, p, r)
+</span></span><span style="display:flex;"><span>        quicksort(A, p, q<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        quicksort(A, q<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, r)
+</span></span></code></pre></div><ul>
 <li>worst case: $\Theta(n^2)$</li>
 <li>average: any split of constant yields $O(n\lg n)$</li>
 <li>expected: $\Theta(n\lg n)$
@@ -168,18 +168,18 @@
 </ul>
 <h2 id="order-statics">Order statics</h2>
 <h3 id="快排修改">快排修改</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">random_select</span>(A, p, r, i):
-    <span style="color:#66d9ef">if</span> p<span style="color:#f92672">==</span>r:
-        <span style="color:#66d9ef">return</span> A[p]
-    q <span style="color:#f92672">=</span> random_partion(A, p, r)
-    k <span style="color:#f92672">=</span> q <span style="color:#f92672">-</span> p <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-    <span style="color:#66d9ef">if</span> i<span style="color:#f92672">==</span>k:
-        <span style="color:#66d9ef">return</span> A[q]
-    <span style="color:#66d9ef">elif</span> i<span style="color:#f92672">&lt;</span>k:
-        <span style="color:#66d9ef">return</span> random_select(A,p,q<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,i)
-    <span style="color:#66d9ef">else</span>
-        <span style="color:#66d9ef">return</span> random_select(A,q<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,r,i<span style="color:#f92672">-</span>k)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">random_select</span>(A, p, r, i):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> p<span style="color:#f92672">==</span>r:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> A[p]
+</span></span><span style="display:flex;"><span>    q <span style="color:#f92672">=</span> random_partion(A, p, r)
+</span></span><span style="display:flex;"><span>    k <span style="color:#f92672">=</span> q <span style="color:#f92672">-</span> p <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> i<span style="color:#f92672">==</span>k:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> A[q]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> i<span style="color:#f92672">&lt;</span>k:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> random_select(A,p,q<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,i)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> random_select(A,q<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,r,i<span style="color:#f92672">-</span>k)
+</span></span></code></pre></div><ul>
 <li>worst: $\Theta(n^2)$</li>
 <li>expected: $O(n)$
 <ul>
@@ -188,23 +188,23 @@
 </li>
 </ul>
 <h3 id="方法二">方法二</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">select</span>(A, p, r, i):
-    <span style="color:#66d9ef">if</span> p<span style="color:#f92672">==</span>r:
-        <span style="color:#66d9ef">return</span> A[p]
-    <span style="color:#75715e"># Get divide point</span>
-    A_m <span style="color:#f92672">=</span> []
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(p, r, <span style="color:#ae81ff">5</span>):
-        A_m <span style="color:#f92672">+=</span> [median(A, i, i<span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>)]
-    q <span style="color:#f92672">=</span> select(A_m, <span style="color:#ae81ff">0</span>, len(A_m), (r<span style="color:#f92672">-</span>q<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>)
-    <span style="color:#75715e"># Partiion on q</span>
-    k <span style="color:#f92672">=</span> partion_on_q(A, p, r, q)
-    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> k:
-        <span style="color:#66d9ef">return</span> x
-    <span style="color:#66d9ef">elif</span> i <span style="color:#f92672">&lt;</span> k:
-        select(A, p, k<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, i)
-    <span style="color:#66d9ef">else</span>:
-        select(A, k<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, r, i<span style="color:#f92672">-</span>k)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">select</span>(A, p, r, i):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> p<span style="color:#f92672">==</span>r:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> A[p]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Get divide point</span>
+</span></span><span style="display:flex;"><span>    A_m <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(p, r, <span style="color:#ae81ff">5</span>):
+</span></span><span style="display:flex;"><span>        A_m <span style="color:#f92672">+=</span> [median(A, i, i<span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>)]
+</span></span><span style="display:flex;"><span>    q <span style="color:#f92672">=</span> select(A_m, <span style="color:#ae81ff">0</span>, len(A_m), (r<span style="color:#f92672">-</span>q<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Partiion on q</span>
+</span></span><span style="display:flex;"><span>    k <span style="color:#f92672">=</span> partion_on_q(A, p, r, q)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> k:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> i <span style="color:#f92672">&lt;</span> k:
+</span></span><span style="display:flex;"><span>        select(A, p, k<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, i)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        select(A, k<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, r, i<span style="color:#f92672">-</span>k)
+</span></span></code></pre></div><ul>
 <li>worst: $O(n)$
 <ul>
 <li>$T(n)\leq T(\lceil\frac{n}{5}\rceil)+T(3(\lceil\frac{1}{2}\lceil\frac{n}{5}\rceil\rceil - 2))+ O(n)$</li>

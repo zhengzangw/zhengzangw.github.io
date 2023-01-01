@@ -116,27 +116,27 @@
 </ul>
 <h2 id="利用applescript快速添加">利用Applescript快速添加</h2>
 <p>适合知乎和b站：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-applescript" data-lang="applescript"><span style="color:#66d9ef">tell</span> application <span style="color:#e6db74">&#34;Safari&#34;</span>
-<span style="color:#66d9ef">set</span> theURL <span style="color:#66d9ef">to</span> URL <span style="color:#66d9ef">of</span> front <span style="color:#a6e22e">document</span>
-<span style="color:#66d9ef">if</span> theURL <span style="color:#f92672">contains</span> <span style="color:#e6db74">&#34;space.bilibili.com&#34;</span> <span style="color:#66d9ef">then</span>
-    do shell script <span style="color:#e6db74">&#34;echo &#34;</span> <span style="color:#f92672">&amp;</span> theURL <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;|egrep -o &#39;[0-9]{6,9}&#39;&#34;</span>
-    <span style="color:#66d9ef">set</span> rssURL <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#34;https://api.prprpr.me/bilibili2rss/user/&#34;</span> <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">result</span> <span style="color:#66d9ef">as </span><span style="color:#a6e22e">string</span>
-<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>
-<span style="color:#66d9ef">if</span> theURL <span style="color:#f92672">contains</span> <span style="color:#e6db74">&#34;bangumi.bilibili.com&#34;</span> <span style="color:#66d9ef">then</span>
-    do shell script <span style="color:#e6db74">&#34;echo &#34;</span> <span style="color:#f92672">&amp;</span> theURL <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;|egrep -o &#39;[0-9]{4,9}&#39;&#34;</span>
-    <span style="color:#66d9ef">set</span> rssURL <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#34;https://api.prprpr.me/bilibili2rss/bangumi/&#34;</span> <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">result</span> <span style="color:#66d9ef">as </span><span style="color:#a6e22e">string</span>
-<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>
-<span style="color:#66d9ef">if</span> theURL <span style="color:#f92672">contains</span> <span style="color:#e6db74">&#34;zhuanlan.zhihu.com&#34;</span> <span style="color:#66d9ef">then</span>
-    do shell script <span style="color:#e6db74">&#34;echo &#34;</span> <span style="color:#f92672">&amp;</span> theURL <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;|egrep -o &#39;[a-z]*$&#39;&#34;</span>
-    <span style="color:#66d9ef">set</span> rssURL <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#34;https://rss.lilydjwg.me/zhihuzhuanlan/&#34;</span> <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">result</span> <span style="color:#66d9ef">as </span><span style="color:#a6e22e">string</span>
-<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>
-<span style="color:#66d9ef">if</span> theURL <span style="color:#f92672">contains</span> <span style="color:#e6db74">&#34;www.zhihu.com/people/&#34;</span> <span style="color:#66d9ef">then</span>
-    do shell script <span style="color:#e6db74">&#34;echo &#34;</span> <span style="color:#f92672">&amp;</span> theURL <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;|egrep -o &#39;[a-z]*/[a-z]*$&#39; | egrep -o &#39;^[a-z]*&#39;&#34;</span>
-    <span style="color:#66d9ef">set</span> rssURL <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#34;https://rss.lilydjwg.me/zhihu/&#34;</span> <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">result</span> <span style="color:#66d9ef">as </span><span style="color:#a6e22e">string</span>
-<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>
-set the clipboard to rssURL
-<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">tell</span>
-</code></pre></div></main>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-applescript" data-lang="applescript"><span style="display:flex;"><span><span style="color:#66d9ef">tell</span> application <span style="color:#e6db74">&#34;Safari&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> theURL <span style="color:#66d9ef">to</span> URL <span style="color:#66d9ef">of</span> front <span style="color:#a6e22e">document</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> theURL <span style="color:#f92672">contains</span> <span style="color:#e6db74">&#34;space.bilibili.com&#34;</span> <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    do shell script <span style="color:#e6db74">&#34;echo &#34;</span> <span style="color:#f92672">&amp;</span> theURL <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;|egrep -o &#39;[0-9]{6,9}&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">set</span> rssURL <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#34;https://api.prprpr.me/bilibili2rss/user/&#34;</span> <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">result</span> <span style="color:#66d9ef">as </span><span style="color:#a6e22e">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> theURL <span style="color:#f92672">contains</span> <span style="color:#e6db74">&#34;bangumi.bilibili.com&#34;</span> <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    do shell script <span style="color:#e6db74">&#34;echo &#34;</span> <span style="color:#f92672">&amp;</span> theURL <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;|egrep -o &#39;[0-9]{4,9}&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">set</span> rssURL <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#34;https://api.prprpr.me/bilibili2rss/bangumi/&#34;</span> <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">result</span> <span style="color:#66d9ef">as </span><span style="color:#a6e22e">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> theURL <span style="color:#f92672">contains</span> <span style="color:#e6db74">&#34;zhuanlan.zhihu.com&#34;</span> <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    do shell script <span style="color:#e6db74">&#34;echo &#34;</span> <span style="color:#f92672">&amp;</span> theURL <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;|egrep -o &#39;[a-z]*$&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">set</span> rssURL <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#34;https://rss.lilydjwg.me/zhihuzhuanlan/&#34;</span> <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">result</span> <span style="color:#66d9ef">as </span><span style="color:#a6e22e">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> theURL <span style="color:#f92672">contains</span> <span style="color:#e6db74">&#34;www.zhihu.com/people/&#34;</span> <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    do shell script <span style="color:#e6db74">&#34;echo &#34;</span> <span style="color:#f92672">&amp;</span> theURL <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;|egrep -o &#39;[a-z]*/[a-z]*$&#39; | egrep -o &#39;^[a-z]*&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">set</span> rssURL <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#34;https://rss.lilydjwg.me/zhihu/&#34;</span> <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">result</span> <span style="color:#66d9ef">as </span><span style="color:#a6e22e">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>
+</span></span><span style="display:flex;"><span>set the clipboard to rssURL
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span> <span style="color:#66d9ef">tell</span>
+</span></span></code></pre></div></main>
         </div>
 
     </div>

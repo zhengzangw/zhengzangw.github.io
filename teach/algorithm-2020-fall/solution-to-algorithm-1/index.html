@@ -106,53 +106,53 @@
 <h2 id="海盗分金">海盗分金</h2>
 <p>上交作业的同学必做部分（m=5）基本都得分了。泛化的情况属于选做部分，很多同学都给出了思路，主要失分点在于没有考虑到&quot;乐观&quot;这一条件</p>
 <p>以下给一个 <code>python</code> 参考代码</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">solve</span>(m, n):
-    <span style="color:#e6db74">&#34;&#34;&#34;解决海盗分金问题，时间复杂度 O(m^2lgm)；使用一些技巧可优化到 O(m^2)
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">    Args:
-</span><span style="color:#e6db74">        m (int): 海盗数
-</span><span style="color:#e6db74">        n (int): 金币数
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">    Returns:
-</span><span style="color:#e6db74">        (list): 由第一个人分配，每个人期望分到的金币数，-1 表示无法存活
-</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-
-    <span style="color:#75715e"># 临界情况</span>
-    <span style="color:#66d9ef">if</span> m <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
-        <span style="color:#66d9ef">return</span> [n]
-    <span style="color:#75715e"># 递归：规约问题到 m-1 个海盗</span>
-    plan <span style="color:#f92672">=</span> solve(m<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, n)
-
-    <span style="color:#75715e"># 按照 m-1 个海盗时每个人期望获得的金币数从小到大排序</span>
-    sorted_plan <span style="color:#f92672">=</span> sorted(zip(plan, list(range(m<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))))
-
-    current_plan <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> m
-    remain_money <span style="color:#f92672">=</span> n
-    <span style="color:#75715e"># 第一个海盗需要在剩下 m 个海盗中争取到 m/2（下取整）个同意票</span>
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(m<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>):
-        expected_money, member_id <span style="color:#f92672">=</span> sorted_plan[i]
-        expected_money <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 嗜血：需要多给一个金币赢取同意</span>
-        remain_money <span style="color:#f92672">-=</span> expected_money
-        <span style="color:#75715e"># 如果金币不够分了，则无法存活</span>
-        <span style="color:#66d9ef">if</span> remain_money <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
-            <span style="color:#66d9ef">return</span> plan <span style="color:#f92672">+</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-        <span style="color:#66d9ef">else</span>:
-            current_plan[member_id] <span style="color:#f92672">=</span> expected_money
-    <span style="color:#75715e"># 第一个海盗可以获得剩余所有金币</span>
-    <span style="color:#75715e"># 注意：到目前为止，去除 -1，current_plan 之和为 n</span>
-    <span style="color:#75715e"># 此时得到的是一个可行的分配方案</span>
-    current_plan[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> remain_money
-
-    <span style="color:#75715e"># 乐观：对于最后需要赢得同意的海盗，可能只需在多人中选部分即可</span>
-    <span style="color:#75715e"># 但所有持相同期望金币的都认为自己会被选到，在此要更新他们认为的期望金币</span>
-    <span style="color:#75715e"># n &gt;= 6 时乐观起作用</span>
-    <span style="color:#66d9ef">while</span> i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> m <span style="color:#f92672">and</span> sorted_plan[i][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> sorted_plan[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]:
-        i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-        expected_money, member_id <span style="color:#f92672">=</span> sorted_plan[i]
-        current_plan[member_id] <span style="color:#f92672">=</span> expected_money <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-
-    <span style="color:#66d9ef">return</span> current_plan
-</code></pre></div><h2 id="扔鸡蛋">扔鸡蛋</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">solve</span>(m, n):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;解决海盗分金问题，时间复杂度 O(m^2lgm)；使用一些技巧可优化到 O(m^2)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        m (int): 海盗数
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        n (int): 金币数
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        (list): 由第一个人分配，每个人期望分到的金币数，-1 表示无法存活
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 临界情况</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> m <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> [n]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 递归：规约问题到 m-1 个海盗</span>
+</span></span><span style="display:flex;"><span>    plan <span style="color:#f92672">=</span> solve(m<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, n)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 按照 m-1 个海盗时每个人期望获得的金币数从小到大排序</span>
+</span></span><span style="display:flex;"><span>    sorted_plan <span style="color:#f92672">=</span> sorted(zip(plan, list(range(m<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    current_plan <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> m
+</span></span><span style="display:flex;"><span>    remain_money <span style="color:#f92672">=</span> n
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 第一个海盗需要在剩下 m 个海盗中争取到 m/2（下取整）个同意票</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(m<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>):
+</span></span><span style="display:flex;"><span>        expected_money, member_id <span style="color:#f92672">=</span> sorted_plan[i]
+</span></span><span style="display:flex;"><span>        expected_money <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 嗜血：需要多给一个金币赢取同意</span>
+</span></span><span style="display:flex;"><span>        remain_money <span style="color:#f92672">-=</span> expected_money
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 如果金币不够分了，则无法存活</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> remain_money <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> plan <span style="color:#f92672">+</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            current_plan[member_id] <span style="color:#f92672">=</span> expected_money
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 第一个海盗可以获得剩余所有金币</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 注意：到目前为止，去除 -1，current_plan 之和为 n</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 此时得到的是一个可行的分配方案</span>
+</span></span><span style="display:flex;"><span>    current_plan[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> remain_money
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 乐观：对于最后需要赢得同意的海盗，可能只需在多人中选部分即可</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 但所有持相同期望金币的都认为自己会被选到，在此要更新他们认为的期望金币</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># n &gt;= 6 时乐观起作用</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> m <span style="color:#f92672">and</span> sorted_plan[i][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> sorted_plan[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]:
+</span></span><span style="display:flex;"><span>        i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        expected_money, member_id <span style="color:#f92672">=</span> sorted_plan[i]
+</span></span><span style="display:flex;"><span>        current_plan[member_id] <span style="color:#f92672">=</span> expected_money <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> current_plan
+</span></span></code></pre></div><h2 id="扔鸡蛋">扔鸡蛋</h2>
 <h3 id="必做题">必做题</h3>
 <p>为了计算 $f(k,m)$，假设在第 $i$ 层楼扔一个蛋。如果碎了，我们还剩 $k-1$ 个蛋，强度肯定小于 $i$，故问题化为 $f(k-1, i)$；如果没碎，把第 $i$ 层楼看做是新的一楼，则问题化为 $f(k, m-i)$。最坏情况是两者的最大值，为了取得最优，我们选择最佳的第 $i$ 层。</p>
 <p>故递归为 $f(k,m)=\min{(\max{f(k-1,i),f(k,m-i)})+1|1\leq i\leq m}$</p>

@@ -186,15 +186,15 @@ which is a column vector for the ease of chain rule calclation. For the last lay
 \end{align*}
 $$</p>
 <p>The second step is because $\mathbf{z}_j^{(l)}$ contributes to every $\mathbf{z}_k^{(l)}$ in the linear transformation. The third step is because $\mathbf{z}_j^{(l-1)}$ only contributes to $\mathbf{a}_k^{(l-1)}$ in the nonlinear transformation.</p>
-<p>Since $\mathbf{a}_k^{(l-1)}=f(\mathbf{z}_k^{(l-1)})$, we have $\frac{\partial \mathbf{a}_k^{(l-1)}}{\partial \mathbf{z}_k^{(l-1)}}=f'(\mathbf{z}_k^{(l-1)})$. Since $\mathbf{z}^{l}=\mathbf{W}^{l}\mathbf{a}^{l-1}+\mathbf{b}^{l}$, from the matrix multiplication, we have $\frac{\partial \mathbf{z}_k^{(l)}}{\partial \mathbf{a}_k^{(l-1)}}=\mathbf{W}^{l}_{k,j}$. Thus, we have:</p>
-<p>$$\mathbf{\delta}_j^{(l-1)}=\sum_{k}\mathbf{\delta}_k^{(l)}\mathbf{W}^{l}_{k,j}f'(\mathbf{z}_j^{(l-1)})$$</p>
+<p>Since $\mathbf{a}_k^{(l-1)}=f(\mathbf{z}_k^{(l-1)})$, we have $\frac{\partial \mathbf{a}_k^{(l-1)}}{\partial \mathbf{z}_k^{(l-1)}}=f&rsquo;(\mathbf{z}_k^{(l-1)})$. Since $\mathbf{z}^{l}=\mathbf{W}^{l}\mathbf{a}^{l-1}+\mathbf{b}^{l}$, from the matrix multiplication, we have $\frac{\partial \mathbf{z}_k^{(l)}}{\partial \mathbf{a}_k^{(l-1)}}=\mathbf{W}^{l}_{k,j}$. Thus, we have:</p>
+<p>$$\mathbf{\delta}_j^{(l-1)}=\sum_{k}\mathbf{\delta}_k^{(l)}\mathbf{W}^{l}_{k,j}f&rsquo;(\mathbf{z}_j^{(l-1)})$$</p>
 <p>Now let&rsquo;s assemble the result. We have</p>
 <p>$$
 \begin{align*}
-\mathbf{\delta}^{(l-1)} &amp;=[\mathbf{\delta}_j^{(l-1)}]_{j=1}^m=[\sum_{k}\mathbf{\delta}_k^{(l)}\mathbf{W}^{l}_{k,j}f'(\mathbf{z}_j^{(l-1)})]_{j=1}^m \\
-&amp;=[\sum_{k}\mathbf{\delta}_k^{(l)}\mathbf{W}^{(l)}_{k,j}]_{j=1}^n\odot[f'(\mathbf{z}_j^{(l-1)})]_{j=1}^m \\
-&amp;=[W_{\star,j}^{(l)\top} \mathbf{\delta}^{(l)}]_{j=1}^n\odot f'(\mathbf{z}^{(l-1)}) \\
-&amp;=\mathbf{W}^{(l)\top}\mathbf{\delta}^{(l)}\odot f'(\mathbf{z}^{(l-1)})
+\mathbf{\delta}^{(l-1)} &amp;=[\mathbf{\delta}_j^{(l-1)}]_{j=1}^m=[\sum_{k}\mathbf{\delta}_k^{(l)}\mathbf{W}^{l}_{k,j}f&rsquo;(\mathbf{z}_j^{(l-1)})]_{j=1}^m \\
+&amp;=[\sum_{k}\mathbf{\delta}_k^{(l)}\mathbf{W}^{(l)}_{k,j}]_{j=1}^n\odot[f&rsquo;(\mathbf{z}_j^{(l-1)})]_{j=1}^m \\
+&amp;=[W_{\star,j}^{(l)\top} \mathbf{\delta}^{(l)}]_{j=1}^n\odot f&rsquo;(\mathbf{z}^{(l-1)}) \\
+&amp;=\mathbf{W}^{(l)\top}\mathbf{\delta}^{(l)}\odot f&rsquo;(\mathbf{z}^{(l-1)})
 \end{align*}
 $$</p>
 <h2 id="a-batch-of-data">A batch of data</h2>
@@ -212,41 +212,41 @@ $$</p>
 <p>$$\frac{\mathcal{L}}{\mathbf{W}^{(l)}}=\mathbf{\Delta}^{(l)\top}\mathbf{A}^{(l-1)}$$</p>
 <p>An quick shape check to verify the result. $\frac{\mathcal{L}}{\mathbf{W}^{(l)}}$ should have the same shape as $\mathbf{W}^{(l)}$, which is $[m^{(l)}, m^{(l-1)}]$. $\mathbf{\Delta}^{(l)\top}$ is of shape $[m^{(l)}, b]$, $\mathbf{A}^{(l-1)}$ is of shape $[b, m^{(l-1)}]$. Thus, $\mathbf{\Delta}^{(l)\top}\mathbf{A}^{(l-1)}$ is of shape $[m^{(l)}, m^{(l-1)}]$. This is the same as $\mathbf{W}^{(l)}$.</p>
 <h3 id="bp-through-layers">BP through layers</h3>
-<p>Finally, for the update from $\mathbf{\Delta}^{(l)}$ to $\mathbf{\Delta}^{(l-1)}$, since each example is independent from each other, it is easy to see that $\mathbf{\Delta}^{(l-1)\top}=\mathbf{W}^{(l)\top}\mathbf{\Delta}^{(l)\top}\odot f'(\mathbf{Z}^{(l-1)\top})$, which means $\mathbf{\Delta}^{(l-1)}=\mathbf{\Delta}^{(l)}\mathbf{W}^{(l)}\odot f'(\mathbf{Z}^{(l-1)})$. This is a direct extension from the vector form.</p>
+<p>Finally, for the update from $\mathbf{\Delta}^{(l)}$ to $\mathbf{\Delta}^{(l-1)}$, since each example is independent from each other, it is easy to see that $\mathbf{\Delta}^{(l-1)\top}=\mathbf{W}^{(l)\top}\mathbf{\Delta}^{(l)\top}\odot f&rsquo;(\mathbf{Z}^{(l-1)\top})$, which means $\mathbf{\Delta}^{(l-1)}=\mathbf{\Delta}^{(l)}\mathbf{W}^{(l)}\odot f&rsquo;(\mathbf{Z}^{(l-1)})$. This is a direct extension from the vector form.</p>
 <h2 id="implementation">Implementation</h2>
 <p>Now we have the derivation of the backpropagation algorithm:</p>
 <p>$$\begin{align*}
 \mathbf{\Delta}^{(L)} &amp; = \frac{1}{b}(\mathbf{A}^{(L)}-Y) \\
-\mathbf{\Delta}^{(l)} &amp; = \mathbf{\Delta}^{(l+1)}\mathbf{W}^{(l)}\odot f'(\mathbf{Z}^{(l-1)}) \\
+\mathbf{\Delta}^{(l)} &amp; = \mathbf{\Delta}^{(l+1)}\mathbf{W}^{(l)}\odot f&rsquo;(\mathbf{Z}^{(l-1)}) \\
 \frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}} &amp; = \mathbf{\Delta}^{(l)\top}\mathbf{A}^{(l-1)} \\
 \end{align*}$$</p>
 <p>Then we can implement the backward pass easily. The pseudo code for a multilayer perceptron without bias is as follows. Note here the $\mathbf{W}$ matrix strictly follows the definition above, and is consistent with PyTorch <a href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html">nn.Linear</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># With PyTorch style API</span>
-<span style="color:#75715e"># W is a list of weight matrix</span>
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>\_pass(X, W):
-    L <span style="color:#f92672">=</span> len(W)
-    A, Z <span style="color:#f92672">=</span> [], []
-    <span style="color:#66d9ef">for</span> l <span style="color:#f92672">in</span> range(L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
-        Z[l] <span style="color:#f92672">=</span> A[l<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">@</span> W[l]<span style="color:#f92672">.</span>T
-        A[l] <span style="color:#f92672">=</span> f(Z[l])
-    Z[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> A[L<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>] <span style="color:#f92672">@</span> W[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-    A[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> softmax(Z[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
-    L <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>sum(Y <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log(A[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]))
-    <span style="color:#66d9ef">return</span> L, A, Z
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backward</span>\_pass(Y, A, Z, W)
-    L <span style="color:#f92672">=</span> len(W)
-    Delta, W\_g <span style="color:#f92672">=</span> []
-    Delta[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> (A[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> Y) <span style="color:#f92672">/</span> Y<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
-    <span style="color:#66d9ef">for</span> l <span style="color:#f92672">in</span> range(L<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
-        Delta[l] <span style="color:#f92672">=</span> Delta[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">@</span> W[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> d\_f(Z[l])
-        W\_g[l] <span style="color:#f92672">=</span> Delta[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>T <span style="color:#f92672">@</span> A[l<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-    <span style="color:#66d9ef">return</span> W\_g
-
-L, A, Z <span style="color:#f92672">=</span> forward\_pass(X, W)
-W\_g <span style="color:#f92672">=</span> backward\_pass(Y, A, Z, W) <span style="color:#75715e"># PyTorch L.backward()</span>
-</code></pre></div></main>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># With PyTorch style API</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># W is a list of weight matrix</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>\_pass(X, W):
+</span></span><span style="display:flex;"><span>    L <span style="color:#f92672">=</span> len(W)
+</span></span><span style="display:flex;"><span>    A, Z <span style="color:#f92672">=</span> [], []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> l <span style="color:#f92672">in</span> range(L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        Z[l] <span style="color:#f92672">=</span> A[l<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">@</span> W[l]<span style="color:#f92672">.</span>T
+</span></span><span style="display:flex;"><span>        A[l] <span style="color:#f92672">=</span> f(Z[l])
+</span></span><span style="display:flex;"><span>    Z[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> A[L<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>] <span style="color:#f92672">@</span> W[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    A[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> softmax(Z[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>    L <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>sum(Y <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log(A[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> L, A, Z
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backward</span>\_pass(Y, A, Z, W)
+</span></span><span style="display:flex;"><span>    L <span style="color:#f92672">=</span> len(W)
+</span></span><span style="display:flex;"><span>    Delta, W\_g <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    Delta[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> (A[L<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> Y) <span style="color:#f92672">/</span> Y<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> l <span style="color:#f92672">in</span> range(L<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        Delta[l] <span style="color:#f92672">=</span> Delta[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">@</span> W[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> d\_f(Z[l])
+</span></span><span style="display:flex;"><span>        W\_g[l] <span style="color:#f92672">=</span> Delta[l<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>T <span style="color:#f92672">@</span> A[l<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> W\_g
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>L, A, Z <span style="color:#f92672">=</span> forward\_pass(X, W)
+</span></span><span style="display:flex;"><span>W\_g <span style="color:#f92672">=</span> backward\_pass(Y, A, Z, W) <span style="color:#75715e"># PyTorch L.backward()</span>
+</span></span></code></pre></div></main>
         </div>
 
     </div>

@@ -172,23 +172,23 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Bresenham</span>(<span style="color:#66d9ef">int</span> x_0, <span style="color:#66d9ef">int</span> y_0, <span style="color:#66d9ef">int</span> delta_x, <span style="color:#66d9ef">int</span> delta_y){
-    <span style="color:#75715e">//|m|&lt;1,直线生成方向与坐标轴同
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> p <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_y<span style="color:#f92672">-</span>delta_x;
-    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> x_0, y <span style="color:#f92672">=</span> y_0;
-    Draw(x, y);
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;k<span style="color:#f92672">&lt;=</span>delta_x;<span style="color:#f92672">++</span>k){
-        x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
-        <span style="color:#66d9ef">if</span> (p<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>){
-            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_y;
-        } <span style="color:#66d9ef">else</span> {
-            y <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
-            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_y<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_x;
-        }
-        Draw(x,y);
-    }
-}
-</code></pre></div><h3 id="曲线图元生成算法">曲线图元生成算法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Bresenham</span>(<span style="color:#66d9ef">int</span> x_0, <span style="color:#66d9ef">int</span> y_0, <span style="color:#66d9ef">int</span> delta_x, <span style="color:#66d9ef">int</span> delta_y){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//|m|&lt;1,直线生成方向与坐标轴同
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> p <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_y<span style="color:#f92672">-</span>delta_x;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> x_0, y <span style="color:#f92672">=</span> y_0;
+</span></span><span style="display:flex;"><span>    Draw(x, y);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;k<span style="color:#f92672">&lt;=</span>delta_x;<span style="color:#f92672">++</span>k){
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (p<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>){
+</span></span><span style="display:flex;"><span>            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_y;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            y <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_y<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>delta_x;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        Draw(x,y);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="曲线图元生成算法">曲线图元生成算法</h3>
 <h4 id="中点圆算法">中点圆算法</h4>
 <ul>
 <li>$f(x,y)=x^2+y^2-r^2$
@@ -205,23 +205,23 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">drawCircle</span>(<span style="color:#66d9ef">int</span> x_c, <span style="color:#66d9ef">int</span> y_c, <span style="color:#66d9ef">int</span> r){
-    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, y <span style="color:#f92672">=</span> r;
-    <span style="color:#66d9ef">int</span> p <span style="color:#f92672">=</span><span style="color:#ae81ff">5</span><span style="color:#f92672">/</span><span style="color:#ae81ff">4</span><span style="color:#f92672">-</span>r;
-    <span style="color:#66d9ef">while</span> (x<span style="color:#f92672">&gt;=</span>y){
-        x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
-        <span style="color:#66d9ef">if</span> (p<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>) {
-            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
-        } <span style="color:#66d9ef">else</span> {
-            y <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>;
-            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>y;
-        }
-        P <span style="color:#f92672">=</span> getSymmetryPoints(x,y);
-        moveToCenter(P, x_c, y_c);
-        drawSet(P);
-    }
-}
-</code></pre></div><h4 id="椭圆生成算法">椭圆生成算法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">drawCircle</span>(<span style="color:#66d9ef">int</span> x_c, <span style="color:#66d9ef">int</span> y_c, <span style="color:#66d9ef">int</span> r){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, y <span style="color:#f92672">=</span> r;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> p <span style="color:#f92672">=</span><span style="color:#ae81ff">5</span><span style="color:#f92672">/</span><span style="color:#ae81ff">4</span><span style="color:#f92672">-</span>r;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (x<span style="color:#f92672">&gt;=</span>y){
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (p<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            y <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            p <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>y;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        P <span style="color:#f92672">=</span> getSymmetryPoints(x,y);
+</span></span><span style="display:flex;"><span>        moveToCenter(P, x_c, y_c);
+</span></span><span style="display:flex;"><span>        drawSet(P);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="椭圆生成算法">椭圆生成算法</h4>
 <ul>
 <li>$f(x,y)=r_y^2x^2+r_x^2y^2-r_x^2r_y^2$</li>
 <li>斜率：$\frac{dy}{dx}=-\frac{2r_y^2x}{2r_x^2y}$

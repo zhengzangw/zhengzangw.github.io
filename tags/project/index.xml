@@ -36,9 +36,12 @@
       <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/introduction-to-computer-science/ics-pa/</guid>
-      <description>PA0 Article  Why Docker How To Ask Questions The Smart Way vimtutor ssh 正则表达式  鸟哥的 Linux 私房菜 检查素数   git GDB  Debugging with GDB A GDB Tutorial with Examples   tmux linux GPG GPG C C  顺时针法则   顺时针法则
-  [10]: an array 10 of &amp;hellip;
-  (): Once you meet one of brace, then a pair of them are omitted</description>
+      <description>PA0 Article Why Docker How To Ask Questions The Smart Way vimtutor ssh 正则表达式 鸟哥的 Linux 私房菜 检查素数 git GDB Debugging with GDB A GDB Tutorial with Examples tmux linux GPG GPG C C 顺时针法则 顺时针法则
+[10]: an array 10 of &amp;hellip;
+(): Once you meet one of brace, then a pair of them are omitted
+*: pointer to &amp;hellip;
+(params): a function which receives params and returning &amp;hellip;
+const(at the begining): const</description>
     </item>
     
   </channel>

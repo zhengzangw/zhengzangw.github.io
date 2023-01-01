@@ -74,11 +74,11 @@ plt.subplot(212)
 &lt;p&gt;In this arcticle, I will give examples to illustrate and remind me the usage of some pandas funtion. Just a reminder.&lt;/p&gt;
 &lt;h2 id=&#34;数据读写&#34;&gt;数据读写&lt;/h2&gt;
 &lt;h3 id=&#34;read_csv&#34;&gt;read_csv&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-pandas&#34; data-lang=&#34;pandas&#34;&gt;data = pd.read_csv(&#39;test.csv&#39;)
-data = pd.read_csv(&#39;test.csv&#39;,header = 0/[0,1,2]列名,  index_col = 0/[0,1], nrows = 100)
-data = pd.read_csv(&#39;test_one.csv&#39;, squeeze = True, encoding = &#39;utf-8&#39;) 一列返回Series
-data = pd.read_csv(&#39;test.csv&#39;, prefix = &#39;X&#39;列前缀, skiprows = 3, skipfooter = 3, na_values = &#39;NAN&#39;)
-data = pd.read_csv(&#39;test_no_NAN.csv&#39;, na_filter = &#39;False&#39;, parse_dates=True/{&#39;foo&#39;:[1,3]},infer_datatime_format = True, data_parser = function)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-pandas&#34; data-lang=&#34;pandas&#34;&gt;data = pd.read_csv(&amp;#39;test.csv&amp;#39;)
+data = pd.read_csv(&amp;#39;test.csv&amp;#39;,header = 0/[0,1,2]列名,  index_col = 0/[0,1], nrows = 100)
+data = pd.read_csv(&amp;#39;test_one.csv&amp;#39;, squeeze = True, encoding = &amp;#39;utf-8&amp;#39;) 一列返回Series
+data = pd.read_csv(&amp;#39;test.csv&amp;#39;, prefix = &amp;#39;X&amp;#39;列前缀, skiprows = 3, skipfooter = 3, na_values = &amp;#39;NAN&amp;#39;)
+data = pd.read_csv(&amp;#39;test_no_NAN.csv&amp;#39;, na_filter = &amp;#39;False&amp;#39;, parse_dates=True/{&amp;#39;foo&amp;#39;:[1,3]},infer_datatime_format = True, data_parser = function)
 &lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     

@@ -151,44 +151,44 @@ standard-version
 </ul>
 <h2 id="commit-message">commit message</h2>
 <p>Angular Git Commit Guidelines</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
-&lt;br&gt;
-&lt;body&gt;
-&lt;br&gt;
-&lt;footer&gt;
-</code></pre></div><h3 id="commitizen">commitizen</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+</span></span><span style="display:flex;"><span>&lt;br&gt;
+</span></span><span style="display:flex;"><span>&lt;body&gt;
+</span></span><span style="display:flex;"><span>&lt;br&gt;
+</span></span><span style="display:flex;"><span>&lt;footer&gt;
+</span></span></code></pre></div><h3 id="commitizen">commitizen</h3>
 <p>使用 commitizen 规范信息，需要 nodejs</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>using namespace std;
-
-<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, q <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-string s;
-
-vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> d[<span style="color:#ae81ff">4</span>];
-<span style="color:#66d9ef">int</span> nex[<span style="color:#ae81ff">100005</span>][<span style="color:#ae81ff">26</span>] <span style="color:#f92672">=</span> {};
-<span style="color:#66d9ef">int</span> dp[<span style="color:#ae81ff">255</span>][<span style="color:#ae81ff">255</span>][<span style="color:#ae81ff">255</span>] <span style="color:#f92672">=</span> {};
-
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">prepare</span>() {
-  memset(dp, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">sizeof</span>(dp));
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; c <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; <span style="color:#f92672">++</span>c) {
-    nex[n][c] <span style="color:#f92672">=</span> nex[n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][c] <span style="color:#f92672">=</span> n;
-  }
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; c <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; <span style="color:#f92672">++</span>c) {
-      nex[i][c] <span style="color:#f92672">=</span> nex[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][c];
-    }
-    nex[i][s[i] <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span>] <span style="color:#f92672">=</span> i;
-  }
-}
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yarn global add commitizen
-npm init --yes
-ln -s /Users/username/node_modules ./node_modules
-commitizen init cz-conventional-changelog --save --save-exact
-git cz
-</code></pre></div><p>配置后只需</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ln -s /Users/username/node_modules ./node_modules
-git cz
-</code></pre></div><h2 id="github-1">Github</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>using namespace std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, q <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>string s;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> d[<span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> nex[<span style="color:#ae81ff">100005</span>][<span style="color:#ae81ff">26</span>] <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> dp[<span style="color:#ae81ff">255</span>][<span style="color:#ae81ff">255</span>][<span style="color:#ae81ff">255</span>] <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">prepare</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">memset</span>(dp, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">sizeof</span>(dp));
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; c <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; <span style="color:#f92672">++</span>c) {
+</span></span><span style="display:flex;"><span>    nex[n][c] <span style="color:#f92672">=</span> nex[n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][c] <span style="color:#f92672">=</span> n;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; c <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; <span style="color:#f92672">++</span>c) {
+</span></span><span style="display:flex;"><span>      nex[i][c] <span style="color:#f92672">=</span> nex[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][c];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    nex[i][s[i] <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span>] <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>yarn global add commitizen
+</span></span><span style="display:flex;"><span>npm init --yes
+</span></span><span style="display:flex;"><span>ln -s /Users/username/node_modules ./node_modules
+</span></span><span style="display:flex;"><span>commitizen init cz-conventional-changelog --save --save-exact
+</span></span><span style="display:flex;"><span>git cz
+</span></span></code></pre></div><p>配置后只需</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ln -s /Users/username/node_modules ./node_modules
+</span></span><span style="display:flex;"><span>git cz
+</span></span></code></pre></div><h2 id="github-1">Github</h2>
 <ul>
 <li>push: <code>git push -u origin my_branch:remote_branch</code></li>
 <li>Pull Request</li>
@@ -443,7 +443,7 @@ as an upstream reference for the current branch.</li>
 <li><code>gSI</code> initializes and clones submodules recursively.</li>
 <li><code>gSl</code> lists the commits of all submodules.</li>
 <li><code>gSm</code> moves a submodule.</li>
-<li><code>gSs</code> synchronizes submodules' remote URL to the value specified in
+<li><code>gSs</code> synchronizes submodules&rsquo; remote URL to the value specified in
 .gitmodules.</li>
 <li><code>gSu</code> fetches and merges the latest changes for all submodule.</li>
 <li><code>gSx</code> removes a submodule.</li>

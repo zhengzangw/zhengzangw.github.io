@@ -8,14 +8,14 @@
     <language>en-us</language>
     <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
     <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
-    <lastBuildDate>Sat, 22 Aug 1970 23:53:47 +0730</lastBuildDate><atom:link href="https://zhengzangw.com/notes/multimedia/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Aug 1970 00:23:47 +0800</lastBuildDate><atom:link href="https://zhengzangw.com/notes/multimedia/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>绪论</title>
       <link>https://zhengzangw.com/notes/multimedia/1-introduction/</link>
       <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/multimedia/1-introduction/</guid>
-      <description>多媒体  媒体：信息的载体，如数字，文字，声音，图形，图像，动画，视频等 多媒体：融合两种或以上媒体的一种人——机交互式信息交流和传播媒体  多个媒体 交互性 数字化   多媒体技术：通过计算机交互处理多种媒体，使多种信息建立逻辑连接，集成一个系统并具有交互性 多媒体技术本质  音像技术 计算机技术 通信技术    多媒体计算机系统  计算机系统类别  多媒体个人计算机 MPC  声音 IO：麦克风，音响 图像 IO：扫描仪，打印机 视频 IO：摄像头，投影仪   图形工作站：大数据量，快，长时稳定 个人桌面 PC：可以取代上面两个 计算机集群：超级计算机，并行计算复杂问题   计算机硬件  集成声卡  AC97 标准软声卡：CPU 占用率高，CODEC 芯片值负责 D/A 和 A/D 转换，处理工作都交给 CPU 硬声卡   集成显卡与独立显卡 CPU(FPU) 集成协处理器 (1989 486 处理器) CPU 集成内存控制器（北桥）（2003 Athlon 64）   多媒体指令扩展  MMX (Intel 1996) SSE (Intel 1999 Pentium III) SSE2 (Intel 2001) SSE3 (Intel 2004) 3DNow!</description>
+      <description>多媒体 媒体：信息的载体，如数字，文字，声音，图形，图像，动画，视频等 多媒体：融合两种或以上媒体的一种人——机交互式信息交流和传播媒体 多个媒体 交互性 数字化 多媒体技术：通过计算机交互处理多种媒体，使多种信息建立逻辑连接，集成一个系统并具有交互性 多媒体技术本质 音像技术 计算机技术 通信技术 多媒体计算机系统 计算机系统类别 多媒体个人计算机 MPC 声音 IO：麦克风，音响 图像 IO：扫描仪，打印机 视频 IO：摄像头，投影仪 图形工作站：大数据量，快，长时稳定 个人桌面 PC：可以取代上面两个 计算机集群：超级计算机，并行计算复杂问题 计算机硬件 集成声卡 AC97 标准软声卡：CPU 占用率高，CODEC 芯片值负责 D/A 和 A/D 转换，处理工作都交给 CPU 硬声卡 集成显卡与独立显卡 CPU(FPU) 集成协处理器 (1989 486 处理器) CPU 集成内存控制器（北桥）（2003 Athlon 64） 多媒体指令扩展 MMX (Intel 1996) SSE (Intel 1999 Pentium III) SSE2 (Intel 2001) SSE3 (Intel 2004) 3DNow! (AMD) SSE4 (Intel 2006) AVX (Intel 2011) 内部总线 技术 位宽 最高带宽/s 商用时间 ISA 8/16 1980s PCI 32/64 533MB 1990s AGP(1X-8X) 32 266-2132MB 1995s PCI-X1.</description>
     </item>
     
     <item>
@@ -24,7 +24,7 @@
       <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/multimedia/2-multimedia/</guid>
-      <description>数字音频  声音文件  CD: 业界标准 WAV: 储存 MID, RMI: 合成音乐 MP3: 着重压缩 ra, rm, rmvb, WMA: 网络传输   电脑音乐创作  编曲 -&amp;gt; 合成 -&amp;gt; 后期制作 CakeWalk, Vegas Audio, CoolEdit, Auto Score 语音合成引擎 VOCALOID 2 打谱软件 Overture   媒体关联  文本-语音转换 声音可视化   声音信号  听觉 20~20000 Hz 发出 80~3400 Hz 话音信号 300~3000 Hz 听阈：声音弱到刚好能听到（频率相关） 痛阈（频率相关）        基音域 泛音域 伴随噪声域     钢琴 27.</description>
+      <description>数字音频 声音文件 CD: 业界标准 WAV: 储存 MID, RMI: 合成音乐 MP3: 着重压缩 ra, rm, rmvb, WMA: 网络传输 电脑音乐创作 编曲 -&amp;gt; 合成 -&amp;gt; 后期制作 CakeWalk, Vegas Audio, CoolEdit, Auto Score 语音合成引擎 VOCALOID 2 打谱软件 Overture 媒体关联 文本-语音转换 声音可视化 声音信号 听觉 20~20000 Hz 发出 80~3400 Hz 话音信号 300~3000 Hz 听阈：声音弱到刚好能听到（频率相关） 痛阈（频率相关） 基音域 泛音域 伴随噪声域 钢琴 27.5Hz 4188Hz 7040Hz 管风琴 18.4Hz 7902Hz 14080Hz 低音大管 25Hz 220Hz 7902Hz 竖琴 61.7Hz 1975Hz - 7902Hz 12544Hz 大号 55Hz 440Hz - 3951Hz 7040Hz 长号 55Hz 523Hz 5274Hz 小号 147Hz 1175Hz 10548Hz 低音提琴 29Hz 440Hz - 4500Hz 11175Hz 大提琴 61.</description>
     </item>
     
     <item>
@@ -33,7 +33,7 @@
       <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/multimedia/3-compression/</guid>
-      <description>无损数据压缩  压缩率 = 未压缩/压缩后 Huffman 编码 算术编码  任意消息用 0 到 1 之间的实数进行编码 根据出现概率确定区间   词典编码 RLE（行程）编码  音频数据压缩标准  话音信号特点  幅度的非均匀分布 样本相关 周期相关 基音相关 静止稀疏 长时间自相关   话音编码器  波形编译码器  PCM (G.711 64kb/s) 增量调制 $\Delta M$: CFDM, CVSD APCM DPCM ADPCM (G.721 32kb/s) SB-ADPCM (G.722 48kb/s + 16kb/s)   音源编译码器  LPC 线性预测编码   混合编译码  MPE, RPE, CELP     人类听觉特点  听觉掩蔽效应：一种频率的声音阻碍听觉系统感受另一种频率的声音  频域掩蔽：同时，高纯掩低纯 时域   临界频带   MPEG1 Audio  Layer1: 频带相等子带（6bit 量化），频域掩蔽特性 Layer2：+时间掩蔽特性，低频度 4 比特，中频带 3 比特，高度 2 比特 Layer3：非等宽 + Huffman + MDCT   MPEG2 Audio  MPEG-2 BC：支持 Linear PCM 和 Dolby AC-3 编码 MPEG-2 AAC：利用掩蔽特性减少数据量，并把量化噪声分散到各个子带中，用全局信号把噪声掩蔽掉   MPEG4  图像数据压缩标准  gif, png：词典编码 bmp: RLE JPEG(.</description>
+      <description>无损数据压缩 压缩率 = 未压缩/压缩后 Huffman 编码 算术编码 任意消息用 0 到 1 之间的实数进行编码 根据出现概率确定区间 词典编码 RLE（行程）编码 音频数据压缩标准 话音信号特点 幅度的非均匀分布 样本相关 周期相关 基音相关 静止稀疏 长时间自相关 话音编码器 波形编译码器 PCM (G.711 64kb/s) 增量调制 $\Delta M$: CFDM, CVSD APCM DPCM ADPCM (G.721 32kb/s) SB-ADPCM (G.722 48kb/s + 16kb/s) 音源编译码器 LPC 线性预测编码 混合编译码 MPE, RPE, CELP 人类听觉特点 听觉掩蔽效应：一种频率的声音阻碍听觉系统感受另一种频率的声音 频域掩蔽：同时，高纯掩低纯 时域 临界频带 MPEG1 Audio Layer1: 频带相等子带（6bit 量化），频域掩蔽特性 Layer2：+时间掩蔽特性，低频度 4 比特，中频带 3 比特，高度 2 比特 Layer3：非等宽 + Huffman + MDCT MPEG2 Audio MPEG-2 BC：支持 Linear PCM 和 Dolby AC-3 编码 MPEG-2 AAC：利用掩蔽特性减少数据量，并把量化噪声分散到各个子带中，用全局信号把噪声掩蔽掉 MPEG4 图像数据压缩标准 gif, png：词典编码 bmp: RLE JPEG(.</description>
     </item>
     
     <item>
@@ -42,7 +42,7 @@
       <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/multimedia/4-storage/</guid>
-      <description>磁存储  HDD：Western Digital, Seagate, and Toshiba. MO(MD)：磁光盘  半导体存储  闪存：CF, SD, MMC, SM, MS, XD T-Flash SSD  闪存颗粒：SLC, MLC, TLC SLC 缓存    光存储  Compact Disc(CD-DA): 1982 Philips and Sony 红皮书标准 CD-ROM: 1985 黄皮书标准（定位，错误率） VCD: 1993 DVD: 1995 单片单面 4.7 GB  使用红外光 EFM PLUS 方式   HD-DVD SACD Blu-ray Disc 国产标准：EVD, HDV, HVD, FVD, CBHD  网络存储  DAS(Direct Attached Storage) NAS(Network Attached Storage)：每个服务器有自己的文件系统 SAN(Storage Area Network)：每个服务器通过网络共享协议使用同一个文件管理系统 DFS：分布式文件系统  NFS: SUN CIFS: Microsoft Lustre: Oracle Haddop: 基于 JAVA TFS: Taobao    </description>
+      <description>磁存储 HDD：Western Digital, Seagate, and Toshiba. MO(MD)：磁光盘 半导体存储 闪存：CF, SD, MMC, SM, MS, XD T-Flash SSD 闪存颗粒：SLC, MLC, TLC SLC 缓存 光存储 Compact Disc(CD-DA): 1982 Philips and Sony 红皮书标准 CD-ROM: 1985 黄皮书标准（定位，错误率） VCD: 1993 DVD: 1995 单片单面 4.7 GB 使用红外光 EFM PLUS 方式 HD-DVD SACD Blu-ray Disc 国产标准：EVD, HDV, HVD, FVD, CBHD 网络存储 DAS(Direct Attached Storage) NAS(Network Attached Storage)：每个服务器有自己的文件系统 SAN(Storage Area Network)：每个服务器通过网络共享协议使用同一个文件管理系统 DFS：分布式文件系统 NFS: SUN CIFS: Microsoft Lustre: Oracle Haddop: 基于 JAVA TFS: Taobao </description>
     </item>
     
     <item>
@@ -51,7 +51,7 @@
       <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/multimedia/5-process/</guid>
-      <description>检索  文本  HITS PageRank   图像  基于文本 基于关键字 基于内容   音频 视频  内容分析  音频  听觉研究问题  语言信号处理与识别 一般音频信号分析 基于内容的音乐分析：自动分割，自动分类，自动检索   异常声音检测   图像  人脸检测 表情识别   视频  目标检测：区域入侵检测，拌线检测，物品遗留检测 多目标检测：车流密度检测，人数统计 移动目标跟踪 目标行为识别    </description>
+      <description>检索 文本 HITS PageRank 图像 基于文本 基于关键字 基于内容 音频 视频 内容分析 音频 听觉研究问题 语言信号处理与识别 一般音频信号分析 基于内容的音乐分析：自动分割，自动分类，自动检索 异常声音检测 图像 人脸检测 表情识别 视频 目标检测：区域入侵检测，拌线检测，物品遗留检测 多目标检测：车流密度检测，人数统计 移动目标跟踪 目标行为识别 </description>
     </item>
     
     <item>
@@ -60,7 +60,7 @@
       <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/multimedia/6-realtime/</guid>
-      <description>实时通信  IM (instant messaging) DAB（Digital Audio Broadcasting）：数字信号广播 卫星电视  数字电视  数字电视  NTSC DVD: 720x480 HDTV 720p: 1280x720 HDTV 1080p: 1920x1080 Digital Cinema - 2K: 2048x1080 Digital Cinema - 4K: 4096x2160 Super Hi-Vision: 7690x4320   数字电视标准  DVB 欧洲 ATSC 美国 ISDB 日 DTMB 中：清华 DMB-T 与上交 ADTB-T 融合   移动电视  基于地面广播：DVB-H, T-DMB 基于卫星广播：S-DMB, SDMB 基于移动网络：3GPP MBMS 中国标准：CMMB, STiMi   IPTV 交互电视  政策：网上传播视听节目许可证（共7家）   OTT TV(Over The Top)  181号文件   机顶盒  IPTV机顶盒 数字机顶盒（广电, DVB） OTT 电视盒   三网融合：通讯网、互联网、广电网  实时通信协议  QoS VoIP  PSTN H.</description>
+      <description>实时通信 IM (instant messaging) DAB（Digital Audio Broadcasting）：数字信号广播 卫星电视 数字电视 数字电视 NTSC DVD: 720x480 HDTV 720p: 1280x720 HDTV 1080p: 1920x1080 Digital Cinema - 2K: 2048x1080 Digital Cinema - 4K: 4096x2160 Super Hi-Vision: 7690x4320 数字电视标准 DVB 欧洲 ATSC 美国 ISDB 日 DTMB 中：清华 DMB-T 与上交 ADTB-T 融合 移动电视 基于地面广播：DVB-H, T-DMB 基于卫星广播：S-DMB, SDMB 基于移动网络：3GPP MBMS 中国标准：CMMB, STiMi IPTV 交互电视 政策：网上传播视听节目许可证（共7家） OTT TV(Over The Top) 181号文件 机顶盒 IPTV机顶盒 数字机顶盒（广电, DVB） OTT 电视盒 三网融合：通讯网、互联网、广电网 实时通信协议 QoS VoIP PSTN H.</description>
     </item>
     
     <item>

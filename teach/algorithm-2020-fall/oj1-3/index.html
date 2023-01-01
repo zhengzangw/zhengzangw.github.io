@@ -92,327 +92,327 @@
 <p>对于 Treap，要注意的是前缀和并不是子树之和，而是左子树之和。</p>
 <p>对于跳表，可以在每层的每个结点维护：在该层，该节点到前一结点之间的元素之和。实现的时候要注意指针的使用。</p>
 <h2 id="示例代码-treap--跳表">示例代码 (Treap &amp; 跳表)</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;random&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
-
-<span style="color:#75715e">#define MAXN 500000
-</span><span style="color:#75715e"></span><span style="color:#75715e">// #define DEBUG
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/* Treap */</span>
-
-<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
-    <span style="color:#66d9ef">int64_t</span> key, sum_left, sum_right;
-    <span style="color:#66d9ef">int</span> pri, w, l, r;
-} treap_node;
-
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">treap_rotate</span> {
-    treap_node node[MAXN <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
-    <span style="color:#66d9ef">int</span> rt, sz;
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">l_rotate</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k) {
-        <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> node[k].r;
-        node[k].r <span style="color:#f92672">=</span> node[t].l;
-        node[t].l <span style="color:#f92672">=</span> k;
-        <span style="color:#75715e">// update sum
-</span><span style="color:#75715e"></span>        node[k].sum_right <span style="color:#f92672">=</span> node[t].sum_left <span style="color:#f92672">-</span> node[t].w <span style="color:#f92672">*</span> node[t].key <span style="color:#f92672">+</span>
-                            node[k].w <span style="color:#f92672">*</span> node[k].key;
-        node[t].sum_left <span style="color:#f92672">+=</span> node[k].sum_left;
-
-        <span style="color:#75715e">// update pointer
-</span><span style="color:#75715e"></span>        k <span style="color:#f92672">=</span> t;
-    }
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">r_rotate</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k) {
-        <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> node[k].l;
-        node[k].l <span style="color:#f92672">=</span> node[t].r;
-        node[t].r <span style="color:#f92672">=</span> k;
-        <span style="color:#75715e">// update sum
-</span><span style="color:#75715e"></span>        node[k].sum_left <span style="color:#f92672">=</span> node[t].sum_right <span style="color:#f92672">-</span> node[t].w <span style="color:#f92672">*</span> node[t].key <span style="color:#f92672">+</span>
-                           node[k].w <span style="color:#f92672">*</span> node[k].key;
-        node[t].sum_right <span style="color:#f92672">+=</span> node[k].sum_right;
-        <span style="color:#75715e">// update pointer
-</span><span style="color:#75715e"></span>        k <span style="color:#f92672">=</span> t;
-    }
-    <span style="color:#75715e">// Insert
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">_insert</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k, <span style="color:#66d9ef">int64_t</span> x) {
-        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>k) {
-            k <span style="color:#f92672">=</span> <span style="color:#f92672">++</span>sz;
-            node[sz].key <span style="color:#f92672">=</span> node[sz].sum_left <span style="color:#f92672">=</span> node[sz].sum_right <span style="color:#f92672">=</span> x;
-            node[sz].pri <span style="color:#f92672">=</span> rand();
-            node[sz].w <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-            node[sz].l <span style="color:#f92672">=</span> node[sz].r <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-        } <span style="color:#66d9ef">else</span> {
-            <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">==</span> x) {
-                node[k].sum_left <span style="color:#f92672">+=</span> x;
-                node[k].sum_right <span style="color:#f92672">+=</span> x;
-                node[k].w<span style="color:#f92672">++</span>;
-            } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">&lt;</span> x) {
-                node[k].sum_right <span style="color:#f92672">+=</span> x;
-                _insert(node[k].r, x);
-                <span style="color:#66d9ef">if</span> (node[node[k].r].pri <span style="color:#f92672">&lt;</span> node[k].pri) l_rotate(k);
-            } <span style="color:#66d9ef">else</span> {
-                node[k].sum_left <span style="color:#f92672">+=</span> x;
-                _insert(node[k].l, x);
-                <span style="color:#66d9ef">if</span> (node[node[k].l].pri <span style="color:#f92672">&lt;</span> node[k].pri) r_rotate(k);
-            }
-        }
-    }
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span>(<span style="color:#66d9ef">int64_t</span> x) { _insert(rt, x); }
-    <span style="color:#75715e">// Remove
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">_find</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k, <span style="color:#66d9ef">int64_t</span> x) {
-        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>k) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-        <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">==</span> x) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
-        <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">&lt;</span> node[k].key)
-            <span style="color:#66d9ef">return</span> _find(node[k].l, x);
-        <span style="color:#66d9ef">else</span>
-            <span style="color:#66d9ef">return</span> _find(node[k].r, x);
-    }
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">_remove</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k, <span style="color:#66d9ef">int64_t</span> x) {
-        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>k) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-        <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">==</span> x) {
-            <span style="color:#66d9ef">if</span> (node[k].w <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) {
-                node[k].w<span style="color:#f92672">--</span>;
-                node[k].sum_left <span style="color:#f92672">-=</span> x;
-                node[k].sum_right <span style="color:#f92672">-=</span> x;
-                <span style="color:#66d9ef">return</span> node[k].w <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-            } <span style="color:#66d9ef">else</span> {
-                <span style="color:#66d9ef">if</span> (node[k].l <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> node[k].r <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
-                    k <span style="color:#f92672">=</span> node[k].l <span style="color:#f92672">+</span> node[k].r;
-                    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
-                } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (node[node[k].l].pri <span style="color:#f92672">&lt;</span> node[node[k].r].pri) {
-                    r_rotate(k);
-                    <span style="color:#66d9ef">return</span> _remove(k, x);
-                } <span style="color:#66d9ef">else</span> {
-                    l_rotate(k);
-                    <span style="color:#66d9ef">return</span> _remove(k, x);
-                }
-            }
-        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">&lt;</span> x) {
-            node[k].sum_right <span style="color:#f92672">-=</span> x;
-            <span style="color:#66d9ef">return</span> _remove(node[k].r, x);
-        } <span style="color:#66d9ef">else</span> {
-            node[k].sum_left <span style="color:#f92672">-=</span> x;
-            <span style="color:#66d9ef">return</span> _remove(node[k].l, x);
-        }
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    }
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">remove</span>(<span style="color:#66d9ef">int64_t</span> x) {
-        <span style="color:#66d9ef">if</span> (_find(rt, x))
-            <span style="color:#66d9ef">return</span> _remove(rt, x);
-        <span style="color:#66d9ef">else</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    }
-    <span style="color:#75715e">// Query
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int64_t</span> <span style="color:#a6e22e">_querysum</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k, <span style="color:#66d9ef">int64_t</span> x) {
-        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>k) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-        <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">&lt;=</span> x) {
-            <span style="color:#66d9ef">return</span> node[k].sum_left <span style="color:#f92672">+</span> _querysum(node[k].r, x);
-        } <span style="color:#66d9ef">else</span> {
-            <span style="color:#66d9ef">return</span> _querysum(node[k].l, x);
-        }
-    }
-    <span style="color:#66d9ef">int64_t</span> <span style="color:#a6e22e">query</span>(<span style="color:#66d9ef">int64_t</span> l, <span style="color:#66d9ef">int64_t</span> r) {
-        <span style="color:#66d9ef">return</span> _querysum(rt, r) <span style="color:#f92672">-</span> _querysum(rt, l);
-    }
-};
-
-<span style="color:#75715e">/* Skip List */</span>
-
-<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> max_level <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
-<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SkipNode</span> {
-    <span style="color:#66d9ef">int64_t</span> key;
-    <span style="color:#66d9ef">int</span> w, level;
-    SkipNode <span style="color:#f92672">**</span>nxt;
-    <span style="color:#66d9ef">int64_t</span> <span style="color:#f92672">*</span>sum_pre;
-    SkipNode(<span style="color:#66d9ef">int64_t</span> k, <span style="color:#66d9ef">int</span> level) <span style="color:#f92672">:</span> key(k), level(level) {
-        nxt <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SkipNode <span style="color:#f92672">*</span>[level];
-        sum_pre <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int64_t</span>[level];
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> level; <span style="color:#f92672">++</span>i) {
-            nxt[i] <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
-            sum_pre[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-        }
-        w <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-    }
-} skip_node;
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">skip_list</span> {
-   <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-    skip_node <span style="color:#f92672">*</span>head, <span style="color:#f92672">*</span>tail;
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">random_level</span>() {
-        <span style="color:#66d9ef">int</span> random_level <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-
-        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> seed <span style="color:#f92672">=</span> time(NULL);
-        <span style="color:#66d9ef">static</span> default_random_engine e(seed);
-        <span style="color:#66d9ef">static</span> uniform_int_distribution<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> u(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>);
-
-        <span style="color:#75715e">// while (rand() % 2 &amp;&amp; random_level &lt; max_level) random_level++;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (u(e) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">&amp;&amp;</span> random_level <span style="color:#f92672">&lt;</span> max_level) random_level<span style="color:#f92672">++</span>;
-        <span style="color:#66d9ef">return</span> random_level;
-    };
-    skip_node <span style="color:#f92672">*</span><span style="color:#a6e22e">_find_pre</span>(<span style="color:#66d9ef">int64_t</span> x) {
-        skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
-            <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;</span> x)
-                tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
-        }
-        <span style="color:#66d9ef">return</span> tmp;
-    }
-    <span style="color:#66d9ef">int64_t</span> <span style="color:#a6e22e">_sum</span>(<span style="color:#66d9ef">int64_t</span> x) {
-        skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
-        <span style="color:#66d9ef">int64_t</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
-            <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;=</span> x) {
-                tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
-                sum <span style="color:#f92672">+=</span> tmp<span style="color:#f92672">-&gt;</span>sum_pre[i];
-            }
-        }
-        <span style="color:#66d9ef">return</span> sum;
-    }
-
-   <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-    skip_list() {
-        head <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> skip_node(LLONG_MIN, max_level);
-        tail <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> skip_node(LLONG_MAX, max_level);
-        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> max_level; <span style="color:#f92672">++</span>i) {
-            head<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">=</span> tail;
-        }
-    };
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span>(<span style="color:#66d9ef">int64_t</span> x) {
-        skip_node <span style="color:#f92672">*</span>node <span style="color:#f92672">=</span> _find_pre(x)<span style="color:#f92672">-&gt;</span>nxt[<span style="color:#ae81ff">0</span>];
-        <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">==</span> x) {
-            node<span style="color:#f92672">-&gt;</span>w<span style="color:#f92672">++</span>;
-            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> node<span style="color:#f92672">-&gt;</span>level; <span style="color:#f92672">++</span>i) node<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">+=</span> x;
-            skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
-            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> node<span style="color:#f92672">-&gt;</span>level; <span style="color:#f92672">--</span>i) {
-                <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;</span> x)
-                    tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
-                tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">+=</span> x;
-            }
-        } <span style="color:#66d9ef">else</span> {
-            <span style="color:#66d9ef">int</span> r_level <span style="color:#f92672">=</span> random_level();
-            skip_node <span style="color:#f92672">*</span>new_node <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> skip_node(x, r_level);
-            skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
-            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
-                <span style="color:#66d9ef">int64_t</span> acc_sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-                <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;</span> x) {
-                    tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
-                    acc_sum <span style="color:#f92672">+=</span> tmp<span style="color:#f92672">-&gt;</span>sum_pre[i];
-                }
-                <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> r_level) {
-                    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> r_level) new_node<span style="color:#f92672">-&gt;</span>sum_pre[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> acc_sum;
-                    new_node<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
-                    tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">=</span> new_node;
-                } <span style="color:#66d9ef">else</span> {
-                    tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">+=</span> x;
-                }
-            }
-            new_node<span style="color:#f92672">-&gt;</span>sum_pre[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> x;
-            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> new_node<span style="color:#f92672">-&gt;</span>level; <span style="color:#f92672">++</span>i) {
-                new_node<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">+=</span> new_node<span style="color:#f92672">-&gt;</span>sum_pre[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
-                new_node<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-=</span> new_node<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-</span> x;
-            }
-        }
-    }
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">remove</span>(<span style="color:#66d9ef">int64_t</span> x) {
-        skip_node <span style="color:#f92672">*</span>node <span style="color:#f92672">=</span> _find_pre(x)<span style="color:#f92672">-&gt;</span>nxt[<span style="color:#ae81ff">0</span>];
-        <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">!=</span> x) {
-            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-        } <span style="color:#66d9ef">else</span> {
-            <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>w <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) {
-                node<span style="color:#f92672">-&gt;</span>w<span style="color:#f92672">--</span>;
-                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> node<span style="color:#f92672">-&gt;</span>level; <span style="color:#f92672">++</span>i) node<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-=</span> x;
-                skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
-                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> node<span style="color:#f92672">-&gt;</span>level; <span style="color:#f92672">--</span>i) {
-                    <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;</span> x)
-                        tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
-                    tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-=</span> x;
-                }
-                <span style="color:#66d9ef">return</span> node<span style="color:#f92672">-&gt;</span>w <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-            } <span style="color:#66d9ef">else</span> {
-                skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
-                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
-                    <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;</span> x)
-                        tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
-                    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> node<span style="color:#f92672">-&gt;</span>level) {
-                        tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">+=</span>
-                            tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-</span> x;
-                        tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>nxt[i];
-                    } <span style="color:#66d9ef">else</span> {
-                        tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-=</span> x;
-                    }
-                }
-                <span style="color:#66d9ef">delete</span> node;
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
-            }
-        }
-    }
-    <span style="color:#66d9ef">int64_t</span> <span style="color:#a6e22e">query</span>(<span style="color:#66d9ef">int64_t</span> l, <span style="color:#66d9ef">int64_t</span> r) { <span style="color:#66d9ef">return</span> _sum(r) <span style="color:#f92672">-</span> _sum(l); }
-};
-
-<span style="color:#75715e">/*
-</span><span style="color:#75715e">Use Treap
-</span><span style="color:#75715e">    Time: 9s, Memory: 22.1 MB
-</span><span style="color:#75715e">*/</span>
-<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">treap_rotate</span> Multiset;
-
-<span style="color:#75715e">/*
-</span><span style="color:#75715e">Use Skip List
-</span><span style="color:#75715e">    max_level = 10, TLE
-</span><span style="color:#75715e">    max_level = 15, Time: 13.4s, Memory: 59.0 MB
-</span><span style="color:#75715e">    max_level = 20, Time: 13.8s, Memory: 59.0 MB
-</span><span style="color:#75715e">    max_level = 40, Time: 14.8s, Memory: 59.0 MB
-</span><span style="color:#75715e">*/</span>
-<span style="color:#75715e">// typedef struct skip_list Multiset;
-</span><span style="color:#75715e"></span>
-Multiset S;
-<span style="color:#66d9ef">int64_t</span> Q, mod, lans, y, x, l, r, u, v, cnt;
-<span style="color:#66d9ef">int</span> q;
-
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-    scanf(<span style="color:#e6db74">&#34;%lld%lld&#34;</span>, <span style="color:#f92672">&amp;</span>Q, <span style="color:#f92672">&amp;</span>mod);
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; t <span style="color:#f92672">&lt;</span> Q; <span style="color:#f92672">++</span>t) {
-        scanf(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#f92672">&amp;</span>q);
-        <span style="color:#66d9ef">switch</span> (q) {
-            <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span>
-                scanf(<span style="color:#e6db74">&#34;%lld&#34;</span>, <span style="color:#f92672">&amp;</span>y);
-<span style="color:#75715e">#ifndef DEBUG
-</span><span style="color:#75715e"></span>                x <span style="color:#f92672">=</span> (y <span style="color:#f92672">+</span> lans) <span style="color:#f92672">%</span> mod;
-<span style="color:#75715e">#else
-</span><span style="color:#75715e"></span>                x <span style="color:#f92672">=</span> y;
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>                S.insert(x);
-                <span style="color:#75715e">// printf(&#34;0 %lld\n&#34;, x);
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span>;
-            <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>
-                scanf(<span style="color:#e6db74">&#34;%lld&#34;</span>, <span style="color:#f92672">&amp;</span>y);
-<span style="color:#75715e">#ifndef DEBUG
-</span><span style="color:#75715e"></span>                x <span style="color:#f92672">=</span> (y <span style="color:#f92672">+</span> lans) <span style="color:#f92672">%</span> mod;
-<span style="color:#75715e">#else
-</span><span style="color:#75715e"></span>                x <span style="color:#f92672">=</span> y;
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>                cnt <span style="color:#f92672">=</span> S.remove(x);
-                printf(<span style="color:#e6db74">&#34;%lld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, cnt);
-                <span style="color:#75715e">// printf(&#34;1 %lld\n&#34;, x);
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span>;
-            <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>
-                scanf(<span style="color:#e6db74">&#34;%lld%lld&#34;</span>, <span style="color:#f92672">&amp;</span>u, <span style="color:#f92672">&amp;</span>v);
-<span style="color:#75715e">#ifndef DEBUG
-</span><span style="color:#75715e"></span>                l <span style="color:#f92672">=</span> (u <span style="color:#f92672">+</span> lans) <span style="color:#f92672">%</span> mod;
-                r <span style="color:#f92672">=</span> (v <span style="color:#f92672">+</span> lans) <span style="color:#f92672">%</span> mod;
-<span style="color:#75715e">#else
-</span><span style="color:#75715e"></span>                l <span style="color:#f92672">=</span> u;
-                r <span style="color:#f92672">=</span> v;
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&gt;</span> r) swap(l, r);
-                lans <span style="color:#f92672">=</span> S.query(l, r);
-                printf(<span style="color:#e6db74">&#34;%lld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, lans);
-                <span style="color:#75715e">// printf(&#34;2 %lld %lld\n&#34;, l, r);
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span>;
-        }
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-</code></pre></div></main>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;random&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define MAXN 500000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// #define DEBUG
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* Treap */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int64_t</span> key, sum_left, sum_right;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> pri, w, l, r;
+</span></span><span style="display:flex;"><span>} treap_node;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">treap_rotate</span> {
+</span></span><span style="display:flex;"><span>    treap_node node[MAXN <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> rt, sz;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">l_rotate</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> node[k].r;
+</span></span><span style="display:flex;"><span>        node[k].r <span style="color:#f92672">=</span> node[t].l;
+</span></span><span style="display:flex;"><span>        node[t].l <span style="color:#f92672">=</span> k;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// update sum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        node[k].sum_right <span style="color:#f92672">=</span> node[t].sum_left <span style="color:#f92672">-</span> node[t].w <span style="color:#f92672">*</span> node[t].key <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                            node[k].w <span style="color:#f92672">*</span> node[k].key;
+</span></span><span style="display:flex;"><span>        node[t].sum_left <span style="color:#f92672">+=</span> node[k].sum_left;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// update pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        k <span style="color:#f92672">=</span> t;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">r_rotate</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> node[k].l;
+</span></span><span style="display:flex;"><span>        node[k].l <span style="color:#f92672">=</span> node[t].r;
+</span></span><span style="display:flex;"><span>        node[t].r <span style="color:#f92672">=</span> k;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// update sum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        node[k].sum_left <span style="color:#f92672">=</span> node[t].sum_right <span style="color:#f92672">-</span> node[t].w <span style="color:#f92672">*</span> node[t].key <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                           node[k].w <span style="color:#f92672">*</span> node[k].key;
+</span></span><span style="display:flex;"><span>        node[t].sum_right <span style="color:#f92672">+=</span> node[k].sum_right;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// update pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        k <span style="color:#f92672">=</span> t;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Insert
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">_insert</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k, <span style="color:#66d9ef">int64_t</span> x) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>k) {
+</span></span><span style="display:flex;"><span>            k <span style="color:#f92672">=</span> <span style="color:#f92672">++</span>sz;
+</span></span><span style="display:flex;"><span>            node[sz].key <span style="color:#f92672">=</span> node[sz].sum_left <span style="color:#f92672">=</span> node[sz].sum_right <span style="color:#f92672">=</span> x;
+</span></span><span style="display:flex;"><span>            node[sz].pri <span style="color:#f92672">=</span> rand();
+</span></span><span style="display:flex;"><span>            node[sz].w <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            node[sz].l <span style="color:#f92672">=</span> node[sz].r <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">==</span> x) {
+</span></span><span style="display:flex;"><span>                node[k].sum_left <span style="color:#f92672">+=</span> x;
+</span></span><span style="display:flex;"><span>                node[k].sum_right <span style="color:#f92672">+=</span> x;
+</span></span><span style="display:flex;"><span>                node[k].w<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">&lt;</span> x) {
+</span></span><span style="display:flex;"><span>                node[k].sum_right <span style="color:#f92672">+=</span> x;
+</span></span><span style="display:flex;"><span>                _insert(node[k].r, x);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (node[node[k].r].pri <span style="color:#f92672">&lt;</span> node[k].pri) l_rotate(k);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                node[k].sum_left <span style="color:#f92672">+=</span> x;
+</span></span><span style="display:flex;"><span>                _insert(node[k].l, x);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (node[node[k].l].pri <span style="color:#f92672">&lt;</span> node[k].pri) r_rotate(k);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span>(<span style="color:#66d9ef">int64_t</span> x) { _insert(rt, x); }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Remove
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">_find</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k, <span style="color:#66d9ef">int64_t</span> x) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>k) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">==</span> x) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">&lt;</span> node[k].key)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> _find(node[k].l, x);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> _find(node[k].r, x);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">_remove</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k, <span style="color:#66d9ef">int64_t</span> x) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>k) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">==</span> x) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (node[k].w <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>                node[k].w<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>                node[k].sum_left <span style="color:#f92672">-=</span> x;
+</span></span><span style="display:flex;"><span>                node[k].sum_right <span style="color:#f92672">-=</span> x;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> node[k].w <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (node[k].l <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> node[k].r <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                    k <span style="color:#f92672">=</span> node[k].l <span style="color:#f92672">+</span> node[k].r;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (node[node[k].l].pri <span style="color:#f92672">&lt;</span> node[node[k].r].pri) {
+</span></span><span style="display:flex;"><span>                    r_rotate(k);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> _remove(k, x);
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                    l_rotate(k);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> _remove(k, x);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">&lt;</span> x) {
+</span></span><span style="display:flex;"><span>            node[k].sum_right <span style="color:#f92672">-=</span> x;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> _remove(node[k].r, x);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            node[k].sum_left <span style="color:#f92672">-=</span> x;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> _remove(node[k].l, x);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">remove</span>(<span style="color:#66d9ef">int64_t</span> x) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (_find(rt, x))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> _remove(rt, x);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Query
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int64_t</span> <span style="color:#a6e22e">_querysum</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>k, <span style="color:#66d9ef">int64_t</span> x) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>k) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node[k].key <span style="color:#f92672">&lt;=</span> x) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> node[k].sum_left <span style="color:#f92672">+</span> _querysum(node[k].r, x);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> _querysum(node[k].l, x);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int64_t</span> <span style="color:#a6e22e">query</span>(<span style="color:#66d9ef">int64_t</span> l, <span style="color:#66d9ef">int64_t</span> r) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _querysum(rt, r) <span style="color:#f92672">-</span> _querysum(rt, l);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* Skip List */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> max_level <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SkipNode</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int64_t</span> key;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> w, level;
+</span></span><span style="display:flex;"><span>    SkipNode <span style="color:#f92672">**</span>nxt;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int64_t</span> <span style="color:#f92672">*</span>sum_pre;
+</span></span><span style="display:flex;"><span>    SkipNode(<span style="color:#66d9ef">int64_t</span> k, <span style="color:#66d9ef">int</span> level) <span style="color:#f92672">:</span> key(k), level(level) {
+</span></span><span style="display:flex;"><span>        nxt <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SkipNode <span style="color:#f92672">*</span>[level];
+</span></span><span style="display:flex;"><span>        sum_pre <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int64_t</span>[level];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> level; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            nxt[i] <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>            sum_pre[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        w <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>} skip_node;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">skip_list</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    skip_node <span style="color:#f92672">*</span>head, <span style="color:#f92672">*</span>tail;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">random_level</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> random_level <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> seed <span style="color:#f92672">=</span> time(NULL);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> default_random_engine e(seed);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> uniform_int_distribution<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> u(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// while (rand() % 2 &amp;&amp; random_level &lt; max_level) random_level++;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (u(e) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">&amp;&amp;</span> random_level <span style="color:#f92672">&lt;</span> max_level) random_level<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> random_level;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    skip_node <span style="color:#f92672">*</span><span style="color:#a6e22e">_find_pre</span>(<span style="color:#66d9ef">int64_t</span> x) {
+</span></span><span style="display:flex;"><span>        skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;</span> x)
+</span></span><span style="display:flex;"><span>                tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> tmp;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int64_t</span> <span style="color:#a6e22e">_sum</span>(<span style="color:#66d9ef">int64_t</span> x) {
+</span></span><span style="display:flex;"><span>        skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int64_t</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;=</span> x) {
+</span></span><span style="display:flex;"><span>                tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
+</span></span><span style="display:flex;"><span>                sum <span style="color:#f92672">+=</span> tmp<span style="color:#f92672">-&gt;</span>sum_pre[i];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sum;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    skip_list() {
+</span></span><span style="display:flex;"><span>        head <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> skip_node(LLONG_MIN, max_level);
+</span></span><span style="display:flex;"><span>        tail <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> skip_node(LLONG_MAX, max_level);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> max_level; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            head<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">=</span> tail;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span>(<span style="color:#66d9ef">int64_t</span> x) {
+</span></span><span style="display:flex;"><span>        skip_node <span style="color:#f92672">*</span>node <span style="color:#f92672">=</span> _find_pre(x)<span style="color:#f92672">-&gt;</span>nxt[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">==</span> x) {
+</span></span><span style="display:flex;"><span>            node<span style="color:#f92672">-&gt;</span>w<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> node<span style="color:#f92672">-&gt;</span>level; <span style="color:#f92672">++</span>i) node<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">+=</span> x;
+</span></span><span style="display:flex;"><span>            skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> node<span style="color:#f92672">-&gt;</span>level; <span style="color:#f92672">--</span>i) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;</span> x)
+</span></span><span style="display:flex;"><span>                    tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
+</span></span><span style="display:flex;"><span>                tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">+=</span> x;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> r_level <span style="color:#f92672">=</span> random_level();
+</span></span><span style="display:flex;"><span>            skip_node <span style="color:#f92672">*</span>new_node <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> skip_node(x, r_level);
+</span></span><span style="display:flex;"><span>            skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int64_t</span> acc_sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;</span> x) {
+</span></span><span style="display:flex;"><span>                    tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
+</span></span><span style="display:flex;"><span>                    acc_sum <span style="color:#f92672">+=</span> tmp<span style="color:#f92672">-&gt;</span>sum_pre[i];
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> r_level) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> r_level) new_node<span style="color:#f92672">-&gt;</span>sum_pre[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> acc_sum;
+</span></span><span style="display:flex;"><span>                    new_node<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
+</span></span><span style="display:flex;"><span>                    tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">=</span> new_node;
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                    tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">+=</span> x;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            new_node<span style="color:#f92672">-&gt;</span>sum_pre[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> x;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> new_node<span style="color:#f92672">-&gt;</span>level; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>                new_node<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">+=</span> new_node<span style="color:#f92672">-&gt;</span>sum_pre[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>                new_node<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-=</span> new_node<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-</span> x;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">remove</span>(<span style="color:#66d9ef">int64_t</span> x) {
+</span></span><span style="display:flex;"><span>        skip_node <span style="color:#f92672">*</span>node <span style="color:#f92672">=</span> _find_pre(x)<span style="color:#f92672">-&gt;</span>nxt[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">!=</span> x) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>w <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>                node<span style="color:#f92672">-&gt;</span>w<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> node<span style="color:#f92672">-&gt;</span>level; <span style="color:#f92672">++</span>i) node<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-=</span> x;
+</span></span><span style="display:flex;"><span>                skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> node<span style="color:#f92672">-&gt;</span>level; <span style="color:#f92672">--</span>i) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;</span> x)
+</span></span><span style="display:flex;"><span>                        tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
+</span></span><span style="display:flex;"><span>                    tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-=</span> x;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> node<span style="color:#f92672">-&gt;</span>w <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                skip_node <span style="color:#f92672">*</span>tmp <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_level <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">while</span> (tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">&lt;</span> x)
+</span></span><span style="display:flex;"><span>                        tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i];
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> node<span style="color:#f92672">-&gt;</span>level) {
+</span></span><span style="display:flex;"><span>                        tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">+=</span>
+</span></span><span style="display:flex;"><span>                            tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-</span> x;
+</span></span><span style="display:flex;"><span>                        tmp<span style="color:#f92672">-&gt;</span>nxt[i] <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>nxt[i];
+</span></span><span style="display:flex;"><span>                    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                        tmp<span style="color:#f92672">-&gt;</span>nxt[i]<span style="color:#f92672">-&gt;</span>sum_pre[i] <span style="color:#f92672">-=</span> x;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">delete</span> node;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int64_t</span> <span style="color:#a6e22e">query</span>(<span style="color:#66d9ef">int64_t</span> l, <span style="color:#66d9ef">int64_t</span> r) { <span style="color:#66d9ef">return</span> _sum(r) <span style="color:#f92672">-</span> _sum(l); }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Use Treap
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Time: 9s, Memory: 22.1 MB
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">treap_rotate</span> Multiset;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Use Skip List
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    max_level = 10, TLE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    max_level = 15, Time: 13.4s, Memory: 59.0 MB
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    max_level = 20, Time: 13.8s, Memory: 59.0 MB
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    max_level = 40, Time: 14.8s, Memory: 59.0 MB
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// typedef struct skip_list Multiset;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Multiset S;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int64_t</span> Q, mod, lans, y, x, l, r, u, v, cnt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> q;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    scanf(<span style="color:#e6db74">&#34;%lld%lld&#34;</span>, <span style="color:#f92672">&amp;</span>Q, <span style="color:#f92672">&amp;</span>mod);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; t <span style="color:#f92672">&lt;</span> Q; <span style="color:#f92672">++</span>t) {
+</span></span><span style="display:flex;"><span>        scanf(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#f92672">&amp;</span>q);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">switch</span> (q) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                scanf(<span style="color:#e6db74">&#34;%lld&#34;</span>, <span style="color:#f92672">&amp;</span>y);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef DEBUG
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                x <span style="color:#f92672">=</span> (y <span style="color:#f92672">+</span> lans) <span style="color:#f92672">%</span> mod;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                x <span style="color:#f92672">=</span> y;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                S.insert(x);
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// printf(&#34;0 %lld\n&#34;, x);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                scanf(<span style="color:#e6db74">&#34;%lld&#34;</span>, <span style="color:#f92672">&amp;</span>y);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef DEBUG
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                x <span style="color:#f92672">=</span> (y <span style="color:#f92672">+</span> lans) <span style="color:#f92672">%</span> mod;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                x <span style="color:#f92672">=</span> y;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                cnt <span style="color:#f92672">=</span> S.remove(x);
+</span></span><span style="display:flex;"><span>                printf(<span style="color:#e6db74">&#34;%lld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, cnt);
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// printf(&#34;1 %lld\n&#34;, x);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                scanf(<span style="color:#e6db74">&#34;%lld%lld&#34;</span>, <span style="color:#f92672">&amp;</span>u, <span style="color:#f92672">&amp;</span>v);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef DEBUG
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                l <span style="color:#f92672">=</span> (u <span style="color:#f92672">+</span> lans) <span style="color:#f92672">%</span> mod;
+</span></span><span style="display:flex;"><span>                r <span style="color:#f92672">=</span> (v <span style="color:#f92672">+</span> lans) <span style="color:#f92672">%</span> mod;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                l <span style="color:#f92672">=</span> u;
+</span></span><span style="display:flex;"><span>                r <span style="color:#f92672">=</span> v;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&gt;</span> r) swap(l, r);
+</span></span><span style="display:flex;"><span>                lans <span style="color:#f92672">=</span> S.query(l, r);
+</span></span><span style="display:flex;"><span>                printf(<span style="color:#e6db74">&#34;%lld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, lans);
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// printf(&#34;2 %lld %lld\n&#34;, l, r);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></main>
         </div>
 
     </div>

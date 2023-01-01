@@ -139,8 +139,8 @@
 <li>$\pi$ 为最优策略 $\iff\forall s,V^<em>(s)=V^{\pi^</em>}(s)=\max_\pi V^{\pi}(s)=\max_a Q^{\pi}(s,a)$</li>
 <li>Bellman 等式：$V^{\pi}(s)=\mathbb{E}<em>\pi[R_t+\gamma V^\pi(s</em>{t+1})|s_t=s]$
 <ul>
-<li>$V^\pi(s)=\sum_{a\in A}\pi(a|s)[R(s,a)+\gamma\sum_{s'}\delta(s,\pi(s),s')V^{\pi}(s')]$</li>
-<li>$Q^\pi(s,a)=R(s,a)+\gamma\sum_{s'}\delta(s,a,s')V^\pi(s')$</li>
+<li>$V^\pi(s)=\sum_{a\in A}\pi(a|s)[R(s,a)+\gamma\sum_{s&rsquo;}\delta(s,\pi(s),s&rsquo;)V^{\pi}(s&rsquo;)]$</li>
+<li>$Q^\pi(s,a)=R(s,a)+\gamma\sum_{s&rsquo;}\delta(s,a,s&rsquo;)V^\pi(s&rsquo;)$</li>
 </ul>
 </li>
 </ul>
@@ -235,7 +235,7 @@ $\epsilon$-贪心策略：以 $\epsilon$ 概率选择其它</li>
 <li>$Q(s)=[Q(s,a_1),Q(s,a_2),\cdots]\approx f(s,w)$</li>
 </ul>
 </li>
-<li>Q 网络训练目标损失：$L(w)=\mathbb{E}[(r+\gamma\max_{a'}Q(s',a',w)-Q(s,a,w))^2]$
+<li>Q 网络训练目标损失：$L(w)=\mathbb{E}[(r+\gamma\max_{a&rsquo;}Q(s&rsquo;,a&rsquo;,w)-Q(s,a,w))^2]$
 <ul>
 <li>以 $R_t$ 为目标值</li>
 </ul>

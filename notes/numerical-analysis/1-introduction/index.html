@@ -130,9 +130,9 @@
 <li>$\epsilon(x_1^<em>\pm x_2^</em>)=\epsilon(x_1^<em>)+\epsilon(x_2^</em>)$</li>
 <li>$\epsilon(x_1^<em>x_2^</em>)\approx|x_1|\epsilon(x_2^<em>)+|x_2|\epsilon(x_1^</em>)$</li>
 <li>$\epsilon(\frac{x_1^<em>}{x_2^</em>})\approx\frac{|x_1|\epsilon(x_2^<em>)+|x_2|\epsilon(x_1^</em>)}{|x_2^*|^2}$</li>
-<li>$\epsilon(f(x^<em>))\approx |f'(x^</em>)|\epsilon(x^*)$
+<li>$\epsilon(f(x^<em>))\approx |f&rsquo;(x^</em>)|\epsilon(x^*)$
 <ul>
-<li>$f(x)-f(x^<em>)= f'(x^</em>)(x-x^<em>)+\frac{f''(\xi)}{2}(x-x^</em>)^2, \xi\in[x,x^*]$</li>
+<li>$f(x)-f(x^<em>)= f&rsquo;(x^</em>)(x-x^<em>)+\frac{f&rsquo;&rsquo;(\xi)}{2}(x-x^</em>)^2, \xi\in[x,x^*]$</li>
 </ul>
 </li>
 </ul>
@@ -145,7 +145,7 @@
 <li>即时算法数值稳定，也无法得到好的解（采集数据就有误差）</li>
 </ul>
 </li>
-<li>计算函数值的条件数：$C_p=|\frac{f(x)-f(x^*)}{f(x)}|/|\frac{\Delta x}{x}|=\frac{xf'(x)}{f(x)}$</li>
+<li>计算函数值的条件数：$C_p=|\frac{f(x)-f(x^*)}{f(x)}|/|\frac{\Delta x}{x}|=\frac{xf&rsquo;(x)}{f(x)}$</li>
 </ul>
 <h2 id="算法中需要注意的地方">算法中需要注意的地方</h2>
 <ul>
@@ -171,7 +171,7 @@
 <ul>
 <li>$f(x)\approx f(x^<em>)$ 但 $x,x^</em>$ 不接近</li>
 </ul>
-<p>$$f(x)-f(x^<em>)=f'(x^</em>)(x-x^<em>)+\frac{1}{2}f''(x-x^</em>)^2+\cdots$$</p>
+<p>$$f(x)-f(x^<em>)=f&rsquo;(x^</em>)(x-x^<em>)+\frac{1}{2}f&rsquo;&rsquo;(x-x^</em>)^2+\cdots$$</p>
 </li>
 <li>
 <p>避免大数吃小数</p>

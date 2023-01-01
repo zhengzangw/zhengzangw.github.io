@@ -89,73 +89,73 @@
 </nav>
             </div>
             <main class="flex-column-80"><h2 id="帮助">帮助</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">man mkdir
-tldr mkdir
-type cd
-which ffmpeg
-shellcheck script.sh <span style="color:#75715e"># brew install shellcheck</span>
-history <span style="color:#ae81ff">1</span> <span style="color:#75715e"># history from 1</span>
-</code></pre></div><h2 id="file-system">File System</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 查看</span>
-ls -R
-tree -L <span style="color:#ae81ff">1</span> <span style="color:#75715e"># brew install tree</span>
-<span style="color:#75715e"># 跳转</span>
-cd <span style="color:#75715e"># = cd $HOME</span>
-cd - <span style="color:#75715e"># 放回之前目录 cd $OLDPWD</span>
-broot
-nnn
-j -s <span style="color:#75715e"># autojump</span>
-dirs -v <span style="color:#75715e"># 查看栈</span>
-popd <span style="color:#75715e"># 出栈</span>
-popd +n <span style="color:#75715e"># 从栈顶向栈底计算，删除</span>
-pushd <span style="color:#75715e"># = cd -</span>
-pushd +n <span style="color:#75715e"># 切换到第 n 个，循环方式</span>
-<span style="color:#75715e"># 操作</span>
-cp source_file target_file
-mv source_file target_file
-rm target_file
-mkdir -p <span style="color:#75715e"># Create missing ones</span>
-basename ./a/b/c.d <span style="color:#75715e"># 返回不包含路径的文件名</span>
-dirname ./a/b/c.d <span style="color:#75715e"># 返回文件所在路径（上级）</span>
-</code></pre></div><h2 id="search">Search</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">find . -name src -type d <span style="color:#75715e"># type directory</span>
-find . -path <span style="color:#e6db74">&#39;**/test/*.py&#39;</span> -type f
-find . -name <span style="color:#e6db74">&#34;*.tmp&#34;</span> -exec rm <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
-fd <span style="color:#e6db74">&#39;image.*&#39;</span> --extension <span style="color:#e6db74">&#39;jpg&#39;</span> <span style="color:#75715e"># </span>
-locate hello <span style="color:#75715e"># show path contains hello</span>
-updatedb <span style="color:#75715e"># update database</span>
-grep foobar script.sh
-gerp -R foobar <span style="color:#75715e"># go through directory</span>
-rg <span style="color:#e6db74">&#34;import requests&#34;</span> -t py -C <span style="color:#ae81ff">5</span> . <span style="color:#75715e"># ripgrep</span>
-rg -e <span style="color:#e6db74">&#34;img.*\.jpg&#34;</span> -t py -C <span style="color:#ae81ff">5</span> .
-rg -u --files-without-match --stats <span style="color:#e6db74">&#39;^#\!&#39;</span> -t sh <span style="color:#75715e"># -u don&#39;t ignore hidden file</span>
-ack --ruby foo
-ag foo
-fzf
-<span style="color:#75715e"># brew install fzf</span>
-<span style="color:#75715e"># /usr/local/opt/fzf/install</span>
-</code></pre></div><h2 id="pipeline">Pipeline</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">&gt; <span style="color:#75715e"># 重定向，覆盖</span>
-?&gt; <span style="color:#75715e"># 重定向，强制覆盖 in mac</span>
-&gt;&gt; <span style="color:#75715e"># 追加</span>
-&gt; /dev/null 2&gt; /dev/null
-| <span style="color:#75715e"># standard file inferface</span>
-ffmpeg -loglevel panic -i /dev/video0 -frames <span style="color:#ae81ff">1</span> -f image2 - | convert - -colorspace gray - | gzip | ssh tsp <span style="color:#e6db74">&#39;gzip -d | tee copy.png&#39;</span>  <span style="color:#75715e"># - means stdin/stdout</span>
-| xargs -d <span style="color:#e6db74">&#34;\t&#34;</span> <span style="color:#75715e"># 将标准输入按\t分解为命令行参数 -p 只打印不执行</span>
-| tee <span style="color:#75715e"># output and forward</span>
-</code></pre></div><h2 id="globbing">globbing</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ls project*
-ls project?
-touch project<span style="color:#f92672">{</span>1,2<span style="color:#f92672">}</span>/src/text/test<span style="color:#f92672">{</span>1,2,3<span style="color:#f92672">}</span>.py
-touch <span style="color:#f92672">{</span>foo,bar<span style="color:#f92672">}</span>/<span style="color:#f92672">{</span>a..g<span style="color:#f92672">}</span>
-**/test/*.py <span style="color:#75715e"># ** means any prefix</span>
-</code></pre></div><h2 id="其它常用命令">其它常用命令</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">date
-date +%Y-%m-%d
-cmp a.c b.c
-diff a.c b.c
-yes <span style="color:#e6db74">&#34;hello world!&#34;</span>
-</code></pre></div></main>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>man mkdir
+</span></span><span style="display:flex;"><span>tldr mkdir
+</span></span><span style="display:flex;"><span>type cd
+</span></span><span style="display:flex;"><span>which ffmpeg
+</span></span><span style="display:flex;"><span>shellcheck script.sh <span style="color:#75715e"># brew install shellcheck</span>
+</span></span><span style="display:flex;"><span>history <span style="color:#ae81ff">1</span> <span style="color:#75715e"># history from 1</span>
+</span></span></code></pre></div><h2 id="file-system">File System</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 查看</span>
+</span></span><span style="display:flex;"><span>ls -R
+</span></span><span style="display:flex;"><span>tree -L <span style="color:#ae81ff">1</span> <span style="color:#75715e"># brew install tree</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 跳转</span>
+</span></span><span style="display:flex;"><span>cd <span style="color:#75715e"># = cd $HOME</span>
+</span></span><span style="display:flex;"><span>cd - <span style="color:#75715e"># 放回之前目录 cd $OLDPWD</span>
+</span></span><span style="display:flex;"><span>broot
+</span></span><span style="display:flex;"><span>nnn
+</span></span><span style="display:flex;"><span>j -s <span style="color:#75715e"># autojump</span>
+</span></span><span style="display:flex;"><span>dirs -v <span style="color:#75715e"># 查看栈</span>
+</span></span><span style="display:flex;"><span>popd <span style="color:#75715e"># 出栈</span>
+</span></span><span style="display:flex;"><span>popd +n <span style="color:#75715e"># 从栈顶向栈底计算，删除</span>
+</span></span><span style="display:flex;"><span>pushd <span style="color:#75715e"># = cd -</span>
+</span></span><span style="display:flex;"><span>pushd +n <span style="color:#75715e"># 切换到第 n 个，循环方式</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 操作</span>
+</span></span><span style="display:flex;"><span>cp source_file target_file
+</span></span><span style="display:flex;"><span>mv source_file target_file
+</span></span><span style="display:flex;"><span>rm target_file
+</span></span><span style="display:flex;"><span>mkdir -p <span style="color:#75715e"># Create missing ones</span>
+</span></span><span style="display:flex;"><span>basename ./a/b/c.d <span style="color:#75715e"># 返回不包含路径的文件名</span>
+</span></span><span style="display:flex;"><span>dirname ./a/b/c.d <span style="color:#75715e"># 返回文件所在路径（上级）</span>
+</span></span></code></pre></div><h2 id="search">Search</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>find . -name src -type d <span style="color:#75715e"># type directory</span>
+</span></span><span style="display:flex;"><span>find . -path <span style="color:#e6db74">&#39;**/test/*.py&#39;</span> -type f
+</span></span><span style="display:flex;"><span>find . -name <span style="color:#e6db74">&#34;*.tmp&#34;</span> -exec rm <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+</span></span><span style="display:flex;"><span>fd <span style="color:#e6db74">&#39;image.*&#39;</span> --extension <span style="color:#e6db74">&#39;jpg&#39;</span> <span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span>locate hello <span style="color:#75715e"># show path contains hello</span>
+</span></span><span style="display:flex;"><span>updatedb <span style="color:#75715e"># update database</span>
+</span></span><span style="display:flex;"><span>grep foobar script.sh
+</span></span><span style="display:flex;"><span>gerp -R foobar <span style="color:#75715e"># go through directory</span>
+</span></span><span style="display:flex;"><span>rg <span style="color:#e6db74">&#34;import requests&#34;</span> -t py -C <span style="color:#ae81ff">5</span> . <span style="color:#75715e"># ripgrep</span>
+</span></span><span style="display:flex;"><span>rg -e <span style="color:#e6db74">&#34;img.*\.jpg&#34;</span> -t py -C <span style="color:#ae81ff">5</span> .
+</span></span><span style="display:flex;"><span>rg -u --files-without-match --stats <span style="color:#e6db74">&#39;^#\!&#39;</span> -t sh <span style="color:#75715e"># -u don&#39;t ignore hidden file</span>
+</span></span><span style="display:flex;"><span>ack --ruby foo
+</span></span><span style="display:flex;"><span>ag foo
+</span></span><span style="display:flex;"><span>fzf
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># brew install fzf</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># /usr/local/opt/fzf/install</span>
+</span></span></code></pre></div><h2 id="pipeline">Pipeline</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt; <span style="color:#75715e"># 重定向，覆盖</span>
+</span></span><span style="display:flex;"><span>?&gt; <span style="color:#75715e"># 重定向，强制覆盖 in mac</span>
+</span></span><span style="display:flex;"><span>&gt;&gt; <span style="color:#75715e"># 追加</span>
+</span></span><span style="display:flex;"><span>&gt; /dev/null 2&gt; /dev/null
+</span></span><span style="display:flex;"><span>| <span style="color:#75715e"># standard file inferface</span>
+</span></span><span style="display:flex;"><span>ffmpeg -loglevel panic -i /dev/video0 -frames <span style="color:#ae81ff">1</span> -f image2 - | convert - -colorspace gray - | gzip | ssh tsp <span style="color:#e6db74">&#39;gzip -d | tee copy.png&#39;</span>  <span style="color:#75715e"># - means stdin/stdout</span>
+</span></span><span style="display:flex;"><span>| xargs -d <span style="color:#e6db74">&#34;\t&#34;</span> <span style="color:#75715e"># 将标准输入按\t分解为命令行参数 -p 只打印不执行</span>
+</span></span><span style="display:flex;"><span>| tee <span style="color:#75715e"># output and forward</span>
+</span></span></code></pre></div><h2 id="globbing">globbing</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ls project*
+</span></span><span style="display:flex;"><span>ls project?
+</span></span><span style="display:flex;"><span>touch project<span style="color:#f92672">{</span>1,2<span style="color:#f92672">}</span>/src/text/test<span style="color:#f92672">{</span>1,2,3<span style="color:#f92672">}</span>.py
+</span></span><span style="display:flex;"><span>touch <span style="color:#f92672">{</span>foo,bar<span style="color:#f92672">}</span>/<span style="color:#f92672">{</span>a..g<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>**/test/*.py <span style="color:#75715e"># ** means any prefix</span>
+</span></span></code></pre></div><h2 id="其它常用命令">其它常用命令</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>date
+</span></span><span style="display:flex;"><span>date +%Y-%m-%d
+</span></span><span style="display:flex;"><span>cmp a.c b.c
+</span></span><span style="display:flex;"><span>diff a.c b.c
+</span></span><span style="display:flex;"><span>yes <span style="color:#e6db74">&#34;hello world!&#34;</span>
+</span></span></code></pre></div></main>
         </div>
 
     </div>

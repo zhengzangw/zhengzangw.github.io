@@ -210,7 +210,7 @@
 $$c^t = z^t * c^{t-1} + z^{i} * z$$
 $$h^t = z^0 * tanh(c^t)$$</li>
 <li>GRU
-$$h^t = z * h^t + (1-z)*h'$$</li>
+$$h^t = z * h^t + (1-z)*h&rsquo;$$</li>
 </ul>
 </li>
 <li>
@@ -244,7 +244,7 @@ word2vec和FC可以参数共享</li>
 <p>缩放 [2, 0; 0, 2]<br>
 旋转 [cos, -sin; sin, cos]<br>
 Spatial Transformer Layer:<br>
-$[x'\ y'] = [a\ b; c\ d][x\ y] + [e\ f]$</p>
+$[x&rsquo;\ y&rsquo;] = [a\ b; c\ d][x\ y] + [e\ f]$</p>
 <h2 id="模型">模型</h2>
 <p>INPUT - ST - CNN - ST - CNN - ST - CNN - OUTPUT
 在TensorFlow图像处理节中，我们通过人工预处理。此处使用了NN代替了人工的处理</p>
@@ -253,7 +253,7 @@ $[x'\ y'] = [a\ b; c\ d][x\ y] + [e\ f]$</p>
 <h2 id="highway-network">Highway Network</h2>
 <p>可看成由GRU改来。自动学习是否要使用某一层。</p>
 <ul>
-<li>$h' = \sigma(Wa^{t-1})$ forget gate</li>
+<li>$h&rsquo; = \sigma(Wa^{t-1})$ forget gate</li>
 <li>$z = \sigma(W&rsquo;a^{t-1})$ z:操控a update比率</li>
 <li>$a^t = z*a^{t-1} + (1-z)*h'$</li>
 </ul>
@@ -261,7 +261,7 @@ $[x'\ y'] = [a\ b; c\ d][x\ y] + [e\ f]$</p>
 <p>可train 150层</p>
 <ul>
 <li>$a^{t-1}$ -&gt; layer -&gt; layer -&gt; h'</li>
-<li>$a^{t} = h' + a^{t-1}$</li>
+<li>$a^{t} = h&rsquo; + a^{t-1}$</li>
 </ul>
 <h2 id="grid-lstm">Grid LSTM</h2>
 <p>两个维度，同时扩展深度和时间<br>

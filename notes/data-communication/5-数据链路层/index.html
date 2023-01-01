@@ -108,7 +108,7 @@
 <li>$v$: 传播速度</li>
 <li>$L$: 帧长度（比特）</li>
 <li>$B=RD$: 链路比特长度</li>
-<li>$B'$: 链路帧长度</li>
+<li>$B&rsquo;$: 链路帧长度</li>
 </ul>
 <table>
 <thead>
@@ -205,8 +205,8 @@
 </table>
 <p>$$
 U=\begin{cases}
-\frac{W}{2B'+1} &amp; W&lt;2B'+1\newline
-1 &amp; W\geq2B'+1
+\frac{W}{2B&rsquo;+1} &amp; W&lt;2B&rsquo;+1\newline
+1 &amp; W\geq2B&rsquo;+1
 \end{cases}
 $$</p>
 <h2 id="差错控制">差错控制</h2>
@@ -225,7 +225,7 @@ $$</p>
 <ul>
 <li>帧损伤：(R) Detect and Drop $\rightarrow$ (S) 超时重传</li>
 <li>确认损伤：(S) 超时重传 $\rightarrow$ (R) ACK0/ACK1 确认</li>
-<li>$U=\frac{T}{N_rT_F}=\frac{1-P}{1+2B'}$</li>
+<li>$U=\frac{T}{N_rT_F}=\frac{1-P}{1+2B&rsquo;}$</li>
 <li>$N_r=\frac{1}{1-P}$</li>
 </ul>
 <h3 id="go-back-n-arq">Go-Back-N ARQ</h3>
@@ -268,8 +268,8 @@ $$</p>
 <li>$f(i)=1+(i-1)K$</li>
 <li>$N_r=\frac{1-P+KP}{1-P}$
 <ul>
-<li>$K=2a+1,W\geq(2B'+1)$</li>
-<li>$K=W,W&lt;(2B'+1)$</li>
+<li>$K=2a+1,W\geq(2B&rsquo;+1)$</li>
+<li>$K=W,W&lt;(2B&rsquo;+1)$</li>
 </ul>
 </li>
 </ul>
@@ -277,8 +277,8 @@ $$</p>
 </ul>
 <p>$$
 U=\begin{cases}
-\frac{W(1-P)}{(2B'+1)(1-P+WP)} &amp; W&lt;2B'+1\newline
-\frac{1-P}{1+2B&rsquo;P} &amp; W\geq2B'+1
+\frac{W(1-P)}{(2B&rsquo;+1)(1-P+WP)} &amp; W&lt;2B&rsquo;+1\newline
+\frac{1-P}{1+2B&rsquo;P} &amp; W\geq2B&rsquo;+1
 \end{cases}
 $$</p>
 <h3 id="selective-reject-arq">Selective Reject ARQ</h3>
@@ -314,8 +314,8 @@ $$</p>
 </table>
 <p>$$
 U=\begin{cases}
-\frac{W(1-P)}{2B'+1} &amp; W&lt;2B'+1\newline
-1-P &amp; W\geq2B'+1
+\frac{W(1-P)}{2B&rsquo;+1} &amp; W&lt;2B&rsquo;+1\newline
+1-P &amp; W\geq2B&rsquo;+1
 \end{cases}
 $$</p>
 <h2 id="hdlchigh-level-data-link-control">HDLC(High Level Data Link Control)</h2>

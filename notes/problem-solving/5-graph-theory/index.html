@@ -145,9 +145,9 @@
 </li>
 <li>subgraph
 <ul>
-<li>proper $G'=(V',E'),V'\subsetneq V$ or $E'\subsetneq E$</li>
-<li>spanning $G'=(V,E'),E'\subseteq E$</li>
-<li>induced $G'=(V',E')$: $\forall u,v\in V',$ if $uv\in E$, then $uv\in E'$</li>
+<li>proper $G&rsquo;=(V&rsquo;,E&rsquo;),V&rsquo;\subsetneq V$ or $E&rsquo;\subsetneq E$</li>
+<li>spanning $G&rsquo;=(V,E&rsquo;),E&rsquo;\subseteq E$</li>
+<li>induced $G&rsquo;=(V&rsquo;,E&rsquo;)$: $\forall u,v\in V&rsquo;,$ if $uv\in E$, then $uv\in E'$</li>
 <li>edge-induced</li>
 <li>component: 最大连通子图</li>
 </ul>
@@ -177,7 +177,7 @@
 <li>Complement: $\overline{G}=(V,K_n-E)$</li>
 <li>Union: $G_1 \cup G_2=(V_1\cup V_2,E_1\cup E_2)$</li>
 <li>Join: $G+H=(V_1\cup V_2, E_1\cup E_2\cup (V_1\times V_2))$</li>
-<li>Cartesian product $G\times H=(V(G)\times V(H),E'),((u,v),(x,y))\in E'$ if $u=x,vy\in E(H)$ or $v=y,ux\in E$</li>
+<li>Cartesian product $G\times H=(V(G)\times V(H),E&rsquo;),((u,v),(x,y))\in E&rsquo;$ if $u=x,vy\in E(H)$ or $v=y,ux\in E$</li>
 </ul>
 </li>
 <li>multigraph: $E$ is a multiset
@@ -271,26 +271,26 @@
 </li>
 <li><strong>Kruskal&rsquo;s Algorithm</strong>: $O(E\lg V)$</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sort G<span style="color:#f92672">.</span>E <span style="color:#75715e"># into nondecreasing order by weight</span>
-<span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> E:
-  <span style="color:#66d9ef">if</span> find_set(u) <span style="color:#f92672">!=</span> find_set(v):
-     ans <span style="color:#f92672">+=</span> {u,v}
-     merge(u,v)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sort G<span style="color:#f92672">.</span>E <span style="color:#75715e"># into nondecreasing order by weight</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> E:
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> find_set(u) <span style="color:#f92672">!=</span> find_set(v):
+</span></span><span style="display:flex;"><span>     ans <span style="color:#f92672">+=</span> {u,v}
+</span></span><span style="display:flex;"><span>     merge(u,v)
+</span></span></code></pre></div><ul>
 <li><strong>Prim&rsquo;s Algorithm</strong>: $O(E + V\lg V)$</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> u <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>V:
-  u<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> inf
-  u<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> NIL
-s<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-Q <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>V
-<span style="color:#66d9ef">while</span> Q:
-  u <span style="color:#f92672">=</span> Extract_Min(Q)
-  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
-    <span style="color:#66d9ef">if</span> v <span style="color:#f92672">in</span> Q <span style="color:#f92672">and</span> w(u,v) <span style="color:#f92672">&lt;</span> v<span style="color:#f92672">.</span>key:
-      v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
-      v<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> w(u,v)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> u <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>V:
+</span></span><span style="display:flex;"><span>  u<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> inf
+</span></span><span style="display:flex;"><span>  u<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> NIL
+</span></span><span style="display:flex;"><span>s<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>Q <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>V
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> Q:
+</span></span><span style="display:flex;"><span>  u <span style="color:#f92672">=</span> Extract_Min(Q)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> v <span style="color:#f92672">in</span> Q <span style="color:#f92672">and</span> w(u,v) <span style="color:#f92672">&lt;</span> v<span style="color:#f92672">.</span>key:
+</span></span><span style="display:flex;"><span>      v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
+</span></span><span style="display:flex;"><span>      v<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> w(u,v)
+</span></span></code></pre></div><ul>
 <li><strong><em>Carley&rsquo;s Theorem</em></strong>: the spanning tree of $K_n$ of order n is $n^{n-2}$</li>
 <li><strong><em>Matrix Tree Theorem</em></strong>: The spanning tree of an arbitrary graph is any cofactor of matrix</li>
 </ul>
@@ -432,32 +432,32 @@ $$</p>
 <ul>
 <li><strong>BFS</strong>: $\Theta(V+E)$</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> u <span style="color:#f92672">in</span> vertices:
-  u<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> NIL
-  u<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-s<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
-Q <span style="color:#f92672">=</span> {s}
-<span style="color:#66d9ef">while</span> Q:
-  u <span style="color:#f92672">=</span> Q<span style="color:#f92672">.</span>pop()
-  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> u<span style="color:#f92672">.</span>visitied:
-      v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
-      v<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
-      Q<span style="color:#f92672">.</span>push(u)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> u <span style="color:#f92672">in</span> vertices:
+</span></span><span style="display:flex;"><span>  u<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> NIL
+</span></span><span style="display:flex;"><span>  u<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>s<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>Q <span style="color:#f92672">=</span> {s}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> Q:
+</span></span><span style="display:flex;"><span>  u <span style="color:#f92672">=</span> Q<span style="color:#f92672">.</span>pop()
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> u<span style="color:#f92672">.</span>visitied:
+</span></span><span style="display:flex;"><span>      v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
+</span></span><span style="display:flex;"><span>      v<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>      Q<span style="color:#f92672">.</span>push(u)
+</span></span></code></pre></div><ul>
 <li><strong>DFS</strong>: $\Theta(V+E)$</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># all colored white</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">dfs</span>(u):
-  u<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
-  <span style="color:#75715e"># color gray</span>
-  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[v]:
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> v<span style="color:#f92672">.</span>visited:
-      v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
-      v<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
-      dfs(v)
-<span style="color:#75715e"># color black</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># all colored white</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">dfs</span>(u):
+</span></span><span style="display:flex;"><span>  u<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># color gray</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[v]:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> v<span style="color:#f92672">.</span>visited:
+</span></span><span style="display:flex;"><span>      v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
+</span></span><span style="display:flex;"><span>      v<span style="color:#f92672">.</span>visited <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>      dfs(v)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># color black</span>
+</span></span></code></pre></div><ul>
 <li>DFS properties
 <ul>
 <li>Parenthesis theorem</li>
@@ -482,10 +482,10 @@ Q <span style="color:#f92672">=</span> {s}
 </li>
 <li><strong>Kosaraju&rsquo;s Algorithm</strong>: $\Theta(V+E)$</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dfs(G) <span style="color:#75715e"># compute u.f for each vertex u</span>
-dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in order of decreasing u.f in main loop</span>
-<span style="color:#75715e"># SCC is trees in depth-first forest</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dfs(G) <span style="color:#75715e"># compute u.f for each vertex u</span>
+</span></span><span style="display:flex;"><span>dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in order of decreasing u.f in main loop</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># SCC is trees in depth-first forest</span>
+</span></span></code></pre></div><ul>
 <li><strong>Tarjan&rsquo;s Algorithm</strong>: $\Theta(V+E)$
 <ul>
 <li>cut-vertex(undirected): $\exists v$ son of $u$, low[v] $\geq$ dnf[u]</li>
@@ -494,20 +494,20 @@ dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in ord
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tarjan_dfs</span>(u):
-  t <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-  dfn[u] <span style="color:#f92672">=</span> low[u] <span style="color:#f92672">=</span> t
-  Stack<span style="color:#f92672">.</span>push(u)
-  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> v<span style="color:#f92672">.</span>visited:
-      tarjan_dfs(v)
-      low[u] <span style="color:#f92672">=</span> min(low[u], low[v])
-    <span style="color:#66d9ef">elif</span> v <span style="color:#f92672">in</span> Stack:
-      low[u] <span style="color:#f92672">=</span> min(low[u], dfn[v])
-  <span style="color:#66d9ef">if</span> dfn[u] <span style="color:#f92672">==</span> low[u]:
-    <span style="color:#66d9ef">while</span> v <span style="color:#f92672">!=</span> Stack<span style="color:#f92672">.</span>top():
-      Stack<span style="color:#f92672">.</span>pop()
-</code></pre></div><h2 id="distance">Distance</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tarjan_dfs</span>(u):
+</span></span><span style="display:flex;"><span>  t <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  dfn[u] <span style="color:#f92672">=</span> low[u] <span style="color:#f92672">=</span> t
+</span></span><span style="display:flex;"><span>  Stack<span style="color:#f92672">.</span>push(u)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> v<span style="color:#f92672">.</span>visited:
+</span></span><span style="display:flex;"><span>      tarjan_dfs(v)
+</span></span><span style="display:flex;"><span>      low[u] <span style="color:#f92672">=</span> min(low[u], low[v])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> v <span style="color:#f92672">in</span> Stack:
+</span></span><span style="display:flex;"><span>      low[u] <span style="color:#f92672">=</span> min(low[u], dfn[v])
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> dfn[u] <span style="color:#f92672">==</span> low[u]:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> v <span style="color:#f92672">!=</span> Stack<span style="color:#f92672">.</span>top():
+</span></span><span style="display:flex;"><span>      Stack<span style="color:#f92672">.</span>pop()
+</span></span></code></pre></div><h2 id="distance">Distance</h2>
 <ul>
 <li>distance
 <ul>
@@ -571,11 +571,11 @@ dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in ord
 <li>longest path: simple path, NP</li>
 <li>relaxation</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">relax</span>(u,v,w):
-  <span style="color:#66d9ef">if</span> v<span style="color:#f92672">.</span>d <span style="color:#f92672">&gt;</span> u<span style="color:#f92672">.</span>d <span style="color:#f92672">+</span> w(u,v):
-     v<span style="color:#f92672">.</span>d <span style="color:#f92672">=</span> u<span style="color:#f92672">.</span>d <span style="color:#f92672">+</span> w(u,v)
-     v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">relax</span>(u,v,w):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> v<span style="color:#f92672">.</span>d <span style="color:#f92672">&gt;</span> u<span style="color:#f92672">.</span>d <span style="color:#f92672">+</span> w(u,v):
+</span></span><span style="display:flex;"><span>     v<span style="color:#f92672">.</span>d <span style="color:#f92672">=</span> u<span style="color:#f92672">.</span>d <span style="color:#f92672">+</span> w(u,v)
+</span></span><span style="display:flex;"><span>     v<span style="color:#f92672">.</span>pi <span style="color:#f92672">=</span> u
+</span></span></code></pre></div><ul>
 <li>Properties
 <ul>
 <li>Triangle inequality</li>
@@ -588,25 +588,25 @@ dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in ord
 </li>
 <li><strong>Bellman-Ford Algorithm</strong>: $\Theta(VE)$</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">s<span style="color:#f92672">.</span>d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#f92672">|</span>G<span style="color:#f92672">.</span>V<span style="color:#f92672">|</span>):
-  <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>E:
-    relax(e<span style="color:#f92672">.</span>u, e<span style="color:#f92672">.</span>v, w)
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#f92672">|</span>G<span style="color:#f92672">.</span>V<span style="color:#f92672">|</span>):
-  <span style="color:#66d9ef">if</span> v<span style="color:#f92672">.</span>d <span style="color:#f92672">&gt;</span> u<span style="color:#f92672">.</span>d <span style="color:#f92672">+</span> w(u,v):
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
-<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>s<span style="color:#f92672">.</span>d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#f92672">|</span>G<span style="color:#f92672">.</span>V<span style="color:#f92672">|</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>E:
+</span></span><span style="display:flex;"><span>    relax(e<span style="color:#f92672">.</span>u, e<span style="color:#f92672">.</span>v, w)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#f92672">|</span>G<span style="color:#f92672">.</span>V<span style="color:#f92672">|</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> v<span style="color:#f92672">.</span>d <span style="color:#f92672">&gt;</span> u<span style="color:#f92672">.</span>d <span style="color:#f92672">+</span> w(u,v):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><ul>
 <li>DAG shortest path: $\Theta(V+E)$
 <ul>
 <li>critical path: longest path through dag</li>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> u <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>topo:
-  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
-    relax(u,v,w)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> u <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>topo:
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
+</span></span><span style="display:flex;"><span>    relax(u,v,w)
+</span></span></code></pre></div><ul>
 <li><strong>Dijkstra Algorithm</strong>: all edges are nonnegative
 <ul>
 <li>Array: $O(V^2)$</li>
@@ -615,12 +615,12 @@ dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in ord
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Q <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>V
-<span style="color:#66d9ef">while</span> Q:
-  u <span style="color:#f92672">=</span> Extract_Min(Q)
-  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
-    relax(u, v, w)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Q <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>V
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> Q:
+</span></span><span style="display:flex;"><span>  u <span style="color:#f92672">=</span> Extract_Min(Q)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>Adj[u]:
+</span></span><span style="display:flex;"><span>    relax(u, v, w)
+</span></span></code></pre></div><ul>
 <li>matrix multiplication and repeated squaring: $\Theta(n^3\lg n)$</li>
 <li><strong>Floyed-Warshall Algorithm</strong>: $\Theta(V^3)$
 <ul>
@@ -628,11 +628,11 @@ dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in ord
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(n):
-  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):
-    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(n):
-      d[i][j] <span style="color:#f92672">=</span> min(d[i][j], d[i][k] <span style="color:#f92672">+</span> d[k][j])
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(n):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(n):
+</span></span><span style="display:flex;"><span>      d[i][j] <span style="color:#f92672">=</span> min(d[i][j], d[i][k] <span style="color:#f92672">+</span> d[k][j])
+</span></span></code></pre></div><ul>
 <li><strong>Johnson&rsquo;s Algorithm</strong>: $\Theta(V^2\lg V+VE)$
 <ul>
 <li>reweighting: $\hat \omega(u,v)=\omega(u,v)+h(u)-h(v)$</li>
@@ -665,8 +665,8 @@ dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in ord
 <li>Every $r$-regular bipartite graph has a perfect matching</li>
 </ul>
 </li>
-<li>edge independence number(maximum matching): $\alpha'(G)=\max |M|$</li>
-<li>edge covering number $\beta'(G)=$ cardinality of minimum edge cover
+<li>edge independence number(maximum matching): $\alpha&rsquo;(G)=\max |M|$</li>
+<li>edge covering number $\beta&rsquo;(G)=$ cardinality of minimum edge cover
 <ul>
 <li>cover: a vertex and an incident edge are said to cover each other</li>
 <li>edge cover: a set of edges of G that covers all vertices of G</li>
@@ -679,8 +679,8 @@ dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in ord
 </ul>
 </li>
 <li>vertex covering number $\beta(G)$</li>
-<li><strong><em>Gallai Identity</em></strong>: $\forall G,|G|=n$, containing no isolated vertices, $\alpha'(G)+\beta'(G)=n, \alpha(G)+\beta(G)=n$</li>
-<li><strong><em>Konig Theorem</em></strong>: bipartite graph $G$ has $\alpha'(G)=\beta(G),\alpha(G)=\beta'(G)$</li>
+<li><strong><em>Gallai Identity</em></strong>: $\forall G,|G|=n$, containing no isolated vertices, $\alpha&rsquo;(G)+\beta&rsquo;(G)=n, \alpha(G)+\beta(G)=n$</li>
+<li><strong><em>Konig Theorem</em></strong>: bipartite graph $G$ has $\alpha&rsquo;(G)=\beta(G),\alpha(G)=\beta&rsquo;(G)$</li>
 </ul>
 <h2 id="flow">Flow</h2>
 <ul>
@@ -704,30 +704,30 @@ dfs(G<span style="color:#f92672">^</span>T) <span style="color:#75715e"># in ord
 <ul>
 <li>residual networks $G_f$: $E_f={(u,v)\in V\times V:c_f(u,v)&gt;0}$
 $$c_f(u,v)=\begin{cases}c(u,v)-f(u,v) &amp; (u,v)\in E\newline f(v,u) &amp; (v,u)\in E \newline  0 &amp; o.w.\end{cases}$$</li>
-<li>augmentation: $f'$ is flow of residual network, if $(u,v)\in E$, $(f\uparrow f')(u,v)=f(u,v)+f'(u,v)-f'(v,u)$
+<li>augmentation: $f&rsquo;$ is flow of residual network, if $(u,v)\in E$, $(f\uparrow f&rsquo;)(u,v)=f(u,v)+f&rsquo;(u,v)-f&rsquo;(v,u)$
 <ul>
-<li>$|f\uparrow f'|=|f|+|f'|$</li>
+<li>$|f\uparrow f&rsquo;|=|f|+|f&rsquo;|$</li>
 </ul>
 </li>
 <li>augmentation path: simple path from $s$ to $t$ in residual network</li>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># initial flow f to 0</span>
-<span style="color:#66d9ef">while</span> augmenting_path <span style="color:#f92672">in</span> residual_network:
-  augment(f,augmenting_path)
-<span style="color:#66d9ef">return</span> f
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># initial flow f to 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> augmenting_path <span style="color:#f92672">in</span> residual_network:
+</span></span><span style="display:flex;"><span>  augment(f,augmenting_path)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> f
+</span></span></code></pre></div><ul>
 <li><strong>Basic Ford-Fulkerson Algorithm</strong>: $O(|f^*|E)$ arbitrary with integer</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">while</span> augmenting_path <span style="color:#f92672">in</span> residual_network:
-  c_f(p) <span style="color:#f92672">=</span> min([c_f(u,v) <span style="color:#66d9ef">for</span> (u,v) <span style="color:#f92672">in</span> p])
-  <span style="color:#66d9ef">for</span> (u,v) <span style="color:#f92672">in</span> p:
-    <span style="color:#66d9ef">if</span> (u,v) <span style="color:#f92672">in</span> E
-      (u,v)<span style="color:#f92672">.</span>f <span style="color:#f92672">+=</span> c_f(p)
-    <span style="color:#66d9ef">else</span>:
-      (v,u)<span style="color:#f92672">.</span>f <span style="color:#f92672">-=</span> c_f(p)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> augmenting_path <span style="color:#f92672">in</span> residual_network:
+</span></span><span style="display:flex;"><span>  c_f(p) <span style="color:#f92672">=</span> min([c_f(u,v) <span style="color:#66d9ef">for</span> (u,v) <span style="color:#f92672">in</span> p])
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (u,v) <span style="color:#f92672">in</span> p:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (u,v) <span style="color:#f92672">in</span> E
+</span></span><span style="display:flex;"><span>      (u,v)<span style="color:#f92672">.</span>f <span style="color:#f92672">+=</span> c_f(p)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>      (v,u)<span style="color:#f92672">.</span>f <span style="color:#f92672">-=</span> c_f(p)
+</span></span></code></pre></div><ul>
 <li><strong>Edmonds-Karp Algorithm</strong>: $O(VE^2)$
 <ul>
 <li>search augmenting path by BFS in residual network, where each edge has unit distance</li>
@@ -774,7 +774,7 @@ $$c_f(u,v)=\begin{cases}c(u,v)-f(u,v) &amp; (u,v)\in E\newline f(v,u) &amp; (v,u
 <li>graceful labeling $f:V(G)\rightarrow\mathbb{Z}_m$:
 <ul>
 <li>one-to-one</li>
-<li>$f'(e)=|f(u)-f(v)|$ is one-to-one.</li>
+<li>$f&rsquo;(e)=|f(u)-f(v)|$ is one-to-one.</li>
 </ul>
 </li>
 <li>graceful graph: $G$ possessing a graceful labeling</li>
@@ -829,7 +829,7 @@ $$c_f(u,v)=\begin{cases}c(u,v)-f(u,v) &amp; (u,v)\in E\newline f(v,u) &amp; (v,u
 </ul>
 </li>
 <li>$\gamma(G)$: minimal integer $k$ that $G$ can be embedded into $S_k$</li>
-<li>$A$ and $A'$ are in the same region if there is a line connecting there without crossing edges or vertices of $G$</li>
+<li>$A$ and $A&rsquo;$ are in the same region if there is a line connecting there without crossing edges or vertices of $G$</li>
 <li>2-cell embedding: every region is 2-cell embedding
 <ul>
 <li>2-cell: a region in which any closed curves can shrink into a node continuously</li>
@@ -844,7 +844,7 @@ $$c_f(u,v)=\begin{cases}c(u,v)-f(u,v) &amp; (u,v)\in E\newline f(v,u) &amp; (v,u
 </ul>
 <h3 id="minor">Minor</h3>
 <ul>
-<li>$G'$ is got from $G$ by contracting edge $e$ (or identifying the vertices u,v)</li>
+<li>$G&rsquo;$ is got from $G$ by contracting edge $e$ (or identifying the vertices u,v)</li>
 <li>minor: $H$ can be got be a series of edge contraction from $G$</li>
 <li>$G$ is a subdivision of $H\Rightarrow H$ is a minor of $G$</li>
 <li>$H$ is a minor of $G\Rightarrow\gamma(H)\leq\gamma(G)$</li>
@@ -889,15 +889,15 @@ $$c_f(u,v)=\begin{cases}c(u,v)-f(u,v) &amp; (u,v)\in E\newline f(v,u) &amp; (v,u
 </ul>
 </li>
 <li>edge coloring $c:E(G)\rightarrow\mathbb{N},\forall e_1\cap e_2\neq\emptyset,c(e_1)\neq c(e_2)$</li>
-<li>$\chi'(G)$: edge chromatic number(chromatic index)
+<li>$\chi&rsquo;(G)$: edge chromatic number(chromatic index)
 <ul>
 <li>Divide $G$ into minimum number of 1-regulation graph</li>
 </ul>
 </li>
-<li><strong><em>Vizing Theorem</em></strong>: $\chi'(G)=\Delta G$ or $=\Delta G+1$
+<li><strong><em>Vizing Theorem</em></strong>: $\chi&rsquo;(G)=\Delta G$ or $=\Delta G+1$
 <ul>
-<li>If $m&gt;\frac{(n-1)\Delta G}{2}$ then $\chi'(G)=1+\Delta(G)$</li>
-<li><strong><em>Konig Theorem</em></strong>: For nonempty partite graph, $\chi'(X)=\Delta(G)$</li>
+<li>If $m&gt;\frac{(n-1)\Delta G}{2}$ then $\chi&rsquo;(G)=1+\Delta(G)$</li>
+<li><strong><em>Konig Theorem</em></strong>: For nonempty partite graph, $\chi&rsquo;(X)=\Delta(G)$</li>
 </ul>
 </li>
 </ul>

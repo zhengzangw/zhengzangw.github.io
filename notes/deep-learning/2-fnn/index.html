@@ -103,7 +103,7 @@
 <li>$𝕀_i(t)$: 第 $i$ 个元素为 $t$ 其余为 $0$ 的行向量</li>
 <li>反向传播算法
 <ul>
-<li>$\delta_i^{(l)}=\frac{\partial L}{\partial z^{(l)}}=\frac{\partial L}{\partial z^{(l+1)}}\frac{\partial z^{(l+1)}}{\partial a^{(l)}}\frac{\partial a^{(l)}}{\partial z^{(l)}}=\delta_{i+1}(W^{l+1})^\top\text{diag}(f'(z^{(l)}))\in\mathbb{R}^{M_l}$</li>
+<li>$\delta_i^{(l)}=\frac{\partial L}{\partial z^{(l)}}=\frac{\partial L}{\partial z^{(l+1)}}\frac{\partial z^{(l+1)}}{\partial a^{(l)}}\frac{\partial a^{(l)}}{\partial z^{(l)}}=\delta_{i+1}(W^{l+1})^\top\text{diag}(f&rsquo;(z^{(l)}))\in\mathbb{R}^{M_l}$</li>
 <li>$dL=\text{tr}(\frac{\partial L}{\partial z^{(l)}}dz^{(l)})=\text{tr}((a^{(l-1)})^\top\delta^{(l)}dW)\Rightarrow\frac{L(y,\hat y)}{\partial W^{(l)}}=\delta^{(l)}(a^{(l-1)})^\top$</li>
 </ul>
 </li>

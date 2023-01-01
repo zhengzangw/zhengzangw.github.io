@@ -162,30 +162,30 @@
 </tbody>
 </table>
 <h3 id="请求报文">请求报文</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">GET</span> /somedir/page.html <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
-Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">www.someschool.edu</span>
-Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">close</span>
-User-agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0</span>
-Accept-language<span style="color:#f92672">:</span> <span style="color:#ae81ff">fr</span>
-
-[Entity-Body]
-</code></pre></div><p>请求行(get, head, post, delete, put)<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#a6e22e">GET</span> /somedir/page.html <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+</span></span><span style="display:flex;"><span>Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">www.someschool.edu</span>
+</span></span><span style="display:flex;"><span>Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">close</span>
+</span></span><span style="display:flex;"><span>User-agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0</span>
+</span></span><span style="display:flex;"><span>Accept-language<span style="color:#f92672">:</span> <span style="color:#ae81ff">fr</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Entity-Body]
+</span></span></code></pre></div><p>请求行(get, head, post, delete, put)<br>
 通用首部<br>
 请求首部<br>
 实体首部<br>
 实体主体 = Transfer-Encoding(Content-Encoding(Content-Type(Data)))</p>
 <p>条件 GET：更新 Web 缓存</p>
 <h3 id="响应报文">响应报文</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
-Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">close</span>
-Date<span style="color:#f92672">:</span> <span style="color:#ae81ff">Tue, 24 Dec 2019 18:10:05 CST</span>
-Server<span style="color:#f92672">:</span> <span style="color:#ae81ff">Apache/2.2.3 (CentOS)</span>
-Last-Modified<span style="color:#f92672">:</span> <span style="color:#ae81ff">Tue, 24 Dec 2019 18:05:05 CST</span>
-Content-Length<span style="color:#f92672">:</span> <span style="color:#ae81ff">6821</span>
-Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">text/html</span>
-
-[Entity-Body]
-</code></pre></div><p>状态行<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+</span></span><span style="display:flex;"><span>Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">close</span>
+</span></span><span style="display:flex;"><span>Date<span style="color:#f92672">:</span> <span style="color:#ae81ff">Tue, 24 Dec 2019 18:10:05 CST</span>
+</span></span><span style="display:flex;"><span>Server<span style="color:#f92672">:</span> <span style="color:#ae81ff">Apache/2.2.3 (CentOS)</span>
+</span></span><span style="display:flex;"><span>Last-Modified<span style="color:#f92672">:</span> <span style="color:#ae81ff">Tue, 24 Dec 2019 18:05:05 CST</span>
+</span></span><span style="display:flex;"><span>Content-Length<span style="color:#f92672">:</span> <span style="color:#ae81ff">6821</span>
+</span></span><span style="display:flex;"><span>Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">text/html</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Entity-Body]
+</span></span></code></pre></div><p>状态行<br>
 通用首部<br>
 响应首部<br>
 实体首部<br>
@@ -286,21 +286,21 @@ Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">tex
 </li>
 </ul>
 <pre tabindex="0"><code class="language-STMP" data-lang="STMP">Date: Mon, 10 Mar 2008 10:37:17(EDT)
-From: &quot;William Stallings&quot;&lt;ws@host.com&gt;
+From: &#34;William Stallings&#34;&lt;ws@host.com&gt;
 Subject: xxxx
 To: Simith@Other-host.com
 Cc: Jones@Yet-Another-Host.com
 
 Hello, World!
 </code></pre><p>实验</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">telnet smtp.163.com <span style="color:#ae81ff">25</span>
-HELO 163.com
-auth login
-MAIL FROM &lt;xxx@163.com&gt;
-RCPT TO &lt;xxx@xx.com&gt;
-DATA
-QUIT
-</code></pre></div><h4 id="mime">MIME</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>telnet smtp.163.com <span style="color:#ae81ff">25</span>
+</span></span><span style="display:flex;"><span>HELO 163.com
+</span></span><span style="display:flex;"><span>auth login
+</span></span><span style="display:flex;"><span>MAIL FROM &lt;xxx@163.com&gt;
+</span></span><span style="display:flex;"><span>RCPT TO &lt;xxx@xx.com&gt;
+</span></span><span style="display:flex;"><span>DATA
+</span></span><span style="display:flex;"><span>QUIT
+</span></span></code></pre></div><h4 id="mime">MIME</h4>
 <p>Multipurpose Internet Mail Extensions</p>
 <p>添加5个在 RFC 822 首部中出现的报文首部字段</p>
 <table>
@@ -397,12 +397,12 @@ QUIT
 <li>认证状态-&gt;事务状态-&gt;更新状态</li>
 <li>实验</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">telnet pop3.163.com
-user xxx
-pass xxx
-list
-retr x
-</code></pre></div><h3 id="imap">IMAP</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>telnet pop3.163.com
+</span></span><span style="display:flex;"><span>user xxx
+</span></span><span style="display:flex;"><span>pass xxx
+</span></span><span style="display:flex;"><span>list
+</span></span><span style="display:flex;"><span>retr x
+</span></span></code></pre></div><h3 id="imap">IMAP</h3>
 <p>Internet Mail Access Protocol, IMAP4,RFC 3501</p>
 <ul>
 <li>端口 143, TCP</li>

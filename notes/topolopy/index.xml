@@ -16,9 +16,11 @@
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/notes/topolopy/basic/</guid>
       <description>拓扑空间 拓扑空间：$X$ 为集合，$F$ 为 $X$ 中某些子集构成的集族（把 $F$ 中的元素称为 $X$ 中的开集），满足
- $\empty\in F,X\in F$ $U,V\in F, U\cap V\in F$ $U_\alpha\in F,\alpha\in I$, $\cup_{\alpha\in I}U_\alpha\in F$  则称 $F$ 为 $X$ 上的拓扑
+$\empty\in F,X\in F$ $U,V\in F, U\cap V\in F$ $U_\alpha\in F,\alpha\in I$, $\cup_{\alpha\in I}U_\alpha\in F$ 则称 $F$ 为 $X$ 上的拓扑
 设 $X$ 为拓扑空间；即 $X$ 为集合，且规定了 $X$ 上的拓扑 $F$；即指定了哪些子集为开集。
- 平凡拓扑：$F={\empty, X}$ 离散拓扑：$F={U|U\subset X}$ 度量空间 $(X,d)$ 诱导的拓扑：$U\in F$ 若满足以下条件之一  $U=\empty$ $U\neq\emptyset,\forall p\in U,\exists\delta&amp;gt;0$, s.t. $p\in B(p,\delta)\subset U$    子空间拓扑：设 $X$ 为拓扑空间，$Y\subset X$，$F:={U\cap Y|U\subset_{\text{open}}X}$，则 $F$ 给出 $Y$ 上的一个拓扑</description>
+平凡拓扑：$F={\empty, X}$ 离散拓扑：$F={U|U\subset X}$ 度量空间 $(X,d)$ 诱导的拓扑：$U\in F$ 若满足以下条件之一 $U=\empty$ $U\neq\emptyset,\forall p\in U,\exists\delta&amp;gt;0$, s.t. $p\in B(p,\delta)\subset U$ 子空间拓扑：设 $X$ 为拓扑空间，$Y\subset X$，$F:={U\cap Y|U\subset_{\text{open}}X}$，则 $F$ 给出 $Y$ 上的一个拓扑
+连续：$f:X\rightarrow Y,\forall U\subset_{\text{open}}Y,f^{-1}(U)$ 为 $X$ 中开集
+闭集 $X$ 为拓扑空间，$F\subset X$ 为闭集若 $X\backslash F$ 为开集</description>
     </item>
     
   </channel>

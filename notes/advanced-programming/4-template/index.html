@@ -110,11 +110,11 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T1</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T2</span>, ...<span style="color:#f92672">&gt;</span>
-<span style="color:#f92672">&lt;</span>return_type<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span>func_name<span style="color:#f92672">&gt;</span>(<span style="color:#f92672">&lt;</span>params_list<span style="color:#f92672">&gt;</span>){
-    ...
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T1</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T2</span>, ...<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>return_type<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span>func_name<span style="color:#f92672">&gt;</span>(<span style="color:#f92672">&lt;</span>params_list<span style="color:#f92672">&gt;</span>){
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>显示实例化模板：max(int_num, double_num)
 <ul>
 <li>显式类型转换</li>
@@ -124,53 +124,53 @@
 </li>
 <li>带非类型参数的模板：使用时必须显示实例化</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>, <span style="color:#66d9ef">int</span> size<span style="color:#f92672">&gt;</span> <span style="color:#75715e">//size为一个int型的普通参数
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> f(T a)
-{
-    T temp[size];
-}
-
-f<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,<span style="color:#ae81ff">10</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">1</span>);
-</code></pre></div><h2 id="类模板">类模板</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>, <span style="color:#66d9ef">int</span> size<span style="color:#f92672">&gt;</span> <span style="color:#75715e">//size为一个int型的普通参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> f(T a)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    T temp[size];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>f<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,<span style="color:#ae81ff">10</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">1</span>);
+</span></span></code></pre></div><h2 id="类模板">类模板</h2>
 <ul>
 <li>类属类：一个类的成员的类型可变</li>
 <li>类模板</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stack</span>{
-    T buffer[<span style="color:#ae81ff">100</span>];
-    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">pop</span>(T <span style="color:#f92672">&amp;</span>x);
-};
-<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">bool</span> Stack<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>pop(T <span style="color:#f92672">&amp;</span>x){}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stack</span>{
+</span></span><span style="display:flex;"><span>    T buffer[<span style="color:#ae81ff">100</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">pop</span>(T <span style="color:#f92672">&amp;</span>x);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> Stack<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>pop(T <span style="color:#f92672">&amp;</span>x){}
+</span></span></code></pre></div><ul>
 <li>类模板实例化序显式指出</li>
 <li>类模板中的静态成员仅属于实例化后的类（模板类），不同类模板实例之间不共享类模板中的静态成员</li>
 <li>可带非类型参数</li>
 <li>类模板友元</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>;
-<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> f3(A<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> a) { ... }
-<span style="color:#66d9ef">template</span> <span style="color:#66d9ef">class</span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
-{ T x,y;
-  ......
-  <span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">void</span> f1(A<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> a); <span style="color:#75715e">//友元f1不是模板！
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T1</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">void</span> f2(A<span style="color:#f92672">&lt;</span>T1<span style="color:#f92672">&gt;&amp;</span> a); <span style="color:#75715e">//f2与A多对多实例化
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">void</span> f3<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(A<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> a); <span style="color:#75715e">//f3与A一对一实例化(用相同参数类型)
-</span><span style="color:#75715e"></span>};
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f1</span>(A<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> a) { ... }
-<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> f2(A<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> a) {...}
-......
-A<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> a1; <span style="color:#75715e">//实例化A&lt;int&gt;
-</span><span style="color:#75715e"></span>A<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span> a2; <span style="color:#75715e">//实例化A&lt;double&gt;
-</span><span style="color:#75715e"></span>f1(a1); <span style="color:#75715e">//OK，调用f1(A&lt;int&gt;&amp;)
-</span><span style="color:#75715e"></span>f1(a2); <span style="color:#75715e">//链接错误! 调用f1(A&lt;double&gt;&amp;)，但它不存在！
-</span><span style="color:#75715e"></span>f2(a1); <span style="color:#75715e">//实例f2&lt;int&gt;是A&lt;int&gt;和A&lt;double&gt;的友元
-</span><span style="color:#75715e"></span>f2(a2); <span style="color:#75715e">//实例f2&lt;double&gt;是A&lt;int&gt;和A&lt;double&gt;的友元
-</span><span style="color:#75715e"></span>f3(a1); <span style="color:#75715e">//实例f3&lt;int&gt;是A&lt;int&gt;的友元，但不是A&lt;double&gt;的友元！
-</span><span style="color:#75715e"></span>f3(a2); <span style="color:#75715e">//实例f3&lt;double&gt;是A&lt;double&gt;的友元，但不是A&lt;int&gt;的友元！
-</span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> f3(A<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> a) { ... }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#66d9ef">class</span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+</span></span><span style="display:flex;"><span>{ T x,y;
+</span></span><span style="display:flex;"><span>  ......
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">void</span> f1(A<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> a); <span style="color:#75715e">//友元f1不是模板！
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T1</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">void</span> f2(A<span style="color:#f92672">&lt;</span>T1<span style="color:#f92672">&gt;&amp;</span> a); <span style="color:#75715e">//f2与A多对多实例化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">void</span> f3<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(A<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> a); <span style="color:#75715e">//f3与A一对一实例化(用相同参数类型)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f1</span>(A<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> a) { ... }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">void</span> f2(A<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> a) {...}
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>A<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> a1; <span style="color:#75715e">//实例化A&lt;int&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>A<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span> a2; <span style="color:#75715e">//实例化A&lt;double&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>f1(a1); <span style="color:#75715e">//OK，调用f1(A&lt;int&gt;&amp;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>f1(a2); <span style="color:#75715e">//链接错误! 调用f1(A&lt;double&gt;&amp;)，但它不存在！
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>f2(a1); <span style="color:#75715e">//实例f2&lt;int&gt;是A&lt;int&gt;和A&lt;double&gt;的友元
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>f2(a2); <span style="color:#75715e">//实例f2&lt;double&gt;是A&lt;int&gt;和A&lt;double&gt;的友元
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>f3(a1); <span style="color:#75715e">//实例f3&lt;int&gt;是A&lt;int&gt;的友元，但不是A&lt;double&gt;的友元！
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>f3(a2); <span style="color:#75715e">//实例f3&lt;double&gt;是A&lt;double&gt;的友元，但不是A&lt;int&gt;的友元！
+</span></span></span></code></pre></div><ul>
 <li>实例化一定要见到相应的源代码，否则无法实例化：把模板的定义和实现都放在头文件中</li>
 </ul>
 <h2 id="模板复用">模板复用</h2>
@@ -210,27 +210,27 @@ A<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><s
 <li><code>multiset&lt;type&gt;</code></li>
 </ul>
 <h3 id="容器操作">容器操作</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">size();
-T<span style="color:#f92672">&amp;</span> front();
-T<span style="color:#f92672">&amp;</span> back();
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push_front</span>(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> x);
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pop_front</span>();
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push_back</span>(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> x);
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pop_back</span>();
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> x);
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pop</span>();
-T<span style="color:#f92672">&amp;</span> top();
-iterator <span style="color:#a6e22e">begin</span>();
-iterator <span style="color:#a6e22e">end</span>();
-iterator <span style="color:#a6e22e">insert</span>(iterator pos, <span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span>x );
-iterator <span style="color:#a6e22e">insert</span>(iterator pos, InputIt first, InputIt last);
-iterator <span style="color:#a6e22e">erase</span>(iterator pos);
-iterator <span style="color:#a6e22e">erase</span>(iterator first, iterator last);
-T<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span>[](size_type pos);
-ValueType<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span>[](<span style="color:#66d9ef">const</span> KeyType<span style="color:#f92672">&amp;</span> key);
-T<span style="color:#f92672">&amp;</span> at(size_type pos); <span style="color:#75715e">//越界检查
-</span><span style="color:#75715e"></span>iterator <span style="color:#a6e22e">find</span>(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> key);
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>size();
+</span></span><span style="display:flex;"><span>T<span style="color:#f92672">&amp;</span> front();
+</span></span><span style="display:flex;"><span>T<span style="color:#f92672">&amp;</span> back();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push_front</span>(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> x);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pop_front</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push_back</span>(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> x);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pop_back</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> x);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pop</span>();
+</span></span><span style="display:flex;"><span>T<span style="color:#f92672">&amp;</span> top();
+</span></span><span style="display:flex;"><span>iterator <span style="color:#a6e22e">begin</span>();
+</span></span><span style="display:flex;"><span>iterator <span style="color:#a6e22e">end</span>();
+</span></span><span style="display:flex;"><span>iterator <span style="color:#a6e22e">insert</span>(iterator pos, <span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span>x );
+</span></span><span style="display:flex;"><span>iterator <span style="color:#a6e22e">insert</span>(iterator pos, InputIt first, InputIt last);
+</span></span><span style="display:flex;"><span>iterator <span style="color:#a6e22e">erase</span>(iterator pos);
+</span></span><span style="display:flex;"><span>iterator <span style="color:#a6e22e">erase</span>(iterator first, iterator last);
+</span></span><span style="display:flex;"><span>T<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span>[](size_type pos);
+</span></span><span style="display:flex;"><span>ValueType<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span>[](<span style="color:#66d9ef">const</span> KeyType<span style="color:#f92672">&amp;</span> key);
+</span></span><span style="display:flex;"><span>T<span style="color:#f92672">&amp;</span> at(size_type pos); <span style="color:#75715e">//越界检查
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>iterator <span style="color:#a6e22e">find</span>(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> key);
+</span></span></code></pre></div><ul>
 <li>如果容器元素为类则可能需要
 <ul>
 <li>自定义拷贝构造函数和赋值操作符重载函数，因为在对容器进行的操作中可能会创建新的元素（对象，拷贝构造）或进行元素间的赋值</li>
@@ -330,25 +330,25 @@ T<span style="color:#f92672">&amp;</span> at(size_type pos); <span style="color:
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//调序算法
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span>(RanIt first, RandIt last); <span style="color:#75715e">//&lt;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span>(RanIt first, RandIt last, BinPred less);
-<span style="color:#75715e">//编辑算法
-</span><span style="color:#75715e"></span>OutIt <span style="color:#a6e22e">copy</span>(InIt src_first, InIt src_last, OutIt dst_first);
-<span style="color:#75715e">//查找算法
-</span><span style="color:#75715e">//算术算法
-</span><span style="color:#75715e"></span>size_t <span style="color:#a6e22e">count_if</span>(InIt first, InIt last, Pred cond);
-<span style="color:#75715e">//集合算法
-</span><span style="color:#75715e">//堆算法
-</span><span style="color:#75715e">//元素遍历算法
-</span><span style="color:#75715e"></span>Fun <span style="color:#a6e22e">for_each</span>(InIt first, InIt last, Fun f);
-T <span style="color:#a6e22e">accumulate</span>(InIt first, InIt last, T val); <span style="color:#75715e">//+
-</span><span style="color:#75715e"></span>T <span style="color:#a6e22e">accumulate</span>(InIt first, InIt last, T val, BinOp op);
-OutIt <span style="color:#a6e22e">transform</span>(InIt src_first, InIt src_last, OutIt dst_first, Op f);
-OutIt <span style="color:#a6e22e">transform</span>(InIt1 src_first1, InIt1 src_last1, InIt2 src_first2, OutIt dst_first, BinOp f);
-<span style="color:#75715e">//lambda 表达式
-</span><span style="color:#75715e"></span>count_if(students.begin(),students.end(),[](Student <span style="color:#f92672">&amp;</span>st) { <span style="color:#66d9ef">return</span> (st.get_major() <span style="color:#f92672">==</span> COMPUTER) <span style="color:#f92672">&amp;&amp;</span> (st.get_sex() <span style="color:#f92672">==</span> FEMALE); });
-</code></pre></div></main>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">//调序算法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span>(RanIt first, RandIt last); <span style="color:#75715e">//&lt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span>(RanIt first, RandIt last, BinPred less);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//编辑算法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>OutIt <span style="color:#a6e22e">copy</span>(InIt src_first, InIt src_last, OutIt dst_first);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//查找算法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//算术算法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t <span style="color:#a6e22e">count_if</span>(InIt first, InIt last, Pred cond);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//集合算法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//堆算法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//元素遍历算法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Fun <span style="color:#a6e22e">for_each</span>(InIt first, InIt last, Fun f);
+</span></span><span style="display:flex;"><span>T <span style="color:#a6e22e">accumulate</span>(InIt first, InIt last, T val); <span style="color:#75715e">//+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>T <span style="color:#a6e22e">accumulate</span>(InIt first, InIt last, T val, BinOp op);
+</span></span><span style="display:flex;"><span>OutIt <span style="color:#a6e22e">transform</span>(InIt src_first, InIt src_last, OutIt dst_first, Op f);
+</span></span><span style="display:flex;"><span>OutIt <span style="color:#a6e22e">transform</span>(InIt1 src_first1, InIt1 src_last1, InIt2 src_first2, OutIt dst_first, BinOp f);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//lambda 表达式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>count_if(students.begin(),students.end(),[](Student <span style="color:#f92672">&amp;</span>st) { <span style="color:#66d9ef">return</span> (st.get_major() <span style="color:#f92672">==</span> COMPUTER) <span style="color:#f92672">&amp;&amp;</span> (st.get_sex() <span style="color:#f92672">==</span> FEMALE); });
+</span></span></code></pre></div></main>
         </div>
 
     </div>

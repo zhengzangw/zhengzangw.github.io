@@ -85,23 +85,23 @@
 </nav>
             </div>
             <main class="flex-column-80"><h2 id="text-handling">Text handling</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">more
-less
-tac
-head -n5
-tail -n5
-sed <span style="color:#e6db74">&#39;s/.*Disconnected from//&#39;</span> <span style="color:#75715e"># or gsed in mac</span>
-sed <span style="color:#e6db74">&#39;s/[ab]//g&#39;</span>
-sed -E <span style="color:#e6db74">&#39;s/.*Disconnected from (invalid )?user .* //&#39;</span>
-wc -l
-sort -nk1,1 <span style="color:#75715e"># numeric, column 1 to 1</span>
-uniq -c
-awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> <span style="color:#75715e"># print the second column</span>
-awk <span style="color:#e6db74">&#39;BEGIN { rows = 0 } $1 == 1 &amp;&amp; $2 ~ /^c.*e$/ {rows += 1} END {print rows}&#39;</span>
-cat file | paste -sd, <span style="color:#75715e"># seperate by .</span>
-</code></pre></div><h2 id="math-handling">Math handling</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#e6db74">&#34;1 + 2&#34;</span> | bc -l
-</code></pre></div></main>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>more
+</span></span><span style="display:flex;"><span>less
+</span></span><span style="display:flex;"><span>tac
+</span></span><span style="display:flex;"><span>head -n5
+</span></span><span style="display:flex;"><span>tail -n5
+</span></span><span style="display:flex;"><span>sed <span style="color:#e6db74">&#39;s/.*Disconnected from//&#39;</span> <span style="color:#75715e"># or gsed in mac</span>
+</span></span><span style="display:flex;"><span>sed <span style="color:#e6db74">&#39;s/[ab]//g&#39;</span>
+</span></span><span style="display:flex;"><span>sed -E <span style="color:#e6db74">&#39;s/.*Disconnected from (invalid )?user .* //&#39;</span>
+</span></span><span style="display:flex;"><span>wc -l
+</span></span><span style="display:flex;"><span>sort -nk1,1 <span style="color:#75715e"># numeric, column 1 to 1</span>
+</span></span><span style="display:flex;"><span>uniq -c
+</span></span><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> <span style="color:#75715e"># print the second column</span>
+</span></span><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;BEGIN { rows = 0 } $1 == 1 &amp;&amp; $2 ~ /^c.*e$/ {rows += 1} END {print rows}&#39;</span>
+</span></span><span style="display:flex;"><span>cat file | paste -sd, <span style="color:#75715e"># seperate by .</span>
+</span></span></code></pre></div><h2 id="math-handling">Math handling</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;1 + 2&#34;</span> | bc -l
+</span></span></code></pre></div></main>
         </div>
 
     </div>

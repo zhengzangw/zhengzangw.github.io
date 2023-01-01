@@ -154,7 +154,7 @@
 </li>
 <li>随时间反向传播（BPTT）：每层对应每个时刻
 <ul>
-<li>$\delta_{t,k}=\frac{\partial L_t}{\partial z_k}=\text{diag}(f'(z_k))U^T\delta_{t,k+1}$</li>
+<li>$\delta_{t,k}=\frac{\partial L_t}{\partial z_k}=\text{diag}(f&rsquo;(z_k))U^T\delta_{t,k+1}$</li>
 <li>$\frac{\partial L_t}{\partial U}=\sum_{k=1}^t\delta_{t,k}h^T_{k-1}$</li>
 <li>$\frac{\partial L}{\partial U}=\sum_{t=1}^T\sum_{k=1}^t\delta_{t,k}h^T_{k-1}$</li>
 <li>在一次完整前向传播和反向计算后才能更新参数</li>

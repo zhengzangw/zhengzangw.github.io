@@ -108,20 +108,20 @@
 <code>brew cask install intel-haxm</code><br>
 <code>brew cask install android-studio</code></p>
 <p>写入</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">export ANT_HOME<span style="color:#f92672">=</span>/usr/local/opt/ant
-export MAVEN_HOME<span style="color:#f92672">=</span>/usr/local/opt/maven
-export GRADLE_HOME<span style="color:#f92672">=</span>/Users/&lt;username&gt;/.gradle/wrapper/dists/gradle-4.10.1-all/&lt;random&gt;/gradle-4.10.1
-export GRADLE_USER_HOME<span style="color:#f92672">=</span>/Users/&lt;username&gt;/username&gt;/.gradle
-export ANDROID_HOME<span style="color:#f92672">=</span>/usr/local/share/android-sdk
-export ANDROID_NDK_HOME<span style="color:#f92672">=</span>/usr/local/share/android-ndk
-export INTEL_HAXM_HOME<span style="color:#f92672">=</span>/usr/local/Caskroom/intel-haxm
-export PATH<span style="color:#f92672">=</span>$ANT_HOME/bin:$PATH
-export PATH<span style="color:#f92672">=</span>$MAVEN_HOME/bin:$PATH
-export PATH<span style="color:#f92672">=</span>$GRADLE_HOME/bin:$PATH
-export PATH<span style="color:#f92672">=</span>$ANDROID_HOME/tools:$PATH
-export PATH<span style="color:#f92672">=</span>$ANDROID_HOME/platform-tools:$PATH
-export PATH<span style="color:#f92672">=</span>$ANDROID_HOME/build-tools/23.0.1:$PATH
-</code></pre></div><p>在 .gradle/.gradle.properties 中根据 ss 配置写入</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>export ANT_HOME<span style="color:#f92672">=</span>/usr/local/opt/ant
+</span></span><span style="display:flex;"><span>export MAVEN_HOME<span style="color:#f92672">=</span>/usr/local/opt/maven
+</span></span><span style="display:flex;"><span>export GRADLE_HOME<span style="color:#f92672">=</span>/Users/&lt;username&gt;/.gradle/wrapper/dists/gradle-4.10.1-all/&lt;random&gt;/gradle-4.10.1
+</span></span><span style="display:flex;"><span>export GRADLE_USER_HOME<span style="color:#f92672">=</span>/Users/&lt;username&gt;/username&gt;/.gradle
+</span></span><span style="display:flex;"><span>export ANDROID_HOME<span style="color:#f92672">=</span>/usr/local/share/android-sdk
+</span></span><span style="display:flex;"><span>export ANDROID_NDK_HOME<span style="color:#f92672">=</span>/usr/local/share/android-ndk
+</span></span><span style="display:flex;"><span>export INTEL_HAXM_HOME<span style="color:#f92672">=</span>/usr/local/Caskroom/intel-haxm
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$ANT_HOME/bin:$PATH
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$MAVEN_HOME/bin:$PATH
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$GRADLE_HOME/bin:$PATH
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$ANDROID_HOME/tools:$PATH
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$ANDROID_HOME/platform-tools:$PATH
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$ANDROID_HOME/build-tools/23.0.1:$PATH
+</span></span></code></pre></div><p>在 .gradle/.gradle.properties 中根据 ss 配置写入</p>
 <pre tabindex="0"><code class="language-config" data-lang="config">systemProp.http.proxyHost=127.0.0.1
 systemProp.http.proxyPort=1087
 systemProp.https.proxyHost=127.0.0.1

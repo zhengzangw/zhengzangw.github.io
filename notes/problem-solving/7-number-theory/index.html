@@ -305,17 +305,17 @@
 <li>model: multplying two $\beta$-bit integers take $\Theta(\beta^2)$ bit operations</li>
 </ul>
 <h3 id="euclid-algorithm">Euclid Algorithm</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">ext_gcd</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b, <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>x, <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>y){
-    <span style="color:#66d9ef">if</span> (b<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>) {
-        x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-        <span style="color:#66d9ef">return</span> a;
-    } <span style="color:#66d9ef">else</span> {
-        <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> ext_gcd(b,a<span style="color:#f92672">%</span>b,y,x);
-        y <span style="color:#f92672">-=</span> x<span style="color:#f92672">*</span>(a<span style="color:#f92672">/</span>b);
-        <span style="color:#66d9ef">return</span> ret;
-    }
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">ext_gcd</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b, <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>x, <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>y){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (b<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">ext_gcd</span>(b,a<span style="color:#f92672">%</span>b,y,x);
+</span></span><span style="display:flex;"><span>        y <span style="color:#f92672">-=</span> x<span style="color:#f92672">*</span>(a<span style="color:#f92672">/</span>b);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>$a&gt;b\geq 1$ and Euclid(a,b) performs $k\geq 1$ recursive calls, then $a\geq F_{k+2},b\geq F_{k+1}$
 <ul>
 <li><strong>证明</strong>：$a\geq b+(a\bmod b)$</li>
@@ -326,13 +326,13 @@
 </li>
 </ul>
 <h3 id="modular-exponentiation">Modular Exponentiation</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fp</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b, <span style="color:#66d9ef">int</span> mod){
-    <span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-    <span style="color:#66d9ef">for</span> (;b;b<span style="color:#f92672">&gt;&gt;=</span><span style="color:#ae81ff">1</span>,a<span style="color:#f92672">=</span><span style="color:#ae81ff">1ll</span><span style="color:#f92672">*</span>a<span style="color:#f92672">*</span>a<span style="color:#f92672">%</span>mod)
-        <span style="color:#66d9ef">if</span> (b<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span>) c<span style="color:#f92672">=</span><span style="color:#ae81ff">1ll</span><span style="color:#f92672">*</span>c<span style="color:#f92672">*</span>a<span style="color:#f92672">%</span>mod;
-    <span style="color:#66d9ef">return</span> c<span style="color:#f92672">%</span>mod;
-}
-</code></pre></div><h3 id="primality-testing">Primality Testing</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fp</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b, <span style="color:#66d9ef">int</span> mod){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (;b;b<span style="color:#f92672">&gt;&gt;=</span><span style="color:#ae81ff">1</span>,a<span style="color:#f92672">=</span><span style="color:#ae81ff">1ll</span><span style="color:#f92672">*</span>a<span style="color:#f92672">*</span>a<span style="color:#f92672">%</span>mod)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (b<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span>) c<span style="color:#f92672">=</span><span style="color:#ae81ff">1ll</span><span style="color:#f92672">*</span>c<span style="color:#f92672">*</span>a<span style="color:#f92672">%</span>mod;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> c<span style="color:#f92672">%</span>mod;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="primality-testing">Primality Testing</h3>
 <ul>
 <li>trial division: $\Theta{\sqrt{n}}$</li>
 <li>Pseudoprimality testing:
@@ -356,49 +356,49 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">LL <span style="color:#a6e22e">multimod</span>(LL a, LL b, LL mod) {
-    a <span style="color:#f92672">%=</span> mod;
-    b <span style="color:#f92672">%=</span> mod;
-    LL res <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">while</span> (b) {
-        <span style="color:#66d9ef">if</span> (b <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) {
-            res <span style="color:#f92672">+=</span> a;
-            <span style="color:#66d9ef">if</span> (res <span style="color:#f92672">&gt;=</span> mod) res <span style="color:#f92672">-=</span> mod;
-        }
-        b <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>;
-        a <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>;
-        <span style="color:#66d9ef">if</span> (a <span style="color:#f92672">&gt;=</span> mod) a <span style="color:#f92672">-=</span> mod;
-    }
-    <span style="color:#66d9ef">return</span> res;
-}
-
-<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">witness</span>(LL s, LL n) {
-    LL u <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">while</span> ((u <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> u <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) u <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>, t<span style="color:#f92672">++</span>;
-    LL x <span style="color:#f92672">=</span> fp(s, u, n), tmp;
-    <span style="color:#66d9ef">while</span> (t<span style="color:#f92672">--</span>) {
-        tmp <span style="color:#f92672">=</span> x;
-        x <span style="color:#f92672">=</span> multimod(x, x, n);
-        <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">!=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> true;
-    }
-
-    <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>)
-        <span style="color:#66d9ef">return</span> true;
-    <span style="color:#66d9ef">else</span>
-        <span style="color:#66d9ef">return</span> false;
-}
-
-<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">millerrabin</span>(LL n, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> times <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>) {
-    <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">return</span> true;
-    <span style="color:#66d9ef">if</span> ((n <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">return</span> false;
-    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> times;
-    <span style="color:#66d9ef">while</span> (i<span style="color:#f92672">--</span>) {
-        LL x <span style="color:#f92672">=</span> random(<span style="color:#ae81ff">2</span>, n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
-        <span style="color:#66d9ef">if</span> (witness(x, n)) <span style="color:#66d9ef">return</span> false;
-    }
-    <span style="color:#66d9ef">return</span> true;
-}
-</code></pre></div><h3 id="integer-factorization">Integer factorization</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>LL <span style="color:#a6e22e">multimod</span>(LL a, LL b, LL mod) {
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">%=</span> mod;
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">%=</span> mod;
+</span></span><span style="display:flex;"><span>    LL res <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (b) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (b <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>            res <span style="color:#f92672">+=</span> a;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (res <span style="color:#f92672">&gt;=</span> mod) res <span style="color:#f92672">-=</span> mod;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        b <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        a <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (a <span style="color:#f92672">&gt;=</span> mod) a <span style="color:#f92672">-=</span> mod;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">witness</span>(LL s, LL n) {
+</span></span><span style="display:flex;"><span>    LL u <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> ((u <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> u <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) u <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>, t<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    LL x <span style="color:#f92672">=</span> <span style="color:#a6e22e">fp</span>(s, u, n), tmp;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (t<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>        tmp <span style="color:#f92672">=</span> x;
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> <span style="color:#a6e22e">multimod</span>(x, x, n);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">!=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">millerrabin</span>(LL n, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> times <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ((n <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> times;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (i<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>        LL x <span style="color:#f92672">=</span> <span style="color:#a6e22e">random</span>(<span style="color:#ae81ff">2</span>, n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">witness</span>(x, n)) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="integer-factorization">Integer factorization</h3>
 <ul>
 <li>Trial division $R\rightarrow R^2$</li>
 <li>Pollard&rsquo;s rho heuristic $R\rightarrow R^4$
@@ -436,17 +436,17 @@
 <li>PKC
 <ul>
 <li>Self $P,D$</li>
-<li>Others $P',D'$</li>
+<li>Others $P&rsquo;,D'$</li>
 <li>Message $M$</li>
 <li>公钥加密
 <ul>
-<li>encoding with $P'$: $P'(M)$ -&gt; send</li>
-<li>receive -&gt; decoding with $D'(P'(M))$</li>
+<li>encoding with $P&rsquo;$: $P&rsquo;(M)$ -&gt; send</li>
+<li>receive -&gt; decoding with $D&rsquo;(P&rsquo;(M))$</li>
 </ul>
 </li>
 <li>数字签名
 <ul>
-<li>signing with $D$: $M'=M+D(M)$</li>
+<li>signing with $D$: $M&rsquo;=M+D(M)$</li>
 <li>(encrypt and) send -&gt; receive (and decode)</li>
 <li>verifying $M=P(D(M))$</li>
 </ul>

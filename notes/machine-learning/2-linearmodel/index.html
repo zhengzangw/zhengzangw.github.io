@@ -116,7 +116,7 @@
 </li>
 <li>$g^{-1}=S(x)=\frac{1}{1+e^{-x}}$
 <ul>
-<li>$S(x)'=S(x)(1-S(x))$</li>
+<li>$S(x)&rsquo;=S(x)(1-S(x))$</li>
 </ul>
 </li>
 </ul>
@@ -131,8 +131,8 @@
 <li>Maxmimum likelihood method
 <ul>
 <li>$l(\beta)=\sum_{i=1}^m\ln p(y_i|x_i;\beta_i)=\sum_{i=1}^my_i\ln (g(\hat x_i\beta)+(1-y_i)\ln (1-g(\hat x_i\beta)))$</li>
-<li>$l'=\sum_{i=1}^m(y_i-g(\hat x_i\beta))\hat x_i^T=X^T(Y-g(\beta^TX))$</li>
-<li>$l''=\sum_{i=1}^m\hat x_i\hat x_i^Tp_1(\hat x_i;\beta)(1-p_1(\hat x_i;\beta))$</li>
+<li>$l&rsquo;=\sum_{i=1}^m(y_i-g(\hat x_i\beta))\hat x_i^T=X^T(Y-g(\beta^TX))$</li>
+<li>$l&rsquo;&rsquo;=\sum_{i=1}^m\hat x_i\hat x_i^Tp_1(\hat x_i;\beta)(1-p_1(\hat x_i;\beta))$</li>
 </ul>
 </li>
 <li>交叉熵作损失函数梯度下降</li>
@@ -142,7 +142,7 @@
 </ul>
 <h2 id="softmax-回归">Softmax 回归</h2>
 <ul>
-<li>$p(y=c|x)=\text{softmax}(\omega_c^Tx)=\frac{\exp(\omega_c^Tx)}{\sum_{c'=1}^C\exp(\omega_{c'}^Tx)}=\frac{\exp(W^Tx)}{1_C^T\exp(W^Tx)}$</li>
+<li>$p(y=c|x)=\text{softmax}(\omega_c^Tx)=\frac{\exp(\omega_c^Tx)}{\sum_{c&rsquo;=1}^C\exp(\omega_{c&rsquo;}^Tx)}=\frac{\exp(W^Tx)}{1_C^T\exp(W^Tx)}$</li>
 </ul>
 <h2 id="lda">LDA</h2>
 <ul>

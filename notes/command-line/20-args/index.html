@@ -85,26 +85,26 @@
 </nav>
             </div>
             <main class="flex-column-80"><h2 id="shell">Shell</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># getopts</span>
-<span style="color:#75715e"># : after letter indicates it requires arguments</span>
-<span style="color:#66d9ef">while</span> getopts <span style="color:#e6db74">&#34;:a:&#34;</span> opt; <span style="color:#66d9ef">do</span>
-  <span style="color:#66d9ef">case</span> $opt in
-    a<span style="color:#f92672">)</span>
-      echo <span style="color:#e6db74">&#34;-a was triggered, Parameter: </span>$OPTARG<span style="color:#e6db74">&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
-      ;;
-    <span style="color:#ae81ff">\?</span><span style="color:#f92672">)</span>
-      echo <span style="color:#e6db74">&#34;Invalid option: -</span>$OPTARG<span style="color:#e6db74">&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
-      exit <span style="color:#ae81ff">1</span>
-      ;;
-    :<span style="color:#f92672">)</span>
-      echo <span style="color:#e6db74">&#34;Option -</span>$OPTARG<span style="color:#e6db74"> requires an argument.&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
-      exit <span style="color:#ae81ff">1</span>
-      ;;
-  <span style="color:#66d9ef">esac</span>
-<span style="color:#66d9ef">done</span>
-
-<span style="color:#75715e"># getopt</span>
-</code></pre></div><h2 id="python">Python</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># getopts</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># : after letter indicates it requires arguments</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> getopts <span style="color:#e6db74">&#34;:a:&#34;</span> opt; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> $opt in
+</span></span><span style="display:flex;"><span>    a<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;-a was triggered, Parameter: </span>$OPTARG<span style="color:#e6db74">&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">\?</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;Invalid option: -</span>$OPTARG<span style="color:#e6db74">&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>      exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    :<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;Option -</span>$OPTARG<span style="color:#e6db74"> requires an argument.&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>      exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># getopt</span>
+</span></span></code></pre></div><h2 id="python">Python</h2>
 <p>argparse</p>
 </main>
         </div>

@@ -145,10 +145,10 @@
 <li>a simple version version of ray tracing</li>
 <li>发射光线 -&gt; 获得交点 -&gt; 计算光源贡献</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ray <span style="color:#f92672">=</span> rayThruPixel(cam, i, j)
-hit <span style="color:#f92672">=</span> Intersect(ray, scene) <span style="color:#75715e">//瓶颈
-</span><span style="color:#75715e"></span>image[i][j] <span style="color:#f92672">=</span> findColor(hit)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>ray <span style="color:#f92672">=</span> rayThruPixel(cam, i, j)
+</span></span><span style="display:flex;"><span>hit <span style="color:#f92672">=</span> Intersect(ray, scene) <span style="color:#75715e">//瓶颈
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>image[i][j] <span style="color:#f92672">=</span> findColor(hit)
+</span></span></code></pre></div><ul>
 <li>不考虑阴影，反射</li>
 <li>只考虑 direct illumination</li>
 </ul>

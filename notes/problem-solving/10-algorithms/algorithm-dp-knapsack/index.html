@@ -100,10 +100,10 @@
             <main class="flex-column-80"><p><a href="https://wenku.baidu.com/view/4d68b68fbceb19e8b8f6bacd.html">dp 九讲</a></p>
 <h2 id="01-背包">01 背包</h2>
 <p>$$F[i,v] = \max{F[i-1,v],F[i-1,v-Ci]+Wi}$$</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">for</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> to N
-    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> V to Ci
-        F[v] <span style="color:#f92672">=</span> max{F[v],F[v<span style="color:#f92672">-</span>Ci]<span style="color:#f92672">+</span>Wi}
-</code></pre></div><p>恰好装满：$F[1..V] = -\infty; F[0] = 0$<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> to N
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> V to Ci
+</span></span><span style="display:flex;"><span>        F[v] <span style="color:#f92672">=</span> max{F[v],F[v<span style="color:#f92672">-</span>Ci]<span style="color:#f92672">+</span>Wi}
+</span></span></code></pre></div><p>恰好装满：$F[1..V] = -\infty; F[0] = 0$<br>
 无必要： $F[0..V] = 0$</p>
 <h2 id="完全背包">完全背包</h2>
 <p>$$F[i,v] = \max{F[i-1,v-kCi] + kWi | 0&lt;=kCi&lt;=v &amp;&amp; 0&lt;=k&lt;Mi}$$
@@ -113,30 +113,30 @@
 <li>$O(V+N)$ 首先将费用大于 V 的物品去掉，然后使用类似计数排序的做法，计算出费用相同的物品中价值最高的是哪个</li>
 <li>把第 i 种物品拆成费用为 Ci2k、价值为 Wi2k 的若干件物品，其中 k 取遍满足 Ci2k≤V 的非负整数</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to N
-    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> Ci to v
-        F[v] <span style="color:#f92672">=</span> max(F[v],F[v<span style="color:#f92672">-</span>Ci]<span style="color:#f92672">+</span>Wi)
-</code></pre></div><h2 id="多重背包">多重背包</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to N
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> Ci to v
+</span></span><span style="display:flex;"><span>        F[v] <span style="color:#f92672">=</span> max(F[v],F[v<span style="color:#f92672">-</span>Ci]<span style="color:#f92672">+</span>Wi)
+</span></span></code></pre></div><h2 id="多重背包">多重背包</h2>
 <p>完全背包思路（可以看作是分组背包问题）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to N
-    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> V to Ci
-        <span style="color:#66d9ef">for</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to Mi
-</code></pre></div><p>01 背包思路
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to N
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> V to Ci
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to Mi
+</span></span></code></pre></div><p>01 背包思路
 系数分别为$1,2,2^2&hellip;2^(k−1),Mi−2^(k+1)$</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to N
-    <span style="color:#66d9ef">if</span> Ci<span style="color:#f92672">*</span>Mi <span style="color:#f92672">&gt;=</span> V
-        <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> Ci to v
-            F[v] <span style="color:#f92672">=</span> max(F[v],F[v<span style="color:#f92672">-</span>Ci]<span style="color:#f92672">+</span>Wi)
-    <span style="color:#66d9ef">else</span>
-        k <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-        <span style="color:#66d9ef">while</span> k <span style="color:#f92672">&lt;=</span> M
-            <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> Ci to v
-                F[v] <span style="color:#f92672">=</span> max(F[v],F[v<span style="color:#f92672">-</span>k<span style="color:#f92672">*</span>Ci]<span style="color:#f92672">+</span>k<span style="color:#f92672">*</span>Wi)
-            M <span style="color:#f92672">=</span> M <span style="color:#f92672">-</span> k;
-            k <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>k;
-        <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> Ci to v
-                F[v] <span style="color:#f92672">=</span> max(F[v],F[v<span style="color:#f92672">-</span>M<span style="color:#f92672">*</span>Ci]<span style="color:#f92672">+</span>M<span style="color:#f92672">*</span>Wi)
-</code></pre></div><h2 id="单调队列双端队列">单调队列（双端队列）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to N
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> Ci<span style="color:#f92672">*</span>Mi <span style="color:#f92672">&gt;=</span> V
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> Ci to v
+</span></span><span style="display:flex;"><span>            F[v] <span style="color:#f92672">=</span> max(F[v],F[v<span style="color:#f92672">-</span>Ci]<span style="color:#f92672">+</span>Wi)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        k <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> k <span style="color:#f92672">&lt;=</span> M
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> Ci to v
+</span></span><span style="display:flex;"><span>                F[v] <span style="color:#f92672">=</span> max(F[v],F[v<span style="color:#f92672">-</span>k<span style="color:#f92672">*</span>Ci]<span style="color:#f92672">+</span>k<span style="color:#f92672">*</span>Wi)
+</span></span><span style="display:flex;"><span>            M <span style="color:#f92672">=</span> M <span style="color:#f92672">-</span> k;
+</span></span><span style="display:flex;"><span>            k <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>k;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> Ci to v
+</span></span><span style="display:flex;"><span>                F[v] <span style="color:#f92672">=</span> max(F[v],F[v<span style="color:#f92672">-</span>M<span style="color:#f92672">*</span>Ci]<span style="color:#f92672">+</span>M<span style="color:#f92672">*</span>Wi)
+</span></span></code></pre></div><h2 id="单调队列双端队列">单调队列（双端队列）</h2>
 <ol>
 <li>每次遇到&lt;=的元素就抛掉，是因为这些元素肯定不是这一段区间的最值，所以对求下一段区间最值无影响。</li>
 <li>新来的元素都是从队尾开始比较，保证了队列从队尾到队首的元素一定是从最新的到最老的，这样做就解决了问题 1 最值位置的不确定性。</li>
@@ -151,15 +151,15 @@
 <p>形如
 $$dp[i] = opt(f[j]) + g[i] (i-k&lt;=j&lt;i)$$
 维护$f[k]$的最大合法值进行转移</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to n
-    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">=</span> i<span style="color:#f92672">-</span>k to i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-        dp[i] <span style="color:#f92672">=</span> opt(dp[i],f[j]) <span style="color:#f92672">+</span> g[i]
-</code></pre></div><p>利用单调队列：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to n
-    eliminate(i<span style="color:#f92672">-</span>k); <span style="color:#75715e">//舍弃不在选择范围内的数据
-</span><span style="color:#75715e"></span>    dp[i] <span style="color:#f92672">=</span> que.top <span style="color:#f92672">+</span> g[i]; <span style="color:#75715e">//选择当前最优f[j]
-</span><span style="color:#75715e"></span>    que.insert(i,f[i]);
-</code></pre></div><h2 id="多重背包的单调队列优化">多重背包的单调队列优化</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to n
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">=</span> i<span style="color:#f92672">-</span>k to i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        dp[i] <span style="color:#f92672">=</span> opt(dp[i],f[j]) <span style="color:#f92672">+</span> g[i]
+</span></span></code></pre></div><p>利用单调队列：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to n
+</span></span><span style="display:flex;"><span>    eliminate(i<span style="color:#f92672">-</span>k); <span style="color:#75715e">//舍弃不在选择范围内的数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    dp[i] <span style="color:#f92672">=</span> que.top <span style="color:#f92672">+</span> g[i]; <span style="color:#75715e">//选择当前最优f[j]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    que.insert(i,f[i]);
+</span></span></code></pre></div><h2 id="多重背包的单调队列优化">多重背包的单调队列优化</h2>
 <p>$$F[v] = \max{F[v-kCi] + kWi | 0&lt;=kCi&lt;=v &amp;&amp; 0&lt;=k&lt;Mi}$$
 $$F[q<em>Ci+r] = \max{F[q</em>Ci+r - k<em>Ci] + kWi} = \max{F[k</em>Ci+r] + (q-k)<em>W[i] (k&gt;=0 &amp;&amp; q-M[i]&lt;= k &lt;=q)$$
 令 $G[k] = F[k</em>Wi+r]$<br>
@@ -172,11 +172,11 @@ $$F[i] = opt{F[i-x<em>H+W]}+G (B[i]&lt;=i-x</em>H+W&lt;i，x\in N）$$</p>
 <p>F[i,v,u] = max{F[i-1,v,u],F[i-1,v-Ci,u-Di]}
 总个数限制也可看作一维</p>
 <h2 id="分组背包">分组背包</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">for</span> k<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to K
-    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> V to <span style="color:#ae81ff">0</span>
-        <span style="color:#66d9ef">for</span> i in group k
-            F[v] <span style="color:#f92672">=</span> max{F[v],F[v<span style="color:#f92672">-</span>Ci]<span style="color:#f92672">+</span>Wi}
-</code></pre></div><h2 id="有依赖的背包">有依赖的背包</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to K
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">=</span> V to <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i in group k
+</span></span><span style="display:flex;"><span>            F[v] <span style="color:#f92672">=</span> max{F[v],F[v<span style="color:#f92672">-</span>Ci]<span style="color:#f92672">+</span>Wi}
+</span></span></code></pre></div><h2 id="有依赖的背包">有依赖的背包</h2>
 <p>将主件与附件转化为$V-Ck+1$个物品的物品组<br>
 树形依赖：树形动归</p>
 <h2 id="泛化物品">泛化物品</h2>
@@ -188,13 +188,13 @@ $$F[i] = opt{F[i-x<em>H+W]}+G (B[i]&lt;=i-x</em>H+W&lt;i，x\in N）$$</p>
 <p>$$F[0,0]=1;$$
 $$F[i,v]=\sum(F[i-1,v],F[i,v-Ci])$$</p>
 <h2 id="最优方案数">最优方案数</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">G[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-    <span style="color:#66d9ef">for</span> i<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to N
-        <span style="color:#66d9ef">for</span> v<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> to V
-            F[i,v]<span style="color:#f92672">:=</span>max{F[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>,v],F[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>,v<span style="color:#960050;background-color:#1e0010">−</span>Ci]<span style="color:#f92672">+</span>Wi}G[i,v]<span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>
-            <span style="color:#66d9ef">if</span> F[i,v]<span style="color:#f92672">=</span>F[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>,v]G[i,v]<span style="color:#f92672">+=</span>G[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>][v]
-            <span style="color:#66d9ef">if</span> F[i,v]<span style="color:#f92672">=</span>F[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>,v<span style="color:#960050;background-color:#1e0010">−</span>Ci]<span style="color:#f92672">+</span>WiG[i,v]<span style="color:#f92672">+=</span>G[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>][v<span style="color:#960050;background-color:#1e0010">−</span>Ci]
-</code></pre></div><h2 id="第-k-优解">第 K 优解</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>G[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to N
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> v<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> to V
+</span></span><span style="display:flex;"><span>            F[i,v]<span style="color:#f92672">:=</span>max{F[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>,v],F[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>,v<span style="color:#960050;background-color:#1e0010">−</span>Ci]<span style="color:#f92672">+</span>Wi}G[i,v]<span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> F[i,v]<span style="color:#f92672">=</span>F[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>,v]G[i,v]<span style="color:#f92672">+=</span>G[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>][v]
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> F[i,v]<span style="color:#f92672">=</span>F[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>,v<span style="color:#960050;background-color:#1e0010">−</span>Ci]<span style="color:#f92672">+</span>WiG[i,v]<span style="color:#f92672">+=</span>G[i<span style="color:#960050;background-color:#1e0010">−</span><span style="color:#ae81ff">1</span>][v<span style="color:#960050;background-color:#1e0010">−</span>Ci]
+</span></span></code></pre></div><h2 id="第-k-优解">第 K 优解</h2>
 <p>对于求次优解、第 K 优解类的问题，如果相应的最优解问题能写出状态转移方程、用动态规划解决，那么求次优解往往可以相同的复杂度解决，第 K 优解则比求最优解的复杂度上多一个系数 K</p>
 <p>其基本思想是，将每个状态都表示成有序队列，将状态转移方程中的 max/min 转化成有序队列的合并</p>
 <p>F[i,v,k] 表示 前 i 个物品中，背包大小为 v 时，第 k 优解的值

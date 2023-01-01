@@ -94,7 +94,7 @@
 <p>一阶常微分方程初值问题</p>
 <p>$$
 \begin{cases}
-y'=f(x,y) &amp; a\leq x \leq b\newline
+y&rsquo;=f(x,y) &amp; a\leq x \leq b\newline
 y(x_0)=y_0
 \end{cases}
 $$</p>
@@ -129,7 +129,7 @@ $$</p>
 <li>2 步 Euler 方法
 <ul>
 <li>$y(x_{n+1})=y(x_{n-1})+2hf(x_n,y_n(x_n))$</li>
-<li>局部截断误差：$\frac{h^3}{3}y'''(\xi)$</li>
+<li>局部截断误差：$\frac{h^3}{3}y&rsquo;&rsquo;&rsquo;(\xi)$</li>
 </ul>
 </li>
 </ul>
@@ -138,12 +138,12 @@ $$</p>
 <li>$y_{n+1}=y_n+h\Phi(x_n,y_n,h)$</li>
 <li>增量函数：$\Phi(x_n,y_n,h)$
 <ul>
-<li>$y(x+h)=y(x)+h(f(x,y(x)))+\frac{1}{2!h^2}f'(x,y(x))+\cdots+\frac{1}{p!}h^pf^{(p-1)}(x,y(x))+R_n=y(x)+h\Phi(x,y,h)+R_n$</li>
+<li>$y(x+h)=y(x)+h(f(x,y(x)))+\frac{1}{2!h^2}f&rsquo;(x,y(x))+\cdots+\frac{1}{p!}h^pf^{(p-1)}(x,y(x))+R_n=y(x)+h\Phi(x,y,h)+R_n$</li>
 </ul>
 </li>
 <li>局部截断误差：$R_n$</li>
 <li>$p=1:\Phi =f(x_n,y_n),R_n=O(h^2)$</li>
-<li>$p=2:\Phi =f(x_n,y_n)+\frac{h}{2}f'(x_n,y_n)=f(x_n,y_n)+f'_x(x_n,y_n)+f'_y(x_n,y_n)f(x_n,y_n),R_n=O(h^3)$</li>
+<li>$p=2:\Phi =f(x_n,y_n)+\frac{h}{2}f&rsquo;(x_n,y_n)=f(x_n,y_n)+f&rsquo;_x(x_n,y_n)+f&rsquo;_y(x_n,y_n)f(x_n,y_n),R_n=O(h^3)$</li>
 </ul>
 <h2 id="数值积分法">数值积分法</h2>
 <ul>
@@ -170,7 +170,7 @@ $$</p>
 </ul>
 <h2 id="runge-kutta-方法">Runge-Kutta 方法</h2>
 <ul>
-<li>$\exists \theta\in(0,1),\frac{y(x_{n+1}-y(x_n))}{h}=y'(x_n+\theta h)$</li>
+<li>$\exists \theta\in(0,1),\frac{y(x_{n+1}-y(x_n))}{h}=y&rsquo;(x_n+\theta h)$</li>
 <li>$y(x_{n+1})=y(x_n)+hf(x_n+\theta h,y(x_n+\theta h))$</li>
 <li>$[x_n,x_{n+1}]$ 平均斜率：$K^*=f(x_n+\theta h,y(x_n+\theta h))$</li>
 <li>2 阶 Runge-Kutta:

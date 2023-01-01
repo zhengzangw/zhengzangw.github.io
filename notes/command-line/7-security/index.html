@@ -85,16 +85,16 @@
 </nav>
             </div>
             <main class="flex-column-80"><h2 id="encode">Encode</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># hash</span>
-printf <span style="color:#e6db74">&#39;hello&#39;</span> | sha1sum
-sha1sum README.md
-<span style="color:#75715e"># encrypt</span>
-openssl aes-256-cbc -salt -in README.md -out README.enc.md
-openssl aes-256-cbc -d -in README.enc.md -out README.md
-</code></pre></div><h2 id="user">User</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">whoami
-cat /etc/passwd
-</code></pre></div></main>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># hash</span>
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">&#39;hello&#39;</span> | sha1sum
+</span></span><span style="display:flex;"><span>sha1sum README.md
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># encrypt</span>
+</span></span><span style="display:flex;"><span>openssl aes-256-cbc -salt -in README.md -out README.enc.md
+</span></span><span style="display:flex;"><span>openssl aes-256-cbc -d -in README.enc.md -out README.md
+</span></span></code></pre></div><h2 id="user">User</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>whoami
+</span></span><span style="display:flex;"><span>cat /etc/passwd
+</span></span></code></pre></div></main>
         </div>
 
     </div>

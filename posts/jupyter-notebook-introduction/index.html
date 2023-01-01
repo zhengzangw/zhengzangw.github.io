@@ -121,11 +121,11 @@
 <h3 id="基本使用">基本使用</h3>
 <p>Jupyter Notebook 对新手十分友好，你应该可以直接上手了。如果一开始遇到困难，可以看看这篇<a href="https://nbviewer.jupyter.org/github/ipython/ipython/blob/3.x/examples/Notebook/Notebook%20Basics.ipynb">新手教程</a></p>
 <p>新建文件后，输入框默认为代码框。点击代码框，在输入框内输入 python 命令，按 Run 或 Ctrl+Enter 可获得运行结果。默认将最后一行的内容输出。左侧 In [num], Out [num] 指示了第几次运行，输出。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">m <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
-c <span style="color:#f92672">=</span> <span style="color:#ae81ff">3e8</span>
-E <span style="color:#f92672">=</span> m<span style="color:#f92672">*</span>(c<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)
-E
-</code></pre></div><pre><code>5.4e+17
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>m <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> <span style="color:#ae81ff">3e8</span>
+</span></span><span style="display:flex;"><span>E <span style="color:#f92672">=</span> m<span style="color:#f92672">*</span>(c<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>E
+</span></span></code></pre></div><pre><code>5.4e+17
 </code></pre>
 <p>通过 Cell-&gt;Cell Type-&gt;Markdown, 可以将一行转为 Markdown 语法，支持 $\LaTeX$. 运行后即获得本文类似的效果。上方计算的内容即为 $$E=mc^2$$</p>
 <h3 id="kernel">Kernel</h3>
@@ -160,11 +160,11 @@ E
 </ul>
 <h3 id="magic-command">Magic Command</h3>
 <p>Magic Command 是内置的一些特殊指令，以%开头，单%为 Line magics, 例如 %pwd 打印当前位置; %%打头的为 Cell magics, 改变整个单元格的属性，例如 %%bash, 将该单元改为 bash 脚本。特殊的命令有 display(), 它可以将非末尾的元素同末尾元素一样显示在单元格中；以!/!!/%sx开头的命令在终端中执行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">%</span>pwd
-</code></pre></div><pre><code>/Users/zhengzangw/Desktop
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">%</span>pwd
+</span></span></code></pre></div><pre><code>/Users/zhengzangw/Desktop
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">!</span>python <span style="color:#f92672">-</span>c <span style="color:#e6db74">&#34;import this&#34;</span>
-</code></pre></div><pre><code>The Zen of Python, by Tim Peters
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">!</span>python <span style="color:#f92672">-</span>c <span style="color:#e6db74">&#34;import this&#34;</span>
+</span></span></code></pre></div><pre><code>The Zen of Python, by Tim Peters
 
 Beautiful is better than ugly.
 Explicit is better than implicit.
@@ -186,26 +186,26 @@ If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">%%</span>script zsh
-time pwd
-</code></pre></div><pre><code>/Users/zhengzangw/Desktop
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">%%</span>script zsh
+</span></span><span style="display:flex;"><span>time pwd
+</span></span></code></pre></div><pre><code>/Users/zhengzangw/Desktop
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">%%</span>time
-a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-display(a)
-print(a)
-a
-</code></pre></div><pre><code>1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">%%</span>time
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>display(a)
+</span></span><span style="display:flex;"><span>print(a)
+</span></span><span style="display:flex;"><span>a
+</span></span></code></pre></div><pre><code>1
 
 1
 CPU times: user 1.46 ms, sys: 1.08 ms, total: 2.54 ms
 Wall time: 1.54 ms
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">%</span>who
-<span style="color:#f92672">%</span>who function
-whols <span style="color:#f92672">=</span> <span style="color:#f92672">%</span>who_ls
-whols[:<span style="color:#ae81ff">2</span>]
-</code></pre></div><pre><code>SVR	 X	 a	 ax1	 ax2	 ax3	 axes	 f	 fig	 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">%</span>who
+</span></span><span style="display:flex;"><span><span style="color:#f92672">%</span>who function
+</span></span><span style="display:flex;"><span>whols <span style="color:#f92672">=</span> <span style="color:#f92672">%</span>who_ls
+</span></span><span style="display:flex;"><span>whols[:<span style="color:#ae81ff">2</span>]
+</span></span></code></pre></div><pre><code>SVR	 X	 a	 ax1	 ax2	 ax3	 axes	 f	 fig	 
 ix	 kernel_label	 lw	 model_color	 np	 npSum	 plt	 svr	 svr_lin	 
 svr_poly	 svr_rbf	 svrs	 t.txt	 t1	 whols	 y	 y_lin	 y_poly	 
 y_rbf	 
@@ -290,93 +290,93 @@ f	 npSum
 </table>
 <h3 id="python-库">Python 库</h3>
 <p>有一些 Python 库被 Jupyter-Notebook 很好的支持，可以在 Help 中看到这些库的手册链接。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">npSum</span>():
-    a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10000</span>)
-    b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10000</span>)
-    c <span style="color:#f92672">=</span> a<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
-    <span style="color:#66d9ef">return</span> c
-npSum()
-</code></pre></div><pre><code>array([        0,         2,         8, ..., 199880018, 199920008,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">npSum</span>():
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10000</span>)
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10000</span>)
+</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">=</span> a<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> c
+</span></span><span style="display:flex;"><span>npSum()
+</span></span></code></pre></div><pre><code>array([        0,         2,         8, ..., 199880018, 199920008,
        199960002])
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(t):
-    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>t) <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>cos(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>pi<span style="color:#f92672">*</span>t)
-
-
-t1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">3.0</span>, <span style="color:#ae81ff">0.01</span>)
-
-ax1 <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">212</span>)
-ax1<span style="color:#f92672">.</span>margins(<span style="color:#ae81ff">0.05</span>)           <span style="color:#75715e"># Default margin is 0.05, value 0 means fit</span>
-ax1<span style="color:#f92672">.</span>plot(t1, f(t1), <span style="color:#e6db74">&#39;k&#39;</span>)
-
-ax2 <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">221</span>)
-ax2<span style="color:#f92672">.</span>margins(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)           <span style="color:#75715e"># Values &gt;0.0 zoom out</span>
-ax2<span style="color:#f92672">.</span>plot(t1, f(t1), <span style="color:#e6db74">&#39;r&#39;</span>)
-ax2<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;Zoomed out&#39;</span>)
-
-ax3 <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">222</span>)
-ax3<span style="color:#f92672">.</span>margins(x<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, y<span style="color:#f92672">=-</span><span style="color:#ae81ff">0.25</span>)   <span style="color:#75715e"># Values in (-0.5, 0.0) zooms in to center</span>
-ax3<span style="color:#f92672">.</span>plot(t1, f(t1), <span style="color:#e6db74">&#39;g&#39;</span>)
-ax3<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;Zoomed in&#39;</span>)
-
-plt<span style="color:#f92672">.</span>show()
-</code></pre></div><p><img src="https://blog.zhengzangw.com/images/Jupyter-Notebook-Introduction/Jupyter-Notebook-Introduction_14_0.png" alt="png"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Example from Sklearn</span>
-<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">from</span> sklearn.svm <span style="color:#f92672">import</span> SVR
-<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
-
-<span style="color:#75715e"># #############################################################################</span>
-<span style="color:#75715e"># Generate sample data</span>
-X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sort(<span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">1</span>), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sin(X)<span style="color:#f92672">.</span>ravel()
-
-<span style="color:#75715e"># #############################################################################</span>
-<span style="color:#75715e"># Add noise to targets</span>
-y[::<span style="color:#ae81ff">5</span>] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">0.5</span> <span style="color:#f92672">-</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">8</span>))
-
-<span style="color:#75715e"># #############################################################################</span>
-<span style="color:#75715e"># Fit regression model</span>
-svr_rbf <span style="color:#f92672">=</span> SVR(kernel<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;rbf&#39;</span>, C<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, gamma<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, epsilon<span style="color:#f92672">=</span><span style="color:#ae81ff">.1</span>)
-svr_lin <span style="color:#f92672">=</span> SVR(kernel<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;linear&#39;</span>, C<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, gamma<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;auto&#39;</span>)
-svr_poly <span style="color:#f92672">=</span> SVR(kernel<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;poly&#39;</span>, C<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, gamma<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;auto&#39;</span>, degree<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, epsilon<span style="color:#f92672">=</span><span style="color:#ae81ff">.1</span>,
-               coef0<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-y_rbf <span style="color:#f92672">=</span> svr_rbf<span style="color:#f92672">.</span>fit(X, y)<span style="color:#f92672">.</span>predict(X)
-y_lin <span style="color:#f92672">=</span> svr_lin<span style="color:#f92672">.</span>fit(X, y)<span style="color:#f92672">.</span>predict(X)
-y_poly <span style="color:#f92672">=</span> svr_poly<span style="color:#f92672">.</span>fit(X, y)<span style="color:#f92672">.</span>predict(X)
-
-<span style="color:#75715e"># #############################################################################</span>
-<span style="color:#75715e"># Look at the results</span>
-lw <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
-
-svrs <span style="color:#f92672">=</span> [svr_rbf, svr_lin, svr_poly]
-kernel_label <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;RBF&#39;</span>, <span style="color:#e6db74">&#39;Linear&#39;</span>, <span style="color:#e6db74">&#39;Polynomial&#39;</span>]
-model_color <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;m&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;g&#39;</span>]
-
-fig, axes <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(nrows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, ncols<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">10</span>), sharey<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-<span style="color:#66d9ef">for</span> ix, svr <span style="color:#f92672">in</span> enumerate(svrs):
-    axes[ix]<span style="color:#f92672">.</span>plot(X, svr<span style="color:#f92672">.</span>fit(X, y)<span style="color:#f92672">.</span>predict(X), color<span style="color:#f92672">=</span>model_color[ix], lw<span style="color:#f92672">=</span>lw,
-                  label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> model&#39;</span><span style="color:#f92672">.</span>format(kernel_label[ix]))
-    axes[ix]<span style="color:#f92672">.</span>scatter(X[svr<span style="color:#f92672">.</span>support_], y[svr<span style="color:#f92672">.</span>support_], facecolor<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>,
-                     edgecolor<span style="color:#f92672">=</span>model_color[ix], s<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>,
-                     label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> support vectors&#39;</span><span style="color:#f92672">.</span>format(kernel_label[ix]))
-    axes[ix]<span style="color:#f92672">.</span>scatter(X[np<span style="color:#f92672">.</span>setdiff1d(np<span style="color:#f92672">.</span>arange(len(X)), svr<span style="color:#f92672">.</span>support_)],
-                     y[np<span style="color:#f92672">.</span>setdiff1d(np<span style="color:#f92672">.</span>arange(len(X)), svr<span style="color:#f92672">.</span>support_)],
-                     facecolor<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>, edgecolor<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;k&#34;</span>, s<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>,
-                     label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;other training data&#39;</span>)
-    axes[ix]<span style="color:#f92672">.</span>legend(loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;upper center&#39;</span>, bbox_to_anchor<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">1.1</span>),
-                    ncol<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fancybox<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, shadow<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-
-fig<span style="color:#f92672">.</span>text(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.04</span>, <span style="color:#e6db74">&#39;data&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
-fig<span style="color:#f92672">.</span>text(<span style="color:#ae81ff">0.06</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#e6db74">&#39;target&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, rotation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vertical&#39;</span>)
-fig<span style="color:#f92672">.</span>suptitle(<span style="color:#e6db74">&#34;Support Vector Regression&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>)
-plt<span style="color:#f92672">.</span>show()
-</code></pre></div><p><img src="https://blog.zhengzangw.com/images/Jupyter-Notebook-Introduction/Jupyter-Notebook-Introduction_15_0.png" alt="png"></p></main>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(t):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>t) <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>cos(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>pi<span style="color:#f92672">*</span>t)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>t1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">3.0</span>, <span style="color:#ae81ff">0.01</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax1 <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">212</span>)
+</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>margins(<span style="color:#ae81ff">0.05</span>)           <span style="color:#75715e"># Default margin is 0.05, value 0 means fit</span>
+</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>plot(t1, f(t1), <span style="color:#e6db74">&#39;k&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax2 <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">221</span>)
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>margins(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)           <span style="color:#75715e"># Values &gt;0.0 zoom out</span>
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>plot(t1, f(t1), <span style="color:#e6db74">&#39;r&#39;</span>)
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;Zoomed out&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax3 <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">222</span>)
+</span></span><span style="display:flex;"><span>ax3<span style="color:#f92672">.</span>margins(x<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, y<span style="color:#f92672">=-</span><span style="color:#ae81ff">0.25</span>)   <span style="color:#75715e"># Values in (-0.5, 0.0) zooms in to center</span>
+</span></span><span style="display:flex;"><span>ax3<span style="color:#f92672">.</span>plot(t1, f(t1), <span style="color:#e6db74">&#39;g&#39;</span>)
+</span></span><span style="display:flex;"><span>ax3<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;Zoomed in&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p><img src="https://blog.zhengzangw.com/images/Jupyter-Notebook-Introduction/Jupyter-Notebook-Introduction_14_0.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Example from Sklearn</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.svm <span style="color:#f92672">import</span> SVR
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># #############################################################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate sample data</span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sort(<span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">1</span>), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sin(X)<span style="color:#f92672">.</span>ravel()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># #############################################################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add noise to targets</span>
+</span></span><span style="display:flex;"><span>y[::<span style="color:#ae81ff">5</span>] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">0.5</span> <span style="color:#f92672">-</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">8</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># #############################################################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fit regression model</span>
+</span></span><span style="display:flex;"><span>svr_rbf <span style="color:#f92672">=</span> SVR(kernel<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;rbf&#39;</span>, C<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, gamma<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, epsilon<span style="color:#f92672">=</span><span style="color:#ae81ff">.1</span>)
+</span></span><span style="display:flex;"><span>svr_lin <span style="color:#f92672">=</span> SVR(kernel<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;linear&#39;</span>, C<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, gamma<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;auto&#39;</span>)
+</span></span><span style="display:flex;"><span>svr_poly <span style="color:#f92672">=</span> SVR(kernel<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;poly&#39;</span>, C<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, gamma<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;auto&#39;</span>, degree<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, epsilon<span style="color:#f92672">=</span><span style="color:#ae81ff">.1</span>,
+</span></span><span style="display:flex;"><span>               coef0<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>y_rbf <span style="color:#f92672">=</span> svr_rbf<span style="color:#f92672">.</span>fit(X, y)<span style="color:#f92672">.</span>predict(X)
+</span></span><span style="display:flex;"><span>y_lin <span style="color:#f92672">=</span> svr_lin<span style="color:#f92672">.</span>fit(X, y)<span style="color:#f92672">.</span>predict(X)
+</span></span><span style="display:flex;"><span>y_poly <span style="color:#f92672">=</span> svr_poly<span style="color:#f92672">.</span>fit(X, y)<span style="color:#f92672">.</span>predict(X)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># #############################################################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Look at the results</span>
+</span></span><span style="display:flex;"><span>lw <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>svrs <span style="color:#f92672">=</span> [svr_rbf, svr_lin, svr_poly]
+</span></span><span style="display:flex;"><span>kernel_label <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;RBF&#39;</span>, <span style="color:#e6db74">&#39;Linear&#39;</span>, <span style="color:#e6db74">&#39;Polynomial&#39;</span>]
+</span></span><span style="display:flex;"><span>model_color <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;m&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;g&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig, axes <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(nrows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, ncols<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">10</span>), sharey<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> ix, svr <span style="color:#f92672">in</span> enumerate(svrs):
+</span></span><span style="display:flex;"><span>    axes[ix]<span style="color:#f92672">.</span>plot(X, svr<span style="color:#f92672">.</span>fit(X, y)<span style="color:#f92672">.</span>predict(X), color<span style="color:#f92672">=</span>model_color[ix], lw<span style="color:#f92672">=</span>lw,
+</span></span><span style="display:flex;"><span>                  label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> model&#39;</span><span style="color:#f92672">.</span>format(kernel_label[ix]))
+</span></span><span style="display:flex;"><span>    axes[ix]<span style="color:#f92672">.</span>scatter(X[svr<span style="color:#f92672">.</span>support_], y[svr<span style="color:#f92672">.</span>support_], facecolor<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>,
+</span></span><span style="display:flex;"><span>                     edgecolor<span style="color:#f92672">=</span>model_color[ix], s<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>                     label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> support vectors&#39;</span><span style="color:#f92672">.</span>format(kernel_label[ix]))
+</span></span><span style="display:flex;"><span>    axes[ix]<span style="color:#f92672">.</span>scatter(X[np<span style="color:#f92672">.</span>setdiff1d(np<span style="color:#f92672">.</span>arange(len(X)), svr<span style="color:#f92672">.</span>support_)],
+</span></span><span style="display:flex;"><span>                     y[np<span style="color:#f92672">.</span>setdiff1d(np<span style="color:#f92672">.</span>arange(len(X)), svr<span style="color:#f92672">.</span>support_)],
+</span></span><span style="display:flex;"><span>                     facecolor<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>, edgecolor<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;k&#34;</span>, s<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>                     label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;other training data&#39;</span>)
+</span></span><span style="display:flex;"><span>    axes[ix]<span style="color:#f92672">.</span>legend(loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;upper center&#39;</span>, bbox_to_anchor<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">1.1</span>),
+</span></span><span style="display:flex;"><span>                    ncol<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fancybox<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, shadow<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>text(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.04</span>, <span style="color:#e6db74">&#39;data&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>text(<span style="color:#ae81ff">0.06</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#e6db74">&#39;target&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>, rotation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vertical&#39;</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>suptitle(<span style="color:#e6db74">&#34;Support Vector Regression&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p><img src="https://blog.zhengzangw.com/images/Jupyter-Notebook-Introduction/Jupyter-Notebook-Introduction_15_0.png" alt="png"></p></main>
         </div>
 
     </div>

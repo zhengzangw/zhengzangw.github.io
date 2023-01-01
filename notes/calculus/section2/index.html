@@ -112,20 +112,20 @@
 <ul>
 <li>换元积分法
 <ul>
-<li>$\int f(\varphi(x))\varphi'(x)dx=\int f(u)du$</li>
-<li>$\int_a^b f(\varphi(x))\varphi'(x)dx=\int_a^bf(\varphi(x))d\varphi(x)=\int_{\varphi(a)}^{\varphi(b)}f(u)du$
+<li>$\int f(\varphi(x))\varphi&rsquo;(x)dx=\int f(u)du$</li>
+<li>$\int_a^b f(\varphi(x))\varphi&rsquo;(x)dx=\int_a^bf(\varphi(x))d\varphi(x)=\int_{\varphi(a)}^{\varphi(b)}f(u)du$
 <ol>
 <li>$f(u)$ 在 $I$ 上连续，$\varphi(x)$ 在 $[a,b]$ 上连续可微</li>
-<li>$f(u)$ 在 $I$ 上可积，$\varphi(x)$ 在 $[a,b]$ 上可微且单调，$\varphi'(x)$ 在 $[a,b]$ 上可积</li>
+<li>$f(u)$ 在 $I$ 上可积，$\varphi(x)$ 在 $[a,b]$ 上可微且单调，$\varphi&rsquo;(x)$ 在 $[a,b]$ 上可积</li>
 </ol>
 </li>
-<li>第二换元积分法：$u=\varphi(x),\alpha=\varphi(a),\beta=\varphi(b),\int_\alpha^\beta f(u)du=\int_a^bf(\varphi(x))\varphi'(x)dx$</li>
+<li>第二换元积分法：$u=\varphi(x),\alpha=\varphi(a),\beta=\varphi(b),\int_\alpha^\beta f(u)du=\int_a^bf(\varphi(x))\varphi&rsquo;(x)dx$</li>
 </ul>
 </li>
 <li>分布积分法
 <ul>
 <li>$\int f(x)dg(x)=f(x)g(x)-\int g(x)df(x)$</li>
-<li>$\int_a^b f(x)g'(x)dx = f(x)g(x)|_a^b-\int_a^b f'(x)g(x)dx$</li>
+<li>$\int_a^b f(x)g&rsquo;(x)dx = f(x)g(x)|_a^b-\int_a^b f&rsquo;(x)g(x)dx$</li>
 </ul>
 </li>
 <li>公式
@@ -193,11 +193,11 @@
 <li>唯一性，局部性</li>
 <li>可导$\Rightarrow$连续</li>
 <li>线性</li>
-<li>Leibniz 法则：$(fg)'(x_0)=f'(x_0)g(x_0)+f(x_0)g'(x_0)$</li>
-<li>链法则：$(f\circ g)'(x_0)=f'(g(x_0))g'(x_0)$</li>
+<li>Leibniz 法则：$(fg)&rsquo;(x_0)=f&rsquo;(x_0)g(x_0)+f(x_0)g&rsquo;(x_0)$</li>
+<li>链法则：$(f\circ g)&rsquo;(x_0)=f&rsquo;(g(x_0))g&rsquo;(x_0)$</li>
 <li>参数求导法：$\frac{dy}{dx}|<em>{x=x(t_0)}=\frac{\frac{dy}{dx}|</em>{t=t_0}}{\frac{dx}{dt}|_{t=t_0}}$</li>
-<li>$(a^x)'=a^x\ln a$</li>
-<li>$(\log_a|x|)'=(x\ln a)^{-1}$</li>
+<li>$(a^x)&rsquo;=a^x\ln a$</li>
+<li>$(\log_a|x|)&rsquo;=(x\ln a)^{-1}$</li>
 <li>单侧导数</li>
 <li>初等函数导函数是初等函数</li>
 </ul>
@@ -210,7 +210,7 @@
 </li>
 <li>$f$ 在 $x=x_0$ 处可导 $\iff x\rightarrow x_0,f(x)-f(x_0)=A(x-x_0)+o(|x-x_0|)$
 <ul>
-<li>$A=f'(x_0)$</li>
+<li>$A=f&rsquo;(x_0)$</li>
 <li>$R(x)$ 为余项</li>
 </ul>
 </li>
@@ -226,8 +226,8 @@
 <li>$dx$: 恒等函数 $dx(\omega)=\omega$</li>
 <li>$df(x_0)$：$f(x)$ 在 $x=x_0$ 处可导，函数 $df(x_0):\mathbb{R}\rightarrow\mathbb{R}$
 <ul>
-<li>$df(x_0)=f'(x_0)dx$</li>
-<li>$df(x,\omega)=df(x)(\omega)=f'(x)\omega$</li>
+<li>$df(x_0)=f&rsquo;(x_0)dx$</li>
+<li>$df(x,\omega)=df(x)(\omega)=f&rsquo;(x)\omega$</li>
 <li>线性</li>
 <li>Leibniz 法则</li>
 <li>链法则</li>
@@ -238,23 +238,23 @@
 <ul>
 <li>微积分基本定理:
 <ul>
-<li>$f$ 在 $[a,b]$ 上连续则 $F(x)=\int_a^xf(t)dt$ 在 $[a,b]$ 上可微，且$F'=f$
+<li>$f$ 在 $[a,b]$ 上连续则 $F(x)=\int_a^xf(t)dt$ 在 $[a,b]$ 上可微，且$F&rsquo;=f$
 <ul>
 <li>$\frac{d}{dx}\int_a^xf(t)dt=f(x)$</li>
 <li>$F$ 为 $f$ 的原函数</li>
 <li>$\int f(x)dx=F(x)+C$</li>
 </ul>
 </li>
-<li>$f$ 在 $[a,b]$ 上可积，则 $F$ 在 $[a,b]$ 上连续，且若 $f(x)$ 在 $x_0$ 处连续，$F'(x_0)=f(x_0)$</li>
+<li>$f$ 在 $[a,b]$ 上可积，则 $F$ 在 $[a,b]$ 上连续，且若 $f(x)$ 在 $x_0$ 处连续，$F&rsquo;(x_0)=f(x_0)$</li>
 </ul>
 </li>
 <li>Newton-Leibniz 公式：$F$ 在 $[a,b]$ 上连续可微，则 $\int_a^b\frac{d}{dx}F(x)dx=F(b)-F(a)=F|^b_a$</li>
-<li>Rolle 中值定理：$f$ 在 $[a,b]$ 上连续，在$(a,b)$上可导，$f(a)=f(b)$ 则 $\exists\xi\in[a,b],f'(\xi)=0$</li>
-<li>Lagrange 中值定理：$F$ 在 $[a,b]$ 上连续，在$(a,b)$上可微，则$\exists\xi\in(a,b),F(b)-F(a)=F'(\xi)(b-a)$</li>
+<li>Rolle 中值定理：$f$ 在 $[a,b]$ 上连续，在$(a,b)$上可导，$f(a)=f(b)$ 则 $\exists\xi\in[a,b],f&rsquo;(\xi)=0$</li>
+<li>Lagrange 中值定理：$F$ 在 $[a,b]$ 上连续，在$(a,b)$上可微，则$\exists\xi\in(a,b),F(b)-F(a)=F&rsquo;(\xi)(b-a)$</li>
 <li>L&rsquo;Hospital 法则：
 <ul>
-<li>$\frac{0}{0}:\lim_{x\rightarrow a^+}f(x)=\lim_{x\rightarrow a^+}g(x)=0,\lim_{x\rightarrow a^+}\frac{f'(x)}{g'(x)}=A$ 则 $\lim_{x\rightarrow a^+}\frac{f(x)}{g(x)}=A$</li>
-<li>$\frac{\infty}{\infty}:\lim_{x\rightarrow a^+}g(x)=\pm\infty,\lim_{x\rightarrow a^+}\frac{f'(x)}{g'(x)}=A$ 则 $\lim_{x\rightarrow a^+}\frac{f(x)}{g(x)}=A$</li>
+<li>$\frac{0}{0}:\lim_{x\rightarrow a^+}f(x)=\lim_{x\rightarrow a^+}g(x)=0,\lim_{x\rightarrow a^+}\frac{f&rsquo;(x)}{g&rsquo;(x)}=A$ 则 $\lim_{x\rightarrow a^+}\frac{f(x)}{g(x)}=A$</li>
+<li>$\frac{\infty}{\infty}:\lim_{x\rightarrow a^+}g(x)=\pm\infty,\lim_{x\rightarrow a^+}\frac{f&rsquo;(x)}{g&rsquo;(x)}=A$ 则 $\lim_{x\rightarrow a^+}\frac{f(x)}{g(x)}=A$</li>
 <li>$0\cdot\infty=\frac{0}{\frac{1}{\infty}}$</li>
 <li>$0^0=e^{0\ln 0}=e^{0\cdot\infty}$</li>
 <li>$\infty^0=e^{0\ln \infty}=e^{0\cdot\infty}$</li>

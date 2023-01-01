@@ -86,14 +86,14 @@
             </div>
             <main class="flex-column-80"><h1 id="prepare">Prepare</h1>
 <h2 id="离散化">离散化</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">m <span style="color:#f92672">=</span> a.y
-sort(m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,m<span style="color:#f92672">+</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
-len <span style="color:#f92672">=</span> unique(m,m<span style="color:#f92672">+</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">-</span> m
-<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;=</span>n;<span style="color:#f92672">++</span>i) a[i].y <span style="color:#f92672">=</span> lower_bound(m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,m<span style="color:#f92672">+</span>len<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,a[i].y) <span style="color:#f92672">-</span> m;
-</code></pre></div><h2 id="c技巧">C++技巧</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">std<span style="color:#f92672">::</span>copy(begin,end,des)
-std<span style="color:#f92672">::</span>reverse(begin,end)
-</code></pre></div></main>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>m <span style="color:#f92672">=</span> a.y
+</span></span><span style="display:flex;"><span>sort(m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,m<span style="color:#f92672">+</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>len <span style="color:#f92672">=</span> unique(m,m<span style="color:#f92672">+</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">-</span> m
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;=</span>n;<span style="color:#f92672">++</span>i) a[i].y <span style="color:#f92672">=</span> lower_bound(m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,m<span style="color:#f92672">+</span>len<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,a[i].y) <span style="color:#f92672">-</span> m;
+</span></span></code></pre></div><h2 id="c技巧">C++技巧</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>copy(begin,end,des)
+</span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>reverse(begin,end)
+</span></span></code></pre></div></main>
         </div>
 
     </div>

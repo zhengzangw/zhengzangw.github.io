@@ -49,7 +49,7 @@
 for i=1 to N for v = V to Ci F[v] = max{F[v],F[v-Ci]+Wi} 恰好装满：$F[1..V] = -\infty; F[0] = 0$
 无必要： $F[0..V] = 0$
 完全背包 $$F[i,v] = \max{F[i-1,v-kCi] + kWi | 0&amp;lt;=kCi&amp;lt;=v &amp;amp;&amp;amp; 0&amp;lt;=k&amp;lt;Mi}$$ （利用$F[i,v-Ci]$代换）
- $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物品 j 直接去掉，不用考虑 $O(V+N)$ 首先将费用大于 V 的物品去掉，然后使用类似计数排序的做法，计算出费用相同的物品中价值最高的是哪个 把第 i 种物品拆成费用为 Ci2k、价值为 Wi2k 的若干件物品，其中 k 取遍满足 Ci2k≤V 的非负整数  for i = 1 to N for v = Ci to v F[v] = max(F[v],F[v-Ci]+Wi) 多重背包 完全背包思路（可以看作是分组背包问题）</description>
+$O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物品 j 直接去掉，不用考虑 $O(V+N)$ 首先将费用大于 V 的物品去掉，然后使用类似计数排序的做法，计算出费用相同的物品中价值最高的是哪个 把第 i 种物品拆成费用为 Ci2k、价值为 Wi2k 的若干件物品，其中 k 取遍满足 Ci2k≤V 的非负整数 for i = 1 to N for v = Ci to v F[v] = max(F[v],F[v-Ci]+Wi) 多重背包 完全背包思路（可以看作是分组背包问题）</description>
     </item>
     
     <item>
