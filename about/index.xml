@@ -24,7 +24,8 @@
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
       <guid>https://zhengzangw.com/about/interest/</guid>
-      <description>My current research lies in efficient maching learning and optimization, including large-batch training, efficient self-supervised learning and transfer learning.</description>
+      <description>My current research lies in efficient maching learning and optimization, mainly including:
+Large-batch training Efficient long context learning DL Optimizer </description>
     </item>
     
     <item>
