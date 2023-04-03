@@ -6,14 +6,14 @@
     <description>Recent content in [&#43;] 计算机视觉 Computer Vision on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Tue, 18 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/computer-vision/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Grouping and Segmentation</title>
       <link>https://zhengzangw.com/notes/computer-vision/3-grouping-and-fitting/</link>
       <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/computer-vision/3-grouping-and-fitting/</guid>
       <description>Grouping Goals Gather features that belong together obtain an intermediate representation that cmopactly describes key image or video parts Top down segmentation: pixels belong together because they are from the same object Bottom up segmentation: pixels belong together because they look similar Gestalt Theory Whole is greater than sum of its parts Relationships among parts can yield new properties/features Segmentation K-means clustering Probabilistic clustering Mixture of Gaussians GMM Mean-shift Algorithm </description>
     </item>
@@ -22,7 +22,7 @@
       <title>Features and Filters</title>
       <link>https://zhengzangw.com/notes/computer-vision/2-features-and-filters/</link>
       <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/computer-vision/2-features-and-filters/</guid>
       <description>Images and Filtering Digital Image
 Bayer Filer：相机滤色版每个点有三个值，一个为传感器得到，两个为插值
@@ -43,7 +43,7 @@ Sum Square Difference: next fastest, sensitive to overall intensity</description
       <title>introduction</title>
       <link>https://zhengzangw.com/notes/computer-vision/1-introduction/</link>
       <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/computer-vision/1-introduction/</guid>
       <description>计算机视觉 Image(video) -&amp;gt; (sensing device) -&amp;gt; (interpreting device) -&amp;gt; Interpretations Automatic understanding of images and video Measurement: Computing properties of the 3D world from visual data Perception and interpretation: Algorithms and representations to allow a machine to recognize objects, scene and people 应用 Faces and digital cameras Video-based interfaces safety and security Navigation, driver safety Monitoring pool Pedestrian detection Surveillance Vison for medical and neuroimages 困难：Gap between low level signal and high level meanings ill posed problem large variation: illumination, object pose, clutter, occlusions, intra-class appearance, viewpoint intra-class variation context complexity Progress chart by dataset Roberts 1963 COIL MIT-CMU Faces (2000) UIUC Cars INRIA Pedestrians MSRC 21 Objects (2005) Caltech-101 Caltech-256 PASCAL VOC (2010)：奠定了计算机视觉评价体系 Faces in the Wild 80M Tiny Images ImageNet：多；长尾 Birds-200 Tasks Recogintion: General categories Large scale recognition Recognition in first-person view Object detection, instance segmentation image captioning image generation CVPR&#39;19 by the numbers Submissions: 5160 Accepted: 1294 Registered Attendees: 9227 Marr&amp;rsquo;s vision framework computational level algorithmic/representational level implementational/physical level Malik&amp;rsquo;s Perspective: Recognition, Reorganization, Reconstruction Important note: In general, computer vision does not work (except in certain situations/conditions) </description>
     </item>
@@ -52,7 +52,7 @@ Sum Square Difference: next fastest, sensitive to overall intensity</description
       <title></title>
       <link>https://zhengzangw.com/notes/computer-vision/3-matching-and-alignment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/computer-vision/3-matching-and-alignment/</guid>
       <description></description>
     </item>
@@ -61,7 +61,7 @@ Sum Square Difference: next fastest, sensitive to overall intensity</description
       <title></title>
       <link>https://zhengzangw.com/notes/computer-vision/4-recognition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/computer-vision/4-recognition/</guid>
       <description></description>
     </item>
@@ -70,7 +70,7 @@ Sum Square Difference: next fastest, sensitive to overall intensity</description
       <title></title>
       <link>https://zhengzangw.com/notes/computer-vision/5-video-understanding/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/computer-vision/5-video-understanding/</guid>
       <description></description>
     </item>

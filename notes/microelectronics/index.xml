@@ -6,14 +6,14 @@
     <description>Recent content in [S] 微电子 Micro-Electronics on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Fri, 31 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/microelectronics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微电子基础</title>
       <link>https://zhengzangw.com/notes/microelectronics/basic/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/microelectronics/basic/</guid>
       <description>计算机发展历史 电子管时代： 1940s-1950s ENIAC(1946,ABC公司)，电子数字积分计算器。 晶体管时代： 1950s-1960s 晶体管：一种用以代替真空管的电子信号放大元件。 1947年贝尔实验室制造成功了第一个半导体晶体管 1949年贝尔实验室做出了第一个锗PNP型晶体管。 1956年bardeen,Shockley,Brattain获得诺贝尔物理学奖。 TRADIC(1954):世界上第一台全晶体管计算机。 集成电路时代： 1960s- 1958年，Jack Kilby发明了第一块锗集成电路振荡器。（2000诺贝尔物理学奖） 1970年，Intel推出第一个商用 动态随机存储器(DRAM)1103,容量1 Kbits,标志着大规模集成电路(LSI)出现。 1978年，64kbDRAM出现标志这进入了超大规模集成电路时代。 摩尔定律 定义：IC集成度每一年提高一倍，即技术每两年提升一代，1975年修正：进入80年代后，技术每3年提升一代。 技术基础：不断缩小的晶体管尺寸。 集成电路规模 SSI: &amp;lt;102 MSI: 102~103 LSI: 103~105 VLSI: 105~107 ULSI: 107~109 GLSI: &amp;gt;109 微电子学定义 研究在固体（主要是半导体材料）上构成的微小化电路及系统的电子学分支，主要是研究电子或离子在固体材料中的运动规律及其应用，并利用它实现电磁信号和信息处理功能的电子科学。它以实现电路和系统的集成为目的。微电子学中实现的电路和系统又称为集成电路和集成系统，是微小化的；在微电子学中的空间尺寸通常是以微米（μm，1μm=10 − 6m）和纳米（nm，1nm=10 − 9 m）为单位的。
 微电子技术是随着集成电路尤其是超大规模集成电路发展起来的技术。主要包括了电路系统设计，器件物理，工艺技术，材料制备，测试和封装的专门的技术，是微电子学中各项工艺技术的总和。
@@ -24,7 +24,7 @@
       <title>Electrocircuit</title>
       <link>https://zhengzangw.com/notes/microelectronics/electrocircuit/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/microelectronics/electrocircuit/</guid>
       <description>电路与电路模型 电路：电气器件构成，并具有一定功能
 电路模型：一个实际电路可以由多个理想元件的组合来模拟，这样的电路称为电路模型
@@ -48,7 +48,7 @@
       <title>transistor</title>
       <link>https://zhengzangw.com/notes/microelectronics/transistor/</link>
       <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/microelectronics/transistor/</guid>
       <description>半导体物理基础 半导体材料 导体：$\rho&amp;lt;10^{-4}\Omega\cdot$ cm 绝缘体：$\rho&amp;gt;10^9\Omega\cdot$ cm 半导体导电能力与温度，光照，掺杂浓度相关 典型半导体：硅 Si,锗 Ge,砷化镓 GaAs 半导体共价键结构：一般为四价元素，最外层四个电子被称为价电子，和周围四个原子的价电子分别形成共价键 本征半导体 本征半导体：化学成分纯净的半导体，物理结构呈单晶体形态。纯度到要达到 9 个 9 载流子：可以自由移动的带电粒子 电导率：与材料单位体积中所含的载流子数量相关，载流子浓度越高，电导率越高 本征激发：半导体受到光，热激发时，某些电子可以从外界获得挣脱共价键束缚的能量，从而离开原子成为自由电子，同时再共价键中留下相同数量的空穴 电子空穴对：由热激发而产生的自由电子和空穴对 空穴的移动是依靠相邻共价键中的价电子依次填充空穴来实现的 复合：当自由电子遇到空穴后相互结合形成一个新的共价键 在温度一定时，本征激发和复合会达到动态平衡 本征半导体的缺点：载流子少，导电性差，温度稳定性差 杂志半导体 定义：在本征半导体中掺入某些微量元素作为杂质，可以使半导体的导电性发生显著变化，主要掺入的是三价元素或五价元素 P 型半导体：掺入三价杂质元素(如硼，镓，铟)等 因三价原子和硅原子形成共价键时，缺少一个价电子从而留下一个空穴 多子：空穴 受主杂质：$N_A$ $N_A+n=p$ N 型半导体：掺入五价杂质元素(如磷) 多子：自由电子 $N_D+p=n$ 漂移电流：在电场作用下，载流子在电场中的漂移运动形成的电流 $v_n=-\mu_nE,v_p=\mu_pE$ $\mu$: 载流子偏移率 $I=-vWHnq$ 扩散电流：因浓度差，载流子从高浓度向低浓度扩散而形成的电流 PN 结 在一块本征半导体两侧扩散不同的杂质原子，使得一边为 P 型一边为 N 型，两边多子由于浓度差，向对方扩撒，从而内部的空间电荷区形成一个电场，内电场抑制多子扩散，同时促进少子漂移，最终达到平衡。P，N 型半导体接合面，离子薄层形成的 空间电荷区被称为 PN 结（空间电荷区，耗尽层，势垒区，非线性电阻） 单向导电性 在 PN 结外部加上电压，当 P 区电位高于 N 区电位，称为加上了正向电压，简称为正偏，反之为反向电压，简称反偏 正偏时，外部电压促进多子扩散，从而导致中间空间电荷区变窄，PN 结呈现的状态是低电阻状态，大的正向扩散电流 反偏时，外部电压一直多子扩散，促进少子漂移，从而导致空间电荷区变宽，PN 结呈现的状态是高电压，小的反向漂移电流。在一定温度下，本征激发形成的少子数量一定，此时形成的漂移电流一定，和外部电压无关，称为反向饱和电流 PN 结 $V$-$I$ 特性表达式：$i_D=I_S(e^{\frac{v_D}{V_T}-1})$ 反向击穿 当反向电压达到一定数值时，反向电流突然快速增加的现象 分为电击穿(雪崩击穿，齐纳击穿)此时可逆，热击穿此时不可逆 雪崩击穿：空间电荷区的电子在电场中获得足够的动能撞击其他原子从而产生更多的自由电子-空穴对，新的电子又同样撞击其他原子，如此连锁反应，使得载流子数量雪崩式增加，从而导致电流急剧加大。具有正的温度系数 齐纳击穿：反向电压足够大时，在电场的作用下，价电子之间的共价键被拉断，从而价电子变成自由电子，自由电子在电场的作用下移动到 N 区，空穴移动到 P 区，使得电流急剧增大。常发生在掺杂浓度较高的 PN 结中，具有负的温度系数(温度升高，共价键更容易被破坏) 二极管 二极管：PN 结上加上引线和封装 单向导电性：整流,检波,开关 PN 结压降：温度传感器，参考电压 非线性电流-电压特性：调节电压，限制电压 结构分类 点接触型二极管 面接触型二极管 平面型二极管 硅二极管的死区电压$V_{th}=[0.</description>
     </item>

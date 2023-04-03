@@ -6,14 +6,14 @@
     <description>Recent content in tensorflow on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Fri, 31 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introuction to TensorFlow 1 Picture Handle</title>
       <link>https://zhengzangw.com/posts/tensorflow-picture/</link>
       <pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/posts/tensorflow-picture/</guid>
       <description>&lt;h1 id=&#34;图片的基础知识&#34;&gt;图片的基础知识&lt;/h1&gt;
 &lt;p&gt;像素值只有 0，1： 二值图&lt;br&gt;
@@ -35,7 +35,7 @@ $$l = (max(rgb) + min(rgb)) / 2$$&lt;/p&gt;
       <title>A toy experiments on Tensorflow 1</title>
       <link>https://zhengzangw.com/posts/tensorflow-experiment/</link>
       <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/posts/tensorflow-experiment/</guid>
       <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;《深度学习》终于获得了“过半警告”，不过CNN,RNN都还没学。前面的很多算法都没有实践看过效果，决定在Tensorflow上实现一下。&lt;/p&gt;

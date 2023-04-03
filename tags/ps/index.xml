@@ -6,14 +6,14 @@
     <description>Recent content in ps on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Thu, 23 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/ps/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>7-Number Theory</title>
       <link>https://zhengzangw.com/notes/problem-solving/7-number-theory/</link>
       <pubDate>Wed, 16 Jan 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/7-number-theory/</guid>
       <description>背景知识 自然数的集合论定义： $a^+:=a\cup{a}$ 归纳集 $\emptyset\in A$ $\forall a(a\in A\rightarrow a^+\in A)$ $\mathbb{N}$ 为所有归纳集之交 Peano 结构 $e\in S$ $\forall a\in S,f(a)\in S$ $\forall b\in S,\forall c\in S,f(b)=f(c)\rightarrow b=c$ $\forall a\in S,f(a)\not= e$ $\forall A\subseteq S, (e\in A\wedge(\forall a\in A)(f(a)\in A))\rightarrow A=S$ 良序公理与数学归纳法原理等价 数论基础 带余除法: $a=bq+r,b&amp;gt;0,0\leq r&amp;lt;b$ 存在性证明：良序公理 唯一性证明 整除及其性质 $a|b,a|c\Rightarrow a|nb+mc$ 最大公因子 (hcf/gcd) 裴蜀定理：$\gcd(a,b)=ar+bs$ 证明：良序公理+带余除法 Strong Duality for GCD: $\max{d_i:d\in\mathbb{Z},d|a,d|b}=\min{ax+by:x\in\mathbb{Z},y\in\mathbb{Z},ax+by&amp;gt;0}$ 证明 $d|s,s|d$ Weak Duality + $\exists$ 唯一性证明 $\text{lcm}(a,b)\gcd(a,b)=ab$ 证明 Isomorphism Theorem Unique Factorization $d|(a,b)\Leftrightarrow d|\frac{ab}{[a,b]}$ $(a,b,c)[a,b,c]=\frac{abc}{[(a,b),(b,c),(c,a)]}$ $[a,b,c]=\frac{abc(a,b,c)}{(a,b)(a,c)(b,c)}$ $\gcd(a,b,c)=\gcd(\gcd(a,b),c)$ 质数 $\pi(x)\sim\frac{x}{\ln{x}}$ 无限质数证明 $P=p_1p_2\cdots p_n+1$ Fermat Numer $F_n=2^{2^n}+1$ 两两互素 $F_n-2=\prod_{k=1}^{n-1}F_k$ Mersenne Number $2^p-1$ $2^p\equiv 1\pmod{q}\Rightarrow p|q-1$ Dirichlet&amp;rsquo;s Theorem: $\gcd(a,m)=1$ then there are infinitely many primes $p,p\equiv a\pmod{m}$ 筛法求素数 算术基本定理 存在性证明：良序公理（找不满足中最小的） 唯一性证明：$1\rightarrow n$ $\varphi(n)=n\prod_{p|n}(1-\frac{1}{p}),p$ is prime $\varphi(p)=p-1$ $\varphi(n)&amp;gt;\frac{n}{e^\gamma\ln\ln n+\frac{3}{\ln\ln n}},\gamma=0.</description>
     </item>
@@ -22,7 +22,7 @@
       <title>String Algorithm</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-string/</link>
       <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-string/</guid>
       <description>&lt;h1 id=&#34;字符串匹配&#34;&gt;字符串匹配&lt;/h1&gt;
 &lt;ul&gt;
@@ -49,7 +49,7 @@
       <title>贪心专题</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-greedy/</link>
       <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-greedy/</guid>
       <description>&lt;h1 id=&#34;活动选择问题&#34;&gt;活动选择问题&lt;/h1&gt;
 &lt;p&gt;最早结束&lt;/p&gt;
@@ -64,7 +64,7 @@
       <title>背包九讲</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-knapsack/</link>
       <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-knapsack/</guid>
       <description>dp 九讲
 01 背包 $$F[i,v] = \max{F[i-1,v],F[i-1,v-Ci]+Wi}$$

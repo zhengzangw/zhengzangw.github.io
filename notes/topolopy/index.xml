@@ -6,14 +6,14 @@
     <description>Recent content in [M] 拓扑学 Topology on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/topolopy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basic</title>
       <link>https://zhengzangw.com/notes/topolopy/basic/</link>
       <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/topolopy/basic/</guid>
       <description>拓扑空间 拓扑空间：$X$ 为集合，$F$ 为 $X$ 中某些子集构成的集族（把 $F$ 中的元素称为 $X$ 中的开集），满足
 $\empty\in F,X\in F$ $U,V\in F, U\cap V\in F$ $U_\alpha\in F,\alpha\in I$, $\cup_{\alpha\in I}U_\alpha\in F$ 则称 $F$ 为 $X$ 上的拓扑

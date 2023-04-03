@@ -6,14 +6,14 @@
     <description>Recent content in config on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei Zheng)</webMaster>
+    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Sat, 04 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/config/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>18. File Hierarchy Standard</title>
       <link>https://zhengzangw.com/notes/command-line/18-file-hierarchy/</link>
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/18-file-hierarchy/</guid>
       <description>&lt;h1 id=&#34;file-hierarchy&#34;&gt;File Hierarchy&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.freedesktop.org/software/systemd/man/file-hierarchy.html&#34;&gt;Link to File Hierarchy&lt;/a&gt;&lt;/p&gt;
@@ -31,7 +31,7 @@
       <title>Setup: PHP</title>
       <link>https://zhengzangw.com/notes/command-line/php-setup/</link>
       <pubDate>Sun, 30 Dec 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/php-setup/</guid>
       <description>&lt;h1 id=&#34;set-up-vm&#34;&gt;Set up VM&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
@@ -50,7 +50,7 @@
       <title>Write Verilog on Macos via icarus-verilog</title>
       <link>https://zhengzangw.com/posts/icarus-verilog/</link>
       <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/posts/icarus-verilog/</guid>
       <description>&lt;h2 id=&#34;mac&#34;&gt;Mac&lt;/h2&gt;
 &lt;ul&gt;
@@ -63,7 +63,7 @@
       <title>Macos Shortcut</title>
       <link>https://zhengzangw.com/posts/mac-shortcut/</link>
       <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/posts/mac-shortcut/</guid>
       <description>&lt;h1 id=&#34;快捷键&#34;&gt;快捷键&lt;/h1&gt;
 &lt;h2 id=&#34;iterm2&#34;&gt;Iterm2&lt;/h2&gt;
@@ -91,7 +91,7 @@
       <title>Build your blogs by Hexo</title>
       <link>https://zhengzangw.com/posts/hexo/</link>
       <pubDate>Sat, 20 Jan 2018 14:50:22 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei Zheng)</author>
+      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/posts/hexo/</guid>
       <description>&lt;h2 id=&#34;hexo&#34;&gt;Hexo&lt;/h2&gt;
 &lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
