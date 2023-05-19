@@ -20,12 +20,6 @@
     <loc>https://zhengzangw.com/notes/static-program-analysis/1-introduction/</loc>
     <lastmod>2020-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/notes/literature-management-and-information-analysis/2-research/</loc>
-    <lastmod>2020-04-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/literature-management-and-information-analysis/1-search/</loc>
-    <lastmod>2020-04-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/software-enginerring/1-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%BC%95%E8%AE%BA/</loc>
     <lastmod>2020-03-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -83,9 +77,6 @@
     <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/1-%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/notes/music-review/%E5%9B%BD%E5%86%85%E6%B0%91%E6%AD%8C/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/data-communication/0-%E7%BB%BC%E8%BF%B0/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
   </url><url>
@@ -117,9 +108,6 @@
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/advanced-algorithm/1-time-saving/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/islam-culture/%E4%B8%AD%E4%B8%9C/</loc>
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/linear-algebra/1-%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/</loc>
@@ -191,9 +179,6 @@
     <loc>https://zhengzangw.com/notes/probability-and-mathematical-statistics/2-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/notes/music-review/%E5%A4%96%E5%9B%BD%E6%B0%91%E6%AD%8C/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/data-communication/1-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%90%86%E8%AE%BA/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
   </url><url>
@@ -256,9 +241,6 @@
     <loc>https://zhengzangw.com/notes/numerical-analysis/3-%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91%E4%B8%8E%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88/</loc>
     <lastmod>2020-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/notes/literature-management-and-information-analysis/creative/</loc>
-    <lastmod>2020-04-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/software-enginerring/3-%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82/</loc>
     <lastmod>2020-03-14T00:00:00+00:00</lastmod>
   </url><url>
@@ -267,9 +249,6 @@
   </url><url>
     <loc>https://zhengzangw.com/notes/computer-graphics/3-primitives/</loc>
     <lastmod>2020-02-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/islam-culture/%E4%BC%8A%E6%96%AF%E5%85%B0/</loc>
-    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/calculus/section3/</loc>
     <lastmod>2019-09-19T00:00:00+00:00</lastmod>
@@ -305,9 +284,6 @@
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/data-communication/2-%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/music-review/%E5%BE%B7%E5%A5%A5%E8%89%BA%E6%9C%AF%E6%AD%8C%E6%9B%B2/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/rendering/3-ray-tracing/</loc>
@@ -869,7 +845,7 @@
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/multimedia/</loc>
-    <lastmod>1970-08-23T00:23:47+08:00</lastmod>
+    <lastmod>1970-08-22T23:53:47+07:30</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/static-program-analysis/</loc>
     <lastmod>2020-04-26T00:00:00+00:00</lastmod>
@@ -887,18 +863,6 @@
     <lastmod>2020-06-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/english/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/japanese/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/literature-management-and-information-analysis/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/music-review/</loc>
-    <lastmod>2019-01-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/islam-culture/</loc>
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/concrete-math/</loc>
@@ -1060,12 +1024,6 @@
     <loc>https://zhengzangw.com/tags/</loc>
     <lastmod>2019-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/tags/culture/</loc>
-    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/islam-culture/%E9%98%BF%E6%8B%89%E4%BC%AF/</loc>
-    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/posts/collaborative-filtering/</loc>
     <lastmod>2019-11-07T00:00:00+00:00</lastmod>
   </url><url>
@@ -1144,12 +1102,6 @@
     <loc>https://zhengzangw.com/notes/machine-learning/others/</loc>
     <lastmod>2019-04-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/tags/japan/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/notes/japanese/japanese/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/tags/android/</loc>
     <lastmod>2019-04-11T00:00:00+00:00</lastmod>
   </url><url>
@@ -1166,9 +1118,6 @@
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/operating-system/os-extension/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/music/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/tags/network/</loc>

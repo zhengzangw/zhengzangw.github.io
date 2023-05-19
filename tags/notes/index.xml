@@ -103,15 +103,6 @@
     </item>
     
     <item>
-      <title>民歌</title>
-      <link>https://zhengzangw.com/notes/music-review/%E5%9B%BD%E5%86%85%E6%B0%91%E6%AD%8C/</link>
-      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/notes/music-review/%E5%9B%BD%E5%86%85%E6%B0%91%E6%AD%8C/</guid>
-      <description>第一课 新民歌/原生态民歌 民歌的基本特征 口头性 集体性 流传变异性 短小精悍 鲜明的风格色彩 独唱，对唱（重唱） 同声合唱 混声合唱 分类 体裁 号子：体力劳动过程中编唱，并直接为之服务的民歌 搬运、工程、农事、船渔、作坊号子 山歌：山野劳动中 一般山歌，放牧山歌，田秧山歌 小调 地域 北方 南方 例子 广东民歌《落雨大》 江西民歌《十送红军》 船运号子 云南山歌《弥渡山歌》 第二课 华北、东北色彩区 西北色彩区 山歌 信天游 花儿 男-少儿 女-花儿 大令/小令 山曲、爬山调 起伏大 号子 东北林号子 黄河硪号，夯号 黄河船夫号 时调 在民间休闲娱乐为助兴唱的民歌 反花调 对花 第三课 汉族南方的民歌 号子 农事号子 连枷号子 春米号子 船夫号子 采石号子 山歌 江浙山歌 客家山歌 西南山歌 云南山歌 《小河淌水》 《放马山歌》 川南山歌 小调 北方少数民族 蒙古族 长调民歌 短调民歌 叙事性、抒情性 朝鲜族 180多万 道拉基 达斡尔族，鄂伦春族，赫哲族 维吾尔族 阿拉木汉 马车夫之恋 哈萨克族 第四课 藏族民歌 谐：歌舞 果谐，堆谐，康谐，囊玛，莱谐 鲁：歌曲 卓鲁（牧歌），（山歌） 苗族民歌 山歌（飞歌，央恰） 生活风俗歌曲 白族民歌 白族调 汉调 纳西族民歌 佤族 傣族 </description>
-    </item>
-    
-    <item>
       <title>综述</title>
       <link>https://zhengzangw.com/notes/data-communication/0-%E7%BB%BC%E8%BF%B0/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
@@ -313,15 +304,6 @@ i&lt;/p&gt;
     </item>
     
     <item>
-      <title>外国民歌</title>
-      <link>https://zhengzangw.com/notes/music-review/%E5%A4%96%E5%9B%BD%E6%B0%91%E6%AD%8C/</link>
-      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/notes/music-review/%E5%A4%96%E5%9B%BD%E6%B0%91%E6%AD%8C/</guid>
-      <description>第五课 外国民歌 朝鲜民歌 《阿里郎》《小白船》 日本民歌 盂兰盆节（中元节，鬼节） 拉网小调 樱花 印度尼西亚 100多民族 星星索 哎哟妈妈 土耳其民歌 厄尔嘎兹 缅甸民歌 海鸥 意大利 我的太阳 重归苏莲托 桑塔露琪亚 好朋友 英国 夏日最后的玫瑰 友谊天长地久（离歌） 第六课 德国 俄罗斯 三套车 伏尔加船夫曲 德涅泊尔 南斯拉夫（-2003） 斯洛伐克民歌 牧童 美国 铃儿响铃铛 克里门泰因 红河谷 巴西 古巴 鸽子 歌剧 哈巴涅拉 我亲爱的爸爸 斗牛士之歌 </description>
-    </item>
-    
-    <item>
       <title>数据传输理论</title>
       <link>https://zhengzangw.com/notes/data-communication/1-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%90%86%E8%AE%BA/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
@@ -422,15 +404,6 @@ NJU: University Physics I - 卢德鑫&lt;/p&gt;
       <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/2-%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/</guid>
       <description>信道指标：数据率，传输距离 电磁波频谱：($10^2$)ELF,VF,VLF,LF,MF,HF,VHF,UHF,SHF,EHF,$10^{12}$,$10^{13}$,$10^{14}$,可见光 导向传输媒介 guided media：电磁波在导线引导下沿某一物理路径前进 点对点：导向媒体在两个设备之间提供了一条仅被这两个设备共享的直连链路 双绞线 扭绞结构 模拟传输 放大器：5km 有限带宽：1MHz 数字传输 转发器：2km 数据率：100Mbps 短距离：1Gbps 随频率增高迅速增加 易受信号反射或回波损耗影响 UTP 非屏蔽双绞线 STP 屏蔽双绞线 金属箔双绞线 FTP 屏蔽的双绞线 F/UTP 完全屏蔽的双绞线 S/FTP 568-C标准 与 ISO/IEC 11801标准 5e/D 6/E 6A/E$_{A}$ 7/F 7A/F$_{A}$ 插入损耗（insertion loss, 模拟） 从发送系统到接受系统链路上的衰减 频率的递增函数 近端串扰（near end crosstalk, NEXT） 从一对导体到另一对导体上的信号耦合，越大越好 端现象 衰耗串扰比： $\text{ACR}{dB}=\text{NEXT}{dB}-A_{dB}$ $\text{ACR}&amp;gt;0\Rightarrow P_r&amp;gt;P_c$ 同轴电缆 光纤 Optical Fiber 优点 容量大：100M-100Gbps/km 体积小 衰减小 电磁隔离 转发器间隔更远 分类 多模突变：入射角平缓的光束被反射并沿着纤维向前转播，其他被周围的物质吸收 多模渐变：中心较高的折射率使得光线沿轴线前进的速度比靠近覆层的慢，光束呈现螺旋状 单模：仅有一个角度能够通过传输纤维 光纤模块 GBIC 接 LC光纤连接器 SFP 接 SC光纤连接器 无导向媒介 unguided media 真空、空气、海水 天线 发射电磁能量和接受电磁能量的电导体 双向通行中，同一个天线可以同时收发 天线种类 各向同性天线 抛物线反射天线 天线增益：$G_{dB}=10\lg(\frac{P_2}{P_1})$, $P_1$ 为定向天线发射功率，$P_2$ 为参考天线功率 有效面积：$G=\frac{4\pi A_e}{\lambda^2}$ $A_e=0.</description>
-    </item>
-    
-    <item>
-      <title>德奥艺术歌曲</title>
-      <link>https://zhengzangw.com/notes/music-review/%E5%BE%B7%E5%A5%A5%E8%89%BA%E6%9C%AF%E6%AD%8C%E6%9B%B2/</link>
-      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/notes/music-review/%E5%BE%B7%E5%A5%A5%E8%89%BA%E6%9C%AF%E6%AD%8C%E6%9B%B2/</guid>
-      <description> classical music: 巴洛克时期到20世纪早期 维也纳：奥地利共和国首都🇦🇹 德语文化圈 德国，奥地利，列支敦士登，瑞士，卢森堡，比利时 古典音乐命名 作品号：唯一标识某作曲家每部作品，有出版商/编目者编号 Op. 时间顺序 no. 作品中多首乐曲 BWV. 巴赫（作品体裁） HWV. 亨廷顿 KV. 莫扎特 D. 舒伯特 奥地利音乐学家多依奇编号 系列号 组曲号：一部组曲各个曲目编号 乐章号 Lied 利德 lieder 民谣，乐曲 舒伯特 魔王 D328 纺车旁的格丽卿 D118 歌德 野玫瑰 D257 鳟鱼 D550 摇篮曲 D527 即兴曲三首其二 D946 莫扎特 紫罗兰 K.476 渴望春天 K.596 舒曼 献词 Op.25 核桃树 两个禁卫兵 Op.49 门德尔松(1809-1847) 乘着歌声的翅膀 瓦格纳(1813-1883) 勃拉姆斯(1833-1897) 徒然小夜曲 沃尔夫(1860-1903) 谁想出这只小歌 马勒 大地之歌 </description>
     </item>
     
     <item>
@@ -773,90 +746,6 @@ Single qubit operator Pauli operators $I=(1,0;0,1)$ $X=(0,1;1,0)$ (非门) $X|0\
       <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/machine-learning/others/</guid>
       <description>技术浪潮 神经网络 支持向量机 神经网络 年份 89-94 95-05 06- 代表性技术 BP 算法 核方法，统计学习理论 深度学习 生成式与判别式 判别式(discriminative) 生成式(generative) 对 $P(c\vert x)$ 建模 对 $P(c \vert x)=\frac{P(x,c)}{P(x)}$ 建模 实例 决策树，BP 神经网络，SVM 贝叶斯分类器 实际环境中问题 i.i.d. 改变，concept driven，后验概率不变 没有做“多余”工作 做了“多余”工作 神经网络发展史 第一阶段 1943 年, McCulloch 和 Pitts 提出第一个神经元数学模型, 即 M-P 模型, 并从原理上证明了人工神经网络能够计算任何算数和逻辑函数 1949 年, Hebb 发表《The Organization of Behavior》一书, 提出生物神经元学习的机理, 即 Hebb 学习规则 1958 年, Rosenblatt 提出感知机网络(Perceptron)模型和其学习规则 1960 年, Widrow 和 Hoff 提出自适应线性神经元(Adaline)模型和最小均方学习算法 1969 年, Minsky 和 Papert 发表《Perceptrons》一书, 指出单层神经网路不能解决非线性问题, 多层网络的训练算法尚无希望.</description>
-    </item>
-    
-    <item>
-      <title>日本語</title>
-      <link>https://zhengzangw.com/notes/japanese/japanese/</link>
-      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/notes/japanese/japanese/</guid>
-      <description>&lt;h1 id=&#34;語法&#34;&gt;語法&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;「名」は「名」です&lt;/li&gt;
-&lt;li&gt;「名」も「名」です&lt;/li&gt;
-&lt;li&gt;「名」は「名」ではありません
-&lt;ul&gt;
-&lt;li&gt;「名」は「名」じゃありません&lt;/li&gt;
-&lt;li&gt;「名」は何もありませｎ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;「名」は「名」ですか
-&lt;ul&gt;
-&lt;li&gt;はい、そうです&lt;/li&gt;
-&lt;li&gt;いいえ、ちがいます&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;「名」の「名」&lt;/li&gt;
-&lt;li&gt;これ/それ/あれは「名」です&lt;/li&gt;
-&lt;li&gt;この/その/あの「名」は「名」です&lt;/li&gt;
-&lt;li&gt;ここ/そこ/あそこは「名」です
-&lt;ul&gt;
-&lt;li&gt;こちら/そちら/あちら&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;「名」はでれ/何/どこ/いくらですか
-&lt;ul&gt;
-&lt;li&gt;どなたですか&lt;/li&gt;
-&lt;li&gt;どちら&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;どれ
-&lt;ul&gt;
-&lt;li&gt;どの「名」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;「場所」に「名」があります/います&lt;/li&gt;
-&lt;li&gt;「場所」で「動」&lt;/li&gt;
-&lt;li&gt;「名」は「場所」にあります/います&lt;/li&gt;
-&lt;li&gt;「名」と「名」&lt;/li&gt;
-&lt;li&gt;「名」か「名」&lt;/li&gt;
-&lt;li&gt;「名」や「名」&lt;/li&gt;
-&lt;li&gt;「人」と「動」&lt;/li&gt;
-&lt;li&gt;今〜時〜分です&lt;/li&gt;
-&lt;li&gt;「動」ます/ません&lt;/li&gt;
-&lt;li&gt;「動」ました/ませんでした&lt;/li&gt;
-&lt;li&gt;「時間」に「動」&lt;/li&gt;
-&lt;li&gt;「時間」から「時間」まで「動」&lt;/li&gt;
-&lt;li&gt;いつ「動」ますか&lt;/li&gt;
-&lt;li&gt;「場所」へ「動」&lt;/li&gt;
-&lt;li&gt;「場所」から「動」「場所」まで「動」&lt;/li&gt;
-&lt;li&gt;「交通機関」/「工具」で「動」&lt;/li&gt;
-&lt;li&gt;「名」を「動」&lt;/li&gt;
-&lt;li&gt;「人」は「人」に「名」をあげます&lt;/li&gt;
-&lt;li&gt;「人」は「人」に「名」をもらいます&lt;/li&gt;
-&lt;li&gt;「人」に会います&lt;/li&gt;
-&lt;li&gt;「名」は「一类形」です
-&lt;ul&gt;
-&lt;li&gt;以「い」结尾　熱い&lt;/li&gt;
-&lt;li&gt;否定：熱くないです/熱くありません&lt;/li&gt;
-&lt;li&gt;过去：熱かった&lt;/li&gt;
-&lt;li&gt;过去否定：熱くなかったです/熱くありませんでした&lt;/li&gt;
-&lt;li&gt;「一类形」+「名」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;あまり「一类形」/「動」&lt;/li&gt;
-&lt;li&gt;「名」は「二类形」です/でした&lt;/li&gt;
-&lt;li&gt;「名」は「二类形」ではありません/ありませんでした&lt;/li&gt;
-&lt;li&gt;「名」は「二类形」な「名」です&lt;/li&gt;
-&lt;li&gt;「名」でした/ではありませんでした&lt;/li&gt;
-&lt;li&gt;どんな「名」&lt;/li&gt;
-&lt;li&gt;情感：「人」は「名」が「形」です&lt;/li&gt;
-&lt;li&gt;能力：「人」は「名」が分かります/できます&lt;/li&gt;
-&lt;li&gt;から&lt;/li&gt;
-&lt;li&gt;だから&lt;/li&gt;
-&lt;li&gt;どうしてですか&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     
     <item>
