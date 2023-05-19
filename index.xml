@@ -3099,34 +3099,6 @@ Calculate $\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(l)}}$ directly with
     </item>
     
     <item>
-      <title>量化投资</title>
-      <link>https://zhengzangw.com/posts/invest/</link>
-      <pubDate>Sun, 21 Feb 2021 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/invest/</guid>
-      <description>基本金融知识 tushare 包 </description>
-    </item>
-    
-    <item>
-      <title>3D reconstruction</title>
-      <link>https://zhengzangw.com/posts/3d-reconstruction/</link>
-      <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/3d-reconstruction/</guid>
-      <description>介绍 主动式/被动式 主要方法：立体视觉，深度图片 三维数据获取方法 软件建模（精细） 激光设备扫描 利用视频与图像进行重建 应用场景 高精度的三维重建 大规模的三维重建 非刚体的 structure from motion 动态三维重建 图像特征提取 霍夫变换 D2-Net SIFT 相机模型 坐标转换 坐标系 世界 world: $O_w-X_wY_wZ_w$ 相机 camera: 原点位于镜头光心，x,y 与相面两边平行，z 为镜头光轴 图像 $XOY$: 原点为主点（光轴相面交点），单位为毫米 像素 $uov$: 反映 CCD/CMOS 芯片中像素排列情况 （光-&amp;gt;电），单位为像素（整数） 坐标系转换 world to camera: $[X_c, Y_c, Z_c]^T=R[X_w,Y_w,Z_w]^T+T$ $[x_c, y_c, z_c, 1]^T=[R, t; 0, 1][x_w,y_w,z_w,1]^T$ $R,t$ 为相机外参 Camera Extrinsics 旋转矩阵：$R(X_A,\psi),R(Y_A,\theta),R(Z_A,\phi)$ 左乘：相对于固定坐标系变换 右乘：相对于自身（活跃）坐标系 欧拉角：$zXZ-(\alpha,\beta,\gamma)$ （万向节死锁） 轴角：$([x, y, z]^T, \theta)$ 四元数 图像转换为像素：$[u,v,1]^T=[\frac{1}{dX}, 0, u_0; 0,\frac{1}{dY},v_0; 0,0,1][X, Y, 1]^T$ $[\frac{1}{dX}, 0, u_0; 0,\frac{1}{dY},v_0; 0,0,1]$ $dX,dY$ 像素在 $X,Y$ 轴上的物理尺度 ($u=\frac{X}{dX}+u_0$) $u_0,v_0$ 为主点在图像坐标中的坐标 camera to image (针孔成像原理)：$s[X, Y, 1]^T=[f, 0, 0, 0; 0, f, 0, 0; 0, 0, 1, 0][x, y, z, 1]^T$ $s$ 为比例因子 $s=z$ $f$ 为有效焦距 内参 $K=[f_x, 0, u_0; 0, f_y, v_0; 0, 0, 1]$ $P=[f_x, 0, u_0, 0; 0, f_y, v_0, 0; 0, 0, 1, 0]$ 畸变 (distortion)：对直线投影的偏移（不能保持直线） 中心正常，越边缘越严重 径向畸变（主要）：透镜形状 桶形、枕形、胡子 切向畸变：透镜与图像不平行 薄透镜、离心 其它类型（不显著） 铅锤模型 (Plumb Bob model): 径向复合+薄透镜 畸变参数：$D=(k_1,k_2,p_1,p_2,k_3)$ 相机标定 传统方法：一定的摄像机模型下，基于特定实验。经常调整摄像机的需求，设置已知参照物 张正友相机标定法、考虑畸变补偿的两步法等 自标定法：不依赖参照物，利用参数间约束关系 基于 Krupa 方程、分层逐步标定法等 张氏标定法 标定物：棋盘 单应性变换：世界坐标系到像素坐标系的位置映射关系 应用：图像矫正（四个点）、视角变换（普通到 BEV）、图像拼接（不同角度图像转换到同样的视角）、增强现实 图像对应点 $(x&amp;rsquo;,y&amp;rsquo;,1),(x,y,1)$, 单应矩阵 $H$（内参与外参的混合） 自由度：8 一个点确定两个方程 张氏标定法 打印棋盘格图纸，贴在物体表面（坐标系 $Z_w=0$） 拍摄一组不同方向的棋盘格图片 对每张拍摄的棋盘图片，检测图片的特征点（角点） 优化 LM 算法 三维重建 双目系统 双目立体视觉重建</description>
-    </item>
-    
-    <item>
-      <title>FMCW Radar</title>
-      <link>https://zhengzangw.com/posts/fmcw/</link>
-      <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/fmcw/</guid>
-      <description>Frequency-modulated continuous-waves radar
-Range chirp frequency: $f_c=77$ GHz duration: $T_c=40$ us bandwidth: $B=4$ GHz slope: $S=100$ MHz/us mixer: $x_{\text{out}}=\sin[(w_1-w_2)t+(\phi_1-\phi_2)]$ IF signal after $\tau=\frac{2d}{c}$, RX receives IF frequency: $f_\tau=S\tau=\frac{S2d}{c}$ discriminate two frequency in frequency domain: in time domain, two signal should have $&amp;gt;1$ cycles difference window of $T$ can seperate $\frac{1}{T}$ Hz Range Resolution: $\Delta f=\frac{S2\Delta d}{c}&amp;gt;\frac{1}{T_c}$ $\Delta d&amp;gt;\frac{c}{2B}$ Digitize: LPF (remove high-freq) $\rightarrow$ ADC (sample, quantitize) $\rightarrow$ DSP (FFT) Maximum Distance: $d_{\max}$ IF bandwidth (LPF) $&amp;gt;\frac{S2d_{\max}}{c}$ ADC sampling rate $&amp;gt;\frac{S2d_{\max}}{c}$ Larger Chirp Bandwidth $B$: better resolution Larger IF Bandwidth: faster chirps, better $d_{\max}$ Velocity IF signal: $A\sin(2\pi ft+\phi_0)$ $f=\frac{S2d}{c}$ $\Delta\phi = 2\pi f_c\Delta\tau=\frac{4\pi\Delta d}{\lambda}$ 1mm can lead to 180 degree Single Object Transmit two chirps seperated by $T_c$ phase difference $\omega=\frac{4\pi vT_C}{\lambda}$ $v=\frac{\lambda\omega}{4\pi T_c}$ Maximum relative speed: $v_{\max}=\frac{\lambda}{4T_c}$ $|\omega|&amp;lt;\pi$ Velocity Resolution Continous signal: $\Delta f=\frac{1}{T}$ cycles/sec Discrete signal: $\Delta \omega=\frac{1}{N}$ cycles/sample Multiple Objects $N$ equi-spaced chirps Doppler FFT: done along chiprs Velocity Resolution $\Delta\omega&amp;gt;\frac{\pi}{N}$ $\Delta v&amp;gt;\frac{\lambda}{2NT_c}$ Radar Range Equation Output power of device $P_t$ TX/RX Antenna Gain: $G$ Radiated Power Density: $\frac{P_t G_{\text{TX}}}{4\pi d^2}W/m^2$ Radar Cross Section of the Target (RCS): $\sigma$ Power reflected by object: $\frac{P_t G_{\text{TX}}\sigma}{4\pi d^2}W$ Power density at RX: $\frac{P_t G_{\text{TX}}\sigma}{(4\pi)^2 d^4}W/m^2$ Power captured at RX: $\frac{P_tG_{\text{TX}}\sigma A_{\text{RX}}}{{(4\pi)^2d^4}}W$ $A_{\text{RX}}=\frac{G_{\text{RX}}\lambda^2}{4\pi}$ SNR: $\frac{\sigma P_tG_{\text{TX}} G_{\text{RX}}\lambda^2T_{\text{meas}}}{{(4\pi)^3d^4 kTF}}W$ minimum SNR that is required for detecting an target (15dB - 20dB) Angle Angle of Arrival 2D-FFT: range-FFT (row) and dropplet-FFT (column, chirp) additional distance: $d\sin\theta$ Single Object (angle) $\omega=\frac{2\pi d\sin\theta}{\lambda}$ $\theta=\sin^{-1}(\frac{\lambda\omega}{2\pi d})$ $\theta=0$ is most sensitive accuracy degrades as $\theta$ approaches 90 degree maximun angle: $\theta=\sin^{-1}(\frac{\lambda}{2d})$ Multiple Objects (angle) N annetina, Angle-FFT Angle Resolution: $\theta_{\text{res}}=\frac{\lambda}{Nd\cos\theta}$ $d=\frac{\lambda}{2}$ and $\theta=0$: $\theta_{\text{res}}=\frac{2}{N}$ </description>
-    </item>
-    
-    <item>
       <title>Solution to OJ - Balance Segment Painting</title>
       <link>https://zhengzangw.com/teach/algorithm-2020-fall/oj1-4/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
@@ -3182,18 +3154,6 @@ Range Sum of Multiset 本题要求实现一个支持在线插入(1)、删除(2)�
 对于 Treap，要注意的是前缀和并不是子树之和，而是左子树之和。
 对于跳表，可以在每层的每个结点维护：在该层，该节点到前一结点之间的元素之和。实现的时候要注意指针的使用。
 示例代码 (Treap &amp;amp; 跳表) #include &amp;lt;bits/stdc++.h&amp;gt; #include &amp;lt;random&amp;gt; using namespace std; #define MAXN 500000 // #define DEBUG /* Treap */ typedef struct { int64_t key, sum_left, sum_right; int pri, w, l, r; } treap_node; struct treap_rotate { treap_node node[MAXN + 1]; int rt, sz; void l_rotate(int &amp;amp;k) { int t = node[k].</description>
-    </item>
-    
-    <item>
-      <title>Tricks for Python</title>
-      <link>https://zhengzangw.com/posts/python-trick/</link>
-      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/python-trick/</guid>
-      <description>新建项目 一个完整的 Python Project 应该包括
-project/ src/ --- source code tests/ --- test code __init__.py conftest.py test_xxx.py setup.py --- organize files into a package setup.cfg MANIFEST.in requirements.txt README.md pyproject.toml 其中，setup.py 用来构建包，譬如：
-from setuptools import find_packages, setup setup( name=&amp;#39;flaskr&amp;#39;, version=&amp;#39;1.0.0&amp;#39;, packages=find_packages(), include_package_data=True, zip_safe=False, install_requires=[ &amp;#39;flask&amp;#39;, ], ) 并可以用 MANIFEST.in 补充添加二进制文件。此外， tests 为测试文件夹，测试时 coverage run -m pytest, coverage report. 可用 setup.cfg 配置
-[tool:pytest] testpaths = tests [coverage:run] branch = True source = src 用 pipreqs 生成 requirements.</description>
     </item>
     
     <item>
@@ -3430,25 +3390,6 @@ AAAI(The AAAI Conference on Artificial Intelligence): AI, 2 初, AC 1591 20.6% I
     </item>
     
     <item>
-      <title>Numbers in Population</title>
-      <link>https://zhengzangw.com/posts/number-of-people/</link>
-      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/number-of-people/</guid>
-      <description>行政级别 国 部（省） 局（厅） 处（县） 科（乡） 人口 2015~2019 间约数
-总人口: 1.4e9 0-15: 2.5e8 &amp;gt;60 : 2.5e8 出生人数：1.6e7 死亡人数：1.1e7 净增长：4e6 学历 大学 1.7e8 高中 2.1e8 初中 4.8e8 小学 3.3e8 一届学生 高中：1.3e7 普高：0.8e7 高考：1e7 江苏高考：33.9 万 南大：&amp;lt;1500 双一流：1 万 高等：0.76e7 普高：0.42e7 双一流：2% 硕士：7.5e5 博士：0.8e5 留学生(18)：66.2 万 网民(19)：8.4e8 (61.2%) 学生 26% 个体户、自由职业者 20% 收入 病 HPV: 7900 万美国人 </description>
-    </item>
-    
-    <item>
-      <title>Overview of Universities</title>
-      <link>https://zhengzangw.com/posts/schools/</link>
-      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/schools/</guid>
-      <description>CS Ranking 清北上浙南复中 AI: 清北中南浙复 Theory Algorithm &amp;amp; complexity 上财、南大、清华 Cryptography 清 logic &amp;amp; verification 清南 Interdisciplinary bio 清复 CG 浙清深北 eco 上财、清 HCI 清北南 Robitics visualization System: 清北上 SE: 北南 PL: 南 OS Measurement &amp;amp; perf analysis Mobile computing 清 HPC 清上 E&amp;amp;R sys Design automation(EDA) Database 清 Comp Sec 浙 Network Arch 英国 AI 爱丁堡 NLP, ML 牛津 AI 美国 AI: CMU, Cornel, Stanford, Illinois UC, MIT, Washington, UCLA 中国大学 总数 2956 + 44 普高 2688 独立学院 257 公安院校、艺术院校、建筑院校、中医药、示范性软件学院 成人 268 军事 44 大学为厅级单位 归属部门 解放军、武警 省、省教育厅 教育部 部：工业和信息化部（国防七子） 双一流 A 36 B 6 建设 95 985: 39 211: 112 中西部高校基建工程: 100 C9: 9 中外合办：9+3 实验室 国家重点实验室：253 国家实验室：4 重点学科 一级 286 二级 677 </description>
-    </item>
-    
-    <item>
       <title></title>
       <link>https://zhengzangw.com/notes/artificial-intelligence/9-information-theory/</link>
       <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
@@ -3482,25 +3423,6 @@ AAAI(The AAAI Conference on Artificial Intelligence): AI, 2 初, AC 1591 20.6% I
       <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/rendering/6-sampling/</guid>
       <description>Math Fourier Series: 任意周期为 $1$ 的函数可表示为 $\frac{a_0}{2}+\sum_{n=1}^N(a_n\cos(2\pi nt)+b_n\sin(2\pi nt))$ $f(x)=\sum_{n=-N}^Nc_ne^{2\pi int},c_n=\int_0^1e^{-2\pi int}f(t)dt$ $(f*g)(t)=\int_{-\infty}^{\infty} g(t-x)f(x)dx$ $\Pi(x)=[|x|\leq 1]$ $(\Pi*\Pi)(x)=\Lambda(x)$ Radical Inverse $n=a_k\cdots a_2a_1$ $\Phi_b(n)=0.a_1a_2\cdots a_k$ Van der Corput Sequence: $x_i=\Phi_2(i)$ Halton Sequence: $x_i=(\Phi_2(i),\Phi_3(i),\Phi_5(i),\dots,\Phi_{p_d}(i))$ Hammersley Sequence: $x_i=(\frac{i-\frac{1}{2}}{N},\Phi_2(i),\Phi_3(i),\Phi_5(i),\dots,\Phi_{p_{d-1}}(i))$ Reconstruction 时间域 冲激串 $\delta_T$ 重建 $\widetilde f(x)=(\delta f)\otimes r$ 重构核 $r$ sinc 高斯 三角 频率域 $\widetilde F=(F(\omega)\otimes \delta_{1/T})\Pi_T(\omega)$ reconstruction filter ideal ones not exist Box Filter Triangle Filter Gaussian Filter Mitchell Filter Windowed Sinc Filter Denoising Aliasing Small triangles Stairstepping(jaggies) Moire Patterns 车轮倒转 Source of High Frequencies Geometry Edges, Vertices, sharp boundaries silhouettes Texture Illumination Antialiasing Techiques Nonuniform sampling: $\sum_{i=-\infty}^{\infty}\delta(x-(i+\frac{1}{2}-\xi)T)$ noise better than aliasing Adaptive sampling: Taking more samples in high-frequency regions Prefiltering: mipmap Evaluating Blue noise property 白噪：完全随机采样，处处有能量 蓝噪：低频无能量，低频完美重构，高频转化为噪声 gittered grid Poisson Disk Sampling Dart Throwing: keep throwing darts into a domain with minimum distance constrain Lloyd&amp;rsquo;s Relaxation construct voronoi move to centroid Tiled Discrepany: how &amp;ldquo;uniform&amp;rdquo; the sampling pattern is $D_N(B,P)=|\sum_{b\in B}\frac{#{x_i\in b}}{N}-\text{Vol}(b)|$ 采样方法 Uniform Sampling Random Sampling Blue noise Sampling Stratified Sampling Uniform sample + random perturbation (jittering) Low-Discrepancy Sampling(quasi-random sampling) Sample with Van der Corput Sequence $D^*_N(P)=O(\frac{\log N}{N})$ Sample with Halton Sequence: $D^*_N(P)=O(\frac{(\log N)^d}{N})$ </description>
-    </item>
-    
-    <item>
-      <title>Terms in stock trading</title>
-      <link>https://zhengzangw.com/posts/stock-index/</link>
-      <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/stock-index/</guid>
-      <description>基本术语 股票分析：基本面，技术面，消息面，资金面，政策面 趋势行情与振荡行情 K 线 柱上下：收盘价 $C_n$ 与开盘价 线上下：最高值 $H_n$ 和最低值 $L_n$ 颜色 Red：$C_n&amp;gt;$ 开盘价 Green: $C_n&amp;lt;$ 开盘价 VOL 成交量：单边计算，单位为手（1 手 = 100 股） 缩量：成交量萎缩 交易量：双边计算（成交量 ×2) 成交额 = 成交量$\times$成交价 颜色：收盘价高于或等于开盘价为红色，反之绿色 均线 $\text{MA}(n)=\frac{1}{n}\sum_{k=0}^{n-1}C_{n-k}$ $\text{EMA}(n)=\frac{2}{N+1}\sum_{k=0}^\infty(\frac{N-1}{N+1})^kC_{n-k}$ MACD $\text{DIF} = \text{EMA}(12)-\text{EMA}(26)$ $|\text{DIF}|$：长短期均线距离大小 $\text{DIF}&amp;gt;0$：股票上涨 $\text{DEA} = \text{EMA}(\text{DIF}, 9)$ $\text{MACD} = 2(\text{DIF}-\text{DEA})$ 金叉：上穿 死叉：下穿 RSI $A=\sum_{i}(C_i-C_{i-1})[C_i-C_{i-1}&amp;gt;0]$ $B=\sum_{i}(C_{i-1}-C_{i})[C_i-C_{i-1}&amp;lt;0]$ $\text{RSI}=100\frac{A}{A+B}$ KDJ $\text{RSV}(n)=100\frac{C_t-L_t}{H_n-L_n}$ $\text{K}(n)=\frac{2}{3}K(n-1)+\frac{1}{3}\text{RSV}(n)$ $\text{D}(n)=\frac{2}{3}D(n-1)+\frac{1}{3}\text{K}(n)$ W%R $\text{W%R}=100\frac{H_n-C_n}{H_n-L_n}$ 中短期 OBV 能量潮指标
-$\text{OBV}(n)=\text{OBV}(n-1)+\text{sgn}\times V(n)$ DMA $\text{AMA}=\text{AVE}(10)$ $\text{DMA}=\text(AVE)(10)-\text{AVE}(50)$ SAR $\text{SAR}(n)=\text{SAR}(n-1)+\text{AF}(n)(\text{EP}(n-1)-\text{SAR}(n-1)))$ </description>
-    </item>
-    
-    <item>
-      <title>Interesting facts about social engineering</title>
-      <link>https://zhengzangw.com/posts/social-engineering/</link>
-      <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/social-engineering/</guid>
-      <description>社工攻击 熟人攻击 伪造相似的信息背景 伪装成新人打入内部 利用面试机会 通过兴趣、话题、出现场所和肢体语言拉进距离 美人计 伪装技术顾问 伪装弱势群体 </description>
     </item>
     
     <item>
@@ -3558,262 +3480,6 @@ Sum Square Difference: next fastest, sensitive to overall intensity</description
       <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/microelectronics/transistor/</guid>
       <description>半导体物理基础 半导体材料 导体：$\rho&amp;lt;10^{-4}\Omega\cdot$ cm 绝缘体：$\rho&amp;gt;10^9\Omega\cdot$ cm 半导体导电能力与温度，光照，掺杂浓度相关 典型半导体：硅 Si,锗 Ge,砷化镓 GaAs 半导体共价键结构：一般为四价元素，最外层四个电子被称为价电子，和周围四个原子的价电子分别形成共价键 本征半导体 本征半导体：化学成分纯净的半导体，物理结构呈单晶体形态。纯度到要达到 9 个 9 载流子：可以自由移动的带电粒子 电导率：与材料单位体积中所含的载流子数量相关，载流子浓度越高，电导率越高 本征激发：半导体受到光，热激发时，某些电子可以从外界获得挣脱共价键束缚的能量，从而离开原子成为自由电子，同时再共价键中留下相同数量的空穴 电子空穴对：由热激发而产生的自由电子和空穴对 空穴的移动是依靠相邻共价键中的价电子依次填充空穴来实现的 复合：当自由电子遇到空穴后相互结合形成一个新的共价键 在温度一定时，本征激发和复合会达到动态平衡 本征半导体的缺点：载流子少，导电性差，温度稳定性差 杂志半导体 定义：在本征半导体中掺入某些微量元素作为杂质，可以使半导体的导电性发生显著变化，主要掺入的是三价元素或五价元素 P 型半导体：掺入三价杂质元素(如硼，镓，铟)等 因三价原子和硅原子形成共价键时，缺少一个价电子从而留下一个空穴 多子：空穴 受主杂质：$N_A$ $N_A+n=p$ N 型半导体：掺入五价杂质元素(如磷) 多子：自由电子 $N_D+p=n$ 漂移电流：在电场作用下，载流子在电场中的漂移运动形成的电流 $v_n=-\mu_nE,v_p=\mu_pE$ $\mu$: 载流子偏移率 $I=-vWHnq$ 扩散电流：因浓度差，载流子从高浓度向低浓度扩散而形成的电流 PN 结 在一块本征半导体两侧扩散不同的杂质原子，使得一边为 P 型一边为 N 型，两边多子由于浓度差，向对方扩撒，从而内部的空间电荷区形成一个电场，内电场抑制多子扩散，同时促进少子漂移，最终达到平衡。P，N 型半导体接合面，离子薄层形成的 空间电荷区被称为 PN 结（空间电荷区，耗尽层，势垒区，非线性电阻） 单向导电性 在 PN 结外部加上电压，当 P 区电位高于 N 区电位，称为加上了正向电压，简称为正偏，反之为反向电压，简称反偏 正偏时，外部电压促进多子扩散，从而导致中间空间电荷区变窄，PN 结呈现的状态是低电阻状态，大的正向扩散电流 反偏时，外部电压一直多子扩散，促进少子漂移，从而导致空间电荷区变宽，PN 结呈现的状态是高电压，小的反向漂移电流。在一定温度下，本征激发形成的少子数量一定，此时形成的漂移电流一定，和外部电压无关，称为反向饱和电流 PN 结 $V$-$I$ 特性表达式：$i_D=I_S(e^{\frac{v_D}{V_T}-1})$ 反向击穿 当反向电压达到一定数值时，反向电流突然快速增加的现象 分为电击穿(雪崩击穿，齐纳击穿)此时可逆，热击穿此时不可逆 雪崩击穿：空间电荷区的电子在电场中获得足够的动能撞击其他原子从而产生更多的自由电子-空穴对，新的电子又同样撞击其他原子，如此连锁反应，使得载流子数量雪崩式增加，从而导致电流急剧加大。具有正的温度系数 齐纳击穿：反向电压足够大时，在电场的作用下，价电子之间的共价键被拉断，从而价电子变成自由电子，自由电子在电场的作用下移动到 N 区，空穴移动到 P 区，使得电流急剧增大。常发生在掺杂浓度较高的 PN 结中，具有负的温度系数(温度升高，共价键更容易被破坏) 二极管 二极管：PN 结上加上引线和封装 单向导电性：整流,检波,开关 PN 结压降：温度传感器，参考电压 非线性电流-电压特性：调节电压，限制电压 结构分类 点接触型二极管 面接触型二极管 平面型二极管 硅二极管的死区电压$V_{th}=[0.</description>
-    </item>
-    
-    <item>
-      <title>How to prepare your interview</title>
-      <link>https://zhengzangw.com/posts/interview-prepare/</link>
-      <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/interview-prepare/</guid>
-      <description>网前准备 网络面试准备 skype: 头像设置为大头像面带微笑 互相加 skype 网络质量： 选择网络好的地点 准备手机备用 可以用 skype 主动打过去，对方打过来越洋手机信号往往不好 通话背景 干净（如白墙），光源来自正前方 背景音低（如家里） 提前找同学模拟测试 skype 背景和格调 面试材料 准备好纸，笔 准备好 CV, PS, 成绩单（中英文） 提前60分钟就位 面试时看摄像头而非屏幕，面带微笑 穿着 business casual clothing: button-down shirt or a V-neck sweater women: formal-looking top, tie long hair 隐形眼镜 Thanks letter 先拟好，定点发出 问题准备 了解对方 教授(面试官)：他们正在找什么样的人？为什么是我? 我可以为这个团队带来什么价值? 1-2年一作的文章看一下 方法：标题-摘要-关键词-导论-结论 团队 课题兴趣 了解学校：为什么对自己感兴趣，想通过面试了解什么书面了解不到的事 说出该校申请的项目中的某些课程或教授 介绍自己 个人 准备 1min 自我介绍 说清项目名和课程名 项目 熟悉自己的申报材料 熟悉 research 仔细读网站，github，简历 阅读三封推荐信里面特别提及的事情 让别人听懂你做的项目(1-2min) background：一带而过 achievement 最后结果 意义：结合自身优势 失败经历：从失败中学到的经验总结和成长 action 职责 用了哪种方法，最后做出来结果咋样 contribution 重要的细节可以提一提，不展开 不提具体的实验或者模拟的细节 申报原因 自身原因 感兴趣 某物有NB的应用 工作意义 该研究在学术界的进展 我的科研基于前人哪些工作 可以带来哪些贡献 Why do you think the research is important?</description>
-    </item>
-    
-    <item>
-      <title>A Lecture Notes on studying oversea from NJU</title>
-      <link>https://zhengzangw.com/posts/studying-abroad/</link>
-      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/studying-abroad/</guid>
-      <description>&lt;h2 id=&#34;计算机硕士申请南大背景&#34;&gt;计算机硕士申请（南大背景）&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;美国计算机硕士
-&lt;ul&gt;
-&lt;li&gt;专业：CS, Data Science, BA, 金融工程，金融数学，金融科技，AI, ML&lt;/li&gt;
-&lt;li&gt;录取条件
-&lt;ul&gt;
-&lt;li&gt;GPA 重要性最高&lt;/li&gt;
-&lt;li&gt;托福 GRE 要过线&lt;/li&gt;
-&lt;li&gt;录取最多：CMU&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;学院分析
-&lt;ul&gt;
-&lt;li&gt;斯坦福：看命&lt;/li&gt;
-&lt;li&gt;CMU：方向多，注意避开 ML 方向，南大录取很多
-&lt;ul&gt;
-&lt;li&gt;两个软工：EE,CS 下各一个&lt;/li&gt;
-&lt;li&gt;HCI: 不建议&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;伯克利：MENG/MSC 基本招收本国人多&lt;/li&gt;
-&lt;li&gt;UIUC：MCS/Msc GRE 不重要
-&lt;ul&gt;
-&lt;li&gt;GPA 80 分左右 -&amp;gt; UIUC MIN(management of information)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;康奈尔：南大很少录取 硕士有奖&lt;/li&gt;
-&lt;li&gt;佐治亚理工：对南大比较好&lt;/li&gt;
-&lt;li&gt;加州理工：PHD 南航今年有录取&lt;/li&gt;
-&lt;li&gt;UCLA：不招&lt;/li&gt;
-&lt;li&gt;格罗比亚：硕士好录，博士男&lt;/li&gt;
-&lt;li&gt;USSD：录取南大较多&lt;/li&gt;
-&lt;li&gt;布朗，普度，莱斯，纽约，杜克：难度适中&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;香港计算机硕士
-&lt;ul&gt;
-&lt;li&gt;香港大学(HKU)
-&lt;ul&gt;
-&lt;li&gt;专业：CS
-&lt;ul&gt;
-&lt;li&gt;Cyber Security, Multimedia Computing, Financial Computing, General Stream, 金融科技&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;录取条件：托福 80/雅思 6.0 GPA 4.0/5&lt;/li&gt;
-&lt;li&gt;港大允许 EE&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;港科(HKUST)
-&lt;ul&gt;
-&lt;li&gt;专业：IT，Big data，金融科技&lt;/li&gt;
-&lt;li&gt;录取条件：托福 80/雅思 6.5 GPA 4.0/5&lt;/li&gt;
-&lt;li&gt;reject EE&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;港中(CUHK)
-&lt;ul&gt;
-&lt;li&gt;专业：CS，金融科技&lt;/li&gt;
-&lt;li&gt;录取条件：托福 80/雅思 6.5 GPA 4.0/5&lt;/li&gt;
-&lt;li&gt;reject EE&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;英国工科硕士
-&lt;ul&gt;
-&lt;li&gt;帝国理工&lt;/li&gt;
-&lt;li&gt;UCL
-&lt;ul&gt;
-&lt;li&gt;雅思 6.5, GPA 85&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;布里斯托&lt;/li&gt;
-&lt;li&gt;谢菲尔德&lt;/li&gt;
-&lt;li&gt;南安普顿&lt;/li&gt;
-&lt;li&gt;曼切斯特&lt;/li&gt;
-&lt;li&gt;KCL&lt;/li&gt;
-&lt;li&gt;爱丁堡大学&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;新加坡硕士
-&lt;ul&gt;
-&lt;li&gt;南洋理工(NTU)
-&lt;ul&gt;
-&lt;li&gt;专业：无 CS 学院，有 CS 专业，AI，金融科技&lt;/li&gt;
-&lt;li&gt;需要 GRE 320+3.5&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;新加坡国立(NUS)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Introduction to Collaborative Filtering</title>
-      <link>https://zhengzangw.com/posts/collaborative-filtering/</link>
-      <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/collaborative-filtering/</guid>
-      <description>&lt;h2 id=&#34;recommandation&#34;&gt;Recommandation&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Demographic-based Recommendation&lt;/li&gt;
-&lt;li&gt;Content-based Recommendation&lt;/li&gt;
-&lt;li&gt;Collaborative Filtering-based Recommendation&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;collaborative-filtering&#34;&gt;Collaborative Filtering&lt;/h2&gt;
-&lt;p&gt;Filtering: method of making automatic predictions about the interests of a user&lt;br&gt;
-Collaborating: by collecting preferences or taste information from many users&lt;br&gt;
-Underlying Assumption: if a person A has the same opinion as a person B on an issue, A is more likely to have B&amp;rsquo;s opinion on a different issue than that of a randomly chosen person.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Introduction to Meta Learning</title>
-      <link>https://zhengzangw.com/posts/meta-learning/</link>
-      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/meta-learning/</guid>
-      <description>&lt;h1 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Mechanistic view
-&lt;ul&gt;
-&lt;li&gt;DNN model that can read in an entire dataset and make predictions for new data point&lt;/li&gt;
-&lt;li&gt;Training this network uses a meta-dataset, which itself consists of many datasets, each for a different task&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Probabilistic view
-&lt;ul&gt;
-&lt;li&gt;Extract prior information from a set of tasks taht allows effcient learning of new tasks&lt;/li&gt;
-&lt;li&gt;Learning a new task this prior and training set to infer most likely posterior parameters&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;supervised learnings
-&lt;ul&gt;
-&lt;li&gt;$\arg\max\limits_{\phi}p(\phi|\mathcal{D})=\arg\max\limits_{\phi} \log p(\mathcal{D}|\phi)+\log p(\phi)$&lt;/li&gt;
-&lt;li&gt;require large amounts of labeled data&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Learning to Match</title>
-      <link>https://zhengzangw.com/posts/learning-to-match/</link>
-      <pubDate>Tue, 24 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/learning-to-match/</guid>
-      <description>&lt;h1 id=&#34;problem&#34;&gt;Problem&lt;/h1&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Name&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;QA (Question Ansering)&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Machine Comprehension&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Dialogue Systems&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Ad-hoc Retrieval&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Learning to Rank&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;</description>
-    </item>
-    
-    <item>
-      <title>Introduction to Spectral Clustering</title>
-      <link>https://zhengzangw.com/posts/spectral-clustering/</link>
-      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/spectral-clustering/</guid>
-      <description>&lt;h1 id=&#34;理论基础&#34;&gt;理论基础&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;邻接矩阵 $E$：$\omega_{ij}$ 为 $v_i$ 与 $v_j$ 的边权&lt;/li&gt;
-&lt;li&gt;$D$: $d_i=\sum_{j=1}^n\omega_i$&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Lamda-2 Seminar</title>
-      <link>https://zhengzangw.com/posts/seminar-19/</link>
-      <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/seminar-19/</guid>
-      <description>&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
-&lt;h2 id=&#34;审稿过程&#34;&gt;审稿过程&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Initial Check: 1~14 days
-&lt;ul&gt;
-&lt;li&gt;Editor Assistant 检查文章格式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;With Editor：14~30 days
-&lt;ul&gt;
-&lt;li&gt;Associate Editor: 对文章进行初步审查&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Under Review(Peer Review)：7~180 days
-&lt;ul&gt;
-&lt;li&gt;PC 3-5: Give Scores and Review/Comments&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Required Review Completed：1~5 days
-&lt;ul&gt;
-&lt;li&gt;Senior PC(SPC): judge reviews&lt;/li&gt;
-&lt;li&gt;Rebuttal&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Editor Decision
-&lt;ul&gt;
-&lt;li&gt;Area Chairs(AC): decide&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;数学
-&lt;ul&gt;
-&lt;li&gt;数字信号处理&lt;/li&gt;
-&lt;li&gt;随机过程&lt;/li&gt;
-&lt;li&gt;矩阵论&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -4008,43 +3674,6 @@ Single qubit operator Pauli operators $I=(1,0;0,1)$ $X=(0,1;1,0)$ (非门) $X|0\
     </item>
     
     <item>
-      <title>Recommandation of Fonts</title>
-      <link>https://zhengzangw.com/posts/info-fonts/</link>
-      <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/info-fonts/</guid>
-      <description>&lt;h1 id=&#34;字体&#34;&gt;字体&lt;/h1&gt;
-&lt;h2 id=&#34;正文中文&#34;&gt;正文中文&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Source Han Sans CN: 思源黑体&lt;/li&gt;
-&lt;li&gt;Source Han Serif CN: 思源宋体&lt;/li&gt;
-&lt;li&gt;Gen Jyuu Gothic: 思源柔黑&lt;/li&gt;
-&lt;li&gt;FZShuSong-Z01: 方正书宋&lt;/li&gt;
-&lt;li&gt;FZKai-Z03: 方正楷体&lt;/li&gt;
-&lt;li&gt;PangMenZhengDao: 旁门正道标题体&lt;/li&gt;
-&lt;li&gt;huxiaobo-gdh: 站酷高端黑&lt;/li&gt;
-&lt;li&gt;huxiaobo-kuhei: 站酷酷黑&lt;/li&gt;
-&lt;li&gt;happyzcool-2016: 站酷快乐体&lt;/li&gt;
-&lt;li&gt;PmingLiU-TW: 臺灣新細明體&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Introduction to Jupyter Notebook</title>
-      <link>https://zhengzangw.com/posts/jupyter-notebook-introduction/</link>
-      <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/jupyter-notebook-introduction/</guid>
-      <description>&lt;h1 id=&#34;jupyter-notebook-introduction&#34;&gt;Jupyter-Notebook-Introduction&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;https://jupyter.readthedocs.io/en/latest/_static/_images/jupyter.svg&#34; alt=&#34;Jupyter&#34;&gt;&lt;/p&gt;
-&lt;p&gt;本文为大家介绍 Jupyter Notebook 这一实用工具（原名 IPython Notebook），总共分为两个部分：安装与简介，使用与展示&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/ipython/ipython/blob/3.x/examples/Notebook/Index.ipynb&#34;&gt;官方教程&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Jupyter Notebook 是一个交互式的编程环境，可以方便的供脚本语言（python, matlab）以及 REPL 化的其它语言进行编程、调试以及展示。&lt;br&gt;
-更多内容见&lt;a href=&#34;https://nbviewer.jupyter.org/github/ipython/ipython/blob/3.x/examples/Notebook/What%20is%20the%20IPython%20Notebook.ipynb&#34;&gt;What is the IPython Notebook&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;本文也是使用 Jupyter Notebook 编写。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>词根</title>
       <link>https://zhengzangw.com/notes/english/english-roots/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0000</pubDate>
@@ -4060,131 +3689,6 @@ Single qubit operator Pauli operators $I=(1,0;0,1)$ $X=(0,1;1,0)$ (非门) $X|0\
       <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/machine-learning/others/</guid>
       <description>技术浪潮 神经网络 支持向量机 神经网络 年份 89-94 95-05 06- 代表性技术 BP 算法 核方法，统计学习理论 深度学习 生成式与判别式 判别式(discriminative) 生成式(generative) 对 $P(c\vert x)$ 建模 对 $P(c \vert x)=\frac{P(x,c)}{P(x)}$ 建模 实例 决策树，BP 神经网络，SVM 贝叶斯分类器 实际环境中问题 i.i.d. 改变，concept driven，后验概率不变 没有做“多余”工作 做了“多余”工作 神经网络发展史 第一阶段 1943 年, McCulloch 和 Pitts 提出第一个神经元数学模型, 即 M-P 模型, 并从原理上证明了人工神经网络能够计算任何算数和逻辑函数 1949 年, Hebb 发表《The Organization of Behavior》一书, 提出生物神经元学习的机理, 即 Hebb 学习规则 1958 年, Rosenblatt 提出感知机网络(Perceptron)模型和其学习规则 1960 年, Widrow 和 Hoff 提出自适应线性神经元(Adaline)模型和最小均方学习算法 1969 年, Minsky 和 Papert 发表《Perceptrons》一书, 指出单层神经网路不能解决非线性问题, 多层网络的训练算法尚无希望.</description>
-    </item>
-    
-    <item>
-      <title>Set up your Android Development Environment on Macos</title>
-      <link>https://zhengzangw.com/posts/android-develop/</link>
-      <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/android-develop/</guid>
-      <description>&lt;h2 id=&#34;mac-开发环境配置&#34;&gt;Mac 开发环境配置&lt;/h2&gt;
-&lt;h3 id=&#34;install-java8&#34;&gt;Install Java8&lt;/h3&gt;
-&lt;p&gt;java 8 is suitable for android-sdk&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;brew tap caskroom/versions&lt;/code&gt;
-&lt;code&gt;brew cask install java8&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;开发环境&#34;&gt;开发环境&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;brew install ant&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;brew install maven&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;brew install gradle&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;brew cask install android-sdk&lt;/code&gt;
-&lt;code&gt;brew cask install android-ndk&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;brew cask install intel-haxm&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;brew cask install android-studio&lt;/code&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Overview of Mobile Phones</title>
-      <link>https://zhengzangw.com/posts/info-moblie-phone/</link>
-      <pubDate>Tue, 09 Apr 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/info-moblie-phone/</guid>
-      <description>&lt;p&gt;soc=cpu+gpu+(dsp+neon)+(modem)&lt;/p&gt;
-&lt;h2 id=&#34;华为1987-&#34;&gt;华为（1987-）&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;海思麒麟处理器
-&lt;ul&gt;
-&lt;li&gt;ARM 架构&lt;/li&gt;
-&lt;li&gt;950,980&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;华为品牌（高端品牌，主打高端、工艺）
-&lt;ul&gt;
-&lt;li&gt;Mate系列：年末
-&lt;ul&gt;
-&lt;li&gt;7,8,9,10,20（5000￥）&lt;/li&gt;
-&lt;li&gt;20: 980，4000mA&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;P系列：年初
-&lt;ul&gt;
-&lt;li&gt;1,2,6,7,8,9,10,20（5000￥）&lt;/li&gt;
-&lt;li&gt;20：EMUI 8.1 （基于8.1系统），970, 6GB, 3400mA, IP67&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;G/Nova系列&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;荣耀品牌（互联网品牌，主打高性价比、品质）：
-&lt;ul&gt;
-&lt;li&gt;荣耀系列：年中
-&lt;ul&gt;
-&lt;li&gt;6,7,8,9,10,Note 10（2500￥）&lt;/li&gt;
-&lt;li&gt;V: 8,9,10,20（3000￥）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;畅玩系列：千元机&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>All you need on Macos (2020)</title>
-      <link>https://zhengzangw.com/posts/mac-all-in-one/</link>
-      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/mac-all-in-one/</guid>
-      <description>&lt;p&gt;笔者 Mac 也用了三年，一直在寻找着适合 Mac 的配置、软件。今天准备第三次重装电脑（第一次是装驱动坏了返厂重修，第二次和这次一样，来个大整理）。希望这次重装后，能达到以下效果：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;进一步加强文件管理，多用软件管理而非原生目录&lt;/li&gt;
-&lt;li&gt;奥卡姆剃刀：如无必要，勿增实体&lt;/li&gt;
-&lt;li&gt;在电脑上完成一整套学习和工作的工作流（Workflow）&lt;/li&gt;
-&lt;li&gt;配置可复现化（降低 macos 新系统配置代价）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;希望这次重装后，我的整个工作环境能够稳定下来。本博客希望传递的知识是&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;让你知道，关于 Mac 你还有不知道的东西&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;而不是&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;让你知道，关于 Mac 你知道的东西怎么做&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在开始重装前，先介绍一下我为 mac 配的外设和硬件：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;扩展坞/转接口：注意如果是金属的可能会影响 wifi 信号&lt;/li&gt;
-&lt;li&gt;键盘 + 屏幕保护膜：后悔买迟了&lt;/li&gt;
-&lt;li&gt;背面贴纸：没贴&lt;/li&gt;
-&lt;li&gt;magic mouse：不怎么用，主要还是触控板&lt;/li&gt;
-&lt;li&gt;1T 移动固态：电脑 500G 也不够用了。机械暂时不知道放哪合适&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;我们以重装的流程，组织介绍的顺序。在备份资料后，我们首先要做一下几部&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;保存主目录下的 &lt;code&gt;.&lt;/code&gt; 文件（GNU stow），以方便快捷导出&lt;/li&gt;
-&lt;li&gt;记录 brew 下载的应用&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;developers-tools&#34;&gt;Developer&amp;rsquo;s Tools&lt;/h1&gt;
-&lt;h2 id=&#34;ide&#34;&gt;IDE&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Xcode
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vscode: Main Code Editor
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Anaconda: Python
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PyCharm CE: Python
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Sagemath: sage
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;IntelliJ IDEA CE: Java
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Android Studio
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MATLAB R2019a: Matlab
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;script editor: (native) Apple Script
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Qt Series: Qt
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- CocosCreator: 游戏引擎，基于 cocos
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Orange3: 快速测试 ML 算法
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Ecllipse: Java, 选择 IntelliJ 替代
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- CLion: C++, 选择终端命令执行
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Visual Studio: C#
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- CodeRunner: multi language
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- DataGrip: SQL
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;- Mathematica: Mathematica
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -4300,27 +3804,6 @@ NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
     </item>
     
     <item>
-      <title>basics of Sage</title>
-      <link>https://zhengzangw.com/posts/sagemath/</link>
-      <pubDate>Sun, 24 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/sagemath/</guid>
-      <description>&lt;h1 id=&#34;table-of-function&#34;&gt;Table of function&lt;/h1&gt;</description>
-    </item>
-    
-    <item>
-      <title>Journal: Hong Kong overseas study tour</title>
-      <link>https://zhengzangw.com/posts/travel-hongkong/</link>
-      <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/travel-hongkong/</guid>
-      <description>&lt;h1 id=&#34;香港五日游学&#34;&gt;香港五日游学&lt;/h1&gt;
-&lt;p&gt;2019.2.18 - 2019.2.23&lt;/p&gt;
-&lt;p&gt;为拔尖计划准备的香港五日游学可以说是 80% 游 + 20% 学了。或许这次游学最大的意义，借用同学的话说，很巧妙的方法将喜欢学术的学生和喜欢钱的学生分开了。&lt;/p&gt;
-&lt;p&gt;此处流水账地记下五日行程&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Galois 理论</title>
       <link>https://zhengzangw.com/notes/modern-algebra/galois-theory/</link>
       <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
@@ -4336,31 +3819,6 @@ NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
       <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/modern-algebra/domain/</guid>
       <description> 域： $F$ 为环, $F^\star$ 按乘法构成 Abel 群 域的特征和扩张 加法阶 $F$ 加法群的阶为最小的 $n$, $na=0$ $na=a+a+\cdots+a=0$, 最小的 $n$ 为 $a$ 的加法阶 $F$ 中非零元的加法阶就是单位元的加法阶 若 $e,2e,3e,\dots\not=0$, 则称 $F$ 的特征为 $0$. $ch(F)=0$ 域 $F$ 单位元 $e$ 的加法阶 $p&amp;lt;\infty$, 则 $p$ 为素数。$ch(F)=p$ $ch(F)=p$, 则 $\sigma:m\rightarrow me$ 是 $Z$ 到 $F$ 的环同态，$ker\sigma=pZ$，$Z/pZ={me:m\in Z}$ 为 $F$ 的最小子域 $F$ 为特征为 $p$ 的域，则 $a_1,\cdots,a_m\in F$ 时 $(a_1+\cdots+a_m)^{p^n}=a_1^{p^n}+\cdots+a_m^{p_n}$ 有限域(Galois 域)：$F$ 中只有有限个元素 $GF(p)$ 模 p 加乘 $GF(p^w)$ 为含 $p^w$ 个元素的有限域，多项式系数只能取 p 由本原多项式在乘法下生成 $q$ 元域：恰有 $q$ 个元素的域 $q$ 元域 $F$ 中有 $x^q-x=\prod_{a\in F}(x-a)$ 域的扩张：$K$ 为 $L$ 子域，$L$ 为 $K$ 扩域， 记为 $L/K$, 即 $L$ 为 $K$ 的扩张 线性空间：$V$ 是域 $F$ 上向量空间 $V$ 按加法构成 Abel 群 数乘运算 $a(x+y)=ax+ay$ $(a+b)x=ax+bx$ $1x=x$ $(ab)x=a(bx)$ 扩张次数 $[L:K]$：$L$ 是数域 $K$ 上的向量空间，$L/K$的维数 $[L:k]=n$：$L$ 为 $K$ 的 $n$ 次扩域 $[L:K]&amp;lt;\infty$：$L$ 为 $K$ 的有限扩域 $F$ 为 $q$ 元有限域，则 $q$ 必为素数幂次；$q=p^n$ 为素数幂时，必有 $q$ 元域且任意两个 $q$ 元域同构，记为 $F_q$ 或 $GF(q)$ 代数扩张 $X$ 生成的 $K$ 的扩环（在 $K$ 上添加 $X$ 生成的环）： $L/K$ 为域扩张，$X\subset L$, 令 $K =\bigcap_{R为 L 子环，R\subset K\cup X} R$ 是 $L$ 包含 $K$ 与 $X$ 的最小子环 $X$ 生成的 $K$ 上扩域：$K(X)=\bigcap_{K\leq L,F\subset K\cup X}$ 为 $L$ 包含 $K$ 与 $X$ 的最小子域 $X$ 有限时，$K =K[\alpha_1,\cdots,\alpha_n],K(X)=K(\alpha_1,\cdots, \alpha_n)$ $K[\alpha_1,\cdots,\alpha_n]={P(\alpha_1,\cdots,\alpha_n)}$ $K(\alpha_1,\cdots,\alpha_n)={\frac{P(\alpha_1,\cdots,\alpha_n)}{Q(\alpha_1,\cdots,\alpha_n)}}$ 单扩张： $K(\alpha)/K$ 代数元：$L/K$, $\alpha\in L$, 存在 $K $ 中非零多项式 $f(x)$, $f(\alpha)=0$ 超越元：非代数元 $e,\pi$ $L/K$, $\alpha$ 为 $K$ 上代数元，则 $I={g(x)\in K :g(\alpha)=0}$ 为 $K $ 的理想。 又 $K $ 为 PID, 故 $I$ 有唯一的首一多项式 $f\in K $ 使得 $I=(f)$。 该首一多项式为 $\alpha$ 在 $K$ 上的极小多项式。 极小多项式为 $n$ 次，则称 $\alpha$ 为 $n$ 次代数元。 $L/K$, ${\alpha\in L:\alpha 为K上代数元}$ 为 $L$ 的子域 $L/K$, $\alpha\in L$ 为 $K$ 上 $n$ 次代数元，则 $K(\alpha)=K[\alpha],[K(\alpha):K]=n$，且 $K$ 上向量空间 $K(\alpha)$ 有基底 $1,\alpha,\alpha^2,\cdots,\alpha^{n-1}$ $K /(f)\cong K(\alpha)$ $K$ 为域， 若 $K $ 中次数大于$1$的多项式均可约，即 $n$ 次 $f(x)\in K $ 可写成 $c(x-\alpha_1)\cdots(x-\alpha_n)$ 则称 $K$ 为代数闭域 任何域 $K$ 可扩张称一个代数闭域 代数基本定理（Gauss 博士论文证明）：$\mathbb{C}$ 为代数闭域（或可正所有代数数构成代数闭域） $L/K$, $L$ 中元都是 $K$ 中代数元，则称 $L/K$ 为代数扩张。否则称为超越扩张 $L/K$为代数扩张, 则 $[L:K]&amp;lt;\infty \iff$ 有有限个 $K$ 上代数元 $\alpha_1,\cdots,\alpha_n$ 使 $L=K(\alpha_1,\cdots,\alpha_n)$ $L/M$ 与 $M/K$ 都为代数扩张，则 $L/K$ 为代数扩张 域的例子 $\mathbb{Q},\mathbb{R},\mathbb{C}$ $\mathbb{C}=\mathbb{R}(i)\cong R /(x^2+1)$(Cauchy)$={a+bx \bmod (x^+1),a,b\in \mathbb{R}}$， $i=x \bmod x^2+1$, $\mathbb{C}$ 为 $\mathbb{R}$ 上的二维线性空间，$1,i$ 为一组基底 $\mathbb{Q}$ 上的代数元为 代数数 $\alpha\in \mathbb{C}$ 为 代数整数 指有首一的正系数多项式使得 $f(x)=0$ $p$ 为素数， $\mathbb{F}=\mathbb{Z}/p\mathbb{Z}$ $Z/pZ $ 上必有 $n$ 次不可约多项式，域 $F_p /(f)$ 中有 $p^n$ 个元素 </description>
-    </item>
-    
-    <item>
-      <title>How to use Matplotlib in Python</title>
-      <link>https://zhengzangw.com/posts/python-matplotlib/</link>
-      <pubDate>Wed, 06 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/python-matplotlib/</guid>
-      <description>&lt;h1 id=&#34;preface&#34;&gt;Preface&lt;/h1&gt;
-&lt;p&gt;This document serves as a reminder of basic usage of matplotlib. More information on &lt;a href=&#34;https://matplotlib.org/tutorials/index.html&#34;&gt;matplotlib tutorial&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;多图绘制&#34;&gt;多图绘制&lt;/h1&gt;
-&lt;h2 id=&#34;figure&#34;&gt;figure&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;# print(plt.style.available)
-plt.style.use(&#39;ggplot&#39;)
-plt.figure(1)
-plt.figure(2)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;subplot&#34;&gt;subplot&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;plt.subplots_adjust(wspace = 0, hspace =0.5)
-plt.subplot(211)
-plt.subplot(212)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;axes&#34;&gt;Axes&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;ax = plt.axes([0.025,0.025,0.95,0.95])
-&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -4559,131 +4017,6 @@ NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
     </item>
     
     <item>
-      <title>Summary of Google 1st ML Camp (Shanghai)</title>
-      <link>https://zhengzangw.com/posts/google-mlcamp-2019/</link>
-      <pubDate>Sun, 20 Jan 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/google-mlcamp-2019/</guid>
-      <description>&lt;h1 id=&#34;项目&#34;&gt;项目&lt;/h1&gt;
-&lt;p&gt;三天内和两个队友合作完成了一个项目，基本是零基础，最后还能有展示的Demo，感觉很棒。总结这次项目(NLP)的开发流程如下&lt;/p&gt;
-&lt;h2 id=&#34;开发流程&#34;&gt;开发流程&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;选题+创意构想（头脑风暴）&lt;/li&gt;
-&lt;li&gt;数据集分析+数据可视化&lt;/li&gt;
-&lt;li&gt;数据清理&lt;/li&gt;
-&lt;li&gt;模型构建（先有个baseline，后面可以大家一起构想；baseline应该先满足end2end）&lt;/li&gt;
-&lt;li&gt;Tuning （这个可以一直进行，但是要保证其它部分有充足时间）&lt;/li&gt;
-&lt;li&gt;Demo （手机App&amp;gt;=网页&amp;gt;电脑App）&lt;/li&gt;
-&lt;li&gt;Poster + PPT&lt;/li&gt;
-&lt;li&gt;Presentation&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Basics of Linux</title>
-      <link>https://zhengzangw.com/posts/linux-tutor/</link>
-      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/linux-tutor/</guid>
-      <description>&lt;p&gt;Linux 私房菜&lt;/p&gt;
-&lt;h1 id=&#34;命令&#34;&gt;命令&lt;/h1&gt;</description>
-    </item>
-    
-    <item>
-      <title>Review: *Price of Inequality*《不平等的代价》</title>
-      <link>https://zhengzangw.com/posts/the-price-of-inequality/</link>
-      <pubDate>Tue, 27 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/the-price-of-inequality/</guid>
-      <description>&lt;p&gt;无特指则为美国&lt;/p&gt;
-&lt;h1 id=&#34;序言&#34;&gt;序言&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;2011 占领华尔街 占领运动&lt;/li&gt;
-&lt;li&gt;市场失灵
-&lt;ul&gt;
-&lt;li&gt;最严重的表现为失业（9%）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;公平竞争感&lt;/li&gt;
-&lt;li&gt;“一美元一票”&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Use Tikz in LaTeX</title>
-      <link>https://zhengzangw.com/posts/latex-tikz/</link>
-      <pubDate>Tue, 20 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/latex-tikz/</guid>
-      <description>&lt;h1 id=&#34;图片放置&#34;&gt;图片放置&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-tex&#34; data-lang=&#34;tex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}[htbp]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\centering&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle1]&lt;/span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;%code
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tikzpicture}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subfloat&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[subtitle2]&lt;/span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tikzpicture}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;%code
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tikzpicture}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\caption&lt;/span&gt;{caption}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{figure}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\tikz&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;%code
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    
-    <item>
-      <title>Write Verilog on Macos via icarus-verilog</title>
-      <link>https://zhengzangw.com/posts/icarus-verilog/</link>
-      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/icarus-verilog/</guid>
-      <description>&lt;h2 id=&#34;mac&#34;&gt;Mac&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;brew install icarus-verilog&lt;/li&gt;
-&lt;li&gt;download software Scansion&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Math Miscellaneous</title>
-      <link>https://zhengzangw.com/posts/math-not-yet-classifed/</link>
-      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/math-not-yet-classifed/</guid>
-      <description>&lt;h1 id=&#34;特殊函数&#34;&gt;特殊函数&lt;/h1&gt;
-&lt;h2 id=&#34;gamma-function&#34;&gt;Gamma Function&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Gamma Function: $\Gamma(x)=\int^\infty_0e^{-t}t^{x-1}dt$&lt;/li&gt;
-&lt;li&gt;性质
-&lt;ul&gt;
-&lt;li&gt;$\Gamma(x+1)=x\Gamma(x)$&lt;/li&gt;
-&lt;li&gt;$\Gamma(n+1)=n!$&lt;/li&gt;
-&lt;li&gt;$\Gamma(\frac{1}{2})=\sqrt{\pi}$&lt;/li&gt;
-&lt;li&gt;$\Gamma(n+\frac{1}{2})=\frac{\sqrt\pi}{2^n}(2n-1)!!$&lt;/li&gt;
-&lt;li&gt;$\Gamma(\frac{1}{2}-n)=(-1)^n\frac{2^n\sqrt{\pi}}{(2n-1)}!!$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;$I_n=\int^\infty_0x^ne^{-x^2}dx=\frac{1}{2}\Gamma(\frac{n+1}{2})$&lt;/li&gt;
-&lt;li&gt;Guassian Integral: $\int_{-\infty}^{\infty}ae^{\frac{-(x-b)^2}{c^2}}=ac\sqrt{\pi}$&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>How to use Logging module in Python</title>
-      <link>https://zhengzangw.com/posts/python-logging/</link>
-      <pubDate>Mon, 12 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/python-logging/</guid>
-      <description>&lt;h1 id=&#34;logging-module&#34;&gt;Logging module&lt;/h1&gt;
-&lt;h2 id=&#34;level&#34;&gt;level&lt;/h2&gt;
-&lt;p&gt;CRITICAL &amp;gt; ERROR &amp;gt; WARNING &amp;gt; INFO &amp;gt; DEBUG &amp;gt; NOTSET&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>ICS PA</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/ics-pa/</link>
       <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
@@ -4729,24 +4062,6 @@ const(at the begining): const</description>
     </item>
     
     <item>
-      <title>How to read binary data in Python</title>
-      <link>https://zhengzangw.com/posts/python-reading/</link>
-      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/python-reading/</guid>
-      <description>&lt;h1 id=&#34;open&#34;&gt;open&lt;/h1&gt;
-&lt;h2 id=&#34;参数&#34;&gt;参数&lt;/h2&gt;
-&lt;p&gt;open(name, mode, buffering)&lt;/p&gt;
-&lt;h2 id=&#34;打开模式&#34;&gt;打开模式&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;r 只读，文件的指针将会放在文件的开头&lt;/li&gt;
-&lt;li&gt;rb 以二进制打开&lt;/li&gt;
-&lt;li&gt;r+ 打开一个文件用于读写。文件指针将会放在文件的开头。&lt;/li&gt;
-&lt;li&gt;rb+&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
       <title>Deep Learning</title>
       <link>https://zhengzangw.com/notes/deep-learning/deep-learning/</link>
       <pubDate>Sun, 02 Sep 2018 00:00:00 +0000</pubDate>
@@ -4765,40 +4080,6 @@ const(at the begining): const</description>
 &lt;li&gt;Bernoulli输出分布sigmoid单元&lt;/li&gt;
 &lt;li&gt;Multinoulli输出分布softmax单元&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Introuction to TensorFlow 1 Picture Handle</title>
-      <link>https://zhengzangw.com/posts/tensorflow-picture/</link>
-      <pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/tensorflow-picture/</guid>
-      <description>&lt;h1 id=&#34;图片的基础知识&#34;&gt;图片的基础知识&lt;/h1&gt;
-&lt;p&gt;像素值只有 0，1： 二值图&lt;br&gt;
-0-255：256 级灰度图&lt;br&gt;
-图像位数通常是 8 位。简单可认为一张单通道 8 位彩色图有三通道 RGB&lt;br&gt;
-转换为灰度公式很多，如：
-$$Gray = R&lt;em&gt;30%+G&lt;/em&gt;59%+B*11%$$&lt;/p&gt;
-&lt;h2 id=&#34;亮度&#34;&gt;亮度&lt;/h2&gt;
-&lt;p&gt;RGB 颜色空间本身就是源于物体发光，每个通道上的值表示的是该通道上的光强，调整光强即是调整亮度。可以有如下公式：
-$$亮度＝R&lt;em&gt;0.299+G&lt;/em&gt;0.587+B*0.114$$
-$$l = (max(rgb) + min(rgb)) / 2$$&lt;/p&gt;
-&lt;h2 id=&#34;对比度&#34;&gt;对比度&lt;/h2&gt;
-&lt;p&gt;对比度反应了图片上亮区域和暗区域的层次感。而反应到图像编辑上，调整对比度就是在保证平均亮度不变的情况下，扩大或缩小亮的点和暗的点的差异&lt;/p&gt;
-&lt;p&gt;$$Out = Average + (In – Average) * ( 1 + percent)$$&lt;/p&gt;
-&lt;p&gt;其中 In 表示原始像素点亮度，Average 表示整张图片的平均亮度，Out 表示调整后的亮度，而 percent 即调整范围[-1,1]&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>A toy experiments on Tensorflow 1</title>
-      <link>https://zhengzangw.com/posts/tensorflow-experiment/</link>
-      <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/tensorflow-experiment/</guid>
-      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-&lt;p&gt;《深度学习》终于获得了“过半警告”，不过CNN,RNN都还没学。前面的很多算法都没有实践看过效果，决定在Tensorflow上实现一下。&lt;/p&gt;
-&lt;p&gt;参考的资料有：《Tensorflow 实现Goolge深度学习框架》 莫烦的网络教程、&lt;/p&gt;
-&lt;p&gt;这个系列尽可能做的好一点，加深对参数的理解和使用&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -4831,31 +4112,6 @@ $$l = (max(rgb) + min(rgb)) / 2$$&lt;/p&gt;
     </item>
     
     <item>
-      <title>Set Code Styles in vscode</title>
-      <link>https://zhengzangw.com/posts/code-style/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/code-style/</guid>
-      <description>&lt;h2 id=&#34;不同风格比较&#34;&gt;不同风格比较&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Google 好用，习惯，简洁。&lt;/li&gt;
-&lt;li&gt;Chromium&lt;/li&gt;
-&lt;li&gt;Mozilla&lt;/li&gt;
-&lt;li&gt;Webkit&lt;/li&gt;
-&lt;li&gt;LLVM&lt;/li&gt;
-&lt;li&gt;Visual Studio&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;code-style-setting&#34;&gt;Code Style Setting&lt;/h2&gt;
-&lt;h3 id=&#34;vscode设置&#34;&gt;Vscode设置&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;&amp;quot;C_Cpp.clang_format_style&amp;quot;: 
-    &amp;quot;{ BasedOnStyle: Google, IndentWidth: 4}&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;indent&#34;&gt;indent&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;alias cindent=&amp;quot;indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1 -nut&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    
-    <item>
       <title>FFT</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-fft/</link>
       <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
@@ -4880,16 +4136,6 @@ $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物�
     </item>
     
     <item>
-      <title>Hype Cycle for Emerging Technologies</title>
-      <link>https://zhengzangw.com/posts/hype-cycle/</link>
-      <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/hype-cycle/</guid>
-      <description>&lt;p&gt;技术循环曲线，光环曲线，炒作周期
-&lt;img src=&#34;https://zh.wikipedia.org/wiki/%E6%8A%80%E6%9C%AF%E6%88%90%E7%86%9F%E5%BA%A6%E6%9B%B2%E7%BA%BF#/media/File:Hype-Cycle-General.png&#34; alt=&#34;Example&#34;&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Skip list</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/skip-list/</link>
       <pubDate>Mon, 12 Mar 2018 00:00:00 +0000</pubDate>
@@ -4906,21 +4152,6 @@ $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物�
     </item>
     
     <item>
-      <title>What is Debate</title>
-      <link>https://zhengzangw.com/posts/debate/</link>
-      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/debate/</guid>
-      <description>&lt;h2 id=&#34;辩论讲座&#34;&gt;辩论讲座&lt;/h2&gt;
-&lt;h3 id=&#34;辩论赛是什么&#34;&gt;辩论赛是什么&lt;/h3&gt;
-&lt;h4 id=&#34;辩论与辩论赛的区别&#34;&gt;辩论与辩论赛的区别&lt;/h4&gt;
-&lt;p&gt;胜负判断在评委。不在说服对方，说服第三方（法庭辩论、议会辩论）&lt;/p&gt;
-&lt;p&gt;其它类型：普通辩论（说服）、总统辩论；与政治法律相关（马英九、陈水扁都是辩论队出身）&lt;/p&gt;
-&lt;p&gt;辩论赛是一个理想化的讨论平台（权、力、人、情（绪））&lt;/p&gt;
-&lt;p&gt;辩论赛是一个 Game（培养专业的反对者）&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>DP优化——四边形不等式</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-optimization/</link>
       <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
@@ -4929,23 +4160,6 @@ $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物�
       <description>&lt;h2 id=&#34;四边形不等式条件&#34;&gt;四边形不等式条件&lt;/h2&gt;
 &lt;p&gt;任意 $a1\leq a2&amp;lt;b1\leq b2$,有 $F(a_1,b_1)+F(a_2,b_2)\leq F(a_1,b_2)+F(a_2,b_1)$
 则函数 F 满足四边形不等式&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Sharing of some good RSS seed</title>
-      <link>https://zhengzangw.com/posts/awesome-rss/</link>
-      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/awesome-rss/</guid>
-      <description>&lt;h1 id=&#34;rss-resource&#34;&gt;RSS Resource&lt;/h1&gt;
-&lt;h2 id=&#34;订阅&#34;&gt;订阅&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/dll635281462/article/details/51201490&#34;&gt;rss订阅源推荐个人收集&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.zhihu.com/question/19580096&#34;&gt;知乎&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;制作&#34;&gt;制作&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://feed43.com&#34;&gt;Feed43&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;github:直接搜索 &lt;code&gt;https://github.com/username&lt;/code&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -4963,135 +4177,6 @@ $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物�
 &lt;h3 id=&#34;question&#34;&gt;Question:&lt;/h3&gt;
 &lt;p&gt;在一个圆形操场的四周摆放N堆石子,现要将石子有次序地合并成一堆.规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。
 试设计出1个算法,计算出将N堆石子合并成1堆的最小得分和最大得分.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Review of two Debate Matches 辩论复盘</title>
-      <link>https://zhengzangw.com/posts/debate-analysis/</link>
-      <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/debate-analysis/</guid>
-      <description>&lt;h2 id=&#34;国乒男队成员选择罢赛可以理解难以认同&#34;&gt;国乒男队成员选择罢赛,可以理解/难以认同&lt;/h2&gt;
-&lt;p&gt;墨尔本大学 vs 台大政大联队，2017 华夏杯复赛。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Peoms Selected</title>
-      <link>https://zhengzangw.com/posts/poem/</link>
-      <pubDate>Sat, 10 Feb 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/poem/</guid>
-      <description>&lt;h1 id=&#34;洛夫-漂木&#34;&gt;洛夫 《漂木》&lt;/h1&gt;
-&lt;p&gt;我们惟一的敌人是时间，还来不及做完一场梦，生命的周期又到了。一缕青烟，升起于虚空之中，又无声无息地，消散于更大的寂灭&lt;/p&gt;
-&lt;p&gt;我们唯一的敌人是时间，时间可以证明一切，时间可以改变一切，时间可以封存一切，时间可以吞噬一切&lt;/p&gt;
-&lt;p&gt;我们唯一可以做的，是想办法把我们的生命之梦延长一点，再延长一点，最好，永远不要真正清醒。&lt;/p&gt;
-&lt;h1 id=&#34;20178&#34;&gt;~2017.8&lt;/h1&gt;
-&lt;h2 id=&#34;无题1&#34;&gt;无题1&lt;/h2&gt;
-&lt;p&gt;被诗的火花点燃的
-我们都一样
-言语能否融化现实的老茧
-追随脉搏的膨胀
-理想远离现实一个弄堂
-我的呼唤能否为远方的云
-添上玫瑰色的明亮&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Introduction to GTD</title>
-      <link>https://zhengzangw.com/posts/gtd/</link>
-      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/gtd/</guid>
-      <description>&lt;p&gt;《尽管去做 ——无压工作的艺术》&lt;/p&gt;
-&lt;h2 id=&#34;任务模式的改变knowledgework&#34;&gt;任务模式的改变:knowledgework&lt;/h2&gt;
-&lt;h3 id=&#34;两个目的&#34;&gt;两个目的&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;抓住所有一切需要处理的事情把它们统统置入一个脱离大脑的逻辑系统中。&lt;/li&gt;
-&lt;li&gt;训练自己在接受一切“输入信息”的前期作出决定&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;新的情况&#34;&gt;新的情况&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;工作不再有清楚的界线&lt;/li&gt;
-&lt;li&gt;几乎每一件事情都可能处理得更加完善，而且现在促成这一切成为现实的信息，已数不胜数、唾手可得。&lt;/li&gt;
-&lt;li&gt;工作量因需要交换信息增加&lt;/li&gt;
-&lt;li&gt;工作不断变化&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;旧的模式和习惯已力不从心&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>How to use Pandas in Python</title>
-      <link>https://zhengzangw.com/posts/python-pandas/</link>
-      <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/python-pandas/</guid>
-      <description>&lt;h1 id=&#34;pandas-code-example&#34;&gt;Pandas Code Example&lt;/h1&gt;
-&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;
-&lt;p&gt;In this arcticle, I will give examples to illustrate and remind me the usage of some pandas funtion. Just a reminder.&lt;/p&gt;
-&lt;h2 id=&#34;数据读写&#34;&gt;数据读写&lt;/h2&gt;
-&lt;h3 id=&#34;read_csv&#34;&gt;read_csv&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-pandas&#34; data-lang=&#34;pandas&#34;&gt;data = pd.read_csv(&amp;#39;test.csv&amp;#39;)
-data = pd.read_csv(&amp;#39;test.csv&amp;#39;,header = 0/[0,1,2]列名,  index_col = 0/[0,1], nrows = 100)
-data = pd.read_csv(&amp;#39;test_one.csv&amp;#39;, squeeze = True, encoding = &amp;#39;utf-8&amp;#39;) 一列返回Series
-data = pd.read_csv(&amp;#39;test.csv&amp;#39;, prefix = &amp;#39;X&amp;#39;列前缀, skiprows = 3, skipfooter = 3, na_values = &amp;#39;NAN&amp;#39;)
-data = pd.read_csv(&amp;#39;test_no_NAN.csv&amp;#39;, na_filter = &amp;#39;False&amp;#39;, parse_dates=True/{&amp;#39;foo&amp;#39;:[1,3]},infer_datatime_format = True, data_parser = function)
-&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    
-    <item>
-      <title>Macos Shortcut</title>
-      <link>https://zhengzangw.com/posts/mac-shortcut/</link>
-      <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/mac-shortcut/</guid>
-      <description>&lt;h1 id=&#34;快捷键&#34;&gt;快捷键&lt;/h1&gt;
-&lt;h2 id=&#34;iterm2&#34;&gt;Iterm2&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;⌘; 历史命令&lt;/li&gt;
-&lt;li&gt;⌘⇧h 剪贴板历史&lt;/li&gt;
-&lt;li&gt;⌃u 清行&lt;/li&gt;
-&lt;li&gt;⌃a 行首&lt;/li&gt;
-&lt;li&gt;⌃e 行尾&lt;/li&gt;
-&lt;li&gt;⌃f 前进&lt;/li&gt;
-&lt;li&gt;⌃b 后退&lt;/li&gt;
-&lt;li&gt;⌃p 上一条命令&lt;/li&gt;
-&lt;li&gt;⌃r 搜索历史&lt;/li&gt;
-&lt;li&gt;⌃d 删除当前字符&lt;/li&gt;
-&lt;li&gt;⌃h 删除光标前字符&lt;/li&gt;
-&lt;li&gt;⌃w 删除光标前单次&lt;/li&gt;
-&lt;li&gt;⌃k 删除到文末&lt;/li&gt;
-&lt;li&gt;⌃t 交换光标出文本&lt;/li&gt;
-&lt;li&gt;⌘r 清屏&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;vim&#34;&gt;Vim&lt;/h2&gt;</description>
-    </item>
-    
-    <item>
-      <title>Build your blogs by Hexo</title>
-      <link>https://zhengzangw.com/posts/hexo/</link>
-      <pubDate>Sat, 20 Jan 2018 14:50:22 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/hexo/</guid>
-      <description>&lt;h2 id=&#34;hexo&#34;&gt;Hexo&lt;/h2&gt;
-&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.jianshu.com/p/465830080ea9&#34;&gt;HEXO+Github,搭建属于自己的博客&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;主题&#34;&gt;主题&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/theme-next/hexo-theme-next&#34;&gt;next 7&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;tags 启用&lt;/li&gt;
-&lt;li&gt;math 启用，且 per page: false
-&lt;ul&gt;
-&lt;li&gt;修改 kramed 部分内容&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;使用双栏 scheme&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/litten/hexo-theme-yilia&#34;&gt;yilia&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -5173,17 +4258,6 @@ data = pd.read_csv(&amp;#39;test_no_NAN.csv&amp;#39;, na_filter = &amp;#39;False
       <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/friends/</guid>
       <description>Here are links to some of my friends. They are all living a wonderful and exciting life!</description>
-    </item>
-    
-    <item>
-      <title>Introduction to Domain Adapation</title>
-      <link>https://zhengzangw.com/posts/domain-adaptation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/domain-adaptation/</guid>
-      <description>CNN backbones 结构介绍
-LeNet5(1998) AlexNet8(2012) VGG(2014) VGG16 VGG19 GoogLeNet22(2014) Inception v1-v4 ResNet(2015) ResNet50 ResNet101 DRN-26 Semantic Segmentation $p_{ij}$: 被预测为 $j$ 类样本的 $i$ 类样本 Pixel Accuarcy: $\text{PA}=\frac{\sum_{i=0}^kp_{ii}}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}$ Mean Pixel Accuracy: $\text{MPA}=\frac{1}{k}\sum_{i=0}^k\frac{p_{ii}}{\sum_{j=0}^kp_{ij}}$ Mean Intersection over Union: $\text{MIoU}=\frac{1}{k}\sum_{i=0}^k\frac{p_{ii}}{\sum_{j=0}^kp_{ij}+\sum_{j=0}^kp_{ji}-p_{ii}}$ Frequency Weighted Intersection over Union: $\text{FWIoU}=\frac{1}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}\sum_{i=0}\frac{p_{ii}\sum_{j=0}^kp_{ij}}{\sum_{j=0}^kp_{ij}+\sum_{j=0}^kp_{ji}-p_{ii}}$ 架构
-FCN-8s DeepLab V2 Adversial GAN: $\min_G\max_D V(D,G)=E_{x\sim p_{\text{data}(x)}}[\log D(x)]+E_{z\sim p_z(z)}[\log (1-D(x))]$ cGAN: $\min_G\max_D V(D,G)=E_{x\sim p_{\text{data}(x|y)}}[\log D(x)]+E_{z\sim p_z(z)}[\log (1-D(x|y))]$ paired data generate BicycleGAN: diverse output Cycle GAN: no need of paired data 泛化性：所有模型都是需要先用有限的训练样本来训练的，那么由这些有限样本训练得到的模型可不可以从这些有限训练样本中生成出新的样本，而非简单地记着训练集 GAN 的问题 训练过程难以收敛，经常出现震荡；实验结果随机，难以复现； mode collapse：只生成某一模式 生成了一些没有意义、或者现实中不可能出现的图片 Graphical models Transfer Learning $D_S={X_S,f_S},T_S$ $D_T={X_T,f_T},T_T$</description>
     </item>
     
   </channel>

@@ -886,20 +886,8 @@
     <loc>https://zhengzangw.com/</loc>
     <lastmod>2022-09-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/posts/</loc>
-    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/invest/</loc>
-    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/3d-reconstruction/</loc>
-    <lastmod>2021-02-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/fmcw/</loc>
-    <lastmod>2021-01-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/teach/algorithm-2020-fall/oj1-4/</loc>
     <lastmod>2020-12-08T00:00:00+00:00</lastmod>
@@ -914,9 +902,6 @@
     <lastmod>2020-12-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/teach/algorithm-2020-fall/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/python-trick/</loc>
     <lastmod>2020-12-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/about/</loc>
@@ -973,12 +958,6 @@
     <loc>https://zhengzangw.com/notes/deep-learning/6-attention-and-memory/</loc>
     <lastmod>2020-06-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/posts/number-of-people/</loc>
-    <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/schools/</loc>
-    <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/artificial-intelligence/9-information-theory/</loc>
     <lastmod>2020-06-09T00:00:00+00:00</lastmod>
   </url><url>
@@ -990,12 +969,6 @@
   </url><url>
     <loc>https://zhengzangw.com/notes/rendering/6-sampling/</loc>
     <lastmod>2020-04-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/stock-index/</loc>
-    <lastmod>2020-04-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/social-engineering/</loc>
-    <lastmod>2020-03-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/computer-vision/2-features-and-filters/</loc>
     <lastmod>2020-02-25T00:00:00+00:00</lastmod>
@@ -1012,41 +985,17 @@
     <loc>https://zhengzangw.com/notes/microelectronics/transistor/</loc>
     <lastmod>2020-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/posts/interview-prepare/</loc>
-    <lastmod>2019-12-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/studying-abroad/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/english/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/collaborative-filtering/</loc>
-    <lastmod>2019-11-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/ml/</loc>
-    <lastmod>2019-11-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/meta-learning/</loc>
-    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/notes/</loc>
-    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/learning-to-match/</loc>
-    <lastmod>2019-09-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/tags/math/</loc>
     <lastmod>2019-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/posts/spectral-clustering/</loc>
-    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
+    <loc>https://zhengzangw.com/tags/notes/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/posts/seminar-19/</loc>
-    <lastmod>2019-09-11T00:00:00+00:00</lastmod>
+    <loc>https://zhengzangw.com/tags/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/ml/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/tags/cs/</loc>
     <lastmod>2019-09-05T00:00:00+00:00</lastmod>
@@ -1056,6 +1005,9 @@
   </url><url>
     <loc>https://zhengzangw.com/tags/physics/</loc>
     <lastmod>2019-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/english/</loc>
+    <lastmod>2019-08-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/english/tofle-words/</loc>
     <lastmod>2019-08-28T00:00:00+00:00</lastmod>
@@ -1078,21 +1030,6 @@
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-string/</loc>
     <lastmod>2019-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/tags/design/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/info/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/info-fonts/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/jupyter-notebook-introduction/</loc>
-    <lastmod>2019-05-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/tutor/</loc>
-    <lastmod>2019-05-12T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/english/english-roots/</loc>
     <lastmod>2019-05-05T00:00:00+00:00</lastmod>
   </url><url>
@@ -1102,20 +1039,8 @@
     <loc>https://zhengzangw.com/notes/machine-learning/others/</loc>
     <lastmod>2019-04-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/tags/android/</loc>
-    <lastmod>2019-04-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/android-develop/</loc>
-    <lastmod>2019-04-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/info-moblie-phone/</loc>
-    <lastmod>2019-04-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/tags/js/</loc>
     <lastmod>2019-03-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/mac-all-in-one/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/operating-system/os-extension/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
@@ -1135,29 +1060,11 @@
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-km/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/posts/sagemath/</loc>
-    <lastmod>2019-02-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/sage/</loc>
-    <lastmod>2019-02-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/travel-hongkong/</loc>
-    <lastmod>2019-02-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/travel/</loc>
-    <lastmod>2019-02-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/modern-algebra/galois-theory/</loc>
     <lastmod>2019-02-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/modern-algebra/domain/</loc>
     <lastmod>2019-02-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/python-matplotlib/</loc>
-    <lastmod>2019-02-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/python/</loc>
-    <lastmod>2019-02-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/convex-optimization/convex-optimization/</loc>
     <lastmod>2019-01-24T00:00:00+00:00</lastmod>
@@ -1174,49 +1081,16 @@
     <loc>https://zhengzangw.com/notes/operating-system/os-virtualization/</loc>
     <lastmod>2019-01-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/tags/project/</loc>
-    <lastmod>2019-01-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/google-mlcamp-2019/</loc>
-    <lastmod>2019-01-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/linux-tutor/</loc>
-    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/linux/</loc>
-    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/tags/php/</loc>
     <lastmod>2018-12-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/economy/</loc>
-    <lastmod>2018-11-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/the-price-of-inequality/</loc>
-    <lastmod>2018-11-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/latex/</loc>
-    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/latex-tikz/</loc>
-    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/mac/</loc>
-    <lastmod>2018-11-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/icarus-verilog/</loc>
-    <lastmod>2018-11-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/math-not-yet-classifed/</loc>
-    <lastmod>2018-11-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/tags/ics/</loc>
     <lastmod>2018-11-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/posts/python-logging/</loc>
-    <lastmod>2018-11-12T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/introduction-to-computer-science/ics-pa/</loc>
+    <lastmod>2018-09-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/tags/project/</loc>
     <lastmod>2018-09-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/tags/oj/</loc>
@@ -1231,20 +1105,8 @@
     <loc>https://zhengzangw.com/notes/advanced-programming/java/</loc>
     <lastmod>2018-09-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/posts/python-reading/</loc>
-    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/deep-learning/deep-learning/</loc>
     <lastmod>2018-09-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/tensorflow-picture/</loc>
-    <lastmod>2018-08-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/tensorflow/</loc>
-    <lastmod>2018-08-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/tensorflow-experiment/</loc>
-    <lastmod>2018-08-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-linear-recurrence/</loc>
     <lastmod>2018-08-26T00:00:00+00:00</lastmod>
@@ -1255,65 +1117,20 @@
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/segment-tree/</loc>
     <lastmod>2018-08-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/tags/dev/</loc>
-    <lastmod>2018-08-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/code-style/</loc>
-    <lastmod>2018-08-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-fft/</loc>
     <lastmod>2018-08-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-knapsack/</loc>
     <lastmod>2018-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/posts/hype-cycle/</loc>
-    <lastmod>2018-03-26T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/skip-list/</loc>
     <lastmod>2018-03-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/debate/</loc>
-    <lastmod>2018-03-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/debate/</loc>
-    <lastmod>2018-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-optimization/</loc>
     <lastmod>2018-02-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/tags/rss/</loc>
-    <lastmod>2018-02-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/awesome-rss/</loc>
-    <lastmod>2018-02-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-interval/</loc>
     <lastmod>2018-02-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/debate-analysis/</loc>
-    <lastmod>2018-02-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/poem/</loc>
-    <lastmod>2018-02-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/poem/</loc>
-    <lastmod>2018-02-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/gtd/</loc>
-    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/tags/plan/</loc>
-    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/python-pandas/</loc>
-    <lastmod>2018-02-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/mac-shortcut/</loc>
-    <lastmod>2018-02-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/hexo/</loc>
-    <lastmod>2018-01-20T14:50:22+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/computer-vision/3-matching-and-alignment/</loc>
   </url><url>
@@ -1335,6 +1152,6 @@
   </url><url>
     <loc>https://zhengzangw.com/friends/</loc>
   </url><url>
-    <loc>https://zhengzangw.com/posts/domain-adaptation/</loc>
+    <loc>https://zhengzangw.com/posts/</loc>
   </url>
 </urlset>

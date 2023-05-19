@@ -218,19 +218,6 @@ Lagrange 常数变易法 </description>
     </item>
     
     <item>
-      <title>Introduction to Spectral Clustering</title>
-      <link>https://zhengzangw.com/posts/spectral-clustering/</link>
-      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/spectral-clustering/</guid>
-      <description>&lt;h1 id=&#34;理论基础&#34;&gt;理论基础&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;邻接矩阵 $E$：$\omega_{ij}$ 为 $v_i$ 与 $v_j$ 的边权&lt;/li&gt;
-&lt;li&gt;$D$: $d_i=\sum_{j=1}^n\omega_i$&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
       <title>History</title>
       <link>https://zhengzangw.com/notes/machine-learning/others/</link>
       <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
@@ -281,30 +268,6 @@ Lagrange 常数变易法 </description>
 &lt;/li&gt;
 &lt;li&gt;非奇异$\iff$非退化$\iff$满秩$\iff$可逆&lt;/li&gt;
 &lt;li&gt;当$A$有 n 个线性无关特征向量时，$A$有完备的特征向量系；否则$A$为亏损矩阵&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Math Miscellaneous</title>
-      <link>https://zhengzangw.com/posts/math-not-yet-classifed/</link>
-      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/math-not-yet-classifed/</guid>
-      <description>&lt;h1 id=&#34;特殊函数&#34;&gt;特殊函数&lt;/h1&gt;
-&lt;h2 id=&#34;gamma-function&#34;&gt;Gamma Function&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Gamma Function: $\Gamma(x)=\int^\infty_0e^{-t}t^{x-1}dt$&lt;/li&gt;
-&lt;li&gt;性质
-&lt;ul&gt;
-&lt;li&gt;$\Gamma(x+1)=x\Gamma(x)$&lt;/li&gt;
-&lt;li&gt;$\Gamma(n+1)=n!$&lt;/li&gt;
-&lt;li&gt;$\Gamma(\frac{1}{2})=\sqrt{\pi}$&lt;/li&gt;
-&lt;li&gt;$\Gamma(n+\frac{1}{2})=\frac{\sqrt\pi}{2^n}(2n-1)!!$&lt;/li&gt;
-&lt;li&gt;$\Gamma(\frac{1}{2}-n)=(-1)^n\frac{2^n\sqrt{\pi}}{(2n-1)}!!$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;$I_n=\int^\infty_0x^ne^{-x^2}dx=\frac{1}{2}\Gamma(\frac{n+1}{2})$&lt;/li&gt;
-&lt;li&gt;Guassian Integral: $\int_{-\infty}^{\infty}ae^{\frac{-(x-b)^2}{c^2}}=ac\sqrt{\pi}$&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

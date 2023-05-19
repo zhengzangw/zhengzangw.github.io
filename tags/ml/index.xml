@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
     <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
-    <lastBuildDate>Thu, 07 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/ml/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1-概论</title>
       <link>https://zhengzangw.com/notes/artificial-intelligence/1-introduction/</link>
@@ -19,164 +19,12 @@
     </item>
     
     <item>
-      <title>Introduction to Collaborative Filtering</title>
-      <link>https://zhengzangw.com/posts/collaborative-filtering/</link>
-      <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/collaborative-filtering/</guid>
-      <description>&lt;h2 id=&#34;recommandation&#34;&gt;Recommandation&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Demographic-based Recommendation&lt;/li&gt;
-&lt;li&gt;Content-based Recommendation&lt;/li&gt;
-&lt;li&gt;Collaborative Filtering-based Recommendation&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;collaborative-filtering&#34;&gt;Collaborative Filtering&lt;/h2&gt;
-&lt;p&gt;Filtering: method of making automatic predictions about the interests of a user&lt;br&gt;
-Collaborating: by collecting preferences or taste information from many users&lt;br&gt;
-Underlying Assumption: if a person A has the same opinion as a person B on an issue, A is more likely to have B&amp;rsquo;s opinion on a different issue than that of a randomly chosen person.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Introduction to Meta Learning</title>
-      <link>https://zhengzangw.com/posts/meta-learning/</link>
-      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/meta-learning/</guid>
-      <description>&lt;h1 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Mechanistic view
-&lt;ul&gt;
-&lt;li&gt;DNN model that can read in an entire dataset and make predictions for new data point&lt;/li&gt;
-&lt;li&gt;Training this network uses a meta-dataset, which itself consists of many datasets, each for a different task&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Probabilistic view
-&lt;ul&gt;
-&lt;li&gt;Extract prior information from a set of tasks taht allows effcient learning of new tasks&lt;/li&gt;
-&lt;li&gt;Learning a new task this prior and training set to infer most likely posterior parameters&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;supervised learnings
-&lt;ul&gt;
-&lt;li&gt;$\arg\max\limits_{\phi}p(\phi|\mathcal{D})=\arg\max\limits_{\phi} \log p(\mathcal{D}|\phi)+\log p(\phi)$&lt;/li&gt;
-&lt;li&gt;require large amounts of labeled data&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Learning to Match</title>
-      <link>https://zhengzangw.com/posts/learning-to-match/</link>
-      <pubDate>Tue, 24 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/learning-to-match/</guid>
-      <description>&lt;h1 id=&#34;problem&#34;&gt;Problem&lt;/h1&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Name&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;QA (Question Ansering)&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Machine Comprehension&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Dialogue Systems&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Ad-hoc Retrieval&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Learning to Rank&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;</description>
-    </item>
-    
-    <item>
-      <title>Lamda-2 Seminar</title>
-      <link>https://zhengzangw.com/posts/seminar-19/</link>
-      <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/seminar-19/</guid>
-      <description>&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
-&lt;h2 id=&#34;审稿过程&#34;&gt;审稿过程&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Initial Check: 1~14 days
-&lt;ul&gt;
-&lt;li&gt;Editor Assistant 检查文章格式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;With Editor：14~30 days
-&lt;ul&gt;
-&lt;li&gt;Associate Editor: 对文章进行初步审查&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Under Review(Peer Review)：7~180 days
-&lt;ul&gt;
-&lt;li&gt;PC 3-5: Give Scores and Review/Comments&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Required Review Completed：1~5 days
-&lt;ul&gt;
-&lt;li&gt;Senior PC(SPC): judge reviews&lt;/li&gt;
-&lt;li&gt;Rebuttal&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Editor Decision
-&lt;ul&gt;
-&lt;li&gt;Area Chairs(AC): decide&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;数学
-&lt;ul&gt;
-&lt;li&gt;数字信号处理&lt;/li&gt;
-&lt;li&gt;随机过程&lt;/li&gt;
-&lt;li&gt;矩阵论&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
       <title>History</title>
       <link>https://zhengzangw.com/notes/machine-learning/others/</link>
       <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
       <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/machine-learning/others/</guid>
       <description>技术浪潮 神经网络 支持向量机 神经网络 年份 89-94 95-05 06- 代表性技术 BP 算法 核方法，统计学习理论 深度学习 生成式与判别式 判别式(discriminative) 生成式(generative) 对 $P(c\vert x)$ 建模 对 $P(c \vert x)=\frac{P(x,c)}{P(x)}$ 建模 实例 决策树，BP 神经网络，SVM 贝叶斯分类器 实际环境中问题 i.i.d. 改变，concept driven，后验概率不变 没有做“多余”工作 做了“多余”工作 神经网络发展史 第一阶段 1943 年, McCulloch 和 Pitts 提出第一个神经元数学模型, 即 M-P 模型, 并从原理上证明了人工神经网络能够计算任何算数和逻辑函数 1949 年, Hebb 发表《The Organization of Behavior》一书, 提出生物神经元学习的机理, 即 Hebb 学习规则 1958 年, Rosenblatt 提出感知机网络(Perceptron)模型和其学习规则 1960 年, Widrow 和 Hoff 提出自适应线性神经元(Adaline)模型和最小均方学习算法 1969 年, Minsky 和 Papert 发表《Perceptrons》一书, 指出单层神经网路不能解决非线性问题, 多层网络的训练算法尚无希望.</description>
-    </item>
-    
-    <item>
-      <title>Summary of Google 1st ML Camp (Shanghai)</title>
-      <link>https://zhengzangw.com/posts/google-mlcamp-2019/</link>
-      <pubDate>Sun, 20 Jan 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/google-mlcamp-2019/</guid>
-      <description>&lt;h1 id=&#34;项目&#34;&gt;项目&lt;/h1&gt;
-&lt;p&gt;三天内和两个队友合作完成了一个项目，基本是零基础，最后还能有展示的Demo，感觉很棒。总结这次项目(NLP)的开发流程如下&lt;/p&gt;
-&lt;h2 id=&#34;开发流程&#34;&gt;开发流程&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;选题+创意构想（头脑风暴）&lt;/li&gt;
-&lt;li&gt;数据集分析+数据可视化&lt;/li&gt;
-&lt;li&gt;数据清理&lt;/li&gt;
-&lt;li&gt;模型构建（先有个baseline，后面可以大家一起构想；baseline应该先满足end2end）&lt;/li&gt;
-&lt;li&gt;Tuning （这个可以一直进行，但是要保证其它部分有充足时间）&lt;/li&gt;
-&lt;li&gt;Demo （手机App&amp;gt;=网页&amp;gt;电脑App）&lt;/li&gt;
-&lt;li&gt;Poster + PPT&lt;/li&gt;
-&lt;li&gt;Presentation&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -198,40 +46,6 @@ Underlying Assumption: if a person A has the same opinion as a person B on an is
 &lt;li&gt;Bernoulli输出分布sigmoid单元&lt;/li&gt;
 &lt;li&gt;Multinoulli输出分布softmax单元&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Introuction to TensorFlow 1 Picture Handle</title>
-      <link>https://zhengzangw.com/posts/tensorflow-picture/</link>
-      <pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/tensorflow-picture/</guid>
-      <description>&lt;h1 id=&#34;图片的基础知识&#34;&gt;图片的基础知识&lt;/h1&gt;
-&lt;p&gt;像素值只有 0，1： 二值图&lt;br&gt;
-0-255：256 级灰度图&lt;br&gt;
-图像位数通常是 8 位。简单可认为一张单通道 8 位彩色图有三通道 RGB&lt;br&gt;
-转换为灰度公式很多，如：
-$$Gray = R&lt;em&gt;30%+G&lt;/em&gt;59%+B*11%$$&lt;/p&gt;
-&lt;h2 id=&#34;亮度&#34;&gt;亮度&lt;/h2&gt;
-&lt;p&gt;RGB 颜色空间本身就是源于物体发光，每个通道上的值表示的是该通道上的光强，调整光强即是调整亮度。可以有如下公式：
-$$亮度＝R&lt;em&gt;0.299+G&lt;/em&gt;0.587+B*0.114$$
-$$l = (max(rgb) + min(rgb)) / 2$$&lt;/p&gt;
-&lt;h2 id=&#34;对比度&#34;&gt;对比度&lt;/h2&gt;
-&lt;p&gt;对比度反应了图片上亮区域和暗区域的层次感。而反应到图像编辑上，调整对比度就是在保证平均亮度不变的情况下，扩大或缩小亮的点和暗的点的差异&lt;/p&gt;
-&lt;p&gt;$$Out = Average + (In – Average) * ( 1 + percent)$$&lt;/p&gt;
-&lt;p&gt;其中 In 表示原始像素点亮度，Average 表示整张图片的平均亮度，Out 表示调整后的亮度，而 percent 即调整范围[-1,1]&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>A toy experiments on Tensorflow 1</title>
-      <link>https://zhengzangw.com/posts/tensorflow-experiment/</link>
-      <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/tensorflow-experiment/</guid>
-      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-&lt;p&gt;《深度学习》终于获得了“过半警告”，不过CNN,RNN都还没学。前面的很多算法都没有实践看过效果，决定在Tensorflow上实现一下。&lt;/p&gt;
-&lt;p&gt;参考的资料有：《Tensorflow 实现Goolge深度学习框架》 莫烦的网络教程、&lt;/p&gt;
-&lt;p&gt;这个系列尽可能做的好一点，加深对参数的理解和使用&lt;/p&gt;</description>
     </item>
     
   </channel>

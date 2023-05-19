@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
     <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
-    <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/notes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1-极限与连续</title>
       <link>https://zhengzangw.com/notes/calculus/section1/</link>
@@ -701,35 +701,6 @@ Spread Spectrum Frequency Hopping(FHSS) signal is broadcast over seemingly rando
     </item>
     
     <item>
-      <title>Introduction to Meta Learning</title>
-      <link>https://zhengzangw.com/posts/meta-learning/</link>
-      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/meta-learning/</guid>
-      <description>&lt;h1 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Mechanistic view
-&lt;ul&gt;
-&lt;li&gt;DNN model that can read in an entire dataset and make predictions for new data point&lt;/li&gt;
-&lt;li&gt;Training this network uses a meta-dataset, which itself consists of many datasets, each for a different task&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Probabilistic view
-&lt;ul&gt;
-&lt;li&gt;Extract prior information from a set of tasks taht allows effcient learning of new tasks&lt;/li&gt;
-&lt;li&gt;Learning a new task this prior and training set to infer most likely posterior parameters&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;supervised learnings
-&lt;ul&gt;
-&lt;li&gt;$\arg\max\limits_{\phi}p(\phi|\mathcal{D})=\arg\max\limits_{\phi} \log p(\mathcal{D}|\phi)+\log p(\phi)$&lt;/li&gt;
-&lt;li&gt;require large amounts of labeled data&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
       <title>Gates</title>
       <link>https://zhengzangw.com/notes/quantum-computation/gate/</link>
       <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
@@ -1039,40 +1010,6 @@ NJU: 操作系统 - 蒋炎岩&lt;/p&gt;
 &lt;li&gt;session leader&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Basics of Linux</title>
-      <link>https://zhengzangw.com/posts/linux-tutor/</link>
-      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/linux-tutor/</guid>
-      <description>&lt;p&gt;Linux 私房菜&lt;/p&gt;
-&lt;h1 id=&#34;命令&#34;&gt;命令&lt;/h1&gt;</description>
-    </item>
-    
-    <item>
-      <title>Math Miscellaneous</title>
-      <link>https://zhengzangw.com/posts/math-not-yet-classifed/</link>
-      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/math-not-yet-classifed/</guid>
-      <description>&lt;h1 id=&#34;特殊函数&#34;&gt;特殊函数&lt;/h1&gt;
-&lt;h2 id=&#34;gamma-function&#34;&gt;Gamma Function&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Gamma Function: $\Gamma(x)=\int^\infty_0e^{-t}t^{x-1}dt$&lt;/li&gt;
-&lt;li&gt;性质
-&lt;ul&gt;
-&lt;li&gt;$\Gamma(x+1)=x\Gamma(x)$&lt;/li&gt;
-&lt;li&gt;$\Gamma(n+1)=n!$&lt;/li&gt;
-&lt;li&gt;$\Gamma(\frac{1}{2})=\sqrt{\pi}$&lt;/li&gt;
-&lt;li&gt;$\Gamma(n+\frac{1}{2})=\frac{\sqrt\pi}{2^n}(2n-1)!!$&lt;/li&gt;
-&lt;li&gt;$\Gamma(\frac{1}{2}-n)=(-1)^n\frac{2^n\sqrt{\pi}}{(2n-1)}!!$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;$I_n=\int^\infty_0x^ne^{-x^2}dx=\frac{1}{2}\Gamma(\frac{n+1}{2})$&lt;/li&gt;
-&lt;li&gt;Guassian Integral: $\int_{-\infty}^{\infty}ae^{\frac{-(x-b)^2}{c^2}}=ac\sqrt{\pi}$&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

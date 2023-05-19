@@ -263,29 +263,5 @@ $$&lt;/li&gt;
 Single qubit operator Pauli operators $I=(1,0;0,1)$ $X=(0,1;1,0)$ (非门) $X|0\rangle=|1\rangle,X|1\rangle=|0\rangle$ $Y=(0,-i;i,0)$ $Y=iXZ,XY=-YX,XZ=-ZX,YZ=-ZY$ $Z=(1,0;0,-1)$ $Z|0\rangle=|0\rangle,X|1\rangle=-|1\rangle$ Hadamard gate: $H=\frac{1}{\sqrt{2}}(1,1;1,-1)$ $H|0\rangle=|+\rangle=\frac{|0\rangle+|1\rangle}{\sqrt{2}},H|+\rangle=|0\rangle$ $H|1\rangle=|-\rangle=\frac{|0\rangle-|1\rangle}{\sqrt{2}},H|-\rangle=|0\rangle$ $H^{\otimes n}|0^n\rangle=\frac{1}{\sqrt{2^n}}\sum_{x\in{0,1}^n}|x\rangle$ $H|x\rangle=\sum_z\frac{(-1)^{xz}}{\sqrt{2}}|z\rangle$ $H^{\oplus n}|x\rangle=\frac{\sum_z(-1)^{x\cdot z}|z\rangle}{\sqrt{2^n}}$ $x\cdot z$: binary product mod 2 $HXH=Z,HZH=X,HYH=-Y$ Phase Gate: $S=(1,0;0,i)$ T gate($\frac{\pi}{8}$ gate): $T=(1,0;0,e^{i\frac{\pi}{4}})=e^{i\frac{\pi}{8}}(e^{-i\frac{\pi}{8}}, 0;0,e^{i\frac{\pi}{8}})$ Rotation $R|0\rangle=\cos\theta|0\rangle-\sin\theta|1\rangle$ $R|1\rangle=\sin\theta|0\rangle+\cos\theta|1\rangle$ Approximating unitary operators Bloch sphere and rotation operators 二维复平面球同构与三维实平面球同构 $SU(2)\cong SO(3)$ $|\varphi\rangle = \cos\frac{\theta}{2}|0\rangle+e^{i\varphi}\sin\frac{\theta}{2}|1\rangle$ $A^2=I,e^{i\theta A}=\cos(\theta)I+i\sin(\theta)A$ $R_{x}(\theta)=e^{\frac{-i\theta X/Y/Z}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}X$ $R_{y}(\theta)=e^{\frac{-i\theta X/Y/Z}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}Y$ $R_{z}(\theta)=e^{\frac{-i\theta X/Y/Z}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}Z$ $R_{\hat n}=e^{-i\hat n\cdot\frac{\vec\sigma}{2}}=\cos\frac{\theta}{2}I-i\sin\frac{\theta}{2}(n_xX+n_yY+n_zZ)$ $\hat n=(n_x,n_y,n_z)$ real unit vector Z-Y decomposition: $U=e^{i\alpha}R_z(\beta)R_y(\gamma)R_z(\delta)$ $U=e^{i\alpha}(\beta)R_{\hat n}R_{\hat m}(\gamma)R_{\hat n}(\delta)$ $\lVert U-V\rVert=\max\limits_{|\psi\rangle}\lVert(U-V)|\psi\rangle\rVert$ $|\langle\psi|U^\dagger M_iU|\psi\rangle-\langle\psi|V^\dagger M_iV|\psi\rangle|\leq 2\lVert U-V\rVert$ $\lVert U_tU_{t-1}\cdots U_1-V_tV_{t-1}\cdots V_1\rVert\leq\sum_i\lVert U_i-V_i\rVert$ $THTH=R_{\hat n}(\theta),\theta=2\arccos(\cos^2\frac{\pi}{8}),\hat n=(\cos\frac{\pi}{8},\sin\frac{\pi}{8},\sin\frac{\pi}{8})$ up to a normalization $T=R_z(\frac{\pi}{4})$ $HTH=R_x(\frac{\pi}{4})$ $THTH=\cos^{\pi}{8}I-i(\cos\frac{\pi}{8}(X+Z)+\sin\frac{\pi}{8}Y)\sin\frac{\pi}{8}$ Densely filled: $\forall\delta&amp;gt;0,N=\lceil\frac{2\pi}{\delta}\rceil+1,\exists k!</description>
     </item>
     
-    <item>
-      <title>Math Miscellaneous</title>
-      <link>https://zhengzangw.com/posts/math-not-yet-classifed/</link>
-      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/posts/math-not-yet-classifed/</guid>
-      <description>&lt;h1 id=&#34;特殊函数&#34;&gt;特殊函数&lt;/h1&gt;
-&lt;h2 id=&#34;gamma-function&#34;&gt;Gamma Function&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Gamma Function: $\Gamma(x)=\int^\infty_0e^{-t}t^{x-1}dt$&lt;/li&gt;
-&lt;li&gt;性质
-&lt;ul&gt;
-&lt;li&gt;$\Gamma(x+1)=x\Gamma(x)$&lt;/li&gt;
-&lt;li&gt;$\Gamma(n+1)=n!$&lt;/li&gt;
-&lt;li&gt;$\Gamma(\frac{1}{2})=\sqrt{\pi}$&lt;/li&gt;
-&lt;li&gt;$\Gamma(n+\frac{1}{2})=\frac{\sqrt\pi}{2^n}(2n-1)!!$&lt;/li&gt;
-&lt;li&gt;$\Gamma(\frac{1}{2}-n)=(-1)^n\frac{2^n\sqrt{\pi}}{(2n-1)}!!$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;$I_n=\int^\infty_0x^ne^{-x^2}dx=\frac{1}{2}\Gamma(\frac{n+1}{2})$&lt;/li&gt;
-&lt;li&gt;Guassian Integral: $\int_{-\infty}^{\infty}ae^{\frac{-(x-b)^2}{c^2}}=ac\sqrt{\pi}$&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
   </channel>
 </rss>
