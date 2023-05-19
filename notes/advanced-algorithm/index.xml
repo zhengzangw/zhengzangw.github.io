@@ -6,14 +6,14 @@
     <description>Recent content in [A] 高级算法 Advanced Algorithm on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/advanced-algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. Time-saving</title>
       <link>https://zhengzangw.com/notes/advanced-algorithm/1-time-saving/</link>
       <pubDate>Wed, 16 Jan 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-algorithm/1-time-saving/</guid>
       <description>Problems Min-Cut $\in\text{P}$ Max-Cut $\in\text{NPH}$ Polynomial Identity Testing (univariate) $\in$co-$\text{NPH}$ Input: a polynomial $f\in\mathbb{F} $ of degree $d$ Determine whether $f\equiv0$ PIT: Input: two $n$-variate polynomials $f,g\in\mathbb{F}[x_1,x_2,\cdots,x_n]$ of degree $d$ Determine: $f\equiv g$ Set Cover $\in\text{NPH}$: Input: $m$ subsets $S_1,\cdots,S_m\subseteq U$ of a universe of size $n$ Output: $C\subseteq{1,2,\cdots, m}$ such that $U=\bigcup_{i\in C}S_i$ $\text{freq}(x)=|{i|x\in S_i}|$ Hitting Set Problem $\in\text{NPH}$ Input: $n$ subsets $S_1,\cdots,S_m\subseteq U$ of a universe of size $m$ Output $C\subseteq U$ that $C$ intersects with every set $S_i$ $\text{freq}(x)=|S_i|$ equivalent to Set Cover Vertex Cover Problem $\in\text{NPH}$ Input: an undirect graph $G(V,E)$ Output: the smallest $C\subseteq V$ such that $\forall e\in E$ is incident to at least one vertex in $C$ set cover with frequency $2$ Minimum Makespan on Identical Parallel Machine $\in\text{NPH}$ Input: $n$ positive integers $p_1,p_2,\cdots,p_n$ nad a positive integer $m$ Output: an assignment $\sigma:[n]\rightarrow[m]$ which minimizes $C_{\max}=\max_{i\in [m]}\sum_{j:i=\sigma(j)}p_j$ Partition Problem $\in\text{NPH}$ Input: $S={x_1,\cdots,x_n}$ Output: Whether there is a partition of $S$ into $A$ and $B$ such that $\sum_{x\in A}x=\sum_{x\in B}x$ 算法设计 $\text{P}$: Randomize to accelerate $\text{NPH}$ sampling: random approximation greedy/local search: approximation Min-Cut Deterministic Algorithm Max-flow min-cut Theory: $(|V|-1)\times$ max-flow time Stoer–Wagner Algorithm(multi-graphs): $O(EV+V^2\log V)$ Ken-ichi Kawarabayashi and Mikkel Thorup(simple graph, STOC 2015): near-linear time complexity Karger&amp;rsquo;s Contraction Algorithm Contraction: merge two vertices into a new vertex Karger&amp;rsquo;s Algorithm(1993): $\text{ZPP}$ Running time: $O(V^2)$ $P_c=\frac{2}{V(V-1)}$ w.</description>
     </item>
@@ -22,7 +22,7 @@
       <title>2. Space-saving</title>
       <link>https://zhengzangw.com/notes/advanced-algorithm/2-space-saving/</link>
       <pubDate>Wed, 16 Jan 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-algorithm/2-space-saving/</guid>
       <description>Problems Checking Identity $\text{EQ}(a,b)=[a=b]$ (bit-string $x\in{0,1}^n$) Communication cost checking distinctness Input: $A,B\in{1,2,\cdots,n}$ Determine whether $A=B$(multiset equivalence) counting distinct elements Data: Stream Model, $n$ is unknown and elements is presented one at a time Input: a sequence $x_1,x_2,\cdots,x_n\in\Omega$ Output: an estimation of $z=|{x_1,x_2,\cdots,x_n}|$ Set Membership Data: a set of elements $x_1,\cdots,x_n\in\Omega$ Input: $x\in\Omega$ Output: $[x\in\Omega]$ Frequency Estimation Data: a sequence of elements $x_1,\cdots,x_n\in\Omega$ Input: $x\in\Omega$ Output: $f_x=|{i|x_i=x}$| Fingerprint use Fingerprint to design One-sided-error Monte Carlo algorithm $\text{FING}(\cdot)$: function easy to compute and compare $X=Y,\text{FING}(X)=\text{FING}(Y)$ $X\not=Y,P(\text{FING}(X)=\text{FING}(Y))$ is small Communication Protocol Theorem (Yao 1979): Any deterministic communication protocol computing EQ on two $n$-bit strings costs $n$ bits of communication in the worst-case.</description>
     </item>
@@ -31,7 +31,7 @@
       <title>3. Dimension Reduction</title>
       <link>https://zhengzangw.com/notes/advanced-algorithm/3-dimension-reduction/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-algorithm/3-dimension-reduction/</guid>
       <description>Metric Embedding Metric Space: $(X,d),X$ is a set and $d$ is a distance on $X$ Embedding: $\phi:X\rightarrow Y$ on two metric space $(X,d_X),(Y,d_Y)$ Distortion $\alpha\geq 1$: $\forall x,y\in X,\frac{1}{\alpha}d(x,y)\leq d(\phi(x),\phi(y))\leq\alpha d(x,y)$ Dimension Reduction: $x_1,\cdots,x_n\in\mathbb{R}^d,y_1,\cdots,y_n\in\mathbb{R}^k$ JLT Embedding Johnson-Lindenstrauss Theorem(JLT, 1984): it is always possble to embed $n$ points in arbitrary dimension to $O(\log n)$ dimension with constant distortion in Euclidian Space $\forall0&amp;lt;\epsilon &amp;lt;1,\forall S\subset \mathbb{R}^{d},|S|=n,\exists k=O(\epsilon ^{-2}\log n),\phi :\mathbb{R} ^{d}\rightarrow \mathbb{R}^{k}$ such that $\forall x,y\in S,(1-\epsilon )|x-y|^{2}\leq |\phi (x)-\phi (y)|^{2}\leq (1+\epsilon )|x-y|^{2}$ (linear embedding): $\phi(x)=Ax$ (2016) Lower Bound: $\Omega(\epsilon^{-2}\log n)$ Contruction projection onto uniform random $k$-dimensional subspace of $\mathbb{R}^d$ (1999) random matrix with i.</description>
     </item>
@@ -40,7 +40,7 @@
       <title>4. Linear Programs</title>
       <link>https://zhengzangw.com/notes/advanced-algorithm/4-linear-programming/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-algorithm/4-linear-programming/</guid>
       <description>Definition Linear Programming Problem: the problem of either minimizing or maximizing a linear function subject to a finite set of linear constraints feasible solution, feasible area, objective function, objective value, optimal solution, optimal objective value unbounded: have a infinite objective value infeasible: no feasible value Equivalent: for each feasible solution $\overline{x}$ to $L$ with objective value $z$, there is a corresponding feasible solution $\overline{x}&amp;rsquo;$ to $L&amp;rsquo;$ with objective value $z&amp;rsquo;$, and for each feasible solution $\overline{x}&amp;rsquo;$ to $L&amp;rsquo;$ with objective value $z&amp;rsquo;$, there is a corresponding feasible solution $\overline{x}$ to $L$ with objective value ́.</description>
     </item>
@@ -49,7 +49,7 @@
       <title>5. Semidefinite Programs</title>
       <link>https://zhengzangw.com/notes/advanced-algorithm/5-semidefinite-program/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-algorithm/5-semidefinite-program/</guid>
       <description>A Wishlist for Optimization Algorithms Nonlinear, non-convex objectives Powerful enough to tackle hard problems in a systematic way, and meanwhile is still practical Becoming more accurate as we&amp;rsquo;re paying more A generic framework that can be applied obviously to various problems. Methods sum-of-squares (SoS) SDP Lasserre hierarchy Lovász-Schrijver hierarchy Quadratic programming $$\min \frac{1}{2}x^TQx+c^Tx$$
 Semidefinite Program $A≽0$: symmetric matrix $A\in\mathbb{R}^{n\times n}$ is positive semidefinite ($\forall x\in\mathbb{R}^n,x^TAx\geq0$) $A≽0\iff\forall\lambda(A)\geq 0\iff\exists B\in\mathbb{R}^{n\times n},A=B^TB$ Semidefinite Programing(SDP): $C,A_1,\cdots,A_k\in\mathbb{R}^{n\times n},b_1,b_2,\cdots,b_k\in\mathbb{R}$ $$ \begin{aligned} \max\ &amp;amp; \text{tr}(C^TY)=\sum_{i=1}^n\sum_{i=1}^nc_{ij}y_{ij}\newline \text{s.</description>
@@ -59,7 +59,7 @@ Semidefinite Program $A≽0$: symmetric matrix $A\in\mathbb{R}^{n\times n}$ is p
       <title>7. Markov Chain Monte Carlo Methods</title>
       <link>https://zhengzangw.com/notes/advanced-algorithm/7-markov-chain-monte-carlo-methods/</link>
       <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-algorithm/7-markov-chain-monte-carlo-methods/</guid>
       <description>Monte Carlo Method (P)Problem Universe $U$, subset $S\subseteq U$ where $\rho=\frac{|S|}{|U|}$ Assume a uniform sampler for elements Estimate $Z=|S|$ Monte Carlo Method (for estimating) Sample $X_1,X_2,\cdots,X_N$ uniformly and independently from $U$ $Y_i=[X_i\in S]$ counting: $\hat Z=\frac{|U|}{N}\sum_{i=1}^NY_i$ $\epsilon$-approx estimator: $(1-\epsilon)Z\leq\hat Z\leq(1+\epsilon)Z$ Estimator Theorem(Naive): $N\geq\frac{4}{\epsilon^2\rho}\ln\frac{2}{\delta}=\Theta(\frac{1}{\epsilon^2\rho}\ln\frac{1}{\delta})\Rightarrow P(\hat Z$ is $\epsilon$-approx of $|S|)\geq 1-\delta$ Monte Carlo Method (for sampling) rejection sampling: inefficient if $\rho$ is small Counting DNF Solutions (P)Counting DNF Solutions: #$\text{P}$-hard Input: DNF formula $\phi:{T,F}^n\rightarrow{T,F},U={T,F}^n$ Output: $Z=|\phi^{-1}(T)|,S=\phi^{-1}(T)$ $\rho=\frac{|S|}{|U|}$ can be exponentially small (P)Union of Sets Input: $m$ sets $S_1,S_2,\cdots,S_m$, estimate $|\bigcup_{i=1}^mS_i|$ Output: $|\bigcup_{i=1}^mS_i|$ Coverage Algorithm: $\rho\geq \frac{1}{m}$ $U={(x,i)|x\in S_i}$ (multiset union) $\overline{S}={(x,i^)|x\in S_{i^}\text{ and }x\in S_i\Rightarrow i^*\leq i}$ Sample unifomr $(x,i)\in U$ Sample $i\in{1,2,\cdots,m}$ Sample uniform $x\in S_i$ check if $(x,i)\in\overline{S}$ $x\in S_i$ and $\forall j&amp;lt;i,x\not\in S_j$ Counting by Coverage Algorithm: $|U|=\sum_i|S_i|$ Sampling by Coverage Algorithm: Rejection Sampling Markov Chain $${X_t|t\in T},X_t\in\Omega$$</description>
     </item>
@@ -68,7 +68,7 @@ Semidefinite Program $A≽0$: symmetric matrix $A\in\mathbb{R}^{n\times n}$ is p
       <title>11. Lovász Local Lemma</title>
       <link>https://zhengzangw.com/notes/advanced-algorithm/6-lovasz-local-lemma/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-algorithm/6-lovasz-local-lemma/</guid>
       <description>Unique Games Conjecture Unique Label Cover(ULC): An undirected graph $G(V,E)$, $q$ colors, each dege $e$ associated with a bijection $\phi_e:[q]\rightarrow[q]$. A coloring $\sigma\in[q]^V$ satisfies the constraint of the edge $e=(u,v)\in E$ if $\phi_{e}(\sigma_u)=\phi_e(\sigma_v)$ UGC(2002 Khot): $\forall e,\exists q$ such that this is $\text{NP}$-hard to ditinguish between ULC instances: $&amp;gt;1-\epsilon$ fraction of edges satisfied by a coloring; no more than $\epsilon$ fraction of edges satisfied by any coloring Constraint Satisfaction Problem CSP Definition variables: $V={v_1,v_2,\cdots,v_n},v_i\in\Omega$ constraints: $C_1,C_2,\cdots,C_m,C_i:\Omega^{S_i}\rightarrow{T,F},S_i\subset X$ assignment: $\sigma\in[q]^V$ $\mu(\sigma)=\prod_{i=1}^mC_i(\sigma_{S_i})/Z$ CSP satisfiability: determine whether $\exists$ an assignment satisfying all constraints search: find an assignment optimization: find an assignment satisfying as may constraints as possible refutation: find a proof of no assignment can satisfy $&amp;gt;m^$ constraints for $m^$ as small as possible counting: estimate the number of satisfying assignments sampling: random sample a satisfying assignments inference: calculate the possibility of a variable being assigned certain value CSP Satisfiability Optimization Counting 2SAT P NP-hard #P-complete 3SAT NP-complete NP-hard #P-complete matching P P #P 2-coloring(cut) P NP-hard FP 3-coloring NP-complete NP-hard #P-complete Poly-time inter-reducible appox.</description>
     </item>

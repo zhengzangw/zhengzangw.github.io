@@ -6,14 +6,14 @@
     <description>Recent content in [L] 高级程序设计 Advanced Programming on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/advanced-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Data Abstraction</title>
       <link>https://zhengzangw.com/notes/advanced-programming/1-data-abstraction/</link>
       <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-programming/1-data-abstraction/</guid>
       <description>面向对象程序设计 面向对象的观点：自然界是由一组彼此相关并能相互通信的实体（对象）所组成 面向对象的程序设计方法：使用面向对象的观点来描述现实问题，然后用计算机语言来模仿并处理该问题 消息：调用对象的操作 类：对象的特征 基本的程序设计手段 抽象：复杂度控制 过程抽象 数据抽象：使用者只需知道对数据所能实施的操作以及这些操作之间的关系，而不必知道数据的具体表示 封装：信息隐蔽 过程封装 数据封装：把数据和操作作为整体描述，数据的访问只能通过封装体的对外接口来完成 模块化：组织大型程序 过程式：模糊 对象式：对象类 软件复用：缩短开发周期 过程式：子程序库 对象式：类库 可维护性：延长软件寿命 过程式：以功能为中心，强调过程抽象，数据与操作分离 对象式：以数据为中心，强调数据抽象，操作依附数据 软件模型的自然度：缩小解题空间与问题空间之间的语义间隙 面向对象程序设计基本内容 对象/类 继承：在定义一个新类（派生类、子类）时，可以利用已有类（基类、父类）的一些特征描述 多态：某一论域中的一个元素存在多种解释 一名多用：函数名重载，操作重载 类属性：类属函数，类属类型 绑定：确定对多态元素的某个使用是多态元素的那一种形式 静态绑定：编译时刻确定 动态绑定：运行时刻确定 面向对象语言 面向对象是一种程序设计思想，用任何语言都可以实现 采用面向对象语言会使得面向对象程序设计更加容易，语言也能提供更多的面向对象保障 类和对象 数据成员 类定义时，声明数据成员 如果未见到相应的类型定义或相应的类型未定义完，则该数据成员的类型只能是这些类型的指针或引用类型 成员函数 类定义放在头文件（.h）中，类外定义的成员函数则放在实现文件（.cpp）中 可以重载 成员对象 class class_name { public://访问不受限制 void do_nothing(){}//定义,建议编译器按内联函数处理 void declare();//声明 private://只能在本类和友元的代码中访问 int num_1, num_2; protected://只能在奔雷，友元和派生类的代码中访问 }; void class_name::declare(){}//定义 类：程序实体，一般存在域静态的程序汇总
 对象：
@@ -25,7 +25,7 @@
       <title>Operation Overloading</title>
       <link>https://zhengzangw.com/notes/advanced-programming/2-operation-overloading/</link>
       <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-programming/2-operation-overloading/</guid>
       <description>操作符重载 只能重载 C++语言中已有的操作符
 不可臆造新的操作符 不能改变操作数个数 不改变原操作符的优先级和结合性 可以重载 C++中除下列操作符外的所有操作符：. .* ?: :: sizeof
@@ -37,7 +37,7 @@
       <title>Inheritance</title>
       <link>https://zhengzangw.com/notes/advanced-programming/3-inheritance/</link>
       <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-programming/3-inheritance/</guid>
       <description>单继承 继承关系中存在两个类：基类（或称父类）和派生类（或称子类）
 派生类拥有基类所有成员，并可以
@@ -56,7 +56,7 @@ protected: 解决继承与封装的矛盾
       <title>Template</title>
       <link>https://zhengzangw.com/notes/advanced-programming/4-template/</link>
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-programming/4-template/</guid>
       <description>泛型（类属） 类属：一个程序实体能对多种数据进行操作或描述的特性 参数化多态（类属）：一段带有类型作为参数的代码，给其提供不同的类型值就能得到多个不同的代码 泛型程序设计（类属程序设计 Generic Programming）:一段带有类型作为参数的代码，给其提供不同的类型值就能得到多个不同的代码 类属函数 采用通用指针类型的参数 函数模板 定义了一系列重载函数 实例化：给模板参数提供一个类型作为值，从而生成具体的函数 隐式实例化（模板实参推演）：由编译程序根据函数调用的实参类型自动地把函数模板实例化为具体的函数 template &amp;lt;class T1, class T2, ...&amp;gt; &amp;lt;return_type&amp;gt; &amp;lt;func_name&amp;gt;(&amp;lt;params_list&amp;gt;){ ... } 显示实例化模板：max(int_num, double_num) 显式类型转换 显示实例化：max&amp;lt;double&amp;gt;(x,m); 再定义一个 max 的重载函数 带非类型参数的模板：使用时必须显示实例化 template &amp;lt;class T, int size&amp;gt; //size为一个int型的普通参数 void f(T a) { T temp[size]; } f&amp;lt;int,10&amp;gt;(1); 类模板 类属类：一个类的成员的类型可变 类模板 template &amp;lt;class T&amp;gt; class Stack{ T buffer[100]; bool pop(T &amp;amp;x); }; template &amp;lt;class T&amp;gt; bool Stack&amp;lt;T&amp;gt;::pop(T &amp;amp;x){} 类模板实例化序显式指出 类模板中的静态成员仅属于实例化后的类（模板类），不同类模板实例之间不共享类模板中的静态成员 可带非类型参数 类模板友元 template &amp;lt;class T&amp;gt; class A; template &amp;lt;class T&amp;gt; void f3(A&amp;lt;T&amp;gt;&amp;amp; a) { .</description>
     </item>
@@ -65,7 +65,7 @@ protected: 解决继承与封装的矛盾
       <title>I/O</title>
       <link>https://zhengzangw.com/notes/advanced-programming/5-io/</link>
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-programming/5-io/</guid>
       <description>I/O 输入输出基于字节流 过程式：printf, scanf 不是强类型，不利于类型检查，会导致类型相关的运行错误 当格式串描述与数据不一致时会导致运行时刻的错误 面向对象：cout, cin, &amp;laquo;, &amp;raquo; ios istream 控制台输入 ifstream 文件输入 istrstream 字符串输入 ostream ofstream ostrstream iostream fstream strstream 面向控制台 I/O 预定义 I/O 对象 cin(istream) cout(ostream) cerr(ostream) 不带缓冲 clog(ostream) 带缓冲 操纵符 &amp;lt;iomanip&amp;gt; 操纵符 含义 endl 输出换行符并 flush flush 输出缓存立刻输出 dec 10 oct 8 hex 16 setprecision(int n) 设置浮点数的精度 setiosflags(long flags) 设置输出格式，ios::scientific, ios::fixed resetiosflags(long flags) 取消输出格式 浮点数输出格式为 ios::scientific 或 ios::fixed 时，setprecision 设置浮点数小数点后面的位数 输出格式为自动或两者都有时，setprecision 设置有效数字个数 字节流输出 ostream&amp;amp; ostream::put(char ch); cout.</description>
     </item>
@@ -74,7 +74,7 @@ protected: 解决继承与封装的矛盾
       <title>Exception</title>
       <link>https://zhengzangw.com/notes/advanced-programming/6-exception/</link>
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-programming/6-exception/</guid>
       <description>异常概述 语法错误：程序书写不符合语法规则，编译程序发现 逻辑错误：程序设计不当造成程序没有完成预期的功能，静态分析和同态测试发现 运行异常：程序设计对程序运行环境考虑不周而造成的程序运行错误 异常处理 就地处理 abort: 立即终止程序的执行，不作任何的善后处理工作 exit: 关闭被程序打开的文件、调用全局对象和 static 存储类的局部对象的析构函数（不要在这些对象类的析构函数中调用 exit） 异地处理 通过函数的返回值，或指针/引用类型的参数，或全局变量把异常情况通知函数的调用者，由调用者处理 通过语言提供的结构化异常处理机制进行处理 C++ 异常处理机制 try { &amp;lt;语句序列&amp;gt;; throw &amp;lt;表达式&amp;gt;; } catch (&amp;lt;类型&amp;gt; [&amp;lt;变量&amp;gt;]){ &amp;lt;语句序列&amp;gt; } 一个 try 语句块的后面可以跟多个 catch 语句块，用于捕获不同类型的异常对象并进行处理 try 语句块 throw 了异常对象，如果该 try 语句块之后 有能够捕获该异常对象的 catch 语句，则执行这个 catch 语句中的&amp;lt;语句序列&amp;gt;，然后继续执行这个 catch 语句之后的非 catch 语句 没有能够捕获该异常对象的 catch 语句，则由函数调用链上的上一层函数中的 try 语句的相应 catch 来捕获 try 语句嵌套 当在内层的 try 语句的执行中产生了异常，则首先在内层 try 语句块之后的 catch 语句序列中查找与之匹配的处理，如果内层不存在能捕获相应异常的 catch，则逐步向外层进行查找 如果抛掷的异常对象在程序的调用链上没有给出捕获，则调用系统的 terminate 函数进行标准的异常处理。默认情况下，terminate 函数将会去调用 abort 函数 异常处理实现机制 每个函数拥有一个 catch 表 每进入一个 try，都会把其后的所有 catch 入口地址记录在相应函数的 catch 表中 执行 throw 时，顺着调用链去搜索 catch 入口，并进行栈的处理 系统的异常处理为 terminate 程序调试 assertion 宏 assert: 在宏名 NDEBUG 没有定义时才有效 assert.</description>
     </item>
@@ -83,7 +83,7 @@ protected: 解决继承与封装的矛盾
       <title>Windows</title>
       <link>https://zhengzangw.com/notes/advanced-programming/7-windows/</link>
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-programming/7-windows/</guid>
       <description>Windows 简介 Windows: 基于图形界面的多任务操作系统 多任务：同时运行多个应用程序 窗口：应用程序通过窗口与用户交互 输入：鼠标单击/双击/拖放，菜单选择，键盘输入 Windows 功能 工具：资源管理器，记事本，画图 &amp;hellip; 函数库：作为 Windows 应用程序接口（API）提供 windows.h 应用程序类型 单文档应用 只能对一个文档数据操纵 必须首先结束当前文档的所有操作之后，才能进行下一个文档的操作 多文档应用 同时可以对多个文档的数据进行操作 不必等到一个文档的所有操作结束，就可以对其它文档进行操作，对不同文档的操作是在不同的子窗口中进行的 对话框应用 以对话框的形式操作一个文档数据 对文档数据的操作以各种“控件”（control）来实现 程序以按&amp;lt;确定&amp;gt;或&amp;lt;取消&amp;gt;等按钮来结束 消息驱动程序结构 Windows 应用程序的结果属于消息（事件）驱动的结构：程序的任何一个动作都是在接收到一条消息后发生的 Windows 消息 WM_KEYDOWN/WM_KEYUP 键盘按键 WM_CHAR 字符 WM_LBUTTONDOWN/WM_LBUTTONUP/WM_LBUTTONDBLCLK/WM_MOUSEMOVE 鼠标按键 WM_COMMAND 菜单 WM_PAINT 窗口内容刷新 WM_TIMER 定时器消息 消息队列：Windows 系统会把属于各个应用程序的消息放入各自的消息队列 大部分消息关联到某个窗口 每个窗口有一个消息处理函数 消息循环：取消息-处理消息 取到 WM_QUIT，循环结束 可再入：函数的调用者要自带工作区（数据空间） 由于消息处理函数在处理一条消息时可能会主动产生一些新消息，这些消息并不放入消息队列，而是直接调用消息处理函数来处理这些消息，这样就有可能导致消息处理函数的一次执行还未结束，另一次执行就开始的现象，这可能会引起数据的不一致错误。 函数需要的数据要通过参数来传递 函数不能有 static 存储类的局部变量 在函数中访问全局变量也可能导致函数不可再入 Windows API 基于 Windows API 的过程式 Windows 应用程序设计 是一种基于过程抽象的程序设计范式 通过调用 API 函数编写程序的粒度太细、太繁琐，开发效率不高 主函数 WinMain：每个 Windows 应用程序都必须提供 注册窗口类（窗口基本信息） 窗口类的名字、窗口的基本风格、消息处理函数名、图标、光标、背景颜色以及菜单 每类窗口（不是每个窗口）都需要注册 创建应用程序主窗口 进入消息循环 为每类窗口提供一个消息处理函数，用于处理发送到它的消息 #include &amp;lt;windows.</description>
     </item>
@@ -92,7 +92,7 @@ protected: 解决继承与封装的矛盾
       <title>Qt</title>
       <link>https://zhengzangw.com/notes/advanced-programming/8-qt/</link>
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-programming/8-qt/</guid>
       <description>&lt;h2 id=&#34;桌面应用开发框架&#34;&gt;桌面应用开发框架&lt;/h2&gt;
 &lt;ul&gt;
@@ -155,7 +155,7 @@ protected: 解决继承与封装的矛盾
       <title>Java</title>
       <link>https://zhengzangw.com/notes/advanced-programming/java/</link>
       <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/advanced-programming/java/</guid>
       <description>&lt;h2 id=&#34;示例代码&#34;&gt;示例代码&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// HelloWorld

@@ -6,14 +6,14 @@
     <description>Recent content in [&#43;] 数字图像处理 Digital Image Processing on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/digital-image-process/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basics</title>
       <link>https://zhengzangw.com/notes/digital-image-process/0-basics/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-image-process/0-basics/</guid>
       <description>数字图像 数字图像：$f(x,y),f$ 为灰度或强度，皆离散 电磁波谱：伽马射线，X 射线，紫外线，可见光，红外线，微波，无线电波 单色光（无色光） 强度：灰度级 彩色光：430nm(紫)~790nm(红) 发光强度：能量总量 W 光通量：观察者从光源感受到的能量 lm(流明数) 亮度：光感知的主观描绘 图像增强：由人的主观感受评判 对比度拉伸 增强 图像复原：以预先制定的目标改善图像 去模糊 利用退化现象的先验知识恢复图像 图像分割：吧图像细分为它的区域或物体 采样 用有限的样本数目去近似无限的现实物理信号（有限近似无限）
 空间分辨度 像素数：每单位距离点数 1 inch = 2.54 cm dpi: 每英寸点数 量化 用离散计算机表示去近似连续的现实物理信号（离散近似连续）
@@ -25,7 +25,7 @@
       <title>Spatial Domain</title>
       <link>https://zhengzangw.com/notes/digital-image-process/1-spatial-domain/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-image-process/1-spatial-domain/</guid>
       <description>像素关系 相邻像素 四邻域 四对角邻域 八邻域 定义邻接性的灰度值集合：$V$ 二值/非二值 $V$ 可以把灰度级化成两个等价类 邻接性 4 邻接：$p\in N_4(p)$ 且 $p,q$ 的灰度值都属于 $V$ 8 邻接：$p\in N_8(p)$ 且 $p,q$ 的灰度值都属于 $V$ $m$ 邻接（混合邻接）：$p,q$ 的灰度值都属于 $V$ $q\in N_4(p)$ 或 $N_4(p)\wedge N_(q)$ 内无灰度值属于 $V$ 消除二义性 连通性：通路 起点终点相同：闭合通路 连通集/连通分量 区域：连通的像素子集 $R$ 邻接区域：两个连通的区域 前景：$\bigcup R_k$ 背景：$(\bigcup R_k)^c$ 边界：区域中与背景 8 连通的点的集合 边缘：导数值超过阈值的像素 局部 概念 二值图像：边界=边缘 距离 欧式 $D_r$ 曼哈顿距离 $D_4$ 棋盘距离 $D_8=\max(|x-s|,|y-t|)$ 算术/逻辑/集合操作增强 主要以像素对像素为基础在两幅或多幅图像间进行
 算术操作 加：$g(x,y)=f(x,y)+h(x,y)$ 定理：对$M$幅加性噪声图像进行平均，可以使图像的平方信噪比提高$M$倍 减：$g(x,y)=f(x,y)-h(x,y)$ 找不同 指纹抽取 掩膜式 X 光成像法 负值：规范化 $y=\frac{x-\min}{\max-\min}\times 255$ 乘：$g(x,y)=f(x,y)h(x,y)$ 掩膜运算 除 归一化 集合操作：灰度图像集合 $A$ 元素：$(x,y,z)$ 空间坐标，灰度 $A^c={(x,y,K-z)|(x,y,z)\in A}$ $K=2^k-1$ 为灰度级数 $A\cup B={\max\limits_z(a,b)|a\in A, b\in B}$ 逻辑操作：二值图像（前景 1，背景 0） OR, AND, NOT, XOR 几何变换 空间变换算法 像素空间位置的变换</description>
@@ -35,7 +35,7 @@
       <title>Frequency Domain</title>
       <link>https://zhengzangw.com/notes/digital-image-process/2-frequency-domain/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-image-process/2-frequency-domain/</guid>
       <description>傅里叶变换 冲激 冲激 单位冲激($0$ 处)：$\delta(t)=[t=0]\infty,\int_{-\infty}^{\infty}\delta(t)dt=1$ 单位冲激($t_0$ 处)：$\delta(t-t_0)\infty$ 采样性质：$\int_{-\infty}^{\infty}f(t)\delta(t)dt=f(0)$ 离散冲激 离散单位冲激：$\delta(x-x_0)=[t=0]$ 采样性质：$\sum_{x=-\infty}^\infty f(x)\delta(x-x_0)=f(x_0)$ 冲激串: $s_{\Delta T}(t)=\sum_{n=-\infty}^{\infty}\delta(t-n\Delta T)$ $S_{\Delta T}(\mu)=\frac{1}{\Delta T}s_{\frac{1}{\Delta T}}$ 采样: $f(t)s_{\Delta T}(t)=\sum_{n=-\infty}^{\infty}f(t)\delta(t-n\Delta T)$ 周期化：$f(t)\star s_{\Delta T}(t)$ (Continuous) Fourier Tranform 连续函数 $f(t)$ $\overset{\mathcal{F}}{\leftrightarrow}$ 连续函数 $F(\mu)$
 FT $$F(\mu)=\mathcal{F}(f)=\int_{-\infty}^{\infty}f(t)e^{-i2\pi\mu t}dt=\int_{-\infty}^\infty f(t)[\cos(2\pi\mu t)-i\sin(2\pi\mu t)]dt$$
@@ -47,7 +47,7 @@ IFT $$f(t)=\mathcal{F}^{-1}(F)=\int_{-\infty}^{\infty}F(\mu)e^{i2\pi\mu t}d\mu$$
       <title>Image Restoration</title>
       <link>https://zhengzangw.com/notes/digital-image-process/3-restoration/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-image-process/3-restoration/</guid>
       <description>图像复原 图像退化模型与图像复原过程 $f(x,y)$ 退化函数 $H$：线性，位置不变 加性噪声 $\eta(x,y)$：$g(x,y)=h(x,y)\star f(x,y)+\eta(x,y)$ (逆过程)复原滤波器 $T(g(x,y))$ $\hat f(x,y)\approx f(x,y)$ 噪声模型 噪声来源 图像获取：环境条件，传感器质量 图像传输：无线信号干扰 位置无关 均值方差估计
 高斯噪声 $p(z)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(z-\overline{z})^2}{2\sigma^2}}$ 电路噪声，传感器噪声 瑞利噪声 $p(z)=\frac{2}{b}(z-a)e^{-(z-a)^2/b},z\geq a$ $\overline{z}=a+\sqrt{\frac{\pi b}{4}}$ $\sigma^2=\frac{b(4-\pi)}{4}$ 范围成像 爱尔兰（伽马）噪声 $p(z)=\frac{a^bz^{b-1}}{(b-1)!}e{-az},z\geq 0$ $\overline{z}=\frac{b}{a}$ $\sigma^2=\frac{b}{a^2}$ 激光成像 指数噪声 $p(z)=ae^{-az},z\geq 0$ $b=1$ 时的爱尔兰噪声 激光成像 均匀分布 $p(z)=\frac{1}{b-a},a\leq z\leq b$ 脉冲噪声（椒盐噪声） 盐：白色 胡椒：黑色 快速过滤 $$p(z)=\begin{cases} P_a &amp;amp; z=a \newline P_b &amp;amp; z=b \end{cases}$$
@@ -59,7 +59,7 @@ IFT $$f(t)=\mathcal{F}^{-1}(F)=\int_{-\infty}^{\infty}F(\mu)e^{i2\pi\mu t}d\mu$$
       <title>Colorful Image Processing</title>
       <link>https://zhengzangw.com/notes/digital-image-process/4-colorful-image/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-image-process/4-colorful-image/</guid>
       <description>术语 全彩色：用全彩色传感器获取的真实彩色 伪彩色：为特定灰度或灰度范围赋予颜色 电磁光谱 无色光：黑白 属性：强度 灰度级：表示强度的数值 彩色光：400nm~700nm 电磁波 光谱色：单色光对应的颜色 单位 辐射（能量）：$W$ 辐射强度（单位立体角内辐射功率）：$W$/steradian 光通量（人眼对不同波长光的变化敏感度）：流明 lm 光强（单位立体角内光通量）：坎德拉 cd = lm/steradian 亮度（主观描绘，无单位） 光感受器（生物特性） 彩色视觉（color vision）：基于物体所反射、发出或透过的光的波长以区分物体 人的彩色视觉：脑响应当进入的光与眼中的若干种视锥细胞作用时所产生的刺激 暗光照：光由视网膜上的视杆细胞 (500nm) 检测，在彩色视觉中只起很少的作用 亮视觉：锥状细胞(1965)， 600~700 万个, L (575nm, 65%), M (535nm, 33%), L (445nm, 2%) 主颜色 主颜色 (国际照明委员会, CIE, 1931): R 700nm, G 546.1nm, B 435.8nm 次生色：主颜色叠加（无法生成所有颜色） 主波长：描述非纯色光的颜色 颜料的主颜色（吸收）：Yellow, Magenta, Cyan CIE XYZ 色彩空间
 三色值（CIE XYZ tristimulus values）：红色 X, 绿色 Y, 蓝色 Z，归一化为 $x,y,z$
@@ -70,7 +70,7 @@ $x=\frac{X}{X+Y+Z}$ $y=\frac{Y}{X+Y+Z}$ $z=\frac{Z}{X+Y+Z}$ $x+y+z=1$ The xy chr
       <title>Image Segmentation</title>
       <link>https://zhengzangw.com/notes/digital-image-process/5-segmentation/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-image-process/5-segmentation/</guid>
       <description>基础知识 $R$: 图像所占区域 图像分割：$R=\cup_{i=1}^n R_i$ $R_i$ 连通 $R_i\cap R_j=\emptyset$ $Q$: 用于划分区域的函数 $Q(R_i)=\text{T}$ $Q(R_i\cup R_j)=\text{F}$ 分割依据 灰度的不连续性 灰度的相似性 边缘：连通的边缘像素的集合 边缘像素：灰度发生剧烈变化 线：特殊的边缘，两侧的灰度值都很大或小 点：长宽只有一个像素的线 孤立点检测 拉普拉斯算子 判断响应幅度是否大于阈值 线检测 拉普拉斯算子 双线效应 检测特定方向的线 边缘模型 台阶边缘 Step Edge：1个像素距离上发生灰度级理想过渡，理想边缘 斜坡边缘 Ramp Edge 屋顶边缘 Roof Edge: 穿过区域的线 存在噪声的边缘 视觉上噪声并不明显 噪声对导数影响很大 二阶导更敏感 边缘检测 基本边缘检测 梯度：最大变化率方向，边缘方向与梯度正交 大小：$M(x,y)=\sqrt{g_x^2+g_y^2}\approx|g_x|+|g_y|$ （边缘图） 方向：$\alpha(x,y)=\tan^{-1}(\frac{g_y}{g_x})$ 梯度算子 罗伯特交叉梯度算子 Prewitt 算子 Sobel 算子 高级边缘检测 Marr-Hildreth 边缘检测器 $\nabla^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}$ $G(x,y)=e^{-\frac{x^2+y^2}{2\sigma^2}}$ LoG(高斯的拉普拉斯)：$\nabla^2 G(x,y)=[\frac{x^2+y^2-2\sigma^2}{\sigma^4}]e^{-\frac{x^2+y^2}{2\sigma^2}}$ 零交叉：$x^2+y^2=2\sigma^2$ 生成不同尺寸的模板 对 $G(x,y)$ 进行采样，得到 $n\times n$ 的模板 与拉普拉斯模板卷积 算法 用 $n\times n$ 的高斯低通滤波器平滑图像 计算上图的拉普拉斯 寻找零交叉：检查某像素两个相对邻域像素的符号，符号相反且差异大于某阈值 Canny 边缘检测器 高斯函数平滑输入图像 计算图像梯度的大小与角度 非最大抑制：把梯度生成的粗边变细 四种边缘：水平，垂直，+45，-45 根据梯度方向确定边缘方向 $d_k$ 如果 $M(x,y)$ 的值比 $(x,y)$ 在 $d_k$ 方向任意邻居小则对其抑制 滞后阈值：减少伪边缘点 低阈值：$T_L,g_{\text{NL}}(x,y)=g(x,y)\geq T_H$ 高阈值：$T_H,g_{\text{NH}}(x,y)=g(x,y)\geq T_L$ 比值：2:1 或 3:1 $g_{\text{NL}}(x,y)=g_{\text{NL}}(x,y)-g_{\text{NH}}(x,y)$ 连通性分析 遍历 $g_{\text{NH}}$ 中每一个点 $p$，保留 $g_{\text{NL}}$ 中和 $p$ 连通的点 去掉 $g_{\text{NL}}$ 剩余的点 合并 $g_{\text{NH}}$ 和 $g_{\text{NL}}$ 边缘连接 将边缘像素组合成有意义的边缘或区域边界</description>
     </item>
@@ -79,7 +79,7 @@ $x=\frac{X}{X+Y+Z}$ $y=\frac{Y}{X+Y+Z}$ $z=\frac{Z}{X+Y+Z}$ $x+y+z=1$ The xy chr
       <title>Compressing</title>
       <link>https://zhengzangw.com/notes/digital-image-process/6-compression/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-image-process/6-compression/</guid>
       <description>冗余 压缩比： $C=\frac{b}{b&amp;rsquo;}$ 相对冗余： $R=1-\frac{1}{C}$ 编码冗余 $r_k$: $M\times N$ 大小图像的灰度数值 $p(r_k)=\frac{n_k}{MN}$ 平均比特数：$L_{\text{avg}}=\sum_{k=0}^{L-1}l(r_k)p_r(r_k)$ 固定比特数：$l(r_k)=m,L_{\text{avg}}=m$ 空间和时间冗余 行程对（run-length pairs） 灰度值：某灰度连续出现的次数 相邻像素的灰度差 映射 可逆映射 不可逆映射 不相关的信息 有损压缩 被视觉系统忽略的信息 与图像用途无关的信息 量化 度量 信息：$I(E)=\log\frac{1}{P(E)}=-\log P(E)$ $m$ 为底：$m$元单位 $2$：比特 熵：$H=-\sum_{j=1}^JP(a_j)\log P(a_j)$ 信源符号：$a_j$ 零记忆信源：独立 灰度信源的熵：$H=-\sum_{k=0}^{L-1}p_r(r_k)\log_2p_r(r_k)$ (bits/pixel) 香农第一定理：$\lim_{n\rightarrow\infty}\frac{L_{avg,n}}{n}=H$ 图像像素有相关性：马尔科夫信源，有限记忆信源 保真度 $e(x,y)=\hat f(x,y)-f(x,y)$ 总误差：$\sum\sum |e(x,y)|$ 均方根误差：$e=(\frac{1}{MN}\sum\sum e(x,y)^2)^{\frac{1}{2}}$ $\text{SNR}_{\text{ms}}=\frac{\sum\sum \hat f(x,y)^2}{\sum\sum e(x,y)^2}$ 主观误差 图像压缩 (Mapper -&amp;gt; Quantizer -&amp;gt; Symbol coder)[encoder] -&amp;gt; (Symbol decoder -&amp;gt; Inverse mapper)[decoder] Mapper: 转换为便于去掉空间和时间冗余，可逆 Quantizer: 根据保真度准则降低精度，不可逆 Symbol decoder: 生成定长/变长编码 霍夫曼编码：对符号概率排序，合并低概率符号 行程编码(run-length pairs) 符号编码：将图像表示为符号的集合 符号：图像中频繁出现的子图像 三元组集合：${(x_1,y_1,t_1),\cdots}$ 二值图像压缩方法</description>
     </item>
@@ -88,7 +88,7 @@ $x=\frac{X}{X+Y+Z}$ $y=\frac{Y}{X+Y+Z}$ $z=\frac{Z}{X+Y+Z}$ $x+y+z=1$ The xy chr
       <title>Morphology</title>
       <link>https://zhengzangw.com/notes/digital-image-process/7-morphology/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-image-process/7-morphology/</guid>
       <description>形态学基本概念 形态学(morphology)：生物学的分支，研究动植物形态和结构 数学形态学：提取表示区域形状的图像成分 数学语言：集合论 集合的反射：$\hat B={w|w=-b,\forall b\in B}$ 集合的平移：$(B)_z={c|c=b+z,\forall b\in B}$ 结构元：研究图像性质的小集合（子图像），黑点表示结构元的原点 矩形填充：背景，使可以容纳结构元 腐蚀(erosion)：$A\ominus B={z|(B)_z\subset A}={z|(B)_z\cap A^c=\emptyset}$ $B$对$A$的腐蚀 形态学滤波 膨胀(dilation)：$A\oplus B={z|(\hat B)z\cap A\neq\emptyset}=\bigcup{b\in B}(A)_b$ $(A\ominus B)^c=A^c\oplus\hat B$ $(A\oplus B)^c=A^c\ominus\hat B$ 开操作(opening) 平滑轮廓，断开窄连接，消除细突出 $A\circ B=(A\ominus B)\oplus B=\cup{(B)_z\subseteq A}$ 闭操作(closing) 平滑轮廓，熔合窄间断，消除缝隙和孔洞 $A\cdot B=(A\oplus B)\ominus B={z|(B)_z\cap A\neq\emptyset}$ hit-or-miss 变换：检测图像中的形状 $A\star B=(A\ominus D)\cap[A^c\ominus(W-D)]$ $B$ 为集合$D$及其背景 形态学基本算法 提取图像成分，预处理与后处理
 边界提取：集合$A$的边界$\beta(A)=A-(A\ominus B)$ 孔洞填充 孔洞：由前景像素连成的边界包围的背景区域 填充算法：$X_k=(X_{k-1}\oplus B)\cap A^c$ 直到 $X_k=X_{k-1}$ $X_0$：孔洞内的初始点设为 $1$，其余为 $0$ $B$：十字 连通分量提取 $X_k=(X_{k-1}\oplus B)\cap A$ 直到 $X_k=X_{k-1}$ $X_0$：连通分量的初始点设为 $1$，其余为 $0$ $B$ 八连通 凸包计算 凸包 $H$：包含原集合的最小凸集合 凸缺 $H-S$ 凸包算法 四个结构元 $X_k^i=(X_{k-1}^i\star B^i)\cup A,i=1,2,3,4,k=1,2,3,4$ 加额外约束 细化：$A\otimes B=A-(A\star B)$ 粗化：$A\odot B=A\cup(A\star B)$ 骨架 $S(A)$：$\forall z\in S(A),(D)_z$ 为以 $z\in A$ 为中心的最大圆盘，则不存在包含 $(D)_z$ 且位于 $A$ 内的更大圆盘 骨架搜索算法 $S_k(A)=(A\ominus^k B)-(A\ominus^k B)\circ B$ $K=\max{k|(A\ominus^k B)\neq\emptyset}$ $S(A)=\bigcup_{k=1}^K S_k(A)$ 重构集合：$A=\bigcup_{k=0}^K(S_k(A)\oplus^k B)$ 裁剪(pruning)：去除骨架中的寄生分量（毛刺） 假设寄生分量短 </description>
@@ -98,7 +98,7 @@ $x=\frac{X}{X+Y+Z}$ $y=\frac{Y}{X+Y+Z}$ $z=\frac{Z}{X+Y+Z}$ $x+y+z=1$ The xy chr
       <title>Pattern Recognition</title>
       <link>https://zhengzangw.com/notes/digital-image-process/8-recognition/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/digital-image-process/8-recognition/</guid>
       <description>基本概念 模式识别 feature: 描述符 pattern: 描述符的排列 pattern class：具有共同属性的模式 $\omega_1,\omega_2,\cdots,\omega_W$ 常见的模式排列 vector string: 结构描述 tree: 结构描述 决策论方法 $x\in\omega_i$: $d_i(x)&amp;gt;d_j(x),\forall j\neq i$ 决策边界：$d_ij(x)=d_i-d_j(x)=0$ 匹配 每个类表示为原型模式向量，一个模式被分配给最近的类
 最小距离分类器 $m_j=\frac{1}{N_j}\sum_{x_j\in\omega_j}x_j$ $D_j(x)=|x-m_j|$ 等价计算：$d_j(x)=x^Tm-\frac{1}{2}m_j^Tm_j$ 基于相关的匹配 相关定理：$f(x,y)\star w(x,y)\iff F^*(u,v)W(u,v)$ 归一化相关系数：$\gamma(x,y)=\frac{\sum_s\sum_t[w(s,t)-\overline{w}][f(x+s,y+t)-\overline{f}{xy}]}{{\sum_s\sum_t[w(s,t)-\overline{w}]^2\sum_s\sum_t[f(x+s,y+t)-\overline{f}{xy}]^2}^{\frac{1}{2}}}$ 最佳统计分类器 条件平均风险：$r_j(x)=\sum_{k=1}^WL_{kj}p(w_k|x)$ 0-1损失：$L_{ij}=1-\delta_{ij}$ 0-1损失下决策函数：$d_j(x)=p(x|w_j)P(w_j)$ 0-1损失贝叶斯分类器：$\arg\max_i p(x|\omega_i)P(\omega_i)$ 假设 $p(x|\omega_i)$ 为高斯函数 $p(x|\omega_j)=\frac{1}{(2\pi)^{n/2}|C_j|^{1/2}}e^{-1/2(x-m_j)^TC_j^{-1}(x-m_j)}$ 估计参数 $m_j=\frac{1}{N_j}\sum_{x\in\omega_j}x$ $C_j=\frac{1}{N_j}\sum_{x\in\omega_j}xx^T-m_jm_j^T$ 决策函数：$d_j(x)=\ln O(\omega_j)-\frac{1}{2}\ln|C_j|-\frac{1}{2}[(x-m_j)^TC_j^{-1}(x-m_j)]$ 神经网络 </description>

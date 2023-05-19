@@ -6,14 +6,14 @@
     <description>Recent content in php on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Sun, 30 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setup: PHP</title>
       <link>https://zhengzangw.com/notes/command-line/php-setup/</link>
       <pubDate>Sun, 30 Dec 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/php-setup/</guid>
       <description>&lt;h1 id=&#34;set-up-vm&#34;&gt;Set up VM&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update

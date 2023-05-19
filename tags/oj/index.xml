@@ -6,14 +6,14 @@
     <description>Recent content in oj on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Mon, 17 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/oj/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>贪心专题</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-greedy/</link>
       <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-greedy/</guid>
       <description>&lt;h1 id=&#34;活动选择问题&#34;&gt;活动选择问题&lt;/h1&gt;
 &lt;p&gt;最早结束&lt;/p&gt;
@@ -28,7 +28,7 @@
       <title>Linear Recurrence</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-linear-recurrence/</link>
       <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-linear-recurrence/</guid>
       <description>&lt;h1 id=&#34;常系数齐次线性递推式&#34;&gt;常系数齐次线性递推式&lt;/h1&gt;
 &lt;p&gt;快速幂: $O(k^3logn)$
@@ -42,7 +42,7 @@
       <title>背包九讲</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-knapsack/</link>
       <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-knapsack/</guid>
       <description>dp 九讲
 01 背包 $$F[i,v] = \max{F[i-1,v],F[i-1,v-Ci]+Wi}$$
@@ -56,7 +56,7 @@ $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物�
       <title>DP优化——四边形不等式</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-optimization/</link>
       <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-optimization/</guid>
       <description>&lt;h2 id=&#34;四边形不等式条件&#34;&gt;四边形不等式条件&lt;/h2&gt;
 &lt;p&gt;任意 $a1\leq a2&amp;lt;b1\leq b2$,有 $F(a_1,b_1)+F(a_2,b_2)\leq F(a_1,b_2)+F(a_2,b_1)$
@@ -67,7 +67,7 @@ $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物�
       <title>区间动归</title>
       <link>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-interval/</link>
       <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/problem-solving/10-algorithms/algorithm-dp-interval/</guid>
       <description>&lt;h1 id=&#34;interval-dp&#34;&gt;Interval DP&lt;/h1&gt;
 &lt;h2 id=&#34;区间动归特征&#34;&gt;区间动归特征&lt;/h2&gt;

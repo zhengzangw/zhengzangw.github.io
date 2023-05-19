@@ -6,14 +6,14 @@
     <description>Recent content in About on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Mon, 07 Dec 2020 21:43:38 +0800</lastBuildDate><atom:link href="https://zhengzangw.com/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
       <link>https://zhengzangw.com/about/about/</link>
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/about/</guid>
       <description>I am a Ph.D. student at National University of Singapore, advised by Prof. Yang You. I received my B.Sc. in Computer Science from Nanjing University in 2021. I spent a year in iCyPy at UC Berkeley from Apr. 2020, supervised by Prof. Alberto L. Sangiovanni-Vincentelli and Dr. Xiangyu Yue.</description>
     </item>
@@ -22,7 +22,7 @@
       <title>Research Interest</title>
       <link>https://zhengzangw.com/about/interest/</link>
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/interest/</guid>
       <description>My current research lies in efficient maching learning and optimization, mainly including:
 Efficient Fine-tuning of LLMs (large language models) and Language-Vision models. Improving GPU&amp;rsquo;s utilization: large-batch training and kernal ops optimization. Improving dataset efficiency: collect high-quality data with low cost. Optimization: Optimizer design and forward-forward algorithm. </description>
@@ -32,7 +32,7 @@ Efficient Fine-tuning of LLMs (large language models) and Language-Vision models
       <title>News</title>
       <link>https://zhengzangw.com/about/news/</link>
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/news/</guid>
       <description>[2023.5] Got one paper accepted to ACL 2023. Congratulations to Yang Luo! [2023.4] Got one paper accpeted to ICML 2023. Congratulations to Fuzhao Xue! [2023.3] ColossalChat has been released! Train your own version of ChatGPT. Congratulations to colleges at HPCAITech! [2023.2] CowClip won the AAAI Distinguished Paper Award! [2022.12] Passed the qualifying exam. Cong to myself :), and thanks for my supervisor and friends’ help! [2022.11] Got one first-authored paper accepted to AAAI 2023.</description>
     </item>
@@ -41,7 +41,7 @@ Efficient Fine-tuning of LLMs (large language models) and Language-Vision models
       <title>Publications</title>
       <link>https://zhengzangw.com/about/publications/</link>
       <pubDate>Mon, 07 Dec 2020 21:33:19 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/publications/</guid>
       <description>See Google Scholar.</description>
     </item>
@@ -50,7 +50,7 @@ Efficient Fine-tuning of LLMs (large language models) and Language-Vision models
       <title>Teaching Assistant</title>
       <link>https://zhengzangw.com/about/teaching/</link>
       <pubDate>Mon, 07 Dec 2020 21:31:28 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/teaching/</guid>
       <description> CS 5242: Neural Networks and Deep Learning (NUS, Fall 2022) Algorithm Analysis &amp;amp; Design (NJU, Fall 2020) </description>
     </item>
@@ -59,7 +59,7 @@ Efficient Fine-tuning of LLMs (large language models) and Language-Vision models
       <title>Selected Awards</title>
       <link>https://zhengzangw.com/about/awards/</link>
       <pubDate>Mon, 07 Dec 2020 21:43:38 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/awards/</guid>
       <description> 2023, AAAI 2023 Distinguished Paper Award 2022, Papers with Code Contributor Award 2021, Outstanding Graduates of Nanjing University 2020, Outstanding Student of Nanjing University 2019, 2018 (2 times), National Elite Program First-Class Scholarship 2019, Zheng Gang Overseas Study Scholarship </description>
     </item>
@@ -68,7 +68,7 @@ Efficient Fine-tuning of LLMs (large language models) and Language-Vision models
       <title>Projects</title>
       <link>https://zhengzangw.com/about/projects/</link>
       <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/projects/</guid>
       <description> awesome-huge-models: Collection of huge AI models. hugo-theme-phd: Hugo theme for this page. </description>
     </item>

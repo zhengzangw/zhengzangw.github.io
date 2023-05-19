@@ -6,14 +6,14 @@
     <description>Recent content in ics on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Tue, 13 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/ics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chapter 2</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter2/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter2/</guid>
       <description> 进制转换 定点表示 机器数：编码后的表示 真值 原码表示 补码表示：$X_c=(M+X)\pmod M$ -：取反加一（与数据类型无关） -2147483648 : 0x80000000 反码表示 移码：表示浮点数 浮点表示 $X=(-1)^SMR^E$ $M$: mantissa $E$: exponent $R$: radix IEEE 754 FLOAT: 1+8+23 DOUBLE: 1+11+52 Intel FPU: 1+15+(1)+63 偏置常数 B: $2^{n-1}-1$ 分类 0: -0/+0 非规格化数：$(-1)^s * 0.f *(1-B)$ 全1阶码全0尾数：$\infty$ 全1阶码非全0尾数：NaN（分静止的和通知的） 最高有效位为1：静止的 规格化数：$(-1)^s1.f2^{e-B}$ 浮点运算的舍入 右规时，直接截断 IEEE754 至少两位附加位（guard,round,sticky） 就近舍入到偶数 整数表示 有符号: $-2^{n-1}\sim(2^{n-1}-1)$ 整数常量（无后缀） C90 : int - $*$ - unsigned long int C99 : int - $*$ - long long int BCD码 数据宽度 字长 word size：指明指针数据的标称大小（决定虚拟地址空间最大大小） KMGTPEZY 小端：MSB在大地址中 #pragma pack(n) 设置对齐方式 __attribute__((n)) 设置单独的对齐方式，大于n的数据结构按n对齐 </description>
     </item>
@@ -22,7 +22,7 @@
       <title>Chapter 3</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter3/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter3/</guid>
       <description> 汇编格式 AT&amp;amp;T: op src, dst Intel: op dst, src Intel处理器 8086(16)-80286-i386(32)-i486(FPU)-Pentium-PentiumPro(P6)-Pentium/MMX-PentinumIII(SSE)-Pentium4E(x86-64)-Core2(多核)-Core i7 i386寄存器组织 定点寄存器 EAX,EBX,ECX,EDX,ESP,EIP,ESI,EDI EIP,EFLAGS CS,SS,DS,ES,FS,GS 寻址模式 立即寻址，寄存器寻址 基址加比例变址加位移寻址：$LA=(SR)+(B)+(I)*S+A$ 相对寻址 浮点处理架构 x87 FPU: ST(0)-ST(7),80位。控制寄存器、状态寄存器、标记寄存器各一个。组织为浮点寄存器栈。64位尾数。 MMX指令: MM0-MM7，通常借用ST(0)-ST(7)，使用64位 SSE指令集（兼容MMX，采用SIMD（单指令多数据）技术）: 增加8个128位SSE专用多媒体扩展通用寄存器XMM0-XMM7 AVX指令集：矢量扩展指令集 FMA指令集：fused multiply-accumulate 过程调用 储存传递参数 保存返回地址，转移控制权 被调用者保存现场，并分配空间 执行函数体 恢复现场，释放空间 取出返回地址，转移到调用者函数 非静态局部变量的储存分配方式属于未定义行为；不同变量的地址除(!=和==)外为未定义行为 缓冲区溢出防范 ASLR(Address Space Layout Randomization) 栈破坏检测 可执行代码区域限制 char可为signed char，也可为unsigned char，为不确定类型 union的存放顺序是所有成员从低地址开始，利用该特性可测试CPU的大/小端方式 </description>
     </item>
@@ -31,7 +31,7 @@
       <title>Chapter 4</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter4/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter4/</guid>
       <description>编译汇编过程 Preprocessor: cpp / gcc -E -o main.i main.c
 Compile: ccl / gcc -S -o main.s main.i
@@ -50,7 +50,7 @@ Object File Format DOS - COM System V UNIX - COFF (Common Object File-Format) Wi
       <title>Chapter 5</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter5/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter5/</guid>
       <description>基本概念 指令周期：CPU取出并执行一条指令的时间 PC: 程序计数器（IP） IR: 指令寄存器 ID: 指令译码器 地址线、数据线、控制线：不属于CPU 启停控制逻辑：脉冲源（时钟脉冲）+启停控制线 数据通路： 指令执行过程中数据所经过的路径（包括路径上的部件） execution/function unit: 数据运算的部件 IAS计算机：储存程序计算机 1946 分散连接结构 Clock-to-Q(Latch Prop): 触发沿开始到输出端改变 Cycle Time = Clk-to-Q + Longest Delay + 建立时间 + clock skew 数据通路的时序控制 早期：机器周期、节拍和脉冲三级时序 现代：时钟信号，时钟周期=节拍 单总线数据通路 内总线 MDR: Memory Data Register MAR: Memory Address Register 四种基本操作 通用寄存器间传递数据 $R0_{out}, Y_{in}$ 算术逻辑运算 $R1_{out}, Y_{in}$ $R2_{out}, add (Z_{in})$ $Z_{out}, R3_{in}$ 主存读取一个字 MFC信号: Memory Function Complete WMFC控制信号 异步 $R1_{out}, MAR_{in}$ $read, WMFC$ $MDR_{out}, R2_{in}$ 同步： SDRAM芯片 写入主存 $R1_{out}, MDR_{in}$ $R2_{out}, MAR_{in}$ $write, WMFC$ 三总线数据通路 dual-port register file 三操作数指令执行可在一个时钟周期完成 单周期数据通路 单周期处理器：所以有指令的指令周期为一个时钟周期 MIPS 时钟周期以最复杂指令所用的指令周期为准 流水线数据通路 指令流水线 IF ID OF: 取操作数 EX WB CPI = 1 组合逻辑+寄存器延时 适合流水线的指令集特征 指令长度一致 指令格式规整 load/store型指令风格 流水线冒险(hazard) : 流水线阻塞(stall) structural hazard (hardware resource conflict) 访存冲突。 解决方法： 哈佛结构（指令储存器和数据储存器分离）， cache data hazard (data dependency) 前面指令的结果还没产生。 解决方法 软件方法 nop 数据转发 (forwarding) 通过bypass送到后续ALU 硬件阻塞 （插入气泡） load-use数据冒险只能如此解决 一个周期内特殊处理 (MIPS实现中) RAW WAR WAW control hazard 延迟损失时间片 C branch hazard 插入气泡 或 插入nop， 数量为C 高级流水线实现技术 super-pipelining 增加流水线级数，CPI仍为1，减小时钟周期 multiple issue pipeling 同时启动多条命令, CPI &amp;lt; 1。 IPC: 4路多发射流水线理性IPC为4 前提：数据通路中有多个执行部件 任务一：冒险处理 任务二：指令打包 ： 将能够并行处理的多条指令同时发送到发射槽中 speculation: 猜测指令执行结果调整执行顺序 软件推测： 编译器通过推测来静态重排指令，此种推测一定正确 静态多发射：主要通过静态推测，指令打包后多条指令合成VLIW(Very Long Instrution Word)。 VLIW处理器，Intel称为EPIC(Explicitly Parallel Instruction Computer) 硬件推测：处理器执行中通过推测动态调度指令 动态多发射：super-scalar processor (超标量处理器) 简单超标量处理器： 指令顺序发射，每次一条或多条 out-of-order execution： 使用dynamic pipeline scheduling技术， 通过指令相关性检测和动态分支预测，投机选择执行 指令集 CISC: 难以使用硬连线路控制器，只能用微程序控制器 RISC 控制器: 译码并产生控制信号 硬连线路控制器：指令执行过程中每个时钟周期所包含的控制信号为一个状态 微程序控制器 微程序：每条指令的执行过程的表示，由微指令组成 控制存储器（CS, 控存）：存储每条指令对于微程序的ROM 微程序定序器：计数器法/断定法（下址字段法） </description>
     </item>
@@ -59,7 +59,7 @@ Object File Format DOS - COM System V UNIX - COFF (Common Object File-Format) Wi
       <title>Chapter 6</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter6/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter6/</guid>
       <description>储存器分类 储存元件 半导体储存器 磁表面储存器 光盘储存器（光介质） 基板，记录层，反射层，保护层，印刷层 CD(Compact disc) 1.2mm 700MB DVD(digital versatile disc) 0.6mm+0.6mm 4.7GB Blue-ray Disc 存取方式 RAM (Random Access Memory) SAM (Sequential Access Memory) DAM (Direct Access Memory) CAM (Content Addressed Memory) or AM (Associative Memory) : TLB 可更改性 ROM (Readly Only Memory) Flash ROM 闪存 U盘，BIOS RWM SRAM: Static RAM 6个晶体管一个二进制位，cache DRAM: Dynamic RAM 一个晶体管一个二进制位，主存 断电后可保存性 Nonvolatile Memory Volatile Memory 功能 寄存器(1ns, &amp;lt;1KB) &amp;lt;- cache(2ns, 4MB) &amp;lt;- 主存储器(10ns, 500MB-4GB) &amp;lt;- 辅助存储器(辅存)(10ms, 40GB-500GB) &amp;lt;- 海量后备储存器 (10s, 10TB-100TB)(与辅存合称外部存储器) 储存器指标 访问时间： 读出时间：从存储器接到读命令开始至信息被送到数据线上所需的世界 读入时间：从存储器接到写命令开始至信息被写入存储器的时间 存储周期：存储器进行一次读写操作所需全部时间 带宽B：存储器被连续访问时可以提供的数据传送速率，位每秒 主存 SDRAM: Synchronous DRAM</description>
     </item>
@@ -68,7 +68,7 @@ Object File Format DOS - COM System V UNIX - COFF (Common Object File-Format) Wi
       <title>Chapter 7</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter7/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter7/</guid>
       <description>基本概念 CPU 控制流：CPU 所执行的地址序列 正常控制流：按指令存放顺序或转移类指令指示地址得到的控制流 ECF: Excptional Control of Flow process descriptor: 结构类型 task_structure task_list: 双向循环列表，每个元素为进程描述符 TSS: Task State Segment 逻辑控制流：进程确定的指令执行地址序列 物理控制流：多个逻辑控制流组成 concurrency: 并发，不同进程的逻辑控制流在时间上交错 parallelism: 并行，并发的特例，同时进行的两个进程 time slice: 连续执行同一个进程的时间段 时间片轮转处理器调度 context switching 实现班班通进程中指令交替执行的机制
 进程的上下文：物理实体和支持进程运行的环境 用户堆栈：运行时堆和用户栈 用户级上下文：程序块、数据块、用户堆栈等组成的用户空间信息 系统级上下文：进程标识信息、进程现场信息、进程控制信息（各种内核数据结构）和系统内核栈组成的内核空间信息 硬件/寄存器上下文 上下文切换 将寄存器上下文保存到当前进程的系统级上下文中 将新进程系统级上下文中的现场信息恢复到寄存器中 将控制转移到新进程 memory mapping 将进程虚拟地址空间中的一个区域与硬盘上一个对象关联，初始化一个 vm_area_struct 结构
@@ -80,7 +80,7 @@ void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offset
       <title>Chapter 8</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/chapter8/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/introduction-to-computer-science/chapter8/</guid>
       <description>I/O子系统 runtime system(runtime environment/runtime) I/O子系统 用户空间I/O软件（用户I/O软件） I/O请求 运行时系统 内核空间I/O软件（系统I/O软件） 与设备无关的I/O软件 设备驱动程序 中断服务程序 I/O硬件 I/O总线结构 I/O接口（设备管理器，I/O端口） I/O设备 用户程序中I/O函数 C标准I/O库函数 文件I/O函数 控制台I/O函数 缓冲 _IOFBF: fully buffered _IOLBF: line buffered _IO_NBF: no buffering 系统调用封装函数 头文件unistd.h int creat(char *name, mode_t perms); perms:访问权限：文件拥有者+拥有者所在组成员+其它用户的读、写、执行权限 int open(char *name, int flags, mode_t perms); perms = 0: 非创建方式 flags: 定义在 fcntl.h(System V UNIX)或sys/file.h(BSD) 中 O_RDONLY O_WRONLY O_RDWR O_WRONLY | O_APPEND O_RDWR | O_CREAT O_WRONLY | O_CREAT | O_TRUNC 返回值：成功为文件描述符，失败为-1 ssize_t read(int fd, void *buf, size_t n); ssize_t write(int fd, const void*buf, size_t n); long lseek(int fd, long offset, int origin) origin 0头1当前2末 int stat(const *name, struct stat *buf); 获得metadata int fstat(int fd, struct stat *buf); stat 结构 st_dev 设备ID st_ino 节点编号 st_mode 文件访问权限和类型 st_nlink 连接链的数目 st_uid 文件拥有者ID st_gid 文件拥有者组ID st_rdev st_size 文件大小 st_blksize 块大小 st_blocks 块数 st_atime 最近一次访问时间 st_mtime 最近一次修改时间 st_ctime 最近一次修改文件状态的时间 void close(int fd) int unlink(const char* pathname) terminal: 键盘+显示器 文本文件(ASCII文件)：每行以&amp;rsquo;\n&amp;rsquo;结束 I/O硬件与软件接口 机械部分 I/O设备本身（外围设备） 字符设备 机-机通信设备部 块设备 外部存储器 电子部分 设备控制器（I/O配适器） 北桥芯片：MCH, Memory Controller Hubb, 主存控制器集线器，本质是DMA控制器 南桥芯片：ICH, I/O Controller Hub FSB: Front Side Bus, 前端总线，处理器总线，处理器和北桥芯片信息交换 传输速率单位：MT/s(MHz) QPI: Quick Path Inter-connect 储存器总线 I/O总线 PCI-Express I/O接口 I/O编址 统一编址方式（储存器映射方式） 独立编址方式 I/O控制方式 程序之间控制I/O方式(polling) 中断控制I/O方式 处理器调度程序 进程三状态：运行态、就绪态（就绪队列）、阻塞态（被挂起） PIC: Programmable Interrupt Controller IRQ线连到PIC的IRQ引脚 中断响应优先级&amp;ndash;中断查询程序/硬件判优电路 中断处理优先级 DMA控制I/O方式 I/O内核空间软件 与设备无关的I/O软件 设备驱动程序统一接口 设备文件名（e.</description>
     </item>
@@ -89,7 +89,7 @@ void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offset
       <title>ICS PA</title>
       <link>https://zhengzangw.com/notes/introduction-to-computer-science/ics-pa/</link>
       <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/introduction-to-computer-science/ics-pa/</guid>
       <description>PA0 Article Why Docker How To Ask Questions The Smart Way vimtutor ssh 正则表达式 鸟哥的 Linux 私房菜 检查素数 git GDB Debugging with GDB A GDB Tutorial with Examples tmux linux GPG GPG C C 顺时针法则 顺时针法则
 [10]: an array 10 of &amp;hellip;

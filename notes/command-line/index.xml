@@ -6,14 +6,14 @@
     <description>Recent content in [L] 终端工具 Command Line Tools on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/command-line/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. Shell Basic</title>
       <link>https://zhengzangw.com/notes/command-line/1-shell-basic/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/1-shell-basic/</guid>
       <description>帮助 man mkdir tldr mkdir type cd which ffmpeg shellcheck script.sh # brew install shellcheck history 1 # history from 1 File System # 查看 ls -R tree -L 1 # brew install tree # 跳转 cd # = cd $HOME cd - # 放回之前目录 cd $OLDPWD broot nnn j -s # autojump dirs -v # 查看栈 popd # 出栈 popd +n # 从栈顶向栈底计算，删除 pushd # = cd - pushd +n # 切换到第 n 个，循环方式 # 操作 cp source_file target_file mv source_file target_file rm target_file mkdir -p # Create missing ones basename .</description>
     </item>
@@ -22,7 +22,7 @@
       <title>2. Shell Script</title>
       <link>https://zhengzangw.com/notes/command-line/2-shell-script/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/2-shell-script/</guid>
       <description>内建命令 man builtin source ~/.zshrc read -p &amp;#34;Enter some information &amp;gt; &amp;#34; name url age cd 变量 字母数字及下划线组成，并且变量名的第一个字符不能为数字 赋值时，变量和等号之间不要有空格，等号和值之间也不要有空格，否则 shell 不会认为变量被定义
 echo $(ls) # output -&amp;gt; string echo `ls` # output -&amp;gt; string diff &amp;lt;(ls) &amp;lt;(ls ..) # output -&amp;gt; tmp file # declare declare -r a # 只读 local a # 局部变量 declare -i a=5 # 对数字声明 declare -a arr=(a b c) # 对数字声明 # 函数 -f declare -x # 通过环境输出变量 #- 开启 + 关闭 # Variable foo=bar # No space a=5 # same to a=&amp;#39;5&amp;#39; a=$b+$c # 存在 + 号的字符串 url=https://zhengzangw.</description>
@@ -32,7 +32,7 @@ echo $(ls) # output -&amp;gt; string echo `ls` # output -&amp;gt; string diff &a
       <title>3. Shell UI</title>
       <link>https://zhengzangw.com/notes/command-line/3-shell-ui/</link>
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/3-shell-ui/</guid>
       <description>Escape Code Escape Sequence Representation \a alert \n newline \t Horizontal Tab \v Vertical Tab &#39;,&amp;quot;,? Symbol \nnn ASCII in octal \xhh ASCII \uhhhh Unicode \uhhhhhhhh Unicode Escape Character echo -e &amp;#34;\033[32;31mstring \033[0m&amp;#34; # Different format seperated by ; echo &amp;#34;\e[32;31mstring\e[0m&amp;#34; echo &amp;#34;\x1b[32;31mstring\x1b[0m&amp;#34; (x): not work in iterm
 Format Representation 0 Default 1 Dim 4 Underline 5 Blink (x) 7 Reverse (invert the foreground and background colors) 8 Hidden (x) 9 strikes (x) 20+i Reset above values 39 Default fg color 30+i 8 color: Black,R,G,Y,B,M,C,Light gray 90+i 16 color: Dark gray,lR,lG,lY,lB,lM,lC,W 38;5;ASCII 256 color 38;2;R;G;B RGB color 49 Default bg color 40+i 8 color for bg 100+i 16 color for bg 48;5;ASCII 256 color 48;2;R;G;B RGB color Without m:</description>
@@ -42,7 +42,7 @@ Format Representation 0 Default 1 Dim 4 Underline 5 Blink (x) 7 Reverse (invert 
       <title>4. Job Control</title>
       <link>https://zhengzangw.com/notes/command-line/4-job-control/</link>
       <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/4-job-control/</guid>
       <description>Jobs Control sleep 20 # seconds man signal #ctrl+c SIGINT #ctrl+\ SIGQUIT #ctrl+z SIGSTOP nohup ./run.sh &amp;amp; jobs # show jobs background bg %1 # continue to run fg %2 kill -STOP %1 kill -HUP %1 kill -KILL %2 C signal #include &amp;lt;signal.h&amp;gt; #include &amp;lt;stdint.h&amp;gt; void signal_callback_handler(int signum) { printf(&amp;#34; TERMINATED \n&amp;#34;); setBufferedInput(true); printf(&amp;#34;\033[?25h\033[m&amp;#34;); exit(signum); } int main(){ signal(SIGINT, signal_callback_handler); } Python signal #!/usr/bin/env python import signal, time def handler(signum, time): print(&amp;#34;\nI got a SIGINT, but I am not stopping&amp;#34;) signal.</description>
     </item>
@@ -51,7 +51,7 @@ Format Representation 0 Default 1 Dim 4 Underline 5 Blink (x) 7 Reverse (invert 
       <title>5. Data Wragling</title>
       <link>https://zhengzangw.com/notes/command-line/5-data-wragling/</link>
       <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/5-data-wragling/</guid>
       <description>Text handling more less tac head -n5 tail -n5 sed &amp;#39;s/.*Disconnected from//&amp;#39; # or gsed in mac sed &amp;#39;s/[ab]//g&amp;#39; sed -E &amp;#39;s/.*Disconnected from (invalid )?user .* //&amp;#39; wc -l sort -nk1,1 # numeric, column 1 to 1 uniq -c awk &amp;#39;{print $2}&amp;#39; # print the second column awk &amp;#39;BEGIN { rows = 0 } $1 == 1 &amp;amp;&amp;amp; $2 ~ /^c.*e$/ {rows += 1} END {print rows}&amp;#39; cat file | paste -sd, # seperate by .</description>
     </item>
@@ -60,7 +60,7 @@ Format Representation 0 Default 1 Dim 4 Underline 5 Blink (x) 7 Reverse (invert 
       <title>6. Terminal</title>
       <link>https://zhengzangw.com/notes/command-line/6-terminal/</link>
       <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/6-terminal/</guid>
       <description>快捷键 功能 ctrl + a 移动到行首 ctrl + e 移动到行尾 ctrl + u 删除当前光标前面的文字 ctrl + l 清屏 ctrl + r 搜索历史记录 ctrl + z SIGSTOP 挂起 ctrl + c SIGINT ctrl + s 阻止屏幕输出 ctrl + q 允许屏幕输出 Bang 命令 !! #上一条命令 ^foo^bar # 将上一条命令中 foo 替换为 bar ^foo # 将上一条命令中 foo 删除 !wget # 最近的以 wget 开头的命令 !$ # 上个命令最后一个参数 !* # 上个命令所有参数 !-5 # 倒数第五条 fc # Open the most recent command and edit it </description>
     </item>
@@ -69,7 +69,7 @@ Format Representation 0 Default 1 Dim 4 Underline 5 Blink (x) 7 Reverse (invert 
       <title>7. Security</title>
       <link>https://zhengzangw.com/notes/command-line/7-security/</link>
       <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/7-security/</guid>
       <description>Encode # hash printf &amp;#39;hello&amp;#39; | sha1sum sha1sum README.md # encrypt openssl aes-256-cbc -salt -in README.md -out README.enc.md openssl aes-256-cbc -d -in README.enc.md -out README.md User whoami cat /etc/passwd </description>
     </item>
@@ -78,7 +78,7 @@ Format Representation 0 Default 1 Dim 4 Underline 5 Blink (x) 7 Reverse (invert 
       <title>8. Network</title>
       <link>https://zhengzangw.com/notes/command-line/8-network/</link>
       <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/8-network/</guid>
       <description>Download curl wget </description>
     </item>
@@ -87,7 +87,7 @@ Format Representation 0 Default 1 Dim 4 Underline 5 Blink (x) 7 Reverse (invert 
       <title>9. Debugging</title>
       <link>https://zhengzangw.com/notes/command-line/9-debugging/</link>
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/9-debugging/</guid>
       <description>System stress -c # brew install stress # Log ls /var/log # Log file cat /var/log/system.log | lnav # brew install lnav log show # macos log show --last 1m logger &amp;#34;Hello Logs&amp;#34; # 查询系统调用 sudo strace ls -l &amp;gt; /dev/null # dtrace for macos # static analysis writegood notes.md # brew install write-good # time time curl https://google.com # perf sudo perf stat stress -c 1 sudo perf record stress -c 1 sudo perf report # computer status top htop du # disk usage ncdu lsof # list open files # benchmark hyperfine --warmup 3 &amp;#39;fd -e jpg&amp;#39; &amp;#39;find .</description>
     </item>
@@ -96,7 +96,7 @@ Format Representation 0 Default 1 Dim 4 Underline 5 Blink (x) 7 Reverse (invert 
       <title>10. Git</title>
       <link>https://zhengzangw.com/notes/command-line/10-git/</link>
       <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/10-git/</guid>
       <description>&lt;h2 id=&#34;规范化-commit&#34;&gt;规范化 Commit&lt;/h2&gt;
 &lt;ul&gt;
@@ -176,7 +176,7 @@ standard-version
       <title>11. Make</title>
       <link>https://zhengzangw.com/notes/command-line/11-make/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/11-make/</guid>
       <description>&lt;h2 id=&#34;参数&#34;&gt;参数&lt;/h2&gt;
 &lt;table&gt;
@@ -302,7 +302,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
       <title>12. Vim</title>
       <link>https://zhengzangw.com/notes/command-line/12-vim/</link>
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/12-vim/</guid>
       <description></description>
     </item>
@@ -311,7 +311,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
       <title>13. VM and Docker</title>
       <link>https://zhengzangw.com/notes/command-line/13-vm-and-docker/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/13-vm-and-docker/</guid>
       <description>Docker alias dk=&amp;lsquo;docker&amp;rsquo; alias dka=&amp;lsquo;docker attach&amp;rsquo; alias dkb=&amp;lsquo;docker build&amp;rsquo; alias dkd=&amp;lsquo;docker diff&amp;rsquo; alias dkdf=&amp;lsquo;docker system df&amp;rsquo; alias dke=&amp;lsquo;docker exec&amp;rsquo; alias dkE=&amp;lsquo;docker exec -it&amp;rsquo; alias dkh=&amp;lsquo;docker history&amp;rsquo; alias dki=&amp;lsquo;docker images&amp;rsquo; alias dkin=&amp;lsquo;docker inspect&amp;rsquo; alias dkim=&amp;lsquo;docker import&amp;rsquo; alias dkk=&amp;lsquo;docker kill&amp;rsquo; alias dkl=&amp;lsquo;docker logs&amp;rsquo; alias dkli=&amp;lsquo;docker login&amp;rsquo; alias dklo=&amp;lsquo;docker logout&amp;rsquo; alias dkls=&amp;lsquo;docker ps&amp;rsquo; alias dkp=&amp;lsquo;docker pause&amp;rsquo; alias dkP=&amp;lsquo;docker unpause&amp;rsquo; alias dkpl=&amp;lsquo;docker pull&amp;rsquo; alias dkph=&amp;lsquo;docker push&amp;rsquo; alias dkps=&amp;lsquo;docker ps&amp;rsquo; alias dkpsa=&amp;lsquo;docker ps -a&amp;rsquo; alias dkr=&amp;lsquo;docker run&amp;rsquo; alias dkR=&amp;lsquo;docker run -it &amp;ndash;rm&amp;rsquo; alias dkRe=&amp;lsquo;docker run -it &amp;ndash;rm &amp;ndash;entrypoint /bin/bash&amp;rsquo; alias dkRM=&amp;lsquo;docker system prune&amp;rsquo; alias dkrm=&amp;lsquo;docker rm&amp;rsquo; alias dkrmi=&amp;lsquo;docker rmi&amp;rsquo; alias dkrn=&amp;lsquo;docker rename&amp;rsquo; alias dks=&amp;lsquo;docker start&amp;rsquo; alias dkS=&amp;lsquo;docker restart&amp;rsquo; alias dkss=&amp;lsquo;docker stats&amp;rsquo; alias dksv=&amp;lsquo;docker save&amp;rsquo; alias dkt=&amp;lsquo;docker tag&amp;rsquo; alias dktop=&amp;lsquo;docker top&amp;rsquo; alias dkup=&amp;lsquo;docker update&amp;rsquo; alias dkV=&amp;lsquo;docker volume&amp;rsquo; alias dkv=&amp;lsquo;docker version&amp;rsquo; alias dkw=&amp;lsquo;docker wait&amp;rsquo; alias dkx=&amp;lsquo;docker stop&amp;rsquo;</description>
     </item>
@@ -320,7 +320,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
       <title>14. 多媒体转换</title>
       <link>https://zhengzangw.com/notes/command-line/14-multimedia-transform/</link>
       <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/14-multimedia-transform/</guid>
       <description>视频 ffmpeg ffmpeg -formats 查看支持容器 ffmpeg -codec 查看支持编码 ffmpeg -encoders 查看编码器 ffmpeg -hide_banner 参数 效果 -i 输入文件 -c copy 直接复制 -c:v libx264 视频编码器 -c:a acc 音频编码器 -an 去除音频流 -vn 去除视频流 -preset ultrafast, superfast, medium, slow, veryslow -y 覆盖同名 -vf scale=480:-1 分辨率 -ss 00:01:24 -t 00:00:01 裁剪一秒视频 -ss 01:02:03 -vframes 1 -q:v 2 截取一帧，质量为 2 -loop 1 -shortest 音频文件化为带封面的视频 -r 24 强制帧数 -b:v 64k 输出文件比特率（缺省 200kb/s） -minrate 964K -maxrate 3856K -bufsize 2000K 码率调整 普屏4:3：320240 640480 宽屏16:9：480272 640360 672378 720480 1024600 1280720 1920*1080 获取封面：ffmpeg -ss 00:00:10 -i test1.</description>
     </item>
@@ -329,7 +329,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
       <title>15. Linux</title>
       <link>https://zhengzangw.com/notes/command-line/15-linux/</link>
       <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/15-linux/</guid>
       <description>&lt;p&gt;Linux 私房菜&lt;/p&gt;
 &lt;h1 id=&#34;命令&#34;&gt;命令&lt;/h1&gt;</description>
@@ -339,7 +339,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
       <title>16. Comments and Autodoc</title>
       <link>https://zhengzangw.com/notes/command-line/16-comments-and-autodoc/</link>
       <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/16-comments-and-autodoc/</guid>
       <description>注释风格 File Comments Python
 #!/usr/bin/env python # -*- coding: utf-8 -*- # @Time : ${DATE} ${TIME} # @Author : Shark # @Site : ${SITE} # @File : ${NAME}.py # @Software: ${PRODUCT_NAME} C++
@@ -351,7 +351,7 @@ $(VERBOSE).SILENT # Suppress display of executed command
       <title>17. Formats and Linters</title>
       <link>https://zhengzangw.com/notes/command-line/17-formats-and-linters/</link>
       <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/17-formats-and-linters/</guid>
       <description>Formats C/C++ 代码风格：Google, linux, gnu
 indent astyle --style=gnu src/*.cpp include/*.h # brew install astyle In Vscode: &amp;quot;C_Cpp.clang_format_style&amp;quot;: &amp;quot;{ BasedOnStyle: Google, IndentWidth: 4}&amp;quot;
@@ -365,7 +365,7 @@ pylint eslint </description>
       <title>18. File Hierarchy Standard</title>
       <link>https://zhengzangw.com/notes/command-line/18-file-hierarchy/</link>
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/18-file-hierarchy/</guid>
       <description>&lt;h1 id=&#34;file-hierarchy&#34;&gt;File Hierarchy&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.freedesktop.org/software/systemd/man/file-hierarchy.html&#34;&gt;Link to File Hierarchy&lt;/a&gt;&lt;/p&gt;
@@ -383,7 +383,7 @@ pylint eslint </description>
       <title>19. Crawler</title>
       <link>https://zhengzangw.com/notes/command-line/19-crawler/</link>
       <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/19-crawler/</guid>
       <description>Python import urllib # 1 response = urllib.request.urlopen(&amp;#39;http://python.org/&amp;#39;) html = response.read() print(html.decode(&amp;#39;utf-8&amp;#39;)) # 2 POST &amp;amp; GET url = &amp;#39;http://www.baidu.com/&amp;#39; valuesPOST = { &amp;#39;user&amp;#39;: &amp;#39;name&amp;#39;, &amp;#39;passwd&amp;#39;: &amp;#39;*****&amp;#39; } data = urllib.parse.urlencode(valuesPOST).encode(&amp;#39;utf-8&amp;#39;) valuesGET = { &amp;#39;verbose&amp;#39;: 1, &amp;#39;nothing&amp;#39;: &amp;#34;&amp;#34; } url = url + &amp;#34;?&amp;#34; + urllib.parse.urlencode(valuesGET) req = urllib.request.urlopen(url, data) # 3 Headers headers = { &amp;#39;User-Agent&amp;#39; : &amp;#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&amp;#39;, &amp;#39;Referer&amp;#39; : &amp;#39;http://www.zhihu.com/articles&amp;#39; } req = urllib.</description>
     </item>
@@ -392,7 +392,7 @@ pylint eslint </description>
       <title>20. Args</title>
       <link>https://zhengzangw.com/notes/command-line/20-args/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/20-args/</guid>
       <description>Shell # getopts # : after letter indicates it requires arguments while getopts &amp;#34;:a:&amp;#34; opt; do case $opt in a) echo &amp;#34;-a was triggered, Parameter: $OPTARG&amp;#34; &amp;gt;&amp;amp;2 ;; \?) echo &amp;#34;Invalid option: -$OPTARG&amp;#34; &amp;gt;&amp;amp;2 exit 1 ;; :) echo &amp;#34;Option -$OPTARG requires an argument.&amp;#34; &amp;gt;&amp;amp;2 exit 1 ;; esac done # getopt Python argparse</description>
     </item>
@@ -401,7 +401,7 @@ pylint eslint </description>
       <title>Setup: Ubuntu</title>
       <link>https://zhengzangw.com/notes/command-line/ubuntu-setup/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/ubuntu-setup/</guid>
       <description>&lt;h2 id=&#34;platform&#34;&gt;Platform&lt;/h2&gt;
 &lt;h3 id=&#34;virtual-machine-on-macosx&#34;&gt;Virtual Machine on macosx&lt;/h3&gt;
@@ -419,7 +419,7 @@ pylint eslint </description>
       <title>Setup: MacOS</title>
       <link>https://zhengzangw.com/notes/command-line/macos-setup/</link>
       <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/macos-setup/</guid>
       <description></description>
     </item>
@@ -428,7 +428,7 @@ pylint eslint </description>
       <title>Setup: PHP</title>
       <link>https://zhengzangw.com/notes/command-line/php-setup/</link>
       <pubDate>Sun, 30 Dec 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/command-line/php-setup/</guid>
       <description>&lt;h1 id=&#34;set-up-vm&#34;&gt;Set up VM&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update

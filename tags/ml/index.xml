@@ -6,14 +6,14 @@
     <description>Recent content in ml on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Tue, 10 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/ml/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1-概论</title>
       <link>https://zhengzangw.com/notes/artificial-intelligence/1-introduction/</link>
       <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/artificial-intelligence/1-introduction/</guid>
       <description>科学与技术关系的探讨 周光绍 科学：正确反映客观世界现象、物质内部结构和运动规律的系统理论知识 技术：在科学指导下，总结实践经验，各方面的系统知识 白春礼 科学：发现、探索研究事物运动的客观规律 技术：[做什么、怎么做 人工智能 强人工智能：人工智能使探索人脑与意识的科学 弱人工智能：模拟人脑相应功能且得到应用，偏向于技术 何为人工智能 像人一样行动 图灵测试 自然语言处理 知识表示 自动推理 机器学习 完全图灵测试 计算机视觉 机器人学 像人一样思考 领会人脑用途 内省：捕捉思维过程 心理实验 脑成像 认知科学 合理地思考 合理地行动 学科交叉 哲学 图灵测试(1950) 西尔勒中文屋子(1980)：能否从表现来评判智能 人为陷阱：能否真的了解人类的智能水平 缸中之脑(1981) 反向图灵测试(CAPTCHA,2002) 智能的哲学发展 笛卡尔(1596-1650)：可通过可编程机械实现智能 莱布尼茨(1646-1716)：不存在预先设置的机器智能 磨坊论证：知觉的存在是对智能的存在不可或缺的吗？ 霍布斯(1588-1679，符号流派哲学先驱)：机械化的心灵观，仅仅限制在理性（推理） 休谟(1711-1776，联结流派哲学先驱)：心智模型是“自底而上”构建的，最底层是感觉，其次是抽象和记忆，再上是想象 康德(1724-1804)：心智模型是知觉的“从上(知性)至下(高阶 知觉)” 和“自下(感性)而上(低阶知觉)”,两者不可或缺 霍布斯·德瑞福斯(1929-)：真实的思维是不可以被程序穷尽，依赖计算力的“智能”不是人类智能 罗德尼·布洛克斯（行为流派先驱）：世界是最大的认知模型，更重要的是如何由嵌入式的方式认知外部世界，而并不需要创造中间符号 乔姆斯基 大脑是“认知”的 大部分智力活动是“先天”的 模式是大脑认知的关键结构 数学 经济学 囚徒困境 投票悖论 冷扑大师：博弈均衡策略求解算法 神经科学 心理学 计算机工程 控制论 自动化 语言学 Spaif-Whorf 假说：语言决定人们对世界的理解 大数据 4V:Volume,Velocity,Variety,Veracity 多源异构数据 海量分布数据 流数据 交互型数据 图数据 4I:Inexact,Incremental,Integrated,Inductive 大数据的表示模型：数据表示如何充分体现大数据的内在规律 大数据的计算模型：超越样本多项式时间复杂度的大数据计算模型 在线学习 近似学习 大数据的决策模型：面向多个行为实体的大数据复杂决策技术（数据分析到博弈推理） 历史发展 孕育期(1943-1955) 达特茅斯会议(1956) 克劳德·香农 约翰·麦卡锡 搜索与剪枝 马文·明斯基 知识表示和推理 奥利弗·赛弗里奇 赫伯特·西蒙 &amp;amp; 阿兰·纽维尔 推理期(1952-1969) 第一次低潮 早期程序对其主题一无所知 求解问题的难解性；组合爆炸 流派之争 Perceptrons 符号学派（逻辑） 连接学派（仿生） 行为学派（控制） 知识期(1970-1980 末) 第二次高潮（符号学派成功） 专家系统 第二次低潮（五代机计划失败） 学习期 第三次高潮（机器学习的成功） 深度期 新一代人工智能五个方向 大数据智能 群体智能 跨媒体智能 混合增强智能 自主无人系统 智能 Agent 理性 依赖于：性能度量，先验知识，可能的行动，感知序列 对环境的先验知识 可以完成的行动：执行器 截止此时的感知序列：信息收集，传感器 期望性能最大化 完美：实际性能最大化 任务环境 = (Performance Measurement,Environment,Actuators,Sensors) PEAS 任务环境的性质 Observable: 传感器是否能在每个时间点上获得完整信息 Multi Agents: 存在其它 Agents Deterministic: 下一状态是否完全决定于当前转态与行为 Episodic Static or Dynamic Dynamic: Agent 计算时环境会变化 Semi: 环境不变，但性能评价变化 离散/连续 环境已知/未知 Agent 函数：将感知信息映射到行动 Agent 程序：实现 Agent 函数 Agent = 体系结构（执行器，传感器，计算装置） + Agent 程序 Agent 程序 Table Driven Agent Simple Reflex Agent RULE-MATCH 仅使用当前状态 Model Based Reflex Agent 拥有内部状态（模型） 使用当前状态与内部状态 Agent with Goal 不使用 RULE-MATCH 确定当前状态与内部状态及动作后果，与目标比较后选择执行 Agent with Utility 学习 Agent 表达能力 原子表示：单点 要素化表示：集合 结构化表示：逻辑等 解决问题 CV 人脸识别 姿态识别 NLP 自然语言生成 语音识别 虚拟助理 IR 推荐系统 搜索引擎 交叉 机器人 决策管理 自动驾驶 生物：基因组 医疗：辅助决策、医学信息分析 金融：量化交易、安全、服务 网络安全 教育 </description>
     </item>
@@ -22,7 +22,7 @@
       <title>History</title>
       <link>https://zhengzangw.com/notes/machine-learning/others/</link>
       <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/machine-learning/others/</guid>
       <description>技术浪潮 神经网络 支持向量机 神经网络 年份 89-94 95-05 06- 代表性技术 BP 算法 核方法，统计学习理论 深度学习 生成式与判别式 判别式(discriminative) 生成式(generative) 对 $P(c\vert x)$ 建模 对 $P(c \vert x)=\frac{P(x,c)}{P(x)}$ 建模 实例 决策树，BP 神经网络，SVM 贝叶斯分类器 实际环境中问题 i.i.d. 改变，concept driven，后验概率不变 没有做“多余”工作 做了“多余”工作 神经网络发展史 第一阶段 1943 年, McCulloch 和 Pitts 提出第一个神经元数学模型, 即 M-P 模型, 并从原理上证明了人工神经网络能够计算任何算数和逻辑函数 1949 年, Hebb 发表《The Organization of Behavior》一书, 提出生物神经元学习的机理, 即 Hebb 学习规则 1958 年, Rosenblatt 提出感知机网络(Perceptron)模型和其学习规则 1960 年, Widrow 和 Hoff 提出自适应线性神经元(Adaline)模型和最小均方学习算法 1969 年, Minsky 和 Papert 发表《Perceptrons》一书, 指出单层神经网路不能解决非线性问题, 多层网络的训练算法尚无希望.</description>
     </item>
@@ -31,7 +31,7 @@
       <title>Deep Learning</title>
       <link>https://zhengzangw.com/notes/deep-learning/deep-learning/</link>
       <pubDate>Sun, 02 Sep 2018 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/deep-learning/deep-learning/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;Deep Learning&lt;/em&gt;

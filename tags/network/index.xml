@@ -6,14 +6,14 @@
     <description>Recent content in network on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Thu, 21 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/tags/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>综述</title>
       <link>https://zhengzangw.com/notes/data-communication/0-%E7%BB%BC%E8%BF%B0/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/0-%E7%BB%BC%E8%BF%B0/</guid>
       <description>通信系统 source $\rightarrow$ transmitter 源系统)$\rightarrow$ transmission system $\rightarrow$(目的系统 reciver $\rightarrow$ destination 单工 (simplex)：电视 半双工 (half duplex)：对讲机 双工 (full duplex)：电话 数字通信系统：数字基带传输 （模拟/数字）信息源$\rightarrow$信源编码$\rightarrow$加密$\rightarrow$信道编码$\rightarrow$数字调制$\rightarrow$信道$\rightarrow$数字解调$\rightarrow$信道译码$\rightarrow$解密$\rightarrow$信源译码$\rightarrow$受信者 模拟通信系统：利用模拟信号来传输信息的通信系统 模拟信息源（模拟消息）$\rightarrow$ 原始电信号（基带信号）$\rightarrow$调制器（已调信号）$\rightarrow$信道$\rightarrow$解调器（基带信号）$\rightarrow$受信者（模拟信号） 混成系统 网络体系结构 TCP/IP 5层模型 内容 应用层 支持各种不同应用程序的逻辑 传输层 提供端到端的传输服务 网际互联层 提供多个网络的路由选择，能够让数据跨越多个互联网络 数据链路层 为与同一个网络相连的两个系统提供网络接入 物理层 负责数据传输设备与传输媒体的物理接口 媒介 传输媒介 套接字：端口值+IP地址+(协议) 流套接字：TCP 数据报套接字：UCP 原始套接字(raw socket)：IP </description>
     </item>
@@ -22,7 +22,7 @@
       <title>数据传输理论</title>
       <link>https://zhengzangw.com/notes/data-communication/1-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%90%86%E8%AE%BA/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/1-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%90%86%E8%AE%BA/</guid>
       <description>数据：传达某种意义或信息的实体 模拟数据：连续的值 数字数据：离散的值 信号：数据的电气或电磁表示方式 模拟信号：连续变化的电磁波 数字信号：电压脉冲序列，在导向媒体传输 大规模集成电路 数据完整性好 容量利用率高 安全保密 易于储存 傅里叶分析 正弦波：$s(t)=A\sin(2\pi ft+\phi)$ 波长：$\lambda=vT$ 周期信号的傅里叶级数：$x(t)=\frac{A_0}{2}+\sum_{n=1}^\infty[A_n\cos(2\pi nf_0t)+B_n\sin(2\pi nf_0t)]$ 直流分量：$A_0=\frac{2}{T}\int_0^Tx(t)dt$ 基频：$f_0=\frac{1}{T}$ 谐频：$kf_0$ $A_n=\frac{2}{T}\int^T_0x(t)\cos(2\pi nf_0t)dt$ $B_n=\frac{2}{T}\int^T_0x(t)\sin(2\pi nf_0t)dt$ $P=\frac{1}{4}A_0^2+\frac{1}{2}\sum(A_i^2+B_i^2)$ 方波信号：$s(t)=\frac{4A}{\pi}\sum_{2\not\vert k}\frac{\sin(2\pi kft)}{k}$ 频谱 spectrum: 所包含的频率范围 绝对带宽 absolute bandwidth: 频谱的宽度 有效带宽(3dB带宽)：绝大部分能量集中的相当窄的频带范围 $f_1-f_0$ 数据率：单位时间内在数据传输系统设备之间传送的比特数 $R_b=\frac{1}{T_b}=\frac{2}{T}$ $T_b$：发送1比特的时间 其它项不变，带宽加倍数据率加倍 给定带宽可以根据接收器在噪声和其它损伤的情况下鉴别能力来支持不同的数据率 误码率 传输损伤 衰减 (attenuation) 强度衰减 放大器（模拟） amplifier 转发器（数字） repeater 衰减失真（模拟） 频率越高，衰减越严重（传输损耗越大，覆盖范围越小，绕射能力越弱，但高频资源丰富） 衰减均衡技术 放大器：放大高频倍数更高 失真 (distortion) 衰减失真 时延失真 靠近中心频率的地方其传播速度趋于最快 码间串扰（数字） 噪声 (noise) 噪声是传输系统性能的主要制约因素
 信噪比 $\text{SNR}_{dB}=10\lg\frac{S}{N}=10\lg(\text{SNR})$ $S$：信号功率 热噪声 (卫星通信) 白噪声：均匀分布 $N_0=kT$(W/Hz) $N=kTB=-228.</description>
@@ -32,7 +32,7 @@
       <title>传输媒介</title>
       <link>https://zhengzangw.com/notes/data-communication/2-%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/2-%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/</guid>
       <description>信道指标：数据率，传输距离 电磁波频谱：($10^2$)ELF,VF,VLF,LF,MF,HF,VHF,UHF,SHF,EHF,$10^{12}$,$10^{13}$,$10^{14}$,可见光 导向传输媒介 guided media：电磁波在导线引导下沿某一物理路径前进 点对点：导向媒体在两个设备之间提供了一条仅被这两个设备共享的直连链路 双绞线 扭绞结构 模拟传输 放大器：5km 有限带宽：1MHz 数字传输 转发器：2km 数据率：100Mbps 短距离：1Gbps 随频率增高迅速增加 易受信号反射或回波损耗影响 UTP 非屏蔽双绞线 STP 屏蔽双绞线 金属箔双绞线 FTP 屏蔽的双绞线 F/UTP 完全屏蔽的双绞线 S/FTP 568-C标准 与 ISO/IEC 11801标准 5e/D 6/E 6A/E$_{A}$ 7/F 7A/F$_{A}$ 插入损耗（insertion loss, 模拟） 从发送系统到接受系统链路上的衰减 频率的递增函数 近端串扰（near end crosstalk, NEXT） 从一对导体到另一对导体上的信号耦合，越大越好 端现象 衰耗串扰比： $\text{ACR}{dB}=\text{NEXT}{dB}-A_{dB}$ $\text{ACR}&amp;gt;0\Rightarrow P_r&amp;gt;P_c$ 同轴电缆 光纤 Optical Fiber 优点 容量大：100M-100Gbps/km 体积小 衰减小 电磁隔离 转发器间隔更远 分类 多模突变：入射角平缓的光束被反射并沿着纤维向前转播，其他被周围的物质吸收 多模渐变：中心较高的折射率使得光线沿轴线前进的速度比靠近覆层的慢，光束呈现螺旋状 单模：仅有一个角度能够通过传输纤维 光纤模块 GBIC 接 LC光纤连接器 SFP 接 SC光纤连接器 无导向媒介 unguided media 真空、空气、海水 天线 发射电磁能量和接受电磁能量的电导体 双向通行中，同一个天线可以同时收发 天线种类 各向同性天线 抛物线反射天线 天线增益：$G_{dB}=10\lg(\frac{P_2}{P_1})$, $P_1$ 为定向天线发射功率，$P_2$ 为参考天线功率 有效面积：$G=\frac{4\pi A_e}{\lambda^2}$ $A_e=0.</description>
     </item>
@@ -41,7 +41,7 @@
       <title>信号编码技术</title>
       <link>https://zhengzangw.com/notes/data-communication/3-%E4%BF%A1%E5%8F%B7%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/3-%E4%BF%A1%E5%8F%B7%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF/</guid>
       <description>基带信号：信源发出的没有经过调制，低频信号 载波信号：调制到高频的信号 数字基带信号（数数） Data Element Signal Element Data rate $R$ Signal rate $D=\frac{R}{L}=\frac{R}{\log_2M}$ $T_b=\frac{1}{R}$ 调制速率 比特差错率 BER 接受端需求 每比特定时关系 每比特信号电平 BER 影响 信噪比 数据率 带宽 编码机制 编码术语 单极性 正、零电平 双极性 正、负电平 归零 信号电压在码元终止前回到零电平 双相位 单码用多相位表示 差分波形 利用相邻码元的电平跳变和不变来表示消息代码 多电平波形 码型选择 信号谱频： 传输功率集中在带宽中心位置 减少高频 去掉直流：0，1 等概率则无直流分量 时钟同步 定时信息 差错检测 信号干扰 降低通信延迟和成本 不归零码 NRZ NRZ-L：双极性不归零 NRZI: 双极性不归零差分 缺点 包含直流成分 缺乏同步能力 多电平二进制 双极性 AMI: 没有信号为 0，1 为正负脉冲交替 伪三进制码：没有信号为 1，0 为正负脉冲交替 nBmB 码：低速情况解决同步问题 $B_T=0.5(1+r)D$ 扰码技术 HDB3: 高密度双极性 3 零 AMI 为基础 连续的 0 超过 3 个时，每四个变为一组为 B00V,V 为破坏脉冲，B 为调节脉冲 V 与前一个相邻的非零脉冲极性相同，V 码之间极性必须交替，B 任意取值以满足 V 的要求 B8ZA: 双极性 8 零替换 AMI 为基础 全零八位组之前最后一个脉冲电压为正：000+-0-+ 全零八位组之前最后一个脉冲电压为负：000-+0+- 双相位 曼切斯特编码：低到高为 1，高到低为 0 差分曼切斯特 数模转换（调制技术） 载波频率 $f_c$：一种连续的频率，能够被调制或者用来承载另一个信号 带宽 $B_T$ (ASK) $B_T=(1+r)R,0&amp;lt;r&amp;lt;1$ (FSK) $B_T=2\Delta+(1+r)R$ (MFSK) $B_T=\frac{(1+r)M}{\log_2M}R$ (MPSK) $B_T=\frac{1+r}{L}R=\frac{1+r}{\log_2M}R$ 信噪比：$M$ 越大 MASK,MPSK 越大 MFSK 越小 ASK: 振幅键控 $$S(t)=\begin{cases}A\cos(2\pi f_ct),&amp;amp;1\newline 0,&amp;amp;0\end{cases}$$</description>
     </item>
@@ -50,7 +50,7 @@
       <title>差错检验和纠正</title>
       <link>https://zhengzangw.com/notes/data-communication/4-%E5%B7%AE%E9%94%99%E6%A3%80%E9%AA%8C%E5%92%8C%E7%BA%A0%E6%AD%A3/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/4-%E5%B7%AE%E9%94%99%E6%A3%80%E9%AA%8C%E5%92%8C%E7%BA%A0%E6%AD%A3/</guid>
       <description>差错类型 单比特差错 突发差错 概率值 $P_b$ BER, 接受到一个差错比特的概率 $P_1$ 无比特差错帧到达概率 $P_2$ 某种差错检测算法下，含有一个或多个未检测到的比特差错的帧的到达概率 $P_3$ 某种差错检测算法下，含有一个或多个且没有未检测到的比特差错的帧的到达概率 差错检测 奇偶检验 两个比特错误无法检测 同步传输：偶校验 异步传输：奇校验 二维奇偶检验 $i+j+1$ 个 矩形四个错误无法检测 因特网检验和 发送方计算检验位 将两个数字视为无符号二进制整数相加 如果最左边有进位比特，则和再加1 取反码 接收方验证 加上检验位后应全1 循环冗余检验 (CRC,Cyclic Redundancy Check) 发送的数据：$T[D(k)|F(n-k)]$ $D$ 数据 $F$ 检验序列 $P(n-k+1)$ 除数 $T=2^{n-k}D+F\equiv0\pmod{P}$ $F=2^{n-k}D\bmod P$ 模2运算 多项式表示 $11001 \rightarrow X^4+X^3+1$ 寄存器 Galois 域除法器 差错纠正 汉明距离 $d(v_1,v_2)$ 差错检测+差错重传 无线链路:高比特差错率导致大量重传 卫星链路: 长传播时延导致效率低下 前向纠错 (FEC) 差错类型 无差错 可检测，可纠正差错 可检测，不可纠正之差错 不可检测之差错 见《代数编码》 </description>
     </item>
@@ -59,7 +59,7 @@
       <title>数据链路层</title>
       <link>https://zhengzangw.com/notes/data-communication/5-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/5-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</guid>
       <description>基本概念 $d$: 链路长度 $v$: 传播速度 $L$: 帧长度（比特） $B=RD$: 链路比特长度 $B&amp;rsquo;$: 链路帧长度 性能指标 传输时间(transmission time) 与帧长度有关, $T=\frac{L}{R}$ 传播时间(propagation time) 与链路有关，$D=\frac{d}{v}$ 处理时延 排队时延 等待被传输的时间 流量控制 确保发送的数据不会超出接收实体接收数据能力的技术 Fragmentation：把大块的数据切分成小数据块传输 接收方缓存有限 重传大小小 避免一个站点长时间占用媒体传输 停止等待流量控制 Stop and Wait (S)Send Data $\rightarrow$ (R)Receive Data &amp;amp; Send ACK $\rightarrow$ (S)Receive ACK &amp;amp; Send Data&#39; $T_F=D+T+D+t_{ack}+t_{proc}=2D+T$ $a=\frac{D}{T}=\frac{B}{L}$ $U=\frac{T}{T_F}=\frac{1}{1+2a}$ 滑动窗口流量控制 参数 滑窗字段大小 $k$ 帧编号 $0\sim2^{k}-1$ 窗口大小 $W\leq 2^{k}-1$ 帧类型 F$_n$ 数据帧，当窗口用完后停止发送 RR$_n$ 已接受到$n-1$的帧，准备接受$n$(双方更新窗口) RNR$_n$ 已接受到$n-1$的帧，停止接受 捎带 双工时 F$_n$捎带确认信息 $$ U=\begin{cases} \frac{W}{2B&amp;rsquo;+1} &amp;amp; W&amp;lt;2B&amp;rsquo;+1\newline 1 &amp;amp; W\geq2B&amp;rsquo;+1 \end{cases} $$</description>
     </item>
@@ -68,7 +68,7 @@
       <title>复用</title>
       <link>https://zhengzangw.com/notes/data-communication/6-%E5%A4%8D%E7%94%A8/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/6-%E5%A4%8D%E7%94%A8/</guid>
       <description>多个点对点通信共享数据链路容量
 频分复用 (Frequency Division Multiplexing) 各路信号$m_i(t)$ $\rightarrow$ (副载波调制器$f_i$ $\rightarrow$ $s_i(t)$ $\rightarrow$ 叠加$\Sigma$)复用器 $\rightarrow$ 复合基带调制信号 $m_b(t)$ $\rightarrow$ 发送器$f_c$ $\rightarrow$ FDM 信号 $s(t)$ $\rightarrow$ (主接收器 $\rightarrow$ 复合基带信号 $\rightarrow$ 带通滤波器$f_i$)分用器 $\rightarrow$ $s_i(t)$ $\rightarrow$ 解调器$f_i$ $\rightarrow$ $m_i(t)$
@@ -79,7 +79,7 @@
       <title>交换</title>
       <link>https://zhengzangw.com/notes/data-communication/8-%E4%BA%A4%E6%8D%A2/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/8-%E4%BA%A4%E6%8D%A2/</guid>
       <description>名词 解释 站点(station) 需要通信的终端设备 结点(node) 提供通信功能的交换设备 通信网络 结点集合 QoS quality of Service 分组交换：Best Effort Paket Drop Congestion delay 方差高 解决方法：多发选收 电路交换 两个站点间有一条专用的通信通路 电路建立 通路中的每一对结点必须为该信道保留容量 网络连接透明 数据传输 电路断连 应用 公共电话网 PSTN 专用小交换机 PBX 专线网路 电路交换结点 数字交换机 空分交换 时分交换 网络接口 控制单元 建立连接 维护连接 拆除连接 空分交换 信号通路之间在物理上被空间分隔的交换机
 Crossbar Switch Fabric 交叉点数目按站点平方增加 交叉点丧失将阻塞连接 交叉点利用不充分 无阻塞：an unused input on an ingress switch can always be connected to an unused output on an egress switch, without having to re-arrange existing calls Clos Switch(3-stage space division switch) 交叉点数量减少：三级交换机 $N$ 输入线路和输出线路，第一级交叉板输入线 $n$，二级交叉板数量为 $k$ 交叉点数量为：$2Nk+k(\frac{N}{n})^2$ 可靠性：多条通路连接两个端点 无阻塞条件：$k\geq 2n-1$ 可 rearrange 无阻塞：$k\geq n$ Banyan Switch $N/2\log_2N$ 解决阻塞：1.</description>
@@ -89,7 +89,7 @@ Crossbar Switch Fabric 交叉点数目按站点平方增加 交叉点丧失将�
       <title>蜂窝无线网络</title>
       <link>https://zhengzangw.com/notes/data-communication/9-%E8%9C%82%E7%AA%9D%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/9-%E8%9C%82%E7%AA%9D%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/</guid>
       <description>蜂窝(cell) Area divided into cells 约 6.5km - 13km 每个蜂窝有自己的天线 低功率发送器：~100W 每个蜂窝分配一个频带 相邻蜂窝指派频率不同以防止干扰 每个蜂窝分配一个基站提供服务 传输功率控制：既可以使通信使用给定的频率，又要限制该功率逃逸到邻近蜂窝 六边形 Distance from center to vertex equals to length $d=\sqrt{3}R$ $R$ 为其外接圆半径 频率重用 频率总数为 $K$（通常指派10-50个频率） 每个蜂窝有$\frac{K}{N}$个频率 重用系数 $N$：重复模式中的蜂窝数 六边形中，$N=I^2+J^2+IJ,I,J\in\mathbb{N}$ $D$: 使用相同频率的蜂窝（即同波道）中心间最小距离 $\frac{D}{d}=\sqrt{N}$ 增大容量 添加新信道 频率借用 蜂窝分裂 最小一般 1.5km 导致切换(handoff)增加 蜂窝扇区化 微蜂窝 蜂窝系统 控制通道：交换建立与维持呼叫的信息 业务通道：承载用户间的话语和数据连接 典型呼叫步骤 功能 描述 移动单元初始化 定期扫描, 选择使用最强的基站建立控制信道, 并与控制该蜂窝的MTSO握手, 之后监听是否有寻呼 移动台发起的呼叫 移动单元通过在已选的建立信道上, 若信道空闲, 发送被叫单元的号码来发起呼叫 寻呼 MTSO根据被叫号码, 向某些基站发送寻呼信息 呼叫接收 被叫单元识别寻呼, 向基站发通知 -&amp;gt; 基站向MTSO发通知 -&amp;gt; MTSO建立电路, 选两个业务信道, 通知两个基站 -&amp;gt; 基站通知单元 呼叫进行中 话音或数据信号: 单元 &amp;lt;-&amp;gt; 基站 &amp;lt;-&amp;gt; MTSO &amp;lt;-&amp;gt; 基站 &amp;lt;-&amp;gt; 单元 切换 移动单元跨蜂窝移动, 业务信道切换到指派给新蜂窝的业务信道, 不警告用户 呼叫终止 用户挂机, MTSO得到通知, 释放业务信道 呼叫阻塞 没有空闲业务信道, 将重试数次, 耗尽次数返回忙音 呼叫掉线 信号强度低于最小信号强度, MTSO将得到通知, 释放信道 连接固定用户 MTSO与公用电话交换网络连接 连接远程用户 MTSO通过电话网或专用线路, 与远程MTSO连接, 并为二者用户建立连接 移动无线电传播效应 信号强度 太强：同信道干扰 太弱：不足以维持连接 传播机制 反射：物体表面大于波长 衍射：物体边缘大于波长 散射：物体大小小于波长 衰弱 多径效应：物体表面大于波长 LOS + 多径脉冲 信噪比下降 码间干扰(ISI) 补偿机制 前向纠错：发送总比特数为接受比特数2-3倍 自适应均衡 分集 类型 快衰弱 振幅的变化高达20一30dB这种类型的迅速衰落变化 慢衰弱 接收功率除了出现快速波动之外, 接收到的平均功率水平也会变化 平坦衰弱 接收信号的所有频率成分的波动是同时的且成相同比例的 选择性衰弱 对一个无线电信号的不同頻谱成分的影响是不同的 Hata模型：$L_{dB}=69.</description>
     </item>
@@ -98,7 +98,7 @@ Crossbar Switch Fabric 交叉点数目按站点平方增加 交叉点丧失将�
       <title>扩频</title>
       <link>https://zhengzangw.com/notes/data-communication/10-%E6%89%A9%E9%A2%91/</link>
       <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/data-communication/10-%E6%89%A9%E9%A2%91/</guid>
       <description>在扩频码（伪随机数）下调制使带宽增加
 Spread Spectrum Frequency Hopping(FHSS) signal is broadcast over seemingly random series of frequencies receiver hops between frequencies in sync with transmitter Slow $T_{\text{shift}}\geq T_{\text{symbol}}$ Fast $T_{\text{shift}}&amp;lt; T_{\text{symbol}}$ 信号带宽远大于数据信号带宽 提高抗人为干扰能力 直接序列扩频(DSSS) each bit is represented by multiple bits using a spreading code Code Division Multiple Access break each bit into k chips according to a fixed chipping code specific to each user 用户码 码片率：新信道码片数据率 接收器解码：用相同用户码做乘积，若为 $\pm N$ 则接受，否则拒绝 </description>

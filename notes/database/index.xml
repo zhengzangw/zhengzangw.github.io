@@ -6,14 +6,14 @@
     <description>Recent content in [S] 数据库 Database on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/database/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1-概述</title>
       <link>https://zhengzangw.com/notes/database/1-%E6%A6%82%E8%BF%B0/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/database/1-%E6%A6%82%E8%BF%B0/</guid>
       <description>基本概念 Term 数据库(DB) 长期存储在计算机内、有组织的、大量的、共享的数据集合 数据库管理系统(DBMS) 位于用户与操作系统（OS）之间的一层数据管理软件，为用户或应用程序提供访问数据库的方法和接口 数据库管理员(DBA) 数据库系统(DBS) DB+DBMS+DBA+软件平台+硬件平台 数据库技术 研究数据库的结构、存储、设计、管理和使用的一门软件学科 data &amp;amp; infomation 数据是信息的载体，信息则是数据的内涵 数据库应用系统(DBAS) DBS+应用软件+UI+用户 利用数据库系统作应用开发所构成的集成化的独立运行系统 DBMS 功能 数据组织 数据模式定义，数据存储的物理构作 数据操纵 查询、插入、修改和删除 数据维护 完整性、安全性定义与检查 数据控制与保护 并发控制与故障恢复 数据服务 内置函数 数据字典 数据库用户 End users Casual users(终端查询用户) Naive users(应用程序的使用者) Application programmers DBA sub languange SQL 语言 DDL(Data Definition Language)：数据的模式定义域数据的物理存取构作 DML(Data Manipulation Language): 查删增改等 DCL(Data Control Language): 完整性、安全性定义与检查 使用方式 交互式命令语言 宿主型语言 Architecture of Database System Two-tier Architechture (两层 C/S) DB 和 DBMS 运行在数据库服务器中，DBAS 运行在客户机中 三层 C/S DBAS 运行在应用服务器中(Web 服务器) DBS 特点 集成性 integration 集多种应用数据于一体，采用统一的数据结构 全局统一的数据模式 高共享性 供多个应用程序使用 在DBS基础上开发新应用程序 低冗余性 独立性 物理独立性：数据的物理结构（包括存储结构、存取方式等）的改变，不影响数据库的逻辑结构，从而不致引起应用程序的变化 逻辑独立性：数据库总体逻辑结构的改变，如修改数据模式、增加新的数据类型、改变数据间联系等，不需要相应修改应用程序 数据的统一管理与控制 完整性检查 安全性保护 并发控制 故障恢复 发展历史 发展历史图</description>
     </item>
@@ -22,7 +22,7 @@
       <title>2-数据模型</title>
       <link>https://zhengzangw.com/notes/database/2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/database/2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/</guid>
       <description>数据模型的定义 数据模型：数据特征的抽象 数据结构（数据模式） 数据操作 数据约束 四个世界 现实世界 概念世界 信息世界 计算机世界 概念模型 实体联系模型(E-R) 实体(Entity)：实体名+实体型 实体集：具有共性的实体所构成的集合，实体集名+实体型+关键字 关键字：可用于区分同一个实体集中不同实体的 ‘最小属性集合’ 属性(Attribute)：属性名+域 域：某一属性可取的值的集合 实体型：所有属性的属性名 实体值：所有属性上的取值所构成的属性值的集合 具有共性的实体：实体型相同的实体 联系：联系名+属性+函数对应关系 1:1, 1:m, m:n 二元联系，多元联系，单个实体集内部联系 E-R 图 实体集：长方形 属性：椭圆 联系：菱形 连接：无向线段 实体集与属性 联系与属性 实体集与联系 E-R 模型设计 实体 or 属性 实体 or 联系 二元 or 三元 Event 可抽象为实体 EE-R IS-A 联系：超集-子集关系，单向箭头 继承性，传递性 覆盖约束 所有子实体集的并集等价于超实体集 一个实体至少隶属于某一个子实体集 不相交约束 任意两个子实体集都是互不相交的 一个实体至多隶属于某一个子实体集 Weak Entity：需要依赖其它实体而存在的实体 多对一关系：弱实体到联系有向箭头 属性划分 Identifier/key/candidate key Descriptor composite attribute：属性到属性无向线段 multi-value attribute：双实线 属性基数 $(x,y)$ $x$: 是否必选 1/0 $y$: 是否单值 1/N 实体在联系中的参与基数 card=(min-card, max-card) min-card 1/0: 1 if all dots in the entity E have AT LEAST one line coming out 1: mandatory participation 0: optional participation max-card 1/N: 1 if all dots in the entity E have AT MOST one line coming out 1: single-valued N: multi-valued 面向对象模型(OO) 对象(Object) OID 对象标识符 静态特性/属性 多值 动态特性/方法/操作 类 具有相同属性方法的对象集合 类对象 元类：所有类对象的集合 实例：类中的对象 IS-A, IS-PART-OF 消息：Type A.</description>
     </item>
@@ -31,7 +31,7 @@
       <title>3-关系数据库系统</title>
       <link>https://zhengzangw.com/notes/database/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/database/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/</guid>
       <description>衡量准则 完全关系型，基本关系型，半关系型
 信息准则：信息能在逻辑一级唯一地用“表”中的值显示表示 确保访问准则：逻辑方式依靠表名、关键字名与列名的组合来访问数据库汇总的每一个原子数据 空值的关系处理准则：处理空值的能力 基于资源管理的动态联机目录：数据字典与用户数据具有相同的表示形式与操作方式 统一易用的数据子语言：至少有一种数据子语言支持：数据定义，视图定义，数据操控空，完整性约束，授权机制，事务处理能力 视图更新准则：通过视图不仅可以查询，还可以执行对数据的增、删、改等操作 高级的插入、删除及修改操作：一条命令可以操作多个元组 物理数据独立性 逻辑数据独立性 数据完整性准则 分布独立性：数据分布的改变不影响原有的应用程序 无损害原则：对提供低级数据子语言的要求 关系模型 由关系构建的模型
@@ -42,7 +42,7 @@
       <title>4-规范化理论</title>
       <link>https://zhengzangw.com/notes/database/4-%E8%A7%84%E8%8C%83%E5%8C%96%E7%90%86%E8%AE%BA/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/database/4-%E8%A7%84%E8%8C%83%E5%8C%96%E7%90%86%E8%AE%BA/</guid>
       <description>解决如何评价关系模式设计的好坏和如何设计性能良好的关系模式的问题
 关系设计模式：同一个关系数据库系统可以有多种关系模式设计方案 好方案：既有合理的数据冗余度，又没有插入和删除等操作异常现象 关系数据模型设计方法：建模(E-R model)，转换(set of tables)，规范化 函数依赖（FD,Functional Dependency） 给定关系 $R$，$X,Y$ 是 $R$ 两个属性子集，在关系 $R$ 中，每一个 $X$ 值都有唯一的一个 $Y$ 值与之对应
@@ -53,7 +53,7 @@ $Y$ 函数依赖 $X$ $X$ 函数决定 $Y$($X\rightarrow Y$) 关系 $R$ 满足函
       <title>5-安全性与完整性</title>
       <link>https://zhengzangw.com/notes/database/5-%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/database/5-%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/</guid>
       <description>安全性保护 (security) 防止非法使用数据库 要求用户通过规定的访问途径 要求按照规定的访问规则 Term 安全数据库（可信数据库） 适应网络环境下安全要求级别的数据库 可信计算基（TCB） 为实现数据库安全所采用的所有实施策略与机制的集合 主体 数据的访问者 客体 数据库中的数据 身份标识与鉴别 每个主体标识自己的标识符和访问口令 自主访问控制（DAC） 基于存取矩阵(HRU)的安全控制模型 存取权限 强制访问控制（MAC） 通过无法回避的存取限制来防止各种攻击 数据完整性 防止非法插入，删除，修改等影响数据完整性的操作 隐蔽通道 非正规的，不受 TCB 控制的访问通道 审计 跟踪用户对数据的访问操作 访问监控器 独立的机构，TCB 在网络中的实现 安全标准 1985 TCSEC 国际标准(ISO 15408) CC V2.1 国标：GB 17859-1999 计算机系统安全保护等级划分 第一级：用户自主保护级 (C1) 自主访问控制 + 身份鉴别 + 数据完整性 第二级：系统审计保护级 (C2) + 客体重用 + 审计 第三级：安全标记保护级 (B1) + 强制访问控制 + 标记 第四级：结构化保护级 (B2) + 隐蔽信道分析 + 可信路径 第五级：访问验证保护级 (B3) + 可信恢复 SQL&#39;92 C1 自主访问控制：（用户，操作对象，操作权限） 操作权限：SELECT, INSERT, DELETE, UPDATE, REFERENCE, EXECUTE, USAGE 操作对象：表，属性，域，函数 授权语句 GRANT &amp;lt;操作权限列表&amp;gt; ON &amp;lt;操作对象&amp;gt; TO &amp;lt;用户名列表&amp;gt; [OPTION] 回收语句 REVOKE &amp;lt;操作权限列表&amp;gt; ON &amp;lt;操作对象&amp;gt; FROM &amp;lt;用户名列表&amp;gt; [RESTRICT|CASCADE] 完整性保护 (integrity) 数据的正确性和一致性 正确性：数据的有效性，有意义 一致性：在多用户并发访问数据库的情况下，保证对数据的更新不会出现与实际不一致的情况 完整性规则 实体完整性规则：在一个基表的主关键字中，属性取值不能为空 参照完整性 引用：$R$ 中有属性集与另一个关系的主关键字对应，则 $R$ 引用 $S$ 中的元组 $R$ 中每个元组在外关键字上不能引用不存在的实体 用户自定义的完整性 完整性约束规则 设置 CONSTRAINT &amp;lt;约束名&amp;gt; &amp;lt;完整性约束子句&amp;gt; 检查 处理 外键约束 Cascade: 同步做连带删除/更新 Restrict: 拒绝对被引用表的删除/更新操作 Set Null: 自动设为空 属性级约束（域约束） { NOT NULL | DEFAULT {default_constant|NULL} | [ CONSTRAINT constraint_name ] UNIQUE | PRIMARY KEY | CHECK ( search_condition ) | REFERENCES table_name [(column_name)] [ ON DELETE CASCADE | RESTRICT | SET NULL ] [ ON UPDATE CASCADE | RESTRICT | SET NULL ] } 元组级约束（表约束） [ CONSTRAINT constraint_name ] { UNIQUE ( colname { , colname .</description>
     </item>
@@ -62,7 +62,7 @@ $Y$ 函数依赖 $X$ $X$ 函数决定 $Y$($X\rightarrow Y$) 关系 $R$ 满足函
       <title>6-事务处理</title>
       <link>https://zhengzangw.com/notes/database/6-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/database/6-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/</guid>
       <description>事务 事务：由某个用户执行的一个不能够被打断的对数据库的操作序列 影响因素 concurrency 并发控制 abort crash 故障恢复 事务的四个性质：ACID Atomicity：要么全部发生，要么都不发生 Consistency：满足数据约束 Isolation：并发事务的可串行化 Durability：数据不丢失 事务控制 事务控制语句
 begin transaction
@@ -81,7 +81,7 @@ set autocommit on|off set transaction readonly|readwrite set transaction isolati
       <title>7-数据库的物理组织</title>
       <link>https://zhengzangw.com/notes/database/7-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%89%A9%E7%90%86%E7%BB%84%E7%BB%87/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/database/7-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%89%A9%E7%90%86%E7%BB%84%E7%BB%87/</guid>
       <description>物理组织 常用的磁盘块分配方式 连续分配法 链接分配法 索引分配法 集簇分配法 数据分类 数据主体与辅助数据 数据字典：数据的描述信息 数据间的联系信息 数据存储路径信息 其它信息：日志信息，用户信息，审计信息 文件记录组织 数据文件：储存关系表中元组的记录式文件 堆文件组织 顺序文件组织：按照某个属性的取值进行排序构成的数据文件 主关键字：$O(\log n)$ 散列文件组织 聚集文件组织 索引技术 索引关键字：查询条件的属性 索引项：索引关键字-元组指针 索引文件：与某个数据文件相关的所有索引项组成的文件 稠密索引：数据文件中每条记录在索引文件中都存在一个对应索引项 磁盘I/O时间小 索引关键字排序：加速 可在内存中操作 稀疏索引：数据文件为顺序文件，为每个磁盘块设计一个索引项 多级索引：在索引上建立稀疏索引 重复键值顺序文件稠密索引 为每个索引关键字定义一个索引项（索引文件中索引关键字唯一） 读取直到不为 $K$ 重复键值顺序文件稀疏索引 为每个磁盘块定义索引项，关键字值为磁盘块中第一条记录的关键字值（关键字不唯一） 重复键值非顺序文件索引 稠密索引指向记录指针桶 多维索引：根据多个属性值的组合来建立的索引文件 B/B+树 B+树性质 平衡性 过半性 顺序性 自适应性 B+树的查找 B+树的区间查找 B+树的插入 叶节点的分裂 树节点的分裂 B+树的删除 B树：索引关键字可以出现在B树任意一个结点中 扇出（一个结点可以拥有的最大子结点数目）小 散列技术 $h:K\rightarrow B$: 将项值集合映射到桶地址集合 扩展散列 增加溢出页 重组（代价大） 使用仅储存桶指针的目录数组，翻倍目录数组 全局位深度 局部位深度 位图索引：对于关系上的属性的每个可能取值，bit_v[i]=1 if 取值为 $v_i$ </description>
     </item>
@@ -90,7 +90,7 @@ set autocommit on|off set transaction readonly|readwrite set transaction isolati
       <title>8-数据交换</title>
       <link>https://zhengzangw.com/notes/database/8-%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/database/8-%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/</guid>
       <description>初级阶段：交换方式（命令执行方式） 中级阶段：嵌入式方式，自含方式（可编程SQL），调用层方式 近期方式：Web方式 数据交换的管理 会话管理 数据客体模式设定（网络环境，目录层，模式层） 语言模式设定（字符集） 时间模式设定（时区） 标识符设定 连接管理 连接语句 connect to &amp;lt;连接目标&amp;gt; 断开连接 disconnect &amp;lt;断开对象&amp;gt; 游标管理 --declare EXEC SQL DECLARE agent_dollars CURSOR FOR select aid, sum(dollars) from orders where cid = :cust_id --:cust_id is stored in host variable group by aid FOR READ ONLY; --open exec sql open agent_dollars --fetch exec sql whenever not found goto finish; while (TRUE){ exec sql fetch agent_dollars into :agent_id, :dollar_sum; printf(&amp;#34;%s %11.</description>
     </item>
@@ -99,7 +99,7 @@ set autocommit on|off set transaction readonly|readwrite set transaction isolati
       <title>9-数据库设计</title>
       <link>https://zhengzangw.com/notes/database/9-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/database/9-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/</guid>
       <description>数据库设计概述 数据库设计：根据用户需求(数据需求，处理需求)和平台约束(硬件，操作系统和DBMS)设计数据模式 数据库设计的生命周期 需求分析（需求分析说明书） 概念设计（概念数据模型） 逻辑设计（逻辑数据模型） 物理设计（数据库内模式） 编码测试运行，迭代 需求分析 Things Attributes of Things Relationship among Things 概念设计 工具：E-R模型，EE-R模型，面向对象模型 设计过程 用户分解：将用户分为功能相对独立的若干组 视图设计：针对每个用户设计其数据视图 视图集成 等同：多个数据对象具有相同语义 聚合：数据对象间的一种组成关系 抽取：不同实体中的相同属性提取成一个新的实体，并构成具有继承关系的结构 视图修改 命名冲突 概念冲突 域冲突 约束冲突 逻辑设计 将 EE-R 转换为 DBMS 支持的逻辑数据模型（转换为关系数据库模式）
 命名与属性域的处理 在同一个数据库模式中，关系名具有唯一性 在同一个关系模式中，属性名具有唯一性 根据DBMS的选型进行必要的数据类型转换 非原子属性处理 集合属性：原有关系的一个元组将被纵向展开成多个元组 元组属性：将一个元组属性横向展开成多个属性 联系的特殊转换 一个联系可以被转换成一个关系 联系也可被归并到相关联的实体所对应的关系模式中去 根据 1:1,1:n,m:n 转换为 1/2/3 个关系 继承的转换 每个实体集都转换为一个关系 只有最底层的叶子结点才会被转换为关系，并从其所有超实体集中继承属性 被转换为单个关系，其中含有所有实体集中的属性。 规范化：至少满足 3NF RDBMS 性能调整 逆规范化：减少连接运算次数 关系的分割 水平分割：将一个关系的元组集合划分为若干个不相交的子集，每个子集对应一个子关系模式 将一个关系模式纵向分解成若干个子关系模式 尽量使用快照 约束条件设置 物理设计 存储方式的设计 索引 在主关键字和外关键字上建立索引 以读为主的关系应尽可能多地建立索引 集簇 将有关的数据元组集中存放于一个或相邻的物理块内或同一柱面内以提高查询效率 HASH 存储结构的设计 分区设计：数据存放位置的设计 减少访盘冲突，提高 I/O 并行性 分散热点数据，均衡 I/O 负担 系统参数配置 </description>

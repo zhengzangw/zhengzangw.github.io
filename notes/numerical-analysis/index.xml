@@ -6,14 +6,14 @@
     <description>Recent content in [M] 计算方法 Numerical Analysis on Zangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</managingEditor>
-    <webMaster>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
     <lastBuildDate>Wed, 16 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/notes/numerical-analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>绪论</title>
       <link>https://zhengzangw.com/notes/numerical-analysis/1-introduction/</link>
       <pubDate>Tue, 19 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/numerical-analysis/1-introduction/</guid>
       <description>数值分析研究对象与特点 计算方法：在计算机上求解数学问题的理论、方法及其软件实现 现代科学三个组成：科学理论，科学实验和科学计算 误差 误差来源 建立数学模型：模型误差 测量数据：测量误差 构成数值算法：方法误差 数值运行执行 表示数据有限：舍入误差 计算机对无穷过程截断：截断误差 绝对误差：$|e^*|$ 精确值：$x^*$ $e^=x-x^$ 绝对误差界：$|e^|&amp;lt;\epsilon^$ 相对误差：$e_r=\frac{e^}{|x^|},x^*\neq0$ 相对误差界：$e_r^=\frac{\epsilon^}{|x^*|}$ 有效位数：$x=\pm 0.a_1a_2\cdots a_n\times 10^m$ 四舍五入后绝对误差界限为被保留的数字中最后数位的半个单位：$0.5\times 10^{m-n}$ 有效数字：如果近似值的误差限是某一位上的半个单位，且该位置到 x 的第一位非零数字一共 n 位， 则称近似值 x 有 n 位有效数字 $0.5\times 10^{m-n-1}&amp;lt;|x-x^*|\leq 0.5\times10^{m-n}$ 取 $n$ 位有效数字，则先对 $n+1$ 位四舍五入 误差界运算 $\epsilon(x_1^\pm x_2^)=\epsilon(x_1^)+\epsilon(x_2^)$ $\epsilon(x_1^x_2^)\approx|x_1|\epsilon(x_2^)+|x_2|\epsilon(x_1^)$ $\epsilon(\frac{x_1^}{x_2^})\approx\frac{|x_1|\epsilon(x_2^)+|x_2|\epsilon(x_1^)}{|x_2^*|^2}$ $\epsilon(f(x^))\approx |f&amp;rsquo;(x^)|\epsilon(x^*)$ $f(x)-f(x^)= f&amp;rsquo;(x^)(x-x^)+\frac{f&amp;rsquo;&amp;rsquo;(\xi)}{2}(x-x^)^2, \xi\in[x,x^*]$ 病态问题与条件数 病态：初始数据微小扰动，导致计算结果产生很大影响（反之良态） 即时算法数值稳定，也无法得到好的解（采集数据就有误差） 计算函数值的条件数：$C_p=|\frac{f(x)-f(x^*)}{f(x)}|/|\frac{\Delta x}{x}|=\frac{xf&amp;rsquo;(x)}{f(x)}$ 算法中需要注意的地方 使用数值稳定的算法：输入数据有误差，但在运算过程中摄入误差不增长的算法为数值稳定的
 避免绝对值远小于分子的数做分母
@@ -27,7 +27,7 @@ $x_1,x_2$ 相近 $$\lg x_1-\lg x_2=\lg \frac{x_1}{x_2}$$</description>
       <title>插值法</title>
       <link>https://zhengzangw.com/notes/numerical-analysis/2-%E6%8F%92%E5%80%BC%E6%B3%95/</link>
       <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/numerical-analysis/2-%E6%8F%92%E5%80%BC%E6%B3%95/</guid>
       <description>研究背景 函数表示法 解析式表示法 图像法 表格法 插值法：用简单函数为各种离散数组建立连续模型 多项式插值问题 精确函数 $y=f(x)$ 非常复杂或未知，在节点 $x_0,\cdots,x_n$ 处测得函数值 $y_i=f(x_i)$ 构造 $p(x)\approx f(x)$ 满足条件 $p(x_i)=f(x_i) (i=0,\cdots,n)$ $p(x)$ 为 $f(x)$ 的插值函数 代数多项式：Weierstrass 定理 三角多项式 有理分式 最佳逼近多项式 $|f|{\infty}=\max{a\leq x\leq b}|f(x)|$ $|f|_1 = \int_a^b|f(x)|dx$ $|f|_2 = (\int_a^b|f^2(x)|dx)^{\frac{1}{2}}$ $(f(x),g(x))=\int_a^b\rho(x)f(x)g(x)dx$, $\rho(x)$ 为给定的权函数 $\Pi_n$：次数不超过 $n$ 的多项式集合 最佳一致逼近多项式：$\overline{p}n(x)$：$|f(x)-\overline{p}n(x)|\infty=\min{p_n(x)\in\Pi_n}|f(x)-p_n(x)|_\infty$ 最佳平方逼近多项式：$|f(x)-\overline{p}_n(x)|2^2=\min{p_n(x)\in\Pi_n}|f(x)-p_n(x)|_2^2$ 研究问题 唯一性 构造方法 误差估计 Lagrange Polynomial 求 $n$ 次多项式
 已知 $p_n(x_i)=y_i,i=0,\cdots,n,i\neq j\Rightarrow x_i\neq x_j$ 求 $P_n(x)=\sum_{i=0}^na_ix^i$ Vandermonde 行列式
@@ -38,7 +38,7 @@ $$V_n(x_0,x_1,\cdots,x_n)=\begin{vmatrix}1 &amp;amp; x_0 &amp;amp; \cdots &amp;a
       <title>函数逼近与曲线拟合</title>
       <link>https://zhengzangw.com/notes/numerical-analysis/3-%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91%E4%B8%8E%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88/</link>
       <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/numerical-analysis/3-%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91%E4%B8%8E%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88/</guid>
       <description>预备知识 内积与范数 内积：$f(x),g(x)\in C[a,b],\rho$ 是 $[a,b]$ 上的权函数，$(f,g)=\int_a^b\rho(x)f(x)g(x)dx$ 非负函数 $\rho$ 为权函数需满足 $\int_a^b|x|^n\rho(x)dx$ 存在（总质量） $\forall g(x)$ 非负，$\int_a^bg(x)\rho(x)dx=0$ 则在 $(a,b)$ 上 $g(x)\equiv0$ 物理上表示密度函数 内积公理 $(f,g)=(g,f)$ $(cf,g)=c(f,g)$ $(f_1+f_2,g)=(f_1,g)+(f_2,g)$ $(f,f)\geq 0$ 且 $f=0\iff(f,f)=0$ 内积空间：$C[a,b]$ 在上述内积下形成内积空间 欧式长度：$|f|_2=\sqrt{(f,f)}$ 函数范数 $|f|\infty=\max{a\leq x\leq b}|f(x)|$ $|f|_2=\sqrt{\int_a^bf^2(x)dx}$ 范数性质 $|(f,g)|_2\leq|f|_2|g|_g$ Cauchy-Schwarz Inequality $|f+g|_2\leq|f|_2+|g|_2$ 三角不等式 $|f+g|_2^2+|f-g|_2^2=2(|f|_2^2+|g|_2^2)$ 函数系 线性无关函数系（基函数系）：$\sum_{i}a_i\phi_i(x)=0\iff a_0=\cdots=a_{n-1}=0$ 时才成立 $f,g$ 在 $[a,b]$ 上带权 $\rho(x)$ 正交：$(f,g)=\int_a^b\rho(x)f(x)g(x)dx=0$ 正交函数系：函数系 $\varphi_0,\cdots,\varphi_n(x),(\varphi_j,\varphi_k)=\int_a^b\rho(x)\varphi_j(x)\varphi_k(x)dx=A_k[j=k]$ 标准正交函数系：$A_k=1$ 三角函数系：$1,\cos x,\sin x,\cos 2x,\sin 2x,\cdots$ 是 $[0,2\pi]$ 上关于权函数 $1$ 的正交函数系 $H_n=\text{span}{1,x,\cdots,x^n},[0,1],\rho(x)=1$ 函数逼近 Weierstrass 定理</description>
     </item>
@@ -47,7 +47,7 @@ $$V_n(x_0,x_1,\cdots,x_n)=\begin{vmatrix}1 &amp;amp; x_0 &amp;amp; \cdots &amp;a
       <title>数值积分与数值微分</title>
       <link>https://zhengzangw.com/notes/numerical-analysis/4-%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/</link>
       <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/numerical-analysis/4-%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E4%B8%8E%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86/</guid>
       <description>机械求积方法 定积分计算：$\int_a^b f(x)dx=F(b)-F(a)$ 被积函数由函数表格提供 $f(x)$ 无法求出原函数 数值积分：$\int_a^bf(x)dx\approx\sum_{k=0}^n A_kf(x_k)$ 积分结点 $x_k$ 求积系数 $A_k$ 机械求积公式：$A_k$ 与 $f(x)$ 无关 左矩公式：$\int_{x_0}^{x_1}f(x)dx\approx\int_{x_0}^{x_1}f(x_0)dx=f(x_0)(x_1-x_0)$ 右矩公式 中矩公式 梯形公式：$f(x)\approx L_1(x)=\frac{x-x_1}{x_0-x_1}f(x_0)+\frac{x-x_0}{x_1-x_0}f(x_1)$ （0 次） Simpson 公式（三点公式，抛物线公式）：$x&amp;rsquo;=\frac{x_0+x_1}{2},\int_{x_0}^{x_1}f(x)dx\approx\frac{(x_1-x_0)}{6}(f(x_0)+4f(\frac{x_0+x_1}{2})+f(x_1))$ （3 次） 代数精度法 $m$ 次代数精确度：数值积分公式 $\int_a^bf(x)dx\approx\sum_{k=0}^nA_kf(x_k)$ 对任意的 $f(x)=x^i(i=0,1,\dots,m)$ 多项式都成立，对 $f(x)=x^{m+1}$ 不精确成立 插值求积法 利用插值多项式 $P_n(x)\approx f(x)$ 计算定积分 $\int_a^bf(x)dx\approx\sum_{k=0}^nf(x_k)\int_a^bl_k(x)dx$ $N+1$ 个节点的插值型求积公式至少有 $n$ 次代数精度 Newton-Cotes 公式 等距节点下使用 Lagrange 插值多项式建立的数值求积公式 函数 $f(x)\in C[a,b],x_k=a+kh,h=\frac{b-a}{n},k=0,1,\dots,n$ Langrange 插值多项式 $L_n(x)=\sum_{k=0}^nf(x_k)l_k(x),R_n(x)=\frac{f^{n+1}(\xi)}{(n+1)!}\omega_{n+1}(x)$ $l_k(x)=\prod_{0\leq j\leq n,j\neq k}\frac{x-x_j}{x_k-x_j},\xi\in[a,b],\omega_{n+1}=\prod_{i=0}^n(x-x_j)$ $f(x)=L_n(x)+R_n(x),I(f)=\int_a^bf(x)dx=\sum_{k=0}^nA_k f(x_k)+\int_a^b R_n(x)dx, A_k=\int_a^b\prod_{0\leq j\leq n,j\neq k}\frac{x-x_j}{x_k-x_j}dx$ $n$ 阶 Newton-Cotes 求积公式：$I_n(f)=\sum_{k=0}^nA_kf(x_k)=(b-a)\sum_{k=0}^nC_k^{(n)}f(x_k)$ 误差：$R(I_n)=\int_a^bR_n(x)dx$ $A_k=(b-a)C_k^{(n)},C_k^{(n)}=\frac{(-1)^{n-k}}{nk!</description>
     </item>
@@ -56,7 +56,7 @@ $$V_n(x_0,x_1,\cdots,x_n)=\begin{vmatrix}1 &amp;amp; x_0 &amp;amp; \cdots &amp;a
       <title>常微分方程数值解法</title>
       <link>https://zhengzangw.com/notes/numerical-analysis/5-%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/</link>
       <pubDate>Wed, 13 May 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/numerical-analysis/5-%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/</guid>
       <description>常微分方程 一阶常微分方程初值问题
 $$ \begin{cases} y&amp;rsquo;=f(x,y) &amp;amp; a\leq x \leq b\newline y(x_0)=y_0 \end{cases} $$
@@ -72,7 +72,7 @@ Euler 方法（差分方法） Euler 方法 步长 $h$ $x_n=x_0+nh$ $y_{n+1}=y_n
       <title>方程求根</title>
       <link>https://zhengzangw.com/notes/numerical-analysis/6-%E6%96%B9%E7%A8%8B%E6%B1%82%E6%A0%B9/</link>
       <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/numerical-analysis/6-%E6%96%B9%E7%A8%8B%E6%B1%82%E6%A0%B9/</guid>
       <description>方程求根 代数方程：$f(x)=\sum_{i=0}^n a_{n-i}x^{i}$ 复数域中有 $n$ 个根 非线性方程 超越方程：必须明确定义域 搜索法求有根区间 二分法 收敛速度不快 可以确定初始区间 不动点迭代法 不动点迭代法：求 $f(x)=0$ 转换为求 $ x=\varphi(x)$ 的不动点 迭代法：$x_{k+1}=\varphi(x_k)$ 收敛：$\lim_{k\rightarrow\infty} x_k$ 存在 定理：$\varphi(x)\in C[a,b]$ 满足以下条件则在 $[a,b]$ 上存在唯一的不动点 $\forall x\in[a,b],a\leq \varphi(x)\leq b$ $\exists L\in (0,1),\forall x,y\in C[a,b],|\varphi(x)-\varphi(y)|\leq L|x-y|$ （或 $|\varphi&amp;rsquo;(x)|\leq L&amp;lt;1$） 收敛充分条件：满足以上条件的函数，$\forall x_0\in[a,b]$，由 $x_{k+1}=\varphi(x_k)$ 得到的迭代序列 ${x_k}$ 收敛到不动点，且 $|x_k-x^*|\leq\frac{L^k}{1-L}|x_1-x_0|$ 迭代误差 $\epsilon_k=x_k-x^*$ $p$ 阶收敛：$\frac{\epsilon_{k+1}}{\epsilon_k^p}\rightarrow C\neq 0$ 若 $x_{k+1}=\varphi(x_k),\varphi^{(p)}(x)$ 在 $x^$ 附件连续，且 $\varphi&amp;rsquo;(x^)=\varphi&amp;rsquo;&amp;rsquo;(x^)=\cdots=\varphi^{(p-1)}(x^)=0,\varphi^{(p)}(x^)\neq 0$，则迭代过程在 $x^$ 附件 $p$ 阶收敛 局部收敛 全局收敛 牛顿法 基本思想：将非线性方程逐步线性化形成迭代公式 取 $x_0\approx x^*$，$f(x)$ 在 $x_0$ 处做一阶 Taylor 展开：$f(x)=f(x_0)+f&amp;rsquo;(x_0)(x-x_0)+\frac{f&amp;rsquo;&amp;rsquo;(\xi)}{2}(x-x_0)^2$ $x^*\approx x_0-\frac{f(x_0)}{f&amp;rsquo;(x_0)}$ 牛顿法：$x_{k+1}=x_k-\frac{f(x_k)}{f&amp;rsquo;(x_k)}$ 牛顿法收敛的充分条件：若 $f\in C^2[a,b]$ $f(a)f(b)&amp;lt;0$ $[a,b]$ 上 $f&amp;rsquo;&amp;rsquo;$ 不变号且 $f&amp;rsquo;(x)\neq 0$ $\forall x_0\in[a,b],f(x_0)f&amp;rsquo;&amp;rsquo;(x_0)&amp;gt;0$ 局部收敛性：$f\in C^2[a,b],x^$ 为 $f(x)$ 在 $[a,b]$ 上的根且 $f&amp;rsquo;(x)\neq 0$，则存在 $x^$ 的邻域，使任意邻域上的初值产生的序列收敛到 $x^$，且 $\lim_{k\rightarrow\infty}\frac{x^-x_{k+1}}{(x^-x_k)^2}=-\frac{f&amp;rsquo;&amp;rsquo;(x^)}{2f&amp;rsquo;(x^*)}$ 割线法：$x_{k+1}=x_k-\frac{f(x_k)(x_k-x_{k_1})}{f(x_k)-f(x_{k-1})}$ 下山法：若 $x_{k+1}$ 处的值不比原有的小，则在 $(x_k,x_{k+1})$ 间找一个更好的点使值变小：$\overline{x_{k+1}}=x_k-\lambda\frac{f(x_k)}{f&amp;rsquo;(x_k)}$ 特殊情况 重根：线性收敛 $f&amp;rsquo;(x^*)\neq 0$ 至少平方收敛 迭代过程加速方法 埃特金加速收敛方法（Aitken）：$x_{k+1}=x_k-\frac{(\tilde{x}{k+1}-x_k)^2}{\overline{x}{k+1}-2\tilde{x}_{k+1}+x_k}$ 超线性收敛：$\lim_{k\rightarrow\infty}\frac{|e_{k+1}|}{|e_k|}=0$ </description>
     </item>
@@ -81,7 +81,7 @@ Euler 方法（差分方法） Euler 方法 步长 $h$ $x_n=x_0+nh$ $y_{n+1}=y_n
       <title>7. 线性方程组解法</title>
       <link>https://zhengzangw.com/notes/numerical-analysis/7-%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E7%9A%84%E8%A7%A3%E6%B3%95/</link>
       <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/numerical-analysis/7-%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E7%9A%84%E8%A7%A3%E6%B3%95/</guid>
       <description>求解线性方程组 $$Ax=b,A\in R^{n\times n},b\in R^n$$
 假设 $A$ 非奇异，则方程有唯一解
@@ -94,7 +94,7 @@ Euler 方法（差分方法） Euler 方法 步长 $h$ $x_n=x_0+nh$ $y_{n+1}=y_n
       <title>8-特征值计算</title>
       <link>https://zhengzangw.com/notes/numerical-analysis/8-%E7%89%B9%E5%BE%81%E5%80%BC%E8%AE%A1%E7%AE%97/</link>
       <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
-      <author>zhengzangw at gmail.com (Zangwei (Alex) Zheng)</author>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/numerical-analysis/8-%E7%89%B9%E5%BE%81%E5%80%BC%E8%AE%A1%E7%AE%97/</guid>
       <description>特征值与特征向量 特征值：求代数方程 $\varphi(\lambda)=|\lambda I-A|= 0$ 的根 特征向量：求代数方程 $(\lambda I-A)x=0$ 的非零解 若 $\lambda_i$ 是矩阵 $A$ 的特征值，则 $\sum_{i=1}^n\lambda_i=\text{tr} A$ $|A|=\prod \lambda_i$ $A$ 与 $B$ 互为相似矩阵 $\exists T,|T|\neq 0,B=T^{-1}AT$ 则 $A$ 与 $B$ 有相同的特征值 $x$ 是 $B$ 的一个特征向量，则 $Tx$ 是 $A$ 的特征向量 Gerschgorin&amp;rsquo;s 定理：$A$ 的每个特征值必属于以下某个圆盘之内 $|\lambda -a_{ii}|\leq \sum_{j=1,j\neq i}^n|a_{ij}|,i=1,\cdots,n$ 特征向量第 $i$ 个分量最大，则属于第 $i$ 个圆盘 $A$ 为对称矩阵，$R(x)=\frac{(Ax,x)}{(x,x)}$ 为对应向量 $x$ 的 Rayleigh 商 (特征值次序 $\lambda_1\geq \cdots \lambda_n$) $\lambda_n\leq\frac{(Ax,x)}{(x,x)}\leq\lambda_1$ $\exists x\in\mathbb{R}^n,x\neq 0$ 使等号成立 幂法 主特征值：最大特征值和相应特征向量 $v_{k+1}=Av_k$ $v_0=\sum_{i}a_ix_i$ $v_k=Av_{k-1}=\lambda_1^k(a_1x_1+\epsilon_k)$ $\epsilon_k=\sum_{i=2}^na_1(\frac{\lambda_i}{\lambda_1})^kx_i$ $\lim_{k\rightarrow\infty}\frac{(v_{k+1})_i}{(v_k)_i}=\lambda_1$ 规范化：$u=\frac{v}{\max(v)},\max(v)$ 为绝对值最大的分量 $v_k=Au_{k-1}=\frac{A^kv_0}{\max(A^{k-1}v_0)}$ $u_k=\frac{v_k}{\max(v_k)}=\frac{A^kv_0}{\max(A^kv_0)}$ $\max(v_k)\rightarrow\lambda_1$ 收敛比率：$r=\frac{\lambda_2}{\lambda_1}$ 加速方法 原点平移法：$B=A-pI,B$ 特征值为 $\lambda_i-p$ 且特征相同，$|\frac{\lambda_2-p}{\lambda_1-p}|&amp;lt; |\frac{\lambda_2}{\lambda_1}|$ 特征值为实数时：$p=\frac{\lambda_1+\lambda_{n-1}}{2}$ Rayleigh 商加速法：$\frac{(Au_k,u_k)}{(u_k,u_k)}=\lambda_1+O((\frac{\lambda_2}{\lambda_1})^{2k})$ 反幂法：$A^{-1}$ 应用幂法，得主特征 $\frac{1}{\lambda_n}$ Householder 方法 $A\in\mathbb{R}^{n\times n},\exists$ 正交阵 $R$，对角块为一阶或二阶矩阵，每个一阶对角块为 $A$ 的实特征值，二阶对角块的两个特征值是 $A$ 的一对共轭复特征值</description>
     </item>
