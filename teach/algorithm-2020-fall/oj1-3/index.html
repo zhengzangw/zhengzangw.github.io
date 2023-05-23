@@ -7,7 +7,7 @@
     <title>Solution to OJ - Range Sum of Multiset | Zangwei</title>
 
     
-    <link rel="stylesheet" href="/scss/main.min.6c4d523b15a1f1714ec1a02eecf7283de3733cb142ca8bf9edd01f9f077cc730.css" integity="sha256-bE1SOxWh8XFOwaAu7PcoPeNzPLFCyov57dAfnwd8xzA=">
+    <link rel="stylesheet" href="/scss/main.min.fad323cc59d586a598eb45f82c265a32ab026f0167464eb71d63b96c7a097833.css" integity="sha256-&#43;tMjzFnVhqWY60X4LCZaMqsCbwFnRk63HWO5bHoJeDM=">
 
     <script type="text/javascript" src="/js/dark.js"></script>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -51,7 +51,7 @@
         </div>
         
         <div class="nav-item">
-            <a href="/posts">[ Posts ]</a>
+            <a href="/blogs">[ Blog ]</a>
         </div>
         
         <div class="nav-item">
@@ -65,7 +65,7 @@
     <hr>
 </nav>
 <div class="flex-passage flex-row flex-row-full">
-            <div class="flex-column-20">
+            <div class="flex-column-30">
                 <div class="return">
                     <a href=".."> RETURN </a>
                 </div>
@@ -76,7 +76,9 @@
   </ul>
 </nav>
             </div>
-            <main class="flex-column-80"><p>题目连接：<a href="https://oj.chaodong.me/problem/multisetdup">Range Sum of Multiset</a></p>
+            <div class="flex-column-80">
+                <main class="flex-column-60">
+                    <p>题目连接：<a href="https://oj.chaodong.me/problem/multisetdup">Range Sum of Multiset</a></p>
 <h2 id="range-sum-of-multiset">Range Sum of Multiset</h2>
 <p>本题要求实现一个支持在线插入(1)、删除(2)、区间和(3)的数据结构。根据数据规模 $1\leq Q\leq 5\cdot 10^5$，我们需要 $O(\lg n)$ 的时间支持这三种操作。</p>
 <p>如果只需要支持操作 1,2，我们可以采用平衡树（红黑树，Treap）或者跳表。为了支持操作 3，我们需要在原数据结构上额外维护一下区间相关的内容。为了求 $[l,r]$ 区间内的和，我们可以维护每个结点的前缀和，用前缀和来计算区间和。</p>
@@ -404,7 +406,9 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></main>
+</span></span></code></pre></div>
+                </main>
+            </div>
         </div>
 
     </div>

@@ -7,7 +7,7 @@
     <title>DP优化——四边形不等式 | Zangwei</title>
 
     
-    <link rel="stylesheet" href="/scss/main.min.6c4d523b15a1f1714ec1a02eecf7283de3733cb142ca8bf9edd01f9f077cc730.css" integity="sha256-bE1SOxWh8XFOwaAu7PcoPeNzPLFCyov57dAfnwd8xzA=">
+    <link rel="stylesheet" href="/scss/main.min.fad323cc59d586a598eb45f82c265a32ab026f0167464eb71d63b96c7a097833.css" integity="sha256-&#43;tMjzFnVhqWY60X4LCZaMqsCbwFnRk63HWO5bHoJeDM=">
 
     <script type="text/javascript" src="/js/dark.js"></script>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -51,7 +51,7 @@
         </div>
         
         <div class="nav-item">
-            <a href="/posts">[ Posts ]</a>
+            <a href="/blogs">[ Blog ]</a>
         </div>
         
         <div class="nav-item">
@@ -65,7 +65,7 @@
     <hr>
 </nav>
 <div class="flex-passage flex-row flex-row-full">
-            <div class="flex-column-20">
+            <div class="flex-column-30">
                 <div class="return">
                     <a href=".."> RETURN </a>
                 </div>
@@ -77,7 +77,9 @@
   </ul>
 </nav>
             </div>
-            <main class="flex-column-80"><h2 id="四边形不等式条件">四边形不等式条件</h2>
+            <div class="flex-column-80">
+                <main class="flex-column-60">
+                    <h2 id="四边形不等式条件">四边形不等式条件</h2>
 <p>任意 $a1\leq a2&lt;b1\leq b2$,有 $F(a_1,b_1)+F(a_2,b_2)\leq F(a_1,b_2)+F(a_2,b_1)$
 则函数 F 满足四边形不等式</p>
 <h2 id="基本概念">基本概念</h2>
@@ -90,7 +92,9 @@
 F[i,j] = opt{F[i,k]+F[k,j] + w(i,j)} (i&lt;=k&lt;=j)
 时间复杂度为 O(N^3)</p>
 <p>如果 w 函数满足区间包含单调性和四边形不等式性质,则原来的状态转移方程可以改写为下式：
-$$F(i,j)=min{F(i,k-1),F(k,j)}+w(i,j)(s(i,j-1)≤k≤s(i+1,j))$$</p></main>
+$$F(i,j)=min{F(i,k-1),F(k,j)}+w(i,j)(s(i,j-1)≤k≤s(i+1,j))$$</p>
+                </main>
+            </div>
         </div>
 
     </div>

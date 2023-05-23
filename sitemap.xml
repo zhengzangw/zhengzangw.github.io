@@ -35,10 +35,10 @@
     <loc>https://zhengzangw.com/notes/digital-circuit/basics/</loc>
     <lastmod>2020-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/notes/abstract/</loc>
+    <loc>https://zhengzangw.com/notes/microelectronics/basic/</loc>
     <lastmod>2020-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/notes/microelectronics/basic/</loc>
+    <loc>https://zhengzangw.com/notes/abstract/</loc>
     <lastmod>2020-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/stochastic-process/preliminaries/</loc>
@@ -874,6 +874,15 @@
     <loc>https://zhengzangw.com/notes/stochastic-process/</loc>
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://zhengzangw.com/blogs/</loc>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/blogs/seqsch/</loc>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/</loc>
+    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://zhengzangw.com/teach/cs5242-2022-fall/bp/</loc>
     <lastmod>2022-09-07T00:00:00+00:00</lastmod>
   </url><url>
@@ -881,9 +890,6 @@
     <lastmod>2022-09-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/teach/</loc>
-    <lastmod>2022-09-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhengzangw.com/</loc>
     <lastmod>2022-09-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/notes/</loc>
@@ -1151,7 +1157,5 @@
     <loc>https://zhengzangw.com/categories/</loc>
   </url><url>
     <loc>https://zhengzangw.com/friends/</loc>
-  </url><url>
-    <loc>https://zhengzangw.com/posts/</loc>
   </url>
 </urlset>

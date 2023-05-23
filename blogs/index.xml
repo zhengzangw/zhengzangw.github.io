@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Zangwei</title>
+    <link>https://zhengzangw.com/blogs/</link>
+    <description>Recent content in Blog on Zangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
+    <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
+    <lastBuildDate>Sat, 20 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>May 2023 | Can we use LLM to Speedup LLM inference?</title>
+      <link>https://zhengzangw.com/blogs/seqsch/</link>
+      <pubDate>Sat, 20 May 2023 00:00:00 +0000</pubDate>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
+      <guid>https://zhengzangw.com/blogs/seqsch/</guid>
+      <description>May 2023 | Can we use LLM to Speedup LLM inference? Zangwei Zheng, zangwei@u.nus.edu
+National University of Singapore
+Other version: [arXiv] [Code] [中文]
+Discuss on twitter with the author
+TL;DR We find that large language models (LLMs) have the remarkable ability to perceive the length of their generated responses in advance. Leveraging this LLM ability, we propose a novel technique called Sequence Scheduling to improve the efficiency of LLM batch inference.</description>
+    </item>
+    
+  </channel>
+</rss>

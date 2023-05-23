@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>May 2023 | Can we use LLM to Speedup LLM inference? | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.fad323cc59d586a598eb45f82c265a32ab026f0167464eb71d63b96c7a097833.css" integity="sha256-&#43;tMjzFnVhqWY60X4LCZaMqsCbwFnRk63HWO5bHoJeDM=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/blogs">[ Blog ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-30">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#may-2023--can-we-use-llm-to-speedup-llm-inference">May 2023 | Can we use LLM to Speedup LLM inference?</a>
+      <ul>
+        <li><a href="#tldr">TL;DR</a></li>
+        <li><a href="#llm-is-aware-of-its-response-length">LLM is aware of its response length</a></li>
+        <li><a href="#instruction-tuning-improves-response-length-perception">Instruction tuning improves response length perception</a></li>
+        <li><a href="#llm-batch-inference">LLM batch inference</a></li>
+        <li><a href="#sequence-scheculing-via-response-length-perception">Sequence Scheculing via Response Length Perception</a></li>
+        <li><a href="#discussion">Discussion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <div class="flex-column-80">
+                <main class="flex-column-60">
+                    <h2 id="may-2023--can-we-use-llm-to-speedup-llm-inference">May 2023 | Can we use LLM to Speedup LLM inference?</h2>
+<blockquote>
+<p><a href="https://zhengzangw.github.io/about/">Zangwei Zheng</a>, <a href="mailto:zangwei@u.nus.edu">zangwei@u.nus.edu</a><br>
+National University of Singapore</p>
+<p>Other version: [<a href="https://arxiv.org/abs/2305.13144">arXiv</a>] [<a href="https://github.com/zhengzangw/Sequence-Scheduling">Code</a>] [<a href="">中文</a>]<br>
+Discuss on <a href="">twitter</a> with the author</p>
+</blockquote>
+<h3 id="tldr">TL;DR</h3>
+<p>We find that large language models (LLMs) have the remarkable ability to <strong>perceive the length of their generated responses in advance</strong>. Leveraging this LLM ability, we propose a novel technique called <strong>Sequence Scheduling</strong> to improve the efficiency of LLM batch inference. By grouping queries with similar perceived response lengths together, we significantly reduce redundant computations and achieve an impressive <strong>86%</strong> improvement in inference throughput without compromising performance.</p>
+<p><img src="/blogs/images/seqsch-pipeline.png" alt="Sequence Scheduling Pipeline"></p>
+<h3 id="llm-is-aware-of-its-response-length">LLM is aware of its response length</h3>
+<p>We begin our investigation by examining whether LLMs possess the ability to perceive the length of their generated responses. To investigate the response length perception ability of LLMs, we designed a prompt technique called &ldquo;<strong>Perception in Advance (PiA)</strong>&rdquo; that ask the model to predict the length of its generated response.</p>
+<p><img src="/blogs/images/seqsch-pia_short.png" alt="short answer by ChatGPT">
+<img src="/blogs/images/seqsch-pia_long.png" alt="long answer by ChatGPT"></p>
+<p>We find that popular LLMs such as GPT-4, ChatGPT, and Vicuna, can follow the instruction and give a response length estimation. The above two figures are examples of PiA with ChatGPT. For the short one, ChatGPT perceived of length 10 words with real length 6 words. For the long one, ChatGPT perceived of length 112 words with real length 119 words. ChatGPT may not be explicitly trained with response length prediction, but it accurately estimates the length of generated responses.</p>
+<h3 id="instruction-tuning-improves-response-length-perception">Instruction tuning improves response length perception</h3>
+<p>For open-source instruction-finetuned language models (LLMs) like Vicuna-7B, accurately perceiving the length of responses remains a challenge. When considering estimates within a range of 100 words as accurate, it only achieves a <strong>65%</strong> accuracy(100) on the Alpaca dataset. Furthermore, LLMs have a weaker grasp of tokens compared to words, which hinders their ability to improve inference.</p>
+<p>In order to enhance the model&rsquo;s proficiency in perceiving response length, we developed a dataset comprising pairs of instructions and their corresponding token lengths. Leveraging efficient instruction tuning with LoRA, we sought to bolster its performance. As a result of this tuning process, the model achieves an improved accuracy(100) of <strong>81%</strong> on the Alpaca dataset.</p>
+<h3 id="llm-batch-inference">LLM batch inference</h3>
+<p><img src="/blogs/images/seqsch-batch.png" alt="Batch inference statistics"></p>
+<p>Let&rsquo;s now focus on the inference process of the LLM. Batch inference is a commonly used technique to enhance the efficiency of inference. In the figure on the left side, we observe that as the batch size increases, the inference throughput also increases almost linearly (as indicated by the blue line). However, when performing LLM inference in batches, incorporating sequences with varying response lengths introduces inefficiencies. Shorter sequences have to wait for longer ones to complete, resulting in reduced efficiency. We have found that approximately <strong>66%</strong> of the computations performed are redundant. As the batch size continues to grow, the throughput performance starts to decline (as shown by the red line). This decline occurs because larger batch sizes have a higher likelihood of including longer response lengths, leading to a significant increase in redundant computations.</p>
+<p>Furthermore, the figure on the right side demonstrates that the inference time increases with the token position index. This increase is due to the requirement of performing self-attention operations on a greater number of keys and values.</p>
+<p><img src="/blogs/images/seqsch-length.png" alt="Distribution of Length"></p>
+<p>In real-world scenarios, the response length of queries varies as shown on the length distribution of queries in the Alpaca dataset for ChatGPT and Vicuna models (left side of the figure). This highlights the need to address the issue of varying response lengths in LLM inference. Furthermore, on the right side, we observe that different samplings of the same data point can result in different lengths, adding to the complexity of perceiving and handling response lengths.</p>
+<h3 id="sequence-scheculing-via-response-length-perception">Sequence Scheculing via Response Length Perception</h3>
+<p><img src="/blogs/images/seqsch-pipeline.png" alt="Sequence Scheduling Pipeline"></p>
+<p>We propose a novel technique called <strong>Sequence Scheduling</strong> to improve the efficiency of LLM batch inference. By organizing queries with similar perceived response lengths into groups, we can significantly minimize redundant computations, resulting in a remarkable <strong>42%</strong> improvement in throughput.</p>
+<p><img src="/blogs/images/seqsch-result.png" alt="Sequence Scheduling Experimental Results"></p>
+<p>To further optimize the throughput, we introduce several additional techniques. Implementing these techniques collectively leads to an impressive <strong>86%</strong> enhancement in inference throughput without compromising performance.</p>
+<ul>
+<li><strong>Failure Collection and Recomputation (FCR)</strong>: We limit the number of newly generated tokens to be at most the maximum predicted length within a batch. Instructions that exceed this predicted length are deemed failures and are separated for recomputation at the end of the inference process for a group of a specific size. Given the relatively low failure ratio, this approach enables faster generation of shorter responses while minimizing the time spent on regenerating failed instructions.</li>
+<li><strong>Variable Batch Size (VBS)</strong>: We assign a larger batch size for shorter responses. This approach allows us to process more queries simultaneously, thereby optimizing the overall throughput.</li>
+<li><strong>Max Length Prediction</strong>: The response length perception module predicts the maximum length of multiple sampled responses. Underestimation of response length has more severe consequences compared to overestimation. Therefore, we prioritize accurately predicting the maximum length to avoid truncation and ensure the desired response length.</li>
+<li><strong>Binning</strong>: We group queries with similar response lengths into bins. This allows us to reduce the number of bins and allows for more efficient scheduling.</li>
+</ul>
+<h3 id="discussion">Discussion</h3>
+<p>In this study, we leverage the capabilities of LLMs to enhance their own inference process, leading to the development of what we refer to as an &ldquo;<strong>LLM-Empowered LLM Inference Pipeline</strong>.&rdquo; This approach can be viewed as a software-hardware co-design within the realm of AI, and we believe it holds great promise for future research endeavors.</p>
+<p>Our research findings demonstrate that LLMs possess a profound understanding of the responses they generate. This insight presents exciting opportunities for devising faster inference techniques, such as non-autoregressive methods, that can overcome the limitations associated with sequential token generation and significantly improve performance.</p>
+<p>As LLMs have the potential to become a pervasive infrastructure akin to search engines, the volume of queries they handle is expected to rise significantly. Moreover, the advent of models like GPT-4, which supports sequence lengths of up to 32k, and Claude, with a 100K sequence length support, further exacerbates the challenge of accommodating varying response lengths. In this context, our approach stands out for its relevance and effectiveness in addressing this challenge.</p>
+
+                </main>
+            </div>
+        </div>
+
+    </div>
+</body></html>
