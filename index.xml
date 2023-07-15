@@ -3096,9 +3096,24 @@ pylint eslint </description>
       <guid>https://zhengzangw.com/blogs/zscl/</guid>
       <description>Jul. 2023 | Fine-tuning VL Models w.o. Zero-Shot Degradation Zangwei Zheng, zangwei@u.nus.edu
 National University of Singapore
+ICCV 2023
 Other version: [arXiv] [Code] [中文]
 Discuss on twitter with the author.
 TL;DR Large vision-language models have the ability to make predictions on various tasks without the need for fine-tuning. However, continuously fine-tuning these models can lead to improved performance on new data or tasks. Nevertheless, we have observed a significant decline in zero-shot performance on other datasets when models undergo continual learning.</description>
+    </item>
+    
+    <item>
+      <title>Jul. 2023 | CAME Optimizer: Adam Performance with Less Memory Requirements</title>
+      <link>https://zhengzangw.com/blogs/came/</link>
+      <pubDate>Fri, 14 Jul 2023 00:00:00 +0000</pubDate>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
+      <guid>https://zhengzangw.com/blogs/came/</guid>
+      <description>Jul. 2023 | CAME Optimizer: Adam Performance with Less Memory Requirements Zangwei Zheng, zangwei@u.nus.edu
+National University of Singapore
+ACL 2023 Outstanding Paper Award
+Other version: [arXiv] [Code] [中文]
+A plug-and-play optimizer repo will be released soon.
+TL;DR In language model training, optimizing memory usage is crucial, especially with the increasing parameter sizes of large language models (LLMs). The CAME optimizer, introduced in our work, addresses this issue by reducing memory consumption while maintaining performance on par with the Adam optimizer.</description>
     </item>
     
     <item>

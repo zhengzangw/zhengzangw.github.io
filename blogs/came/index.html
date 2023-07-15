@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jul. 2023 | CAME Optimizer: Adam Performance with Less Memory Requirements | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.fad323cc59d586a598eb45f82c265a32ab026f0167464eb71d63b96c7a097833.css" integity="sha256-&#43;tMjzFnVhqWY60X4LCZaMqsCbwFnRk63HWO5bHoJeDM=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/blogs">[ Blog ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-30">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#jul-2023--came-optimizer-adam-performance-with-less-memory-requirements">Jul. 2023 | CAME Optimizer: Adam Performance with Less Memory Requirements</a>
+      <ul>
+        <li><a href="#tldr">TL;DR</a></li>
+        <li><a href="#llm-training-requires-large-memory">LLM Training Requires Large Memory</a></li>
+        <li><a href="#confidence-guided-adaptive-memory-efficient-optimization-came">Confidence-guided Adaptive Memory Efficient Optimization (CAME)</a></li>
+        <li><a href="#experiments">Experiments</a></li>
+        <li><a href="#future-work">Future Work</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <div class="flex-column-80">
+                <main class="flex-column-60">
+                    <h2 id="jul-2023--came-optimizer-adam-performance-with-less-memory-requirements">Jul. 2023 | CAME Optimizer: Adam Performance with Less Memory Requirements</h2>
+<blockquote>
+<p><a href="https://zhengzangw.github.io/about/">Zangwei Zheng</a>, <a href="mailto:zangwei@u.nus.edu">zangwei@u.nus.edu</a><br>
+National University of Singapore</p>
+<p><strong>ACL 2023 Outstanding Paper Award</strong><br>
+Other version: [<a href="https://arxiv.org/abs/2307.02047">arXiv</a>] [<a href="https://github.com/huawei-noah/Pretrained-Language-Model">Code</a>] [<a href="">中文</a>]<br>
+A plug-and-play optimizer repo will be released soon.</p>
+</blockquote>
+<h3 id="tldr">TL;DR</h3>
+<p>In language model training, optimizing memory usage is crucial, especially with the increasing parameter sizes of large language models (LLMs). The CAME optimizer, introduced in our work, addresses this issue by reducing memory consumption while maintaining performance on par with the Adam optimizer.</p>
+<h3 id="llm-training-requires-large-memory">LLM Training Requires Large Memory</h3>
+<p>The growth in the number of parameters in LLMs has significantly increased the memory requirements for training. Optimizers contribute a substantial portion to the overall memory consumption. For instance, the Adam optimizer requires six times more memory (due to m, v states, and fp32 copies) compared to the memory used by the model itself in mixed precision training.</p>
+<p><img src="/blogs/images/came-growth.png" alt="num params growth of LLM"></p>
+<p>To mitigate memory usage, an effective approach is to optimize the memory footprint of the optimizer&rsquo;s state. Adafactor, a widely-used optimizer at Google, achieves this by employing matrix decomposition to save memory for the second-order momentum state (v):</p>
+<p><img src="/blogs/images/came-adafactor.png" alt="Adafactor"></p>
+<p>This reduction in memory usage from O(nm) to O(n+m) results in a linear cost. However, the introduced matrix decomposition introduces instability in updates, leading to performance degradation in large-scale language model pretraining tasks. We compare the optimization process of Adam and Adafactor in a 1-layer multilayer perception training task, and it is evident that Adafactor deviates from the training curve of Adam.</p>
+<p><img src="/blogs/images/came-deviation.png" alt="Adafactor Deviation"></p>
+<h3 id="confidence-guided-adaptive-memory-efficient-optimization-came">Confidence-guided Adaptive Memory Efficient Optimization (CAME)</h3>
+<p>To address the instability issue of Adafactor, we propose the CAME optimizer, which incorporates confidence-based update magnitude correction and applies non-negative matrix factorization to the introduced confidence matrix. This approach effectively reduces additional memory overhead. The CAME algorithm is outlined below, with the black fonts denoting similarities to Adafactor and the blue fonts representing the modifications.</p>
+<p><img src="/blogs/images/came-optimizer.png" alt="CAME"></p>
+<p>The key distinction between CAME and Adafactor is the introduction of a confidence matrix $U_t$ in CAME, which is utilized to correct the update magnitudes. The underlying rationale is straightforward. Adafactor may exhibit approximation errors that can lead to deviations in the updates. The introduction of update momentum (introduced in Adafactor) smooths the updates. In CAME, we further diminish updates that deviate significantly from the momentum and encourage updates with smaller deviations. The impact of this correction can be observed in the following figure.</p>
+<p><img src="/blogs/images/came-rationale.png" alt="CAME rationale"></p>
+<h3 id="experiments">Experiments</h3>
+<p>We evaluate the CAME optimizer on multiple widely-used large-scale language model pretraining tasks, including BERT and T5. The results are summarized below. Our CAME optimizer outperforms Adafactor and achieves comparable or even superior training performance to the Adam optimizer, with memory usage similar to Adafactor and better robustness in large-batch pretraining scenarios.</p>
+<p><img src="/blogs/images/came-bert.png" alt="BERT experiments"></p>
+<p><img src="/blogs/images/came-t5.png" alt="T5 experiments"></p>
+<h3 id="future-work">Future Work</h3>
+<p>We are actively developing a plug-and-play optimizer repository that can seamlessly integrate into existing training pipelines, including popular models like GPT-3 and LLaMA. Additionally, we are working on removing the need for a momentum state in both the Adafactor and CAME optimizers, which will further simplify their implementation and usage.</p>
+<p>Furthermore, with the increasing size of GPU clusters, we are exploring the potential of applying the CAME optimizer to even larger batch sizes. This investigation aims to leverage the benefits of CAME in memory optimization and performance enhancement on a larger scale.</p>
+<p>Our ongoing research and development efforts in these areas demonstrate our commitment to providing practical solutions for memory-efficient and high-performance optimization in language model training.</p>
+
+                </main>
+            </div>
+        </div>
+
+    </div>
+</body></html>
