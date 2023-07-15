@@ -90,7 +90,7 @@
 <p><a href="https://zhengzangw.github.io/about/">Zangwei Zheng</a>, <a href="mailto:zangwei@u.nus.edu">zangwei@u.nus.edu</a><br>
 National University of Singapore</p>
 <p><strong>ACL 2023 Outstanding Paper Award</strong><br>
-Other version: [<a href="https://arxiv.org/abs/2307.02047">arXiv</a>] [<a href="https://github.com/huawei-noah/Pretrained-Language-Model">Code</a>] [<a href="">中文</a>]<br>
+Other version: [<a href="https://arxiv.org/abs/2307.02047">arXiv</a>] [<a href="https://github.com/huawei-noah/Pretrained-Language-Model">Code</a>] [<a href="https://zhuanlan.zhihu.com/p/643816029?">中文</a>]<br>
 A plug-and-play optimizer repo will be released soon.</p>
 </blockquote>
 <h3 id="tldr">TL;DR</h3>
@@ -111,6 +111,7 @@ A plug-and-play optimizer repo will be released soon.</p>
 <p>We evaluate the CAME optimizer on multiple widely-used large-scale language model pretraining tasks, including BERT and T5. The results are summarized below. Our CAME optimizer outperforms Adafactor and achieves comparable or even superior training performance to the Adam optimizer, with memory usage similar to Adafactor and better robustness in large-batch pretraining scenarios.</p>
 <p><img src="/blogs/images/came-bert.png" alt="BERT experiments"></p>
 <p><img src="/blogs/images/came-t5.png" alt="T5 experiments"></p>
+<p><img src="/blogs/images/came-memory.png" alt="Memory"></p>
 <h3 id="future-work">Future Work</h3>
 <p>We are actively developing a plug-and-play optimizer repository that can seamlessly integrate into existing training pipelines, including popular models like GPT-3 and LLaMA. Additionally, we are working on removing the need for a momentum state in both the Adafactor and CAME optimizers, which will further simplify their implementation and usage.</p>
 <p>Furthermore, with the increasing size of GPU clusters, we are exploring the potential of applying the CAME optimizer to even larger batch sizes. This investigation aims to leverage the benefits of CAME in memory optimization and performance enhancement on a larger scale.</p>
