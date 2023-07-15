@@ -875,13 +875,16 @@
     <lastmod>2019-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/blogs/</loc>
-    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhengzangw.com/blogs/seqsch/</loc>
-    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
+    <loc>https://zhengzangw.com/blogs/zscl/</loc>
+    <lastmod>2023-07-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/</loc>
-    <lastmod>2023-05-20T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhengzangw.com/blogs/seqsch/</loc>
+    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhengzangw.com/teach/cs5242-2022-fall/bp/</loc>
     <lastmod>2022-09-07T00:00:00+00:00</lastmod>
@@ -1157,7 +1160,5 @@
     <loc>https://zhengzangw.com/categories/</loc>
   </url><url>
     <loc>https://zhengzangw.com/friends/</loc>
-  </url><url>
-    <loc>https://zhengzangw.com/blogs/zscl/</loc>
   </url>
 </urlset>

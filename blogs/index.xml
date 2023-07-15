@@ -8,11 +8,24 @@
     <language>en-us</language>
     <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
     <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
-    <lastBuildDate>Sat, 20 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jul. 2023 | Fine-tuning Vision-Language Models without Zero-Shot Transfer Degradation</title>
+      <link>https://zhengzangw.com/blogs/zscl/</link>
+      <pubDate>Sat, 15 Jul 2023 00:00:00 +0000</pubDate>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
+      <guid>https://zhengzangw.com/blogs/zscl/</guid>
+      <description>Jul. 2023 | Fine-tuning VL Models w.o. Zero-Shot Degradation Zangwei Zheng, zangwei@u.nus.edu
+National University of Singapore
+Other version: [arXiv] [Code] [中文]
+Discuss on twitter with the author.
+TL;DR Large vision-language models have the ability to make predictions on various tasks without the need for fine-tuning. However, continuously fine-tuning these models can lead to improved performance on new data or tasks. Nevertheless, we have observed a significant decline in zero-shot performance on other datasets when models undergo continual learning.</description>
+    </item>
+    
     <item>
       <title>May 2023 | Can We Use LLM to Speedup LLM Inference?</title>
       <link>https://zhengzangw.com/blogs/seqsch/</link>
-      <pubDate>Sat, 20 May 2023 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/blogs/seqsch/</guid>
       <description>May 2023 | Can we use LLM to Speedup LLM inference? Zangwei Zheng, zangwei@u.nus.edu
@@ -20,19 +33,6 @@ National University of Singapore
 Other version: [arXiv] [Code] [中文]
 Discuss on twitter with the author.
 TL;DR We find that large language models (LLMs) have the remarkable ability to perceive the length of their generated responses in advance. Leveraging this LLM ability, we propose a novel technique called Sequence Scheduling to improve the efficiency of LLM batch inference.</description>
-    </item>
-    
-    <item>
-      <title>Jul. 2023 | Fine-tuning Vision-Language Models without Zero-Shot Transfer Degradation</title>
-      <link>https://zhengzangw.com/blogs/zscl/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/blogs/zscl/</guid>
-      <description>Jul. 2023 | Fine-tuning Vision-Language Models without Zero-Shot Transfer Degradation Zangwei Zheng, zangwei@u.nus.edu
-National University of Singapore
-Other version: [arXiv] [Code] [中文]
-Discuss on twitter with the author.
-TL;DR Large vision-language models have the ability to make predictions on various tasks without the need for fine-tuning. However, continuously fine-tuning these models can lead to improved performance on new data or tasks. Nevertheless, we have observed a significant decline in zero-shot performance on other datasets when models undergo continual learning.</description>
     </item>
     
   </channel>
