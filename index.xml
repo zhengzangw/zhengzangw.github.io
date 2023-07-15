@@ -3103,12 +3103,12 @@ TL;DR Large vision-language models have the ability to make predictions on vario
     </item>
     
     <item>
-      <title>Jul. 2023 | CAME Optimizer: Adam Performance with Less Memory Requirements</title>
+      <title>Jul. 2023 | CAME Optimizer: Adam Performance with Adafactor Memory Requirements</title>
       <link>https://zhengzangw.com/blogs/came/</link>
       <pubDate>Fri, 14 Jul 2023 00:00:00 +0000</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/blogs/came/</guid>
-      <description>Jul. 2023 | CAME Optimizer: Adam Performance with Less Memory Requirements Zangwei Zheng, zangwei@u.nus.edu
+      <description>Jul. 2023 | CAME Optimizer: Adam Performance with Adafactor Memory Requirements Zangwei Zheng, zangwei@u.nus.edu
 National University of Singapore
 ACL 2023 Outstanding Paper Award
 Other version: [arXiv] [Code] [中文]
