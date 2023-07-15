@@ -34,6 +34,7 @@ National University of Singapore
 ACL 2023 Outstanding Paper Award
 Other version: [arXiv] [Code] [中文]
 A plug-and-play optimizer repo will be released soon.
+Discuss on twitter with the author.
 TL;DR In language model training, optimizing memory usage is crucial, especially with the increasing parameter sizes of large language models (LLMs). The CAME optimizer, introduced in our work, addresses this issue by reducing memory consumption while maintaining performance on par with the Adam optimizer.</description>
     </item>
     

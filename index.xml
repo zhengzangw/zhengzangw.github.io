@@ -939,7 +939,7 @@ Iterative-and-incremental Process Models Incrementation(增量): 指对于产品
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/news/</guid>
-      <description>[2023.7] [CAME] paper won the ACL Outstanding Paper Award! [2023.5] Got one paper accepted to ACL 2023. Congratulations to Yang Luo! [2023.4] Got one paper accpeted to ICML 2023. Congratulations to Fuzhao Xue! [2023.3] ColossalChat has been released! Train your own version of ChatGPT. Congratulations to colleges at HPCAITech! [2023.2] CowClip paper won the AAAI Distinguished Paper Award! [2022.12] Passed the qualifying exam. Cong to myself :), and thanks for my supervisor and friends’ help!</description>
+      <description>[2023.7] Got one first-authored paper accepted to ICCV 2023. Thanks to all my collaborators! [2023.7] CAME paper won the ACL Outstanding Paper Award! [2023.5] Got one paper accepted to ACL 2023. Congratulations to Yang Luo! [2023.4] Got one paper accpeted to ICML 2023. Congratulations to Fuzhao Xue! [2023.3] ColossalChat has been released! Train your own version of ChatGPT. Congratulations to colleges at HPCAITech! [2023.2] CowClip paper won the AAAI Distinguished Paper Award!</description>
     </item>
     
     <item>
@@ -3113,6 +3113,7 @@ National University of Singapore
 ACL 2023 Outstanding Paper Award
 Other version: [arXiv] [Code] [中文]
 A plug-and-play optimizer repo will be released soon.
+Discuss on twitter with the author.
 TL;DR In language model training, optimizing memory usage is crucial, especially with the increasing parameter sizes of large language models (LLMs). The CAME optimizer, introduced in our work, addresses this issue by reducing memory consumption while maintaining performance on par with the Adam optimizer.</description>
     </item>
     
