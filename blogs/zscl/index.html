@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jul. 2023 | Fine-tuning Vision-Language Models without Zero-Shot Transfer Degradation | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.fad323cc59d586a598eb45f82c265a32ab026f0167464eb71d63b96c7a097833.css" integity="sha256-&#43;tMjzFnVhqWY60X4LCZaMqsCbwFnRk63HWO5bHoJeDM=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/blogs">[ Blog ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Auto</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-30">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#jul-2023--fine-tuning-vision-language-models-without-zero-shot-transfer-degradation">Jul. 2023 | Fine-tuning Vision-Language Models without Zero-Shot Transfer Degradation</a>
+      <ul>
+        <li><a href="#tldr">TL;DR</a></li>
+        <li><a href="#catastrophic-forgetting-in-fine-tuning-vision-language-models">Catastrophic Forgetting in Fine-tuning Vision-Language Models</a></li>
+        <li><a href="#constraints-in-feature-space-and-parameter-space">Constraints in Feature Space and Parameter Space</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#discussion">Discussion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <div class="flex-column-80">
+                <main class="flex-column-60">
+                    <h2 id="jul-2023--fine-tuning-vision-language-models-without-zero-shot-transfer-degradation">Jul. 2023 | Fine-tuning Vision-Language Models without Zero-Shot Transfer Degradation</h2>
+<blockquote>
+<p><a href="https://zhengzangw.github.io/about/">Zangwei Zheng</a>, <a href="mailto:zangwei@u.nus.edu">zangwei@u.nus.edu</a><br>
+National University of Singapore</p>
+<p>Other version: [<a href="https://arxiv.org/abs/2303.06628">arXiv</a>] [<a href="https://github.com/Thunderbeee/ZSCL">Code</a>] [<a href="">中文</a>]</p>
+<p>Discuss on <a href="">twitter</a> with the author.</p>
+</blockquote>
+<h3 id="tldr">TL;DR</h3>
+<p>Large vision-language models have the ability to make predictions on various tasks without the need for fine-tuning. However, continuously fine-tuning these models can lead to improved performance on new data or tasks. Nevertheless, we have observed a significant decline in zero-shot performance on other datasets when models undergo continual learning. To address this issue, we propose a straightforward yet effective approach that involves constraining both the feature space and parameter space of the model. Our method not only outperforms the zero-shot model on downstream tasks but also maintains its zero-shot transferability to other tasks.</p>
+<p><img src="/blogs/images/zscl-head.png" alt="Comparison between traditional CL and CL with a pre-trained vision-language model"></p>
+<h3 id="catastrophic-forgetting-in-fine-tuning-vision-language-models">Catastrophic Forgetting in Fine-tuning Vision-Language Models</h3>
+<p>Catastrophic forgetting refers to the phenomenon where a model, when trained on a new task, loses its ability to perform well on a previously learned task. This issue also affects the zero-shot transfer capability of vision-language models obtained through pretraining. To address and evaluate this problem, we introduce a novel benchmark known as Multi-domain Task Incremental Learning (MTIL). This benchmark comprises eleven domains with highly distinct semantics. A selection of these domains is provided below.</p>
+<p><img src="/blogs/images/zscl-dataset.png" alt="Dataset"></p>
+<p>During sequential training of a pre-trained vision-language model (such as CLIP) on various tasks, we have observed a notable decrease in zero-shot performance on other datasets. The figure presented below illustrates the performance across four domains during the training of eleven domains. Prior to fine-tuning on the respective domain, each dataset experiences a substantial decline in zero-shot performance (indicated by the green line). While other methods attempt to alleviate this issue, they still exhibit a considerable decrease in zero-shot performance. In contrast, our proposed method (represented by the red line) effectively maintains the model&rsquo;s zero-shot performance.</p>
+<p><img src="/blogs/images/zscl-performance.png" alt="Performance"></p>
+<h3 id="constraints-in-feature-space-and-parameter-space">Constraints in Feature Space and Parameter Space</h3>
+<p>The knowledge of a pre-trained vision-language model can be viewed as stored within two key components: the feature space and the parameter space. The feature space refers to the output generated by the model&rsquo;s final layer, while the parameter space encompasses the model&rsquo;s weights. To address the issue of catastrophic forgetting, we propose the application of constraints to both the feature space and parameter space.</p>
+<p><img src="/blogs/images/zscl-dataset.png" alt="feature space"></p>
+<p>Within the feature space, we employ an LwF-style loss to encourage the model&rsquo;s output to resemble that of the pre-trained model. The loss is defined as $\mathcal{L}=\text{CE}(\bm{p},\bm{\overline{p}})=-\sum_{j=1}^m\bm{p}_j\cdot\log\bm{\overline{p}}_j$, and it is applied to both the text and image components. The key distinction between our approach and LwF lies in the introduction of reference datasets and a reference model. The reference dataset should possess semantic diversity and does not necessarily need to be labeled, pre-trained, or contain matched image-text pairs. Meanwhile, the reference model refers to the pre-trained model itself, rather than the model trained on the previous task as in LwF. Further details and ablation studies involving various choices are presented in the accompanying figure.</p>
+<p><img src="/blogs/images/zscl-ablation.png" alt="Ablation"></p>
+<p>In the parameter space, we draw inspiration from WiSE-FT, which combines the fine-tuned model and the pre-trained model to achieve an improved balance between zero-shot performance and task-specific performance. We observe that model checkpoints obtained during training can be seen as different trade-offs. Therefore, we can create an ensemble of these models to better retain parameter knowledge. This update process bears similarities to Stochastic Weight Averaging (SWA):</p>
+<p>$$
+\begin{equation}
+\hat{\theta}<em>t = \begin{cases}
+\theta_0 &amp; t=0 \
+\frac{1}{t+1}{\theta}</em>{t} + \frac{t}{t+1}\cdot\hat{\theta}_{t-1} &amp; \text{every I iterations}
+\end{cases}.
+\end{equation}
+$$</p>
+<p><img src="/blogs/images/zscl-tradeoff.png" alt="Tradeoff"></p>
+<h3 id="results">Results</h3>
+<p>We assess the effectiveness of our method on both our Multi-domain Task Incremental Learning (MTIL) benchmark and traditional incremental learning datasets. Here, we present the results specifically for the MTIL benchmark. Within this benchmark, the Transfer metric gauges the performance on previously unseen datasets, while the Last metric represents the final performance achieved after all the continuous learning steps. Our method demonstrates a significant enhancement in the Last performance, with only a minimal decrease in the Transfer performance. This indicates that our approach effectively improves the model&rsquo;s overall performance while maintaining its ability to transfer knowledge to new tasks.</p>
+<p><img src="/blogs/images/zscl-experiment.png" alt="experiment"></p>
+<p>We visualize the feature space of the Aircraft dataset after applying MTIL. By collecting the features from the outputs of five models and applying t-SNE, we can observe the distribution of the features. The figure below demonstrates that our method is successful in preserving the feature space of the pre-trained model, resulting in an almost identical feature space to that of the original pre-trained model. This visualization indicates that our method effectively retains the important features of the pre-trained model throughout the MTIL process.</p>
+<p><img src="/blogs/images/zscl-feat.png" alt="visualization"></p>
+<h3 id="discussion">Discussion</h3>
+<p>In the era of large-scale models, traditional continual learning from scratch may have become less practically significant. However, the ability to fine-tune a pre-trained model on new tasks remains crucial. Incorporating the latest information, adding domain-specific knowledge, or rectifying mistakes in the pre-trained model are all potential applications. Continual learning proves to be a much more efficient approach compared to re-collecting datasets and retraining the model from scratch. Our paper addresses this specific point and evaluates our method on the CLIP model. As language and vision models gain popularity, extending the application of our method to multimodal models such as MiniGPT4 and LLaVA holds promising prospects.</p>
+
+                </main>
+            </div>
+        </div>
+
+    </div>
+</body></html>
