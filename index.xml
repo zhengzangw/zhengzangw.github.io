@@ -523,7 +523,7 @@ Scene geometry Camera Light sources Materials Light propagation Application</des
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/interest/</guid>
       <description>My current research lies in efficient maching learning and optimization, mainly including:
-Efficient Fine-tuning of LLMs (large language models) and Language-Vision models. Optimization: Optimizer design and forward-forward algorithm. Improving GPU&amp;rsquo;s utilization: large-batch training and kernal ops optimization. Improving dataset efficiency: collect high-quality data with low cost. </description>
+Efficient Fine-tuning of LLMs (large language models) and Language-Vision models. Optimization: Optimizer explanation and design, Optimizer for LLM. Improving GPU&amp;rsquo;s utilization: large-batch training and kernal ops optimization. </description>
     </item>
     
     <item>
