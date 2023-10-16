@@ -26,7 +26,7 @@ We are hiring Research Interns, more details can be found here. Feel free to con
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/interest/</guid>
       <description>My current research mainly focus on Efficient ML (machine learning) and Large-scale DL (Deep Learning) Optimization.
-Large-scale DL Optimization: optimizer design (faster, memory-efficient, robust, etc.), optimizer explanation, data-model-algorithm connections. [相关背景讨论] Efficient ML: computation-efficient training (accelerated optimizer, large batch training, incremental learning), memory-efficient training, efficient inference. [相关背景讨论] I am always happy to chat about interesting research ideas, and looking for academic collaborations. Please drop me an email if you are interested in collaborating with me.</description>
+Large-scale DL Optimization: optimizer design (faster, memory-efficient, robust, etc.), optimizer explanation, data-model-algorithm connections. Efficient ML: computation-efficient training (accelerated optimizer, large batch training, incremental learning), memory-efficient training, efficient inference. I am always happy to chat about interesting research ideas, and looking for academic collaborations. Please drop me an email if you are interested in collaborating with me.</description>
     </item>
     
     <item>
