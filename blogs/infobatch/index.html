@@ -88,11 +88,12 @@
 <p><a href="https://zhengzangw.github.io/about/">Zangwei Zheng</a>, <a href="mailto:zangwei@u.nus.edu">zangwei@u.nus.edu</a><br>
 National University of Singapore</p>
 <p><strong>ICLR 2024 Oral</strong><br>
-Other version: [<a href="https://arxiv.org/abs/2307.02047">arXiv</a>] [<a href="https://github.com/NUS-HPC-AI-Lab/InfoBatch">Code</a>] [<a href="">中文</a>]<br>
-Discuss on <a href="">twitter</a> with the author.</p>
+Other version: [<a href="https://arxiv.org/abs/2307.02047">arXiv</a>] [<a href="https://github.com/NUS-HPC-AI-Lab/InfoBatch">Code</a>] [<a href="https://zhuanlan.zhihu.com/p/678510967">中文</a>]<br>
+Discuss on <a href="https://twitter.com/zangweizheng/status/1747857745108508746?s=61&amp;t=n26cAQB4vNMc4lYtIfXdMQ">twitter</a> with the author.</p>
 </blockquote>
 <h3 id="tldr">TL;DR</h3>
 <p>Multi-epoch training can be accelerated by skipping well-learned samples or easy samples. Infobatch is a dynamic data pruning method that rescales the loss and update the data sampler on the fly for lossless performance. It achieves 20% to 40% speedup on tasks ranging from image classification, semantic segmentation, vision pertaining, diffusion model, and LLM instruction fine-tuning.</p>
+<p><img src="/blogs/images/infobatch-overview.jpg" alt="overview"></p>
 <h3 id="how-does-infobatch-work">How does Infobatch work?</h3>
 <p>We provide a plug-and-play pytorch implementation for Infobatch (and still under active development). With the following three lines, you can easily apply Infobatch to your training code.</p>
 <p><img src="/blogs/images/infobatch-code.jpg" alt="code"></p>
