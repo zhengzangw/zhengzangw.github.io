@@ -8,14 +8,28 @@
     <language>en-us</language>
     <managingEditor>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</managingEditor>
     <webMaster>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</webMaster>
-    <lastBuildDate>Sat, 15 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://zhengzangw.com/blogs/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Jul. 2023 | Fine-tuning Vision-Language Models without Zero-Shot Transfer Degradation</title>
+      <title>Jan. 2024 | Infobatch: Dataset Pruning On The Fly</title>
+      <link>https://zhengzangw.com/blogs/infobatch/</link>
+      <pubDate>Wed, 17 Jan 2024 00:00:00 +0000</pubDate>
+      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
+      <guid>https://zhengzangw.com/blogs/infobatch/</guid>
+      <description>Jan. 2024 | Infobatch: Dataset Pruning On The Fly Zangwei Zheng, zangwei@u.nus.edu
+National University of Singapore
+ICLR 2024 Oral
+Other version: [arXiv] [Code] [中文]
+Discuss on twitter with the author.
+TL;DR Multi-epoch training can be accelerated by skipping well-learned samples or easy samples. Infobatch is a dynamic data pruning method that rescales the loss and update the data sampler on the fly for lossless performance. It achieves 20% to 40% speedup on tasks ranging from image classification, semantic segmentation, vision pertaining, diffusion model, and LLM instruction fine-tuning.</description>
+    </item>
+    
+    <item>
+      <title>Jul. 2023 | ZSCL: Fine-tuning Vision-Language Models without Zero-Shot Transfer Degradation</title>
       <link>https://zhengzangw.com/blogs/zscl/</link>
       <pubDate>Sat, 15 Jul 2023 00:00:00 +0000</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/blogs/zscl/</guid>
-      <description>Jul. 2023 | Fine-tuning VL Models w.o. Zero-Shot Degradation Zangwei Zheng, zangwei@u.nus.edu
+      <description>Jul. 2023 | ZSCL: Fine-tuning VL Models w.o. Zero-Shot Degradation Zangwei Zheng, zangwei@u.nus.edu
 National University of Singapore
 ICCV 2023
 Other version: [arXiv] [Code] [中文]
@@ -32,19 +46,17 @@ TL;DR Large vision-language models have the ability to make predictions on vario
       <description>Jul. 2023 | CAME Optimizer: Adam Performance with Adafactor Memory Requirements Zangwei Zheng, zangwei@u.nus.edu
 National University of Singapore
 ACL 2023 Outstanding Paper Award
-Other version: [arXiv] [Code] [中文]
-A plug-and-play optimizer repo will be released soon.
-Discuss on twitter with the author.
+Other version: [arXiv] [Code] [中文] Discuss on twitter with the author.
 TL;DR In language model training, optimizing memory usage is crucial, especially with the increasing parameter sizes of large language models (LLMs). The CAME optimizer, introduced in our work, addresses this issue by reducing memory consumption while maintaining performance on par with the Adam optimizer.</description>
     </item>
     
     <item>
-      <title>May 2023 | Can We Use LLM to Speedup LLM Inference?</title>
+      <title>May 2023 | Sequence Schedule: Can We Use LLM to Speedup LLM Inference?</title>
       <link>https://zhengzangw.com/blogs/seqsch/</link>
       <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/blogs/seqsch/</guid>
-      <description>May 2023 | Can we use LLM to Speedup LLM inference? Zangwei Zheng, zangwei@u.nus.edu
+      <description>May 2023 | Sequence Schedule: Can we use LLM to Speedup LLM inference? Zangwei Zheng, zangwei@u.nus.edu
 National University of Singapore
 Other version: [arXiv] [Code] [中文]
 Discuss on twitter with the author.

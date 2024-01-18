@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jan. 2024 | Infobatch: Dataset Pruning On The Fly | Zangwei</title>
+
+    
+    <link rel="stylesheet" href="/scss/main.min.09f01f0c843edf69c76c7743ffd2258ba15df257d2fd2a9592c995fff6e30be6.css" integity="sha256-CfAfDIQ&#43;32nHbHdD/9Ili6Fd8lfS/SqVksmV//bjC&#43;Y=">
+
+    <script type="text/javascript" src="/js/dark.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+</head><body class="app auto flex-container">
+    <div class="flex-container flex-column"><nav>
+    <hr>
+    <div class="flex-container flex-row flex-row-full">
+        
+        <div class="nav-item">
+            <a href="/about">[ About ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/pdfs/resume.pdf">[ CV ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/blogs">[ Blog ]</a>
+        </div>
+        
+        <div class="nav-item">
+            <a href="/notes">[ Notes ]</a>
+        </div>
+        
+        <div class="nav-item btn btn-switch">
+            <a>[ <span class="theme-name">Light</span> ]</a>
+        </div>
+    </div>
+    <hr>
+</nav>
+<div class="flex-passage flex-row flex-row-full">
+            <div class="flex-column-30">
+                <div class="return">
+                    <a href=".."> RETURN </a>
+                </div>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#jan-2024--infobatch-dataset-pruning-on-the-fly">Jan. 2024 | Infobatch: Dataset Pruning On The Fly</a>
+      <ul>
+        <li><a href="#tldr">TL;DR</a></li>
+        <li><a href="#how-does-infobatch-work">How does Infobatch work?</a></li>
+        <li><a href="#a-wide-range-of-applications">A wide range of applications</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+            <div class="flex-column-80">
+                <main class="flex-column-60">
+                    <h2 id="jan-2024--infobatch-dataset-pruning-on-the-fly">Jan. 2024 | Infobatch: Dataset Pruning On The Fly</h2>
+<blockquote>
+<p><a href="https://zhengzangw.github.io/about/">Zangwei Zheng</a>, <a href="mailto:zangwei@u.nus.edu">zangwei@u.nus.edu</a><br>
+National University of Singapore</p>
+<p><strong>ICLR 2024 Oral</strong><br>
+Other version: [<a href="https://arxiv.org/abs/2307.02047">arXiv</a>] [<a href="https://github.com/NUS-HPC-AI-Lab/InfoBatch">Code</a>] [<a href="">中文</a>]<br>
+Discuss on <a href="">twitter</a> with the author.</p>
+</blockquote>
+<h3 id="tldr">TL;DR</h3>
+<p>Multi-epoch training can be accelerated by skipping well-learned samples or easy samples. Infobatch is a dynamic data pruning method that rescales the loss and update the data sampler on the fly for lossless performance. It achieves 20% to 40% speedup on tasks ranging from image classification, semantic segmentation, vision pertaining, diffusion model, and LLM instruction fine-tuning.</p>
+<h3 id="how-does-infobatch-work">How does Infobatch work?</h3>
+<p>We provide a plug-and-play pytorch implementation for Infobatch (and still under active development). With the following three lines, you can easily apply Infobatch to your training code.</p>
+<p><img src="/blogs/images/infobatch-code.jpg" alt="code"></p>
+<p>Here we give a brief explanation of InfoBatch algorithm. First, InfoBatch will randomly drop <code>1-ratio</code> of the samples with loss smaller than averaged loss over all samples. The paper discusses more complicated strategies, but for now we implement the simplest one, which is already very effective. Second, InfoBatch will rescale the loss of the remaining samples with loss smaller than averaged loss by a factor of <code>1/(1-ratio)</code>. This is to ensure that the lossless performance is maintained. Third, at the end of training, InfoBatch will pass through all the samples to mitigate forgetting. The hyperparameter <code>delta</code> controls the ratio of epochs performing dataset pruning on the fly. <code>ratio=0.5, delta=0.875</code> are good hyperparameters to start with.</p>
+<p>In the code above, the first change wraps the dataset and the order index is organized. We need to pass the InfoBatch sampler to the dataloader constructor in the second change. The last change rescales the loss and update the sampler with the loss between the forward and backward pass. For more mathematric discussion and ablation studies, please refer to the <a href="https://arxiv.org/abs/2307.02047">paper</a>. For parallel training, please refer to the <a href="https://github.com/NUS-HPC-AI-Lab/InfoBatch">code</a>.</p>
+<h3 id="a-wide-range-of-applications">A wide range of applications</h3>
+<p>The idea behind Infobatch is very simple, but it is very effective in a wide range of applications.</p>
+<ul>
+<li>Image classification: While all previous methods fail to maintain the lossless performance, Infobatch can achieve 40% speedup without loss of accuracy.</li>
+<li>MAE pretraining: Infobatch saves 20% of training time for ViT and Swin without loss of downstream accuracy.</li>
+<li>Semantic segmentation: Infobatch saves 40% of training time without degradation of mIoU.</li>
+<li>Diffusion model: Infobatch saves 27% of training time with comparable FID score.</li>
+<li>LLM instruction fine-tuning: Infobatch can save 20% of training time.</li>
+</ul>
+
+                </main>
+            </div>
+        </div>
+
+    </div>
+</body></html>

@@ -34,7 +34,7 @@ Large-scale DL Optimization: optimizer design (faster, memory-efficient, robust,
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/news/</guid>
-      <description>[2023.9] Got two papers (one first-authored paper Sequence-Scheduling) accepted to NeurIPS 2023. Cong to Fuzhao and myself. So many thanks to my collaborators! [2023.7] Got one first-authored paper (ZSCL) accepted to ICCV 2023. Thanks to all my collaborators! [2023.7] The CAME paper won the ACL Outstanding Paper Award! [2023.5] Got one paper accepted to ACL 2023. Congratulations to Yang Luo! [2023.4] Got one paper accpeted to ICML 2023. Congratulations to Fuzhao Xue!</description>
+      <description>[2024.1] Got one paper accepted to ICLR 2024 (oral). Congratulations to Ziheng and Kai! [2023.9] Got two papers (one first-authored paper Sequence-Scheduling) accepted to NeurIPS 2023. Cong to Fuzhao and myself. So many thanks to my collaborators! [2023.7] Got one first-authored paper (ZSCL) accepted to ICCV 2023. Thanks to all my collaborators! [2023.7] The CAME paper won the ACL Outstanding Paper Award! [2023.5] Got one paper accepted to ACL 2023.</description>
     </item>
     
     <item>
@@ -70,7 +70,7 @@ Large-scale DL Optimization: optimizer design (faster, memory-efficient, robust,
       <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/projects/</guid>
-      <description> 宇宙演化与相关学科目录图 awesome-huge-models: Collection of huge AI models. hugo-theme-phd: Hugo theme for this page. </description>
+      <description> nnstat: A toolkit to track and analyze the status and statistics of neural network. 宇宙演化与相关学科索引图 ColossalChat: A chatbot developed with ColossalAI. awesome-huge-models: Collection of huge AI models. hugo-theme-phd: Hugo theme for this page. </description>
     </item>
     
   </channel>
