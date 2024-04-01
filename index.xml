@@ -522,7 +522,8 @@ Scene geometry Camera Light sources Materials Light propagation Application</des
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/interest/</guid>
       <description>My current research mainly focus on Efficient ML (machine learning) and Large-scale DL (Deep Learning) Optimization.
-Large-scale DL Optimization: optimizer design (faster, memory-efficient, robust, etc.), optimizer explanation, data-model-algorithm connections. Efficient ML: computation-efficient training (accelerated optimizer, large batch training, incremental learning), memory-efficient training, efficient inference. I am always happy to chat about interesting research ideas, and looking for academic collaborations. Please drop me an email if you are interested in collaborating with me.</description>
+Large-scale DL Optimization: optimizer design (faster, memory-efficient, robust, etc.), optimizer explanation, data-model-algorithm connections. Efficient ML: computation-efficient training (accelerated optimizer, large batch training, incremental learning), memory-efficient training, efficient inference. I am always happy to chat about interesting research ideas. Please drop me an email if you are interested in collaborating with me.
+Related background discussion：DL Optimization [中文, EN]，Efficient ML [中文]</description>
     </item>
     
     <item>
