@@ -41,7 +41,7 @@ $H(Y|X)\leq H(X)$ remaining uncertainty when $X$ is known $H(X|Y)\neq H(Y|X)$ $H
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/about/</guid>
-      <description>I am a Ph.D. student at National University of Singapore, advised by Prof. Yang You. I received my B.Sc. in Computer Science from Nanjing University in 2021. I spent a year in iCyPy at UC Berkeley from Apr. 2020, supervised by Prof. Alberto L. Sangiovanni-Vincentelli and Dr. Xiangyu Yue.</description>
+      <description>I am a Ph.D. student at National University of Singapore, advised by Prof. Yang You. I received my B.Sc. in Computer Science from Nanjing University in 2021. I spent one year in iCyPy at UC Berkeley from Apr. 2020, supervised by Prof. Alberto L. Sangiovanni-Vincentelli and Dr. Xiangyu Yue.</description>
     </item>
     
     <item>
@@ -521,9 +521,8 @@ Scene geometry Camera Light sources Materials Light propagation Application</des
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/interest/</guid>
-      <description>My current research mainly focus on Efficient ML (machine learning) and Large-scale DL (Deep Learning) Optimization.
-Large-scale DL Optimization: optimizer design (faster, memory-efficient, robust, etc.), optimizer explanation, data-model-algorithm connections. Efficient ML: computation-efficient training (accelerated optimizer, large batch training, incremental learning), memory-efficient training, efficient inference. I am always happy to chat about interesting research ideas. Please drop me an email if you are interested in collaborating with me.
-Related background discussion：DL Optimization [中文, EN]，Efficient ML [中文]</description>
+      <description>My current research mainly focus on Video Generation, Efficient ML (machine learning) and Large-scale DL (Deep Learning) Optimization.
+Video Generation: large-scale video generation model, video control and alignment. Large-scale DL Optimization: optimizer design (faster, memory-efficient, robust, etc.), optimizer explanation, data-model-algorithm connections. Efficient ML: computation-efficient training (accelerated optimizer, large batch training, incremental learning), memory-efficient training, efficient inference. I am always happy to chat about interesting research ideas.</description>
     </item>
     
     <item>
@@ -940,7 +939,7 @@ Iterative-and-incremental Process Models Incrementation(增量): 指对于产品
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/news/</guid>
-      <description>[2024.1] Got one paper accepted to ICLR 2024 (oral). Congratulations to Ziheng and Kai! [2023.9] Got two papers (one first-authored paper Sequence-Scheduling) accepted to NeurIPS 2023. Cong to Fuzhao and myself. So many thanks to my collaborators! [2023.7] Got one first-authored paper (ZSCL) accepted to ICCV 2023. Thanks to all my collaborators! [2023.7] The CAME paper won the ACL Outstanding Paper Award! [2023.5] Got one paper accepted to ACL 2023.</description>
+      <description>[2024.5] Got one paper accepted to ICML 2024. Congratulations to Fuzhao Xue! [2024.4] Open-Sora 1.1 released! [2024.4] Got one paper accepted to WWW 2024. Congratulations to Zirui Rui! [2024.3] Open-Sora 1.0 released! [2024.1] Got one paper accepted to ICLR 2024 (oral). Congratulations to Ziheng Qin and Kai Wang! [2023.9] Got two papers (one first-authored paper Sequence-Scheduling) accepted to NeurIPS 2023. Cong to Fuzhao and myself. So many thanks to my collaborators!</description>
     </item>
     
     <item>
@@ -2017,7 +2016,7 @@ MAC层 分布式协调功能(DCF) CSMA/CA 链路层确认：等待 SIFS 后返�
       <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/projects/</guid>
-      <description> nnstat: A toolkit to track and analyze the status and statistics of neural network. 宇宙演化与相关学科索引图 ColossalChat: A chatbot developed with ColossalAI. awesome-huge-models: Collection of huge AI models. hugo-theme-phd: Hugo theme for this page. </description>
+      <description> Open-Sora: Open-source video generation model. ColossalChat: A chatbot developed with ColossalAI. Instruction in the Wild: 110K high-quailty user-based instructions. awesome-huge-models: Collection of huge AI models. hugo-theme-phd: Hugo theme for this page. nnstat: A toolkit to track and analyze the status and statistics of neural network. Work in progress and delayed due to other projects. 宇宙演化与相关学科索引图 </description>
     </item>
     
     <item>
