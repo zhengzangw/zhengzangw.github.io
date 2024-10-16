@@ -939,7 +939,7 @@ Iterative-and-incremental Process Models Incrementation(增量): 指对于产品
       <pubDate>Mon, 07 Dec 2020 02:47:43 +0800</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/news/</guid>
-      <description>[2024.5] Got one paper accepted to ICML 2024. Congratulations to Fuzhao Xue! [2024.4] Open-Sora 1.1 released! [2024.4] Got one paper accepted to WWW 2024. Congratulations to Zirui Rui! [2024.3] Open-Sora 1.0 released! [2024.1] Got one paper accepted to ICLR 2024 (oral). Congratulations to Ziheng Qin and Kai Wang! [2023.9] Got two papers (one first-authored paper Sequence-Scheduling) accepted to NeurIPS 2023. Cong to Fuzhao and myself. So many thanks to my collaborators!</description>
+      <description>[2024.9] Got one paper accepted to EMNLP 2024. Congratulations to Yang Luo! [2024.9] VideoOcean is now online! Check it out here. [2024.6] Got one paper accepted to ECCV 2024. Congratulations to Ziheng Qin! [2024.6] Open-Sora 1.2 released! [2024.5] Got one paper accepted to ICML 2024. Congratulations to Fuzhao Xue! [2024.4] Open-Sora 1.1 released! [2024.4] Got one paper accepted to WWW 2024. Congratulations to Zirui Zhu! [2024.3] Open-Sora 1.0 released! [2024.</description>
     </item>
     
     <item>
@@ -2016,7 +2016,7 @@ MAC层 分布式协调功能(DCF) CSMA/CA 链路层确认：等待 SIFS 后返�
       <pubDate>Mon, 07 Dec 2020 21:40:24 +0800</pubDate>
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/about/projects/</guid>
-      <description> Open-Sora: Open-source video generation model. ColossalChat: A chatbot developed with ColossalAI. Instruction in the Wild: 110K high-quailty user-based instructions. awesome-huge-models: Collection of huge AI models. hugo-theme-phd: Hugo theme for this page. nnstat: A toolkit to track and analyze the status and statistics of neural network. Work in progress and delayed due to other projects. 宇宙演化与相关学科索引图 </description>
+      <description> Open-Sora: Open-source video generation model. ColossalChat: A chatbot developed with ColossalAI. Instruction in the Wild: 110K high-quailty user-based instructions. awesome-huge-models: Collection of huge AI models. hugo-theme-phd: Hugo theme for this page. Overview of the Evolution of the Universe and Related Disciplines </description>
     </item>
     
     <item>
@@ -4294,24 +4294,6 @@ $O(n^2)$ 若两件物品 i、j 满足 Ci≤Cj 且 Wi≥Wj，则将可以将物�
       <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
       <guid>https://zhengzangw.com/notes/research/few-shot-learning/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Bangumi</title>
-      <link>https://zhengzangw.com/bangumi/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/bangumi/</guid>
-      <description>Personal Bangumi Review</description>
-    </item>
-    
-    <item>
-      <title>Friends</title>
-      <link>https://zhengzangw.com/friends/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zhengzangw@gmail.com (Zangwei (Alex) Zheng)</author>
-      <guid>https://zhengzangw.com/friends/</guid>
-      <description>Here are links to some of my friends. They are all living a wonderful and exciting life!</description>
     </item>
     
   </channel>
